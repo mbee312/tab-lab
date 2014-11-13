@@ -1,0 +1,92 @@
+[
+	{
+		"name": "dominique",
+		"id": 1909,
+		"color": "pink/brown",
+		"sku": "201152-660",
+		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/dominique.jpg",
+		"tabOneImg": "/img/tabs/small-draggable/dominique-1_clipped_rev_1.png",
+		"tabTwoImg": "/img/tabs/small-draggable/dominique-2_clipped_rev_1.png",
+		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/dominique.jpg",
+		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/dominique.jpg"
+	},
+	{
+		"name": "dominic",
+		"id": 1910,
+		"color": "chocolate",
+		"sku": "201151-240",
+		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/dominic.jpg",
+		"tabOneImg": "/img/tabs/small-draggable/dominic-1_clipped_rev_1.png",
+		"tabTwoImg": "/img/tabs/small-draggable/dominic-2_clipped_rev_1.png",
+		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/dominic.jpg",
+		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/dominic.jpg"
+	},
+	{
+		"name": "camo",
+		"id": 624,
+		"color": "limestone/green",
+		"sku": "201101-950",
+		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/camo-green.jpg",
+		"tabOneImg": "/img/tabs/small-draggable/camo-green_clipped_rev_1.png",
+		"tabTwoImg": "/img/tabs/small-draggable/camo-green_clipped_rev_1.png",
+		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-green_1.jpg",
+		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-green_2.jpg"
+	},
+	{
+		"name": "camo",
+		"id": 628,
+		"color": "limestone/red",
+		"sku": "201101-951",
+		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/camo-red.jpg",
+		"tabOneImg": "/img/tabs/small-draggable/camo-red_clipped_rev_1.png",
+		"tabTwoImg": "/img/tabs/small-draggable/camo-red_clipped_rev_1.png",
+		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-red_1.jpg",
+		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-red_2.jpg"
+	},
+	{
+		"name": "camo",
+		"id": 632,
+		"color": "limestone/orange",
+		"sku": "201101-952",
+		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/camo-orange.jpg",
+		"tabOneImg": "/img/tabs/small-draggable/camo-orange_clipped_rev_1.png",
+		"tabTwoImg": "/img/tabs/small-draggable/camo-orange_clipped_rev_1.png",
+		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-orange_1.jpg",
+		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-orange_2.jpg"
+		
+	},
+	{
+		"name": "cheetah zebra",
+		"id": 1370,
+		"color": "pink/multi",
+		"sku": "201122-906",
+		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/cheetah-zebra.jpg",
+		"tabOneImg": "/img/tabs/small-draggable/cheetah-zebra-1_clipped_rev_1.png",
+		"tabTwoImg": "/img/tabs/small-draggable/cheetah-zebra-2_clipped_rev_1.png",
+		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/cheetah-zebra_1.jpg",
+		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/cheetah-zebra_2.jpg"
+		
+	},
+	{
+		"name": "shimmer",
+		"id": 591,
+		"color": "suede/lavender",
+		"sku": "201032-541",
+		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/shimmer-leather-lavender.png",
+		"tabOneImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/singles/shimmer-leather-lavender_haze_1.jpg",
+		"tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/singles/shimmer-leather-lavender_haze_1.jpg",
+		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/shimmer-leather-lavender_haze_1.jpg",
+		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/shimmer-leather-lavender_haze_2.jpg"
+	},
+{
+		"name": "lcd",
+		"id": 655,
+		"color": "red",
+		"sku": "201110-610",
+		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/lcd-red-blank.jpg",
+		"tabOneImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/singles/lcd-red_1.jpg",
+		"tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/singles/lcd-red_2.jpg",
+		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-red_1.jpg",
+		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-red_2.jpg"
+	}
+]

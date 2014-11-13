@@ -1,0 +1,269 @@
+.plae-chef-window{
+  width: 100%;
+  height: 768px;
+  margin-bottom: 60px;
+  width: 1024px;
+  padding-left: 120px;
+}
+canvas {  
+  border: 3px solid #D3D3D3;
+  z-index: 1;
+  /* Safari 3-4, iOS 1-3.2, Android 1.6- 
+  -webkit-border-radius: 12px;
+
+  /* Firefox 1-3.6 
+  -moz-border-radius: 12px;
+
+  /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ 
+  border-radius: 12px; */
+  background: white;
+  opacity: 1;
+  display: inline-block;
+  width: 727px;
+  height: 512px;
+  margin-bottom: 40px;
+
+  /* box shadow */
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+}
+      .demo {
+        width: 768px;
+        height: 512px;
+        z-index: 3;
+        position: absolute;
+        top: 288px;
+        left: 220px;
+        margin-bottom: 40px;
+      }
+    /*  .demo .pep {
+        background: #f5b188;
+        height: 60px;
+        width: 60px;
+        z-index: 10;
+      } */
+      .demo .drop-target {
+        border: 3px solid #316b33;
+        height: 75px;
+        width: 150px;
+        position: absolute;
+        /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+        -webkit-border-radius: 12px;
+
+        /* Firefox 1-3.6 */
+        -moz-border-radius: 12px;
+
+        /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+        border-radius: 12px;
+        -webkit-box-shadow: 0 10px 6px -6px #777;
+        -moz-box-shadow: 0 10px 6px -6px #777;
+        box-shadow: 0 10px 6px -6px #777;
+      }
+      .demo .drop-target.pep-dpa {
+        background: white;
+        border: 5px solid #316b33;
+      }
+      .demo .drop-target.lt {
+        top: 0;
+        left: 1px;
+      }
+      .demo .drop-target.rt {
+        top: 0;
+        right: 255px;
+      }
+      .demo .drop-target.lb {
+        bottom: 0;
+        left: 1px;
+      }
+      .demo .drop-target.rb {
+        bottom: 0;
+        right: 255px;
+      }
+
+.tabs-menu{
+  border: 3px solid #D3D3D3;
+  width: 125px;
+  height:512px;
+  margin-bottom: 40px;
+  /*  margin-top: 13px;
+  margin-left: 20px; */
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+  /* Safari 3-4, iOS 1-3.2, Android 1.6- 
+  -webkit-border-radius: 12px;
+
+  /* Firefox 1-3.6 
+  -moz-border-radius: 12px;
+
+  /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ 
+  border-radius: 12px; */
+  background: white;
+  opacity: 1;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  display: inline-block;
+}
+
+      .tab img{
+        width: 150%;
+        margin-left: -25%;
+        height: auto;
+      }
+
+  .tabs .pep {
+   /* background: #f5b188; */
+    height: 75px;
+    width: 150px;
+    z-index: 10;
+    /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+    -webkit-border-radius: 12px;
+
+    /* Firefox 1-3.6 */
+    -moz-border-radius: 12px;
+
+    /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+    border-radius: 12px;
+  }
+
+
+  #expand-controls {
+    font-size: 1.2em;
+  /*  margin: 20px 0; */
+  }
+
+  .colorways{
+    width: 727px;
+    height: 100px;
+    display: block;
+    overflow: scroll;
+    /*  margin-top: 103px; */
+    margin-left: 137px;
+/*    border: 2px solid #D3D3D3;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777; */
+  }
+
+  .colorways-list{
+    width: 100%;
+    height: 100px;
+    display: inline-block;
+    padding-left: 5px;
+    list-style-type: none;
+    margin-top: 0px; 
+  /*  margin-left: 23px; */
+  }
+  .colorway{
+    height:100px;
+    float: left;
+    margin-left: 0px;
+    width: 20%;
+  }
+
+  .colorway img{
+    width: 100%;
+    margin-left: 0px;
+  }
+  img#camille-img {
+    height: 100%;
+    width: auto;
+  }
+
+section.styles-tab.ng-scope{
+  margin-bottom: 20px;
+}
+.style-nav {
+  width: 768px;
+  height: 100px;
+  margin-top: 100px;
+  margin-left: 110px;
+ /*   border: 2px solid #D3D3D3; */
+  z-index: 1;
+    /* margin-top: 120px; */
+/*    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777; */
+    /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+  /*  -webkit-border-radius: 12px; */
+
+    /* Firefox 1-3.6 */
+  /*  -moz-border-radius: 12px; */
+
+    /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+  /*  border-radius: 12px; */
+  list-style-type: none; 
+}
+
+.styles-colorways{
+  margin-left: 77px;
+  z-index: 10;
+}
+
+
+      .style{height:100px;
+              float: left;
+              margin-left: 0px;
+              width: 18%;
+              border: 2px solid #D3D3D3;
+              -webkit-box-shadow: 0 10px 6px -6px #777;
+              -moz-box-shadow: 0 10px 6px -6px #777;
+              box-shadow: 0 10px 6px -6px #777;
+              margin-right: 5px;
+      }
+      #style-emme {
+             /* background: url(https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Emme_S_Navy.jpg) no-repeat; */
+                background-size: 100% auto;
+                background-position-y: 30px;
+              }
+      #style-ty {
+                /*  background: url(https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Ty_N_Steel.jpg) no-repeat; */
+                  background-size: 100% auto;
+                  background-position-y: 30px;
+              }
+      #style-roan{
+                /*  background: url(https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Roan_L_Black.jpg) no-repeat; */
+                  background-size: 100% auto;
+                  background-position-y: 30px;
+
+      }
+      #style-max{
+                /*  background: url(https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Max_N_Steel_Camo.jpg) no-repeat; */
+                  background-size: 100% auto;
+                  background-position-y: 20px;
+      }
+      #style-camille{
+        /* background: url(https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Camille_S_Lavender.jpg) no-repeat; */
+                  background-size: auto 95%;
+                  background-position-x: 20px;
+      }
+.style img {
+  width: 100%;
+  margin: 0;
+  height: auto;
+  margin-top: 30px;
+}
+
+#style-max img{
+  margin-top: 20px;
+}
+#style-camille img{
+  margin-top: 0px;
+}
+
+li#style-camille {
+  height: 100%;
+  width: auto;
+}
+
+
+.show-hide.ng-show {
+  -webkit-transition:all linear 2s;
+  transition:all linear 2s;
+}
+
+.show-hide.ng-hide {
+  opacity:0;
+}
+
