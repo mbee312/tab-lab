@@ -19,14 +19,14 @@
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+      <![endif]-->
 
-  <div ng-view></div>
+      <div ng-view></div>
 
-  <div ng-view class="view-frame plae-chef-window">
+      <div ng-view class="view-frame plae-chef-window">
 
-<section class="styles-tab" ng-controller="StylesTabController as stylestab">
-  <ul class='style-nav' id='expand-controls'>
+        <section class="styles-tab" ng-controller="StylesTabController as stylestab">
+          <ul class='style-nav' id='expand-controls'>
  <!--   <li ng-repeat="style in shoesStyles" class="style" id="{{style.id}}" slide-toggle="#{{style.name}}">
       <a href="#"></a>
     </li> -->
@@ -37,57 +37,45 @@
   <div class='colorways'>
     <!--    <li class='colorways slideable' id='emme'> -->
     <ul class="colorways-list">
-      <li ng-repeat="shoe in shoeList | filter: {name:'emme'}" class="colorway" ng-show="stylestab.isSet('emme')"><img ng-src="{{ shoe.menuImgUrl }}"/></li>
-      <li ng-repeat="shoe in shoeList | filter: {name:'ty'}" class="colorway" ng-show="stylestab.isSet('ty')"><img ng-src="{{ shoe.menuImgUrl }}"/>
-      <li ng-repeat="shoe in shoeList | filter: {name:'roan'}" class="colorway" ng-show="stylestab.isSet('roan')"><img ng-src="{{ shoe.menuImgUrl }}"/></li>
-      <li ng-repeat="shoe in shoeList | filter: {name:'max'}" class="colorway" ng-show="stylestab.isSet('max')"><img ng-src="{{ shoe.menuImgUrl }}"/></li>
-      <li ng-repeat="shoe in shoeList | filter: {name:'camille'}" class="colorway" ng-show="stylestab.isSet('camille')" ><img ng-src="{{ shoe.menuImgUrl }}" id="camille-img"/></li>
+      <li ng-repeat="shoe in shoeList | filter: {name:'emme'}" class="colorway" ng-show="stylestab.isSet('emme')">
+        <a href ng-click="plaeChef.makeBaseImage(shoe.mainImgUrl,0)"><img ng-src="{{ shoe.menuImgUrl }}"/></a>
+      </li>
+      <li ng-repeat="shoe in shoeList | filter: {name:'ty'}" class="colorway" ng-show="stylestab.isSet('ty')">
+        <a href ng-click="plaeChef.makeBaseImage(shoe.mainImgUrl,0)"><img ng-src="{{ shoe.menuImgUrl }}"/></a>
+      </li>
+      <li ng-repeat="shoe in shoeList | filter: {name:'roan'}" class="colorway" ng-show="stylestab.isSet('roan')">
+        <a href ng-click="plaeChef.makeBaseImage(shoe.mainImgUrl,0)"><img ng-src="{{ shoe.menuImgUrl }}"/></a>
+      </li>
+      <li ng-repeat="shoe in shoeList | filter: {name:'max'}" class="colorway" ng-show="stylestab.isSet('max')">
+        <a href ng-click="plaeChef.makeBaseImage(shoe.mainImgUrl,0)"><img ng-src="{{ shoe.menuImgUrl }}"/></a>
+      </li>
+      <li ng-repeat="shoe in shoeList | filter: {name:'camille'}" class="colorway" ng-show="stylestab.isSet('camille')" ><a href ng-click="plaeChef.makeBaseImage(shoe.mainImgUrl, 1)"><img ng-src="{{ shoe.menuImgUrl }}" id="camille-img"/></a></li>
     </ul>
-  </div>
-</section>
+    </div>
+  </section>
 
   <div class='tabs-menu' id='tabs-one'>
     <div class='tab' ng-repeat="tab in tabList" id="{{tab.id}}"><img ng-src="{{ tab.menuImg }}"/></div>
   </div>
-
-
-<!--
-
-  <div class='demo droppable-consuming-parent left'>
-    <div class='drop-target lt'></div>
-    <div class='drop-target rt'></div>
-    <div class='drop-target lb'></div>
-    <div class='drop-target rb'></div> -->
-
-    <canvas id='plae-chef-canvas'class='canvas'></canvas>
-  <!-- <div class='tabs' id='tabs'>
-      <div class='pep' id='tab0'></div>
-      <div class='pep' id='tab1'></div>
-      <div class='pep' id='tab2'></div>
-      <div class='pep' id='tab3'></div>
-    </div> 
-    -->
+  <canvas class='canvas' id='plae-chef-canvas'></canvas>
   <div class='tabs-menu' id='tabs-two'>
     <div class='tab' ng-repeat="tab in tabList" id="{{tab.id}}"><img ng-src="{{ tab.menuImg }}"/></div>
   </div>
 </div>
 
-<!--</div> -->
-
-
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
-  <script type="text/javascript">"js/angularSlideables.js"</script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
-  <script src="js/plaeChefController.js"></script>
-  <script src="js/plaeChefProducts.js"></script>
+-->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script type="text/javascript">"js/angularSlideables.js"</script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="components/version/version.js"></script>
+<script src="components/version/version-directive.js"></script>
+<script src="components/version/interpolate-filter.js"></script>
+<script src="js/plaeChefController.js"></script>
+<script src="js/plaeChefProducts.js"></script>
 
 </body>
 </html>
