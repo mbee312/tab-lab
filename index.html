@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
   <link rel="stylesheet" href="css/plae-chef.css">
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js" type="text/javascript"></script>
 </head>
 <body ng-controller="PlaeChefController as plaeChef">
 
@@ -52,28 +53,39 @@
       <li ng-repeat="shoe in shoeList | filter: {name:'camille'}" class="colorway" ng-show="stylestab.isSet('camille')" ><a href ng-click="plaeChef.makeBaseImage(shoe.mainImgUrl, 1)"><img ng-src="{{ shoe.menuImgUrl }}" id="camille-img"/></a></li>
     </ul>
     </div>
-  </section>
 
-  <div class='tabs-menu' id='tabs-one'>
-    <div class='tab' ng-repeat="tab in tabList" id="{{tab.id}}"><img ng-src="{{ tab.menuImg }}"/></div>
-  </div>
+
+
+  <div class='tab' ng-repeat="tab in tabs track by $index" data-drag="true"  jqyoui-draggable="{animate:true}"><img ng-src="{{ tab.tabOneImg }}"/></div>
+  <div class='tab' ng-repeat="tab in tabs track by $index" data-drag="true"  jqyoui-draggable="{animate:true}"><img ng-src="{{ tab.tabTwoImg }}"/></div>
   <canvas class='canvas' id='plae-chef-canvas'></canvas>
-  <div class='tabs-menu' id='tabs-two'>
-    <div class='tab' ng-repeat="tab in tabList" id="{{tab.id}}"><img ng-src="{{ tab.menuImg }}"/></div>
+  <div class="bin" id="locationLT" data-drop="true" data-jqyoui-options jqyoui-droppable></div>
+  <div class="bin" id="locationLB" data-drop="true" data-jqyoui-options jqyoui-droppable></div>
+  <div class="bin" id="locationRT" data-drop="true" data-jqyoui-options jqyoui-droppable></div>
+  <div class="bin" id="locationRB" data-drop="true" data-jqyoui-options jqyoui-droppable></div>
+  <div class='tabs-menu' id='tabs-one'>
+    <div class='tab-list' ng-repeat="tab in tabList" id="{{tab.id}}" ng-click="plaeChef.addTab(tab, $event)"><img ng-src="{{ tab.menuImg }}"/></div>
   </div>
+    </section>
+
 </div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js"></script>
+
 <script type="text/javascript">"js/angularSlideables.js"</script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="components/version/version.js"></script>
-<script src="components/version/version-directive.js"></script>
-<script src="components/version/interpolate-filter.js"></script>
+  <!--<script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+    <script src="app/bower_components/angular-dragdrop/src/angular-animate.js"></script> -->
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="components/angular-dragdrop/angular-dragdrop.min.js"></script>
 <script src="js/plaeChefController.js"></script>
 <script src="js/plaeChefProducts.js"></script>
 

@@ -161,13 +161,13 @@
         "color": "all over black", 
         "sku": "101010-002",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Roan_L_All_Black.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Roan_L_All_Black.jpg"
+        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/roan_all_black_pair_2.jpg"
     },
     {
         "name": "roan", 
         "id": 412,
         "number of straps": 4, 
-        "color": "all over black", 
+        "color": "white",
         "sku": "101010-101",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Roan_L_White.jpg",
         "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Roan_L_White.jpg"

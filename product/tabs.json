@@ -5,8 +5,8 @@
 		"color": "pink/brown",
 		"sku": "201152-660",
 		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/dominique.jpg",
-		"tabOneImg": "/img/tabs/small-draggable/dominique-1_clipped_rev_1.png",
-		"tabTwoImg": "/img/tabs/small-draggable/dominique-2_clipped_rev_1.png",
+		"tabOneImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/dominique-1_clipped_rev_1.png",
+		"tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/dominique-2_clipped_rev_1.png",
 		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/dominique.jpg",
 		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/dominique.jpg"
 	},
@@ -16,8 +16,8 @@
 		"color": "chocolate",
 		"sku": "201151-240",
 		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/dominic.jpg",
-		"tabOneImg": "/img/tabs/small-draggable/dominic-1_clipped_rev_1.png",
-		"tabTwoImg": "/img/tabs/small-draggable/dominic-2_clipped_rev_1.png",
+		"tabOneImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/dominic-1_clipped_rev_1.png",
+		"tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/dominic-2_clipped_rev_1.png",
 		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/dominic.jpg",
 		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/dominic.jpg"
 	},
@@ -27,8 +27,8 @@
 		"color": "limestone/green",
 		"sku": "201101-950",
 		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/camo-green.jpg",
-		"tabOneImg": "/img/tabs/small-draggable/camo-green_clipped_rev_1.png",
-		"tabTwoImg": "/img/tabs/small-draggable/camo-green_clipped_rev_1.png",
+		"tabOneImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-green_clipped_rev_1.png",
+		"tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-green_clipped_rev_1.png",
 		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-green_1.jpg",
 		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-green_2.jpg"
 	},
@@ -38,8 +38,8 @@
 		"color": "limestone/red",
 		"sku": "201101-951",
 		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/camo-red.jpg",
-		"tabOneImg": "/img/tabs/small-draggable/camo-red_clipped_rev_1.png",
-		"tabTwoImg": "/img/tabs/small-draggable/camo-red_clipped_rev_1.png",
+		"tabOneImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-red_clipped_rev_2.png",
+		"tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-red_clipped_rev_2.png",
 		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-red_1.jpg",
 		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-red_2.jpg"
 	},
@@ -49,8 +49,8 @@
 		"color": "limestone/orange",
 		"sku": "201101-952",
 		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/camo-orange.jpg",
-		"tabOneImg": "/img/tabs/small-draggable/camo-orange_clipped_rev_1.png",
-		"tabTwoImg": "/img/tabs/small-draggable/camo-orange_clipped_rev_1.png",
+		"tabOneImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-orange_clipped_rev_2.png",
+		"tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-orange_clipped_rev_2.png",
 		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-orange_1.jpg",
 		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-orange_2.jpg"
 		
@@ -61,8 +61,8 @@
 		"color": "pink/multi",
 		"sku": "201122-906",
 		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/cheetah-zebra.jpg",
-		"tabOneImg": "/img/tabs/small-draggable/cheetah-zebra-1_clipped_rev_1.png",
-		"tabTwoImg": "/img/tabs/small-draggable/cheetah-zebra-2_clipped_rev_1.png",
+		"tabOneImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/cheetah-zebra-1_clipped_rev_1.png",
+		"tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/cheetah-zebra-2_clipped_rev_1.png",
 		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/cheetah-zebra_1.jpg",
 		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/cheetah-zebra_2.jpg"
 		
@@ -73,8 +73,8 @@
 		"color": "suede/lavender",
 		"sku": "201032-541",
 		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/shimmer-leather-lavender.png",
-		"tabOneImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/singles/shimmer-leather-lavender_haze_1.jpg",
-		"tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/singles/shimmer-leather-lavender_haze_1.jpg",
+		"tabOneImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/shimmer-leather-lavender_clipped_rev_1.png",
+		"tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/shimmer-leather-lavender_clipped_rev_1.png",
 		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/shimmer-leather-lavender_haze_1.jpg",
 		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/shimmer-leather-lavender_haze_2.jpg"
 	},
@@ -84,8 +84,8 @@
 		"color": "red",
 		"sku": "201110-610",
 		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/lcd-red-blank.jpg",
-		"tabOneImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/singles/lcd-red_1.jpg",
-		"tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/singles/lcd-red_2.jpg",
+		"tabOneImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-red-blank_clipped_rev_1.png",
+		"tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-red-blank_clipped_rev_1.png",
 		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-red_1.jpg",
 		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-red_2.jpg"
 	}
