@@ -6,7 +6,12 @@
     	"color": "navy", 
     	"sku": "103012-402",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Emme_S_Navy.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Navy.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Navy.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/roan_white_pair_no_tabs.png",
+        "mainViewLeftProfile":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Navy.jpg",
+        "mainViewRightProfile":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Navy.jpg",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/emme_navy_profile_no_tab.png",
+        "mainViewRightProfileNoTab": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/emme_navy_profile_no_tab.png"
     }, 
     {
     	"name": "emme", 
@@ -15,7 +20,12 @@
     	"color": "silver/pink", 
     	"sku": "103012-040",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Emme_S_Silver_Pink.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Silver_Pink.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Silver_Pink.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/roan_white_pair_no_tabs.png",
+        "mainViewLeftProfile":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Silver_Pink.jpg",
+        "mainViewRightProfile":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Silver_Pink.jpg",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/emme_silver_pink_profile_no_tab.png",
+        "mainViewRightProfileNoTab": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/emme_silver_pink_profile_no_tab.png"
 
     },
     {
@@ -25,8 +35,12 @@
         "color": "pink/berry", 
         "sku": "103012-650",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Emme_S_Pink.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Pink.jpg"
-
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Pink.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/roan_white_pair_no_tabs.png",
+        "mainViewLeftProfile":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Pink.jpg",
+        "mainViewRightProfile":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Pink.jpg",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/emme_pink_profile_no_tab.png",
+        "mainViewRightProfileNoTab": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/emme_pink_profile_no_tab.png"
     },
     {
         "name": "emme", 
@@ -35,7 +49,12 @@
         "color": "lavender/violet", 
         "sku": "103012-510",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Emme_S_Lavender.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Lavender.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Lavender.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/roan_white_pair_no_tabs.png",
+        "mainViewLeftProfile":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Pink.jpg",
+        "mainViewRightProfile":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Pink.jpg",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/emme_lavender_profile_no_tab.png",
+        "mainViewRightProfileNoTab": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/emme_lavender_profile_no_tab.png"
 
     },
         {
@@ -45,11 +64,14 @@
         "color": "chocolate", 
         "sku": "103012-240",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Emme_S_Chocolate.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Chocolate.jpg"
+            "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Chocolate.jpg",
+            "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/roan_white_pair_no_tabs.png",
+            "mainViewLeftProfile":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Chocolate.jpg",
+            "mainViewRightProfile":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Emme_S_Chocolate.jpg",
+            "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/emme_chocolate_profile_no_tab.png",
+            "mainViewRightProfileNoTab": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/emme_chocolate_profile_no_tab.png"
 
     },
-
-
 
 
     {
@@ -59,7 +81,12 @@
         "color": "white/shadow", 
         "sku": "102011-103",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Ty_M_White_Shadow.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_M_White_Shadow.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_M_White_Shadow.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/ty_white_shadow_pair_2.jpg",
+        "mainViewLeftProfile":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_M_White_Shadow.jpg",
+        "mainViewRightProfile":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_M_White_Shadow.jpg",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_white_shadow_profile_no_tab.png",
+        "mainViewRightProfileNoTab": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_white_shadow_profile_no_tab.png"
     },
     {
         "name": "ty", 
@@ -68,7 +95,12 @@
         "color": "navy/limestone", 
         "sku": "102011-410",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Ty_M_Navy_Limestone.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_M_Navy_Limestone.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_M_Navy_Limestone.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/ty_navy_limestone_no_tabs.png",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_navy_limestone_profile_no_tab.png",
+        "mainViewRightProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_navy_limestone_profile_no_tab.png",
+        "mainViewLeftProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_M_Navy_Limestone.jpg",
+        "mainViewRightProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_M_Navy_Limestone.jpg"
     },
     {
         "name": "ty", 
@@ -77,7 +109,12 @@
         "color": "red/steel", 
         "sku": "102011-620",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Ty_M_Red_Steel.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_M_Red_Steel.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_M_Red_Steel.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/ty_red_steel_pair_no_tabs.png",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_red_steel_profile_no_tab.png",
+        "mainViewRightProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_red_steel_profile_no_tab.png",
+        "mainViewLeftProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_M_Red_Steel.jpg",
+        "mainViewRightProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_M_Red_Steel.jpg"
     },
     {
         "name": "ty", 
@@ -86,7 +123,12 @@
         "color": "silver/pink", 
         "sku": "102022-040",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Ty_N_Silver_Pink.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Silver_Pink.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Silver_Pink.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/ty_silver_pink_no_tabs.png",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_silver_pink_profile_no_tab.png",
+        "mainViewRightProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_silver_pink_profile_no_tab.png",
+        "mainViewLeftProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Silver_Pink.jpg",
+        "mainViewRightProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Silver_Pink.jpg"
     },
     {
         "name": "ty", 
@@ -95,7 +137,12 @@
         "color": "pink/dewberry", 
         "sku": "102022-651",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Ty_M_Pink_Dewberry.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_M_Pink_Dewberry.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_M_Pink_Dewberry.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/ty_pink_dewberry_pair_no_tabs.png",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_pink_dewberry_profile_no_tab.png",
+        "mainViewRightProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_pink_dewberry_profile_no_tab.png",
+        "mainViewLeftProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_M_Pink_Dewberry.jpg",
+        "mainViewRightProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_M_Pink_Dewberry.jpg"
     },
     {
         "name": "ty", 
@@ -104,7 +151,12 @@
         "color": "lavender/indigo", 
         "sku": "102022-540",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Ty_N_Lavender_Indigo.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Lavender_Indigo.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Lavender_Indigo.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/ty_pink_dewberry_pair_no_tabs.png",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_lavender_indigo_profile_no_tab.png",
+        "mainViewRightProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_lavender_indigo_profile_no_tab.png",
+        "mainViewLeftProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Lavender_Indigo.jpg",
+        "mainViewRightProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Lavender_Indigo.jpg"
     },
     {
         "name": "ty", 
@@ -113,7 +165,12 @@
         "color": "denim/navy", 
         "sku": "102021-401",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Ty_N_Denim_Navy.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Denim_Navy.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Denim_Navy.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/ty_pink_dewberry_pair_no_tabs.png",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_denim_navy_profile_no_tab.png",
+        "mainViewRightProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_denim_navy_profile_no_tab.png",
+        "mainViewLeftProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Denim_Navy.jpg",
+        "mainViewRightProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Denim_Navy.jpg"
     },
     {
         "name": "ty", 
@@ -122,7 +179,12 @@
         "color": "steel", 
         "sku": "102021-053",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Ty_N_Steel.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Ty_N_Steel.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Steel.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/ty_pink_dewberry_pair_no_tabs.png",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_steel_profile_no_tab.png",
+        "mainViewRightProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_steel_profile_no_tab.png",
+        "mainViewLeftProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Ty_N_Steel.jpg",
+        "mainViewRightProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Ty_N_Steel.jpg"
     },
     {
         "name": "ty", 
@@ -131,7 +193,12 @@
         "color": "chocolate/navy", 
         "sku": "102021-242",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Ty_N_Navy_Chocolate.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Ty_N_Navy_Chocolate.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Navy_Chocolate.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/ty_pink_dewberry_pair_no_tabs.png",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_navy_chocolate_profile_no_tab.png",
+        "mainViewRightProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_navy_chocolate_profile_no_tab.png",
+        "mainViewLeftProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Navy_Chocolate.jpg",
+        "mainViewRightProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Navy_Chocolate.jpg"
     },
     {
         "name": "ty", 
@@ -140,7 +207,12 @@
         "color": "chocolate/berry", 
         "sku": "102022-245",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Ty_N_Chocolate_Fuchsia.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Ty_N_Chocolate_Fuchsia.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Chocolate_Fuchsia.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/ty_pink_dewberry_pair_no_tabs.png",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_chocolate_fuchsia_profile_no_tab.png",
+        "mainViewRightProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/ty_chocolate_fuchsia_profile_no_tab.png",
+        "mainViewLeftProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Chocolate_Fuchsia.jpg",
+        "mainViewRightProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Ty_N_Chocolate_Fuchsia.jpg"
     },
 
 
@@ -152,7 +224,12 @@
         "color": "black", 
         "sku": "101010-001",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Roan_L_Black.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Roan_L_Black.jpg"
+         "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Roan_L_Black.jpg",
+         "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/roan_black_profile_no_tab.png",
+         "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/roan_black_profile_no_tab.png",
+         "mainViewRightProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/roan_black_profile_no_tab.png",
+         "mainViewLeftProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Roan_L_Black.jpg",
+         "mainViewRightProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Roan_L_Black.jpg"
     },
     {
         "name": "roan", 
@@ -161,7 +238,12 @@
         "color": "all over black", 
         "sku": "101010-002",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Roan_L_All_Black.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/roan_all_black_pair_2.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Roan_L_All_Black.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/roan_white_pair_no_tabs.png",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/roan_all_black_profile_no_tab.png",
+        "mainViewRightProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/roan_all_black_profile_no_tab.png",
+        "mainViewLeftProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Roan_L_All_Black.jpg",
+        "mainViewRightProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Roan_L_All_Black.jpg"
     },
     {
         "name": "roan", 
@@ -170,21 +252,13 @@
         "color": "white",
         "sku": "101010-101",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Roan_L_White.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Roan_L_White.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Roan_L_White.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/roan_white_pair_no_tabs.png",
+        "mainViewLeftProfileNoTab":"    https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/roan_white_profile_no_tab.png",
+        "mainViewRightProfileNoTab":"    https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/roan_white_profile_no_tab.png",
+        "mainViewLeftProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Roan_L_White.jpg",
+        "mainViewRightProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Roan_L_White.jpg"
     },
-    {
-        "name": "roan", 
-        "id": 1355,
-        "number of straps": 4, 
-        "color": "zio", 
-        "sku": "101120-104",
-        "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Roan_Zio.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Roan_Zio.jpg"
-    },
-
-
-
-
 
     {
     	"name": "max", 
@@ -193,7 +267,12 @@
     	"color": "steel/camo", 
     	"sku": "105021-054",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Max_N_Steel_Camo.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_N_Steel_Camo.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_N_Steel_Camo.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/roan_white_pair_no_tabs.png",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/max_steel_camo_profile_no_tab.png",
+        "mainViewRightProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/max_steel_camo_profile_no_tab.png",
+        "mainViewLeftProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_N_Steel_Camo.jpg",
+        "mainViewRightProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_N_Steel_Camo.jpg"
     },
     {
     	"name": "max", 
@@ -202,7 +281,12 @@
     	"color": "steel/navy", 
     	"sku": "105021-055",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Max_N_Navy_Steel.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_N_Navy_Steel.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_N_Navy_Steel.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/roan_white_pair_no_tabs.png",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/max_navy_steel_profile_no_tab.png",
+        "mainViewRightProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/max_navy_steel_profile_no_tab.png",
+        "mainViewLeftProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_N_Navy_Steel.jpg",
+        "mainViewRightProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_N_Navy_Steel.jpg"
     },
     {
         "name": "max", 
@@ -211,7 +295,12 @@
         "color": "metallic/silver", 
         "sku": "105022-040",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Max_N_Silver.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_N_Silver.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_N_Silver.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/roan_white_pair_no_tabs.png",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/max_silver_profile_no_tab.png",
+        "mainViewRightProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/max_silver_profile_no_tab.png",
+        "mainViewLeftProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_N_Silver.jpg",
+        "mainViewRightProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_N_Silver.jpg"
     },
     {
         "name": "max", 
@@ -220,7 +309,12 @@
         "color": "pink/camo", 
         "sku": "105022-652",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Max_N_Pink_Camo.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_N_Pink_Camo.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_N_Pink_Camo.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/roan_white_pair_no_tabs.png",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/max_pink_camo_profile_no_tab.png",
+        "mainViewRightProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/max_pink_camo_profile_no_tab.png",
+        "mainViewLeftProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_N_Pink_Camo.jpg",
+        "mainViewRightProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_N_Pink_Camo.jpg"
     },    
     {
         "name": "max", 
@@ -229,27 +323,11 @@
         "color": "leather/black", 
         "sku": "105010-001",
         "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Max_L_Black.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_L_Black.jpg"
-    },
-    {
-        "name": "camille", 
-        "id": 1366,
-        "number of straps": 2, 
-        "color": "chocolate", 
-        "sku": "104022-240",
-        "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Camille_S_Chocolate.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Camille_S_Chocolate.jpg"
-    },
-    {
-        "name": "camille", 
-        "id": 1365,
-        "number of straps": 2, 
-        "color": "lavender", 
-        "sku": "104022-509",
-        "menuImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/shoes/Camille_S_Lavender.jpg",
-        "mainImgUrl": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Camille_S_Lavender.jpg"
+        "mainViewDefault": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_L_Black.jpg",
+        "mainViewPairNoTabs": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/pair/no-tabs/roan_white_pair_no_tabs.png",
+        "mainViewLeftProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/max_black_profile_no_tab.png",
+        "mainViewRightProfileNoTab":"https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/profile/max_black_profile_no_tab.png",
+        "mainViewLeftProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_L_Black.jpg",
+        "mainViewRightProfile": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/shoes/Max_L_Black.jpg"
     }
-    
-
-
  ]

@@ -29,8 +29,8 @@
 		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/camo-green.jpg",
 		"tabOneImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-green_clipped_rev_1.png",
 		"tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-green_clipped_rev_1.png",
-		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-green_1.jpg",
-		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-green_2.jpg"
+		"tabOneMainImgPairShotView": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-green_1.jpg",
+		"tabTwoMainImgPairShotView": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-green_2.jpg"
 	},
 	{
 		"name": "camo",
@@ -40,8 +40,8 @@
 		"menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/camo-red.jpg",
 		"tabOneImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-red_clipped_rev_2.png",
 		"tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-red_clipped_rev_2.png",
-		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-red_1.jpg",
-		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/camo-red_2.jpg"
+		"tabOneMainImgPairShotView": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/pair-shot/red-camo.png",
+		"tabTwoMainImgPairShotView": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/pair-shot/red-camo.png"
 	},
 	{
 		"name": "camo",
@@ -88,5 +88,38 @@
 		"tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-red-blank_clipped_rev_1.png",
 		"tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-red_1.jpg",
 		"tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-red_2.jpg"
-	}
+	},
+    {
+        "name": "lcd",
+        "id": 900,
+        "color": "yellow",
+        "sku": "201110-730",
+        "menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/lcd-neon-yellow-blank.jpg",
+        "tabOneImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-neon-yellow-blank_clipped_rev_1.png",
+        "tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-neon-yellow-blank_clipped_rev_1.png",
+        "tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-red_1.jpg",
+        "tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-red_2.jpg"
+    },
+    {
+        "name": "lcd",
+        "id": 781,
+        "color": "orange",
+        "sku": "201110-822",
+        "menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/lcd-neon-orange-blank.jpg",
+        "tabOneImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-neon-orange-blank-1_clipped_rev_1.png",
+        "tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-neon-orange-blank-1_clipped_rev_1.png",
+        "tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-red_1.jpg",
+        "tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-red_2.jpg"
+    },
+    {
+        "name": "lcd",
+        "id": 782,
+        "color": "pink",
+        "sku": "201112-631",
+        "menuImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/thumbnails/tabs/lcd-neon-pink-blank.jpg",
+        "tabOneImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-neon-pink-blank-1_clipped_rev_1.png",
+        "tabTwoImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-neon-pink-blank-1_clipped_rev_1.png",
+        "tabOneMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-red_1.jpg",
+        "tabTwoMainImg": "https://s3-us-west-2.amazonaws.com/plae-chef/img/main/tabs/singles/lcd-red_2.jpg"
+    }
 ]
