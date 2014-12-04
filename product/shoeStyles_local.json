@@ -1,0 +1,26 @@
+[
+	{
+	    "name": "emme", 
+    	"number of straps": 2,
+    	"menuIconUrl": "img/thumbnails/shoes/Emme_S_Navy.jpg",
+    	"id":"style-emme"
+	},
+	{
+	    "name": "ty", 
+    	"number of straps": 4,
+    	"menuIconUrl": "img/thumbnails/shoes/Ty_N_Steel.jpg",
+    	"id":"style-ty"
+	},
+	{
+	    "name": "roan", 
+    	"number of straps": 4,
+    	"menuIconUrl": "img/thumbnails/shoes/Roan_L_Black.jpg",
+    	"id":"style-roan"
+	},
+	{
+	    "name": "max", 
+    	"number of straps": 4,
+    	"menuIconUrl": "img/thumbnails/shoes/Max_N_Steel_Camo.jpg",
+    	"id":"style-max"
+	}
+]

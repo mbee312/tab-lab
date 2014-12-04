@@ -6,9 +6,14 @@
       position: relative;
     }
 
-    #logobutton{
-
+    body.ng-scope {
+        height: 1024px;
     }
+
+    .logo {
+        position: absolute;
+    }
+
     canvas {
       border: 3px solid #D3D3D3;
       z-index: 30;
@@ -26,7 +31,7 @@
       height: 512px; */
       margin-bottom: 10px;
       margin-left: 300px;
-        top: 300px;
+        top: 340px;
 
       /* box shadow */
         border-radius: 5px;
@@ -45,7 +50,7 @@
     }
 
     #tabs{
-        margin-left: 210px !important;
+        margin-left: 260px !important;
         width: 1024px !important;
     }
     .style{
@@ -66,7 +71,7 @@
     div#tabs_container{
         height: 200px;
         width: 767px;
-        margin-left: 92px;
+        margin-left: 55px;
 
     }
     .tabs-menu {
@@ -100,15 +105,42 @@
       display: inline-block;
     }
 .tab-styles-list {
-    width: 200px;
-    height: 540px;
+    width: 767px;
+    height: 200px;
+    /* margin-top: 500px; */
     display: block;
     padding-left: 5px;
     list-style-type: none;
     margin: 5px;
     overflow-x: scroll;
-
+    position: relative;
+    bottom: -550px;
+    left: 300px;
 }
+    #colors-emme {
+        height: 100%;
+        left: -1200px;
+        position: relative;
+    }
+    #colors-ty {
+        height: 100%;
+        left: 1200px;
+        position: relative;
+        margin-top: -200px;
+    }
+    #colors-roan {
+        height: 100%;
+        left: -1200px;
+        position: relative;
+        margin-top: -200px;
+    }
+    #colors-max {
+        height: 100%;
+        left: 1200px;
+        position: relative;
+        margin-top: -200px;
+    }
+
     .draggable-tab-container {
         width: 767px;
         height: 200px;
@@ -368,6 +400,15 @@
         -moz-transition: all 0.3s ease-out;  /* Firefox 4-15 */
         -o-transition: all 0.3s ease-out;  /* Opera 10.50–12.00 */
         transition: all 0.3s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.50+ */
+    }
+
+    #shoesizer_desc_content {
+        position: absolute;
+        bottom: -50px;
+    }
+
+    #startShoeSizerButton {
+        width: 220px !important;
     }
 
 

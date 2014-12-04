@@ -1,0 +1,136 @@
+[
+	{
+		"name": "dominique",
+		"id": 1909,
+		"color": "pink/brown",
+		"sku": "201152-660",
+		"menuImg": "img/thumbnails/tabs/dominique.jpg",
+		"tabOneImg": "img/main/tabs/singles/dominique-1_clipped_rev_1.png",
+		"tabTwoImg": "img/main/tabs/singles/dominique-2_clipped_rev_1.png",
+		"tabOneMainImg": "img/main/tabs/dominique.jpg",
+		"tabTwoMainImg": "img/main/tabs/dominique.jpg"
+	},
+	{
+		"name": "dominic",
+		"id": 1910,
+		"color": "chocolate",
+		"sku": "201151-240",
+		"menuImg": "img/thumbnails/tabs/dominic.jpg",
+		"tabOneImg": "img/main/tabs/singles/dominic-1_clipped_rev_1.png",
+		"tabTwoImg": "img/main/tabs/singles/dominic-2_clipped_rev_1.png",
+		"tabOneMainImg": "img/main/tabs/dominic.jpg",
+		"tabTwoMainImg": "img/main/tabs/dominic.jpg"
+	},
+	{
+		"name": "camo",
+		"id": 624,
+		"color": "limestone/green",
+		"sku": "201101-950",
+		"menuImg": "img/thumbnails/tabs/camo-green.jpg",
+		"tabOneImg": "img/main/tabs/singles/camo-green_clipped_rev_1.png",
+		"tabTwoImg": "img/main/tabs/singles/camo-green_clipped_rev_1.png",
+		"tabOneMainImgPairShotView": "img/main/tabs/singles/camo-green_1.jpg",
+		"tabTwoMainImgPairShotView": "img/main/tabs/singles/camo-green_2.jpg"
+	},
+	{
+		"name": "camo",
+		"id": 628,
+		"color": "limestone/red",
+		"sku": "201101-951",
+		"menuImg": "img/thumbnails/tabs/camo-red.jpg",
+		"tabOneImg": "img/main/tabs/singles/camo-red_clipped_rev_2.png",
+		"tabTwoImg": "img/main/tabs/singles/camo-red_clipped_rev_2.png",
+		"tabOneMainImgPairShotView": "img/main/tabs/singles/pair-shot/red-camo.png",
+		"tabTwoMainImgPairShotView": "img/main/tabs/singles/pair-shot/red-camo.png"
+	},
+	{
+		"name": "camo",
+		"id": 632,
+		"color": "limestone/orange",
+		"sku": "201101-952",
+		"menuImg": "img/thumbnails/tabs/camo-orange.jpg",
+		"tabOneImg": "img/main/tabs/singles/camo-orange_clipped_rev_2.png",
+		"tabTwoImg": "img/main/tabs/singles/camo-orange_clipped_rev_2.png",
+		"tabOneMainImg": "img/main/tabs/singles/camo-orange_1.jpg",
+		"tabTwoMainImg": "img/main/tabs/singles/camo-orange_2.jpg"
+		
+	},
+	{
+		"name": "cheetah zebra",
+		"id": 1370,
+		"color": "pink/multi",
+		"sku": "201122-906",
+		"menuImg": "img/thumbnails/tabs/cheetah-zebra.jpg",
+		"tabOneImg": "img/main/tabs/singles/cheetah-zebra-1_clipped_rev_1.png",
+		"tabTwoImg": "img/main/tabs/singles/cheetah-zebra-2_clipped_rev_1.png",
+		"tabOneMainImg": "img/main/tabs/singles/cheetah-zebra_1.jpg",
+		"tabTwoMainImg": "img/main/tabs/singles/cheetah-zebra_2.jpg"
+		
+	},
+	{
+		"name": "shimmer",
+		"id": 591,
+		"color": "suede/lavender",
+		"sku": "201032-541",
+		"menuImg": "img/thumbnails/tabs/shimmer-leather-lavender.png",
+		"tabOneImg": "img/main/tabs/singles/shimmer-leather-lavender_clipped_rev_1.png",
+		"tabTwoImg": "img/main/tabs/singles/shimmer-leather-lavender_clipped_rev_1.png",
+		"tabOneMainImg": "img/main/tabs/singles/shimmer-leather-lavender_haze_1.jpg",
+		"tabTwoMainImg": "img/main/tabs/singles/shimmer-leather-lavender_haze_2.jpg"
+	},
+{
+		"name": "lcd",
+		"id": 655,
+		"color": "red",
+		"sku": "201110-610",
+		"menuImg": "img/thumbnails/tabs/lcd-red-blank.jpg",
+		"tabOneImg": "img/main/tabs/singles/lcd-red-blank_clipped_rev_1.png",
+		"tabTwoImg": "img/main/tabs/singles/lcd-red-blank_clipped_rev_1.png",
+		"tabOneMainImg": "img/main/tabs/singles/lcd-red_1.jpg",
+		"tabTwoMainImg": "img/main/tabs/singles/lcd-red_2.jpg"
+	},
+    {
+        "name": "lcd",
+        "id": 900,
+        "color": "yellow",
+        "sku": "201110-730",
+        "menuImg": "img/thumbnails/tabs/lcd-neon-yellow-blank.jpg",
+        "tabOneImg": "img/main/tabs/singles/lcd-neon-yellow-blank_clipped_rev_1.png",
+        "tabTwoImg": "img/main/tabs/singles/lcd-neon-yellow-blank_clipped_rev_1.png",
+        "tabOneMainImg": "img/main/tabs/singles/lcd-red_1.jpg",
+        "tabTwoMainImg": "img/main/tabs/singles/lcd-red_2.jpg"
+    },
+    {
+        "name": "lcd",
+        "id": 781,
+        "color": "orange",
+        "sku": "201110-822",
+        "menuImg": "img/thumbnails/tabs/lcd-neon-orange-blank.jpg",
+        "tabOneImg": "img/main/tabs/singles/lcd-neon-orange-blank-1_clipped_rev_1.png",
+        "tabTwoImg": "img/main/tabs/singles/lcd-neon-orange-blank-1_clipped_rev_1.png",
+        "tabOneMainImg": "img/main/tabs/singles/lcd-red_1.jpg",
+        "tabTwoMainImg": "img/main/tabs/singles/lcd-red_2.jpg"
+    },
+    {
+        "name": "lcd",
+        "id": 782,
+        "color": "pink",
+        "sku": "201112-631",
+        "menuImg": "img/thumbnails/tabs/lcd-neon-pink-blank.jpg",
+        "tabOneImg": "img/main/tabs/singles/lcd-neon-pink-blank-1_clipped_rev_1.png",
+        "tabTwoImg": "img/main/tabs/singles/lcd-neon-pink-blank-1_clipped_rev_1.png",
+        "tabOneMainImg": "img/main/tabs/singles/lcd-red_1.jpg",
+        "tabTwoMainImg": "img/main/tabs/singles/lcd-red_2.jpg"
+    },
+    {
+        "name": "lcd",
+        "id": 655,
+        "color": "white",
+        "sku": "201110-610",
+        "menuImg": "img/thumbnails/tabs/lcd-white-blank.jpg",
+        "tabOneImg": "img/main/tabs/singles/lcd-white-blank_clipped_rev_1.png",
+        "tabTwoImg": "img/main/tabs/singles/lcd-white-blank_clipped_rev_1.png",
+        "tabOneMainImg": "img/main/tabs/singles/lcd-red_1.jpg",
+        "tabTwoMainImg": "img/main/tabs/singles/lcd-red_2.jpg"
+    }
+]

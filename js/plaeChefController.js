@@ -33,14 +33,14 @@
 
       $scope.currentView;
 
-    $http.get('product/shoeStyles.json').success(function(data) {
+    $http.get('product/shoeStyles_local.json').success(function(data) {
       $scope.shoeStyles = data;
     });
-    $http.get('product/shoes.json').success(function(data) {
+    $http.get('product/shoes_local.json').success(function(data) {
       $scope.shoeList = data;
     });
 
-    $http.get('product/tabs.json').success(function(data) {
+    $http.get('product/tabs_local.json').success(function(data) {
       $scope.tabList = data;
     }); 
     
@@ -151,12 +151,12 @@
 
       this.moveTabTop = function(){
           $(document).ready(function ($) {
-              var topDegree = 64;
+              var topDegree = 65;
               var topTabSel = '.tab.large.top.ng-scope';
               $(topTabSel).css({ WebkitTransform: 'rotate(' + topDegree + 'deg)'});
               $(topTabSel).css({ '-moz-transform': 'rotate(' + topDegree + 'deg)'});
               $(topTabSel).css({left: "922px"});
-              $(topTabSel).css({top: "44px"});
+              $(topTabSel).css({top: "423px"});
 
           });
       }; //end moveTabTop
@@ -169,7 +169,7 @@
                   $(bottomTabSel).css({WebkitTransform: 'rotate(' + bottomDegree + 'deg)'});
                   $(bottomTabSel).css({'-moz-transform': 'rotate(' + bottomDegree + 'deg)'});
                   $(bottomTabSel).css({left: "830px"});
-                  $(bottomTabSel).css({top: "-60px"});
+                  $(bottomTabSel).css({top: "315px"});
 
           });
       }; //end moveTabBottom
@@ -236,12 +236,50 @@
       this.stylestab='';
       this.setTab = function(newValue){
           this.stylestab = newValue;
+          this.slideTab(newValue);
       };
 
       this.isSet = function(tabName){
           return this.stylestab === tabName;
 
       };
+
+      this.slideTab = function(newValue){
+          $(document).ready(function ($) {
+
+              switch(newValue){
+                  case "emme":
+                      $('#colors-emme').animate({left: "+=1200px"}, 1000, function () {
+                          $('#colors-emme').siblings().removeAttr('style');
+                      });
+                      break;
+                  case "ty":
+                      $('#colors-ty').animate({left: "-=1200px"}, 1000, function () {
+                          $('#colors-ty').siblings().removeAttr('style');
+                      });
+                      break;
+                  case "roan":
+                      $('#colors-roan').animate({left: "+=1200px"}, 1000, function () {
+                          $('#colors-roan').siblings().removeAttr('style');
+                      });
+                      break;
+                  case "max":
+                      $('#colors-max').animate({left: "-=1200px"}, 1000, function () {
+                          $('#colors-max').siblings().removeAttr('style');
+                      });
+                      break;
+
+
+              }
+              if(newValue == "emme") {
+
+              }//end if
+              /*   $('.tab.large.top.ng-scope').animate({left: "-=300px"}, 100, function() {
+               $('.tab.large.top.ng-scope').removeAttr('style'); });
+               $('.tab.large.bottom.ng-scope').animate({left: "-=300px"}, 100, function() {
+               $('.tab.large.bottom.ng-scope').removeAttr('style'); }); */
+          });
+      }; //end resetTabsPos
 
 
   });
