@@ -11,7 +11,7 @@
     }
 
     .logo {
-        position: absolute;
+        position: fixed;
     }
 
     canvas {
@@ -31,7 +31,7 @@
       height: 512px; */
       margin-bottom: 10px;
       margin-left: 300px;
-        top: 340px;
+        top: 400px;
 
       /* box shadow */
         border-radius: 5px;
@@ -71,51 +71,45 @@
     div#tabs_container{
         height: 200px;
         width: 767px;
-        margin-left: 55px;
+        margin-left: 40px;
 
     }
     .tabs-menu {
-      border: 3px solid #D3D3D3;
-      width: 727px !important;
-      height:200px !important;
-      margin-bottom: 40px;
-      /*  margin-top: 13px; */
-      margin-left: 160px;
-      -webkit-box-shadow: 0 10px 6px -6px #777;
-      -moz-box-shadow: 0 10px 6px -6px #777;
-      box-shadow: 0 10px 6px -6px #777;
-      /* Safari 3-4, iOS 1-3.2, Android 1.6-
-      -webkit-border-radius: 12px;
+        /*    left: 1200px;
+          margin-top: -200px; */
 
-      /* Firefox 1-3.6
-      -moz-border-radius: 12px;
+        margin-bottom: 10px;
+        margin-left: 40px;
+        height: 80px;
+        position: relative;
+        width: 1024px;
+        overflow: scroll;
+        border: 2px solid #D3D3D3;
+        -webkit-box-shadow: 0 10px 6px -6px #777;
+        -moz-box-shadow: 0 10px 6px -6px #777;
+        box-shadow: 0 10px 6px -6px #777;
 
-      /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+
-      border-radius: 12px; */
-     /* background: white; */
-      opacity: 1;
-      overflow: hidden;
-      overflow-y: scroll;
-      display: inline-block;
+        /*    background: -webkit-linear-gradient(rgba(233, 233, 233, 1.0), rgba(178, 178, 178, 1.0) 21px, #6A6A6A 1px, #EDEDED, #EDEDED 23px); */
+        margin-right: 5px;
+        border-radius: 5px;
+    /*    box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 22px 70px 4px rgba(0,0,0,0.56), 0 0 0 1px rgba(0, 0, 0, 0.3); */
     }
     .tab-list{
-      width: 100px;
+      width: 15%;
       /*margin-left: -25%; */
       height: auto;
       display: inline-block;
     }
 .tab-styles-list {
-    width: 767px;
-    height: 200px;
-    /* margin-top: 500px; */
-    display: block;
-    padding-left: 5px;
+    width: 100%;
+    height: 180px;
+    display: inline;
+    padding-left: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
     list-style-type: none;
-    margin: 5px;
-    overflow-x: scroll;
-    position: relative;
-    bottom: -550px;
-    left: 300px;
+    white-space: nowrap;
+    overflow-x: auto;
 }
     #colors-emme {
         height: 100%;
@@ -123,10 +117,25 @@
         position: relative;
     }
     #colors-ty {
-        height: 100%;
-        left: 1200px;
+    /*    left: 1200px;
+        margin-top: -200px; */
+
+        height: 140px;
         position: relative;
-        margin-top: -200px;
+        width: 1024px;
+        overflow: scroll;
+        top: 40px;
+        border: 2px solid #D3D3D3;
+        -webkit-box-shadow: 0 10px 6px -6px #777;
+        -moz-box-shadow: 0 10px 6px -6px #777;
+        box-shadow: 0 10px 6px -6px #777;
+
+        /*    background: -webkit-linear-gradient(rgba(233, 233, 233, 1.0), rgba(178, 178, 178, 1.0) 21px, #6A6A6A 1px, #EDEDED, #EDEDED 23px); */
+        margin: 0 auto;
+        margin-right: 5px;
+        border-radius: 5px;
+    /*       box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 22px 70px 4px rgba(0,0,0,0.56), 0 0 0 1px rgba(0, 0, 0, 0.3); */
+
     }
     #colors-roan {
         height: 100%;
@@ -166,7 +175,7 @@
     }
 
     .tab-list img{
-      width: 100px;
+      width: 100%;
       /*margin-left: -25%; */
       height: auto;
     }
@@ -246,27 +255,28 @@
     */
 
       .colorways-list{
-        width: 100%;
-        height: 180px;
-        display: inline;
-        padding-left: 0px;
-        list-style-type: none;
-        margin-top: 0px;
-        margin-left: 0px;
-          overflow-x: scroll;
+          width: 100%;
+          height: 180px;
+          display: inline;
+          padding-left: 0px;
+          margin-top: 0px;
+          margin-left: 0px;
+          list-style-type: none;
+          white-space: nowrap;
+          overflow-x: auto;
       }
       .colorway{
-        height:100px;
-        float: left;
-        margin-left: 0px;
-        width: 20%;
+          height: 150px;
+          margin-left: 0px;
+          width: 30%;
           list-style-type: none;
+          display: inline;
       }
 
       .colorway img{
-        width: 80%;
         margin-left: 0px;
           margin-top: 10px;
+          width:20%
       }
       img#camille-img {
         height: 130px;

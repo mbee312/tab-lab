@@ -1,10 +1,10 @@
 [
     {
-    	"name": "emme", 
-    	"id": 1358,
-    	"number of straps": 2, 
-    	"color": "navy", 
-    	"sku": "103012-402",
+        "name": "emme",
+        "id": 1358,
+        "number of straps": 2,
+        "color": "navy",
+        "sku": "103012-402",
         "menuImgUrl": "img/thumbnails/shoes/Emme_S_Navy.jpg",
         "mainViewDefault": "img/main/shoes/Emme_S_Navy.jpg",
         "mainViewPairNoTabs": "img/main/shoes/pair/no-tabs/roan_white_pair_no_tabs.png",
@@ -12,13 +12,13 @@
         "mainViewRightProfile":"img/main/shoes/Emme_S_Navy.jpg",
         "mainViewLeftProfileNoTab":"img/main/shoes/profile/emme_navy_profile_no_tab.png",
         "mainViewRightProfileNoTab": "img/main/shoes/profile/emme_navy_profile_no_tab.png"
-    }, 
+    },
     {
-    	"name": "emme", 
-    	"id": 901,
-    	"number of straps": 2, 
-    	"color": "silver/pink", 
-    	"sku": "103012-040",
+        "name": "emme",
+        "id": 901,
+        "number of straps": 2,
+        "color": "silver/pink",
+        "sku": "103012-040",
         "menuImgUrl": "img/thumbnails/shoes/Emme_S_Silver_Pink.jpg",
         "mainViewDefault": "img/main/shoes/Emme_S_Silver_Pink.jpg",
         "mainViewPairNoTabs": "img/main/shoes/pair/no-tabs/roan_white_pair_no_tabs.png",
@@ -29,10 +29,10 @@
 
     },
     {
-        "name": "emme", 
+        "name": "emme",
         "id": 538,
-        "number of straps": 2, 
-        "color": "pink/berry", 
+        "number of straps": 2,
+        "color": "pink/berry",
         "sku": "103012-650",
         "menuImgUrl": "img/thumbnails/shoes/Emme_S_Pink.jpg",
         "mainViewDefault": "img/main/shoes/Emme_S_Pink.jpg",
@@ -43,10 +43,10 @@
         "mainViewRightProfileNoTab": "img/main/shoes/profile/emme_pink_profile_no_tab.png"
     },
     {
-        "name": "emme", 
+        "name": "emme",
         "id": 556,
-        "number of straps": 2, 
-        "color": "lavender/violet", 
+        "number of straps": 2,
+        "color": "lavender/violet",
         "sku": "103012-510",
         "menuImgUrl": "img/thumbnails/shoes/Emme_S_Lavender.jpg",
         "mainViewDefault": "img/main/shoes/Emme_S_Lavender.jpg",
@@ -57,19 +57,19 @@
         "mainViewRightProfileNoTab": "img/main/shoes/profile/emme_lavender_profile_no_tab.png"
 
     },
-        {
-        "name": "emme", 
+    {
+        "name": "emme",
         "id": 1357,
-        "number of straps": 2, 
-        "color": "chocolate", 
+        "number of straps": 2,
+        "color": "chocolate",
         "sku": "103012-240",
         "menuImgUrl": "img/thumbnails/shoes/Emme_S_Chocolate.jpg",
-            "mainViewDefault": "img/main/shoes/Emme_S_Chocolate.jpg",
-            "mainViewPairNoTabs": "img/main/shoes/pair/no-tabs/roan_white_pair_no_tabs.png",
-            "mainViewLeftProfile":"img/main/shoes/Emme_S_Chocolate.jpg",
-            "mainViewRightProfile":"img/main/shoes/Emme_S_Chocolate.jpg",
-            "mainViewLeftProfileNoTab":"img/main/shoes/profile/emme_chocolate_profile_no_tab.png",
-            "mainViewRightProfileNoTab": "img/main/shoes/profile/emme_chocolate_profile_no_tab.png"
+        "mainViewDefault": "img/main/shoes/Emme_S_Chocolate.jpg",
+        "mainViewPairNoTabs": "img/main/shoes/pair/no-tabs/roan_white_pair_no_tabs.png",
+        "mainViewLeftProfile":"img/main/shoes/Emme_S_Chocolate.jpg",
+        "mainViewRightProfile":"img/main/shoes/Emme_S_Chocolate.jpg",
+        "mainViewLeftProfileNoTab":"img/main/shoes/profile/emme_chocolate_profile_no_tab.png",
+        "mainViewRightProfileNoTab": "img/main/shoes/profile/emme_chocolate_profile_no_tab.png"
 
     },
 

@@ -36,7 +36,7 @@
     $http.get('product/shoeStyles_local.json').success(function(data) {
       $scope.shoeStyles = data;
     });
-    $http.get('product/shoes_local.json').success(function(data) {
+    $http.get('product/shoes_ty_local.json').success(function(data) {
       $scope.shoeList = data;
     });
 
@@ -45,7 +45,7 @@
     }); 
     
     // setup canvas
-    canvas.width=767;//horizontal resolution (?) - increase for better looking text
+    canvas.width=1024;//horizontal resolution (?) - increase for better looking text
     canvas.height=512;//vertical resolution (?) - increase for better looking text
     canvas.style.width=512;//actual width of canvas
     canvas.style.height=512;//actual height of canvas
@@ -60,7 +60,7 @@
       var base_image = new Image();
       base_image.src = imageUrl;
       if(specialSize === 0){
-        context.drawImage(base_image, 50, 60);
+        context.drawImage(base_image, 200, 110);
       }else{ //draw camille to fit window
         context.drawImage(base_image, 40, 100, 400,400);
       }
@@ -135,7 +135,7 @@
             console.log("I'm in!");
             base_image.src = $scope.shoeSelected[0]["mainViewLeftProfileNoTab"];
 
-            context.drawImage(base_image, 50, 60);
+            context.drawImage(base_image, 200, 110);
         }
 
     };
@@ -155,8 +155,8 @@
               var topTabSel = '.tab.large.top.ng-scope';
               $(topTabSel).css({ WebkitTransform: 'rotate(' + topDegree + 'deg)'});
               $(topTabSel).css({ '-moz-transform': 'rotate(' + topDegree + 'deg)'});
-              $(topTabSel).css({left: "922px"});
-              $(topTabSel).css({top: "423px"});
+              $(topTabSel).css({left: "1072px"});
+              $(topTabSel).css({top: "673px"});
 
           });
       }; //end moveTabTop
@@ -168,8 +168,8 @@
                   var bottomTabSel = '.tab.large.bottom.ng-scope';
                   $(bottomTabSel).css({WebkitTransform: 'rotate(' + bottomDegree + 'deg)'});
                   $(bottomTabSel).css({'-moz-transform': 'rotate(' + bottomDegree + 'deg)'});
-                  $(bottomTabSel).css({left: "830px"});
-                  $(bottomTabSel).css({top: "315px"});
+                  $(bottomTabSel).css({left: "980px"});
+                  $(bottomTabSel).css({top: "565px"});
 
           });
       }; //end moveTabBottom
@@ -235,8 +235,9 @@
   plaeChefApp.controller('StylesTabController', function($scope){
       this.stylestab='';
       this.setTab = function(newValue){
-          this.stylestab = newValue;
-          this.slideTab(newValue);
+          /*    this.stylestab = newValue;
+        this.slideTab(newValue); */
+          this.stylestab = "ty";
       };
 
       this.isSet = function(tabName){
@@ -271,13 +272,6 @@
 
 
               }
-              if(newValue == "emme") {
-
-              }//end if
-              /*   $('.tab.large.top.ng-scope').animate({left: "-=300px"}, 100, function() {
-               $('.tab.large.top.ng-scope').removeAttr('style'); });
-               $('.tab.large.bottom.ng-scope').animate({left: "-=300px"}, 100, function() {
-               $('.tab.large.bottom.ng-scope').removeAttr('style'); }); */
           });
       }; //end resetTabsPos
 

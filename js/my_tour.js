@@ -4,7 +4,7 @@
 
 // Define the tour!
 var tour = {
-    id: "plae-chef-hopscotch",
+    /*  id: "plae-chef-hopscotch",
     steps: [
         {
             title: "Style Selector",
@@ -28,7 +28,7 @@ var tour = {
             placement: "right",
             zindex: 100
         }
-    ]
+    ] */
 };
 
 // Start the tour!

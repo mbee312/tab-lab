@@ -22,42 +22,61 @@
           <section class="styles-tab" ng-controller="StylesTabController as stylestab">
 
               <div class="styles-menu-container" id="tabs">
-           <!--     <ul class="styles-menu-list">
+                <ul class="styles-menu-list">
                       <li ng-repeat="s in shoeStyles" class="style" id="{{s.id}}" ng-class="{active: stylestab.isSet(style.name)}">
                           <a href="#{{s.id}}" ng-click="stylestab.setTab(s.name)"><img ng-src="{{s.menuIconUrl}}"></a>
                       </li>
-                </ul> -->
+                </ul>
 
 
                   <div class='colorways' id="tabs_container">
-                      <div id="colors-ty">
+
+                      <div id="colors-emme">
                           <ul class="colorways-list">
-                              <li ng-repeat="shoe in shoeList | filter: {name:'ty'}" ng-model="shoeSelected" class="colorway" ng-show="true">
+                              <li ng-repeat="shoe in shoeList | filter: {name:'emme'}" ng-model="shoeSelected" class="colorway" ng-show="stylestab.isSet('emme')">
                                   <a href ng-click="plaeChef.setShoe(shoe)"><img ng-src="{{ shoe.menuImgUrl }}"/></a>
                               </li>
                           </ul>
                       </div>
+                      <div id="colors-ty">
+                          <ul class="colorways-list">
+                              <li ng-repeat="shoe in shoeList | filter: {name:'ty'}" ng-model="shoeSelected" class="colorway" ng-show="stylestab.isSet('ty')">
+                                  <a href ng-click="plaeChef.setShoe(shoe)"><img ng-src="{{ shoe.menuImgUrl }}"/></a>
+                              </li>
+                          </ul>
+                      </div>
+                      <div id="colors-roan">
+                          <ul class="colorways-list">
+                              <li ng-repeat="shoe in shoeList | filter: {name:'roan'}" ng-model="shoeSelected" class="colorway" ng-show="stylestab.isSet('roan')">
+                                  <a href ng-click="plaeChef.setShoe(shoe)"><img ng-src="{{ shoe.menuImgUrl }}"/></a>
+                              </li>
+                          </ul>
+                      </div>
+                      <div id="colors-max">
+                          <ul class="colorways-list">
+                              <li ng-repeat="shoe in shoeList | filter: {name:'max'}" ng-model="shoeSelected" class="colorway" ng-show="stylestab.isSet('max')">
+                                  <a href ng-click="plaeChef.setShoe(shoe)"><img ng-src="{{ shoe.menuImgUrl }}"/></a>
+                              </li>
+                          </ul>
+                      </div>
+
+
+
+                      <!--    <li ng-repeat="shoe in shoeList | filter: {name:'camille'}" class="colorway" ng-show="stylestab.isSet('camille')" >
+                                <a href ng-click="plaeChef.makeBaseImage(shoe.mainImgUrl, 1)"><img ng-src="{{ shoe.menuImgUrl }}" id="camille-img"/></a>
+                                </li> -->
+
                   </div> <!--End tabs container-->
-                  <div class="tabs-menu left">
+
+              </div> <!--End tabs-->
+
+
                   <ul class="tab-styles-list">
                       <li class='tab-list' ng-repeat="tab in tabList" ng-model="tab" class='tabs-menu' id="{{tab.id}}">
                           <a href ng-click="plaeChef.addTab(tab, $event)"><img ng-src="{{ tab.menuImg }}"/></a>
                       </li>
 
                   </ul>
-              </div>
-                  <div class="tabs-menu right">
-                      <ul class="tab-styles-list">
-                          <li class='tab-list' ng-repeat="tab in tabList" ng-model="tab" class='tabs-menu' id="{{tab.id}}">
-                              <a href ng-click="plaeChef.addTab(tab, $event)"><img ng-src="{{ tab.menuImg }}"/></a>
-                          </li>
-
-                      </ul>
-                  </div>
-
-              </div> <!--End tabs-->
-
-
               <div class="draggable-tab-container">
 
                   <div class='tab large top' ng-repeat="tab in tabLT track by $index"><img ng-src="{{ tab.tabOneImg }}"/></div>
