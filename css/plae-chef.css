@@ -53,7 +53,12 @@
     .logo {
         position: absolute;
     }
+    .logo img{
+        width: 170px;
+        margin: 30px;
+    }
 
+    
     canvas {
     /*  border: 3px solid #D3D3D3; */
       z-index: 30;
@@ -124,7 +129,7 @@
         position: relative;
         width: 1024px;
         overflow: scroll;
-        border: 2px solid #D3D3D3;
+        border: 0px solid #D3D3D3;
         -webkit-box-shadow: 0 10px 6px -6px #777;
         -moz-box-shadow: 0 10px 6px -6px #777;
         box-shadow: 0 10px 6px -6px #777;
@@ -166,7 +171,7 @@
         width: 1024px;
         overflow: scroll;
         top: 40px;
-        border: 2px solid #D3D3D3;
+        border: 0px solid #D3D3D3;
         -webkit-box-shadow: 0 10px 6px -6px #777;
         -moz-box-shadow: 0 10px 6px -6px #777;
         box-shadow: 0 10px 6px -6px #777;
@@ -484,5 +489,3 @@
         top: 800px;
     /*    left: 1100px; */
     }
-
-

@@ -19,7 +19,7 @@
 
       <div ng-view class="view-frame plae-chef-window">
       <div class="shop-menu">
-      <div class="logo"><img src="img/logo-mob.png"></div>
+      <div class="logo"><img src="img/logo.png"></div>
       </div>
 
 
@@ -42,7 +42,7 @@
                           </ul>
                       </div>
                   </div> <!--End tabs container-->
-                  <div class="tabs-menu left">
+                  <div class="tabs-menu left effect6">
                   <ul class="tab-styles-list">
                       <li class='tab-list' ng-repeat="tab in tabList" ng-model="tab" class='tabs-menu' id="left-{{tab.id}}">
                           <a href ng-click="plaeChef.addTab(tab, $event)"><img ng-src="{{ tab.menuImg }}"/></a>
@@ -50,7 +50,7 @@
 
                   </ul>
               </div>
-                  <div class="tabs-menu right">
+                  <div class="tabs-menu right effect6">
                       <ul class="tab-styles-list">
                           <li class='tab-list' ng-repeat="tab in tabList" ng-model="tab" class='tabs-menu' id="right-{{tab.id}}">
                               <a href ng-click="plaeChef.addTab(tab, $event)"><img ng-src="{{ tab.menuImg }}"/></a>
@@ -70,7 +70,7 @@
 
 
 
-              <canvas class='canvas' id='plae-chef-canvas'></canvas>
+              <canvas class='canvas effect2' id='plae-chef-canvas'></canvas>
 
               <div class="view buttons">
                   <button class="waves-effect waves-button waves-light waves-float" id="left-profile-button" style="background: #01BCFF;color: #fff;">
