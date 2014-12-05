@@ -271,12 +271,14 @@
           width: 30%;
           list-style-type: none;
           display: inline;
+          padding: 10px;
       }
 
       .colorway img{
         margin-left: 0px;
           margin-top: 10px;
-          width:20%
+          width:21%;
+          padding: 10px;
       }
       img#camille-img {
         height: 130px;
