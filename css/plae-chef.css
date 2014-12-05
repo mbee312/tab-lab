@@ -50,7 +50,7 @@
     }
 
     #tabs{
-        margin-left: 260px !important;
+        margin-left: 140px !important;
         width: 1024px !important;
     }
     .style{
@@ -109,7 +109,7 @@
     margin-left: 0px;
     list-style-type: none;
     white-space: nowrap;
-    overflow-x: auto;
+    overflow-x: hidden;
 }
     #colors-emme {
         height: 100%;
@@ -263,7 +263,7 @@
           margin-left: 0px;
           list-style-type: none;
           white-space: nowrap;
-          overflow-x: auto;
+          overflow-x: hidden;
       }
       .colorway{
           height: 150px;
