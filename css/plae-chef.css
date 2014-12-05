@@ -11,7 +11,7 @@
     }
 
     .logo {
-        position: fixed;
+        position: absolute;
     }
 
     canvas {
