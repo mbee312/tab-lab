@@ -60,7 +60,7 @@
       var base_image = new Image();
       base_image.src = imageUrl;
       if(specialSize === 0){
-        context.drawImage(base_image, 200, 110);
+        context.drawImage(base_image, 170, 110);
       }else{ //draw camille to fit window
         context.drawImage(base_image, 40, 100, 400,400);
       }
@@ -92,22 +92,6 @@
           }
 
       };
-/*
-      this.redrawMainWithTabs = function(imageUrl, specialSize)
-      {
-
-          // Store the current transformation matrix
-          context.save();
-
-          var base_image = new Image();
-          base_image.src = imageUrl;
-          if(specialSize === 0){
-              context.drawImage(base_image, 40, 100);
-          }else{ //draw camille to fit window
-              context.drawImage(base_image, 40, 100, 400,400);
-          }
-      }; //end makeBaseImage
-*/
         // Add a Item to the list
     this.addTab = function (tab, event) {
         $scope.tabs.push(tab);
@@ -135,7 +119,7 @@
             console.log("I'm in!");
             base_image.src = $scope.shoeSelected[0]["mainViewLeftProfileNoTab"];
 
-            context.drawImage(base_image, 200, 110);
+            context.drawImage(base_image, 170, 110);
         }
 
     };
@@ -155,7 +139,7 @@
               var topTabSel = '.tab.large.top.ng-scope';
               $(topTabSel).css({ WebkitTransform: 'rotate(' + topDegree + 'deg)'});
               $(topTabSel).css({ '-moz-transform': 'rotate(' + topDegree + 'deg)'});
-              $(topTabSel).css({left: "1072px"});
+              $(topTabSel).css({left: "1102px"});
               $(topTabSel).css({top: "673px"});
 
           });
@@ -168,41 +152,12 @@
                   var bottomTabSel = '.tab.large.bottom.ng-scope';
                   $(bottomTabSel).css({WebkitTransform: 'rotate(' + bottomDegree + 'deg)'});
                   $(bottomTabSel).css({'-moz-transform': 'rotate(' + bottomDegree + 'deg)'});
-                  $(bottomTabSel).css({left: "980px"});
+                  $(bottomTabSel).css({left: "1009px"});
                   $(bottomTabSel).css({top: "565px"});
 
           });
       }; //end moveTabBottom
 
-/*
-  var TO_RADIANS = Math.PI/180;
-  this.drawRotatedImage = function (imageURL, x, y, angle) {
-
-      // save the current co-ordinate system
-      // before we screw with it
-      context.save();
-
-      // move to the middle of where we want to draw our image
-      context.translate(x, y);
-
-      // rotate around that point, converting our
-      // angle from degrees to radians
-      context.rotate(angle * TO_RADIANS);
-
-      // draw it up and to the left by half the width
-      // and height of the image
-      var image = new Image();
-      image.src = imageUrl;
-      context.drawImage(image, -(image.width/2), -(image.height/2));
-
-      // and restore the co-ords to how they were when we began
-      context.restore();
-  };
-
-      $scope.startCallback = function(event, ui) {
-
-      };
- */
 
       $scope.tabDropCallback = function() {
           // Store the current transformation matrix
