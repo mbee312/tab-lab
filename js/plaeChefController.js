@@ -85,23 +85,6 @@
       pairViewCanvas.style.width=512;//actual width of canvas
       pairViewCanvas.style.height=512;//actual height of canvas
 
-
-
-    this.makeBaseImage = function(imageUrl, specialSize)
-    {
-        this.clearImage();
-        context.fillStyle="#FFFFFF";
-        context.fillRect(0,0,canvas.width,100);
-
-      var base_image = new Image();
-      base_image.src = imageUrl;
-      if(specialSize === 0){
-        context.drawImage(base_image, 170, 110);
-      }else{ //draw camille to fit window
-        context.drawImage(base_image, 40, 100, 400,400);
-      }
-    }; //end makeBaseImage
-
       this.makeTabsCanvas = function(imageUrl, view)
       {
           this.clearImage();
@@ -126,18 +109,23 @@
           }
       }; //end makeTabsCanvas
 
-      this.clearImage = function() {
+      /*                                 */
+      /* helper function to clear canvas */
+      /*                                 */
+
+      this.clearImage = function(c, ctx) {
+
           // Store the current transformation matrix
-          context.save();
+          ctx.save();
 
           // Use the identity matrix while clearing the canvas
-          context.setTransform(1, 0, 0, 1, 0, 0);
-          context.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.setTransform(1, 0, 0, 1, 0, 0);
+          ctx.clearRect(0, 0, c.width, c.height);
 
 
           // Restore the transform
-          context.restore();
-      }
+          ctx.restore();
+      } // end clearImage
 
       this.setShoe = function(shoe,event) {
           console.log($scope.shoeSelected.pop() + " was removed as selected style");
@@ -145,13 +133,61 @@
           console.log(shoe.name + " style selected");
           console.log($scope.shoeSelected)
 
-          if(shoe.name === 'camille'){
-              this.makeBaseImage(shoe.mainViewDefault, 1);
-          }else{
-              this.makeBaseImage(shoe.mainViewDefault, 0);
-          }
+          this.setViews();
+
 
       };
+
+      this.setViews = function(){
+          console.log("inside setViews");
+          this.drawDefaultViewImage();
+          this.drawTopViewImage();
+          this.drawLeftProfileViewImage();
+          this.drawRightProfileViewImage();
+
+
+      } //end setViews
+
+      this.drawDefaultViewImage = function (){
+          this.clearImage(canvas,context );
+          context.fillStyle="#FFFFFF";
+          context.fillRect(0,0,canvas.width,100);
+          var base_image = new Image();
+          base_image.src = $scope.shoeSelected[0]["mainViewDefault"];
+          context.drawImage(base_image, 170, 110);
+          console.log("drawDefaultImage set!");
+      }
+
+      this.drawTopViewImage = function (){
+          this.clearImage(topViewCanvas,tpcontext );
+          tpcontext.fillStyle="#FFFFFF";
+          tpcontext.fillRect(0,0,topViewCanvas.width,100);
+          var base_image = new Image();
+          base_image.src = $scope.shoeSelected[0]["mainViewTop"];
+          tpcontext.drawImage(base_image, 170, 110);
+          console.log("drawTopViewImage set!");
+      }
+
+      this.drawLeftProfileViewImage = function (){
+          this.clearImage(leftProfileCanvas,lpcontext );
+          lpcontext.fillStyle="#FFFFFF";
+          lpcontext.fillRect(0,0,leftProfileCanvas.width,100);
+          var base_image = new Image();
+          base_image.src = $scope.shoeSelected[0]["mainViewLeftProfileNoTab"];
+          lpcontext.drawImage(base_image, 170, 110);
+          console.log("drawLeftProfileImage set!");
+      }
+
+      this.drawRightProfileViewImage = function (){
+          this.clearImage(rightProfileCanvas,rpcontext );
+          rpcontext.fillStyle="#FFFFFF";
+          rpcontext.fillRect(0,0,rightProfileCanvas.width,100);
+          var base_image = new Image();
+          base_image.src = $scope.shoeSelected[0]["mainViewRightProfileNoTab"];
+          rpcontext.drawImage(base_image, 170, 110);
+          console.log("drawRightProfileImage set!");
+      }
+
         // Add a Item to the list
     this.addTab = function (tab, event) {
         $scope.tabs.push(tab);
@@ -176,7 +212,6 @@
 
         if($scope.shoeSelected.length > 0) {
             var base_image = new Image();
-            console.log("I'm in!");
             base_image.src = $scope.shoeSelected[0]["mainViewLeftProfileNoTab"];
 
             context.drawImage(base_image, 170, 110);

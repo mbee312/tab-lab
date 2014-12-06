@@ -488,17 +488,7 @@
 
 
     button.waves-effect.waves-button.waves-light.waves-float{
-        top: 800px;
+        top: 810px;
         left: 640px;
         z-index: 79;
-    }
-
-    #left-profile-button{
-        top: 800px;
-    /*    left: 275px; */
-    }
-
-    #right-profile-button{
-        top: 800px;
-    /*    left: 1100px; */
     }
