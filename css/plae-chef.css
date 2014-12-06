@@ -1,6 +1,5 @@
     .plae-chef-window{
       height: 1024px;
-      margin-bottom: 60px;
       width: 1280px;
       position: relative;
 
@@ -475,11 +474,13 @@
 
     #shoesizer_desc_content {
         position: absolute;
-        bottom: -50px;
+        bottom: 0px;
+        left: 650px;
     }
 
     #startShoeSizerButton {
         width: 220px !important;
+
     }
 
     .view.buttons{
