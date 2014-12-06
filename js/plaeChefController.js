@@ -10,9 +10,22 @@
       $scope.list2 = [];
       $scope.list3 = [];
       $scope.list4 = [];
-      var canvas = document.getElementById('plae-chef-canvas');
-    var context = canvas.getContext('2d');
 
+      var canvas = document.getElementById('plae-chef-canvas');
+      var context = canvas.getContext('2d');
+
+      /* canvas for each main view */
+      var topViewCanvas = document.getElementById('plae-chef-canvas-top');
+      var tpcontext = topViewCanvas.getContext('2d');
+
+      var leftProfileCanvas = document.getElementById('plae-chef-canvas-left');
+      var lpcontext = leftProfileCanvas.getContext('2d');
+
+      var rightProfileCanvas = document.getElementById('plae-chef-canvas-right');
+      var rpcontext = rightProfileCanvas.getContext('2d');
+
+      var pairViewCanvas = document.getElementById('plae-chef-canvas-pair');
+      var pcontext = pairViewCanvas.getContext('2d');
 
     // Tabs on canvas List Arrays
     $scope.tabs = [];
@@ -31,8 +44,6 @@
           return $scope.tabLB.length > 0;
       }
 
-      $scope.currentView;
-
     $http.get('product/shoeStyles_local.json').success(function(data) {
       $scope.shoeStyles = data;
     });
@@ -42,13 +53,38 @@
 
     $http.get('product/tabs_local.json').success(function(data) {
       $scope.tabList = data;
-    }); 
-    
-    // setup canvas
+    });
+
+      $http.get('product/views.json').success(function(data) {
+          $scope.mainViews = data;
+      });
+
+      // setup canvas
     canvas.width=1024;//horizontal resolution (?) - increase for better looking text
     canvas.height=512;//vertical resolution (?) - increase for better looking text
     canvas.style.width=512;//actual width of canvas
     canvas.style.height=512;//actual height of canvas
+
+      topViewCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
+      topViewCanvas.height=512;//vertical resolution (?) - increase for better looking text
+      topViewCanvas.style.width=512;//actual width of canvas
+      topViewCanvas.style.height=512;//actual height of canvas
+
+      leftProfileCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
+      leftProfileCanvas.height=512;//vertical resolution (?) - increase for better looking text
+      leftProfileCanvas.style.width=512;//actual width of canvas
+      leftProfileCanvas.style.height=512;//actual height of canvas
+
+      rightProfileCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
+      rightProfileCanvas.height=512;//vertical resolution (?) - increase for better looking text
+      rightProfileCanvas.style.width=512;//actual width of canvas
+      rightProfileCanvas.style.height=512;//actual height of canvas
+
+      pairViewCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
+      pairViewCanvas.height=512;//vertical resolution (?) - increase for better looking text
+      pairViewCanvas.style.width=512;//actual width of canvas
+      pairViewCanvas.style.height=512;//actual height of canvas
+
 
 
     this.makeBaseImage = function(imageUrl, specialSize)
@@ -65,6 +101,30 @@
         context.drawImage(base_image, 40, 100, 400,400);
       }
     }; //end makeBaseImage
+
+      this.makeTabsCanvas = function(imageUrl, view)
+      {
+          this.clearImage();
+          context.fillStyle="#FFFFFF";
+          context.fillRect(0,0,canvas.width,100);
+
+          var image = new Image();
+          image.src = imageUrl;
+
+          switch (view){
+              case "top":
+                  break;
+              case "left":
+                  break;
+              case "right":
+                  break;
+              case "pair":
+                  break;
+              default:
+                  break;
+
+          }
+      }; //end makeTabsCanvas
 
       this.clearImage = function() {
           // Store the current transformation matrix
@@ -139,8 +199,8 @@
               var topTabSel = '.tab.large.top.ng-scope';
               $(topTabSel).css({ WebkitTransform: 'rotate(' + topDegree + 'deg)'});
               $(topTabSel).css({ '-moz-transform': 'rotate(' + topDegree + 'deg)'});
-              $(topTabSel).css({left: "1102px"});
-              $(topTabSel).css({top: "673px"});
+              $(topTabSel).css({left: "976px"});
+              $(topTabSel).css({top: "674px"});
 
           });
       }; //end moveTabTop
@@ -152,7 +212,7 @@
                   var bottomTabSel = '.tab.large.bottom.ng-scope';
                   $(bottomTabSel).css({WebkitTransform: 'rotate(' + bottomDegree + 'deg)'});
                   $(bottomTabSel).css({'-moz-transform': 'rotate(' + bottomDegree + 'deg)'});
-                  $(bottomTabSel).css({left: "1009px"});
+                  $(bottomTabSel).css({left: "884px"});
                   $(bottomTabSel).css({top: "565px"});
 
           });
@@ -200,6 +260,9 @@
 
       };
 
+      /* slide not used for demo version */
+      /* only Ty style is shown          */
+
       this.slideTab = function(newValue){
           $(document).ready(function ($) {
 
@@ -228,7 +291,8 @@
 
               }
           });
-      }; //end resetTabsPos
+      }; //end slideTab
+
 
 
   });
