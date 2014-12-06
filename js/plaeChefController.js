@@ -188,6 +188,19 @@
           console.log("drawRightProfileImage set!");
       }
 
+      /**                                       **/
+      /*      Logic to set viewable canvas       */
+      /**                                       **/
+      this.canvasView = "default";
+
+      this.isCanvasSet = function(checkCanvas) {
+          return this.canvasView === checkCanvas;
+      };
+
+      this.setCanvas = function(setCanvas) {
+          this.canvasView = setCanvas;
+      };
+
         // Add a Item to the list
     this.addTab = function (tab, event) {
         $scope.tabs.push(tab);
@@ -297,7 +310,7 @@
 
       /* slide not used for demo version */
       /* only Ty style is shown          */
-
+/*
       this.slideTab = function(newValue){
           $(document).ready(function ($) {
 
@@ -327,6 +340,7 @@
               }
           });
       }; //end slideTab
+      */
 
 
 
