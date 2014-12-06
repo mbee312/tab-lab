@@ -201,6 +201,8 @@
           this.canvasView = setCanvas;
       };
 
+      /* end canvas view logic code */
+
         // Add a Item to the list
     this.addTab = function (tab, event) {
         $scope.tabs.push(tab);
