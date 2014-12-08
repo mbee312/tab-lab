@@ -187,7 +187,9 @@
           rpcontext.fillRect(0,0,rightProfileCanvas.width,100);
           var base_image = new Image();
           base_image.src = $scope.shoeSelected[0]["mainViewRightProfileNoTab"];
+          rpcontext.scale(-1, 1);
           rpcontext.drawImage(base_image, 170, 110);
+
           console.log("drawRightProfileImage set!");
       }
 
