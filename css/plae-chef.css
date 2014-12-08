@@ -228,7 +228,7 @@ ul.plae.basket.list {
     }
 .tab-styles-list {
     width: 100%;
-    height: 180px;
+    height: 120px;
     display: inline;
     padding-left: 0px;
     margin-top: 0px;
@@ -237,6 +237,8 @@ ul.plae.basket.list {
     white-space: nowrap;
     overflow-x: hidden;
     background: #ffffff;
+    position: absolute;
+    left: 0;
 }
     #colors-emme {
         height: 100%;
