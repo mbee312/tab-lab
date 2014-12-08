@@ -194,8 +194,10 @@ ul.plae.basket.list {
 
     div#tabs_container{
         height: 200px;
-        width: 767px;
+        width: 1024px;
         margin-left: 100px;
+        position: relative;
+        overflow: hidden;
 
     }
     .tabs-menu {
@@ -261,6 +263,11 @@ ul.plae.basket.list {
         border-radius: 5px; */
     /*       box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 22px 70px 4px rgba(0,0,0,0.56), 0 0 0 1px rgba(0, 0, 0, 0.3); */
         background: #ffffff;
+        position: absolute;
+        left: 0;
+        overflow-x: hidden;
+        overflow-y: scroll;
+
     }
     #colors-roan {
         height: 100%;
@@ -388,8 +395,11 @@ ul.plae.basket.list {
           margin-left: 0px;
           list-style-type: none;
           white-space: nowrap;
-          overflow-x: hidden;
+          overflow-x: scroll;
+          overflow-y: hidden;
           -ms-overflow-style: -ms-autohiding-scrollbar;
+          position: absolute;
+          left: 0;
       }
       .colorway{
           height: 150px;
