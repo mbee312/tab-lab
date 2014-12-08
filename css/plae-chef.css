@@ -235,7 +235,7 @@ ul.plae.basket.list {
     margin-left: 0px;
     list-style-type: none;
     white-space: nowrap;
-    overflow-x: hidden;
+    overflow-x: scroll;
     background: #ffffff;
     position: absolute;
     left: 0;
