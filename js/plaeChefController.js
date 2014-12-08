@@ -154,7 +154,7 @@
           context.fillRect(0,0,canvas.width,100);
           var base_image = new Image();
           base_image.src = $scope.shoeSelected[0]["mainViewDefault"];
-          context.drawImage(base_image, 170, 110);
+          context.drawImage(base_image, 150, 60,800,409);
           console.log("drawDefaultImage set!");
       }
 
