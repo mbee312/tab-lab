@@ -162,9 +162,12 @@
           this.clearImage(topViewCanvas,tpcontext );
           tpcontext.fillStyle="#FFFFFF";
           tpcontext.fillRect(0,0,topViewCanvas.width,100);
-          var base_image = new Image();
-          base_image.src = $scope.shoeSelected[0]["mainViewTop"];
-          tpcontext.drawImage(base_image, 170, 110);
+          var right_image = new Image();
+          right_image.src = $scope.shoeSelected[0]["mainViewTopRight"];
+          tpcontext.drawImage(right_image, 520, 0, 250, 489);
+          var left_image = new Image();
+          left_image.src = $scope.shoeSelected[0]["mainViewTopLeft"];
+          tpcontext.drawImage(left_image, 300, 0, 250, 489);
           console.log("drawTopViewImage set!");
       }
 
