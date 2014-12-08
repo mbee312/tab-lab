@@ -209,7 +209,7 @@ ul.plae.basket.list {
         height: 80px;
         position: relative;
         width: 1024px;
-        overflow: scroll;
+        overflow: hidden;
         border: 0px solid #D3D3D3;
         -webkit-box-shadow: 0 10px 6px -6px #777;
         -moz-box-shadow: 0 10px 6px -6px #777;
