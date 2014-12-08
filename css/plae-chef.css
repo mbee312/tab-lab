@@ -574,6 +574,10 @@ ul.plae.basket.list {
         z-index: 79;
     }
 
+#reset-button {
+    left: 250px;
+}
+
 /* when hiding the picture */
 .ng-hide-add         { animation:0.5s lightSpeedOut ease; }
 
