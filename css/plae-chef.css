@@ -389,6 +389,7 @@ ul.plae.basket.list {
           list-style-type: none;
           white-space: nowrap;
           overflow-x: hidden;
+          -ms-overflow-style: -ms-autohiding-scrollbar;
       }
       .colorway{
           height: 150px;
