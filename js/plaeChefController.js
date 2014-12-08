@@ -269,6 +269,15 @@
       }; //end moveTabBottom
 
 
+      this.isShoeSelected = function (){
+          return $scope.shoeSelected.length > 0;
+      };
+
+      this.isTabSelected = function (){
+          return $scope.tabs.length > 0;
+      };
+
+
       $scope.tabDropCallback = function() {
           // Store the current transformation matrix
           context.save();

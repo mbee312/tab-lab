@@ -2,7 +2,7 @@
     {
         "name": "ty", 
         "id": 903,
-        "number of straps": 4, 
+        "number of tabs": 4, 
         "color": "white/shadow", 
         "sku": "102011-103",
         "menuImgUrl": "img/menu/Ty_M_White_Shadow.jpg",
@@ -17,7 +17,7 @@
     {
         "name": "ty", 
         "id": 448,
-        "number of straps": 4, 
+        "number of tabs": 4, 
         "color": "navy/limestone", 
         "sku": "102011-410",
         "menuImgUrl": "img/menu/Ty_M_Navy_Limestone.jpg",
@@ -32,7 +32,7 @@
     {
         "name": "ty", 
         "id": 430,
-        "number of straps": 4, 
+        "number of tabs": 4, 
         "color": "red/steel", 
         "sku": "102011-620",
         "menuImgUrl": "img/menu/Ty_M_Red_Steel.jpg",
@@ -47,7 +47,7 @@
     {
         "name": "ty", 
         "id": 486,
-        "number of straps": 4, 
+        "number of tabs": 4, 
         "color": "silver/pink", 
         "sku": "102022-040",
         "menuImgUrl": "img/menu/Ty_N_Silver_Pink.jpg",
@@ -62,7 +62,7 @@
     {
         "name": "ty", 
         "id": 902,
-        "number of straps": 4, 
+        "number of tabs": 4, 
         "color": "pink/dewberry", 
         "sku": "102022-651",
         "menuImgUrl": "img/menu/Ty_M_Pink_Dewberry.jpg",
@@ -77,7 +77,7 @@
     {
         "name": "ty", 
         "id": 485,
-        "number of straps": 4, 
+        "number of tabs": 4, 
         "color": "lavender/indigo", 
         "sku": "102022-540",
         "menuImgUrl": "img/menu/Ty_N_Lavender_Indigo.jpg",
@@ -92,7 +92,7 @@
     {
         "name": "ty", 
         "id": 466,
-        "number of straps": 4, 
+        "number of tabs": 4, 
         "color": "denim/navy", 
         "sku": "102021-401",
         "menuImgUrl": "img/menu/Ty_N_Denim_Navy.jpg",
@@ -107,7 +107,7 @@
     {
         "name": "ty", 
         "id": 1359,
-        "number of straps": 4, 
+        "number of tabs": 4, 
         "color": "steel", 
         "sku": "102021-053",
         "menuImgUrl": "img/menu/Ty_N_Steel.jpg",
@@ -122,7 +122,7 @@
     {
         "name": "ty", 
         "id": 1360,
-        "number of straps": 4, 
+        "number of tabs": 4, 
         "color": "chocolate/navy", 
         "sku": "102021-242",
         "menuImgUrl": "img/menu/Ty_N_Navy_Chocolate.jpg",
@@ -137,7 +137,7 @@
     {
         "name": "ty", 
         "id": 1373,
-        "number of straps": 4, 
+        "number of tabs": 4, 
         "color": "chocolate/berry", 
         "sku": "102022-245",
         "menuImgUrl": "img/menu/Ty_N_Chocolate_Fuchsia.jpg",

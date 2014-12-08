@@ -1,4 +1,46 @@
-    .plae-chef-window{
+h1 {
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 26.3999996185303px;
+}
+h3 {
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 15.3999996185303px;
+}
+p {
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+blockquote {
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-size: 21px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 30px;
+}
+pre {
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 18.5714302062988px;
+}
+
+
+.plae-chef-window{
       height: 1024px;
       width: 1280px;
       position: relative;
@@ -56,6 +98,31 @@
         width: 170px;
         margin: 30px;
     }
+
+    #plae-basket {
+        height: auto;
+        margin-top: 400px;
+        z-index: 100;
+    }
+
+.plae.basket.shoe {
+    margin: 30px;
+}
+
+#plae-basket h3 {
+  /*  margin-left: 30px; */
+    font-weight: bold;
+}
+#tabs-h3{
+    margin-left: 30px;
+}
+
+.plae.basket.list.item{
+    list-style: none;
+}
+ul.plae.basket.list {
+    margin-left: -10px;
+}
 
 
     canvas {

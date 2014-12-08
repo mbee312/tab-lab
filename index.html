@@ -2,7 +2,8 @@
 <!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="plaeChefApp" class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="plaeChefApp" class="no-js" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,18 +21,33 @@
       <div ng-view class="view-frame plae-chef-window">
       <div class="shop-menu">
       <div class="logo"><img src="img/logo.png"></div>
+          <div class="plae basket" id="plae-basket">
+                  <div class="plae basket shoe" ng-repeat="shoe in shoeSelected" ng-show="plaeChef.isShoeSelected()">
+                      <h3>shoe selected:</h3>
+                      <p>name: {{shoe.name}} </br>
+                      color: {{shoe.color}}</br>
+                      id: {{shoe.id}}</br>
+                      number of tabs: {{shoe["number of tabs"]}}</br>
+                      sku number: {{shoe.sku}}</p>
+                  </div>
+              <div class="plae basket tabs" ng-show="plaeChef.isTabSelected()">
+                  <h3 id="tabs-h3">tabs selected:</h3>
+                  <ul class="plae basket list">
+                      <li class="plae basket list item" ng-repeat="tab in tabs track by $index">
+                          <p>name: {{tab.name}} </br>
+                              color: {{tab.color}}</br>
+                              id: {{tab.id}}</br>
+                              sku number: {{tab.sku}}</p>
+                      </li>
+                  </ul>
+              </div>
+          </div>
       </div>
 
 
           <section class="styles-tab" ng-controller="StylesTabController as stylestab">
 
               <div class="styles-menu-container" id="tabs">
-           <!--     <ul class="styles-menu-list">
-                      <li ng-repeat="s in shoeStyles" class="style" id="{{s.id}}" ng-class="{active: stylestab.isSet(style.name)}">
-                          <a href="#{{s.id}}" ng-click="stylestab.setTab(s.name)"><img ng-src="{{s.menuIconUrl}}"></a>
-                      </li>
-                </ul> -->
-
 
                   <div class='colorways' id="tabs_container">
                       <div id="colors-ty">
@@ -60,7 +76,6 @@
                   </div>
 
               </div> <!--End tabs-->
-
 
               <div class="draggable-tab-container">
 
