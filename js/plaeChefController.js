@@ -2,7 +2,7 @@
   'use strict';
 
   // Declare app level module which depends on views, and components
-  var plaeChefApp = angular.module('plaeChefApp', ['ngDragDrop']);
+  var plaeChefApp = angular.module('plaeChefApp', ['ngAnimate','ngDragDrop']);
 
 
   plaeChefApp.controller('PlaeChefController', ['$scope', '$http', function($scope, $http){
@@ -168,6 +168,18 @@
           this.setViews();
 
 
+      } //end setShoe
+
+      // Add a Item to the list
+      this.addTab = function (tab, event) {
+          $scope.tabs.push(tab);
+          $scope.tabLT.pop();
+          $scope.tabLB.pop();
+          $scope.tabLT.push(tab);
+          $scope.tabLB.push(tab);
+          this.setTabViews();
+          this.setViews();
+
       };
 
       this.setViews = function(){
@@ -176,6 +188,16 @@
           this.drawTopViewImage();
           this.drawLeftProfileViewImage();
           this.drawRightProfileViewImage();
+
+
+      } //end setViews
+
+      this.setTabViews = function(){
+          console.log("inside setTabViews");
+      /*    this.drawDefaultViewImage(); */
+      /*    this.drawTopViewImage(); */
+          this.drawLeftTabsProfileViewImage();
+       /*   this.drawRightProfileViewImage(); */
 
 
       } //end setViews
@@ -193,8 +215,8 @@
               base_image.src = $scope.shoeSelected[0]["mainViewDefault"];
               context.drawImage(base_image, 150, 60, 800, 409);
               console.log("drawDefaultImage set!");
-          }
-      }
+          }//end if-else
+      }//end drawDefaultViewImage
 
       this.drawTopViewImage = function (){
           this.clearImage(topViewCanvas,tpcontext );
@@ -207,7 +229,7 @@
           left_image.src = $scope.shoeSelected[0]["mainViewTopLeft"];
           tpcontext.drawImage(left_image, 300, 0, 240, 469);
           console.log("drawTopViewImage set!");
-      }
+      }// end drawTopViewImage
 
       this.drawLeftProfileViewImage = function (){
           this.clearImage(leftProfileCanvas,lpcontext );
@@ -216,14 +238,14 @@
           var base_image = new Image();
           if (this.isTabSelected()) {
               base_image.src = $scope.shoeSelected[0]["mainViewLeftProfileNoTab"];
-              lpcontext.drawImage(base_image, 170, 110);
+              lpcontext.drawImage(base_image, 210, 110, 600, 307);
               console.log("drawLeftProfileImage mainViewLeftProfileNoTab set!");
           }else{
               base_image.src = $scope.shoeSelected[0]["mainViewLeftProfile"];
-              lpcontext.drawImage(base_image, 170, 110);
+              lpcontext.drawImage(base_image, 210, 110, 600, 307);
               console.log("drawLeftProfileImage mainViewLeftProfile set!");
-          }
-      }
+          }// end if-else
+      }// end drawLeftProfileViewImage
 
       this.drawRightProfileViewImage = function (){
           this.clearImage(rightProfileCanvas,rpcontext );
@@ -232,19 +254,35 @@
           var base_image = new Image();
           if (this.isTabSelected()) {
               base_image.src = $scope.shoeSelected[0]["mainViewRightProfileNoTab"];
-              rpcontext.drawImage(base_image, 220, 110);
+              rpcontext.drawImage(base_image, 240, 110, 600, 307);
               console.log("drawRightProfileImage mainViewRightProfileNoTab set!");
           }else{
               base_image.src = $scope.shoeSelected[0]["mainViewRightProfile"];
-              rpcontext.drawImage(base_image, 220, 110);
+              rpcontext.drawImage(base_image, 240, 110, 600, 307);
               console.log("drawRightProfileImage mainViewRightProfile set!");
-          }
-      }
+          }// end if-else
+      }//end drawRightProfileViewImage
+
+      this.drawLeftTabsProfileViewImage = function (){
+          this.clearImage(leftProfileTabCanvas,lptabcontext );
+          lptabcontext.fillStyle="#FFFFFF";
+          lptabcontext.fillRect(0,0,leftProfileCanvas.width,100);
+          var base_image = new Image();
+
+          // add tab code
+          base_image.src = $scope.tabLT[0]["tabOneImg"];
+          lptabcontext.drawImage(base_image, 210, 110);
+          console.log("drawLeftTabProfileImage top is set!");
+          base_image.src = $scope.tabLT[0]["tabTwoImg"];
+          lptabcontext.drawImage(base_image, 210, 110);
+          console.log("drawLeftTabProfileImage bottom is set!");
+      }// end drawLeftTabsProfileViewImage
 
       /**                                       **/
       /*      Logic to set viewable canvas       */
       /**                                       **/
       this.canvasView = "default";
+      this.canvasTabView = "default";
 
       this.isCanvasSet = function(checkCanvas) {
           return this.canvasView === checkCanvas;
@@ -253,40 +291,7 @@
       this.setCanvas = function(setCanvas) {
           this.canvasView = setCanvas;
       };
-
       /* end canvas view logic code */
-
-        // Add a Item to the list
-    this.addTab = function (tab, event) {
-        $scope.tabs.push(tab);
-        $scope.tabLT.pop();
-        $scope.tabLB.pop();
-        $scope.tabLT.push(tab);
-        $scope.tabLB.push(tab);
-        this.setViews();
-        this.resetTabsPos();
-        this.moveTabTop();
-        this.moveTabBottom();
-
-        // Store the current transformation matrix
-        context.save();
-
-        // Use the identity matrix while clearing the canvas
-        context.setTransform(1, 0, 0, 1, 0, 0);
-        context.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Restore the transform
-        context.restore();
-        console.log($scope.shoeSelected);
-
-        if($scope.shoeSelected.length > 0) {
-            var base_image = new Image();
-            base_image.src = $scope.shoeSelected[0]["mainViewLeftProfileNoTab"];
-
-            context.drawImage(base_image, 170, 110);
-        }
-
-    };
 
       this.clearSelections = function (){
           if($scope.shoeSelected.length > 0)
@@ -304,14 +309,7 @@
 
       };
 
-      this.resetTabsPos = function(){
-          $(document).ready(function ($) {
-           /*   $('.tab.large.top.ng-scope').animate({left: "-=300px"}, 100, function() {
-                  $('.tab.large.top.ng-scope').removeAttr('style'); });
-              $('.tab.large.bottom.ng-scope').animate({left: "-=300px"}, 100, function() {
-                  $('.tab.large.bottom.ng-scope').removeAttr('style'); }); */
-          });
-      }; //end resetTabsPos
+/*
 
       this.moveTabTop = function(){
           $(document).ready(function ($) {
@@ -338,6 +336,7 @@
           });
       }; //end moveTabBottom
 
+*/
 
       this.isShoeSelected = function (){
           return $scope.shoeSelected.length > 0;

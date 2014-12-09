@@ -42,7 +42,6 @@ pre {
 
 .plae-chef-window{
       height: 1024px;
-      width: 1280px;
       position: relative;
 
         /* IE10 Consumer Preview */
@@ -66,6 +65,7 @@ pre {
 
     body.ng-scope {
         height: 1024px;
+        margin: 0px;
     }
 
     .shop-menu {
@@ -149,6 +149,9 @@ ul.plae.basket.list {
         -webkit-box-shadow: 0 10px 6px -6px #777;
         -moz-box-shadow: 0 10px 6px -6px #777;
         box-shadow: 0 10px 6px -6px #777; */
+        -webkit-box-shadow: 0 10px 6px -6px #777;
+        -moz-box-shadow: 0 10px 6px -6px #777;
+        box-shadow: 0 10px 6px -6px #777;
     }
 
 .canvas.tcanvas {
