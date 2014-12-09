@@ -18,14 +18,26 @@
       var topViewCanvas = document.getElementById('plae-chef-canvas-top');
       var tpcontext = topViewCanvas.getContext('2d');
 
+      var topViewTabCanvas = document.getElementById('plae-chef-canvas-tab-top');
+      var tptabcontext = topViewTabCanvas.getContext('2d');
+
       var leftProfileCanvas = document.getElementById('plae-chef-canvas-left');
       var lpcontext = leftProfileCanvas.getContext('2d');
+
+      var leftProfileTabCanvas = document.getElementById('plae-chef-canvas-tab-left');
+      var lptabcontext = leftProfileTabCanvas.getContext('2d');
 
       var rightProfileCanvas = document.getElementById('plae-chef-canvas-right');
       var rpcontext = rightProfileCanvas.getContext('2d');
 
+      var rightProfileTabCanvas = document.getElementById('plae-chef-canvas-tab-right');
+      var rptabcontext = rightProfileTabCanvas.getContext('2d');
+
       var pairViewCanvas = document.getElementById('plae-chef-canvas-pair');
       var pcontext = pairViewCanvas.getContext('2d');
+
+      var pairViewTabCanvas = document.getElementById('plae-chef-canvas-tab-pair');
+      var ptabcontext = pairViewTabCanvas.getContext('2d');
 
     // Tabs on canvas List Arrays
     $scope.tabs = [];
@@ -70,20 +82,40 @@
       topViewCanvas.style.width=512;//actual width of canvas
       topViewCanvas.style.height=512;//actual height of canvas
 
+      topViewTabCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
+      topViewTabCanvas.height=512;//vertical resolution (?) - increase for better looking text
+      topViewTabCanvas.style.width=512;//actual width of canvas
+      topViewTabCanvas.style.height=512;//actual height of canvas
+
       leftProfileCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
       leftProfileCanvas.height=512;//vertical resolution (?) - increase for better looking text
       leftProfileCanvas.style.width=512;//actual width of canvas
       leftProfileCanvas.style.height=512;//actual height of canvas
+
+      leftProfileTabCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
+      leftProfileTabCanvas.height=512;//vertical resolution (?) - increase for better looking text
+      leftProfileTabCanvas.style.width=512;//actual width of canvas
+      leftProfileTabCanvas.style.height=512;//actual height of canvas
 
       rightProfileCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
       rightProfileCanvas.height=512;//vertical resolution (?) - increase for better looking text
       rightProfileCanvas.style.width=512;//actual width of canvas
       rightProfileCanvas.style.height=512;//actual height of canvas
 
+      rightProfileTabCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
+      rightProfileTabCanvas.height=512;//vertical resolution (?) - increase for better looking text
+      rightProfileTabCanvas.style.width=512;//actual width of canvas
+      rightProfileTabCanvas.style.height=512;//actual height of canvas
+
       pairViewCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
       pairViewCanvas.height=512;//vertical resolution (?) - increase for better looking text
       pairViewCanvas.style.width=512;//actual width of canvas
       pairViewCanvas.style.height=512;//actual height of canvas
+
+      pairViewTabCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
+      pairViewTabCanvas.height=512;//vertical resolution (?) - increase for better looking text
+      pairViewTabCanvas.style.width=512;//actual width of canvas
+      pairViewTabCanvas.style.height=512;//actual height of canvas
 
       this.makeTabsCanvas = function(imageUrl, view)
       {
@@ -238,6 +270,21 @@
         }
 
     };
+
+      this.clearSelections = function (){
+          if($scope.shoeSelected.length > 0)
+          {
+              console.log("popped " + $scope.shoeSelected.pop().name);
+          }
+          while($scope.tabs.length > 0 ){
+              console.log("popped " + $scope.tabs.pop().name + " from tabs");
+          };
+          this.clearImage(canvas,context );
+          this.clearImage(topViewCanvas,tpcontext );
+          this.clearImage(leftProfileCanvas,lpcontext );
+          this.clearImage(rightProfileCanvas,rpcontext );
+
+      };
 
       this.resetTabsPos = function(){
           $(document).ready(function ($) {

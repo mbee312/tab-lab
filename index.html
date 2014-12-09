@@ -87,16 +87,20 @@
 
               <canvas class='canvas' id="plae-chef-canvas" ng-show="plaeChef.isCanvasSet('default')"></canvas>
               <canvas class='canvas' id="plae-chef-canvas-top" ng-show="plaeChef.isCanvasSet('top')"></canvas>
+              <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-top" ng-show="plaeChef.isCanvasSet('top')"></canvas>
               <canvas class='canvas' id="plae-chef-canvas-left" ng-show="plaeChef.isCanvasSet('left')"></canvas>
+              <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-left" ng-show="plaeChef.isCanvasSet('left')"></canvas>
               <canvas class='canvas' id="plae-chef-canvas-right" ng-show="plaeChef.isCanvasSet('right')"></canvas>
+              <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-right" ng-show="plaeChef.isCanvasSet('right')"></canvas>
               <canvas class='canvas' id="plae-chef-canvas-pair" ng-show="plaeChef.isCanvasSet('pair')"></canvas>
+              <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-pair" ng-show="plaeChef.isCanvasSet('pair')"></canvas>
 
               <div id="white-bg"></div>
+              <button class="waves-effect waves-button waves-light waves-float" id="reset-button" ng-click="plaeChef.clearSelections()" style="background: #ff0008;color: #fff;">
+                  clear selections
+              </button>
 
               <div class="view buttons">
-                  <button class="waves-effect waves-button waves-light waves-float" id="reset-button" ng-click="plaeChef.clearSelections()" style="background: #ff0008;color: #fff;">
-                      RESET
-                  </button>
                   <button class="waves-effect waves-button waves-light waves-float" id="default-button" ng-click="plaeChef.setCanvas('default')" style="background: #0d39ff;color: #fff;">
                       Default
                   </button>

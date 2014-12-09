@@ -151,6 +151,10 @@ ul.plae.basket.list {
         box-shadow: 0 10px 6px -6px #777; */
     }
 
+.canvas.tcanvas {
+    z-index: 29;
+}
+
     #white-bg{
         width:1024px;
         height: 512px;
@@ -252,7 +256,7 @@ ul.plae.basket.list {
         height: 140px;
         position: relative;
         width: 1050px;
-        overflow: scroll;
+
         top: 40px;
         border: 0px solid #D3D3D3;
         -webkit-box-shadow: 0 10px 6px -6px #777;
@@ -268,7 +272,7 @@ ul.plae.basket.list {
         position: absolute;
         left: 0;
         overflow-x: hidden;
-        overflow-y: scroll;
+        overflow-y: hidden;
 
     }
     #colors-roan {
@@ -575,7 +579,9 @@ ul.plae.basket.list {
     }
 
 #reset-button {
-    left: 250px;
+    left: 50px;
+    top: 890px;
+    position: absolute;
 }
 
 /* when hiding the picture */
