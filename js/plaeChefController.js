@@ -185,9 +185,15 @@
           context.fillStyle="#FFFFFF";
           context.fillRect(0,0,canvas.width,100);
           var base_image = new Image();
-          base_image.src = $scope.shoeSelected[0]["mainViewDefault"];
-          context.drawImage(base_image, 150, 60,800,409);
-          console.log("drawDefaultImage set!");
+          if (this.isTabSelected()) {
+              base_image.src = $scope.shoeSelected[0]["mainViewDefault"];
+              context.drawImage(base_image, 150, 60, 800, 409);
+              console.log("drawDefaultImage set!");
+          }else{
+              base_image.src = $scope.shoeSelected[0]["mainViewDefault"];
+              context.drawImage(base_image, 150, 60, 800, 409);
+              console.log("drawDefaultImage set!");
+          }
       }
 
       this.drawTopViewImage = function (){
@@ -208,9 +214,15 @@
           lpcontext.fillStyle="#FFFFFF";
           lpcontext.fillRect(0,0,leftProfileCanvas.width,100);
           var base_image = new Image();
-          base_image.src = $scope.shoeSelected[0]["mainViewLeftProfileNoTab"];
-          lpcontext.drawImage(base_image, 170, 110);
-          console.log("drawLeftProfileImage set!");
+          if (this.isTabSelected()) {
+              base_image.src = $scope.shoeSelected[0]["mainViewLeftProfileNoTab"];
+              lpcontext.drawImage(base_image, 170, 110);
+              console.log("drawLeftProfileImage mainViewLeftProfileNoTab set!");
+          }else{
+              base_image.src = $scope.shoeSelected[0]["mainViewLeftProfile"];
+              lpcontext.drawImage(base_image, 170, 110);
+              console.log("drawLeftProfileImage mainViewLeftProfile set!");
+          }
       }
 
       this.drawRightProfileViewImage = function (){
@@ -218,11 +230,15 @@
           rpcontext.fillStyle="#FFFFFF";
           rpcontext.fillRect(0,0,rightProfileCanvas.width,100);
           var base_image = new Image();
-          base_image.src = $scope.shoeSelected[0]["mainViewRightProfileNoTab"];
-          rpcontext.scale(-1, 1);
-          rpcontext.drawImage(base_image, 220, 110);
-
-          console.log("drawRightProfileImage set!");
+          if (this.isTabSelected()) {
+              base_image.src = $scope.shoeSelected[0]["mainViewRightProfileNoTab"];
+              rpcontext.drawImage(base_image, 220, 110);
+              console.log("drawRightProfileImage mainViewRightProfileNoTab set!");
+          }else{
+              base_image.src = $scope.shoeSelected[0]["mainViewRightProfile"];
+              rpcontext.drawImage(base_image, 220, 110);
+              console.log("drawRightProfileImage mainViewRightProfile set!");
+          }
       }
 
       /**                                       **/
@@ -247,6 +263,7 @@
         $scope.tabLB.pop();
         $scope.tabLT.push(tab);
         $scope.tabLB.push(tab);
+        this.setViews();
         this.resetTabsPos();
         this.moveTabTop();
         this.moveTabBottom();
@@ -283,6 +300,7 @@
           this.clearImage(topViewCanvas,tpcontext );
           this.clearImage(leftProfileCanvas,lpcontext );
           this.clearImage(rightProfileCanvas,rpcontext );
+          this.canvasView = "default";
 
       };
 
@@ -326,6 +344,7 @@
       };
 
       this.isTabSelected = function (){
+          console.log($scope.tabs.length > 0);
           return $scope.tabs.length > 0;
       };
 

@@ -7,13 +7,15 @@
         "sku": "102011-103",
         "menuImgUrl": "img/menu/Ty_M_White_Shadow.jpg",
         "mainViewDefault": "img/main/shoes/pair/ty_white_shadow_pair_2.jpg",
-        "mainViewPairNoTabs": "img/main/shoes/pair/ty_white_shadow_pair_2.jpg",
-        "mainViewLeftProfile":"img/main/shoes/profile/ty_white_shadow_profile_left_no_tabs.png",
-        "mainViewRightProfile":"img/main/shoes/profile/ty_white_shadow_profile_left_no_tabs.png",
-        "mainViewLeftProfileNoTab":"img/main/shoes/profile/ty_white_shadow_profile_left_no_tabs.png",
-        "mainViewRightProfileNoTab": "img/main/shoes/profile/ty_white_shadow_profile_right_no_tabs.png",
+        "mainViewPairNoTab": "img/main/shoes/pair/ty_white_shadow_pair_2.jpg",
+        "mainViewLeftProfile":"img/main/shoes/profile/ty_white_shadow_profile_left.jpg",
+        "mainViewRightProfile":"img/main/shoes/profile/ty_white_shadow_profile_right.jpg",
+        "mainViewLeftProfileNoTab":"img/main/shoes/profile/no_tabs/ty_white_shadow_profile_left_no_tabs.png",
+        "mainViewRightProfileNoTab": "img/main/shoes/profile/no_tabs/ty_white_shadow_profile_right_no_tabs.png",
         "mainViewTopRight":"img/main/shoes/top/ty_white_shadow_top_right.jpg",
-        "mainViewTopLeft":"img/main/shoes/top/ty_white_shadow_top_left.jpg"
+        "mainViewTopLeft":"img/main/shoes/top/ty_white_shadow_top_left.jpg",
+        "mainViewTopRightNoTab":"img/main/shoes/top/ty_white_shadow_top_right.jpg",
+        "mainViewTopLeftNoTab":"img/main/shoes/top/ty_white_shadow_top_left.jpg"
     },
     {
         "name": "ty", 
@@ -24,12 +26,14 @@
         "menuImgUrl": "img/menu/Ty_M_Navy_Limestone.jpg",
         "mainViewDefault": "img/main/shoes/pair/ty_navy_limestone_pair_2.jpg",
         "mainViewPairNoTabs": "img/main/shoes/pair/no-tabs/ty_navy_limestone_no_tabs.png",
-        "mainViewLeftProfileNoTab":"img/main/shoes/profile/ty_navy_limestone_profile_left_no_tabs.png",
-        "mainViewRightProfileNoTab":"img/main/shoes/profile/ty_navy_limestone_profile_right_no_tabs.png",
-        "mainViewLeftProfile": "img/main/shoes/Ty_M_Navy_Limestone.jpg",
-        "mainViewRightProfile": "img/main/shoes/Ty_M_Navy_Limestone.jpg",
+        "mainViewLeftProfile": "img/main/shoes/profile/ty_navy_limestone_profile_left.jpg",
+        "mainViewRightProfile": "img/main/shoes/profile/ty_navy_limestone_profile_right.jpg",
+        "mainViewLeftProfileNoTab":"img/main/shoes/profile/no_tabs/ty_navy_limestone_profile_left_no_tabs.png",
+        "mainViewRightProfileNoTab":"img/main/shoes/profile/no_tabs/ty_navy_limestone_profile_right_no_tabs.png",
         "mainViewTopRight":"img/main/shoes/top/ty_navy_limestone_top_right.jpg",
-        "mainViewTopLeft":"img/main/shoes/top/ty_navy_limestone_top_left.jpg"
+        "mainViewTopLeft":"img/main/shoes/top/ty_navy_limestone_top_left.jpg",
+        "mainViewTopRightNoTab":"img/main/shoes/top/ty_navy_limestone_top_right.jpg",
+        "mainViewTopLeftNoTab":"img/main/shoes/top/ty_navy_limestone_top_left.jpg"
     },
     {
         "name": "ty", 
@@ -40,12 +44,14 @@
         "menuImgUrl": "img/menu/Ty_M_Red_Steel.jpg",
         "mainViewDefault": "img/main/shoes/pair/ty_red_steel_pair_2.jpg",
         "mainViewPairNoTabs": "img/main/shoes/pair/no-tabs/ty_red_steel_pair_no_tabs.png",
-        "mainViewLeftProfileNoTab":"img/main/shoes/profile/ty_red_steel_profile_left_no_tabs.png",
-        "mainViewRightProfileNoTab":"img/main/shoes/profile/ty_red_steel_profile_right_no_tabs.png",
-        "mainViewLeftProfile": "img/main/shoes/Ty_M_Red_Steel.jpg",
-        "mainViewRightProfile": "img/main/shoes/Ty_M_Red_Steel.jpg",
+        "mainViewLeftProfile": "img/main/shoes/profile/ty_red_steel_profile_left.jpg",
+        "mainViewRightProfile": "img/main/shoes/profile/ty_red_steel_profile_right.jpg",
+        "mainViewLeftProfileNoTab":"img/main/shoes/profile/no_tabs/ty_red_steel_profile_left_no_tabs.png",
+        "mainViewRightProfileNoTab":"img/main/shoes/profile/no_tabs/ty_red_steel_profile_right_no_tabs.png",
         "mainViewTopRight":"img/main/shoes/top/ty_red_steel_top_right.jpg",
-        "mainViewTopLeft":"img/main/shoes/top/ty_red_steel_top_left.jpg"
+        "mainViewTopLeft":"img/main/shoes/top/ty_red_steel_top_left.jpg",
+        "mainViewTopRightNoTab":"img/main/shoes/top/ty_red_steel_top_right.jpg",
+        "mainViewTopLeftNoTab":"img/main/shoes/top/ty_red_steel_top_left.jpg"
     },
     {
         "name": "ty", 
@@ -56,12 +62,14 @@
         "menuImgUrl": "img/menu/Ty_N_Silver_Pink.jpg",
         "mainViewDefault": "img/main/shoes/pair/ty_silver_pink_pair_2.jpg",
         "mainViewPairNoTabs": "img/main/shoes/pair/no-tabs/ty_silver_pink_no_tabs.png",
-        "mainViewLeftProfileNoTab":"img/main/shoes/profile/ty_silver_pink_profile_left_no_tabs.png",
-        "mainViewRightProfileNoTab":"img/main/shoes/profile/ty_silver_pink_profile_right_no_tabs.png",
-        "mainViewLeftProfile": "img/main/shoes/Ty_N_Silver_Pink.jpg",
-        "mainViewRightProfile": "img/main/shoes/Ty_N_Silver_Pink.jpg",
+        "mainViewLeftProfile": "img/main/shoes/profile/ty_silver_pink_profile_left.jpg",
+        "mainViewRightProfile": "img/main/shoes/profile/ty_silver_pink_profile_right.jpg",
+        "mainViewLeftProfileNoTab":"img/main/shoes/profile/no_tabs/ty_silver_pink_profile_left_no_tabs.png",
+        "mainViewRightProfileNoTab":"img/main/shoes/profile/no_tabs/ty_silver_pink_profile_right_no_tabs.png",
         "mainViewTopRight":"img/main/shoes/top/ty_silver_pink_top_right.jpg",
-        "mainViewTopLeft":"img/main/shoes/top/ty_silver_pink_top_left.jpg"
+        "mainViewTopLeft":"img/main/shoes/top/ty_silver_pink_top_left.jpg",
+        "mainViewTopRightNoTab":"img/main/shoes/top/ty_silver_pink_top_right.jpg",
+        "mainViewTopLeftNoTab":"img/main/shoes/top/ty_silver_pink_top_left.jpg"
     },
     {
         "name": "ty", 
@@ -72,12 +80,14 @@
         "menuImgUrl": "img/menu/Ty_M_Pink_Dewberry.jpg",
         "mainViewDefault": "img/main/shoes/pair/ty_pink_dewberry_pair_2.jpg",
         "mainViewPairNoTabs": "img/main/shoes/pair/no-tabs/ty_pink_dewberry_pair_no_tabs.png",
-        "mainViewLeftProfileNoTab":"img/main/shoes/profile/ty_pink_dewberry_profile_left_no_tabs.png",
-        "mainViewRightProfileNoTab":"img/main/shoes/profile/ty_pink_dewberry_profile_right_no_tabs.png",
-        "mainViewLeftProfile": "img/main/shoes/Ty_M_Pink_Dewberry.jpg",
-        "mainViewRightProfile": "img/main/shoes/Ty_M_Pink_Dewberry.jpg",
+        "mainViewLeftProfile": "img/main/shoes/profile/ty_pink_dewberry_profile_left.jpg",
+        "mainViewRightProfile": "img/main/shoes/profile/ty_pink_dewberry_profile_right.jpg",
+        "mainViewLeftProfileNoTab":"img/main/shoes/profile/no_tabs/ty_pink_dewberry_profile_left_no_tabs.png",
+        "mainViewRightProfileNoTab":"img/main/shoes/profile/no_tabs/ty_pink_dewberry_profile_right_no_tabs.png",
         "mainViewTopRight":"img/main/shoes/top/ty_pink_dewberry_top_right.jpeg",
-        "mainViewTopLeft":"img/main/shoes/top/ty_pink_dewberry_top_left.jpg"
+        "mainViewTopLeft":"img/main/shoes/top/ty_pink_dewberry_top_left.jpg",
+        "mainViewTopRightNoTab":"img/main/shoes/top/ty_pink_dewberry_top_right.jpeg",
+        "mainViewTopLeftNoTab":"img/main/shoes/top/ty_pink_dewberry_top_left.jpg"
     },
     {
         "name": "ty", 
@@ -88,12 +98,14 @@
         "menuImgUrl": "img/menu/Ty_N_Lavender_Indigo.jpg",
         "mainViewDefault": "img/main/shoes/pair/ty_lavender_pair_2.jpg",
         "mainViewPairNoTabs": "img/main/shoes/pair/no-tabs/ty_pink_dewberry_pair_no_tabs.png",
-        "mainViewLeftProfileNoTab":"img/main/shoes/profile/ty_lavender_indigo_profile_left_no_tabs.png",
-        "mainViewRightProfileNoTab":"img/main/shoes/profile/ty_lavender_indigo_profile_right_no_tabs.png",
-        "mainViewLeftProfile": "img/main/shoes/Ty_N_Lavender_Indigo.jpg",
-        "mainViewRightProfile": "img/main/shoes/Ty_N_Lavender_Indigo.jpg",
+        "mainViewLeftProfile": "img/main/shoes/profile/ty_lavender_indigo_profile_left.jpg",
+        "mainViewRightProfile": "img/main/shoes/profile/ty_lavender_indigo_profile_right.jpg",
+        "mainViewLeftProfileNoTab":"img/main/shoes/profile/no_tabs/ty_lavender_indigo_profile_left_no_tabs.png",
+        "mainViewRightProfileNoTab":"img/main/shoes/profile/no_tabs/ty_lavender_indigo_profile_right_no_tabs.png",
         "mainViewTopRight":"img/main//shoes/top/ty_lavender_indigo_top_right.jpg",
-        "mainViewTopLeft":"img/main//shoes/top/ty_lavender_indigo_top_left.jpg"
+        "mainViewTopLeft":"img/main//shoes/top/ty_lavender_indigo_top_left.jpg",
+        "mainViewTopRightNoTab":"img/main//shoes/top/ty_lavender_indigo_top_right.jpg",
+        "mainViewTopLeftNoTab":"img/main//shoes/top/ty_lavender_indigo_top_left.jpg"
     },
     {
         "name": "ty", 
@@ -104,12 +116,15 @@
         "menuImgUrl": "img/menu/Ty_N_Denim_Navy.jpg",
         "mainViewDefault": "img/main/shoes/pair/ty_denim_navy_pair_2.jpg",
         "mainViewPairNoTabs": "img/main/shoes/pair/no-tabs/ty_pink_dewberry_pair_no_tabs.png",
-        "mainViewLeftProfileNoTab":"img/main/shoes/profile/ty_denim_navy_profile_left_no_tabs.png",
-        "mainViewRightProfileNoTab":"img/main/shoes/profile/ty_denim_navy_profile_right_no_tabs.png",
-        "mainViewLeftProfile": "img/main/shoes/Ty_N_Denim_Navy.jpg",
-        "mainViewRightProfile": "img/main/shoes/Ty_N_Denim_Navy.jpg",
+        "mainViewLeftProfile": "img/main/shoes/profile/ty_denim_navy_profile_left.jpg",
+        "mainViewRightProfile": "img/main/shoes/profile/ty_denim_navy_profile_right.jpg",
+        "mainViewLeftProfileNoTab":"img/main/shoes/profile/no_tabs/ty_denim_navy_profile_left_no_tabs.png",
+        "mainViewRightProfileNoTab":"img/main/shoes/profile/no_tabs/ty_denim_navy_profile_right_no_tabs.png",
         "mainViewTopRight":"img/main//shoes/top/ty_denim_navy_top_right.jpg",
-        "mainViewTopLeft":"img/main//shoes/top/ty_denim_navy_top_left.jpg"
+        "mainViewTopLeft":"img/main//shoes/top/ty_denim_navy_top_left.jpg",
+        "mainViewTopRightNoTab":"img/main//shoes/top/ty_denim_navy_top_right.jpg",
+        "mainViewTopLeftNoTab":"img/main//shoes/top/ty_denim_navy_top_left.jpg"
+
     },
     {
         "name": "ty", 
@@ -120,12 +135,14 @@
         "menuImgUrl": "img/menu/Ty_N_Steel.jpg",
         "mainViewDefault": "img/main/shoes/pair/ty_steel_pair_2.jpg",
         "mainViewPairNoTabs": "img/main/shoes/pair/no-tabs/ty_pink_dewberry_pair_no_tabs.png",
-        "mainViewLeftProfileNoTab":"img/main/shoes/profile/ty_steel_profile_left_no_tabs.png",
-        "mainViewRightProfileNoTab":"img/main/shoes/profile/ty_steel_profile_right_no_tabs.png",
-        "mainViewLeftProfile": "img/thumbnails/shoes/Ty_N_Steel.jpg",
-        "mainViewRightProfile": "img/thumbnails/shoes/Ty_N_Steel.jpg",
+        "mainViewLeftProfile": "img/main/shoes/profile/ty_steel_profile_left.jpg",
+        "mainViewRightProfile": "img/main/shoes/profile/ty_steel_profile_right.jpg",
+        "mainViewLeftProfileNoTab":"img/main/shoes/profile/no_tabs/ty_steel_profile_left_no_tabs.png",
+        "mainViewRightProfileNoTab":"img/main/shoes/profile/no_tabs/ty_steel_profile_right_no_tabs.png",
         "mainViewTopRight":"img/main//shoes/top/ty_steel_top_right.jpg",
-        "mainViewTopLeft":"img/main//shoes/top/ty_steel_top_left.jpg"
+        "mainViewTopLeft":"img/main//shoes/top/ty_steel_top_left.jpg",
+        "mainViewTopRightNoTab":"img/main//shoes/top/ty_steel_top_right.jpg",
+        "mainViewTopLeftNoTab":"img/main//shoes/top/ty_steel_top_left.jpg"
     },
     {
         "name": "ty", 
@@ -136,12 +153,14 @@
         "menuImgUrl": "img/menu/Ty_N_Navy_Chocolate.jpg",
         "mainViewDefault": "img/main/shoes/pair/ty_navy_chocolate_pair_2.jpg",
         "mainViewPairNoTabs": "img/main/shoes/pair/no-tabs/ty_pink_dewberry_pair_no_tabs.png",
-        "mainViewLeftProfileNoTab":"img/main/shoes/profile/ty_navy_chocolate_profile_left_no_tabs.png",
-        "mainViewRightProfileNoTab":"img/main/shoes/profile/ty_navy_chocolate_profile_right_no_tabs.png",
-        "mainViewLeftProfile": "img/main/shoes/Ty_N_Navy_Chocolate.jpg",
-        "mainViewRightProfile": "img/main/shoes/Ty_N_Navy_Chocolate.jpg",
+        "mainViewLeftProfile": "img/main/shoes/profile/ty_navy_chocolate_profile_left.jpg",
+        "mainViewRightProfile": "img/main/shoes/profile/ty_navy_chocolate_profile_right.jpg",
+        "mainViewLeftProfileNoTab":"img/main/shoes/profile/no_tabs/ty_navy_chocolate_profile_left_no_tabs.png",
+        "mainViewRightProfileNoTab":"img/main/shoes/profile/no_tabs/ty_navy_chocolate_profile_right_no_tabs.png",
         "mainViewTopRight":"img/main//shoes/top/ty_navy_chocolate_top_right.jpg",
-        "mainViewTopLeft":"img/main//shoes/top/ty_navy_chocolate_top_left.jpg"
+        "mainViewTopLeft":"img/main//shoes/top/ty_navy_chocolate_top_left.jpg",
+        "mainViewTopRightNoTab":"img/main//shoes/top/ty_navy_chocolate_top_right.jpg",
+        "mainViewTopLeftNoTab":"img/main//shoes/top/ty_navy_chocolate_top_left.jpg"
     },
     {
         "name": "ty", 
@@ -152,11 +171,13 @@
         "menuImgUrl": "img/menu/Ty_N_Chocolate_Fuchsia.jpg",
         "mainViewDefault": "img/main/shoes/pair/ty_chocolate_berry_pair_2.jpg",
         "mainViewPairNoTabs": "img/main/shoes/pair/no-tabs/ty_pink_dewberry_pair_no_tabs.png",
-        "mainViewLeftProfileNoTab":"img/main/shoes/profile/ty_chocolate_fuchsia_profile_left_no_tabs.png",
-        "mainViewRightProfileNoTab":"img/main/shoes/profile/ty_chocolate_fuchsia_profile_right_no_tabs.png",
-        "mainViewLeftProfile": "img/main/shoes/Ty_N_Chocolate_Fuchsia.jpg",
-        "mainViewRightProfile": "img/main/shoes/Ty_N_Chocolate_Fuchsia.jpg",
+        "mainViewLeftProfile": "img/main/shoes/profile/ty_chocolate_fuchsia_profile_left.jpg",
+        "mainViewRightProfile": "img/main/shoes/profile/ty_chocolate_fuchsia_profile_right.jpg",
+        "mainViewLeftProfileNoTab":"img/main/shoes/profile/no_tabs/ty_chocolate_fuchsia_profile_left_no_tabs.png",
+        "mainViewRightProfileNoTab":"img/main/shoes/profile/no_tabs/ty_chocolate_fuchsia_profile_right_no_tabs.png",
         "mainViewTopRight":"img/main//shoes/top/ty_chocolate_fuchsia_top_right.jpg",
-        "mainViewTopLeft":"img/main//shoes/top/ty_chocolate_fuchsia_top_left.jpg"
+        "mainViewTopLeft":"img/main//shoes/top/ty_chocolate_fuchsia_top_left.jpg",
+        "mainViewTopRightNoTab":"img/main//shoes/top/ty_chocolate_fuchsia_top_right.jpg",
+        "mainViewTopLeftNoTab":"img/main//shoes/top/ty_chocolate_fuchsia_top_left.jpg"
     }
  ]
