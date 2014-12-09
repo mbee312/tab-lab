@@ -196,10 +196,10 @@
           tpcontext.fillRect(0,0,topViewCanvas.width,100);
           var right_image = new Image();
           right_image.src = $scope.shoeSelected[0]["mainViewTopRight"];
-          tpcontext.drawImage(right_image, 520, 0, 250, 489);
+          tpcontext.drawImage(right_image, 520, 0, 240, 469);
           var left_image = new Image();
           left_image.src = $scope.shoeSelected[0]["mainViewTopLeft"];
-          tpcontext.drawImage(left_image, 300, 0, 250, 489);
+          tpcontext.drawImage(left_image, 300, 0, 240, 469);
           console.log("drawTopViewImage set!");
       }
 
@@ -220,7 +220,7 @@
           var base_image = new Image();
           base_image.src = $scope.shoeSelected[0]["mainViewRightProfileNoTab"];
           rpcontext.scale(-1, 1);
-          rpcontext.drawImage(base_image, 170, 110);
+          rpcontext.drawImage(base_image, 220, 110);
 
           console.log("drawRightProfileImage set!");
       }
