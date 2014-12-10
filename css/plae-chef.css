@@ -588,7 +588,7 @@ ul.plae.basket.list {
 }
 
 /* when hiding the picture */
-.ng-hide-add         { animation:.5s flipOutX ease; }
+.ng-hide-add         { animation:.5s fadeOutUpBig ease; }
 
 /* when showing the picture */
-.ng-hide-remove      { animation:1s lightSpeedIn ease;}
+.ng-hide-remove      { animation:1s bounceInUp ease;}
