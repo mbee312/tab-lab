@@ -11,10 +11,12 @@
       $scope.list3 = [];
       $scope.list4 = [];
 
+      /* canvas for each main view */
+
       var canvas = document.getElementById('plae-chef-canvas');
       var context = canvas.getContext('2d');
 
-      /* canvas for each main view */
+
       var topViewCanvas = document.getElementById('plae-chef-canvas-top');
       var tpcontext = topViewCanvas.getContext('2d');
 
@@ -38,38 +40,6 @@
 
       var pairViewTabCanvas = document.getElementById('plae-chef-canvas-tab-pair');
       var ptabcontext = pairViewTabCanvas.getContext('2d');
-
-    // Tabs on canvas List Arrays
-    $scope.tabs = [];
-      $scope.tabsTop=[];
-      $scope.tabsBottom=[];
-      $scope.tabLT =[];
-      $scope.tabLB = [];
-
-      $scope.shoeSelected = [];
-      $scope.basket =[];
-
-      $scope.hideMeLT = function() {
-          return $scope.tabLT.length > 0;
-      }
-      $scope.hideMeLB = function() {
-          return $scope.tabLB.length > 0;
-      }
-
-    $http.get('product/shoeStyles_local.json').success(function(data) {
-      $scope.shoeStyles = data;
-    });
-    $http.get('product/shoes_ty_local.json').success(function(data) {
-      $scope.shoeList = data;
-    });
-
-    $http.get('product/tabs_local.json').success(function(data) {
-      $scope.tabList = data;
-    });
-
-      $http.get('product/views.json').success(function(data) {
-          $scope.mainViews = data;
-      });
 
       // setup canvas
     canvas.width=1024;//horizontal resolution (?) - increase for better looking text
@@ -116,6 +86,39 @@
       pairViewTabCanvas.height=512;//vertical resolution (?) - increase for better looking text
       pairViewTabCanvas.style.width=512;//actual width of canvas
       pairViewTabCanvas.style.height=512;//actual height of canvas
+
+      // Tabs on canvas List Arrays
+      $scope.tabs = [];
+      $scope.tabsTop=[];
+      $scope.tabsBottom=[];
+      $scope.tabLT =[];
+      $scope.tabLB = [];
+
+      $scope.shoeSelected = [];
+      $scope.basket =[];
+
+      $scope.hideMeLT = function() {
+          return $scope.tabLT.length > 0;
+      }
+      $scope.hideMeLB = function() {
+          return $scope.tabLB.length > 0;
+      }
+
+      $http.get('product/shoeStyles_local.json').success(function(data) {
+          $scope.shoeStyles = data;
+      });
+      $http.get('product/shoes_ty_local.json').success(function(data) {
+          $scope.shoeList = data;
+      });
+
+      $http.get('product/tabs_local.json').success(function(data) {
+          $scope.tabList = data;
+      });
+
+      $http.get('product/views.json').success(function(data) {
+          $scope.mainViews = data;
+      });
+
 
       this.makeTabsCanvas = function(imageUrl, view)
       {
