@@ -591,4 +591,4 @@ ul.plae.basket.list {
 .ng-hide-add         { animation:.5s bounceOut ease; }
 
 /* when showing the picture */
-.ng-hide-remove      { animation:1.5s fadeIn ease;}
+.ng-hide-remove      { animation:2s fadeIn ease;}
