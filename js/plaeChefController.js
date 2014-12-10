@@ -200,7 +200,7 @@
       this.drawTopViewImage = function (){
           this.clearImage(topViewCanvas,tpcontext );
           tpcontext.fillStyle="#FFFFFF";
-          tpcontext.fillRect(0,0,topViewCanvas.width,100);
+          tpcontext.fillRect(0,0,topViewCanvas.width-100,150);
           var right_image = new Image();
           right_image.src = $scope.shoeSelected[0]["mainViewTopRight"];
           tpcontext.drawImage(right_image, 520, 0, 240, 469);
@@ -214,7 +214,7 @@
           this.clearImage(leftProfileCanvas,lpcontext );
           lpcontext.translate(0,0);
           lpcontext.fillStyle="#FFFFFF";
-          lpcontext.fillRect(0,0,leftProfileCanvas.width,150);
+          lpcontext.fillRect(0,0,leftProfileCanvas.width-100,150);
           var base_image = new Image();
           if (this.isTabSelected()) {
               base_image.src = $scope.shoeSelected[0]["mainViewLeftProfileNoTab"];
@@ -231,7 +231,7 @@
           this.clearImage(rightProfileCanvas,rpcontext );
           rpcontext.translate(0,0);
           rpcontext.fillStyle="#FFFFFF";
-          rpcontext.fillRect(0,0,rightProfileCanvas.width,150);
+          rpcontext.fillRect(0,0,rightProfileCanvas.width-100,150);
           var base_image = new Image();
           if (this.isTabSelected()) {
               base_image.src = $scope.shoeSelected[0]["mainViewRightProfileNoTab"];
