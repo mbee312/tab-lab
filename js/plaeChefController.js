@@ -248,16 +248,16 @@
           this.clearImage(leftProfileTabCanvas,lptabcontext );
 
           var tab_image = new Image();
-          var tabWidth = 265;
-          var tabHeight = 73;
+          var tabWidth = 275;
+          var tabHeight = 75;
 
-          var topXOffset = 447;
-          var topYOffset = 148;
-          var topRotation = 65;
+          var topXOffset = $scope.shoeSelected[0]["topXOffsetL"];
+          var topYOffset = $scope.shoeSelected[0]["topYOffsetL"];
+          var topRotation = $scope.shoeSelected[0]["topRotationL"];
 
-          var botXOffset = 360;
-          var botYOffset = 173;
-          var botRotation = 68;
+          var botXOffset = $scope.shoeSelected[0]["botXOffsetL"];
+          var botYOffset = $scope.shoeSelected[0]["botYOffsetL"];
+          var botRotation = $scope.shoeSelected[0]["botRotationL"];
 
           tab_image.src = $scope.tabLT[0]["tabOneImg"];
           this.drawRotated(topRotation,leftProfileTabCanvas,lptabcontext,tab_image, topXOffset, topYOffset, tabWidth, tabHeight);
@@ -272,16 +272,16 @@
       this.drawRightTabsProfileViewImage = function (){
           this.clearImage(rightProfileTabCanvas,rptabcontext );
           var tab_image = new Image();
-          var tabWidth = 267;
-          var tabHeight = 73;
+          var tabWidth = 275;
+          var tabHeight = 75;
 
-          var topXOffset = 494;
-          var topYOffset = 96;
-          var topRotation = 116;
+          var topXOffset = $scope.shoeSelected[0]["topXOffsetR"];
+          var topYOffset = $scope.shoeSelected[0]["topYOffsetR"];
+          var topRotation = $scope.shoeSelected[0]["topRotationR"];
 
-          var botXOffset = 574;
-          var botYOffset = 126;
-          var botRotation = 111;
+          var botXOffset = $scope.shoeSelected[0]["botXOffsetR"];
+          var botYOffset = $scope.shoeSelected[0]["botYOffsetR"];
+          var botRotation = $scope.shoeSelected[0]["botRotationR"];
 
           tab_image.src = $scope.tabLT[0]["tabOneImg"];
           this.drawRotated(topRotation,rightProfileTabCanvas,rptabcontext,tab_image, topXOffset, topYOffset, tabWidth, tabHeight);
@@ -324,7 +324,6 @@
       };
 
       this.drawRotated = function(degrees, cnvs, ctx, image, xOffset, yOffset, tabWidth, tabHeight){
-      /*    ctx.clearRect(0,0,cnvs.width,cnvs.height); */
 
           // save the unrotated context of the canvas so we can restore it later
           // the alternative is to untranslate & unrotate after drawing
@@ -345,35 +344,6 @@
           ctx.restore();
       }; //end drawRotated()
 
-/*
-
-      this.moveTabTop = function(){
-          $(document).ready(function ($) {
-              var topDegree = 65;
-              var topTabSel = '.tab.large.top.ng-scope';
-              $(topTabSel).css({ WebkitTransform: 'rotate(' + topDegree + 'deg)'});
-              $(topTabSel).css({ '-moz-transform': 'rotate(' + topDegree + 'deg)'});
-              $(topTabSel).css({left: "976px"});
-              $(topTabSel).css({top: "674px"});
-
-          });
-      }; //end moveTabTop
-
-      this.moveTabBottom = function(){
-          $(document).ready(function ($) {
-
-                  var bottomDegree = 69;
-                  var bottomTabSel = '.tab.large.bottom.ng-scope';
-                  $(bottomTabSel).css({WebkitTransform: 'rotate(' + bottomDegree + 'deg)'});
-                  $(bottomTabSel).css({'-moz-transform': 'rotate(' + bottomDegree + 'deg)'});
-                  $(bottomTabSel).css({left: "884px"});
-                  $(bottomTabSel).css({top: "565px"});
-
-          });
-      }; //end moveTabBottom
-
-*/
-
       this.isShoeSelected = function (){
           return $scope.shoeSelected.length > 0;
       };
@@ -382,32 +352,6 @@
           console.log($scope.tabs.length > 0);
           return $scope.tabs.length > 0;
       };
-
-
-      $scope.tabDropCallback = function() {
-          // Store the current transformation matrix
-          context.save();
-
-          // Use the identity matrix while clearing the canvas
-          context.setTransform(1, 0, 0, 1, 0, 0);
-          context.clearRect(0, 0, canvas.width, canvas.height);
-
-          // Restore the transform
-          context.restore();
-
-          var base_image = new Image();
-          base_image.src = this.shoeSelected[0]["mainViewLeftProfileNoTab"];
-
-          context.drawImage(base_image, 50, 60);
-
-          var tabImage = new Image();
-
-          context.drawImage(tabImage, 50, 60);
-
-
-
-      }
-
 
   }]);
 

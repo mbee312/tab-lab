@@ -60,7 +60,7 @@
 
                   <div class="tabs-menu left effect6">
                   <ul class="tab-styles-list">
-                      <li class='tab-list' ng-repeat="tab in tabList" class='tabs-menu' id="left-{{tab.id}}">
+                      <li class='tab-list' ng-repeat="tab in tabList" ng-model="tabs" class='tabs-menu' id="left-{{tab.id}}">
                           <a href ng-click="plaeChef.addTab(tab, $event)"><img ng-src="{{ tab.menuImg }}"/></a>
                       </li>
 
@@ -68,7 +68,7 @@
               </div>
                   <div class="tabs-menu right effect6">
                       <ul class="tab-styles-list">
-                          <li class='tab-list' ng-repeat="tab in tabList" class='tabs-menu' id="right-{{tab.id}}">
+                          <li class='tab-list' ng-repeat="tab in tabList" ng-model="tabs" class='tabs-menu' id="right-{{tab.id}}">
                               <a href ng-click="plaeChef.addTab(tab, $event)"><img ng-src="{{ tab.menuImg }}"/></a>
                           </li>
 
@@ -324,10 +324,6 @@
 
 </div>
 
-  <script>
-
-  </script>
-
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
@@ -337,8 +333,8 @@
   <!--<script src="bower_components/angular-route/angular-route.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
-    <script src="app/bower_components/angular-dragdrop/src/angular-animate.js"></script> -->
+  <script src="components/version/interpolate-filter.js"></script>-->
+  <!--  <script src="app/bower_components/angular-dragdrop/src/angular-animate.js"></script> -->
       <script src="js/share.min.js"></script>
       <script src="js/hopscotch.js"></script>
       <script src="js/waves.min.js"></script>
