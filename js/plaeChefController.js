@@ -2,7 +2,7 @@
   'use strict';
 
   // Declare app level module which depends on views, and components
-  var plaeChefApp = angular.module('plaeChefApp', ['ngAnimate','ngDragDrop', 'angular-gestures']);
+  var plaeChefApp = angular.module('plaeChefApp', ['ngAnimate','ngDragDrop', 'ngTouch']);
 
 
   plaeChefApp.controller('PlaeChefController', ['$scope', '$http', function($scope, $http){
