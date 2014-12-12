@@ -207,16 +207,28 @@
           tpcontext.fillStyle="#FFFFFF";
           tpcontext.fillRect(75,0,topViewCanvas.width-150,150);
           var right_image = new Image();
-          right_image.onload = function(){
-              tpcontext.drawImage(right_image, 520, 0, 240, 469);
-          };
-          right_image.src = $scope.shoeSelected[0]["mainViewTopRight"];
-
           var left_image = new Image();
-          left_image.onload = function(){
-              tpcontext.drawImage(left_image, 300, 0, 240, 469);
-          };
-          left_image.src = $scope.shoeSelected[0]["mainViewTopLeft"];
+          if (this.isTabSelected()) {
+              right_image.onload = function () {
+                  tpcontext.drawImage(right_image, 520, 0, 240, 469);
+              };
+              right_image.src = $scope.shoeSelected[0]["mainViewTopRightNoTab"];
+
+              left_image.onload = function () {
+                  tpcontext.drawImage(left_image, 300, 0, 240, 469);
+              };
+              left_image.src = $scope.shoeSelected[0]["mainViewTopLeftNoTab"];
+          }else{
+              right_image.onload = function () {
+                  tpcontext.drawImage(right_image, 520, 0, 240, 469);
+              };
+              right_image.src = $scope.shoeSelected[0]["mainViewTopRight"];
+
+              left_image.onload = function () {
+                  tpcontext.drawImage(left_image, 300, 0, 240, 469);
+              };
+              left_image.src = $scope.shoeSelected[0]["mainViewTopLeft"];
+          }
 
           console.log("drawTopViewImage set!");
       };// end drawTopViewImage
