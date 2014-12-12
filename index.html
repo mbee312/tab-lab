@@ -23,7 +23,7 @@
       <div class="shop-menu">
       <div class="logo"><img src="img/logo.png"></div>
           <div class="plae basket" id="plae-basket">
-                  <div class="plae basket shoe" ng-repeat="shoe in shoeSelected" ng-show="plaeChef.isShoeSelected()">
+                  <div class="plae basket shoe" ng-repeat="shoe in shoeSelected" ng-model="shoeSelected" ng-show="plaeChef.isShoeSelected()">
                       <h3>shoe selected:</h3>
                       <p>name: {{shoe.name}} </br>
                       color: {{shoe.color}}</br>
@@ -85,13 +85,13 @@
 
 
               <canvas class='canvas' id="plae-chef-canvas" ng-show="plaeChef.isCanvasSet('default')"></canvas>
-              <canvas class='canvas' id="plae-chef-canvas-top" ng-show="plaeChef.isCanvasSet('top')"></canvas>
+              <canvas class='canvas' id="plae-chef-canvas-top" hm-swiperight="plaeChef.setPrevCanvas('left')" hm-swipeleft="plaeChef.setCanvas('right')" ng-show="plaeChef.isCanvasSet('top')"></canvas>
               <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-top" ng-show="plaeChef.isCanvasSet('top')"></canvas>
-              <canvas class='canvas' id="plae-chef-canvas-left" ng-show="plaeChef.isCanvasSet('left')"></canvas>
+              <canvas class='canvas' id="plae-chef-canvas-left" hm-swiperight="plaeChef.setPrevCanvas('pair')" hm-swipeleft="plaeChef.setCanvas('top')" ng-show="plaeChef.isCanvasSet('left')"></canvas>
               <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-left" ng-show="plaeChef.isCanvasSet('left')"></canvas>
-              <canvas class='canvas' id="plae-chef-canvas-right" ng-show="plaeChef.isCanvasSet('right')"></canvas>
+              <canvas class='canvas' id="plae-chef-canvas-right" hm-swiperight="plaeChef.setPrevCanvas('top')" hm-swipeleft="plaeChef.setCanvas('pair')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
               <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-right" ng-show="plaeChef.isCanvasSet('right')"></canvas>
-              <canvas class='canvas' id="plae-chef-canvas-pair" ng-show="plaeChef.isCanvasSet('pair')"></canvas>
+              <canvas class='canvas' id="plae-chef-canvas-pair" hm-swiperight="plaeChef.setPrevCanvas('right')" hm-swipeleft="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('pair')"></canvas>
               <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-pair" ng-show="plaeChef.isCanvasSet('pair')"></canvas>
 
               <div id="white-bg"></div>
@@ -335,6 +335,7 @@
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>-->
   <!--  <script src="app/bower_components/angular-dragdrop/src/angular-animate.js"></script> -->
+      <script src="components/angular-gestures-master/dist/gestures.min.js"></script>
       <script src="js/share.min.js"></script>
       <script src="js/hopscotch.js"></script>
       <script src="js/waves.min.js"></script>
