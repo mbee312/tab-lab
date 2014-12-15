@@ -69,7 +69,7 @@ pre {
     }
 
     .shop-menu {
-        height: 862px;
+        height: 762px;
         width: 230px;
         position: absolute;
         /* IE10 Consumer Preview */
@@ -140,7 +140,7 @@ ul.plae.basket.list {
       display: inline-block;
       margin-bottom: 10px;
       margin-left: 240px;
-        top: 350px;
+        top: 250px;
       /* box shadow */
       /*  border-radius: 5px;
         box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 22px 70px 4px rgba(0,0,0,0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
@@ -178,7 +178,7 @@ ul.plae.basket.list {
           height: 512px; */
         margin-bottom: 10px;
         margin-left: 240px;
-        top: 350px;
+        top: 250px;
         background: #ffffff;
     }
 
@@ -219,7 +219,7 @@ ul.plae.basket.list {
         position: relative;
         width: 1014px;
         overflow: hidden;
-        border: 0px solid #D3D3D3;
+        border: 0 solid #D3D3D3;
         -webkit-box-shadow: 0 10px 6px -6px #777;
         -moz-box-shadow: 0 10px 6px -6px #777;
         box-shadow: 0 10px 6px -6px #777;
@@ -263,11 +263,10 @@ ul.plae.basket.list {
         margin-top: -200px; */
 
         height: 140px;
-        position: relative;
         width: 1050px;
 
         top: 10px;
-        border: 0px solid #D3D3D3;
+        border: 0 solid #D3D3D3;
         -webkit-box-shadow: 0 10px 6px -6px #777;
         -moz-box-shadow: 0 10px 6px -6px #777;
         box-shadow: 0 10px 6px -6px #777;
@@ -582,14 +581,14 @@ ul.plae.basket.list {
 
 
     button.waves-effect.waves-button.waves-light.waves-float{
-        top: 290px;
+        top: 790px;
         left: 640px;
         z-index: 79;
     }
 
 #reset-button {
     left: 50px;
-    top: 840px;
+    top: 740px;
     position: absolute;
 }
 
