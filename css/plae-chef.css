@@ -69,7 +69,7 @@ pre {
     }
 
     .shop-menu {
-        height: 910px;
+        height: 862px;
         width: 230px;
         position: absolute;
         /* IE10 Consumer Preview */
@@ -138,11 +138,9 @@ ul.plae.basket.list {
       border-radius: 12px;*/
       opacity: 1;
       display: inline-block;
-    /*  width: 727px;
-      height: 512px; */
       margin-bottom: 10px;
       margin-left: 240px;
-        top: 400px;
+        top: 350px;
       /* box shadow */
       /*  border-radius: 5px;
         box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 22px 70px 4px rgba(0,0,0,0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
@@ -154,12 +152,16 @@ ul.plae.basket.list {
         box-shadow: 0 10px 6px -6px #777; */
     }
 
-.canvas.tcanvas {
-    z-index: 29;
-}
+    .canvas.tcanvas {
+        z-index: 29;
+    }
+    .canvas.container {
+        width: 1014px;
+        height: 512px;
+    }
 
     #white-bg{
-        width:1024px;
+        width:1014px;
         height: 512px;
         z-index: 0;
         position: absolute;
@@ -176,7 +178,7 @@ ul.plae.basket.list {
           height: 512px; */
         margin-bottom: 10px;
         margin-left: 240px;
-        top: 400px;
+        top: 350px;
         background: #ffffff;
     }
 
@@ -201,7 +203,7 @@ ul.plae.basket.list {
 
     div#tabs_container{
         height: 200px;
-        width: 1024px;
+        width: 1014px;
         margin-left: 100px;
         position: relative;
         overflow: hidden;
@@ -215,7 +217,7 @@ ul.plae.basket.list {
         margin-left: 100px;
         height: 80px;
         position: relative;
-        width: 1024px;
+        width: 1014px;
         overflow: hidden;
         border: 0px solid #D3D3D3;
         -webkit-box-shadow: 0 10px 6px -6px #777;
@@ -227,6 +229,10 @@ ul.plae.basket.list {
         border-radius: 5px; */
     /*    box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 22px 70px 4px rgba(0,0,0,0.56), 0 0 0 1px rgba(0, 0, 0, 0.3); */
     }
+    .tabs-menu.left.effect6 {
+        margin-top: -40px;
+    }
+
     .tab-list{
       width: 15%;
       /*margin-left: -25%; */
@@ -260,7 +266,7 @@ ul.plae.basket.list {
         position: relative;
         width: 1050px;
 
-        top: 40px;
+        top: 10px;
         border: 0px solid #D3D3D3;
         -webkit-box-shadow: 0 10px 6px -6px #777;
         -moz-box-shadow: 0 10px 6px -6px #777;
@@ -576,14 +582,14 @@ ul.plae.basket.list {
 
 
     button.waves-effect.waves-button.waves-light.waves-float{
-        top: 810px;
+        top: 290px;
         left: 640px;
         z-index: 79;
     }
 
 #reset-button {
     left: 50px;
-    top: 890px;
+    top: 840px;
     position: absolute;
 }
 

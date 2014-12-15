@@ -42,47 +42,47 @@
       var ptabcontext = pairViewTabCanvas.getContext('2d');
 
       // setup canvas
-    canvas.width=1024;//horizontal resolution (?) - increase for better looking text
+    canvas.width=1014;//horizontal resolution (?) - increase for better looking text
     canvas.height=512;//vertical resolution (?) - increase for better looking text
     canvas.style.width=512;//actual width of canvas
     canvas.style.height=512;//actual height of canvas
 
-      topViewCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
+      topViewCanvas.width=1014;//horizontal resolution (?) - increase for better looking text
       topViewCanvas.height=512;//vertical resolution (?) - increase for better looking text
       topViewCanvas.style.width=512;//actual width of canvas
       topViewCanvas.style.height=512;//actual height of canvas
 
-      topViewTabCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
+      topViewTabCanvas.width=1014;//horizontal resolution (?) - increase for better looking text
       topViewTabCanvas.height=512;//vertical resolution (?) - increase for better looking text
       topViewTabCanvas.style.width=512;//actual width of canvas
       topViewTabCanvas.style.height=512;//actual height of canvas
 
-      leftProfileCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
+      leftProfileCanvas.width=1014;//horizontal resolution (?) - increase for better looking text
       leftProfileCanvas.height=512;//vertical resolution (?) - increase for better looking text
       leftProfileCanvas.style.width=512;//actual width of canvas
       leftProfileCanvas.style.height=512;//actual height of canvas
 
-      leftProfileTabCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
+      leftProfileTabCanvas.width=1014;//horizontal resolution (?) - increase for better looking text
       leftProfileTabCanvas.height=512;//vertical resolution (?) - increase for better looking text
       leftProfileTabCanvas.style.width=512;//actual width of canvas
       leftProfileTabCanvas.style.height=512;//actual height of canvas
 
-      rightProfileCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
+      rightProfileCanvas.width=1014;//horizontal resolution (?) - increase for better looking text
       rightProfileCanvas.height=512;//vertical resolution (?) - increase for better looking text
       rightProfileCanvas.style.width=512;//actual width of canvas
       rightProfileCanvas.style.height=512;//actual height of canvas
 
-      rightProfileTabCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
+      rightProfileTabCanvas.width=1014;//horizontal resolution (?) - increase for better looking text
       rightProfileTabCanvas.height=512;//vertical resolution (?) - increase for better looking text
       rightProfileTabCanvas.style.width=512;//actual width of canvas
       rightProfileTabCanvas.style.height=512;//actual height of canvas
 
-      pairViewCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
+      pairViewCanvas.width=1014;//horizontal resolution (?) - increase for better looking text
       pairViewCanvas.height=512;//vertical resolution (?) - increase for better looking text
       pairViewCanvas.style.width=512;//actual width of canvas
       pairViewCanvas.style.height=512;//actual height of canvas
 
-      pairViewTabCanvas.width=1024;//horizontal resolution (?) - increase for better looking text
+      pairViewTabCanvas.width=1014;//horizontal resolution (?) - increase for better looking text
       pairViewTabCanvas.height=512;//vertical resolution (?) - increase for better looking text
       pairViewTabCanvas.style.width=512;//actual width of canvas
       pairViewTabCanvas.style.height=512;//actual height of canvas
