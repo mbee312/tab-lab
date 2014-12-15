@@ -174,7 +174,7 @@
       this.setTabViews = function(){
           console.log("inside setTabViews");
       /*    this.drawDefaultViewImage(); */
-      /*    this.drawTopViewImage(); */
+          this.drawTopTabsViewImage();
           this.drawLeftTabsProfileViewImage();
           this.drawRightTabsProfileViewImage();
 
@@ -233,6 +233,46 @@
           console.log("drawTopViewImage set!");
       };// end drawTopViewImage
 
+
+
+      this.drawTopTabsViewImage = function (){
+          this.clearImage(topViewTabCanvas,tptabcontext );
+
+          var tab_image = new Image();
+          var tabWidth = 275;
+          var tabHeight = 75;
+
+          var topOneXOffset = $scope.shoeSelected[0]["topViewLeftShoeTopTabOneXOffset"];
+          var topOneYOffset = $scope.shoeSelected[0]["topViewLeftShoeTopTabOneYOffset"];
+          var topOneRotation = $scope.shoeSelected[0]["topViewLeftShoeTopTabOneRotationL"];
+
+          var botOneXOffset = $scope.shoeSelected[0]["topViewLeftShoeBottomTabOneXOffset"];
+          var botOneYOffset = $scope.shoeSelected[0]["topViewLeftShoeBottomTabOneYOffset"];
+          var botOneRotation = $scope.shoeSelected[0]["topViewLeftShoeBottomTabOneRotationL"];
+ /*
+          var topTwoXOffset = $scope.shoeSelected[0]["topViewLeftShoeTopTabTwoXOffset"];
+          var topTwoYOffset = $scope.shoeSelected[0]["topViewLeftShoeTopTabTwoYOffset"];
+          var topTwoRotation = $scope.shoeSelected[0]["topViewLeftShoeTopTabTwoRotationL"];
+
+          var botTwoXOffset = $scope.shoeSelected[0]["topViewLeftShoeBottomTabTwoXOffset"];
+          var botTwoYOffset = $scope.shoeSelected[0]["topViewLeftShoeBottomTabTwoYOffset"];
+          var botTwoRotation = $scope.shoeSelected[0]["topViewLeftShoeBottomTabTwoRotationL"];
+          */
+          tab_image.src = $scope.tabLT[0]["tabOneImg"];
+          this.drawRotated(topOneRotation,topViewTabCanvas,tptabcontext,tab_image, topOneXOffset, topOneYOffset, tabWidth, tabHeight);
+          console.log("drawLeftTabProfileImage top is set!");
+
+          tab_image.src = $scope.tabLT[0]["tabTwoImg"];
+          this.drawRotated(botOneRotation,topViewTabCanvas,tptabcontext,tab_image, botOneXOffset, botOneYOffset, tabWidth, tabHeight);
+          console.log("drawLeftTabProfileImage bottom is set!");
+
+
+      }; //end drawTopTabsViewImage()
+
+
+
+
+
       this.drawLeftProfileViewImage = function (){
           this.clearImage(leftProfileCanvas,lpcontext );
           lpcontext.translate(0,0);
@@ -282,13 +322,13 @@
           var tabWidth = 275;
           var tabHeight = 75;
 
-          var topXOffset = $scope.shoeSelected[0]["topXOffsetL"];
-          var topYOffset = $scope.shoeSelected[0]["topYOffsetL"];
-          var topRotation = $scope.shoeSelected[0]["topRotationL"];
+          var topXOffset = $scope.shoeSelected[0]["profileTopXOffsetL"];
+          var topYOffset = $scope.shoeSelected[0]["profileTopYOffsetL"];
+          var topRotation = $scope.shoeSelected[0]["profileTopRotationL"];
 
-          var botXOffset = $scope.shoeSelected[0]["botXOffsetL"];
-          var botYOffset = $scope.shoeSelected[0]["botYOffsetL"];
-          var botRotation = $scope.shoeSelected[0]["botRotationL"];
+          var botXOffset = $scope.shoeSelected[0]["profileBotXOffsetL"];
+          var botYOffset = $scope.shoeSelected[0]["profileBotYOffsetL"];
+          var botRotation = $scope.shoeSelected[0]["profileBotRotationL"];
 
           tab_image.src = $scope.tabLT[0]["tabOneImg"];
           this.drawRotated(topRotation,leftProfileTabCanvas,lptabcontext,tab_image, topXOffset, topYOffset, tabWidth, tabHeight);
@@ -306,13 +346,13 @@
           var tabWidth = 275;
           var tabHeight = 75;
 
-          var topXOffset = $scope.shoeSelected[0]["topXOffsetR"];
-          var topYOffset = $scope.shoeSelected[0]["topYOffsetR"];
-          var topRotation = $scope.shoeSelected[0]["topRotationR"];
+          var topXOffset = $scope.shoeSelected[0]["profileTopXOffsetR"];
+          var topYOffset = $scope.shoeSelected[0]["profileTopYOffsetR"];
+          var topRotation = $scope.shoeSelected[0]["profileTopRotationR"];
 
-          var botXOffset = $scope.shoeSelected[0]["botXOffsetR"];
-          var botYOffset = $scope.shoeSelected[0]["botYOffsetR"];
-          var botRotation = $scope.shoeSelected[0]["botRotationR"];
+          var botXOffset = $scope.shoeSelected[0]["profileBotXOffsetR"];
+          var botYOffset = $scope.shoeSelected[0]["profileBotYOffsetR"];
+          var botRotation = $scope.shoeSelected[0]["profileBotRotationR"];
 
           tab_image.src = $scope.tabLT[0]["tabOneImg"];
           this.drawRotated(topRotation,rightProfileTabCanvas,rptabcontext,tab_image, topXOffset, topYOffset, tabWidth, tabHeight);
