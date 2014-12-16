@@ -8,7 +8,11 @@
 		"tabOneImg": "img/main/tabs/singles/dominique-1_clipped_rev_1.png",
 		"tabTwoImg": "img/main/tabs/singles/dominique-2_clipped_rev_1.png",
 		"tabOneMainImg": "img/main/tabs/dominique.jpg",
-		"tabTwoMainImg": "img/main/tabs/dominique.jpg"
+		"tabTwoMainImg": "img/main/tabs/dominique.jpg",
+        "topViewRightOne":"img/main/tabs/singles/dominique_2_right_bend.png",
+        "topViewRightTwo":"img/main/tabs/singles/dominique_1_right_bend.png",
+        "topViewLeftOne":"img/main/tabs/singles/dominique_2_left_bend.png",
+        "topViewLeftTwo":"img/main/tabs/singles/dominique_1_left_bend.png"
 	},
 	{
 		"name": "dominic",
@@ -19,7 +23,11 @@
 		"tabOneImg": "img/main/tabs/singles/dominic-1_clipped_rev_1.png",
 		"tabTwoImg": "img/main/tabs/singles/dominic-2_clipped_rev_1.png",
 		"tabOneMainImg": "img/main/tabs/dominic.jpg",
-		"tabTwoMainImg": "img/main/tabs/dominic.jpg"
+		"tabTwoMainImg": "img/main/tabs/dominic.jpg",
+        "topViewRightOne":"img/main/tabs/singles/dominic_2_right_bend.png",
+        "topViewRightTwo":"img/main/tabs/singles/dominic_1_right_bend.png",
+        "topViewLeftOne":"img/main/tabs/singles/dominic_2_left_bend.png",
+        "topViewLeftTwo":"img/main/tabs/singles/dominic_1_left_bend.png"
 	},
 	{
 		"name": "camo",
@@ -60,19 +68,11 @@
 		"tabOneImg": "img/main/tabs/singles/camo-orange_clipped_rev_2.png",
 		"tabTwoImg": "img/main/tabs/singles/camo-orange_clipped_rev_2.png",
 		"tabOneMainImg": "img/main/tabs/singles/camo-orange_1.jpg",
-		"tabTwoMainImg": "img/main/tabs/singles/camo-orange_2.jpg"
-		
-	},
-	{
-		"name": "cheetah zebra",
-		"id": 1370,
-		"color": "pink/multi",
-		"sku": "201122-906",
-		"menuImg": "img/thumbnails/tabs/cheetah-zebra.jpg",
-		"tabOneImg": "img/main/tabs/singles/cheetah-zebra-1_clipped_rev_1.png",
-		"tabTwoImg": "img/main/tabs/singles/cheetah-zebra-2_clipped_rev_1.png",
-		"tabOneMainImg": "img/main/tabs/singles/cheetah-zebra_1.jpg",
-		"tabTwoMainImg": "img/main/tabs/singles/cheetah-zebra_2.jpg"
+		"tabTwoMainImg": "img/main/tabs/singles/camo-orange_2.jpg",
+        "topViewRightOne":"img/main/tabs/singles/camo_orange_right_bend.png",
+        "topViewRightTwo":"img/main/tabs/singles/camo_orange_right_bend.png",
+        "topViewLeftOne":"img/main/tabs/singles/camo_orange_left_bend.png",
+        "topViewLeftTwo":"img/main/tabs/singles/camo_orange_left_bend.png"
 		
 	},
 	{
@@ -84,7 +84,11 @@
 		"tabOneImg": "img/main/tabs/singles/shimmer-leather-lavender_clipped_rev_1.png",
 		"tabTwoImg": "img/main/tabs/singles/shimmer-leather-lavender_clipped_rev_1.png",
 		"tabOneMainImg": "img/main/tabs/singles/shimmer-leather-lavender_haze_1.jpg",
-		"tabTwoMainImg": "img/main/tabs/singles/shimmer-leather-lavender_haze_2.jpg"
+		"tabTwoMainImg": "img/main/tabs/singles/shimmer-leather-lavender_haze_2.jpg",
+        "topViewRightOne":"img/main/tabs/singles/shimmer_leather_lavender_right_bend.png",
+        "topViewRightTwo":"img/main/tabs/singles/shimmer_leather_lavender_right_bend.png",
+        "topViewLeftOne":"img/main/tabs/singles/shimmer_leather_lavender_left_bend.png",
+        "topViewLeftTwo":"img/main/tabs/singles/shimmer_leather_lavender_left_bend.png"
 	},
 {
 		"name": "lcd",
@@ -95,7 +99,11 @@
 		"tabOneImg": "img/main/tabs/singles/lcd-red-blank_clipped_rev_1.png",
 		"tabTwoImg": "img/main/tabs/singles/lcd-red-blank_clipped_rev_1.png",
 		"tabOneMainImg": "img/main/tabs/singles/lcd-red_1.jpg",
-		"tabTwoMainImg": "img/main/tabs/singles/lcd-red_2.jpg"
+		"tabTwoMainImg": "img/main/tabs/singles/lcd-red_2.jpg",
+        "topViewRightOne":"img/main/tabs/singles/lcd_red_blank_right_bend.png",
+        "topViewRightTwo":"img/main/tabs/singles/lcd_red_blank_right_bend.png",
+        "topViewLeftOne":"img/main/tabs/singles/lcd_red_blank_left_bend.png",
+        "topViewLeftTwo":"img/main/tabs/singles/lcd_red_blank_left_bend.png"
 	},
     {
         "name": "lcd",
@@ -106,7 +114,11 @@
         "tabOneImg": "img/main/tabs/singles/lcd-neon-yellow-blank_clipped_rev_1.png",
         "tabTwoImg": "img/main/tabs/singles/lcd-neon-yellow-blank_clipped_rev_1.png",
         "tabOneMainImg": "img/main/tabs/singles/lcd-red_1.jpg",
-        "tabTwoMainImg": "img/main/tabs/singles/lcd-red_2.jpg"
+        "tabTwoMainImg": "img/main/tabs/singles/lcd-red_2.jpg",
+        "topViewRightOne":"img/main/tabs/singles/lcd_neon_yellow_blank_right_bend.png",
+        "topViewRightTwo":"img/main/tabs/singles/lcd_neon_yellow_blank_right_bend.png",
+        "topViewLeftOne":"img/main/tabs/singles/lcd_neon_yellow_blank_left_bend.png",
+        "topViewLeftTwo":"img/main/tabs/singles/lcd_neon_yellow_blank_left_bend.png"
     },
     {
         "name": "lcd",
@@ -117,7 +129,11 @@
         "tabOneImg": "img/main/tabs/singles/lcd-neon-orange-blank-1_clipped_rev_1.png",
         "tabTwoImg": "img/main/tabs/singles/lcd-neon-orange-blank-1_clipped_rev_1.png",
         "tabOneMainImg": "img/main/tabs/singles/lcd-red_1.jpg",
-        "tabTwoMainImg": "img/main/tabs/singles/lcd-red_2.jpg"
+        "tabTwoMainImg": "img/main/tabs/singles/lcd-red_2.jpg",
+        "topViewRightOne":"img/main/tabs/singles/lcd_neon_orange_blank_right_bend.png",
+        "topViewRightTwo":"img/main/tabs/singles/lcd_neon_orange_blank_right_bend.png",
+        "topViewLeftOne":"img/main/tabs/singles/lcd_neon_orange_blank_left_bend.png",
+        "topViewLeftTwo":"img/main/tabs/singles/lcd_neon_orange_blank_left_bend.png"
     },
     {
         "name": "lcd",
@@ -128,7 +144,11 @@
         "tabOneImg": "img/main/tabs/singles/lcd-neon-pink-blank-1_clipped_rev_1.png",
         "tabTwoImg": "img/main/tabs/singles/lcd-neon-pink-blank-1_clipped_rev_1.png",
         "tabOneMainImg": "img/main/tabs/singles/lcd-red_1.jpg",
-        "tabTwoMainImg": "img/main/tabs/singles/lcd-red_2.jpg"
+        "tabTwoMainImg": "img/main/tabs/singles/lcd-red_2.jpg",
+        "topViewRightOne":"img/main/tabs/singles/lcd_neon_pink_blank_right_bend.png",
+        "topViewRightTwo":"img/main/tabs/singles/lcd_neon_pink_blank_right_bend.png",
+        "topViewLeftOne":"img/main/tabs/singles/lcd_neon_pink_blank_left_bend.png",
+        "topViewLeftTwo":"img/main/tabs/singles/lcd_neon_pink_blank_left_bend.png"
     },
     {
         "name": "lcd",
@@ -139,6 +159,10 @@
         "tabOneImg": "img/main/tabs/singles/lcd-white-blank_clipped_rev_1.png",
         "tabTwoImg": "img/main/tabs/singles/lcd-white-blank_clipped_rev_1.png",
         "tabOneMainImg": "img/main/tabs/singles/lcd-red_1.jpg",
-        "tabTwoMainImg": "img/main/tabs/singles/lcd-red_2.jpg"
+        "tabTwoMainImg": "img/main/tabs/singles/lcd-red_2.jpg",
+        "topViewRightOne":"img/main/tabs/singles/lcd_white_blank_right_bend.png",
+        "topViewRightTwo":"img/main/tabs/singles/lcd_white_blank_right_bend.png",
+        "topViewLeftOne":"img/main/tabs/singles/lcd_white_blank_left_bend.png",
+        "topViewLeftTwo":"img/main/tabs/singles/lcd_white_blank_left_bend.png"
     }
 ]

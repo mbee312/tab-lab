@@ -242,8 +242,8 @@
           var tab_image_bot_left = new Image();
           var tab_image_top_right = new Image();
           var tab_image_bot_right = new Image();
-          var tabWidth = 161;
-          var tabHeight = 81;
+          var tabWidth = $scope.shoeSelected[0]["topViewTabWidth"];
+          var tabHeight = $scope.shoeSelected[0]["topViewTabHeight"];
 
 
             /** Left Shoe tabs **/
