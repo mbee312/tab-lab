@@ -239,8 +239,8 @@
           this.clearImage(topViewTabCanvas,tptabcontext );
 
           var tab_image = new Image();
-          var tabWidth = 275;
-          var tabHeight = 75;
+          var tabWidth = 161;
+          var tabHeight = 81;
 
           var topOneXOffset = $scope.shoeSelected[0]["topViewLeftShoeTopTabOneXOffset"];
           var topOneYOffset = $scope.shoeSelected[0]["topViewLeftShoeTopTabOneYOffset"];
@@ -258,13 +258,13 @@
           var botTwoYOffset = $scope.shoeSelected[0]["topViewLeftShoeBottomTabTwoYOffset"];
           var botTwoRotation = $scope.shoeSelected[0]["topViewLeftShoeBottomTabTwoRotationL"];
           */
-          tab_image.src = $scope.tabLT[0]["tabOneImg"];
+          tab_image.src = $scope.tabLT[0]["topViewLeftOne"];
           this.drawRotated(topOneRotation,topViewTabCanvas,tptabcontext,tab_image, topOneXOffset, topOneYOffset, tabWidth, tabHeight);
-          console.log("drawLeftTabProfileImage top is set!");
+          console.log("drawTopTabsViewImage top is set!");
 
-          tab_image.src = $scope.tabLT[0]["tabTwoImg"];
+          tab_image.src = $scope.tabLT[0]["topViewLeftTwo"];
           this.drawRotated(botOneRotation,topViewTabCanvas,tptabcontext,tab_image, botOneXOffset, botOneYOffset, tabWidth, tabHeight);
-          console.log("drawLeftTabProfileImage bottom is set!");
+          console.log("drawTopTabsViewImage bottom is set!");
 
 
       }; //end drawTopTabsViewImage()

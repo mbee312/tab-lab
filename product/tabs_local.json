@@ -30,7 +30,11 @@
 		"tabOneImg": "img/main/tabs/singles/camo-green_clipped_rev_1.png",
 		"tabTwoImg": "img/main/tabs/singles/camo-green_clipped_rev_1.png",
 		"tabOneMainImgPairShotView": "img/main/tabs/singles/camo-green_1.jpg",
-		"tabTwoMainImgPairShotView": "img/main/tabs/singles/camo-green_2.jpg"
+		"tabTwoMainImgPairShotView": "img/main/tabs/singles/camo-green_2.jpg",
+        "topViewRightOne":"img/main/tabs/singles/camo_green_right_bend.png",
+        "topViewRightTwo":"img/main/tabs/singles/camo_green_right_bend.png",
+        "topViewLeftOne":"img/main/tabs/singles/camo_green_left_bend.png",
+        "topViewLeftTwo":"img/main/tabs/singles/camo_green_left_bend.png"
 	},
 	{
 		"name": "camo",
@@ -41,7 +45,11 @@
 		"tabOneImg": "img/main/tabs/singles/camo-red_clipped_rev_2.png",
 		"tabTwoImg": "img/main/tabs/singles/camo-red_clipped_rev_2.png",
 		"tabOneMainImgPairShotView": "img/main/tabs/singles/pair-shot/red-camo.png",
-		"tabTwoMainImgPairShotView": "img/main/tabs/singles/pair-shot/red-camo.png"
+		"tabTwoMainImgPairShotView": "img/main/tabs/singles/pair-shot/red-camo.png",
+        "topViewRightOne":"img/main/tabs/singles/camo_red_right_bend.png",
+        "topViewRightTwo":"img/main/tabs/singles/camo_red_right_bend.png",
+        "topViewLeftOne":"img/main/tabs/singles/camo_red_left_bend.png",
+        "topViewLeftTwo":"img/main/tabs/singles/camo_red_left_bend.png"
 	},
 	{
 		"name": "camo",

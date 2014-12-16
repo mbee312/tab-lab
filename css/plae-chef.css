@@ -155,6 +155,10 @@ ul.plae.basket.list {
     .canvas.tcanvas {
         z-index: 29;
     }
+
+    canvas#plae-chef-canvas-tab-top {
+        z-index: 31;
+    }
     .canvas.container {
         width: 1014px;
         height: 512px;
