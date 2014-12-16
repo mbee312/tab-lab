@@ -238,33 +238,64 @@
       this.drawTopTabsViewImage = function (){
           this.clearImage(topViewTabCanvas,tptabcontext );
 
-          var tab_image = new Image();
+          var tab_image_top_left = new Image();
+          var tab_image_bot_left = new Image();
+          var tab_image_top_right = new Image();
+          var tab_image_bot_right = new Image();
           var tabWidth = 161;
           var tabHeight = 81;
 
-          var topOneXOffset = $scope.shoeSelected[0]["topViewLeftShoeTopTabOneXOffset"];
-          var topOneYOffset = $scope.shoeSelected[0]["topViewLeftShoeTopTabOneYOffset"];
-          var topOneRotation = $scope.shoeSelected[0]["topViewLeftShoeTopTabOneRotationL"];
 
-          var botOneXOffset = $scope.shoeSelected[0]["topViewLeftShoeBottomTabOneXOffset"];
-          var botOneYOffset = $scope.shoeSelected[0]["topViewLeftShoeBottomTabOneYOffset"];
-          var botOneRotation = $scope.shoeSelected[0]["topViewLeftShoeBottomTabOneRotationL"];
- /*
-          var topTwoXOffset = $scope.shoeSelected[0]["topViewLeftShoeTopTabTwoXOffset"];
-          var topTwoYOffset = $scope.shoeSelected[0]["topViewLeftShoeTopTabTwoYOffset"];
-          var topTwoRotation = $scope.shoeSelected[0]["topViewLeftShoeTopTabTwoRotationL"];
+            /** Left Shoe tabs **/
+          var topXOffsetL = $scope.shoeSelected[0]["topViewLeftShoeTopTabXOffset"];
+          var topYOffsetL = $scope.shoeSelected[0]["topViewLeftShoeTopTabYOffset"];
+          var topRotationL = $scope.shoeSelected[0]["topViewLeftShoeTopTabRotation"];
 
-          var botTwoXOffset = $scope.shoeSelected[0]["topViewLeftShoeBottomTabTwoXOffset"];
-          var botTwoYOffset = $scope.shoeSelected[0]["topViewLeftShoeBottomTabTwoYOffset"];
-          var botTwoRotation = $scope.shoeSelected[0]["topViewLeftShoeBottomTabTwoRotationL"];
-          */
-          tab_image.src = $scope.tabLT[0]["topViewLeftOne"];
-          this.drawRotated(topOneRotation,topViewTabCanvas,tptabcontext,tab_image, topOneXOffset, topOneYOffset, tabWidth, tabHeight);
-          console.log("drawTopTabsViewImage top is set!");
+          var botXOffsetL = $scope.shoeSelected[0]["topViewLeftShoeBottomTabXOffset"];
+          var botYOffsetL = $scope.shoeSelected[0]["topViewLeftShoeBottomTabYOffset"];
+          var botRotationL = $scope.shoeSelected[0]["topViewLeftShoeBottomTabRotation"];
 
-          tab_image.src = $scope.tabLT[0]["topViewLeftTwo"];
-          this.drawRotated(botOneRotation,topViewTabCanvas,tptabcontext,tab_image, botOneXOffset, botOneYOffset, tabWidth, tabHeight);
-          console.log("drawTopTabsViewImage bottom is set!");
+          tab_image_top_left.onload = function () {
+              tptabcontext.drawImage(tab_image_top_left, topXOffsetL, topYOffsetL, tabWidth, tabHeight);
+              //this.drawRotated(topRotation,topViewTabCanvas,tptabcontext,tab_image_top, topXOffset, topYOffset, tabWidth, tabHeight);
+              console.log("drawTopTabsViewImage top is set!");
+          };
+          tab_image_top_left.src = $scope.tabLT[0]["topViewLeftOne"];
+
+          tab_image_bot_left.onload = function () {
+              tptabcontext.drawImage(tab_image_bot_left, botXOffsetL, botYOffsetL, tabWidth, tabHeight);
+              //this.drawRotated(botRotation,topViewTabCanvas,tptabcontext,tab_image_bot, botXOffset, botYOffset, tabWidth, tabHeight);
+              console.log("drawTopTabsViewImage bottom is set!");
+
+          };
+          tab_image_bot_left.src = $scope.tabLT[0]["topViewLeftTwo"];
+
+
+          /** Right Shoe tabs **/
+
+          var topXOffsetR = $scope.shoeSelected[0]["topViewRightShoeTopTabXOffset"];
+          var topYOffsetR = $scope.shoeSelected[0]["topViewRightShoeTopTabYOffset"];
+          var topRotationR = $scope.shoeSelected[0]["topViewRightShoeTopTabRotation"];
+
+          var botXOffsetR = $scope.shoeSelected[0]["topViewRightShoeBottomTabXOffset"];
+          var botYOffsetR = $scope.shoeSelected[0]["topViewRightShoeBottomTabYOffset"];
+          var botRotationR = $scope.shoeSelected[0]["topViewRightShoeBottomTabRotation"];
+
+          tab_image_top_right.onload = function () {
+              tptabcontext.drawImage(tab_image_top_right, topXOffsetR, topYOffsetR, tabWidth, tabHeight);
+              console.log("drawTopTabsViewImage top is set!");
+          };
+          tab_image_top_right.src = $scope.tabLT[0]["topViewRightOne"];
+
+          tab_image_bot_right.onload = function () {
+              tptabcontext.drawImage(tab_image_bot_right, botXOffsetR, botYOffsetR, tabWidth, tabHeight);
+              console.log("drawTopTabsViewImage bottom is set!");
+
+          };
+          tab_image_bot_right.src = $scope.tabLT[0]["topViewRightTwo"];
+
+
+
 
 
       }; //end drawTopTabsViewImage()
@@ -413,6 +444,7 @@
 
           // we’re done with the rotating so restore the unrotated context
           ctx.restore();
+          ctx.save();
       }; //end drawRotated()
 
       this.isShoeSelected = function (){
