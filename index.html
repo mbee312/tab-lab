@@ -61,22 +61,22 @@
                   <div class="tabs-menu left effect6">
                   <ul class="tab-styles-list">
                       <li class='tab-list' ng-repeat="tab in tabList" ng-model="tabs" class='tabs-menu' id="left-{{tab.id}}">
-                          <a href ng-click="plaeChef.addTab(tab, $event)"><img ng-src="{{ tab.menuImg }}"/></a>
+                          <a href ng-click="plaeChef.addTab(tab, 'left', $event)"><img ng-src="{{ tab.menuImg }}"/></a>
                       </li>
 
                   </ul>
               </div>
 
-                  <!--
+
                   <div class="tabs-menu right effect6">
                       <ul class="tab-styles-list">
                           <li class='tab-list' ng-repeat="tab in tabList" ng-model="tabs" class='tabs-menu' id="right-{{tab.id}}">
-                              <a href ng-click="plaeChef.addTab(tab, $event)"><img ng-src="{{ tab.menuImg }}"/></a>
+                              <a href ng-click="plaeChef.addTab(tab, 'right', $event)"><img ng-src="{{ tab.menuImg }}"/></a>
                           </li>
 
                       </ul>
                   </div>
-                  -->
+
 
               </div> <!--End tabs-->
 
@@ -88,15 +88,20 @@
 
 
                 <div class="canvas container">
-                <canvas class='canvas' id="plae-chef-canvas" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('default')"></canvas>
+              <!--  <canvas class='canvas' id="plae-chef-canvas" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('default')"></canvas>
               <canvas class='canvas' id="plae-chef-canvas-pair" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('pair')"></canvas>
               <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-pair" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('pair')"></canvas>
-              <canvas class='canvas' id="plae-chef-canvas-left" ng-swipe-right="plaeChef.setCanvas('default')" ng-swipe-left="plaeChef.setCanvas('top')" ng-show="plaeChef.isCanvasSet('left')"></canvas>
-              <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-left" ng-swipe-right="plaeChef.setCanvas('default')" ng-swipe-left="plaeChef.setCanvas('top')" ng-show="plaeChef.isCanvasSet('left')"></canvas>
-              <canvas class='canvas' id="plae-chef-canvas-top" ng-swipe-right="plaeChef.setCanvas('left')" ng-swipe-left="plaeChef.setCanvas('right')" ng-show="plaeChef.isCanvasSet('top')"></canvas>
-                <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-top" ng-swipe-right="plaeChef.setCanvas('left')" ng-swipe-left="plaeChef.setCanvas('right')" ng-show="plaeChef.isCanvasSet('top')"></canvas>
-              <canvas class='canvas' id="plae-chef-canvas-right" ng-swipe-right="plaeChef.setCanvas('top')" ng-swipe-left="plaeChef.setCanvas('default')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
-              <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-right" ng-swipe-right="plaeChef.setCanvas('top')" ng-swipe-left="plaeChef.setCanvas('default')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
+              -->
+                    <canvas class='canvas' id="plae-chef-canvas-left" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('top')" ng-show="plaeChef.isCanvasSet('left')"></canvas>
+              <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-left" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('top')" ng-show="plaeChef.isCanvasSet('left')"></canvas>
+
+                    <canvas class='canvas' id="plae-chef-canvas-top" ng-swipe-right="plaeChef.setCanvas('left')" ng-swipe-left="plaeChef.setCanvas('right')" ng-show="plaeChef.isCanvasSet('top')"></canvas>
+                    <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-top" ng-swipe-right="plaeChef.setCanvas('left')" ng-swipe-left="plaeChef.setCanvas('right')" ng-show="plaeChef.isCanvasSet('top')"></canvas>
+
+
+                    <canvas class='canvas' id="plae-chef-canvas-right" ng-swipe-right="plaeChef.setCanvas('top')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
+                    <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-right" ng-swipe-right="plaeChef.setCanvas('top')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
+
 
               <div id="white-bg"></div>
               <button class="waves-effect waves-button waves-light waves-float" id="reset-button" ng-click="plaeChef.clearSelections()" style="background: #ff0008;color: #fff;">
@@ -104,9 +109,9 @@
               </button>
 
               <div class="view buttons">
-                  <button class="waves-effect waves-button waves-light waves-float" id="default-button" ng-click="plaeChef.setCanvas('default')" style="background: #0d39ff;color: #fff;">
+              <!--    <button class="waves-effect waves-button waves-light waves-float" id="default-button" ng-click="plaeChef.setCanvas('default')" style="background: #0d39ff;color: #fff;">
                       Left & Right
-                  </button>
+                  </button> -->
                   <button class="waves-effect waves-button waves-light waves-float" id="left-profile-button" ng-click="plaeChef.setCanvas('left')" style="background: #01BCFF;color: #fff;">
                       Left
                   </button>
