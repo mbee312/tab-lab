@@ -6,10 +6,6 @@
 
 
   plaeChefApp.controller('PlaeChefController', ['$scope', '$http', function($scope, $http){
-      $scope.list1 = [];
-      $scope.list2 = [];
-      $scope.list3 = [];
-      $scope.list4 = [];
 
       /* canvas for each main view */
 /*
@@ -49,32 +45,32 @@
     canvas.style.height=512;//actual height of canvas
       */
 
-      topViewCanvas.width=1014;//horizontal resolution (?) - increase for better looking text
+      topViewCanvas.width=700;//horizontal resolution (?) - increase for better looking text
       topViewCanvas.height=512;//vertical resolution (?) - increase for better looking text
       topViewCanvas.style.width=512;//actual width of canvas
       topViewCanvas.style.height=512;//actual height of canvas
 
-      topViewTabCanvas.width=1014;//horizontal resolution (?) - increase for better looking text
+      topViewTabCanvas.width=660;//horizontal resolution (?) - increase for better looking text
       topViewTabCanvas.height=512;//vertical resolution (?) - increase for better looking text
       topViewTabCanvas.style.width=512;//actual width of canvas
       topViewTabCanvas.style.height=512;//actual height of canvas
 
-      leftProfileCanvas.width=1014;//horizontal resolution (?) - increase for better looking text
+      leftProfileCanvas.width=660;//horizontal resolution (?) - increase for better looking text
       leftProfileCanvas.height=512;//vertical resolution (?) - increase for better looking text
       leftProfileCanvas.style.width=512;//actual width of canvas
       leftProfileCanvas.style.height=512;//actual height of canvas
 
-      leftProfileTabCanvas.width=1014;//horizontal resolution (?) - increase for better looking text
+      leftProfileTabCanvas.width=660;//horizontal resolution (?) - increase for better looking text
       leftProfileTabCanvas.height=512;//vertical resolution (?) - increase for better looking text
       leftProfileTabCanvas.style.width=512;//actual width of canvas
       leftProfileTabCanvas.style.height=512;//actual height of canvas
 
-      rightProfileCanvas.width=1014;//horizontal resolution (?) - increase for better looking text
+      rightProfileCanvas.width=660;//horizontal resolution (?) - increase for better looking text
       rightProfileCanvas.height=512;//vertical resolution (?) - increase for better looking text
       rightProfileCanvas.style.width=512;//actual width of canvas
       rightProfileCanvas.style.height=512;//actual height of canvas
 
-      rightProfileTabCanvas.width=1014;//horizontal resolution (?) - increase for better looking text
+      rightProfileTabCanvas.width=660;//horizontal resolution (?) - increase for better looking text
       rightProfileTabCanvas.height=512;//vertical resolution (?) - increase for better looking text
       rightProfileTabCanvas.style.width=512;//actual width of canvas
       rightProfileTabCanvas.style.height=512;//actual height of canvas
@@ -179,8 +175,11 @@
 
           if($scope.shoeSelected.length>0){
               this.setViews();
-          }
-          this.setTabViews(side);
+              this.setTabViews(side);
+          }else{
+              console.log("no shoe selected");
+          }// end-if
+
       }; //end addTab()
 
       this.setViews = function(){
@@ -240,22 +239,22 @@
           var left_image = new Image();
           if (this.isTabSelected()) {
               right_image.onload = function () {
-                  tpcontext.drawImage(right_image, 520, 0, 240, 469);
+                  tpcontext.drawImage(right_image, 320, 0, 240, 469);
               };
               right_image.src = $scope.shoeSelected[0]["mainViewTopRightNoTab"];
 
               left_image.onload = function () {
-                  tpcontext.drawImage(left_image, 300, 0, 240, 469);
+                  tpcontext.drawImage(left_image, 100, 0, 240, 469);
               };
               left_image.src = $scope.shoeSelected[0]["mainViewTopLeftNoTab"];
           }else{
               right_image.onload = function () {
-                  tpcontext.drawImage(right_image, 520, 0, 240, 469);
+                  tpcontext.drawImage(right_image, 320, 0, 240, 469);
               };
               right_image.src = $scope.shoeSelected[0]["mainViewTopRight"];
 
               left_image.onload = function () {
-                  tpcontext.drawImage(left_image, 300, 0, 240, 469);
+                  tpcontext.drawImage(left_image, 100, 0, 240, 469);
               };
               left_image.src = $scope.shoeSelected[0]["mainViewTopLeft"];
           }
@@ -301,13 +300,13 @@
                   /** Draw Left Shoe tabs **/
 
                   tab_image_top_left.onload = function () {
-                      tptabcontext.drawImage(tab_image_top_left, topXOffsetL, topYOffsetL, tabWidth, tabHeight);
+                      tptabcontext.drawImage(tab_image_top_left, topXOffsetL-200, topYOffsetL, tabWidth, tabHeight);
                       console.log("drawTopTabsViewImage top is set!");
                   };
                   tab_image_top_left.src = $scope.tabLeft[0]["topViewLeftOne"];
 
                   tab_image_bot_left.onload = function () {
-                      tptabcontext.drawImage(tab_image_bot_left, botXOffsetL, botYOffsetL, tabWidth, tabHeight);
+                      tptabcontext.drawImage(tab_image_bot_left, botXOffsetL-200, botYOffsetL, tabWidth, tabHeight);
                       console.log("drawTopTabsViewImage bottom is set!");
                   };
                   tab_image_bot_left.src = $scope.tabLeft[0]["topViewLeftTwo"];
@@ -317,13 +316,13 @@
                   /** Draw Right Shoe tabs **/
 
                   tab_image_top_right.onload = function () {
-                      tptabcontext.drawImage(tab_image_top_right, topXOffsetR, topYOffsetR, tabWidth, tabHeight);
+                      tptabcontext.drawImage(tab_image_top_right, topXOffsetR-200, topYOffsetR, tabWidth, tabHeight);
                       console.log("drawTopTabsViewImage top is set!");
                   };
                   tab_image_top_right.src = $scope.tabRight[0]["topViewRightOne"];
 
                   tab_image_bot_right.onload = function () {
-                      tptabcontext.drawImage(tab_image_bot_right, botXOffsetR, botYOffsetR, tabWidth, tabHeight);
+                      tptabcontext.drawImage(tab_image_bot_right, botXOffsetR-200, botYOffsetR, tabWidth, tabHeight);
                       console.log("drawTopTabsViewImage bottom is set!");
 
                   };
@@ -348,13 +347,13 @@
           var base_image = new Image();
           if (this.isTabSelected()) {
               base_image.onload = function(){
-                  lpcontext.drawImage(base_image, 210, 110, 600, 307);
+                  lpcontext.drawImage(base_image, 10, 110, 600, 307);
               };
               base_image.src = $scope.shoeSelected[0]["mainViewLeftProfileNoTab"];
               console.log("drawLeftProfileImage mainViewLeftProfileNoTab set!");
           }else{
               base_image.onload = function(){
-                  lpcontext.drawImage(base_image, 210, 110, 600, 307);
+                  lpcontext.drawImage(base_image, 10, 110, 600, 307);
               };
               base_image.src = $scope.shoeSelected[0]["mainViewLeftProfile"];
               console.log("drawLeftProfileImage mainViewLeftProfile set!");
@@ -369,13 +368,13 @@
           var base_image = new Image();
           if (this.isTabSelected()) {
               base_image.onload = function(){
-                  rpcontext.drawImage(base_image, 240, 110, 600, 307);
+                  rpcontext.drawImage(base_image, 40, 110, 600, 307);
               };
               base_image.src = $scope.shoeSelected[0]["mainViewRightProfileNoTab"];
               console.log("drawRightProfileImage mainViewRightProfileNoTab set!");
           }else{
               base_image.onload = function(){
-                  rpcontext.drawImage(base_image, 240, 110, 600, 307);
+                  rpcontext.drawImage(base_image, 40, 110, 600, 307);
               };
               base_image.src = $scope.shoeSelected[0]["mainViewRightProfile"];
               console.log("drawRightProfileImage mainViewRightProfile set!");
@@ -398,11 +397,11 @@
           var botRotation = $scope.shoeSelected[0]["profileBotRotationL"];
 
           tab_image.src = $scope.tabLeft[0]["tabOneImg"];
-          this.drawRotated(topRotation,leftProfileTabCanvas,lptabcontext,tab_image, topXOffset, topYOffset, tabWidth, tabHeight);
+          this.drawRotated(topRotation,leftProfileTabCanvas,lptabcontext,tab_image, topXOffset-200, topYOffset, tabWidth, tabHeight);
           console.log("drawLeftTabProfileImage top is set!");
 
           tab_image.src = $scope.tabLeft[0]["tabTwoImg"];
-          this.drawRotated(botRotation,leftProfileTabCanvas,lptabcontext,tab_image, botXOffset, botYOffset, tabWidth, tabHeight);
+          this.drawRotated(botRotation,leftProfileTabCanvas,lptabcontext,tab_image, botXOffset-200, botYOffset, tabWidth, tabHeight);
           console.log("drawLeftTabProfileImage bottom is set!");
       }; // end drawLeftTabsProfileViewImage
 
@@ -422,11 +421,11 @@
           var botRotation = $scope.shoeSelected[0]["profileBotRotationR"];
 
           tab_image.src = $scope.tabRight[0]["tabOneImg"];
-          this.drawRotated(topRotation,rightProfileTabCanvas,rptabcontext,tab_image, topXOffset, topYOffset, tabWidth, tabHeight);
+          this.drawRotated(topRotation,rightProfileTabCanvas,rptabcontext,tab_image, topXOffset-200, topYOffset, tabWidth, tabHeight);
           console.log("drawRightTabProfileImage top is set!");
 
           tab_image.src = $scope.tabRight[0]["tabTwoImg"];
-          this.drawRotated(botRotation,rightProfileTabCanvas,rptabcontext,tab_image, botXOffset, botYOffset, tabWidth, tabHeight);
+          this.drawRotated(botRotation,rightProfileTabCanvas,rptabcontext,tab_image, botXOffset-200, botYOffset, tabWidth, tabHeight);
           console.log("drawRightTabProfileImage bottom is set!");
       }; // end drawRightTabsProfileViewImage
 

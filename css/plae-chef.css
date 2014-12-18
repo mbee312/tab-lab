@@ -69,7 +69,7 @@ pre {
     }
 
     .shop-menu {
-        height: 762px;
+        height: 860px;
         width: 230px;
         position: absolute;
         /* IE10 Consumer Preview */
@@ -139,7 +139,7 @@ ul.plae.basket.list {
       opacity: 1;
       display: inline-block;
       margin-bottom: 10px;
-      margin-left: 240px;
+      margin-left: 440px;
         top: 350px;
       /* box shadow */
       /*  border-radius: 5px;
@@ -165,7 +165,7 @@ ul.plae.basket.list {
     }
 
     #white-bg{
-        width:1014px;
+        width:660px;
         height: 512px;
         z-index: 0;
         position: absolute;
@@ -181,7 +181,7 @@ ul.plae.basket.list {
         /*  width: 727px;
           height: 512px; */
         margin-bottom: 10px;
-        margin-left: 240px;
+        margin-left: 440px;
         top: 350px;
         background: #ffffff;
     }
@@ -585,8 +585,8 @@ ul.plae.basket.list {
 
 
     button.waves-effect.waves-button.waves-light.waves-float{
-        top: 790px;
-        left: 640px;
+        top: 800px;
+        left: 700px;
         z-index: 79;
     }
 

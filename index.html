@@ -33,14 +33,23 @@
                   </div>
               <div class="plae basket tabs" ng-show="plaeChef.isTabSelected()">
                   <h3 id="tabs-h3">tabs selected:</h3>
-                  <ul class="plae basket list">
-                      <li class="plae basket list item" ng-repeat="tab in tabs track by $index">
-                          <p>name: {{tab.name}} </br>
-                              color: {{tab.color}}</br>
-                              id: {{tab.id}}</br>
-                              sku number: {{tab.sku}}</p>
-                      </li>
-                  </ul>
+                  <h5 id="tabs-h3">left</h5>
+
+                      <div class="plae basket left item" ng-model="tabs" ng-repeat="tabL in tabLeft track by $index">
+                          <p>name: {{tabL.name}} </br>
+                              color: {{tabL.color}}</br>
+                              id: {{tabL.id}}</br>
+                              sku number: {{tabL.sku}}</p>
+                      </div>
+                  <h5 id="tabs-h3">right</h5>
+
+                  <div class="plae basket right item" ng-model="tabs" ng-repeat="tabR in tabRight track by $index">
+                      <p>name: {{tabR.name}} </br>
+                          color: {{tabR.color}}</br>
+                          id: {{tabR.id}}</br>
+                          sku number: {{tabR.sku}}</p>
+                  </div>
+
               </div>
           </div>
       </div>
@@ -105,7 +114,7 @@
 
               <div id="white-bg"></div>
               <button class="waves-effect waves-button waves-light waves-float" id="reset-button" ng-click="plaeChef.clearSelections()" style="background: #ff0008;color: #fff;">
-                  clear selections
+                  clear all selections
               </button>
 
               <div class="view buttons">
