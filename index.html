@@ -20,40 +20,10 @@
 <body ng-controller="PlaeChefController as plaeChef">
 
       <div ng-view class="view-frame plae-chef-window">
+
       <div class="shop-menu">
-      <div class="logo"><img src="img/logo.png"></div>
-          <div class="plae basket" id="plae-basket">
-                  <div class="plae basket shoe" ng-repeat="shoe in shoeSelected" ng-model="shoeSelected" ng-show="plaeChef.isShoeSelected()">
-                      <h3>shoe selected:</h3>
-                      <p>name: {{shoe.name}} </br>
-                      color: {{shoe.color}}</br>
-                      id: {{shoe.id}}</br>
-                      number of tabs: {{shoe["number of tabs"]}}</br>
-                      sku number: {{shoe.sku}}</p>
-                  </div>
-              <div class="plae basket tabs" ng-show="plaeChef.isTabSelected()">
-                  <h3 id="tabs-h3">tabs selected:</h3>
-                  <h5 id="tabs-h3">left</h5>
-
-                      <div class="plae basket left item" ng-model="tabs" ng-repeat="tabL in tabLeft track by $index">
-                          <p>name: {{tabL.name}} </br>
-                              color: {{tabL.color}}</br>
-                              id: {{tabL.id}}</br>
-                              sku number: {{tabL.sku}}</p>
-                      </div>
-                  <h5 id="tabs-h3">right</h5>
-
-                  <div class="plae basket right item" ng-model="tabs" ng-repeat="tabR in tabRight track by $index">
-                      <p>name: {{tabR.name}} </br>
-                          color: {{tabR.color}}</br>
-                          id: {{tabR.id}}</br>
-                          sku number: {{tabR.sku}}</p>
-                  </div>
-
-              </div>
-          </div>
+          <div class="logo"><img src="img/logo.png"></div>
       </div>
-
 
               <div class="styles-menu-container" id="tabs">
 
@@ -95,6 +65,10 @@
                   <div class='tab large bottom' ng-repeat="tab in tabLB track by $index"><img ng-src="{{ tab.tabTwoImg }}"/></div>
               </div>
 
+      <div class="plae size" id="plae-size">
+
+      </div>
+
 
                 <div class="canvas container">
               <!--  <canvas class='canvas' id="plae-chef-canvas" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('default')"></canvas>
@@ -132,6 +106,29 @@
                   </button>
               </div>
       </div>
+          <div class="plae basket" id="plae-basket">
+
+              <div class="plae basket shoe" ng-repeat="shoe in shoeSelected" ng-model="shoeSelected">
+                  <p>{{shoe.name}} - {{shoe.color}} <span class="price">{{shoe.price | currency}}</span></p>
+
+              </div>
+
+                  <div class="plae basket left" ng-model="tabs" ng-repeat="tabL in tabLeft track by $index">
+                      <p>{{tabL.name}} - <span class="color">{{tabL.color}}</span><span class="price">{{tabL.price | currency}}</span></p>
+
+                  </div>
+
+                  <div class="plae basket right" ng-model="tabs" ng-repeat="tabR in tabRight track by $index">
+                      <p>{{tabR.name}} - <span class="color">{{tabR.color}}</span><span class="price">{{tabR.price | currency}}</span></p>
+                  </div>
+
+              <hr width="70%" size="1">
+              <div class="plae basket subtotal" id="subtotal">
+                  <p>subtotal <span class="price subtotal">{{plaeChef.getSubTotal() | currency}}</span></p>
+              </div>
+          </div>
+
+
               <!-- Sizer integration -->
 
               <div id="shoesizer_desc_content">
