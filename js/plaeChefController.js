@@ -98,6 +98,7 @@
       $scope.shoeSelected = [];
       $scope.basket =[];
       $scope.subTotal = 0;
+      $scope.editMode = true;
 
       $scope.hideMeLT = function() {
           return $scope.tabLT.length > 0;
@@ -467,22 +468,31 @@
       /* end canvas view logic code */
 
       this.clearSelections = function (){
-          if($scope.shoeSelected.length > 0)
-          {
-              console.log("popped " + $scope.shoeSelected.pop().name);
-          }
-          while($scope.tabs.length > 0 ){
-              console.log("popped " + $scope.tabs.pop().name + " from tabs");
-          }
-      /*    this.clearImage(canvas,context ); */
-          this.clearImage(topViewCanvas,tpcontext );
-          this.clearImage(leftProfileCanvas,lpcontext );
-          this.clearImage(rightProfileCanvas,rpcontext );
-          this.clearImage(topViewTabCanvas,tptabcontext );
-          this.clearImage(leftProfileTabCanvas,lptabcontext );
-          this.clearImage(rightProfileTabCanvas,rptabcontext );
-          this.canvasView = "top";
 
+          var areYouSure = confirm("Are you sure you want to clear all your hard work?");
+          if(areYouSure){
+              if($scope.shoeSelected.length > 0)
+              {
+                  $scope.subTotal -= $scope.shoeSelected[0].price;
+                  console.log("popped " + $scope.shoeSelected.pop().name);
+
+              }
+              while($scope.tabs.length > 0 ){
+                  console.log("popped " + $scope.tabs.pop().name + " from tabs");
+                  $scope.subTotal -= $scope.tabLeft[0].price;
+                  $scope.subTotal -= $scope.tabRight[0].price;
+                  console.log("popped " + $scope.tabLeft.pop().name + " from tabLeft");
+                  console.log("popped " + $scope.tabRight.pop().name + " from tabRight");
+              }
+          /*    this.clearImage(canvas,context ); */
+              this.clearImage(topViewCanvas,tpcontext );
+              this.clearImage(leftProfileCanvas,lpcontext );
+              this.clearImage(rightProfileCanvas,rpcontext );
+              this.clearImage(topViewTabCanvas,tptabcontext );
+              this.clearImage(leftProfileTabCanvas,lptabcontext );
+              this.clearImage(rightProfileTabCanvas,rptabcontext );
+              this.canvasView = "top";
+        }
       };
 
       this.drawRotated = function(degrees, cnvs, ctx, image, xOffset, yOffset, tabWidth, tabHeight){
@@ -518,7 +528,11 @@
 
       this.getSubTotal = function(){
           return $scope.subTotal;
-      }
+      };
+
+      this.isEditMode = function(){
+          return $scope.editMode;
+      };
 
   }]);
 

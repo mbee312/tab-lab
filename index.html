@@ -55,15 +55,7 @@
 
                       </ul>
                   </div>
-
-
               </div> <!--End tabs-->
-
-              <div class="draggable-tab-container">
-
-                  <div class='tab large top' ng-repeat="tab in tabLT track by $index"><img ng-src="{{ tab.tabOneImg }}"/></div>
-                  <div class='tab large bottom' ng-repeat="tab in tabLB track by $index"><img ng-src="{{ tab.tabTwoImg }}"/></div>
-              </div>
 
       <div class="plae size" id="plae-size">
 
@@ -251,7 +243,6 @@
 
       </div>
 
-
                 <div class="canvas container">
               <!--  <canvas class='canvas' id="plae-chef-canvas" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('default')"></canvas>
               <canvas class='canvas' id="plae-chef-canvas-pair" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('pair')"></canvas>
@@ -269,14 +260,12 @@
 
 
               <div id="white-bg"></div>
-              <button class="waves-effect waves-button waves-light waves-float" id="reset-button" ng-click="plaeChef.clearSelections()" style="background: #ff0008;color: #fff;">
-                  clear all selections
-              </button>
 
               <div class="view buttons">
               <!--    <button class="waves-effect waves-button waves-light waves-float" id="default-button" ng-click="plaeChef.setCanvas('default')" style="background: #0d39ff;color: #fff;">
                       Left & Right
                   </button> -->
+
                   <button class="waves-effect waves-button waves-light waves-float" id="left-profile-button" ng-click="plaeChef.setCanvas('left')" style="background: #01BCFF;color: #fff;">
                       Left
                   </button>
@@ -286,6 +275,7 @@
                   <button class="waves-effect waves-button waves-light waves-float" id="right-profile-button" ng-click="plaeChef.setCanvas('right')" style="background: #ff6f03;color: #fff;">
                       Right
                   </button>
+
               </div>
       </div>
           <div class="plae basket" id="plae-basket">
@@ -295,12 +285,12 @@
 
               </div>
 
-                  <div class="plae basket left" ng-model="tabs" ng-repeat="tabL in tabLeft track by $index">
+                  <div class="plae basket left" ng-model="tabs" ng-model="tabLeft" ng-repeat="tabL in tabLeft track by $index">
                       <p>{{tabL.name}} - <span class="color">{{tabL.color}}</span><span class="price">{{tabL.price | currency}}</span></p>
 
                   </div>
 
-                  <div class="plae basket right" ng-model="tabs" ng-repeat="tabR in tabRight track by $index">
+                  <div class="plae basket right" ng-model="tabs" ng-model="tabRight" ng-repeat="tabR in tabRight track by $index">
                       <p>{{tabR.name}} - <span class="color">{{tabR.color}}</span><span class="price">{{tabR.price | currency}}</span></p>
                   </div>
 
@@ -308,6 +298,11 @@
               <div class="plae basket subtotal" id="subtotal">
                   <p>subtotal <span class="price subtotal">{{plaeChef.getSubTotal() | currency}}</span></p>
               </div>
+
+              <button class="waves-effect waves-button waves-light waves-float" id="reset-button" ng-click="plaeChef.clearSelections()" ng-show="plaeChef.isEditMode()" style="background: #ff0008;color: #fff;">
+                  clear all selections
+              </button>
+
           </div>
 
 
