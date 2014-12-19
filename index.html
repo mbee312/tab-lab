@@ -67,6 +67,188 @@
 
       <div class="plae size" id="plae-size">
 
+          <!-- Sizer integration -->
+
+          <div id="shoesizer_desc_content">
+
+              <a href="shoesizer://start" onclick="startLiveDemo();" style="text-decoration: none; color: #fff;"><div id="startShoeSizerButton" style="text-align:center; width: 320px; padding:10px; cursor: pointer; cursor: hand; background:rgb(69, 127, 64);  border-radius: 5px; box-shadow: 0px 3px 0px rgb(50, 93, 47);" class="button btn-cart"><p style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">get a perfect fit with fit-n-PLAE</p></div></a>
+
+              <div id="shoesizer_desc_measurements_and_fit" style="display:none; margin-bottom: 10px;"><div style="width:100%; float: left;"><p style="font-family: 'CenturyGothicStd'; font-size:12pt; line-height: 12pt; margin-bottom: 10px; color: #999;">your measurements</p><div style="padding:20px; background:rgb(69, 127, 64); display: inline-block;  border-radius: 5px;"><p style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">Size: <span id="shoesizer_desc_measurements_size" style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff; font-weight: bold">US 10</span><br>Tab size: <span id="shoesizer_desc_measurements_tab" style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff; font-weight: bold">L</span><br><br></p><p style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">Length: <span id="shoesizer_desc_measurements_length"  style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">11.5</span>"<br>Width: <span id="shoesizer_desc_measurements_width" style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">8.4</span>"<br>Girth: <span id="shoesizer_desc_measurements_girth" style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">9.1</span>"</p></div><br><br><div style="text-align:center; padding:10px; cursor: pointer; cursor: hand; background:rgb(69, 127, 64);  border-radius: 5px; box-shadow: 0px 3px 0px rgb(50, 93, 47);" onclick="toggleStartShoeSizerButton()" class="button btn-cart"><p style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">measure again</p></div></div><div style="width:50%; float: left;"><!--p style="font-family: 'CenturyGothicStd'; font-size: 24pt; line-height: 24pt; margin-top: 40px; margin-bottom: 10px; color: #000;">Your fit</p><img src="http://volumental-django-static.s3.amazonaws.com/img/shoesizer/result.jpg"--></div></div>
+
+              <div id="shoesizer_desc_no_measurements" style="display:none;"><p style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #000;">No measurements recorded, please install the "fit-n-PLAE"-application.<br><br></p></div>
+
+              <div id="startingShoeSizerButton" style="text-align:center; width: 300px; padding:10px 20px; cursor: pointer; cursor: hand; background:#a0a0a0; display:none; border-radius: 5px; "><p style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">trying to start app...</p></div>
+
+              <div id="waitingShoeSizerButton" style="text-align:center; width: 300px; padding:10px 20px; cursor: pointer; cursor: hand; background:#a0a0a0; display:none; border-radius: 5px; "><p style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">waiting for data from app...</p></div>
+
+              <a href="installLink" style="text-decoration: none; color: #fff;"><div id="installShoeSizerButton" style="text-align:center; width: 300px; padding:10px 20px; cursor: pointer; cursor: hand; background:#808080; display:none; border-radius: 5px; box-shadow: 0px 3px 0px #606060;"><p style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">install fit-n-PLAE and get a perfect fit</p></div></a>
+
+              <div id="results" style="display:none;"></div>
+              <div id="connection" style="display:none;">Waiting for Socket...</div>
+
+              <script type="text/javascript">
+                  function update_result_html(content) {
+                      document.getElementById("results").innerHTML += content + "<br>";
+                      return document.getElementById("results").innerHTML;
+                  }
+                  function update_connection_html(content) {
+                      document.getElementById("connection").innerHTML = content;
+                      return document.getElementById("connection").innerHTML;
+                  }
+                  function cm_to_formatted_inches(cm) {
+                      var inches = cm/2.54;
+                      if (inches-Math.round(inches)==0) {
+                          return inches.toString();
+                      } else {
+                          return inches.toFixed(1);
+                      }
+                  }
+                  function girth_cm_to_tab_size(girth_cm) {
+                      /*
+                       Small =  < 188mm
+                       Medium =  188mm - 204mm
+                       Large = 204mm - 230mm
+                       X-Large = > 230mm
+                       */
+                      if (isNaN(girth_cm)) {
+                          return "No matching tab";
+                      } else {
+                          if (girth_cm<18.8) { return "Small" }
+                          if (18.8<=girth_cm && girth_cm<20.4) { return "Medium" }
+                          if (20.4<=girth_cm && girth_cm<23.0) { return "Large" }
+                          if (girth_cm>=23.0) { return "X-Large" }
+                      }
+                      return "No matching tab";
+                  }
+                  function visualizeFeetData(data) {
+                      // Toggle visibility for measurement elements
+                      document.getElementById("shoesizer_desc_measurements_and_fit").style.display = "block";
+                      document.getElementById("shoesizer_desc_no_measurements").style.display ="none";
+                      document.getElementById("shoesizer_desc_measurements_size").innerHTML = data.goplae_size + " ("+data.goplae_size_category+")";
+                      document.getElementById("shoesizer_desc_measurements_tab").innerHTML = girth_cm_to_tab_size(data.girth);
+                      document.getElementById("shoesizer_desc_measurements_length").innerHTML = cm_to_formatted_inches(data.length);
+                      document.getElementById("shoesizer_desc_measurements_width").innerHTML = cm_to_formatted_inches(data.width);
+                      document.getElementById("shoesizer_desc_measurements_girth").innerHTML = cm_to_formatted_inches(data.girth);
+                      hideAllShoeSizerButtons();
+                      return true;
+                  }
+                  function toggleInstallShoeSizerButton() {
+                      document.getElementById("shoesizer_desc_measurements_and_fit").style.display = "none";
+                      document.getElementById("shoesizer_desc_no_measurements").style.display ="block";
+                      document.getElementById("startShoeSizerButton").style.display = "none";
+                      document.getElementById("installShoeSizerButton").style.display ="block";
+                      document.getElementById("startingShoeSizerButton").style.display ="none";
+                      document.getElementById("waitingShoeSizerButton").style.display = "none";
+                      return true;
+                  }
+                  function toggleStartingShoeSizerButton() {
+                      document.getElementById("startShoeSizerButton").style.display = "none";
+                      document.getElementById("installShoeSizerButton").style.display ="none";
+                      document.getElementById("waitingShoeSizerButton").style.display ="none";
+                      document.getElementById("startingShoeSizerButton").style.display ="block";
+                      return true;
+                  }
+                  function toggleWaitingShoeSizerButton() {
+                      document.getElementById("startShoeSizerButton").style.display = "none";
+                      document.getElementById("installShoeSizerButton").style.display = "none";
+                      document.getElementById("waitingShoeSizerButton").style.display = "block";
+                      document.getElementById("startingShoeSizerButton").style.display = "none";
+                      return true;
+                  }
+                  function toggleStartShoeSizerButton() {
+                      document.getElementById("shoesizer_desc_measurements_and_fit").style.display = "none";
+                      document.getElementById("shoesizer_desc_no_measurements").style.display ="block";
+                      document.getElementById("startShoeSizerButton").style.display = "block";
+                      document.getElementById("installShoeSizerButton").style.display ="none";
+                      document.getElementById("waitingShoeSizerButton").style.display = "none";
+                      document.getElementById("startingShoeSizerButton").style.display = "none";
+                      return true;
+                  }
+                  function hideAllShoeSizerButtons() {
+                      document.getElementById("startShoeSizerButton").style.display = "none";
+                      document.getElementById("installShoeSizerButton").style.display ="none";
+                      document.getElementById("waitingShoeSizerButton").style.display = "none";
+                      document.getElementById("startingShoeSizerButton").style.display = "none";
+                      return true;
+                  }
+                  function toggleDebug() {
+                      if (document.getElementById("results").style.display == "none") {
+                          document.getElementById("results").style.display = "block";
+                          document.getElementById("connection").style.display ="block";
+                      } else {
+                          document.getElementById("results").style.display = "none";
+                          document.getElementById("connection").style.display ="none";
+                      }
+                      return true;
+                  }
+                  function startSocket() {
+                      var obj = new WebSocket("ws://localhost:8888/shoesizer");
+                      return obj;
+                  }
+
+                  // Create ShoeSizerIntegration class and start function
+                  function ShoeSizerIntegration(socket) {
+                      this.socket = socket;
+                      this.succesfulSocket = false;
+                  }
+
+                  ShoeSizerIntegration.prototype.start = function() {
+                      this.succesfulSocket = false;
+                      update_result_html("Opening...");
+
+                      var _this = this;
+
+                      _this.socket.onopen = function(event) {
+                          update_connection_html("Connection OK.");
+                          update_result_html("Connected! Sending ShoeSizerWebHandshake...");
+                          _this.socket.send(JSON.stringify({response:"ShoeSizerWebHandshake"}));
+                          _this.succesfulSocket = true;
+                      };
+
+                      _this.socket.onerror = function(event) {
+                          update_result_html("Error<br>");
+                      };
+
+                      _this.socket.onmessage = function(event) {
+                          update_result_html("Received '" + event.data);
+                          var obj = JSON.parse(event.data);
+                          if ("response" in obj) {
+                              if (obj["response"] == "ShoeSizerAppHandshake") {
+                                  update_result_html("Received ShoeSizerAppHandshake...");
+                                  toggleWaitingShoeSizerButton();
+                              }
+                              if (obj["response"] == "ShoeSizerAppData") {
+                                  update_result_html("Received ShoeSizerAppData...");
+                                  _this.socket.send(JSON.stringify({response:"ShoeSizerWebDataReceived"}));
+                                  update_result_html("Sending ShoeSizerWebDataReceived...");
+                                  visualizeFeetData(obj);
+                              }
+                          }
+                      };
+
+                      _this.socket.onclose = function(event) {
+                          update_result_html("Closed!<br>");
+                          if(!_this.succesfulSocket) {
+                              toggleInstallShoeSizerButton();
+                              update_connection_html("Failed to connect. Please install app.");
+                          }
+                      }
+                  }
+
+                  var ssi;
+                  function startLiveDemo() {
+                      toggleStartingShoeSizerButton();
+                      setTimeout(function(){
+                          ssi = new ShoeSizerIntegration(startSocket());
+                          ssi.start();
+                      }, 5000);
+
+                  }
+              </script>
+          </div>
+
+          <!-- end Sizer integration -->
+
       </div>
 
 
@@ -129,187 +311,7 @@
           </div>
 
 
-              <!-- Sizer integration -->
 
-              <div id="shoesizer_desc_content">
-
-                  <a href="shoesizer://start" onclick="startLiveDemo();" style="text-decoration: none; color: #fff;"><div id="startShoeSizerButton" style="text-align:center; width: 320px; padding:10px; cursor: pointer; cursor: hand; background:rgb(69, 127, 64);  border-radius: 5px; box-shadow: 0px 3px 0px rgb(50, 93, 47);" class="button btn-cart"><p style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">get a perfect fit with fit-n-PLAE</p></div></a>
-
-                  <div id="shoesizer_desc_measurements_and_fit" style="display:none; margin-bottom: 10px;"><div style="width:100%; float: left;"><p style="font-family: 'CenturyGothicStd'; font-size:12pt; line-height: 12pt; margin-bottom: 10px; color: #999;">your measurements</p><div style="padding:20px; background:rgb(69, 127, 64); display: inline-block;  border-radius: 5px;"><p style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">Size: <span id="shoesizer_desc_measurements_size" style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff; font-weight: bold">US 10</span><br>Tab size: <span id="shoesizer_desc_measurements_tab" style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff; font-weight: bold">L</span><br><br></p><p style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">Length: <span id="shoesizer_desc_measurements_length"  style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">11.5</span>"<br>Width: <span id="shoesizer_desc_measurements_width" style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">8.4</span>"<br>Girth: <span id="shoesizer_desc_measurements_girth" style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">9.1</span>"</p></div><br><br><div style="text-align:center; padding:10px; cursor: pointer; cursor: hand; background:rgb(69, 127, 64);  border-radius: 5px; box-shadow: 0px 3px 0px rgb(50, 93, 47);" onclick="toggleStartShoeSizerButton()" class="button btn-cart"><p style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">measure again</p></div></div><div style="width:50%; float: left;"><!--p style="font-family: 'CenturyGothicStd'; font-size: 24pt; line-height: 24pt; margin-top: 40px; margin-bottom: 10px; color: #000;">Your fit</p><img src="http://volumental-django-static.s3.amazonaws.com/img/shoesizer/result.jpg"--></div></div>
-
-                  <div id="shoesizer_desc_no_measurements" style="display:none;"><p style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #000;">No measurements recorded, please install the "fit-n-PLAE"-application.<br><br></p></div>
-
-                  <div id="startingShoeSizerButton" style="text-align:center; width: 300px; padding:10px 20px; cursor: pointer; cursor: hand; background:#a0a0a0; display:none; border-radius: 5px; "><p style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">trying to start app...</p></div>
-
-                  <div id="waitingShoeSizerButton" style="text-align:center; width: 300px; padding:10px 20px; cursor: pointer; cursor: hand; background:#a0a0a0; display:none; border-radius: 5px; "><p style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">waiting for data from app...</p></div>
-
-                  <a href="installLink" style="text-decoration: none; color: #fff;"><div id="installShoeSizerButton" style="text-align:center; width: 300px; padding:10px 20px; cursor: pointer; cursor: hand; background:#808080; display:none; border-radius: 5px; box-shadow: 0px 3px 0px #606060;"><p style="font-size: 12pt; line-height: 12pt; font-family: 'CenturyGothicStd'; color: #fff;">install fit-n-PLAE and get a perfect fit</p></div></a>
-
-                  <div id="results" style="display:none;"></div>
-                  <div id="connection" style="display:none;">Waiting for Socket...</div>
-
-                  <script type="text/javascript">
-                      function update_result_html(content) {
-                          document.getElementById("results").innerHTML += content + "<br>";
-                          return document.getElementById("results").innerHTML;
-                      }
-                      function update_connection_html(content) {
-                          document.getElementById("connection").innerHTML = content;
-                          return document.getElementById("connection").innerHTML;
-                      }
-                      function cm_to_formatted_inches(cm) {
-                          var inches = cm/2.54;
-                          if (inches-Math.round(inches)==0) {
-                              return inches.toString();
-                          } else {
-                              return inches.toFixed(1);
-                          }
-                      }
-                      function girth_cm_to_tab_size(girth_cm) {
-                          /*
-                           Small =  < 188mm
-                           Medium =  188mm - 204mm
-                           Large = 204mm - 230mm
-                           X-Large = > 230mm
-                           */
-                          if (isNaN(girth_cm)) {
-                              return "No matching tab";
-                          } else {
-                              if (girth_cm<18.8) { return "Small" }
-                              if (18.8<=girth_cm && girth_cm<20.4) { return "Medium" }
-                              if (20.4<=girth_cm && girth_cm<23.0) { return "Large" }
-                              if (girth_cm>=23.0) { return "X-Large" }
-                          }
-                          return "No matching tab";
-                      }
-                      function visualizeFeetData(data) {
-                          // Toggle visibility for measurement elements
-                          document.getElementById("shoesizer_desc_measurements_and_fit").style.display = "block";
-                          document.getElementById("shoesizer_desc_no_measurements").style.display ="none";
-                          document.getElementById("shoesizer_desc_measurements_size").innerHTML = data.goplae_size + " ("+data.goplae_size_category+")";
-                          document.getElementById("shoesizer_desc_measurements_tab").innerHTML = girth_cm_to_tab_size(data.girth);
-                          document.getElementById("shoesizer_desc_measurements_length").innerHTML = cm_to_formatted_inches(data.length);
-                          document.getElementById("shoesizer_desc_measurements_width").innerHTML = cm_to_formatted_inches(data.width);
-                          document.getElementById("shoesizer_desc_measurements_girth").innerHTML = cm_to_formatted_inches(data.girth);
-                          hideAllShoeSizerButtons();
-                          return true;
-                      }
-                      function toggleInstallShoeSizerButton() {
-                          document.getElementById("shoesizer_desc_measurements_and_fit").style.display = "none";
-                          document.getElementById("shoesizer_desc_no_measurements").style.display ="block";
-                          document.getElementById("startShoeSizerButton").style.display = "none";
-                          document.getElementById("installShoeSizerButton").style.display ="block";
-                          document.getElementById("startingShoeSizerButton").style.display ="none";
-                          document.getElementById("waitingShoeSizerButton").style.display = "none";
-                          return true;
-                      }
-                      function toggleStartingShoeSizerButton() {
-                          document.getElementById("startShoeSizerButton").style.display = "none";
-                          document.getElementById("installShoeSizerButton").style.display ="none";
-                          document.getElementById("waitingShoeSizerButton").style.display ="none";
-                          document.getElementById("startingShoeSizerButton").style.display ="block";
-                          return true;
-                      }
-                      function toggleWaitingShoeSizerButton() {
-                          document.getElementById("startShoeSizerButton").style.display = "none";
-                          document.getElementById("installShoeSizerButton").style.display = "none";
-                          document.getElementById("waitingShoeSizerButton").style.display = "block";
-                          document.getElementById("startingShoeSizerButton").style.display = "none";
-                          return true;
-                      }
-                      function toggleStartShoeSizerButton() {
-                          document.getElementById("shoesizer_desc_measurements_and_fit").style.display = "none";
-                          document.getElementById("shoesizer_desc_no_measurements").style.display ="block";
-                          document.getElementById("startShoeSizerButton").style.display = "block";
-                          document.getElementById("installShoeSizerButton").style.display ="none";
-                          document.getElementById("waitingShoeSizerButton").style.display = "none";
-                          document.getElementById("startingShoeSizerButton").style.display = "none";
-                          return true;
-                      }
-                      function hideAllShoeSizerButtons() {
-                          document.getElementById("startShoeSizerButton").style.display = "none";
-                          document.getElementById("installShoeSizerButton").style.display ="none";
-                          document.getElementById("waitingShoeSizerButton").style.display = "none";
-                          document.getElementById("startingShoeSizerButton").style.display = "none";
-                          return true;
-                      }
-                      function toggleDebug() {
-                          if (document.getElementById("results").style.display == "none") {
-                              document.getElementById("results").style.display = "block";
-                              document.getElementById("connection").style.display ="block";
-                          } else {
-                              document.getElementById("results").style.display = "none";
-                              document.getElementById("connection").style.display ="none";
-                          }
-                          return true;
-                      }
-                      function startSocket() {
-                          var obj = new WebSocket("ws://localhost:8888/shoesizer");
-                          return obj;
-                      }
-
-                      // Create ShoeSizerIntegration class and start function
-                      function ShoeSizerIntegration(socket) {
-                          this.socket = socket;
-                          this.succesfulSocket = false;
-                      }
-
-                      ShoeSizerIntegration.prototype.start = function() {
-                          this.succesfulSocket = false;
-                          update_result_html("Opening...");
-
-                          var _this = this;
-
-                          _this.socket.onopen = function(event) {
-                              update_connection_html("Connection OK.");
-                              update_result_html("Connected! Sending ShoeSizerWebHandshake...");
-                              _this.socket.send(JSON.stringify({response:"ShoeSizerWebHandshake"}));
-                              _this.succesfulSocket = true;
-                          };
-
-                          _this.socket.onerror = function(event) {
-                              update_result_html("Error<br>");
-                          };
-
-                          _this.socket.onmessage = function(event) {
-                              update_result_html("Received '" + event.data);
-                              var obj = JSON.parse(event.data);
-                              if ("response" in obj) {
-                                  if (obj["response"] == "ShoeSizerAppHandshake") {
-                                      update_result_html("Received ShoeSizerAppHandshake...");
-                                      toggleWaitingShoeSizerButton();
-                                  }
-                                  if (obj["response"] == "ShoeSizerAppData") {
-                                      update_result_html("Received ShoeSizerAppData...");
-                                      _this.socket.send(JSON.stringify({response:"ShoeSizerWebDataReceived"}));
-                                      update_result_html("Sending ShoeSizerWebDataReceived...");
-                                      visualizeFeetData(obj);
-                                  }
-                              }
-                          };
-
-                          _this.socket.onclose = function(event) {
-                              update_result_html("Closed!<br>");
-                              if(!_this.succesfulSocket) {
-                                  toggleInstallShoeSizerButton();
-                                  update_connection_html("Failed to connect. Please install app.");
-                              }
-                          }
-                      }
-
-                      var ssi;
-                      function startLiveDemo() {
-                          toggleStartingShoeSizerButton();
-                          setTimeout(function(){
-                              ssi = new ShoeSizerIntegration(startSocket());
-                              ssi.start();
-                          }, 5000);
-
-                      }
-                  </script>
-              </div>
-
-              <!-- end Sizer integration -->
 
 
 <!--

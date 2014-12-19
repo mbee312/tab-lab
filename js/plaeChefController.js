@@ -261,22 +261,22 @@
           var left_image = new Image();
           if (this.isTabSelected()) {
               right_image.onload = function () {
-                  tpcontext.drawImage(right_image, 320, 0, 240, 469);
+                  tpcontext.drawImage(right_image, 310, 0, 240, 469);
               };
               right_image.src = $scope.shoeSelected[0]["mainViewTopRightNoTab"];
 
               left_image.onload = function () {
-                  tpcontext.drawImage(left_image, 100, 0, 240, 469);
+                  tpcontext.drawImage(left_image, 90, 0, 240, 469);
               };
               left_image.src = $scope.shoeSelected[0]["mainViewTopLeftNoTab"];
           }else{
               right_image.onload = function () {
-                  tpcontext.drawImage(right_image, 320, 0, 240, 469);
+                  tpcontext.drawImage(right_image, 310, 0, 240, 469);
               };
               right_image.src = $scope.shoeSelected[0]["mainViewTopRight"];
 
               left_image.onload = function () {
-                  tpcontext.drawImage(left_image, 100, 0, 240, 469);
+                  tpcontext.drawImage(left_image, 90, 0, 240, 469);
               };
               left_image.src = $scope.shoeSelected[0]["mainViewTopLeft"];
           }
@@ -322,13 +322,13 @@
                   /** Draw Left Shoe tabs **/
 
                   tab_image_top_left.onload = function () {
-                      tptabcontext.drawImage(tab_image_top_left, topXOffsetL-200, topYOffsetL, tabWidth, tabHeight);
+                      tptabcontext.drawImage(tab_image_top_left, topXOffsetL-210, topYOffsetL, tabWidth, tabHeight);
                       console.log("drawTopTabsViewImage top is set!");
                   };
                   tab_image_top_left.src = $scope.tabLeft[0]["topViewLeftOne"];
 
                   tab_image_bot_left.onload = function () {
-                      tptabcontext.drawImage(tab_image_bot_left, botXOffsetL-200, botYOffsetL, tabWidth, tabHeight);
+                      tptabcontext.drawImage(tab_image_bot_left, botXOffsetL-210, botYOffsetL, tabWidth, tabHeight);
                       console.log("drawTopTabsViewImage bottom is set!");
                   };
                   tab_image_bot_left.src = $scope.tabLeft[0]["topViewLeftTwo"];
@@ -338,13 +338,13 @@
                   /** Draw Right Shoe tabs **/
 
                   tab_image_top_right.onload = function () {
-                      tptabcontext.drawImage(tab_image_top_right, topXOffsetR-200, topYOffsetR, tabWidth, tabHeight);
+                      tptabcontext.drawImage(tab_image_top_right, topXOffsetR-210, topYOffsetR, tabWidth, tabHeight);
                       console.log("drawTopTabsViewImage top is set!");
                   };
                   tab_image_top_right.src = $scope.tabRight[0]["topViewRightOne"];
 
                   tab_image_bot_right.onload = function () {
-                      tptabcontext.drawImage(tab_image_bot_right, botXOffsetR-200, botYOffsetR, tabWidth, tabHeight);
+                      tptabcontext.drawImage(tab_image_bot_right, botXOffsetR-210, botYOffsetR, tabWidth, tabHeight);
                       console.log("drawTopTabsViewImage bottom is set!");
 
                   };

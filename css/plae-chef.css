@@ -43,24 +43,6 @@ pre {
 .plae-chef-window{
       height: 1024px;
       position: relative;
-
-        /* IE10 Consumer Preview */
-        background-image: -ms-radial-gradient(left center, circle farthest-corner, #FFFFFF 0%, #C7C7C7 100%);
-
-        /* Mozilla Firefox */
-        background-image: -moz-radial-gradient(left center, circle farthest-corner, #FFFFFF 0%, #C7C7C7 100%);
-
-        /* Opera */
-        background-image: -o-radial-gradient(left center, circle farthest-corner, #FFFFFF 0%, #C7C7C7 100%);
-
-        /* Webkit (Safari/Chrome 10) */
-        background-image: -webkit-gradient(radial, left center, 0, left center, 963, color-stop(0, #FFFFFF), color-stop(1, #C7C7C7));
-
-        /* Webkit (Chrome 11+) */
-        background-image: -webkit-radial-gradient(left center, circle farthest-corner, #FFFFFF 0%, #C7C7C7 100%);
-
-        /* W3C Markup, IE10 Release Preview */
-        background-image: radial-gradient(circle farthest-corner at left center, #FFFFFF 0%, #C7C7C7 100%);
     }
 
     body.ng-scope {
@@ -114,10 +96,10 @@ pre {
 
 #plae-size {
     height: 472px;
-    margin-top: 320px;
-    left: 267px;
+    margin-top: 330px;
+    left: 248px;
     z-index: 0;
-    width: 190px;
+    width: 200px;
     position: absolute;
     border: 1px solid #D3D3D3;
     background-color: #f6f6f6;
@@ -128,9 +110,9 @@ pre {
     #plae-basket {
         height: 472px;
         margin-top: 290px;
-        left: 1050px;
+        left: 1040px;
         z-index: 100;
-        width: 190px;
+        width: 200px;
         position: absolute;
         border: 1px solid #D3D3D3;
         background-color: #f6f6f6;
@@ -250,13 +232,14 @@ ul.plae.basket.list {
         opacity: 1;
         display: inline-block;
         margin-bottom: 10px;
-        margin-left: 460px;
-        top: 450px;
+        margin-left: 450px;
+        top: 448px;
         background: #ffffff;
         box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 22px 70px 4px rgba(0,0,0,0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
         -webkit-box-shadow: 0 10px 6px -6px #777;
         -moz-box-shadow: 0 10px 6px -6px #777;
         box-shadow: 0 10px 6px -6px #777;
+        border: 2px solid #D3D3D3;
     }
 
     #tabs{
@@ -301,6 +284,7 @@ ul.plae.basket.list {
         -webkit-box-shadow: 0 10px 6px -6px #777;
         -moz-box-shadow: 0 10px 6px -6px #777;
         box-shadow: 0 10px 6px -6px #777;
+        border: 2px solid #D3D3D3;
 
         /*    background: -webkit-linear-gradient(rgba(233, 233, 233, 1.0), rgba(178, 178, 178, 1.0) 21px, #6A6A6A 1px, #EDEDED, #EDEDED 23px); */
      /*   margin-right: 5px;
@@ -341,10 +325,9 @@ ul.plae.basket.list {
         margin-top: -200px; */
 
         height: 140px;
-        width: 1050px;
+        width: 1014px;
 
         top: 10px;
-        border: 0 solid #D3D3D3;
         -webkit-box-shadow: 0 10px 6px -6px #777;
         -moz-box-shadow: 0 10px 6px -6px #777;
         box-shadow: 0 10px 6px -6px #777;
@@ -357,8 +340,8 @@ ul.plae.basket.list {
         background: #ffffff;
         position: absolute;
         left: 0;
-        overflow-x: hidden;
         overflow-y: hidden;
+        border: 2px solid #D3D3D3;
 
     }
     #colors-roan {
@@ -659,8 +642,8 @@ ul.plae.basket.list {
 
 
     button.waves-effect.waves-button.waves-light.waves-float{
-        top: 800px;
-        left: 690px;
+        top: 775px;
+        left: 668px;
         z-index: 79;
     }
 
