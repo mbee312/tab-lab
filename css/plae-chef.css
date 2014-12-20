@@ -39,6 +39,16 @@ pre {
     line-height: 18.5714302062988px;
 }
 
+md-button{
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
+    font-size: 14px !important;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 20px;
+
+}
+
 
 .plae-chef-window{
       height: 1024px;
@@ -97,7 +107,7 @@ pre {
 #plae-size {
     height: 472px;
     margin-top: 50px;
-    left: 249px;
+    left: 248px;
     z-index: 0;
     width: 200px;
     position: absolute;
@@ -109,42 +119,57 @@ pre {
 
     #plae-basket {
         height: 472px;
-        margin-top: 15px;
-        left: 1042px;
-        z-index: 100;
+        margin-top: 50px;
+        left: 1064px;
+        z-index: 50;
         width: 200px;
         position: absolute;
         border: 1px solid #D3D3D3;
         background-color: #f6f6f6;
         border-bottom-right-radius: 8px;
         border-top-right-radius: 8px;
+        margin-left: 0;
     }
 
 .plae.basket {
     margin: 10px;
 }
-.plae.basket.shoe {
-    padding-top: 40px;
-
-}
 
 .plae.basket p{
     font-size: 12px;
 }
+.plae.basket.item{
+    width: 80%;
+}
+.plae.basket.item.shoe {
+    position: absolute;
+    top: 50px;
+}
 
-span.price.ng-binding {
+.plae.basket.item.left {
+    position: absolute;
+    top: 80px;
+}
+
+.plae.basket.item.right{
+    top: 110px;
+    position: absolute;
+}
+
+
+span.price {
     font-weight: bold;
     float: right;
 }
 
-span.color.ng-binding {
+span.color {
     font-size: 10px;
 }
 
 #subtotal {
     position: absolute;
     top: 160px;
-    width: 90%;
+    width: 80%;
 }
 
 hr {
@@ -168,6 +193,49 @@ hr {
 }
 ul.plae.basket.list {
     margin-left: -10px;
+}
+
+#reset-button {
+    left: 30px;
+    top: 430px;
+    position: absolute;
+}
+
+.md-dialog-container.ng-scope {
+    height: 1024px;
+    width: 1260px;
+    z-index: 1000;
+    top: 200px;
+    left: 150px;
+}
+
+md-backdrop.md-opaque.md-default-theme{
+    height: 1024px;
+}
+
+button.md-button.md-default-theme {
+    text-transform: lowercase;
+    float: right;
+}
+
+button#edit {
+    margin: 5px;
+}
+
+#edit img {
+    width: 20px;
+    opacity: .5;
+}
+
+.delete img {
+    width: 15px;
+}
+
+.delete {
+    float: right !important;
+    position: absolute !important;
+    right: -30px;
+    top: 10px;
 }
 
 
@@ -218,9 +286,9 @@ ul.plae.basket.list {
     } */
 
     #white-bg{
-        width:600px;
+        width:612px;
         height: 512px;
-        z-index: 0;
+        z-index: 1;
         position: absolute;
         /* Safari 3-4, iOS 1-3.2, Android 1.6- */
           -webkit-border-radius: 12px;
@@ -636,22 +704,35 @@ ul.plae.basket.list {
 
     }
 
-    .view.buttons{
-
-    }
-
-
-    button.waves-effect.waves-button.waves-light.waves-float{
-        top: 490px;
-        left: 668px;
-        z-index: 79;
-    }
-
-#reset-button {
-    left: 30px;
-    top: 430px;
+button#left-profile-button {
     position: absolute;
+    top: 940px;
+    left: 700px;
 }
+
+button#top-button {
+    position: absolute;
+    top: 940px;
+    left: 740px;
+}
+
+button#right-profile-button {
+    position: absolute;
+    top: 940px;
+    left: 780px;
+}
+
+.view-button{
+    z-index:79;
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
+    font-size: 14px !important;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+
 
 /* when hiding the picture */
 .ng-hide-add         { animation:.5s bounceOut ease; }

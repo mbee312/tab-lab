@@ -2,10 +2,10 @@
   'use strict';
 
   // Declare app level module which depends on views, and components
-  var plaeChefApp = angular.module('plaeChefApp', ['ngAnimate','ngDragDrop', 'ngTouch']);
+  var plaeChefApp = angular.module('plaeChefApp', ['ngAnimate','ngDragDrop', 'ngTouch', 'ngMaterial']);
 
 
-  plaeChefApp.controller('PlaeChefController', ['$scope', '$http', function($scope, $http){
+  plaeChefApp.controller('PlaeChefController', ['$scope', '$http', '$mdDialog', function($scope, $http, $mdDialog){
 
       /* canvas for each main view */
 /*
@@ -98,7 +98,7 @@
       $scope.shoeSelected = [];
       $scope.basket =[];
       $scope.subTotal = 0;
-      $scope.editMode = true;
+      $scope.editMode = false;
 
       $scope.hideMeLT = function() {
           return $scope.tabLT.length > 0;
@@ -468,22 +468,21 @@
       /* end canvas view logic code */
 
       this.clearSelections = function (){
-
-          var areYouSure = confirm("Are you sure you want to clear all your hard work?");
-          if(areYouSure){
               if($scope.shoeSelected.length > 0)
               {
-                  $scope.subTotal -= $scope.shoeSelected[0].price;
                   console.log("popped " + $scope.shoeSelected.pop().name);
 
               }
-              while($scope.tabs.length > 0 ){
+              while($scope.tabs.length > 0 ) {
                   console.log("popped " + $scope.tabs.pop().name + " from tabs");
-                  $scope.subTotal -= $scope.tabLeft[0].price;
-                  $scope.subTotal -= $scope.tabRight[0].price;
-                  console.log("popped " + $scope.tabLeft.pop().name + " from tabLeft");
+              }
+          while($scope.tabLeft.length >0) {
+              console.log("popped " + $scope.tabLeft.pop().name + " from tabLeft");
+          }
+          while($scope.tabRight.length > 0){
                   console.log("popped " + $scope.tabRight.pop().name + " from tabRight");
               }
+          $scope.subTotal = 0;
           /*    this.clearImage(canvas,context ); */
               this.clearImage(topViewCanvas,tpcontext );
               this.clearImage(leftProfileCanvas,lpcontext );
@@ -492,7 +491,7 @@
               this.clearImage(leftProfileTabCanvas,lptabcontext );
               this.clearImage(rightProfileTabCanvas,rptabcontext );
               this.canvasView = "top";
-        }
+
       };
 
       this.drawRotated = function(degrees, cnvs, ctx, image, xOffset, yOffset, tabWidth, tabHeight){
@@ -528,6 +527,14 @@
 
       this.getSubTotal = function(){
           return $scope.subTotal;
+      };
+
+      this.setEditMode = function(){
+          if($scope.editMode == true){
+              $scope.editMode = false;
+          }else{
+              $scope.editMode = true;
+          }
       };
 
       this.isEditMode = function(){
