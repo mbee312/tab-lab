@@ -2,7 +2,7 @@
   'use strict';
 
   // Declare app level module which depends on views, and components
-  var plaeChefApp = angular.module('plaeChefApp', ['ngAnimate','ngDragDrop', 'ngTouch', 'ngMaterial']);
+  var plaeChefApp = angular.module('plaeChefApp', ['ngAnimate','ngDragDrop', 'ngTouch', 'ngMaterial', 'angularjs-dropdown-multiselect']);
 
 
   plaeChefApp.controller('PlaeChefController', ['$scope', '$http', '$mdDialog', function($scope, $http, $mdDialog){
@@ -96,6 +96,7 @@
       $scope.tabRight = [];
 
       $scope.shoeSelected = [];
+      $scope.size = "8 kids";
       $scope.basket =[];
       $scope.subTotal = 0;
       $scope.editMode = false;
@@ -540,6 +541,90 @@
       this.isEditMode = function(){
           return $scope.editMode;
       };
+
+
+
+      $scope.shoeSize = {};
+
+      $scope.shoeSizeOptions = [
+          {size: 8, label: "8 - kids"},
+          {size: 8.5, label: "8.5 - kids"},
+          {size: 9, label: "9 - kids"},
+          {size: 9.5, label: "9.5 - kids"},
+          {size: 10, label: "10 - kids"},
+          {size: 10.5, label: "10.5 - kids"},
+          {size: 11, label: "11 - kids"},
+          {size: 11.5, label: "11.5 - kids"},
+          {size: 12, label: "12 - kids"},
+          {size: 12.5, label: "12.5 - kids"},
+          {size: 13, label: "13 - kids"},
+          {size: 13.5, label: "13.5 - kids"},
+          {size: 1, label: "1 - youth"},
+          {size: 1.5, label: "1.5 - youth"},
+          {size: 2, label: "2 - youth"},
+          {size: 2.5, label: "2.5 - youth"},
+          {size: 3, label: "3 - youth"}
+      ];
+
+      $scope.$watch("shoeSize", function(newValue, oldValue) {
+          if ($scope.shoeSize) {
+              var s = 0;
+              switch ($scope.shoeSize) {
+                  case 1 :
+                      this.s = "8 - kids";
+                      break;
+                  case 2 :
+                      this.s = "8.5 - kids";
+                      break;
+                  case 3 :
+                      this.s = "9 - kids";
+                      break;
+                  case 4 :
+                      this.s = "9.5 - kids";
+                      break;
+                  case 5 :
+                      this.s = "10 - kids";
+                      break;
+                  case 6 :
+                      this.s = "10.5 - kids";
+                      break;
+                  case 7 :
+                      this.s = "11 - kids";
+                      break;
+                  case 8 :
+                      this.s = "11.5 - kids";
+                      break;
+                  case 9 :
+                      this.s = "12 - kids";
+                      break;
+                  case 10 :
+                      this.s = "12.5 - kids";
+                      break;
+                  case 11 :
+                      this.s = "13 - kids";
+                      break;
+                  case 12 :
+                      this.s = "13.5 - kids";
+                      break;
+                  case 13 :
+                      this.s = "1 - youth";
+                      break;
+                  case 14 :
+                      this.s = "1.5 - youth";
+                      break;
+                  case 15 :
+                      this.s = "2 - youth";
+                      break;
+                  case 16 :
+                      this.s = "2.5 - youth";
+                      break;
+                  case 17 :
+                      this.s = "3 - kids";
+                      break;
+              }
+              $scope.shoeSelected.size = this.s;
+          }
+      });
 
   }]);
 

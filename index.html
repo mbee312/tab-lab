@@ -15,8 +15,6 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="app/bower_components/angular-material/angular-material.min.css">
 
-
-
 </head>
 <body ng-controller="PlaeChefController as plaeChef">
 
@@ -59,6 +57,18 @@
               </div> <!--End tabs-->
 
       <div class="plae size" id="plae-size">
+
+          <div class="size selector slider">
+          <h5>shoe size: {{shoeSelected.size}}</h5><p>(slide to select your size)<p>
+          <md-slider flex min="0" max="17" ng-model="shoeSize" aria-label="shoeSize" id="shoe-size-slider" class="md-warn">
+          </md-slider>
+          </div>
+
+          <div class="size selector slider">
+              <h5>tab size: {{shoeSelected.size}}</h5><p>(slide to select your size)<p>
+              <md-slider flex min="1" max="4" ng-model="tabSize" aria-label="tabSize" id="tab-size-slider" class="md-accent">
+              </md-slider>
+          </div>
 
           <!-- Sizer integration -->
 
@@ -327,8 +337,9 @@
       <script src="app/bower_components/jquery/dist/jquery.min.js"></script>
       <script src="app/bower_components/jquery-ui/jquery-ui.min.js"></script>
 
+
+
       <script src="js/share.min.js"></script>
-      <script src="js/waves.min.js"></script>
       <script src="app/bower_components/hammerjs/hammer.js"></script>
       <script src="bower_components/angular/angular.js"></script>
     <script src="app/bower_components/angular-animate/angular-animate.js"></script>
@@ -336,6 +347,8 @@
       <script src="app/bower_components/angular-touch/angular-touch.js"></script>
       <script src="app/bower_components/angular-aria/angular-aria.js"></script>
       <script src="app/bower_components/angular-material/angular-material.js"></script>
+      <script src="app/bower_components/lodash/dist/lodash.js"></script>
+      <script type="text/javascript" src="app/bower_components/angularjs-dropdown-multiselect/dist/angularjs-dropdown-multiselect.min.js"></script>
 
 <script src="js/plaeChefController.js"></script>
 

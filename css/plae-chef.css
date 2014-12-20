@@ -116,6 +116,21 @@ md-button{
     border-bottom-left-radius: 8px;
     border-top-left-radius: 8px;
 }
+.size.selector.slider {
+    margin: 10px;
+}
+
+.size.selector.slider h5 {
+    margin-left: 20px;
+    margin-top: 40px;
+    font-weight: normal;
+}
+.size.selector.slider p {
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: x-small;
+}
 
     #plae-basket {
         height: 472px;
