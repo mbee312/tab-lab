@@ -58,15 +58,15 @@
 
       <div class="plae size" id="plae-size">
 
-          <div class="size selector slider">
+          <div class="size selector slider shoe">
           <h5>shoe size: {{shoeSelected.size}}</h5><p>(slide to select your size)<p>
           <md-slider flex min="0" max="17" ng-model="shoeSize" aria-label="shoeSize" id="shoe-size-slider" class="md-warn">
           </md-slider>
           </div>
 
           <div class="size selector slider">
-              <h5>tab size: {{shoeSelected.size}}</h5><p>(slide to select your size)<p>
-              <md-slider flex min="1" max="4" ng-model="tabSize" aria-label="tabSize" id="tab-size-slider" class="md-accent">
+              <h5>tab size: {{tabSelectedSize}}</h5><p>(slide to select your size)<p>
+              <md-slider flex min="0" max="3" ng-model="tabSize" aria-label="tabSize" id="tab-size-slider" class="md-accent">
               </md-slider>
           </div>
 

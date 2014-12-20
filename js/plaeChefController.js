@@ -567,8 +567,7 @@
       ];
 
       $scope.$watch("shoeSize", function(newValue, oldValue) {
-          if ($scope.shoeSize) {
-              var s = 0;
+              var s = "8 - kids";
               switch ($scope.shoeSize) {
                   case 1 :
                       this.s = "8 - kids";
@@ -619,11 +618,37 @@
                       this.s = "2.5 - youth";
                       break;
                   case 17 :
-                      this.s = "3 - kids";
+                      this.s = "3 - youth";
                       break;
+                  default :
+                      this.s = "8 - kids";
               }
               $scope.shoeSelected.size = this.s;
-          }
+
+      });
+
+      $scope.tabSelectedSize = [];
+      $scope.$watch("tabSize", function(newValue, oldValue) {
+              var s = "small";
+              switch ($scope.tabSize) {
+                  case 0 :
+                      this.s = "small";
+                      break;
+                  case 1 :
+                      this.s = "medium";
+                      break;
+                  case 2 :
+                      this.s = "large";
+                      break;
+                  case 3 :
+                      this.s = "xl";
+                      break;
+                  default:
+                      this.s = "small";
+
+              }
+              $scope.tabSelectedSize = this.s;
+
       });
 
   }]);
