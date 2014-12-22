@@ -229,6 +229,13 @@
               case "shoe":
                   $scope.subTotal -= $scope.shoeSelected[0].price;
                   console.log("popped " + $scope.shoeSelected.pop().name + " from shoeSelected");
+                  this.clearImage(rightProfileTabCanvas,rptabcontext );
+                  this.clearImage(rightProfileCanvas,rpcontext );
+                  this.clearImage(leftProfileTabCanvas,lptabcontext );
+                  this.clearImage(leftProfileCanvas,lpcontext );
+                  this.clearImage(topViewTabCanvas,tptabcontext, side );
+                  this.clearImage(topViewTabCanvas,tptabcontext, side );
+                  this.clearImage(topViewCanvas,tpcontext, side );
                   break;
               default:
                   console.log("no tabs removed");
