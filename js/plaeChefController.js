@@ -211,10 +211,14 @@
               case "left":
                   $scope.subTotal -= $scope.tabLeft[0].price;
                   console.log("popped " + $scope.tabLeft.pop().name + " from tabLeft");
+                  this.clearImage(leftProfileTabCanvas,lptabcontext );
+                  this.clearImage(topViewTabCanvas,tptabcontext, side );
                   break;
               case "right":
                   $scope.subTotal -= $scope.tabRight[0].price;
                   console.log("popped " + $scope.tabRight.pop().name + " from tabRight");
+                  this.clearImage(rightProfileTabCanvas,rptabcontext );
+                  this.clearImage(topViewTabCanvas,tptabcontext, side );
                   break;
               case "shoe":
                   $scope.subTotal -= $scope.shoeSelected[0].price;
@@ -223,28 +227,25 @@
               default:
                   console.log("no tabs removed");
           }
-          /*    this.clearImage(canvas,context ); */
+          /* clear only the correct side
+
           this.clearImage(topViewCanvas,tpcontext );
           this.clearImage(leftProfileCanvas,lpcontext );
           this.clearImage(rightProfileCanvas,rpcontext );
-          this.clearImage(topViewTabCanvas,tptabcontext );
-          this.clearImage(leftProfileTabCanvas,lptabcontext );
-          this.clearImage(rightProfileTabCanvas,rptabcontext );
-          this.canvasView = "top";
 
+
+
+          this.canvasView = "top";
+          */
       };
 
-      this.setViews = function(){
-          console.log("inside setViews");
-      /*    this.drawDefaultViewImage(); */
+      this.setViews = function(side){
           this.drawTopViewImage();
           this.drawLeftProfileViewImage();
           this.drawRightProfileViewImage();
       }; //end setViews
 
       this.setTabViews = function(side){
-          console.log("inside setTabViews");
-      /*    this.drawDefaultViewImage(); */
           this.drawTopTabsViewImage(side);
           switch(side) {
               case "left":
@@ -531,6 +532,9 @@
               this.clearImage(leftProfileTabCanvas,lptabcontext );
               this.clearImage(rightProfileTabCanvas,rptabcontext );
               this.canvasView = "top";
+
+          this.setEditMode();
+
 
       };
 
