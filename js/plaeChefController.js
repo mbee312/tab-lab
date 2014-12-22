@@ -162,6 +162,12 @@
           $scope.subTotal += $scope.shoeSelected[0].price;
 
           this.setViews();
+          if($scope.tabLeft.length>0){
+              this.setTabViews("left");
+          }//end if
+          if($scope.tabRight.length>0){
+              this.setTabViews("right");
+          }//end if
 
 
       }; //end setShoe()
