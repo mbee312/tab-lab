@@ -116,16 +116,29 @@ md-button{
     border-bottom-left-radius: 8px;
     border-top-left-radius: 8px;
 }
-.size.selector.slider {
-    margin: 10px;
+.size.select.shoe {
+    margin-left: 15%;
 }
 
-.size.selector.slider h5 {
-    margin-left: 20px;
+.size.select.tabs {
+    margin-left: 15%;
+}
+
+select.size.select.tabs {
+    margin-left: 0;
+}
+
+.size.selector h5 {
     margin-top: 40px;
     font-weight: normal;
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
 }
-.size.selector.slider p {
+
+select {
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
+
+}
+.size.selector p {
     margin-left: 20px;
     margin-top: 10px;
     margin-bottom: 5px;
@@ -187,6 +200,12 @@ span.color {
     width: 80%;
 }
 
+div#subtotal p {
+    font-weight: bold;
+    font-size: large;
+    font-size: 90%;
+}
+
 hr {
     position: absolute;
     float: center;
@@ -211,9 +230,17 @@ ul.plae.basket.list {
 }
 
 #reset-button {
-    left: 30px;
-    top: 430px;
+    float: right;
+    top: 10px;
     position: absolute;
+    font-size: 10px !important;
+    right: 10px;
+}
+
+button#add-to-cart-button {
+    top: 250px;
+    float: left;
+    margin-left: 20px;
 }
 
 .md-dialog-container.ng-scope {
@@ -235,6 +262,7 @@ button.md-button.md-default-theme {
 
 button#edit {
     margin: 5px;
+    float: left;
 }
 
 #edit img {

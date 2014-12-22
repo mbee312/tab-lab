@@ -206,6 +206,34 @@
 
       }; //end addTab()
 
+      this.remove = function (side){
+          switch (side){
+              case "left":
+                  $scope.subTotal -= $scope.tabLeft[0].price;
+                  console.log("popped " + $scope.tabLeft.pop().name + " from tabLeft");
+                  break;
+              case "right":
+                  $scope.subTotal -= $scope.tabRight[0].price;
+                  console.log("popped " + $scope.tabRight.pop().name + " from tabRight");
+                  break;
+              case "shoe":
+                  $scope.subTotal -= $scope.shoeSelected[0].price;
+                  console.log("popped " + $scope.shoeSelected.pop().name + " from shoeSelected");
+                  break;
+              default:
+                  console.log("no tabs removed");
+          }
+          /*    this.clearImage(canvas,context ); */
+          this.clearImage(topViewCanvas,tpcontext );
+          this.clearImage(leftProfileCanvas,lpcontext );
+          this.clearImage(rightProfileCanvas,rpcontext );
+          this.clearImage(topViewTabCanvas,tptabcontext );
+          this.clearImage(leftProfileTabCanvas,lptabcontext );
+          this.clearImage(rightProfileTabCanvas,rptabcontext );
+          this.canvasView = "top";
+
+      };
+
       this.setViews = function(){
           console.log("inside setViews");
       /*    this.drawDefaultViewImage(); */
@@ -544,7 +572,8 @@
 
 
 
-      $scope.shoeSize = {};
+      $scope.shoe = {};
+      $scope.tab ={};
 
       $scope.shoeSizeOptions = [
           {size: 8, label: "8 - kids"},
@@ -566,90 +595,12 @@
           {size: 3, label: "3 - youth"}
       ];
 
-      $scope.$watch("shoeSize", function(newValue, oldValue) {
-              var s = "8 - kids";
-              switch ($scope.shoeSize) {
-                  case 1 :
-                      this.s = "8 - kids";
-                      break;
-                  case 2 :
-                      this.s = "8.5 - kids";
-                      break;
-                  case 3 :
-                      this.s = "9 - kids";
-                      break;
-                  case 4 :
-                      this.s = "9.5 - kids";
-                      break;
-                  case 5 :
-                      this.s = "10 - kids";
-                      break;
-                  case 6 :
-                      this.s = "10.5 - kids";
-                      break;
-                  case 7 :
-                      this.s = "11 - kids";
-                      break;
-                  case 8 :
-                      this.s = "11.5 - kids";
-                      break;
-                  case 9 :
-                      this.s = "12 - kids";
-                      break;
-                  case 10 :
-                      this.s = "12.5 - kids";
-                      break;
-                  case 11 :
-                      this.s = "13 - kids";
-                      break;
-                  case 12 :
-                      this.s = "13.5 - kids";
-                      break;
-                  case 13 :
-                      this.s = "1 - youth";
-                      break;
-                  case 14 :
-                      this.s = "1.5 - youth";
-                      break;
-                  case 15 :
-                      this.s = "2 - youth";
-                      break;
-                  case 16 :
-                      this.s = "2.5 - youth";
-                      break;
-                  case 17 :
-                      this.s = "3 - youth";
-                      break;
-                  default :
-                      this.s = "8 - kids";
-              }
-              $scope.shoeSelected.size = this.s;
-
-      });
-
-      $scope.tabSelectedSize = [];
-      $scope.$watch("tabSize", function(newValue, oldValue) {
-              var s = "small";
-              switch ($scope.tabSize) {
-                  case 0 :
-                      this.s = "small";
-                      break;
-                  case 1 :
-                      this.s = "medium";
-                      break;
-                  case 2 :
-                      this.s = "large";
-                      break;
-                  case 3 :
-                      this.s = "xl";
-                      break;
-                  default:
-                      this.s = "small";
-
-              }
-              $scope.tabSelectedSize = this.s;
-
-      });
+      $scope.tabSizeOptions = [
+          {size: "small", label: "small"},
+          {size: "medium", label: "medium"},
+          {size: "large", label: "large"},
+          {size: "x-large", label: "x-large"}
+      ];
 
   }]);
 

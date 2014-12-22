@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/waves.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="app/bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
 
 </head>
 <body ng-controller="PlaeChefController as plaeChef">
@@ -56,20 +57,29 @@
                   </div>
               </div> <!--End tabs-->
 
-      <div class="plae size" id="plae-size">
-
+      <div class="plae size" id="plae-size" >
+<!--
           <div class="size selector slider shoe">
           <h5>shoe size: {{shoeSelected.size}}</h5><p>(slide to select your size)<p>
           <md-slider flex min="0" max="17" ng-model="shoeSize" aria-label="shoeSize" id="shoe-size-slider" class="md-warn">
           </md-slider>
           </div>
+--><div class="size selector">
 
-          <div class="size selector slider">
-              <h5>tab size: {{tabSelectedSize}}</h5><p>(slide to select your size)<p>
-              <md-slider flex min="0" max="3" ng-model="tabSize" aria-label="tabSize" id="tab-size-slider" class="md-accent">
-              </md-slider>
-          </div>
+        <div class="size select shoe">
 
+              <h5>shoe size: {{shoe.label}}</h5>
+              <select class="size selector shoe" ng-model="shoe" ng-options="s.label for s in shoeSizeOptions"></select>
+      </div>
+
+
+<div class="size select tabs">
+
+    <h5>tab size: {{tab.label}}</h5>
+    <select class="size selector tabs" ng-model="tab" ng-options="t.label for t in tabSizeOptions"></select>
+</div>
+
+      </div>
           <!-- Sizer integration -->
 
           <div id="shoesizer_desc_content">
@@ -280,7 +290,7 @@
                   <md-button class="view-button md-raised" id="left-profile-button" ng-click="plaeChef.setCanvas('left')" style="background: #01BCFF;color: #fff;">
                       Left
                   </md-button>
-                  <md-button class="view-button md-raised" id="top-button" ng-click="plaeChef.setCanvas('top')" style="background: #1bb556;color: #fff;">
+                  <md-button class="view-button md-raised" id="top-button" ng-click="plaeChef.setCanvas('top')" style="background: #b557b5;color: #fff;">
                       Top
                   </md-button>
                   <md-button class="view-button md-raised" id="right-profile-button" ng-click="plaeChef.setCanvas('right')" style="background: #ff6f03;color: #fff;">
@@ -297,7 +307,7 @@
                   <p><span class="name">{{shoe.name}}</span> -
                       <span class="color">{{shoe.color}} </span>
                       <span class="price">{{shoe.price | currency}}</span>
-                      <md-button class="delete" id="delete-right" ng-click="plaeChef.removeTab('right')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
+                      <md-button class="delete" id="delete-right" ng-click="plaeChef.remove('shoe')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
                   </p>
 
               </div>
@@ -307,14 +317,14 @@
                           <span class="color">{{tabL.color}}</span>
                           <span class="price">{{tabL.price | currency}}</span>
                       </p>
-                      <md-button class="delete" id="delete-left" ng-click="plaeChef.removeTab('left')"ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
+                      <md-button class="delete" id="delete-left" ng-click="plaeChef.remove('left')"ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
                   </div>
 
                   <div class="plae basket item right" ng-model="tabs" ng-model="tabRight" ng-repeat="tabR in tabRight track by $index">
                       <p><span class="name">{{tabR.name}}</span> -
                           <span class="color">{{tabR.color}}</span>
                           <span class="price">{{tabR.price | currency}}</span>
-                          <md-button class="delete" id="delete-right" ng-click="plaeChef.removeTab('right')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
+                          <md-button class="delete" id="delete-right" ng-click="plaeChef.remove('right')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
 
                       </p>
                       </div>
@@ -327,7 +337,11 @@
 
 
               <md-button class="view-button md-raised md-warn" id="reset-button" ng-click="plaeChef.clearSelections()" ng-show="plaeChef.isEditMode()" style="background: #ff0008;color: #fff;">
-                  clear all selections
+                  start over
+              </md-button>
+
+              <md-button class="view-button md-raised" id="add-to-cart-button" ng-click="" style="background: #4EAC50;color: #fff;">
+                  add to cart
               </md-button>
 
           </div>
