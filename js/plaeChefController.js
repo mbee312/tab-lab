@@ -485,7 +485,7 @@
           tab_image_top.src = $scope.tabRight[0]["tabOneImg"];
 
 
-          tab_image_top.onload = function(){
+          tab_image_bottom.onload = function(){
               $scope.drawRotated(botRotation,rightProfileTabCanvas,rptabcontext,tab_image_bottom, botXOffset-220, botYOffset, tabWidth, tabHeight);
               console.log("drawRightTabProfileImage bottom is set!");
           };
