@@ -45,32 +45,32 @@
     canvas.style.height=512;//actual height of canvas
       */
 
-      topViewCanvas.width=660;//horizontal resolution (?) - increase for better looking text
+      topViewCanvas.width=610;//horizontal resolution (?) - increase for better looking text
       topViewCanvas.height=512;//vertical resolution (?) - increase for better looking text
       topViewCanvas.style.width=512;//actual width of canvas
       topViewCanvas.style.height=512;//actual height of canvas
 
-      topViewTabCanvas.width=660;//horizontal resolution (?) - increase for better looking text
+      topViewTabCanvas.width=610;//horizontal resolution (?) - increase for better looking text
       topViewTabCanvas.height=512;//vertical resolution (?) - increase for better looking text
       topViewTabCanvas.style.width=512;//actual width of canvas
       topViewTabCanvas.style.height=512;//actual height of canvas
 
-      leftProfileCanvas.width=660;//horizontal resolution (?) - increase for better looking text
+      leftProfileCanvas.width=610;//horizontal resolution (?) - increase for better looking text
       leftProfileCanvas.height=512;//vertical resolution (?) - increase for better looking text
       leftProfileCanvas.style.width=512;//actual width of canvas
       leftProfileCanvas.style.height=512;//actual height of canvas
 
-      leftProfileTabCanvas.width=660;//horizontal resolution (?) - increase for better looking text
+      leftProfileTabCanvas.width=610;//horizontal resolution (?) - increase for better looking text
       leftProfileTabCanvas.height=512;//vertical resolution (?) - increase for better looking text
       leftProfileTabCanvas.style.width=512;//actual width of canvas
       leftProfileTabCanvas.style.height=512;//actual height of canvas
 
-      rightProfileCanvas.width=660;//horizontal resolution (?) - increase for better looking text
+      rightProfileCanvas.width=610;//horizontal resolution (?) - increase for better looking text
       rightProfileCanvas.height=512;//vertical resolution (?) - increase for better looking text
       rightProfileCanvas.style.width=512;//actual width of canvas
       rightProfileCanvas.style.height=512;//actual height of canvas
 
-      rightProfileTabCanvas.width=660;//horizontal resolution (?) - increase for better looking text
+      rightProfileTabCanvas.width=610;//horizontal resolution (?) - increase for better looking text
       rightProfileTabCanvas.height=512;//vertical resolution (?) - increase for better looking text
       rightProfileTabCanvas.style.width=512;//actual width of canvas
       rightProfileTabCanvas.style.height=512;//actual height of canvas

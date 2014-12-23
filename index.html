@@ -57,14 +57,9 @@
                   </div>
               </div> <!--End tabs-->
 
-      <div class="plae size" id="plae-size" >
-<!--
-          <div class="size selector slider shoe">
-          <h5>shoe size: {{shoeSelected.size}}</h5><p>(slide to select your size)<p>
-          <md-slider flex min="0" max="17" ng-model="shoeSize" aria-label="shoeSize" id="shoe-size-slider" class="md-warn">
-          </md-slider>
-          </div>
---><div class="size selector">
+          <md-whiteframe class="md-whiteframe-z2 plae size" id="plae-size" >
+
+<div class="size selector">
 
         <div class="size select shoe">
 
@@ -85,7 +80,7 @@
 
           <!-- end Sizer integration -->
 
-      </div>
+      </md-whiteframe>
 
                 <div class="canvas container">
               <!--  <canvas class='canvas' id="plae-chef-canvas" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('default')"></canvas>
@@ -102,8 +97,8 @@
                     <canvas class='canvas' id="plae-chef-canvas-right" ng-swipe-right="plaeChef.setCanvas('top')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
                     <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-right" ng-swipe-right="plaeChef.setCanvas('top')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
 
+                    <md-whiteframe class="md-whiteframe-z3" id="white-bg"></md-whiteframe>
 
-              <div id="white-bg"></div>
 
               <div class="views">
               <!--    <button class="waves-effect waves-button waves-light waves-float" id="default-button" ng-click="plaeChef.setCanvas('default')" style="background: #0d39ff;color: #fff;">
@@ -123,7 +118,7 @@
               </div>
       </div>
 
-          <<md-whiteframe class="md-whiteframe-z1 plae basket" id="plae-basket" layout>
+          <md-whiteframe class="md-whiteframe-z2 plae basket" id="plae-basket" layout>
 
 
               <md-button id="edit" ng-click="plaeChef.setEditMode()"><img src="img/menu/pen.png"></md-button>
