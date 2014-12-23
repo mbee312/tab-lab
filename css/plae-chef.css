@@ -146,8 +146,8 @@ select {
 }
 
     #plae-basket {
-        height: 472px;
-        margin-top: 50px;
+        height: 480px;
+        margin-top: 25px;
         left: 1044px;
         z-index: 50;
         width: 220px;
@@ -161,10 +161,11 @@ select {
 
 .plae.basket {
     margin: 10px;
+    margin-left: -25px;
 }
 
 .plae.basket p{
-    font-size: 12px;
+    font-size: small;
 }
 .plae.basket.item{
     width: 85%;
@@ -191,13 +192,15 @@ span.price {
 }
 
 span.color {
-    font-size: 10px;
+    font-size: 90%;
 }
 
 #subtotal {
     position: absolute;
     top: 160px;
     width: 80%;
+    float: left;
+    margin-left: -20px;
 }
 
 div#subtotal p {
@@ -241,6 +244,7 @@ button#add-to-cart-button {
     top: 250px;
     float: left;
     margin-left: 20px;
+    height: 40px;
 }
 
 .md-dialog-container.ng-scope {
@@ -263,6 +267,7 @@ button.md-button.md-default-theme {
 button#edit {
     margin: 5px;
     float: left;
+    height: 30px;
 }
 
 #edit img {
@@ -782,3 +787,8 @@ button#right-profile-button {
 
 /* when showing the picture */
 .ng-hide-remove      { animation:2s fadeIn ease;}
+
+
+md-tabs.ng-isolate-scope.md-default-theme {
+    margin-top: 560px;
+}
