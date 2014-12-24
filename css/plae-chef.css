@@ -264,6 +264,7 @@ button#add-to-cart-button {
     height: 50px;
     width: 120px;
     border-radius: 10px;
+    font-size: 105% !important;
 }
 
 .md-dialog-container.ng-scope {
