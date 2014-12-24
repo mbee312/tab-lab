@@ -107,6 +107,7 @@ md-button{
 #plae-size {
     height: 472px;
     margin-top: 50px;
+    padding-top: 20px;
     left: 208px;
     z-index: 0;
     width: 220px;
@@ -122,6 +123,7 @@ md-button{
 
 .size.select.tabs {
     margin-left: 15%;
+    margin-top: 90px;
 }
 
 select.size.select.tabs {
@@ -129,7 +131,8 @@ select.size.select.tabs {
 }
 
 .size.selector h5 {
-    margin-top: 40px;
+    margin-top: 20px;
+    margin-bottom: 10px;
     font-weight: normal;
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
 }
@@ -145,11 +148,20 @@ select {
     font-size: x-small;
 }
 
-md-checkbox#wide-fit-button {
-    float: right;
+md-checkbox#autoselect-button {
+    float: left;
     font-size: small;
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
+    margin-bottom: 0px;
 }
+
+md-checkbox#wide-fit-button {
+    float: left;
+    font-size: small;
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
+    margin-top: 0px;
+}
+
 
     #plae-basket {
         height: 480px;
@@ -213,7 +225,7 @@ span.color {
 div#subtotal p {
     font-weight: bold;
     font-size: large;
-    font-size: 90%;
+    font-size: 100%;
 }
 
 hr {
@@ -438,11 +450,6 @@ button#edit {
     position: absolute;
     left: 0;
 }
-    #colors-emme {
-        height: 100%;
-        left: -1200px;
-        position: relative;
-    }
     #colors-ty {
     /*    left: 1200px;
         margin-top: -200px; */
@@ -451,14 +458,14 @@ button#edit {
         width: 1014px;
 
         top: 10px;
-        -webkit-box-shadow: 0 10px 6px -6px #777;
+     /*   -webkit-box-shadow: 0 10px 6px -6px #777;
         -moz-box-shadow: 0 10px 6px -6px #777;
-        box-shadow: 0 10px 6px -6px #777;
+        box-shadow: 0 10px 6px -6px #777; */
 
         /*    background: -webkit-linear-gradient(rgba(233, 233, 233, 1.0), rgba(178, 178, 178, 1.0) 21px, #6A6A6A 1px, #EDEDED, #EDEDED 23px); */
         margin: 0 auto;
-      /*  margin-right: 5px;
-        border-radius: 5px; */
+      /*  margin-right: 5px;*/
+        border-radius: 8px;
     /*       box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 22px 70px 4px rgba(0,0,0,0.56), 0 0 0 1px rgba(0, 0, 0, 0.3); */
         background: #ffffff;
         position: absolute;

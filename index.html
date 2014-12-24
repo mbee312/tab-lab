@@ -35,7 +35,7 @@
                               </li>
                           </ul>
                       </div>
-                  </div> <!--End tabs container-->
+                        </div> <!--  End tabs container-->
 
                   <div class="tabs-menu left effect6">
                   <ul class="tab-styles-list">
@@ -64,23 +64,28 @@
         <div class="size select shoe">
 
               <h5>shoe size: {{shoe.label}}</h5>
-              <select class="size selector shoe" ng-model="shoe" ng-options="s.label for s in shoeSizeOptions">
+              <select class="size selector shoe" ng-model="shoe" ng-options="s.label for s in shoeSizeOptions" >
                   <option value="" selected>--choose an option--</option>
               </select>
       </div>
+
+    <md-checkbox class="size select shoe checkbox" id="autoselect-button" ng-model="fit.autoselect" aria-label="autoselect-tab">
+        auto-select tab size?
+    </md-checkbox>
+    <md-checkbox class="size select shoe checkbox" id="wide-fit-button" ng-model="fit.wide" aria-label="wide-fit">
+        wide?
+    </md-checkbox>
 
 
 <div class="size select tabs">
 
     <h5>tab size: {{tab.label}}</h5>
-    <select class="size selector tabs" ng-model="tab" ng-options="t.label for t in tabSizeOptions">
+    <select class="size selector tabs" ng-model="tab" ng-options="t.label for t in tabSizeOptions" ng-disabled="fit.autoselect">
         <option value="" selected>--choose an option--</option>
     </select>
 </div>
 
-    <md-checkbox id="wide-fit-button" ng-model="widefit" aria-label="wide-fit">
-        wide?
-    </md-checkbox>
+
 
       </div>
           <!-- Sizer integration -->

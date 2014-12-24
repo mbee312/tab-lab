@@ -97,6 +97,9 @@
 
       $scope.shoeSelected = [];
       $scope.size = "8 kids";
+      $scope.fit = {};
+      $scope.fit.autoselect = true;
+
       $scope.basket =[];
       $scope.subTotal = 0;
       $scope.editMode = false;
