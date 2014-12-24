@@ -64,19 +64,27 @@
         <div class="size select shoe">
 
               <h5>shoe size: {{shoe.label}}</h5>
-              <select class="size selector shoe" ng-model="shoe" ng-options="s.label for s in shoeSizeOptions"></select>
+              <select class="size selector shoe" ng-model="shoe" ng-options="s.label for s in shoeSizeOptions">
+                  <option value="" selected>--choose an option--</option>
+              </select>
       </div>
 
 
 <div class="size select tabs">
 
     <h5>tab size: {{tab.label}}</h5>
-    <select class="size selector tabs" ng-model="tab" ng-options="t.label for t in tabSizeOptions"></select>
+    <select class="size selector tabs" ng-model="tab" ng-options="t.label for t in tabSizeOptions">
+        <option value="" selected>--choose an option--</option>
+    </select>
 </div>
+
+    <md-checkbox id="wide-fit-button" ng-model="widefit" aria-label="wide-fit">
+        wide?
+    </md-checkbox>
 
       </div>
           <!-- Sizer integration -->
-          <p style="font-size:x-small; margin-top:40px; text-align: center;">Insert Volumental Shoesizer link here</p>
+          <p style="font-size:x-small; margin-top:60px; text-align: center;">Insert Volumental Shoesizer link here</p>
 
           <!-- end Sizer integration -->
 
