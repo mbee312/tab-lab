@@ -2,7 +2,7 @@
   'use strict';
 
   // Declare app level module which depends on views, and components
-  var plaeChefApp = angular.module('plaeChefApp', ['ngAnimate','ngDragDrop', 'ngTouch', 'ngMaterial']);
+  var plaeChefApp = angular.module('plaeChefApp', ['ngAnimate','ngDragDrop', 'ngTouch', 'ngMaterial', 'ui.bootstrap', 'angular-carousel', 'slick']);
 
 
   plaeChefApp.controller('PlaeChefController', ['$scope', '$http', '$mdDialog', function($scope, $http, $mdDialog){
@@ -103,6 +103,8 @@
       $scope.basket =[];
       $scope.subTotal = 0;
       $scope.editMode = false;
+
+      $scope.carouselIndex = 5;
 
       $scope.hideMeLT = function() {
           return $scope.tabLT.length > 0;
@@ -652,6 +654,11 @@
           {size: "large", label: "large"},
           {size: "x-large", label: "x-large"}
       ];
+
+
+      $scope.$watch($scope.carouselIndex, function() {
+         console.log('hey, carouselIndex has changed! ' + $scope.carouselIndex );
+      });
 
 
   }]);

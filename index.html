@@ -10,11 +10,15 @@
   <title>Plae Chef app</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
+    <link href="app/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/plae-chef.css">
     <link rel="stylesheet" href="css/waves.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="app/bower_components/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+    <link rel="stylesheet" href="app/bower_components/angular-carousel/dist/angular-carousel.min.css">
+    <link rel="stylesheet" href="app/bower_components/slick-carousel/slick/slick.css">
+
 
 </head>
 <body ng-controller="PlaeChefController as plaeChef">
@@ -57,7 +61,9 @@
                   </div>
               </div> <!--End tabs-->
 
-          <md-whiteframe class="md-whiteframe-z2 plae size" id="plae-size" >
+          <div layout="row" layout-sm="column">
+
+          <md-whiteframe class="md-whiteframe-z2 plae size" id="plae-size">
 
 <div class="size selector">
 
@@ -140,7 +146,7 @@
                   <p><span class="name">{{shoe.name}}</span> -
                       <span class="color">{{shoe.color}} </span>
                       <span class="price">{{shoe.price | currency}}</span>
-                      <md-button class="delete" id="delete-right" ng-click="plaeChef.remove('shoe')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
+                      <md-button class="delete" id="delete-shoe" ng-click="plaeChef.remove('shoe')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
                   </p>
 
               </div>
@@ -163,7 +169,7 @@
                       </div>
 
 
-              <hr width="90%" size="1">
+              <hr width="90%" size="2" align="center">
               <div class="plae basket subtotal" id="subtotal">
                   <p>subtotal <span class="price subtotal">{{plaeChef.getSubTotal() | currency}}</span></p>
               </div>
@@ -178,6 +184,40 @@
               </md-button>
 
       </md-whiteframe>
+          </div>
+
+      <!--    <div id="shoe-car">
+
+              <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-transition="hexagon" rn-carousel-buffered class="colorways-list">
+                  <li ng-repeat="shoe in shoeList track by shoe.id">
+                          <img ng-src="{{ shoe.menuImgUrl }}"/></a>
+                  </li>
+              </ul>
+
+          </div>
+
+          <div >
+              <div class="carousel-demo" id="shoe-car">
+                  <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-controls rn-carousel-buffered class="carousel3" active="shoe.id">
+                      <li ng-repeat="shoe in shoeList track by shoe.id">
+                          <div ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"  class="bgimage">
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>-->
+
+
+
+              <slick class="shoe-car" id="shoe-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" data="shoeList">
+
+                      <div ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"  class="bgimage">
+                      </div>
+              </slick>
+
+
+
+
 </div>
 
 
@@ -186,18 +226,21 @@
 
 
 
+
       <script src="js/share.min.js"></script>
       <script src="app/bower_components/hammerjs/hammer.js"></script>
       <script src="bower_components/angular/angular.js"></script>
+      <script src="app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script src="app/bower_components/angular-animate/angular-animate.js"></script>
   <script src="components/angular-dragdrop/angular-dragdrop.min.js"></script>
-      <script src="app/bower_components/angular-touch/angular-touch.js"></script>
+      <script src="app/bower_components/angular-touch/angular-touch.min.js"></script>
       <script src="app/bower_components/angular-aria/angular-aria.js"></script>
       <script src="app/bower_components/angular-material/angular-material.js"></script>
+      <script src="app/bower_components/angular-carousel/dist/angular-carousel.js"></script>
+      <script src="app/bower_components/slick-carousel/slick/slick.js"></script>
+      <script src="app/bower_components/angular-slick/dist/slick.js"></script>
 
-<script src="js/plaeChefController.js"></script>
-
-
+      <script src="js/plaeChefController.js"></script>
 
 </body>
 </html>
