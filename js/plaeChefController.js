@@ -105,6 +105,7 @@
       $scope.editMode = false;
 
       $scope.carouselIndex = 5;
+      $scope.index = 1;
 
       $scope.hideMeLT = function() {
           return $scope.tabLT.length > 0;
@@ -655,11 +656,13 @@
           {size: "x-large", label: "x-large"}
       ];
 
-
-      $scope.$watch($scope.carouselIndex, function() {
-         console.log('hey, carouselIndex has changed! ' + $scope.carouselIndex );
+      $scope.$watch(function() {
+          return $scope.index;
+      }, function(index, carouselIndex) {
+          $scope.carouselIndex = $scope.index;
+          console.log('hey, carouselIndex has changed! ' + $scope.carouselIndex );
+         /* $scope.setShoe($scope.shoeList[$scope.index]); */
       });
-
 
   }]);
 
