@@ -186,37 +186,12 @@
       </md-whiteframe>
           </div>
 
-      <!--    <div id="shoe-car">
-
-              <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-transition="hexagon" rn-carousel-buffered class="colorways-list">
-                  <li ng-repeat="shoe in shoeList track by shoe.id">
-                          <img ng-src="{{ shoe.menuImgUrl }}"/></a>
-                  </li>
-              </ul>
-
-          </div>
-
-          <div >
-              <div class="carousel-demo" id="shoe-car">
-                  <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-controls rn-carousel-buffered class="carousel3" active="shoe.id">
-                      <li ng-repeat="shoe in shoeList track by shoe.id">
-                          <div ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"  class="bgimage">
-                          </div>
-                      </li>
-                  </ul>
-              </div>
-          </div>-->
-
-
-
-              <slick class="shoe-car" id="shoe-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="index" data="shoeList">
+              <slick class="shoe-car"  id="shoe-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="index" data="shoeList">
 
                       <div ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"  class="bgimage">
                       </div>
                   <p>Current index: {{ carouselIndex }}</p>
               </slick>
-
-
 
 
 </div>
