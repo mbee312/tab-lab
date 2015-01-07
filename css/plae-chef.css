@@ -823,9 +823,11 @@ md-tabs.ng-isolate-scope.md-default-theme {
     width: 1024px;
     border: 2px solid #D3D3D3;
 }
-.shoe-car {
-    margin-top: 600px;
+.car {
     margin-left: 220px;
+    width: 1024px;
+    border: 2px solid #D3D3D3;
+    height: 125px;
 }
 
 .center {

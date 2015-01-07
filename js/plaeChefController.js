@@ -104,8 +104,14 @@
       $scope.subTotal = 0;
       $scope.editMode = false;
 
+      $scope.index= 1 ;
       $scope.carouselIndex = 5;
-      $scope.index = 1;
+
+      $scope.leftTabIndex = 1;
+      $scope.lTindex= 5;
+
+      $scope.rightTabIndex = 1;
+      $scope.rTindex= 5;
 
       $scope.hideMeLT = function() {
           return $scope.tabLT.length > 0;
@@ -179,7 +185,7 @@
       }; //end setShoe()
 
       // Add a Item to the list
-      this.addTab = function (tab, side, event) {
+      $scope.addTab = function (tab, side, event) {
           $scope.tabs.push(tab);
           switch (side){
               case "left":
@@ -663,6 +669,24 @@
           console.log('hey, carouselIndex has changed! ' + $scope.carouselIndex );
           console.log("the shoe is " + $scope.shoeList[index]);
           $scope.setShoe($scope.shoeList[index]);
+      });
+
+      $scope.$watch(function() {
+          return $scope.leftTabIndex;
+      }, function(leftTabIndex, lTIndex) {
+          $scope.lTIndex = leftTabIndex;
+          console.log('hey, lTIndex has changed! ' + $scope.lTIndex );
+          console.log("the left tab is " + $scope.tabList[leftTabIndex]);
+          $scope.addTab($scope.tabList[leftTabIndex], "left", event);
+      });
+
+      $scope.$watch(function() {
+          return $scope.rightTabIndex;
+      }, function(rightTabIndex, rTIndex) {
+          $scope.rTIndex = rightTabIndex;
+          console.log('hey, rTIndex has changed! ' + $scope.rTIndex );
+          console.log("the right tab is " + $scope.tabList[rightTabIndex]);
+          $scope.addTab($scope.tabList[rightTabIndex], "right", event);
       });
 
   }]);
