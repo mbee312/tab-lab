@@ -63,19 +63,16 @@
 
               <div ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"  class="bgimage">
               </div>
-              <p>Current index: {{ carouselIndex }}</p>
           </slick>
 
           <slick class="car"  id="tab-left-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="leftTabIndex" data="tabList">
               <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"  class="tabmenuitem bgimage">
               </div>
-              <p>Current tab index: {{ lTIndex }}</p>
           </slick>
 
           <slick class="car"  id="tab-right-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="rightTabIndex" data="tabList">
               <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"  class="tabmenuitem bgimage">
               </div>
-              <p>Current tab index: {{ rTIndex }}</p>
           </slick>
 
 
