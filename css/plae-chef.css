@@ -168,7 +168,7 @@ md-checkbox#wide-fit-button {
         margin-top: 20px;
         left: 1044px;
         z-index: 0;
-        width: 220px;
+        width: 240px;
         position: absolute;
         border: 1px solid #D3D3D3;
         background-color: #f5f5f5;
@@ -310,8 +310,8 @@ button#edit {
 .delete {
     float: right !important;
     position: absolute !important;
-    right: -20px;
-    top: 10px;
+    right: -22px;
+    top: -7px;
 }
 
 
