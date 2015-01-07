@@ -233,7 +233,7 @@
                   $scope.clearImage(leftProfileCanvas,lpcontext );
                   $scope.clearImage(topViewTabCanvas,tptabcontext, side );
                   $scope.clearImage(topViewCanvas,tpcontext, side );
-                  this.setViews(side);
+                  $scope.setViews(side);
                   break;
               case "right":
                   $scope.subTotal -= $scope.tabRight[0].price;
@@ -242,7 +242,7 @@
                   $scope.clearImage(rightProfileCanvas,rpcontext );
                   $scope.clearImage(topViewTabCanvas,tptabcontext, side );
                   $scope.clearImage(topViewCanvas,tpcontext, side );
-                  this.setViews(side);
+                  $scope.setViews(side);
                   break;
               case "shoe":
                   $scope.subTotal -= $scope.shoeSelected[0].price;
