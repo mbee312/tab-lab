@@ -140,13 +140,13 @@
           <md-whiteframe class="md-whiteframe-z2 plae basket" id="plae-basket" layout>
 
 
-              <md-button id="edit" ng-click="plaeChef.setEditMode()"><img src="img/menu/pen.png"></md-button>
+              <md-button id="edit" aria-label="edit-cart" ng-click="plaeChef.setEditMode()"><img src="img/menu/pen.png"></md-button>
 
               <div class="plae basket item shoe" ng-repeat="shoe in shoeSelected" ng-model="shoeSelected">
                   <p><span class="name">{{shoe.name}}</span> -
                       <span class="color">{{shoe.color}} </span>
                       <span class="price">{{shoe.price | currency}}</span>
-                      <md-button class="delete" id="delete-shoe" ng-click="plaeChef.remove('shoe')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
+                      <md-button class="delete" id="delete-shoe" aria-label="delete-shoe" ng-click="plaeChef.remove('shoe')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
                   </p>
 
               </div>
@@ -156,14 +156,14 @@
                           <span class="color">{{tabL.color}}</span>
                           <span class="price">{{tabL.price | currency}}</span>
                       </p>
-                      <md-button class="delete" id="delete-left" ng-click="plaeChef.remove('left')"ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
+                      <md-button class="delete" id="delete-left" aria-label="delete-left" ng-click="plaeChef.remove('left')"ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
                   </div>
 
                   <div class="plae basket item right" ng-model="tabs" ng-model="tabRight" ng-repeat="tabR in tabRight track by $index">
                       <p><span class="name">{{tabR.name}}</span> -
                           <span class="color">{{tabR.color}}</span>
                           <span class="price">{{tabR.price | currency}}</span>
-                          <md-button class="delete" id="delete-right" ng-click="plaeChef.remove('right')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
+                          <md-button class="delete" id="delete-right" aria-label="delete-right" ng-click="plaeChef.remove('right')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
 
                       </p>
                       </div>
@@ -186,12 +186,12 @@
       </md-whiteframe>
           </div>
 
-              <slick class="shoe-car"  id="shoe-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="index" data="shoeList">
+          <slick class="shoe-car"  id="shoe-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="index" data="shoeList">
 
-                      <div ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"  class="bgimage">
-                      </div>
-                  <p>Current index: {{ carouselIndex }}</p>
-              </slick>
+              <div ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"  class="bgimage">
+              </div>
+              <p>Current index: {{ carouselIndex }}</p>
+          </slick>
 
 
 </div>

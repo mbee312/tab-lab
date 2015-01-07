@@ -133,7 +133,7 @@
       /* helper function to clear canvas */
       /*                                 */
 
-      this.clearImage = function(c, ctx, side) {
+      $scope.clearImage = function(c, ctx, side) {
 
           // Store the current transformation matrix
           ctx.save();
@@ -156,7 +156,7 @@
           ctx.restore();
       }; // end clearImage
 
-      this.setShoe = function(shoe,event) {
+      $scope.setShoe = function(shoe,event) {
 
           while($scope.shoeSelected.length > 0){
               $scope.subTotal -= $scope.shoeSelected[0].price;
@@ -167,7 +167,7 @@
           console.log("the price is " + $scope.shoeSelected[0].price);
           $scope.subTotal += $scope.shoeSelected[0].price;
 
-          this.setViews();
+          $scope.setViews();
           if($scope.tabLeft.length>0){
               this.setTabViews("left");
           }//end if
@@ -210,8 +210,8 @@
           }// end switch
 
           if($scope.shoeSelected.length>0){
-              this.setViews();
-              this.setTabViews(side);
+              $scope.setViews();
+              $scope.setTabViews(side);
           }else{
               console.log("no shoe selected");
           }// end-if
@@ -223,64 +223,64 @@
               case "left":
                   $scope.subTotal -= $scope.tabLeft[0].price;
                   console.log("popped " + $scope.tabLeft.pop().name + " from tabLeft");
-                  this.clearImage(leftProfileTabCanvas,lptabcontext );
-                  this.clearImage(leftProfileCanvas,lpcontext );
-                  this.clearImage(topViewTabCanvas,tptabcontext, side );
-                  this.clearImage(topViewCanvas,tpcontext, side );
+                  $scope.clearImage(leftProfileTabCanvas,lptabcontext );
+                  $scope.clearImage(leftProfileCanvas,lpcontext );
+                  $scope.clearImage(topViewTabCanvas,tptabcontext, side );
+                  $scope.clearImage(topViewCanvas,tpcontext, side );
                   this.setViews(side);
                   break;
               case "right":
                   $scope.subTotal -= $scope.tabRight[0].price;
                   console.log("popped " + $scope.tabRight.pop().name + " from tabRight");
-                  this.clearImage(rightProfileTabCanvas,rptabcontext );
-                  this.clearImage(rightProfileCanvas,rpcontext );
-                  this.clearImage(topViewTabCanvas,tptabcontext, side );
-                  this.clearImage(topViewCanvas,tpcontext, side );
+                  $scope.clearImage(rightProfileTabCanvas,rptabcontext );
+                  $scope.clearImage(rightProfileCanvas,rpcontext );
+                  $scope.clearImage(topViewTabCanvas,tptabcontext, side );
+                  $scope.clearImage(topViewCanvas,tpcontext, side );
                   this.setViews(side);
                   break;
               case "shoe":
                   $scope.subTotal -= $scope.shoeSelected[0].price;
                   console.log("popped " + $scope.shoeSelected.pop().name + " from shoeSelected");
-                  this.clearImage(rightProfileTabCanvas,rptabcontext );
-                  this.clearImage(rightProfileCanvas,rpcontext );
-                  this.clearImage(leftProfileTabCanvas,lptabcontext );
-                  this.clearImage(leftProfileCanvas,lpcontext );
-                  this.clearImage(topViewTabCanvas,tptabcontext, side );
-                  this.clearImage(topViewTabCanvas,tptabcontext, side );
-                  this.clearImage(topViewCanvas,tpcontext, side );
+                  $scope.clearImage(rightProfileTabCanvas,rptabcontext );
+                  $scope.clearImage(rightProfileCanvas,rpcontext );
+                  $scope.clearImage(leftProfileTabCanvas,lptabcontext );
+                  $scope.clearImage(leftProfileCanvas,lpcontext );
+                  $scope.clearImage(topViewTabCanvas,tptabcontext, side );
+                  $scope.clearImage(topViewTabCanvas,tptabcontext, side );
+                  $scope.clearImage(topViewCanvas,tpcontext, side );
                   break;
               default:
                   console.log("no tabs removed");
           }
       };
 
-      this.setViews = function(side){
+      $scope.setViews = function(side){
           if(side == "left"){
               console.log("inside left setviews()");
-              this.drawTopViewImage(side);
-              this.drawLeftProfileViewImage();
+              $scope.drawTopViewImage(side);
+              $scope.drawLeftProfileViewImage();
           }else if(side == "right"){
               console.log("inside right setviews()");
-              this.drawTopViewImage(side);
-              this.drawRightProfileViewImage();
+              $scope.drawTopViewImage(side);
+              $scope.drawRightProfileViewImage();
           }else{
               console.log("inside else setviews()");
-              this.drawTopViewImage();
-              this.drawLeftProfileViewImage();
-              this.drawRightProfileViewImage();
+              $scope.drawTopViewImage();
+              $scope.drawLeftProfileViewImage();
+              $scope.drawRightProfileViewImage();
           }//end else-if
       }; //end setViews
 
-      this.setTabViews = function(side){
-          this.drawTopTabsViewImage(side);
+      $scope.setTabViews = function(side){
+          $scope.drawTopTabsViewImage(side);
           switch(side) {
               case "left":
                   console.log("drawing left side");
-                  this.drawLeftTabsProfileViewImage();
+                  $scope.drawLeftTabsProfileViewImage();
                   break;
               case "right":
                   console.log("drawing right side");
-                this.drawRightTabsProfileViewImage();
+                  $scope.drawRightTabsProfileViewImage();
                   break;
               default:
                   console.log("error: no tab view side selected");
@@ -289,8 +289,8 @@
 
       }; //end setViews
 
-      this.drawDefaultViewImage = function (){
-          this.clearImage(canvas,context );
+      $scope.drawDefaultViewImage = function (){
+          $scope.clearImage(canvas,context );
           context.fillStyle="#FFFFFF";
           context.fillRect(0,0,canvas.width,100);
           var base_image = new Image();
@@ -310,8 +310,8 @@
 
       }; //end drawDefaultViewImage
 
-      this.drawTopViewImage = function (side){
-          this.clearImage(topViewCanvas,tpcontext, side );
+      $scope.drawTopViewImage = function (side){
+          $scope.clearImage(topViewCanvas,tpcontext, side );
       /*    tpcontext.fillStyle="#FFFFFF";
           tpcontext.fillRect(75,0,topViewCanvas.width-150,150); */
           var right_image = new Image();
@@ -356,8 +356,8 @@
       };// end drawTopViewImage
 
 
-      this.drawTopTabsViewImage = function (side){
-          this.clearImage(topViewTabCanvas,tptabcontext, side );
+      $scope.drawTopTabsViewImage = function (side){
+          $scope.clearImage(topViewTabCanvas,tptabcontext, side );
 
           var tab_image_top_left = new Image();
           var tab_image_bot_left = new Image();
@@ -431,8 +431,8 @@
 
 
 
-      this.drawLeftProfileViewImage = function (){
-          this.clearImage(leftProfileCanvas,lpcontext );
+      $scope.drawLeftProfileViewImage = function (){
+          $scope.clearImage(leftProfileCanvas,lpcontext );
           lpcontext.translate(0,0);
           lpcontext.fillStyle="#FFFFFF";
           lpcontext.fillRect(75,0,leftProfileCanvas.width-150,150);
@@ -452,8 +452,8 @@
           }// end if-else
       };// end drawLeftProfileViewImage
 
-      this.drawRightProfileViewImage = function (){
-          this.clearImage(rightProfileCanvas,rpcontext );
+      $scope.drawRightProfileViewImage = function (){
+          $scope.clearImage(rightProfileCanvas,rpcontext );
           rpcontext.translate(0,0);
           rpcontext.fillStyle="#FFFFFF";
           rpcontext.fillRect(75,0,rightProfileCanvas.width-150,150);
@@ -473,8 +473,8 @@
           }// end if-else
       }; //end drawRightProfileViewImage
 
-      this.drawLeftTabsProfileViewImage = function (){
-          this.clearImage(leftProfileTabCanvas,lptabcontext );
+      $scope.drawLeftTabsProfileViewImage = function (){
+          $scope.clearImage(leftProfileTabCanvas,lptabcontext );
 
           var tab_image_top = new Image();
           var tab_image_bottom = new Image();
@@ -503,8 +503,8 @@
       }; // end drawLeftTabsProfileViewImage
 
 
-      this.drawRightTabsProfileViewImage = function (){
-          this.clearImage(rightProfileTabCanvas,rptabcontext );
+      $scope.drawRightTabsProfileViewImage = function (){
+          $scope.clearImage(rightProfileTabCanvas,rptabcontext );
           var tab_image_top = new Image();
           var tab_image_bottom = new Image();
           var tabWidth = 275;
@@ -563,13 +563,13 @@
                   console.log("popped " + $scope.tabRight.pop().name + " from tabRight");
               }
           $scope.subTotal = 0;
-          /*    this.clearImage(canvas,context ); */
-              this.clearImage(topViewCanvas,tpcontext );
-              this.clearImage(leftProfileCanvas,lpcontext );
-              this.clearImage(rightProfileCanvas,rpcontext );
-              this.clearImage(topViewTabCanvas,tptabcontext );
-              this.clearImage(leftProfileTabCanvas,lptabcontext );
-              this.clearImage(rightProfileTabCanvas,rptabcontext );
+          /*    $scope.clearImage(canvas,context ); */
+              $scope.clearImage(topViewCanvas,tpcontext );
+              $scope.clearImage(leftProfileCanvas,lpcontext );
+              $scope.clearImage(rightProfileCanvas,rpcontext );
+              $scope.clearImage(topViewTabCanvas,tptabcontext );
+              $scope.clearImage(leftProfileTabCanvas,lptabcontext );
+              $scope.clearImage(rightProfileTabCanvas,rptabcontext );
               this.canvasView = "top";
 
           this.setEditMode();
@@ -659,9 +659,10 @@
       $scope.$watch(function() {
           return $scope.index;
       }, function(index, carouselIndex) {
-          $scope.carouselIndex = $scope.index;
+          $scope.carouselIndex = index;
           console.log('hey, carouselIndex has changed! ' + $scope.carouselIndex );
-         /* $scope.setShoe($scope.shoeList[$scope.index]); */
+          console.log("the shoe is " + $scope.shoeList[index]);
+          $scope.setShoe($scope.shoeList[index]);
       });
 
   }]);
