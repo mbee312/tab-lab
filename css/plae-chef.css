@@ -817,7 +817,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
 }
 
 .car {
-    margin-left: 240px;
+    margin-left: 250px;
     width: 1000px;
     border: 2px solid #D3D3D3;
     height: 125px;
@@ -843,11 +843,28 @@ md-tabs.ng-isolate-scope.md-default-theme {
     height: 100px;
     width: 200px !important;
 }
-
+/*
 .slick-prev, .slick-next{
     color: rgba(0, 143, 255, 1) !important;
-    background: rgba(0, 0, 0, 0.33) !important;
+    background: rgb(178, 178, 178) !important;
+} */
+
+.slick-prev:before, .slick-next:before {
+    color: #898989 !important;
+    opacity: 0.75 !important;
+    font-size: 40px !important;
 }
+
+.slick-prev {
+    left: -40px !important;
+    top: 45%;
+}
+
+.slick-next {
+    right: -20px !important;
+    top: 45%;
+ }
+
 .slick-list.draggable{
     padding-left: 0px !important;
     padding-right: 0px !important;
