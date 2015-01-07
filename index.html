@@ -26,7 +26,7 @@
           <div class="logo"><img src="img/logo.png"></div>
       </div>
 
-              <div class="styles-menu-container" id="tabs">
+      <!--        <div class="styles-menu-container" id="tabs">
 
                   <div class='colorways' id="tabs_container">
                       <div id="colors-ty">
@@ -36,7 +36,7 @@
                               </li>
                           </ul>
                       </div>
-                        </div> <!--  End tabs container-->
+                        </div> <!--  End tabs container
 
                   <div class="tabs-menu left effect6">
                   <ul class="tab-styles-list">
@@ -56,7 +56,27 @@
 
                       </ul>
                   </div>
-              </div> <!--End tabs-->
+              </div> <!--End tabs
+          -->
+
+          <slick class="car"  id="shoe-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="index" data="shoeList">
+
+              <div ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"  class="bgimage">
+              </div>
+              <p>Current index: {{ carouselIndex }}</p>
+          </slick>
+
+          <slick class="car"  id="tab-left-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="leftTabIndex" data="tabList">
+              <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"  class="tabmenuitem bgimage">
+              </div>
+              <p>Current tab index: {{ lTIndex }}</p>
+          </slick>
+
+          <slick class="car"  id="tab-right-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="rightTabIndex" data="tabList">
+              <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"  class="tabmenuitem bgimage">
+              </div>
+              <p>Current tab index: {{ rTIndex }}</p>
+          </slick>
 
           <div layout="row" layout-sm="column">
 
@@ -182,27 +202,6 @@
 
       </md-whiteframe>
           </div>
-
-          <slick class="car"  id="shoe-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="index" data="shoeList">
-
-              <div ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"  class="bgimage">
-              </div>
-              <p>Current index: {{ carouselIndex }}</p>
-          </slick>
-
-          <slick class="car"  id="tab-left-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="leftTabIndex" data="tabList">
-              <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"  class="tabmenuitem bgimage">
-              </div>
-              <p>Current tab index: {{ lTIndex }}</p>
-          </slick>
-
-          <slick class="car"  id="tab-right-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="rightTabIndex" data="tabList">
-              <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"  class="tabmenuitem bgimage">
-              </div>
-              <p>Current tab index: {{ rTIndex }}</p>
-          </slick>
-
-
 
       </div>
 
