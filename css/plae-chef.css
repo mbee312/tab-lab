@@ -806,10 +806,10 @@ button#right-profile-button {
 
 
 /* when hiding the picture */
-.ng-hide-add         { animation:.5s bounceOut ease; }
+/*.ng-hide-add         { animation:.5s bounceOut ease; } */
 
 /* when showing the picture */
-.ng-hide-remove      { animation:2s fadeIn ease;}
+/*.ng-hide-remove      { animation:2s fadeIn ease;} */
 
 
 md-tabs.ng-isolate-scope.md-default-theme {
@@ -841,7 +841,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
 .bgimage.ng-scope.slick-slide.slick-active {
     height: 100px;
-    width: 200px !important;
+    width: 200px;
 }
 /*
 .slick-prev, .slick-next{
@@ -873,6 +873,28 @@ md-tabs.ng-isolate-scope.md-default-theme {
     padding-right: 0px !important;
 
 }
+
+.slick-active{
+    opacity: .6;
+    width: 190px !important;
+
+}
+
+.tabmenuitem.bgimage.slick-active{
+   /* width: 190px !important; */
+}
+
+.slick-center{
+    opacity: 1;
+    width: 240px !important;
+    height: 120px !important;
+}
+
+.tabmenuitem.slick-center{
+    opacity: 1;
+    width: 240px !important;
+}
+
 
 /*
 .slide{

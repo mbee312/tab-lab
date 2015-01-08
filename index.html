@@ -5,13 +5,13 @@
 <!--[if gt IE 8]><!-->
 <html lang="en" ng-app="plaeChefApp" class="customizer" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Plae Chef app</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Plae Chef app</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
     <link href="app/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/plae-chef.css">
+    <link rel="stylesheet" href="css/plae-chef.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="app/bower_components/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="app/bower_components/slick-carousel/slick/slick.css">
@@ -20,212 +20,162 @@
 </head>
 <body ng-controller="PlaeChefController as plaeChef">
 
-      <div ng-view class="view-frame plae-chef-window">
+<div ng-view class="view-frame plae-chef-window">
 
-      <div class="shop-menu">
-          <div class="logo"><img src="img/logo.png"></div>
-      </div>
+    <div class="shop-menu">
+        <div class="logo"><img src="img/logo.png"></div>
+    </div>
 
-      <!--        <div class="styles-menu-container" id="tabs">
+    <slick class="car"  id="shoe-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="index" data="shoeList">
 
-                  <div class='colorways' id="tabs_container">
-                      <div id="colors-ty">
-                          <ul class="colorways-list">
-                              <li ng-repeat="shoe in shoeList | filter: {name:'ty'}" ng-model="shoeSelected" class="colorway" ng-show="true">
-                                  <a href ng-click="plaeChef.setShoe(shoe)"><img ng-src="{{ shoe.menuImgUrl }}"/></a>
-                              </li>
-                          </ul>
-                      </div>
-                        </div> <!--  End tabs container
+        <div ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"  class="bgimage">
+        </div>
+    </slick>
 
-                  <div class="tabs-menu left effect6">
-                  <ul class="tab-styles-list">
-                      <li class='tab-list' ng-repeat="tab in tabList" ng-model="tabs" class='tabs-menu' id="left-{{tab.id}}">
-                          <a href ng-click="plaeChef.addTab(tab, 'left', $event)"><img ng-src="{{ tab.menuImg }}"/></a>
-                      </li>
+    <slick class="car"  id="tab-left-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="leftTabIndex" data="tabList">
+        <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"  class="tabmenuitem bgimage">
+        </div>
+    </slick>
 
-                  </ul>
-              </div>
+    <slick class="car"  id="tab-right-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="rightTabIndex" data="tabList">
+        <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"  class="tabmenuitem bgimage">
+        </div>
+    </slick>
 
+    <md-whiteframe class="md-whiteframe-z2 plae size" id="plae-size">
 
-                  <div class="tabs-menu right effect6">
-                      <ul class="tab-styles-list">
-                          <li class='tab-list' ng-repeat="tab in tabList" ng-model="tabs" class='tabs-menu' id="right-{{tab.id}}">
-                              <a href ng-click="plaeChef.addTab(tab, 'right', $event)"><img ng-src="{{ tab.menuImg }}"/></a>
-                          </li>
+        <div class="size selector">
 
-                      </ul>
-                  </div>
-              </div> <!--End tabs
-          -->
+            <div class="size select shoe">
 
-          <!--
-          <div class="slide prev">
-          </div>
-          -->
+                <h5>shoe size: {{shoe.label}}</h5>
+                <select class="size selector shoe" ng-model="shoe" ng-options="s.label for s in shoeSizeOptions" >
+                    <option value="" selected>--choose an option--</option>
+                </select>
+            </div>
 
-          <slick class="car"  id="shoe-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="index" data="shoeList">
-
-              <div ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"  class="bgimage">
-              </div>
-          </slick>
-          <!--
-          <div class="slide next">
-          </div>
-          -->
-
-          <slick class="car"  id="tab-left-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="leftTabIndex" data="tabList">
-              <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"  class="tabmenuitem bgimage">
-              </div>
-          </slick>
-
-          <slick class="car"  id="tab-right-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="rightTabIndex" data="tabList">
-              <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"  class="tabmenuitem bgimage">
-              </div>
-          </slick>
+            <md-checkbox class="size select shoe checkbox" id="autoselect-button" ng-model="fit.autoselect" aria-label="autoselect-tab">
+                auto-select tab size?
+            </md-checkbox>
+            <md-checkbox class="size select shoe checkbox" id="wide-fit-button" ng-model="fit.wide" aria-label="wide-fit">
+                wide?
+            </md-checkbox>
 
 
+            <div class="size select tabs">
 
-          <md-whiteframe class="md-whiteframe-z2 plae size" id="plae-size">
-
-<div class="size selector">
-
-        <div class="size select shoe">
-
-              <h5>shoe size: {{shoe.label}}</h5>
-              <select class="size selector shoe" ng-model="shoe" ng-options="s.label for s in shoeSizeOptions" >
-                  <option value="" selected>--choose an option--</option>
-              </select>
-      </div>
-
-    <md-checkbox class="size select shoe checkbox" id="autoselect-button" ng-model="fit.autoselect" aria-label="autoselect-tab">
-        auto-select tab size?
-    </md-checkbox>
-    <md-checkbox class="size select shoe checkbox" id="wide-fit-button" ng-model="fit.wide" aria-label="wide-fit">
-        wide?
-    </md-checkbox>
+                <h5>tab size: {{tab.label}}</h5>
+                <select class="size selector tabs" ng-model="tab" ng-options="t.label for t in tabSizeOptions" ng-disabled="fit.autoselect">
+                    <option value="" selected>--choose an option--</option>
+                </select>
+            </div>
+        </div>
 
 
-<div class="size select tabs">
+    </md-whiteframe>
 
-    <h5>tab size: {{tab.label}}</h5>
-    <select class="size selector tabs" ng-model="tab" ng-options="t.label for t in tabSizeOptions" ng-disabled="fit.autoselect">
-        <option value="" selected>--choose an option--</option>
-    </select>
-</div>
+    <div class="canvas-container">
+        <!--  <canvas class='canvas' id="plae-chef-canvas" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('default')"></canvas>
+        <canvas class='canvas' id="plae-chef-canvas-pair" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('pair')"></canvas>
+        <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-pair" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('pair')"></canvas>
+        -->
+        <canvas class='canvas' id="plae-chef-canvas-left" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('top')" ng-show="plaeChef.isCanvasSet('left')"></canvas>
+        <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-left" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('top')" ng-show="plaeChef.isCanvasSet('left')"></canvas>
 
-
-
-      </div>
-          <!-- Sizer integration -->
-
-
-          <!-- end Sizer integration -->
-
-      </md-whiteframe>
-
-                <div class="canvas-container">
-              <!--  <canvas class='canvas' id="plae-chef-canvas" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('default')"></canvas>
-              <canvas class='canvas' id="plae-chef-canvas-pair" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('pair')"></canvas>
-              <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-pair" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('pair')"></canvas>
-              -->
-                    <canvas class='canvas' id="plae-chef-canvas-left" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('top')" ng-show="plaeChef.isCanvasSet('left')"></canvas>
-              <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-left" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('top')" ng-show="plaeChef.isCanvasSet('left')"></canvas>
-
-                    <canvas class='canvas' id="plae-chef-canvas-top" ng-swipe-right="plaeChef.setCanvas('left')" ng-swipe-left="plaeChef.setCanvas('right')" ng-show="plaeChef.isCanvasSet('top')"></canvas>
-                    <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-top" ng-swipe-right="plaeChef.setCanvas('left')" ng-swipe-left="plaeChef.setCanvas('right')" ng-show="plaeChef.isCanvasSet('top')"></canvas>
+        <canvas class='canvas' id="plae-chef-canvas-top" ng-swipe-right="plaeChef.setCanvas('left')" ng-swipe-left="plaeChef.setCanvas('right')" ng-show="plaeChef.isCanvasSet('top')"></canvas>
+        <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-top" ng-swipe-right="plaeChef.setCanvas('left')" ng-swipe-left="plaeChef.setCanvas('right')" ng-show="plaeChef.isCanvasSet('top')"></canvas>
 
 
-                    <canvas class='canvas' id="plae-chef-canvas-right" ng-swipe-right="plaeChef.setCanvas('top')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
-                    <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-right" ng-swipe-right="plaeChef.setCanvas('top')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
+        <canvas class='canvas' id="plae-chef-canvas-right" ng-swipe-right="plaeChef.setCanvas('top')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
+        <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-right" ng-swipe-right="plaeChef.setCanvas('top')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
 
-                    <md-whiteframe class="md-whiteframe-z3" id="white-bg"></md-whiteframe>
+        <md-whiteframe class="md-whiteframe-z3" id="white-bg"></md-whiteframe>
 
 
-              <div class="views">
-              <!--    <button class="waves-effect waves-button waves-light waves-float" id="default-button" ng-click="plaeChef.setCanvas('default')" style="background: #0d39ff;color: #fff;">
-                      Left & Right
+        <div class="views">
+            <!--    <button class="waves-effect waves-button waves-light waves-float" id="default-button" ng-click="plaeChef.setCanvas('default')" style="background: #0d39ff;color: #fff;">
+                    Left & Right
                   </button> -->
 
-                  <md-button class="view-button md-raised" id="left-profile-button" ng-click="plaeChef.setCanvas('left')" style="background: #01BCFF;color: #fff;">
-                      Left
-                  </md-button>
-                  <md-button class="view-button md-raised" id="top-button" ng-click="plaeChef.setCanvas('top')" style="background: #b557b5;color: #fff;">
-                      Top
-                  </md-button>
-                  <md-button class="view-button md-raised" id="right-profile-button" ng-click="plaeChef.setCanvas('right')" style="background: #ff6f03;color: #fff;">
-                      Right
-                  </md-button>
+            <md-button class="view-button md-raised" id="left-profile-button" ng-click="plaeChef.setCanvas('left')" style="background: #01BCFF;color: #fff;">
+                Left
+            </md-button>
+            <md-button class="view-button md-raised" id="top-button" ng-click="plaeChef.setCanvas('top')" style="background: #b557b5;color: #fff;">
+                Top
+            </md-button>
+            <md-button class="view-button md-raised" id="right-profile-button" ng-click="plaeChef.setCanvas('right')" style="background: #ff6f03;color: #fff;">
+                Right
+            </md-button>
 
-              </div>
-      </div>
+        </div>
+    </div>
 
-          <md-whiteframe class="md-whiteframe-z2 plae basket" id="plae-basket" layout>
-
-
-              <md-button id="edit" aria-label="edit-cart" ng-click="plaeChef.setEditMode()"><img src="img/menu/pen.png"></md-button>
-
-              <div class="plae basket item shoe" ng-repeat="shoe in shoeSelected" ng-model="shoeSelected">
-                  <p><span class="name">{{shoe.name}}</span> -
-                      <span class="color">{{shoe.color}} </span>
-                      <span class="price">{{shoe.price | currency}}</span>
-                      <md-button class="delete" id="delete-shoe" aria-label="delete-shoe" ng-click="plaeChef.remove('shoe')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
-                  </p>
-
-              </div>
-
-                  <div class="plae basket item left" ng-model="tabs" ng-model="tabLeft" ng-repeat="tabL in tabLeft track by $index">
-                      <p><span class="name">{{tabL.name}}</span> -
-                          <span class="color">{{tabL.color}}</span>
-                          <span class="price">{{tabL.price | currency}}</span>
-                      </p>
-                      <md-button class="delete" id="delete-left" aria-label="delete-left" ng-click="plaeChef.remove('left')"ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
-                  </div>
-
-                  <div class="plae basket item right" ng-model="tabs" ng-model="tabRight" ng-repeat="tabR in tabRight track by $index">
-                      <p><span class="name">{{tabR.name}}</span> -
-                          <span class="color">{{tabR.color}}</span>
-                          <span class="price">{{tabR.price | currency}}</span>
-                          <md-button class="delete" id="delete-right" aria-label="delete-right" ng-click="plaeChef.remove('right')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
-
-                      </p>
-                      </div>
+    <md-whiteframe class="md-whiteframe-z2 plae basket" id="plae-basket" layout>
 
 
-              <hr width="90%" size="2" align="center">
-              <div class="plae basket subtotal" id="subtotal">
-                  <p>subtotal <span class="price subtotal">{{plaeChef.getSubTotal() | currency}}</span></p>
-              </div>
+        <md-button id="edit" aria-label="edit-cart" ng-click="plaeChef.setEditMode()"><img src="img/menu/pen.png"></md-button>
+
+        <div class="plae basket item shoe" ng-repeat="shoe in shoeSelected" ng-model="shoeSelected">
+            <p><span class="name">{{shoe.name}}</span> -
+                <span class="color">{{shoe.color}} </span>
+                <span class="price">{{shoe.price | currency}}</span>
+                <md-button class="delete" id="delete-shoe" aria-label="delete-shoe" ng-click="plaeChef.remove('shoe')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
+            </p>
+
+        </div>
+
+        <div class="plae basket item left" ng-model="tabs" ng-model="tabLeft" ng-repeat="tabL in tabLeft track by $index">
+            <p><span class="name">{{tabL.name}}</span> -
+                <span class="color">{{tabL.color}}</span>
+                <span class="price">{{tabL.price | currency}}</span>
+            </p>
+            <md-button class="delete" id="delete-left" aria-label="delete-left" ng-click="plaeChef.remove('left')"ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
+        </div>
+
+        <div class="plae basket item right" ng-model="tabs" ng-model="tabRight" ng-repeat="tabR in tabRight track by $index">
+            <p><span class="name">{{tabR.name}}</span> -
+                <span class="color">{{tabR.color}}</span>
+                <span class="price">{{tabR.price | currency}}</span>
+                <md-button class="delete" id="delete-right" aria-label="delete-right" ng-click="plaeChef.remove('right')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
+
+            </p>
+        </div>
 
 
-              <md-button class="view-button md-raised md-warn" id="reset-button" ng-click="plaeChef.clearSelections()" ng-show="plaeChef.isEditMode()" style="background: #ff0008;color: #fff;">
-                  start over
-              </md-button>
+        <hr width="90%" size="2" align="center">
+        <div class="plae basket subtotal" id="subtotal">
+            <p>subtotal <span class="price subtotal">{{plaeChef.getSubTotal() | currency}}</span></p>
+        </div>
 
-              <md-button class="view-button md-raised" id="add-to-cart-button" ng-click="plaeChef.toggleRight()" style="background: #4EAC50;color: #fff;">
-                  add to cart
-              </md-button>
 
-      </md-whiteframe>
+        <md-button class="view-button md-raised md-warn" id="reset-button" ng-click="plaeChef.clearSelections()" ng-show="plaeChef.isEditMode()" style="background: #ff0008;color: #fff;">
+            start over
+        </md-button>
 
-      </div>
+        <md-button class="view-button md-raised" id="add-to-cart-button" ng-click="plaeChef.toggleRight()" style="background: #4EAC50;color: #fff;">
+            add to cart
+        </md-button>
 
-      <script src="app/bower_components/jquery/dist/jquery.min.js"></script>
-      <script src="app/bower_components/jquery-ui/jquery-ui.min.js"></script>
-      <script src="js/share.min.js"></script>
-      <script src="app/bower_components/hammerjs/hammer.js"></script>
-      <script src="bower_components/angular/angular.js"></script>
-     <script src="app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="app/bower_components/angular-animate/angular-animate.js"></script>
-  <script src="components/angular-dragdrop/angular-dragdrop.min.js"></script>
-      <script src="app/bower_components/angular-touch/angular-touch.min.js"></script>
-      <script src="app/bower_components/angular-aria/angular-aria.js"></script>
-      <script src="app/bower_components/angular-material/angular-material.js"></script>
-      <script src="app/bower_components/angular-carousel/dist/angular-carousel.js"></script>
-      <script src="app/bower_components/slick-carousel/slick/slick.js"></script>
-      <script src="app/bower_components/angular-slick/dist/slick.js"></script>
+    </md-whiteframe>
 
-      <script src="js/plaeChefController.js"></script>
+</div>
+
+<script src="app/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="app/bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script src="js/share.min.js"></script>
+<script src="app/bower_components/hammerjs/hammer.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="app/bower_components/angular-animate/angular-animate.js"></script>
+<script src="components/angular-dragdrop/angular-dragdrop.min.js"></script>
+<script src="app/bower_components/angular-touch/angular-touch.min.js"></script>
+<script src="app/bower_components/angular-aria/angular-aria.js"></script>
+<script src="app/bower_components/angular-material/angular-material.js"></script>
+<script src="app/bower_components/angular-carousel/dist/angular-carousel.js"></script>
+<script src="app/bower_components/slick-carousel/slick/slick.js"></script>
+<script src="app/bower_components/angular-slick/dist/slick.js"></script>
+
+<script src="js/plaeChefController.js"></script>
 
 </body>
 </html>
