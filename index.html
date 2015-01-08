@@ -59,11 +59,20 @@
               </div> <!--End tabs
           -->
 
+          <!--
+          <div class="slide prev">
+          </div>
+          -->
+
           <slick class="car"  id="shoe-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="index" data="shoeList">
 
               <div ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"  class="bgimage">
               </div>
           </slick>
+          <!--
+          <div class="slide next">
+          </div>
+          -->
 
           <slick class="car"  id="tab-left-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="leftTabIndex" data="tabList">
               <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"  class="tabmenuitem bgimage">

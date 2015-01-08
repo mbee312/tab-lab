@@ -62,7 +62,7 @@ md-button{
 
     .shop-menu {
         height: 100px;
-        width: 200px;
+        width: 180px;
         position: absolute;
         margin-left: 10px;
         margin-top: 0px;
@@ -101,7 +101,7 @@ md-button{
     .logo img{
         width: 150px;
         margin-top: 25px;
-        margin-left: 25px;
+        margin-left: 15px;
     }
 
 #plae-size {
@@ -211,7 +211,7 @@ span.price {
 }
 
 span.color {
-    font-size: 75%;
+    font-size: 85%;
 }
 
 #subtotal {
@@ -857,12 +857,12 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
 .slick-prev {
     left: -40px !important;
-    top: 45%;
+    top: 45% !important;
 }
 
 .slick-next {
     right: -20px !important;
-    top: 45%;
+    top: 45% !important;
  }
 .slick-slider {
     margin-bottom: 5px  !important;
@@ -873,3 +873,17 @@ md-tabs.ng-isolate-scope.md-default-theme {
     padding-right: 0px !important;
 
 }
+
+/*
+.slide{
+    height: 100px;
+    position: absolute;
+    width: 20px;
+    background-color: #898989;
+    opacity: 0.75;
+}
+
+.prev {
+    margin-left: 220px;
+}
+*/

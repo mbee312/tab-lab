@@ -105,13 +105,13 @@
       $scope.editMode = false;
 
       $scope.index= 1 ;
-      $scope.carouselIndex = 5;
+      $scope.carouselIndex = 1;
 
       $scope.leftTabIndex = 1;
-      $scope.lTindex= 5;
+      $scope.lTindex= 1;
 
       $scope.rightTabIndex = 1;
-      $scope.rTindex= 5;
+      $scope.rTindex= 1;
 
       $scope.hideMeLT = function() {
           return $scope.tabLT.length > 0;
@@ -665,28 +665,34 @@
       $scope.$watch(function() {
           return $scope.index;
       }, function(index, carouselIndex) {
-          $scope.carouselIndex = index;
-          console.log('hey, carouselIndex has changed! ' + $scope.carouselIndex );
-          console.log("the shoe is " + $scope.shoeList[index]);
-          $scope.setShoe($scope.shoeList[index]);
+          if(index !== carouselIndex) {
+              $scope.carouselIndex = index;
+              console.log('hey, carouselIndex has changed! ' + $scope.carouselIndex);
+              console.log("the shoe is " + $scope.shoeList[index]);
+              $scope.setShoe($scope.shoeList[index]);
+          }
       });
 
       $scope.$watch(function() {
           return $scope.leftTabIndex;
       }, function(leftTabIndex, lTIndex) {
-          $scope.lTIndex = leftTabIndex;
-          console.log('hey, lTIndex has changed! ' + $scope.lTIndex );
-          console.log("the left tab is " + $scope.tabList[leftTabIndex]);
-          $scope.addTab($scope.tabList[leftTabIndex], "left", event);
+          if(leftTabIndex !== lTIndex){
+              $scope.lTIndex = leftTabIndex;
+              console.log('hey, lTIndex has changed! ' + $scope.lTIndex );
+              console.log("the left tab is " + $scope.tabList[leftTabIndex]);
+              $scope.addTab($scope.tabList[leftTabIndex], "left", event);
+          }
       });
 
       $scope.$watch(function() {
           return $scope.rightTabIndex;
       }, function(rightTabIndex, rTIndex) {
-          $scope.rTIndex = rightTabIndex;
-          console.log('hey, rTIndex has changed! ' + $scope.rTIndex );
-          console.log("the right tab is " + $scope.tabList[rightTabIndex]);
-          $scope.addTab($scope.tabList[rightTabIndex], "right", event);
+          if(rightTabIndex !== rTIndex) {
+              $scope.rTIndex = rightTabIndex;
+              console.log('hey, rTIndex has changed! ' + $scope.rTIndex);
+              console.log("the right tab is " + $scope.tabList[rightTabIndex]);
+              $scope.addTab($scope.tabList[rightTabIndex], "right", event);
+          }
       });
 
   }]);
