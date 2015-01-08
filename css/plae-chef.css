@@ -895,6 +895,18 @@ md-tabs.ng-isolate-scope.md-default-theme {
     width: 240px !important;
 }
 
+.border-only{
+    border: 3px solid #898989;
+    /* border-right: 2px solid #000; */
+    background-color: rgba(0,0,0,0.0);
+    height: 410px;
+    position: absolute;
+    width: 230px;
+    top: -10px;
+    left: 640px;
+    z-index: 50;
+}
+
 
 /*
 .slide{
