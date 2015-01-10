@@ -820,10 +820,10 @@ md-tabs.ng-isolate-scope.md-default-theme {
     width: 1000px;
    /* border: 2px solid #D3D3D3; */
     height: 125px;
+    z-index: 49;
 }
 #shoe-car {
     margin-top: 20px;
-    z-index: 49;
 }
 
 .center {
@@ -911,7 +911,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
 }
 
 .border-only.slots{
-    border: 1px solid #D3D3D3;
+    border: 2px solid #D3D3D3;
     height: 385px;
     width: 380px;
     top: 0px;
