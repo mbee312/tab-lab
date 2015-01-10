@@ -30,7 +30,7 @@
 
     </div>
 
-    <slick class="car"  id="shoe-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="index" data="shoeList">
+    <slick class="car"  id="shoe-car" infinite=true center-mode="true" speed="500" center-padding="20px" cssEase="ease" arrows="true" swipeToSlide="true" easing="linear"  init-onload=true slides-to-show="5" slides-to-scroll="3" touch-move="true" touchThreshold="100" focus-on-select="true" current-index="index" data="shoeList">
 
         <div ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"  class="bgimage">
         </div>
