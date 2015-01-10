@@ -53,6 +53,7 @@ md-button{
 .plae-chef-window{
       height: 1024px;
       position: relative;
+    top: 20px;
     }
 
     body.ng-scope {
@@ -63,9 +64,9 @@ md-button{
     .shop-menu {
         height: 100px;
         width: 180px;
-        position: absolute;
+        position: fixed;
         margin-left: 10px;
-        margin-top: 0px;
+        margin-top: -10px;
         /* IE10 Consumer Preview */
         background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #4EAC50 100%);
 
@@ -857,12 +858,12 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
 .slick-prev {
     left: -40px !important;
-    top: 45% !important;
+    top: 40px !important;
 }
 
 .slick-next {
     right: -20px !important;
-    top: 45% !important;
+    top: 40px !important;
  }
 .slick-slider {
     margin-bottom: 5px  !important;
@@ -913,12 +914,12 @@ md-tabs.ng-isolate-scope.md-default-theme {
 .border-only.slots{
     border: 2px solid #D3D3D3;
     height: 385px;
-    width: 380px;
-    top: 0px;
+    width: 384px;
+    top: -5px;
     z-index: 49;
 }
 .border-only.slots.left{
-    left: 232px;
+    left: 228px;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
 }
