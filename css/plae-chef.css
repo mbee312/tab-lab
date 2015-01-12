@@ -195,47 +195,56 @@ md-checkbox#wide-fit-button {
 
 .plae.basket.item.left {
     position: absolute;
-    top: 80px;
+    top: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .plae.basket.item.right{
-    top: 110px;
+    top: 170px;
     position: absolute;
 }
-
-
-span.price {
+.details {
+    list-style-type: none;
+    padding-left: 5px;
+    margin-top: -15px;
+}
+.attr.price {
     font-weight: bold;
     float: right;
     margin-right: 5px;
+    top: 0px;
+    margin-top: -20px;
+    font-size: 100%;
 }
 
-span.color {
+.attr {
     font-size: 85%;
 }
 
 #subtotal {
     position: absolute;
-    top: 150px;
+    top: 260px;
     width: 85%;
     float: left;
     margin-left: -27px;
 }
 
-div#subtotal p {
+
+.price.subtotal {
+    float: right;
+    margin-top: -35px;
     font-weight: bold;
-    font-size: large;
-    font-size: 110%;
+    margin-right: 5px;
 }
 
 hr {
     position: absolute;
-    top: 150px;
 
     /* overwrite ui.boostrap css */
     margin-top: 0px !important;
     margin-bottom: 0px !important;
-    margin-left: -20px;
+    margin-left: 0px;
     border: 0;
     border-top: 1px solid #D3D3D3;
 
@@ -266,7 +275,7 @@ ul.plae.basket.list {
 }
 
 button#add-to-cart-button {
-    top: 250px;
+    top: 360px;
     float: left;
     margin-left: 10px;
     height: 50px;
@@ -311,8 +320,15 @@ button#edit {
     float: right !important;
     position: absolute !important;
     right: -22px;
-    top: -7px;
+    top: 10px;
 }
+#delete-left {
+    top: 25px;
+}
+#delete-right {
+    top: 25px;
+}
+
 
 
     canvas {
@@ -873,7 +889,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
 }
 
 .slick-active{
-    opacity: .5;
+    opacity: .6;
     width: 190px !important;
 
 }
