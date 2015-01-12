@@ -54,8 +54,8 @@
 
             <div class="size select shoe">
 
-                <h5>shoe size: {{shoe.label}}</h5>
-                <select class="size selector shoe" ng-model="shoe" ng-options="s.label for s in shoeSizeOptions" >
+                <h5>shoe size: {{shoeSize.label}}</h5>
+                <select class="size selector shoe" ng-model="shoeSize" ng-options="s.label for s in shoeSizeOptions" >
                     <option value="" selected>--choose an option--</option>
                 </select>
             </div>
@@ -67,11 +67,10 @@
                 wide?
             </md-checkbox>
 
-
             <div class="size select tabs">
 
-                <h5>tab size: {{tab.label}}</h5>
-                <select class="size selector tabs" ng-model="tab" ng-options="t.label for t in tabSizeOptions" ng-disabled="fit.autoselect">
+                <h5>tab size: {{tabs.size.label}}</h5>
+                <select class="size selector tabs" ng-model="tabs.size" ng-options="t.label for t in tabSizeOptions" ng-disabled="fit.autoselect">
                     <option value="" selected>--choose an option--</option>
                 </select>
             </div>
@@ -122,35 +121,45 @@
         <md-button id="edit" aria-label="edit-cart" ng-click="plaeChef.setEditMode()"><img src="img/menu/pen.png"></md-button>
 
         <div class="plae basket item shoe" ng-repeat="shoe in shoeSelected" ng-model="shoeSelected">
-            <p><span class="name">{{shoe.name}}</span> -
-                <span class="color">{{shoe.color}} </span>
-                <span class="price">{{shoe.price | currency}}</span>
+            <p><h4 class="name">{{shoe.name}}</h4>
+              <ul class="details">
+                  <li class="attr price">{{shoe.price | currency}}</li>
+                  <li class=" attr color">color: {{shoe.color}} </li>
+                  <li class="attr size">size: {{shoeSize.label}}</li>
                 <md-button class="delete" id="delete-shoe" aria-label="delete-shoe" ng-click="plaeChef.remove('shoe')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
-            </p>
+            </ul>
+        </p>
 
         </div>
 
-        <div class="plae basket item left" ng-model="tabs" ng-model="tabLeft" ng-repeat="tabL in tabLeft track by $index">
-            <p><span class="name">{{tabL.name}}</span> -
-                <span class="color">{{tabL.color}}</span>
-                <span class="price">{{tabL.price | currency}}</span>
+        <div class="plae basket item left" ng-model="tabLeft" ng-repeat="tabL in tabLeft track by $index">
+            <p><h4 class="name">{{tabL.name}}</h4>
+            <ul class="details">
+                <li class="attr color">color: {{tabL.color}}</li>
+                <li class="attr price">{{tabL.price | currency}}</li>
+                <li class="attr size">size: {{tabs.size.label}}</li>
+                <md-button class="delete" id="delete-left" aria-label="delete-left" ng-click="plaeChef.remove('left')"ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
+            </ul>
             </p>
-            <md-button class="delete" id="delete-left" aria-label="delete-left" ng-click="plaeChef.remove('left')"ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
         </div>
 
-        <div class="plae basket item right" ng-model="tabs" ng-model="tabRight" ng-repeat="tabR in tabRight track by $index">
-            <p><span class="name">{{tabR.name}}</span> -
-                <span class="color">{{tabR.color}}</span>
-                <span class="price">{{tabR.price | currency}}</span>
+        <div class="plae basket item right" ng-model="tabRight" ng-repeat="tabR in tabRight track by $index">
+            <p><h4 class="name">{{tabR.name}}</h4>
+            <ul class="details">
+                <li class="attr color">color: {{tabR.color}}</li>
+                <li class="attr price">{{tabR.price | currency}}</li>
+                <li class="attr size">size: {{tabs.size.label}}</li>
                 <md-button class="delete" id="delete-right" aria-label="delete-right" ng-click="plaeChef.remove('right')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
-
+            </ul>
             </p>
         </div>
 
 
-        <hr width="90%" size="2" align="center">
+
         <div class="plae basket subtotal" id="subtotal">
-            <p>subtotal <span class="price subtotal">{{plaeChef.getSubTotal() | currency}}</span></p>
+            <hr width="100%" size="2" align="center">
+            <p><h3>subtotal</h3>
+                <span class="price subtotal">{{plaeChef.getSubTotal() | currency}}</span></p>
         </div>
 
 
