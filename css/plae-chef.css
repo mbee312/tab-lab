@@ -48,6 +48,9 @@ md-button{
     line-height: 20px;
 
 }
+button.md-button.md-default-theme {
+    text-transform: lowercase;
+}
 
 
 .plae-chef-window{
@@ -118,17 +121,26 @@ md-button{
     border-bottom-left-radius: 8px;
     border-top-left-radius: 8px;
 }
+.size.select{
+    margin-left: 20px;
+    margin-top: 20px !important;
+}
+
 .size.select.shoe {
-    margin-left: 15%;
 }
 
 .size.select.tabs {
-    margin-left: 20px;
-    margin-top: 90px;
 }
 
 select.size.select.tabs {
     margin-left: 0;
+}
+
+.sizeShowMoreOptions {
+    margin-left: 20px !important;
+    margin-top: 20px !important;
+    float: left;
+    font-size: 80% !important;
 }
 
 .size.selector h5 {
@@ -140,6 +152,7 @@ select.size.select.tabs {
 
 select {
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
+    font-size: 140% !important;
 
 }
 .size.selector p {
@@ -156,7 +169,22 @@ md-checkbox#autoselect-button {
     margin-bottom: 0px;
 }
 
-md-checkbox#wide-fit-button {
+.md-switch-thumb.md-default-theme {
+    float: left;
+    font-size: small;
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
+    margin-bottom: 0px;
+}
+
+md-checkbox {
+    float: left;
+    font-size: small;
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
+    margin-top: 0px;
+}
+
+
+md-checkbox#afo-fit-button {
     float: left;
     font-size: small;
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
@@ -294,11 +322,6 @@ button#add-to-cart-button {
 
 md-backdrop.md-opaque.md-default-theme{
     height: 1024px;
-}
-
-button.md-button.md-default-theme {
-    text-transform: lowercase;
-    float: right;
 }
 
 button#edit {
