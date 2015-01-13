@@ -90,6 +90,8 @@
 
       // Tabs on canvas List Arrays
       $scope.tabs = [];
+      $scope.tabs.size = [];
+      $scope.tabs.size.size = 8;
       $scope.tabLeft =[];
       $scope.tabRight = [];
 
@@ -701,12 +703,77 @@
           }
       });
 
+      $scope.$watch("fit.wide", function(newValue, oldValue) {
+          console.log("inside $watch for fit.wide");
+          $scope.setTabSize();
+
+      });
+
       $scope.setTabSize = function (){
           console.log($scope.fit.wide)
             if($scope.fit.wide == false){
                 console.log ("inside setTabSize");
-
-            }
+                switch ($scope.shoeSize.size){
+                    case 8 :
+                        $scope.tabs.size = $scope.tabSizeOptions[0];
+                        break;
+                    case 8.5 :
+                        $scope.tabs.size = $scope.tabSizeOptions[0];
+                        break;
+                    case 9 :
+                        $scope.tabs.size = $scope.tabSizeOptions[0];
+                        break;
+                    case 9.5 :
+                        $scope.tabs.size = $scope.tabSizeOptions[1];
+                        break;
+                    case 10 :
+                        $scope.tabs.size = $scope.tabSizeOptions[1];
+                        break;
+                    case 10.5 :
+                        $scope.tabs.size = $scope.tabSizeOptions[1];
+                        break;
+                    case 11 :
+                        $scope.tabs.size = $scope.tabSizeOptions[1];
+                        break;
+                    case 11.5 :
+                        $scope.tabs.size = $scope.tabSizeOptions[1];
+                        break;
+                    case 12 :
+                        $scope.tabs.size = $scope.tabSizeOptions[1];
+                        break;
+                    case 12.5 :
+                        $scope.tabs.size = $scope.tabSizeOptions[1];
+                        break;
+                    case 13 :
+                        $scope.tabs.size = $scope.tabSizeOptions[2];
+                        break;
+                    case 13.5 :
+                        $scope.tabs.size = $scope.tabSizeOptions[2];
+                        break;
+                    case 1 :
+                        $scope.tabs.size = $scope.tabSizeOptions[2];
+                        break;
+                    case 1.5 :
+                        $scope.tabs.size = $scope.tabSizeOptions[2];
+                        break;
+                    case 2 :
+                        $scope.tabs.size = $scope.tabSizeOptions[2];
+                        break;
+                    case 2.5 :
+                        $scope.tabs.size = $scope.tabSizeOptions[2];
+                        break;
+                    case 3 :
+                        $scope.tabs.size = $scope.tabSizeOptions[2];
+                        break;
+                    default :
+                        $scope.tabs.size = $scope.tabSizeOptions[0];
+                        break;
+                }
+            }else{
+                $scope.tabs.size = $scope.tabSizeOptions[3];
+                console.log($scope.tabs.size.size);
+                console.log($scope.tabs.size.label);
+            }// end if-else
       };
 
 
