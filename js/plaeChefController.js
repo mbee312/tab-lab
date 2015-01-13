@@ -299,7 +299,7 @@
           context.fillStyle="#FFFFFF";
           context.fillRect(0,0,canvas.width,100);
           var base_image = new Image();
-          if (this.isTabSelected()) {
+          if ($scope.isTabSelected()) {
               base_image.onload = function(){
                   context.drawImage(base_image, 150, 60, 800, 409);
               };
@@ -705,7 +705,7 @@
           console.log($scope.fit.wide)
             if($scope.fit.wide == false){
                 console.log ("inside setTabSize");
-                
+
             }
       };
 
