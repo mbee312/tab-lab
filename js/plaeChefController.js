@@ -90,15 +90,14 @@
 
       // Tabs on canvas List Arrays
       $scope.tabs = [];
-      $scope.tabsTop=[];
-      $scope.tabsBottom=[];
       $scope.tabLeft =[];
       $scope.tabRight = [];
 
       $scope.shoeSelected = [];
-      $scope.size = "8 kids";
+      $scope.shoeSize = {};
       $scope.fit = {};
       $scope.fit.autoselect = true;
+      $scope.fit.wide = false;
 
       $scope.basket =[];
       $scope.subTotal = 0;
@@ -656,10 +655,10 @@
       ];
 
       $scope.tabSizeOptions = [
-          {size: "small", label: "small"},
-          {size: "medium", label: "medium"},
-          {size: "large", label: "large"},
-          {size: "x-large", label: "x-large"}
+          {size: "S", label: "small"},
+          {size: "M", label: "medium"},
+          {size: "L", label: "large"},
+          {size: "XL", label: "x-large"}
       ];
 
       $scope.$watch(function() {
@@ -694,6 +693,22 @@
               $scope.addTab($scope.tabList[rightTabIndex], "right", event);
           }
       });
+
+      $scope.$watch("shoeSize", function(newValue, oldValue) {
+          if ($scope.fit.autoselect == true) {
+              console.log("inside $watch for shoeSize");
+              $scope.setTabSize();
+          }
+      });
+
+      $scope.setTabSize = function (){
+          console.log($scope.fit.wide)
+            if($scope.fit.wide == false){
+                console.log ("inside setTabSize");
+                
+            }
+      };
+
 
   }]);
 
