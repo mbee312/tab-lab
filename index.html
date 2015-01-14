@@ -132,7 +132,12 @@
               <ul class="details">
                   <li class="attr price">{{shoe.price | currency}}</li>
                   <li class=" attr color">color: {{shoe.color}} </li>
-                  <li class="attr size">size: {{shoeSize.label}}</li>
+                  <li class="attr size">
+                      <md-button class="md-accent attr size" aria-label="attr size button" ng-click="plaeChef.editShoeSize()">size: {{shoeSize.label}}</md-button>
+                      <select class="size selector shoe cart" ng-model="shoeSize" ng-options="s.label for s in shoeSizeOptions" ng-show="plaeChef.isEditShoeSize()">
+                          <option value="" selected>--choose an option--</option>
+                      </select>
+                  </li>
                 <md-button class="delete" id="delete-shoe" aria-label="delete-shoe" ng-click="plaeChef.remove('shoe')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
             </ul>
         </p>
@@ -142,8 +147,8 @@
         <div class="plae basket item left" ng-model="tabLeft" ng-repeat="tabL in tabLeft track by $index">
             <p><h4 class="name">{{tabL.name}}</h4>
             <ul class="details">
-                <li class="attr color">color: {{tabL.color}}</li>
                 <li class="attr price">{{tabL.price | currency}}</li>
+                <li class="attr color">color: {{tabL.color}}</li>
                 <li class="attr size">size: {{tabs.size.label}}</li>
                 <md-button class="delete" id="delete-left" aria-label="delete-left" ng-click="plaeChef.remove('left')"ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
             </ul>
@@ -153,8 +158,8 @@
         <div class="plae basket item right" ng-model="tabRight" ng-repeat="tabR in tabRight track by $index">
             <p><h4 class="name">{{tabR.name}}</h4>
             <ul class="details">
-                <li class="attr color">color: {{tabR.color}}</li>
                 <li class="attr price">{{tabR.price | currency}}</li>
+                <li class="attr color">color: {{tabR.color}}</li>
                 <li class="attr size">size: {{tabs.size.label}}</li>
                 <md-button class="delete" id="delete-right" aria-label="delete-right" ng-click="plaeChef.remove('right')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
             </ul>

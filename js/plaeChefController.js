@@ -103,6 +103,7 @@
       $scope.sizeMoreOptions = false;
 
       $scope.basket =[];
+      $scope.isEditShoeSize = false;
       $scope.subTotal = 0;
       $scope.editMode = false;
 
@@ -843,6 +844,18 @@
               console.log("$scope.sizeMoreOptions set to true");
           }//end if-else
       }//end showMoreOptions()
+
+      this.isEditShoeSize = function (){
+          return $scope.isEditShoeSize;
+      }// end isEditShoeSize
+
+      this.editShoeSize = function (){
+          if ($scope.isEditShoeSize){
+              $scope.isEditShoeSize = false;
+          }else{
+              $scope.isEditShoeSize = true;
+          }//end if-else
+      }// end editShoeSize()
 
   }]);
 

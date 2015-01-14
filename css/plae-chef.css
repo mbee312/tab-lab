@@ -162,12 +162,20 @@ select {
     font-size: x-small;
 }
 
+select.size.selector.shoe.cart {
+    font-size: 90% !important;
+}
+
+.md-accent.attr.size {
+    padding-left: 0px;
+}
+/*
 md-checkbox#autoselect-button {
     float: left;
     font-size: small;
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
     margin-bottom: 0px;
-}
+} */
 
 .md-switch-thumb.md-default-theme {
     float: left;
@@ -218,18 +226,17 @@ md-checkbox#afo-fit-button {
 }
 .plae.basket.item.shoe {
     position: absolute;
-    top: 50px;
+    top: 30px;
 }
 
 .plae.basket.item.left {
     position: absolute;
-    top: 100px;
-    margin-top: 10px;
+    top: 125px;
     margin-bottom: 10px;
 }
 
 .plae.basket.item.right{
-    top: 170px;
+    top: 190px;
     position: absolute;
 }
 .details {
@@ -252,7 +259,7 @@ md-checkbox#afo-fit-button {
 
 #subtotal {
     position: absolute;
-    top: 260px;
+    top: 300px;
     width: 85%;
     float: left;
     margin-left: -27px;
