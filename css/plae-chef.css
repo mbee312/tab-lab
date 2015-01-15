@@ -52,6 +52,13 @@ button.md-button.md-default-theme {
     text-transform: lowercase;
 }
 
+.md-button:hover {
+    box-shadow: none;
+    border: none;
+    transform: none;
+    -webkit-transform: none;
+}
+
 
 .plae-chef-window{
       height: 1024px;
@@ -163,12 +170,15 @@ select {
 }
 
 select.size.selector.shoe.cart {
-    font-size: 90% !important;
+    font-size: 100% !important;
+    margin-top: 5px;
 }
 
-.md-accent.attr.size {
-    padding-left: 0px;
+select.size.selector.tabs {
+    font-size: 100% !important;
+    margin-top: 5px;
 }
+
 /*
 md-checkbox#autoselect-button {
     float: left;
@@ -231,12 +241,11 @@ md-checkbox#afo-fit-button {
 
 .plae.basket.item.left {
     position: absolute;
-    top: 125px;
-    margin-bottom: 10px;
+    top: 110px;
 }
 
 .plae.basket.item.right{
-    top: 190px;
+    top: 200px;
     position: absolute;
 }
 .details {
@@ -244,13 +253,28 @@ md-checkbox#afo-fit-button {
     padding-left: 5px;
     margin-top: -15px;
 }
+
+button.md-accent.attr.name{
+    width: 100%;
+    /* float: left; */
+    height: 50px;
+}
+.attr.size {
+    padding-left: 0px;
+    float: left;
+    height: 25px !important;
+}
 .attr.price {
     font-weight: bold;
     float: right;
     margin-right: 5px;
     top: 0px;
-    margin-top: -20px;
+    margin-top: -5px;
     font-size: 100%;
+}
+h4.name {
+    float: left;
+    margin-top: 0px;
 }
 
 .attr {
@@ -350,7 +374,7 @@ button#edit {
     float: right !important;
     position: absolute !important;
     right: -22px;
-    top: 10px;
+    top: 22px;
 }
 #delete-left {
     top: 25px;

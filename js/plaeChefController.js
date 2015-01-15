@@ -106,6 +106,12 @@
       $scope.isEditShoeSize = false;
       $scope.subTotal = 0;
       $scope.editMode = false;
+      $scope.shoeEditMode = false;
+
+      $scope.isEditTabSizeL = false;
+      $scope.isEditTabSizeR = false;
+      $scope.tabEditModeL = false;
+      $scope.tabEditModeR = false;
 
       $scope.index= 1 ;
       $scope.carouselIndex = 1;
@@ -201,7 +207,6 @@
                   $scope.tabLeft.push(tab);
                   $scope.subTotal += $scope.tabLeft[0].price;
                   console.log("the tab price is " + $scope.tabLeft[0].price);
-
                   break;
               case "right":
                   if($scope.tabRight.length > 0){
@@ -212,7 +217,6 @@
                   $scope.tabRight.push(tab);
                   $scope.subTotal += $scope.tabRight[0].price;
                   console.log("the tab price is " + $scope.tabRight[0].price);
-
                   break;
               default :
                   console.log("error: no tab side selected in addTab()");
@@ -624,15 +628,63 @@
       this.setEditMode = function(){
           if($scope.editMode == true){
               $scope.editMode = false;
+              $scope.shoeEditMode = false;
+              $scope.tabEditModeL = false;
+              $scope.tabEditModeR = false;
           }else{
               $scope.editMode = true;
-          }
+              $scope.shoeEditMode = true;
+              $scope.tabEditModeL = true;
+              $scope.tabEditModeR = true;
+          }// end if-else
       };
 
       this.isEditMode = function(){
           return $scope.editMode;
       };
 
+      this.isShoeEditMode = function(){
+          return $scope.shoeEditMode;
+      };
+
+      this.setShoeEditMode = function(){
+          if($scope.shoeEditMode == true){
+              $scope.shoeEditMode = false;
+          }else{
+              $scope.shoeEditMode = true;
+          }
+      };
+
+      this.isTabEditMode = function(side){
+          switch(side) {
+              case 'left' :
+                return $scope.tabEditModeL;
+                break;
+              case 'right' :
+                  return $scope.tabEditModeR;
+                  break;
+
+          }//end switch
+      };
+
+      this.setTabEditMode = function(side){
+          switch(side) {
+              case "left" :
+                  if($scope.tabEditModeL == true){
+                      $scope.tabEditModeL = false;
+                  }else{
+                      $scope.tabEditModeL = true;
+                  }//end if-else
+                  break;
+              case "right" :
+                  if($scope.tabEditModeR == true){
+                      $scope.tabEditModeR = false;
+                  }else{
+                      $scope.tabEditModeR = true;
+                  }//end if-else
+                  break;
+          }//end switch
+      };
 
 
       $scope.shoe = {};
@@ -856,6 +908,33 @@
               $scope.isEditShoeSize = true;
           }//end if-else
       }// end editShoeSize()
+
+      this.isEditTabSize = function (side){
+          switch (side) {
+              case "left" :
+                  return $scope.isEditTabSizeL;
+                  break;
+              case "right" :
+                  return $scope.isEditTabSizeR;
+                  break;
+          }//end switch
+      }// end isEditTabSize
+
+      this.editTabSize = function (side){
+          if(side == 'left'){
+              if ($scope.isEditTabSizeL){
+                  $scope.isEditTabSizeL = false;
+              }else{
+                  $scope.isEditTabSizeL = true;
+              }//end if-else
+          }else{
+              if ($scope.isEditTabSizeR){
+                  $scope.isEditTabSizeR = false;
+              }else{
+                  $scope.isEditTabSizeR = true;
+              }//end if-else
+          }//end if-else
+      }// end editTabSize()
 
   }]);
 

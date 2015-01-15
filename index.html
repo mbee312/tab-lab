@@ -128,40 +128,67 @@
         <md-button id="edit" aria-label="edit-cart" ng-click="plaeChef.setEditMode()"><img src="img/menu/pen.png"></md-button>
 
         <div class="plae basket item shoe" ng-repeat="shoe in shoeSelected" ng-model="shoeSelected">
+            <md-button class="md-accent attr name" aria-label="attr name button" ng-click="plaeChef.setShoeEditMode()">
             <p><h4 class="name">{{shoe.name}}</h4>
+                </md-button>
               <ul class="details">
                   <li class="attr price">{{shoe.price | currency}}</li>
                   <li class=" attr color">color: {{shoe.color}} </li>
                   <li class="attr size">
-                      <md-button class="md-accent attr size" aria-label="attr size button" ng-click="plaeChef.editShoeSize()">size: {{shoeSize.label}}</md-button>
+                      <md-button class="md-accent attr size" aria-label="attr size button" ng-click="plaeChef.editShoeSize()">
+                          size: {{shoeSize.label}}
+                      </md-button>
+
                       <select class="size selector shoe cart" ng-model="shoeSize" ng-options="s.label for s in shoeSizeOptions" ng-show="plaeChef.isEditShoeSize()">
-                          <option value="" selected>--choose an option--</option>
+                          <option value="" selected>-select a size-</option>
                       </select>
                   </li>
-                <md-button class="delete" id="delete-shoe" aria-label="delete-shoe" ng-click="plaeChef.remove('shoe')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
+                <md-button class="delete" id="delete-shoe" aria-label="delete-shoe" ng-click="plaeChef.remove('shoe')" ng-show="plaeChef.isShoeEditMode()"><img src="img/menu/remove.png"></md-button>
             </ul>
         </p>
 
         </div>
 
         <div class="plae basket item left" ng-model="tabLeft" ng-repeat="tabL in tabLeft track by $index">
+            <md-button class="md-accent attr name tableft" aria-label="attr tableft button" ng-click="plaeChef.setTabEditMode('left')">
             <p><h4 class="name">{{tabL.name}}</h4>
+            </md-button>
             <ul class="details">
                 <li class="attr price">{{tabL.price | currency}}</li>
                 <li class="attr color">color: {{tabL.color}}</li>
-                <li class="attr size">size: {{tabs.size.label}}</li>
-                <md-button class="delete" id="delete-left" aria-label="delete-left" ng-click="plaeChef.remove('left')"ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
+                <li class="attr size">
+                    <md-button class="md-accent attr size" aria-label="attr size button" ng-click="plaeChef.editTabSize('left')">
+                        size: {{tabs.size.label}}
+                    </md-button>
+
+                    <select class="size selector tabs" ng-model="tabs.size" ng-options="t.label for t in tabSizeOptions" ng-show="plaeChef.isEditTabSize('left')">
+                        <option value="" selected>-select a size-</option>
+                    </select>
+
+                </li>
+                <md-button class="delete" id="delete-left" aria-label="delete-left" ng-click="plaeChef.remove('left')"ng-show="plaeChef.isTabEditMode('left')"><img src="img/menu/remove.png"></md-button>
             </ul>
             </p>
         </div>
 
         <div class="plae basket item right" ng-model="tabRight" ng-repeat="tabR in tabRight track by $index">
+            <md-button class="md-accent attr name tabright" aria-label="attr tabright button" ng-click="plaeChef.setTabEditMode('right')">
             <p><h4 class="name">{{tabR.name}}</h4>
+            </md-button>
             <ul class="details">
                 <li class="attr price">{{tabR.price | currency}}</li>
                 <li class="attr color">color: {{tabR.color}}</li>
-                <li class="attr size">size: {{tabs.size.label}}</li>
-                <md-button class="delete" id="delete-right" aria-label="delete-right" ng-click="plaeChef.remove('right')" ng-show="plaeChef.isEditMode()"><img src="img/menu/remove.png"></md-button>
+                <li class="attr size">
+                    <md-button class="md-accent attr size" aria-label="attr size button" ng-click="plaeChef.editTabSize('right')">
+                        size: {{tabs.size.label}}
+                    </md-button>
+
+                    <select class="size selector tabs" ng-model="tabs.size" ng-options="t.label for t in tabSizeOptions" ng-show="plaeChef.isEditTabSize('right')">
+                        <option value="" selected>-select a size-</option>
+                    </select>
+
+                </li>
+                <md-button class="delete" id="delete-right" aria-label="delete-right" ng-click="plaeChef.remove('right')" ng-show="plaeChef.isTabEditMode('right')"><img src="img/menu/remove.png"></md-button>
             </ul>
             </p>
         </div>
