@@ -91,7 +91,7 @@
       // Tabs on canvas List Arrays
       $scope.tabs = [];
       $scope.tabs.size = [];
-      $scope.tabs.size.size = 8;
+      $scope.tabs.size.size;
       $scope.tabLeft =[];
       $scope.tabRight = [];
 
@@ -107,6 +107,7 @@
       $scope.subTotal = 0;
       $scope.editMode = false;
       $scope.shoeEditMode = false;
+      $scope.isSizeSel = false;
 
       $scope.isEditTabSizeL = false;
       $scope.isEditTabSizeR = false;
@@ -121,6 +122,7 @@
 
       $scope.rightTabIndex = 1;
       $scope.rTindex= 1;
+
 
       $scope.hideMeLT = function() {
           return $scope.tabLT.length > 0;
@@ -666,6 +668,15 @@
 
           }//end switch
       };
+
+      this.isSizeSelected = function(){
+          if($scope.shoeSize.size != null) {
+              return true;
+          }else{
+              return false;
+          }
+
+      }//end isSizeSelected
 
       this.setTabEditMode = function(side){
           switch(side) {

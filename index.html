@@ -206,8 +206,11 @@
             start over
         </md-button>
 
-        <md-button class="view-button md-raised" id="add-to-cart-button" ng-click="plaeChef.toggleRight()" style="background: #4EAC50;color: #fff;">
+        <md-button class="cart-button md-raised add" id="add-to-cart-button" ng-click="plaeChef.toggleRight()" ng-show="plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
             add to cart
+        </md-button>
+        <md-button class="cart-button md-raised select-size" id="select-size-button" ng-click="plaeChef.toggleRight()" ng-show="!plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
+            select size
         </md-button>
 
     </md-whiteframe>

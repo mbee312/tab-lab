@@ -333,13 +333,13 @@ ul.plae.basket.list {
     right: 10px;
 }
 
-button#add-to-cart-button {
+.cart-button {
     top: 360px;
     float: left;
-    margin-left: 10px;
+    margin-left: 10px !important;
     height: 50px;
     width: 120px;
-    border-radius: 10px;
+    border-radius: 10px !important;
     font-size: 105% !important;
 }
 
