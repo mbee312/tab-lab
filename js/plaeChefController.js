@@ -103,14 +103,11 @@
       $scope.sizeMoreOptions = false;
 
       $scope.basket =[];
-      $scope.isEditShoeSize = false;
       $scope.subTotal = 0;
       $scope.editMode = false;
       $scope.shoeEditMode = false;
       $scope.isSizeSel = false;
 
-      $scope.isEditTabSizeL = false;
-      $scope.isEditTabSizeR = false;
       $scope.tabEditModeL = false;
       $scope.tabEditModeR = false;
 
@@ -907,45 +904,6 @@
               console.log("$scope.sizeMoreOptions set to true");
           }//end if-else
       }//end showMoreOptions()
-
-      this.isEditShoeSize = function (){
-          return $scope.isEditShoeSize;
-      }// end isEditShoeSize
-
-      this.editShoeSize = function (){
-          if ($scope.isEditShoeSize){
-              $scope.isEditShoeSize = false;
-          }else{
-              $scope.isEditShoeSize = true;
-          }//end if-else
-      }// end editShoeSize()
-
-      this.isEditTabSize = function (side){
-          switch (side) {
-              case "left" :
-                  return $scope.isEditTabSizeL;
-                  break;
-              case "right" :
-                  return $scope.isEditTabSizeR;
-                  break;
-          }//end switch
-      }// end isEditTabSize
-
-      this.editTabSize = function (side){
-          if(side == 'left'){
-              if ($scope.isEditTabSizeL){
-                  $scope.isEditTabSizeL = false;
-              }else{
-                  $scope.isEditTabSizeL = true;
-              }//end if-else
-          }else{
-              if ($scope.isEditTabSizeR){
-                  $scope.isEditTabSizeR = false;
-              }else{
-                  $scope.isEditTabSizeR = true;
-              }//end if-else
-          }//end if-else
-      }// end editTabSize()
 
   }]);
 

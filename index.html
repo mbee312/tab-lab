@@ -103,11 +103,11 @@
 
         <md-whiteframe class="md-whiteframe-z3" id="white-bg"></md-whiteframe>
 
-
-        <div class="views">
-            <!--    <button class="waves-effect waves-button waves-light waves-float" id="default-button" ng-click="plaeChef.setCanvas('default')" style="background: #0d39ff;color: #fff;">
-                    Left & Right
-                  </button> -->
+        <!--
+                <div class="views">
+               <!--    <button class="waves-effect waves-button waves-light waves-float" id="default-button" ng-click="plaeChef.setCanvas('default')" style="background: #0d39ff;color: #fff;">
+                            Left & Right
+                          </button>
 
             <md-button class="view-button md-raised" id="left-profile-button" ng-click="plaeChef.setCanvas('left')" style="background: #01BCFF;color: #fff;">
                 Left
@@ -119,13 +119,15 @@
                 Right
             </md-button>
 
-        </div>
+        </div>-->
     </div>
 
     <md-whiteframe class="md-whiteframe-z1 plae basket" id="plae-basket" layout>
 
 
         <md-button id="edit" aria-label="edit-cart" ng-click="plaeChef.setEditMode()"><img src="img/menu/pen.png"></md-button>
+
+        <h3 class="cart title">your shoe</h3>
 
         <div class="plae basket item shoe" ng-repeat="shoe in shoeSelected" ng-model="shoeSelected">
             <md-button class="md-accent attr name" aria-label="attr name button" ng-click="plaeChef.setShoeEditMode()">
@@ -135,11 +137,9 @@
                   <li class="attr price">{{shoe.price | currency}}</li>
                   <li class=" attr color">color: {{shoe.color}} </li>
                   <li class="attr size">
-                      <md-button class="md-accent attr size" aria-label="attr size button" ng-click="plaeChef.editShoeSize()">
                           size: {{shoeSize.label}}
-                      </md-button>
 
-                      <select class="size selector shoe cart" ng-model="shoeSize" ng-options="s.label for s in shoeSizeOptions" ng-show="plaeChef.isEditShoeSize()">
+                      <select class="size selector shoe cart" ng-model="shoeSize" ng-options="s.label for s in shoeSizeOptions" ng-show="plaeChef.isShoeEditMode()">
                           <option value="" selected>-select a size-</option>
                       </select>
                   </li>
@@ -157,11 +157,8 @@
                 <li class="attr price">{{tabL.price | currency}}</li>
                 <li class="attr color">color: {{tabL.color}}</li>
                 <li class="attr size">
-                    <md-button class="md-accent attr size" aria-label="attr size button" ng-click="plaeChef.editTabSize('left')">
                         size: {{tabs.size.label}}
-                    </md-button>
-
-                    <select class="size selector tabs cart" ng-model="tabs.size" ng-options="t.label for t in tabSizeOptions" ng-show="plaeChef.isEditTabSize('left')">
+                    <select class="size selector tabs cart" ng-model="tabs.size" ng-options="t.label for t in tabSizeOptions" ng-show="plaeChef.isTabEditMode('left')">
                         <option value="" selected>-select a size-</option>
                     </select>
 
@@ -179,11 +176,8 @@
                 <li class="attr price">{{tabR.price | currency}}</li>
                 <li class="attr color">color: {{tabR.color}}</li>
                 <li class="attr size">
-                    <md-button class="md-accent attr size cart" aria-label="attr size button" ng-click="plaeChef.editTabSize('right')">
                         size: {{tabs.size.label}}
-                    </md-button>
-
-                    <select class="size selector tabs" ng-model="tabs.size" ng-options="t.label for t in tabSizeOptions" ng-show="plaeChef.isEditTabSize('right')">
+                    <select class="size selector tabs" ng-model="tabs.size" ng-options="t.label for t in tabSizeOptions" ng-show="plaeChef.isTabEditMode('right')">
                         <option value="" selected>-select a size-</option>
                     </select>
 
