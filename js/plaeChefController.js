@@ -31,20 +31,6 @@
       var rightProfileTabCanvas = document.getElementById('plae-chef-canvas-tab-right');
       var rptabcontext = rightProfileTabCanvas.getContext('2d');
 
-      /*
-      var pairViewCanvas = document.getElementById('plae-chef-canvas-pair');
-      var pcontext = pairViewCanvas.getContext('2d');
-
-      var pairViewTabCanvas = document.getElementById('plae-chef-canvas-tab-pair');
-      var ptabcontext = pairViewTabCanvas.getContext('2d'); */
-
-      // setup canvas
-  /*  canvas.width=1014;//horizontal resolution (?) - increase for better looking text
-    canvas.height=512;//vertical resolution (?) - increase for better looking text
-    canvas.style.width=512;//actual width of canvas
-    canvas.style.height=512;//actual height of canvas
-      */
-
       topViewCanvas.width=580;//horizontal resolution (?) - increase for better looking text
       topViewCanvas.height=480;//vertical resolution (?) - increase for better looking text
       topViewCanvas.style.width=512;//actual width of canvas
@@ -74,19 +60,6 @@
       rightProfileTabCanvas.height=480;//vertical resolution (?) - increase for better looking text
       rightProfileTabCanvas.style.width=512;//actual width of canvas
       rightProfileTabCanvas.style.height=512;//actual height of canvas
-
-      /*
-      pairViewCanvas.width=1014;//horizontal resolution (?) - increase for better looking text
-      pairViewCanvas.height=512;//vertical resolution (?) - increase for better looking text
-      pairViewCanvas.style.width=512;//actual width of canvas
-      pairViewCanvas.style.height=512;//actual height of canvas
-
-      pairViewTabCanvas.width=1014;//horizontal resolution (?) - increase for better looking text
-      pairViewTabCanvas.height=512;//vertical resolution (?) - increase for better looking text
-      pairViewTabCanvas.style.width=512;//actual width of canvas
-      pairViewTabCanvas.style.height=512;//actual height of canvas
-
-      */
 
       // Tabs on canvas List Arrays
       $scope.tabs = [];
@@ -647,23 +620,15 @@
       };
 
       this.setShoeEditMode = function(){
-          if($scope.shoeEditMode == true){
-              $scope.shoeEditMode = false;
-          }else{
-              $scope.shoeEditMode = true;
-          }
+          $scope.shoeEditMode = !$scope.shoeEditMode;
       };
 
       this.isTabEditMode = function(side){
-          switch(side) {
-              case 'left' :
-                return $scope.tabEditModeL;
-                break;
-              case 'right' :
-                  return $scope.tabEditModeR;
-                  break;
-
-          }//end switch
+          if(side == "left") {
+              return $scope.tabEditModeL;
+          }else{
+              return $scope.tabEditModeR;
+          }//end if-else
       };
 
       this.isSizeSelected = function(){
@@ -676,24 +641,19 @@
       }//end isSizeSelected
 
       this.setTabEditMode = function(side){
-          switch(side) {
-              case "left" :
-                  if($scope.tabEditModeL == true){
-                      $scope.tabEditModeL = false;
-                  }else{
-                      $scope.tabEditModeL = true;
-                  }//end if-else
-                  break;
-              case "right" :
-                  if($scope.tabEditModeR == true){
-                      $scope.tabEditModeR = false;
-                  }else{
-                      $scope.tabEditModeR = true;
-                  }//end if-else
-                  break;
-          }//end switch
+          if(side == "left") {
+              $scope.tabEditModeL = !$scope.tabEditModeL;
+          }else{
+              $scope.tabEditModeR = !$scope.tabEditModeR;
+          }//end if-else
       };
 
+      this.isHidden = false;
+
+      this.slideIt = function () {
+          this.isHidden = !this.isHidden;
+          console.log(this.isHidden );
+      } //end slideIt()
 
       $scope.shoe = {};
       $scope.tab ={};
@@ -908,18 +868,36 @@
   }]);
 
 
-  plaeChefApp.controller('StylesTabController', function($scope){
-      this.stylestab='';
-      this.setTab = function(newValue){
-          /*    this.stylestab = newValue;
-        this.slideTab(newValue); */
-          this.stylestab = "ty";
-      };
+    plaeChefApp.directive("hideMe", function ($animate) {
+     return function (scope, element, attrs) {
+     scope.$watch(attrs.hideMe, function (newVal) {
+     if (newVal) {
+     $animate.addClass(element, "slide");
+     } else {
+     $animate.removeClass(element, "slide");
+     }
+     })
+     }
+     })
 
-      this.isSet = function(tabName){
-          return this.stylestab === tabName;
+    plaeChefApp.animation(".slide", function () {
+     return {
+     addClass: function (element, className) {
+     TweenMax.to(element, 1, {opacity: 0});
+     },
+     removeClass: function (element, className) {
+     TweenMax.to(element, 1, {opacity: 1});
+     }
+     }
+     })
 
-      };
+
+
+
+
+
+  plaeChefApp.controller('SelectorController', function($scope){
+
 
   });
 

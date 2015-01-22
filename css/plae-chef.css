@@ -115,22 +115,27 @@ button.md-button.md-default-theme {
         margin-left: 15px;
     }
 
-#plae-size {
+.plae.size {
     height: 432px;
     top: 443px;
     padding-top: 20px;
     left: 225px;
-    z-index: 0;
-    width: 200px;
-    position: absolute;
-    border: 1px solid #D3D3D3;
-    background-color: #F5F5F5;
-    border-bottom-left-radius: 8px;
-    border-top-left-radius: 8px;
+/* left: 430px;*/
+ z-index: 1;
+ width: 200px;
+ position: absolute;
+ border: 1px solid #D3D3D3;
+ background-color: #F5F5F5;
+ border-bottom-left-radius: 8px;
+ border-top-left-radius: 8px;
+}
+
+.select-size.plae.size {
+ z-index: 0 !important;
 }
 .size.select{
-    margin-left: 20px;
-    margin-top: 20px !important;
+ margin-left: 20px;
+ margin-top: 20px !important;
 }
 
 .size.select.shoe {
@@ -140,51 +145,51 @@ button.md-button.md-default-theme {
 }
 
 select.size.select.tabs {
-    margin-left: 0;
+ margin-left: 0;
 }
 
 .sizeShowMoreOptions {
-    margin-left: 20px !important;
-    margin-top: 20px !important;
-    float: left;
-    font-size: 80% !important;
+ margin-left: 20px !important;
+ margin-top: 20px !important;
+ float: left;
+ font-size: 80% !important;
 }
 
 .size.selector h5 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-weight: normal;
-    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
+ margin-top: 20px;
+ margin-bottom: 10px;
+ font-weight: normal;
+ font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
 }
 
 select {
-    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
-    font-size: 100% !important;
+ font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
+ font-size: 100% !important;
 
 }
 .size.selector p {
-    margin-left: 20px;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    font-size: x-small;
+ margin-left: 20px;
+ margin-top: 10px;
+ margin-bottom: 5px;
+ font-size: x-small;
 }
 
 select.size.selector.shoe.cart {
-    font-size: 100% !important;
-    margin-top: 5px;
+ font-size: 100% !important;
+ margin-top: 5px;
 }
 
 select.size.selector.tabs.cart {
-    font-size: 100% !important;
-    margin-top: 5px;
+ font-size: 100% !important;
+ margin-top: 5px;
 }
 
 /*
 md-checkbox#autoselect-button {
-    float: left;
-    font-size: small;
-    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
-    margin-bottom: 0px;
+ float: left;
+ font-size: small;
+ font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
+ margin-bottom: 0px;
 } */
 
 .md-switch-thumb.md-default-theme {

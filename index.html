@@ -26,29 +26,27 @@
 
 <div ng-view class="view-frame plae-chef-window">
 
+        <md-whiteframe class="md-whiteframe-z2 border-only main"></md-whiteframe>
+        <md-whiteframe class="md-whiteframe-z1 border-only slots left"></md-whiteframe>
+        <md-whiteframe class="md-whiteframe-z1 border-only slots right"></md-whiteframe>
 
+        <slick class="car"  id="shoe-car" infinite=true center-mode="true" speed="500" center-padding="20px" cssEase="ease" arrows="true" swipeToSlide="true" easing="linear"  init-onload=true slides-to-show="5" slides-to-scroll="3" touch-move="true" touchThreshold="100" focus-on-select="true" current-index="index" data="shoeList">
 
-    <md-whiteframe class="md-whiteframe-z2 border-only main"></md-whiteframe>
-    <md-whiteframe class="md-whiteframe-z1 border-only slots left"></md-whiteframe>
-    <md-whiteframe class="md-whiteframe-z1 border-only slots right"></md-whiteframe>
+            <div ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"  class="bgimage">
+            </div>
+        </slick>
 
-    <slick class="car"  id="shoe-car" infinite=true center-mode="true" speed="500" center-padding="20px" cssEase="ease" arrows="true" swipeToSlide="true" easing="linear"  init-onload=true slides-to-show="5" slides-to-scroll="3" touch-move="true" touchThreshold="100" focus-on-select="true" current-index="index" data="shoeList">
+        <slick class="car"  id="tab-left-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="leftTabIndex" data="tabList">
+            <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"  class="tabmenuitem bgimage">
+            </div>
+        </slick>
 
-        <div ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"  class="bgimage">
-        </div>
-    </slick>
+        <slick class="car"  id="tab-right-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="rightTabIndex" data="tabList">
+            <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"  class="tabmenuitem bgimage">
+            </div>
+        </slick>
 
-    <slick class="car"  id="tab-left-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="leftTabIndex" data="tabList">
-        <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"  class="tabmenuitem bgimage">
-        </div>
-    </slick>
-
-    <slick class="car"  id="tab-right-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="rightTabIndex" data="tabList">
-        <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"  class="tabmenuitem bgimage">
-        </div>
-    </slick>
-
-    <md-whiteframe class="md-whiteframe-z1 plae size" id="plae-size">
+    <md-whiteframe class="md-whiteframe-z1 plae size" id="plae-size" ng-show="!plaeChef.isSizeSelected()">
 
         <div class="size selector">
 
@@ -85,6 +83,12 @@
 
 
     </md-whiteframe>
+
+    <md-button id="select-size-button-frame select-size plae size" aria-label="select size button" ng-click="plaeChef.slideIt()">
+
+    <md-whiteframe class="md-whiteframe-z1 select-size plae size" id="plae-size-select">
+    </md-whiteframe>
+    </md-button>
 
     <div class="canvas-container">
         <!--  <canvas class='canvas' id="plae-chef-canvas" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('default')"></canvas>
@@ -203,7 +207,7 @@
         <md-button class="cart-button md-raised add" id="add-to-cart-button" ng-click="plaeChef.toggleRight()" ng-show="plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
             add to cart
         </md-button>
-        <md-button class="cart-button md-raised select-size" id="select-size-button" ng-click="plaeChef.toggleRight()" ng-show="!plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
+        <md-button class="cart-button md-raised select-size" id="select-size-button" ng-click="plaeChef.slideIt()" ng-show="!plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
             select size
         </md-button>
 
