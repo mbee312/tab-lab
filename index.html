@@ -58,7 +58,7 @@
 
     <div ng-switch="plaeChef.getSizeSelectMode()" class="slide-frame">
 
-    <md-whiteframe class="md-whiteframe-z1 plae size" id="plae-size" ng-switch-when="true">
+    <md-whiteframe class="md-whiteframe-z1 wave plae size" id="plae-size" ng-switch-when="true">
 
         <div class="size selector">
 
@@ -105,7 +105,7 @@
 
     </md-whiteframe>
 
-    <md-whiteframe class="md-whiteframe-z1 select-size plae size" id="plae-size-select" ng-switch-when="false">
+    <md-whiteframe class="md-whiteframe-z1 wave select-size plae size" id="plae-size-select" >
         <md-button id="select-size-button-left" class="select-size plae size" aria-label="select size button"
                ng-click="plaeChef.setSizeSelectMode()">
             <h4>Select Size</h4>
@@ -113,6 +113,7 @@
             <p>tab size: {{tabs.size.label}}</p>
         </md-button>
     </md-whiteframe>
+
 
     </div>
 
