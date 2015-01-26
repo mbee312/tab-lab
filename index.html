@@ -107,15 +107,16 @@
 
     </md-whiteframe>
 
-    <md-whiteframe class="md-whiteframe-z1 wave select-size plae size" id="plae-size-select" >
-        <md-button id="select-size-button-left" class="select-size plae size" aria-label="select size button"
-               ng-click="plaeChef.setSizeSelectMode()">
-            <h4>Select Size</h4>
-           <p>shoe size: {{shoeSize.size.label}}</p>
+    <md-whiteframe class="md-whiteframe-z1 select-size plae size" id="plae-size-select" >
+        <div class="display-size">
+            <p>shoe size: {{shoeSize.size.label}}</p>
             <p>tab size: {{tabs.size.label}}</p>
+        </div>
+        <md-button id="select-size-button-left" class="select-size plae size bg-opacity" aria-label="select size button"
+               ng-click="plaeChef.setSizeSelectMode()">
+            <h1 class="rotate">Select Size</h1>
         </md-button>
     </md-whiteframe>
-
 
     </div>
 

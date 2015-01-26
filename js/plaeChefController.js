@@ -626,7 +626,7 @@
         };
 
         this.isSizeSelected = function () {
-            if ($scope.shoeSize != null) {
+            if ($scope.shoeSize.size.size != null) {
                 console.log("isSizeSelected selected?");
                 return true;
             } else {

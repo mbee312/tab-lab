@@ -131,8 +131,8 @@ body.ng-scope {
     position: absolute;
     border: 1px solid #D3D3D3;
     background-color: #F5F5F5;
-    border-bottom-left-radius: 8px;
-    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px !important;
+    border-top-left-radius: 8px !important;
 }
 
 #plae-size{
@@ -903,6 +903,25 @@ button#right-profile-button {
     left:425px;
 }
 
+
+.wave.wave-right.ng-enter {
+    position: absolute;
+    left:425px;
+}
+
+.wave.wave-right.ng-enter.ng-enter-active {
+    left:225px;
+}
+
+.wave.wave-right.ng-leave {
+    position: absolute;
+    left:225px;
+}
+
+.wave.wave-right.ng-leave.ng-leave-active {
+    left:425px;
+}
+
 md-tabs.ng-isolate-scope.md-default-theme {
     margin-top: 560px;
 }
@@ -1027,4 +1046,33 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
 .md-whiteframe-z1 {
     box-shadow: 0 6px 5px -4px rgba(0, 0, 0, .26) !important;
+}
+
+.rotate {
+
+    /* Safari */
+    -webkit-transform: rotate(-45deg);
+
+    /* Firefox */
+    -moz-transform: rotate(-45deg);
+
+    /* IE */
+    -ms-transform: rotate(-45deg);
+
+    /* Opera */
+    -o-transform: rotate(-45deg);
+
+    /* Internet Explorer */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1.5);
+
+}
+.bg-opacity {
+    /* Fallback for web browsers that doesn't support RGBa */
+    background: rgb(0, 0, 0);
+    /* RGBa with 0.6 opacity */
+    background: rgba(255, 255, 255, 0.60) !important;
+    /* For IE 5.5 - 7*/
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+    /* For IE 8*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 }
