@@ -626,13 +626,15 @@
         };
 
         this.isSizeSelected = function () {
-            if ($scope.shoeSize.size != null) {
+            if ($scope.shoeSize != null) {
+                console.log("isSizeSelected selected?");
                 return true;
             } else {
+                console.log("isSizeSelected not selected");
                 return false;
             }
 
-        }//end isSizeSelected
+        }//end isSizeSelected ()
 
         this.setSizeSelectMode = function (){
             $scope.isSizeEdit = !$scope.isSizeEdit;
@@ -642,8 +644,7 @@
 
         this.getSizeSelectMode = function (){
             return $scope.isSizeEdit;
-
-        }//end getSizeSelectMode
+        }//end getSizeSelectMode ()
 
         this.setTabEditMode = function (side) {
             if (side == "left") {
@@ -652,13 +653,6 @@
                 $scope.tabEditModeR = !$scope.tabEditModeR;
             }//end if-else
         };
-
-        this.isHidden = false;
-
-        this.slideIt = function () {
-            this.isHidden = !this.isHidden;
-            console.log(this.isHidden);
-        }; //end slideIt()
 
         $scope.shoe = {};
         $scope.tab = {};
@@ -723,7 +717,7 @@
             }
         });
 
-        $scope.$watch("shoeSize", function (newValue, oldValue) {
+        $scope.$watch("shoeSize.size.size", function (newValue, oldValue) {
             console.log("inside $watch for shoeSize");
             $scope.setTabSize();
 
@@ -739,7 +733,7 @@
             console.log($scope.fit.wide);
             if ($scope.fit.wide == false) {
                 console.log("inside setTabSize");
-                switch ($scope.shoeSize.size) {
+                switch ($scope.shoeSize.size.size) {
                     case 8 :
                         $scope.tabs.size = $scope.tabSizeOptions[0];
                         break;
@@ -796,7 +790,7 @@
                         break;
                 }
             } else {
-                switch ($scope.shoeSize.size) {
+                switch ($scope.shoeSize.size.size) {
                     case 8 :
                         $scope.tabs.size = $scope.tabSizeOptions[1];
                         break;

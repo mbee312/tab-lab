@@ -64,8 +64,8 @@
 
             <div class="size select shoe">
 
-                <h4>shoe size: {{shoeSize.label}}</h4>
-                <select class="size selector shoe" ng-model="shoeSize" ng-options="s.label for s in shoeSizeOptions">
+                <h4>shoe size: {{shoeSize.size.label}}</h4>
+                <select class="size selector shoe" ng-model="shoeSize.size" ng-options="s.label for s in shoeSizeOptions">
                     <option value="" selected>--choose an option--</option>
                 </select>
             </div>
@@ -91,10 +91,12 @@
                 wide?
             </md-checkbox>
 
+            <!--
             <md-checkbox class="size select shoe checkbox afo" id="afo-fit-button" ng-model="fit.afo"
                          aria-label="afo-fit" ng-show="plaeChef.moreOptions()">
                 afo?
             </md-checkbox>
+            -->
 
             <md-button class="done-button md-raised select-size" id="select-size-button-done" ng-click="plaeChef.setSizeSelectMode()"
                        style="background: #4EAC50;color: #fff;">
@@ -109,7 +111,7 @@
         <md-button id="select-size-button-left" class="select-size plae size" aria-label="select size button"
                ng-click="plaeChef.setSizeSelectMode()">
             <h4>Select Size</h4>
-           <p>shoe size: {{shoeSize.label}}</p>
+           <p>shoe size: {{shoeSize.size.label}}</p>
             <p>tab size: {{tabs.size.label}}</p>
         </md-button>
     </md-whiteframe>
@@ -175,9 +177,9 @@
                 <li class="attr price">{{shoe.price | currency}}</li>
                 <li class=" attr color">color: {{shoe.color}}</li>
                 <li class="attr size">
-                    size: {{shoeSize.label}}
+                    size: {{shoeSize.size.label}}
 
-                    <select class="size selector shoe cart" ng-model="shoeSize"
+                    <select class="size selector shoe cart" ng-model="shoeSize.size"
                             ng-options="s.label for s in shoeSizeOptions" ng-show="plaeChef.isShoeEditMode()">
                         <option value="" selected>-select a size-</option>
                     </select>
@@ -250,11 +252,11 @@
         </md-button>
 
         <md-button class="cart-button md-raised add" id="add-to-cart-button" ng-click="plaeChef.toggleRight()"
-                   ng-show="plaeChef.getSizeSelectMode()" style="background: #4EAC50;color: #fff;">
+                   ng-show="plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
             add to cart
         </md-button>
         <md-button class="cart-button md-raised select-size" id="select-size-button" ng-click="plaeChef.setSizeSelectMode()"
-                   ng-show="!plaeChef.getSizeSelectMode()" style="background: #4EAC50;color: #fff;">
+                   ng-show="!plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
             select size
         </md-button>
 

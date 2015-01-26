@@ -1,14 +1,14 @@
 [
-	{
-	    "name": "top"
-	},
-	{
-	    "name": "left"
-	},
-	{
-	    "name": "right"
-	},
-	{
-	    "name": "pair"
-	}
+  {
+    "name": "top"
+  },
+  {
+    "name": "left"
+  },
+  {
+    "name": "right"
+  },
+  {
+    "name": "pair"
+  }
 ]
