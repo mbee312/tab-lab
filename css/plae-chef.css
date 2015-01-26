@@ -1049,6 +1049,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
 }
 
 .rotate {
+    font-size: 3em;
 
     /* Safari */
     -webkit-transform: rotate(-45deg);
@@ -1075,4 +1076,25 @@ md-tabs.ng-isolate-scope.md-default-theme {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
     /* For IE 8*/
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
+
+.size-circle{
+    display: block;
+    height: 80px;
+    width: 80px;
+    margin-bottom: 40px;
+    line-height: 80px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+    background-color: rgb(118, 118, 118);;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 2em;
+    text-align: center;
+    margin-left: 60px;
+}
+
+.display-size {
+    text-align: center;
+    padding-top: 50px;
 }
