@@ -110,9 +110,9 @@
     <md-whiteframe class="md-whiteframe-z1 select-size plae size" id="plae-size-select" >
         <div class="display-size">
             <p>shoe size</p>
-            <div class="size-circle">{{shoeSize.size.size}}</div>
+            <md-button class="size-circle" ng-click="plaeChef.setSizeSelectMode()">{{shoeSize.size.size}}</md-button>
             <p>tab size</p>
-            <div class="size-circle">{{tabs.size.size}}</div>
+            <md-button class="size-circle" ng-click="plaeChef.setSizeSelectMode()">{{tabs.size.size}}</md-button>
         </div>
         <md-button id="select-size-button-left" class="select-size plae size bg-opacity" aria-label="select size button"
                ng-click="plaeChef.setSizeSelectMode()" ng-show="!plaeChef.isSizeSelected()">
