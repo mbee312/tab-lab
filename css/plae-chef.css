@@ -159,6 +159,12 @@ body.ng-scope {
     width: 120px;
 }
 
+#wide-fit-button-two {
+    margin-left: 65px;
+    position: absolute;
+    top: 360px;
+}
+
 .size.select.shoe {
 }
 

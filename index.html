@@ -82,12 +82,16 @@
                 </select>
             </div>
 
-            <md-button class="md-accent sizeShowMoreOptions" aria-label="size more options"
+        <!--    <md-button class="md-accent sizeShowMoreOptions" aria-label="size more options"
                        ng-click="plaeChef.showMoreOptions()">need more sizing options?
             </md-button>
 
+            -->
+
             <md-checkbox class="size select shoe checkbox wide" id="wide-fit-button" ng-model="fit.wide"
-                         aria-label="wide-fit" ng-show="plaeChef.moreOptions()">
+                         aria-label="wide-fit"
+                         ng-show="true">
+                       <!--  ng-show="plaeChef.moreOptions()" -->
                 wide?
             </md-checkbox>
 
@@ -98,7 +102,8 @@
             </md-checkbox>
             -->
 
-            <md-button class="done-button cart-button md-raised select-size" id="select-size-button-done" ng-click="plaeChef.setSizeSelectMode()"
+            <md-button class="done-button cart-button md-raised select-size" id="select-size-button-done"
+                       ng-click="plaeChef.setSizeSelectMode()"
                        style="background: #4EAC50;color: #fff;">
                 done
             </md-button>
@@ -113,6 +118,12 @@
             <md-button class="size-circle" ng-click="plaeChef.setSizeSelectMode()">{{shoeSize.size.size}}</md-button>
             <p>tab size</p>
             <md-button class="size-circle" ng-click="plaeChef.setSizeSelectMode()">{{tabs.size.size}}</md-button>
+            <md-checkbox class="size select shoe checkbox wide" id="wide-fit-button-two" ng-model="fit.wide"
+                         aria-label="wide-fit"
+                         ng-show="true">
+                <!--  ng-show="plaeChef.moreOptions()" -->
+                wide?
+            </md-checkbox>
         </div>
         <md-button id="select-size-button-left" class="select-size plae size bg-opacity" aria-label="select size button"
                ng-click="plaeChef.setSizeSelectMode()" ng-show="!plaeChef.isSizeSelected()">
@@ -189,6 +200,7 @@
                 </li>
                 <md-button class="delete" id="delete-shoe" aria-label="delete-shoe" ng-click="plaeChef.remove('shoe')"
                            ng-show="plaeChef.isShoeEditMode()"><img src="img/menu/remove.png"></md-button>
+
             </ul>
             </p>
 
