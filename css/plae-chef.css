@@ -1083,7 +1083,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     height: 80px;
     width: 80px;
     margin-bottom: 40px !important;
-    line-height: 80px !important;
+    /*line-height: 80px !important; */
     -moz-border-radius: 40px !important;
     border-radius: 40px !important;
     background-color: rgb(118, 118, 118) !important;
@@ -1091,6 +1091,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     text-align: center !important;
     font-size: 2em !important;
     margin-left: 60px !important;
+    text-transform: uppercase !important;
 }
 
 .display-size {
