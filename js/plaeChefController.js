@@ -788,9 +788,6 @@
                         case 3 :
                             $scope.tabs.size = $scope.tabSizeOptions[2];
                             break;
-                        default :
-                            $scope.tabs.size = $scope.tabSizeOptions[0];
-                            break;
                     }
                 } else {
                     switch ($scope.shoeSize.size.size) {
@@ -844,9 +841,6 @@
                             break;
                         case 3 :
                             $scope.tabs.size = $scope.tabSizeOptions[3];
-                            break;
-                        default :
-                            $scope.tabs.size = $scope.tabSizeOptions[1];
                             break;
                     }// end switch
                 }//end if-else

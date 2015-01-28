@@ -18,7 +18,31 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="app/bower_components/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="app/bower_components/slick-carousel/slick/slick.css">
+    <script src="app/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="app/bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script src="components/drumjs/contrib/hammerjs/hammer.min.js"></script>
+    <script src="components/drumjs/contrib/hammerjs/hammer.fakemultitouch.js"></script>
     <link rel="stylesheet" href="components/drumjs/lib/drum.css">
+    <script src="components/drumjs/lib/drum.js"></script>
+
+    <style>
+
+        div.drum figure {
+            text-align: center;
+        }
+    </style>
+
+
+    <script>
+        "use strict";
+
+       /* Hammer.plugins.fakeMultitouch(); */
+
+        jQuery(document).ready(function () {
+            $("select.drum").drum();
+        });
+
+    </script>
 
 
 
@@ -67,7 +91,7 @@
             <div class="size select shoe">
 
                 <h4>shoe size: {{shoeSize.size.label}}</h4>
-                <select class="size selector shoe drum" ng-model="shoeSize.size" ng-options="s.label for s in shoeSizeOptions">
+                <select class="size selector shoe" ng-model="shoeSize.size" ng-options="s.label for s in shoeSizeOptions">
                     <option value="" selected>--choose an option--</option>
                 </select>
             </div>
@@ -281,8 +305,7 @@
 
 </div>
 
-<script src="app/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="app/bower_components/jquery-ui/jquery-ui.min.js"></script>
+
 <script src="js/share.min.js"></script>
 <script src="app/bower_components/hammerjs/hammer.js"></script>
 <script src="bower_components/angular/angular.js"></script>
@@ -295,51 +318,7 @@
 <script src="app/bower_components/angular-carousel/dist/angular-carousel.js"></script>
 <script src="app/bower_components/slick-carousel/slick/slick.js"></script>
 <script src="app/bower_components/angular-slick/dist/slick.js"></script>
-<script src="components/drumjs/contrib/hammerjs/hammer.min.js"></script>
-<script src="components/drumjs/contrib/hammerjs/hammer.fakemultitouch.js"></script>
-<script src="components/drumjs/lib/drum.js"></script>
-
 <script src="js/plaeChefController.js"></script>
-
-<style>
-    body {
-        background-color: #fefefe;
-        font-family: Arial, Verdana, sans-serif;
-    }
-
-    #drum_numbers1, #drum_numbers2 {
-        background-color: #f8f8f8;
-        width: 30px;
-    }
-    #drum_numbers1 figure, #drum_numbers2 figure {
-        text-align: center;
-        font-family: "Trebuchet MS", Helvetica, sans-serif;
-    }
-
-    .clear { clear: both; margin: 0px; }
-    .text { width: 300px; margin-left: 0px; }
-
-    .values {
-        width: 40px;
-        line-height: 30px;
-        font-size: 1.5em;
-        text-align: center;
-    }
-</style>
-<script>
-    "use strict";
-
-    Hammer.plugins.fakeMultitouch();
-
-    $(document).ready(function () {
-        $("select.drum").drum({
-            onChange : function (selected) {
-                $("#" + selected.id + "_value").val(selected.value);
-            }
-        });
-    });
-
-</script>
 
 </body>
 </html>
