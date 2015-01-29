@@ -618,14 +618,6 @@
             $scope.shoeEditMode = !$scope.shoeEditMode;
         };
 
-        this.isTabEditMode = function (side) {
-            if (side == "left") {
-                return $scope.tabEditModeL;
-            } else {
-                return $scope.tabEditModeR;
-            }//end if-else
-        };
-
         this.isSizeSelected = function () {
             if ($scope.shoeSize.size.size != null) {
                 console.log("isSizeSelected selected?");
@@ -634,18 +626,24 @@
                 console.log("isSizeSelected not selected");
                 return false;
             }
-
         }//end isSizeSelected ()
 
         this.setSizeSelectMode = function (){
             $scope.isSizeEdit = !$scope.isSizeEdit;
             console.log ("isSizeEdit = " + $scope.isSizeEdit);
-
         }//end setSizeEditMode()
 
         this.getSizeSelectMode = function (){
             return $scope.isSizeEdit;
         }//end getSizeSelectMode ()
+
+        this.isTabEditMode = function (side) {
+            if (side == "left") {
+                return $scope.tabEditModeL;
+            } else {
+                return $scope.tabEditModeR;
+            }//end if-else
+        };
 
         this.setTabEditMode = function (side) {
             if (side == "left") {
@@ -654,6 +652,16 @@
                 $scope.tabEditModeR = !$scope.tabEditModeR;
             }//end if-else
         };
+
+        this.isTabSizeSelected = function () {
+            if ($scope.tabs.size.size != null) {
+                console.log("isTabSizeSelected selected?");
+                return true;
+            } else {
+                console.log("isTabSizeSelected not selected");
+                return false;
+            }
+        }//end isSizeSelected ()
 
         $scope.shoe = {};
         $scope.tab = {};

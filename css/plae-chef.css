@@ -1076,6 +1076,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
 .nosize {
     position: absolute;
+    color: white;
 }
 .nosize.one{
     top: 110px;

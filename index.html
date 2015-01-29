@@ -154,8 +154,8 @@
         <md-button id="select-size-button-left" class="select-size plae size bg-opacity" aria-label="select size button"
                ng-click="plaeChef.setSizeSelectMode()" ng-show="!plaeChef.isSizeSelected()">
           <!--  <h1 class="rotate" >Select Size</h1> -->
-            <h1 class="nosize one">?</h1>
-            <h1 class="nosize two">?</h1>
+            <h1 class="nosize one" ng-show="!plaeChef.isSizeSelected()">?</h1>
+            <h1 class="nosize two" ng-show="!plaeChef.isTabSizeSelected()">?</h1>
         </md-button>
     </md-whiteframe>
 
