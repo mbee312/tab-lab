@@ -620,6 +620,7 @@
 
         this.setShoeEditMode = function () {
             $scope.shoeEditMode = !$scope.shoeEditMode;
+            this.setSizeSelectMode();
         };
 
         this.isSizeSelected = function () {

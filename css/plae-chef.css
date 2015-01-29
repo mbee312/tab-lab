@@ -165,11 +165,6 @@ body.ng-scope {
     top: 360px;
 }
 
-.size.select.shoe {
-}
-
-.size.select.tabs {
-}
 
 select.size.select.tabs {
     margin-left: 0;
@@ -265,6 +260,7 @@ md-checkbox#afo-fit-button {
 
 .plae.basket.item {
     width: 85%;
+    z-index: 5;
 }
 
 .plae.basket.item.shoe {
@@ -274,11 +270,11 @@ md-checkbox#afo-fit-button {
 
 .plae.basket.item.left {
     position: absolute;
-    top: 120px;
+    top: 130px;
 }
 
 .plae.basket.item.right {
-    top: 210px;
+    top: 220px;
     position: absolute;
 }
 
@@ -288,34 +284,50 @@ md-checkbox#afo-fit-button {
     margin-top: -15px;
 }
 
-button.md-accent.attr.name {
+button.attr{
+    height: 80px;
     width: 100%;
-    /* float: left; */
-    height: 50px;
 }
 
-.attr.size {
-    padding-left: 0px;
-    float: left;
-    height: 25px !important;
+.attr{
+    position: absolute;
+    font-size: 85%;
+}
+
+.attr.name {
+    width: 100%;
+    /* float: left; */
+
 }
 
 .attr.price {
     font-weight: bold;
     float: right;
     margin-right: 5px;
-    top: 0px;
-    margin-top: -5px;
+    top: 10px;
+    right: 2px;
     font-size: 100%;
+    position: absolute;
 }
 
-h4.name {
+.attr.color {
     float: left;
-    margin-top: 0px;
+    left: 15px;
+    top: 30px;
 }
 
-.attr {
-    font-size: 85%;
+.attr.size {
+    float: left;
+    left: 15px;
+    top: 50px;
+}
+
+
+.product.name {
+    float: left;
+    margin-top: 0;
+    top: 10px;
+    position: absolute;
 }
 
 #subtotal {
@@ -334,6 +346,7 @@ h4.name {
 
 hr {
     position: absolute;
+    top: 10px;
 
     /* overwrite ui.boostrap css */
     margin-top: 0px !important;
@@ -601,19 +614,6 @@ canvas#plae-chef-canvas-tab-top {
 
 }
 
-#colors-roan {
-    height: 100%;
-    left: -1200px;
-    position: relative;
-    margin-top: -200px;
-}
-
-#colors-max {
-    height: 100%;
-    left: 1200px;
-    position: relative;
-    margin-top: -200px;
-}
 
 .draggable-tab-container {
     width: 767px;
@@ -739,11 +739,6 @@ canvas#plae-chef-canvas-tab-top {
     margin-top: 10px;
     width: 21%;
     padding: 10px;
-}
-
-img#camille-img {
-    height: 130px;
-    width: auto;
 }
 
 section.styles-tab.ng-scope {
@@ -1117,4 +1112,16 @@ md-tabs.ng-isolate-scope.md-default-theme {
 .display-size {
     text-align: center;
     padding-top: 50px;
+}
+.tab-select-size{
+    height: 30px;
+    line-height: 0 !important;
+    width: 120px;
+    left: 0;
+    border-radius: 4px !important;
+}
+
+#right-tab-select-size-button {
+    top: 50px;
+
 }
