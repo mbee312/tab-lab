@@ -84,14 +84,14 @@
         $scope.tabEditModeL = false;
         $scope.tabEditModeR = false;
 
-        $scope.index = 1;
-        $scope.carouselIndex = 1;
+        $scope.index = 7;
+        $scope.carouselIndex = 7;
 
-        $scope.leftTabIndex = 1;
-        $scope.lTindex = 1;
+        $scope.leftTabIndex = 4;
+        $scope.lTindex = 4;
 
-        $scope.rightTabIndex = 1;
-        $scope.rTindex = 1;
+        $scope.rightTabIndex = 3;
+        $scope.rTindex = 3;
 
 
         $scope.hideMeLT = function () {
@@ -102,14 +102,18 @@
         };
 
         $http.get('product/shoeStyles_local.json').success(function (data) {
+            console.log(data);
             $scope.shoeStyles = data;
         });
         $http.get('product/shoes_ty_local.json').success(function (data) {
             $scope.shoeList = data;
+            $scope.setShoe($scope.shoeList[$scope.index]);
         });
 
         $http.get('product/tabs_local.json').success(function (data) {
             $scope.tabList = data;
+            $scope.addTab($scope.tabList[$scope.leftTabIndex], "left", event);
+            $scope.addTab($scope.tabList[$scope.rightTabIndex], "right", event);
         });
 
         $http.get('product/views.json').success(function (data) {
@@ -620,10 +624,8 @@
 
         this.isSizeSelected = function () {
             if ($scope.shoeSize.size.size != null) {
-                console.log("isSizeSelected selected?");
                 return true;
             } else {
-                console.log("isSizeSelected not selected");
                 return false;
             }
         }//end isSizeSelected ()
@@ -655,10 +657,8 @@
 
         this.isTabSizeSelected = function () {
             if ($scope.tabs.size.size != null) {
-                console.log("isTabSizeSelected selected?");
                 return true;
             } else {
-                console.log("isTabSizeSelected not selected");
                 return false;
             }
         }//end isSizeSelected ()
@@ -727,13 +727,11 @@
         });
 
         $scope.$watch("shoeSize.size.size", function (newValue, oldValue) {
-            console.log("inside $watch for shoeSize");
             $scope.setTabSize();
 
         });
 
         $scope.$watch("fit.wide", function (newValue, oldValue) {
-            console.log("inside $watch for fit.wide");
             $scope.setTabSize();
 
         });
@@ -743,7 +741,6 @@
             console.log($scope.shoeSize.size);
             if( $scope.shoeSize.size != null){
                 if ($scope.fit.wide == false) {
-                    console.log("inside setTabSize");
                     switch ($scope.shoeSize.size.size) {
                         case 8 :
                             $scope.tabs.size = $scope.tabSizeOptions[0];
@@ -871,36 +868,6 @@
         }//end showMoreOptions()
 
     }]);
-
-
-    plaeChefApp.directive("hideMe", function ($animate) {
-        return function (scope, element, attrs) {
-            scope.$watch(attrs.hideMe, function (newVal) {
-                if (newVal) {
-                    $animate.addClass(element, "slide");
-                } else {
-                    $animate.removeClass(element, "slide");
-                }
-            })
-        }
-    });
-
-    plaeChefApp.animation(".slide", function () {
-        return {
-            addClass: function (element, className) {
-                TweenMax.to(element, 1, {opacity: 0});
-            },
-            removeClass: function (element, className) {
-                TweenMax.to(element, 1, {opacity: 1});
-            }
-        }
-    });
-
-
-    plaeChefApp.controller('SelectorController', function ($scope) {
-
-
-    });
 
 })();
 
