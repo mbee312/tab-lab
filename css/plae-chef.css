@@ -1073,11 +1073,24 @@ md-tabs.ng-isolate-scope.md-default-theme {
     filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1.5);
 
 }
+
+.nosize {
+    position: absolute;
+}
+.nosize.one{
+    top: 110px;
+    left: 90px;
+}
+.nosize.two{
+    top: 265px;
+    left: 90px;
+}
+
 .bg-opacity {
     /* Fallback for web browsers that doesn't support RGBa */
     background: rgb(0, 0, 0);
     /* RGBa with 0.6 opacity */
-    background: rgba(255, 255, 255, 0.60) !important;
+    background: rgba(255, 255, 255, 0.0) !important;
     /* For IE 5.5 - 7*/
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
     /* For IE 8*/
