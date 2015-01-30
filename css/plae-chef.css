@@ -133,7 +133,7 @@ body.ng-scope {
     border-bottom-left-radius: 8px !important;
     border-top-left-radius: 8px !important;
 }
-.plae.size.rcart {
+.rcart {
     z-index: 1;
     height: 432px;
     top: 443px;
@@ -898,11 +898,11 @@ button#right-profile-button {
 .wave-item-delete.ng-leave,
 .size-animate
 {
-    -webkit-transition: 1000ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
-    -moz-transition: 1000ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
-    -ms-transition: 1000ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
-    -o-transition: 1000ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
-    transition: 1000ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
+    -webkit-transition: 800ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
+    -moz-transition: 800ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
+    -ms-transition: 800ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
+    -o-transition: 800ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
+    transition: 800ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
 }
 
 .wave.ng-enter {
