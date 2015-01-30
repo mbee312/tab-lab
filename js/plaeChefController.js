@@ -80,6 +80,7 @@
         $scope.editMode = false;
         $scope.shoeEditMode = false;
         $scope.isSizeEdit = false;
+        $scope.isSizeEditRight = false;
 
         $scope.tabEditModeL = false;
         $scope.tabEditModeR = false;
@@ -633,12 +634,20 @@
             }
         }//end isSizeSelected ()
 
-        this.setSizeSelectMode = function (){
-            $scope.isSizeEdit = !$scope.isSizeEdit;
+        this.setSizeSelectMode = function (side){
+            if(side == 'left') {
+                $scope.isSizeEdit = !$scope.isSizeEdit;
+            }else{
+                $scope.isSizeEditRight = !$scope.isSizeEditRight;
+            }
         }//end setSizeEditMode()
 
-        this.getSizeSelectMode = function (){
-            return $scope.isSizeEdit;
+        this.getSizeSelectMode = function (side){
+            if(side == 'left') {
+                return $scope.isSizeEdit;
+            }else{
+                return $scope.isSizeEditRight;
+            }
         }//end getSizeSelectMode ()
 
         this.isTabEditMode = function (side) {
