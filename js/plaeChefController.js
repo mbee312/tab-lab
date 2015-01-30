@@ -218,7 +218,6 @@
                     $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                     $scope.clearImage(topViewCanvas, tpcontext, side);
                     $scope.setViews(side);
-                    this.setTabEditMode(side);
                     break;
                 case "right":
                     $scope.subTotal -= $scope.tabRight[0].price;
@@ -228,7 +227,6 @@
                     $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                     $scope.clearImage(topViewCanvas, tpcontext, side);
                     $scope.setViews(side);
-                    this.setTabEditMode(side);
                     break;
                 case "shoe":
                     $scope.subTotal -= $scope.shoeSelected[0].price;
