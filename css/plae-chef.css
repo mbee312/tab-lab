@@ -50,7 +50,6 @@ md-button {
     font-variant: normal;
     font-weight: 400;
     line-height: 20px;
-
 }
 
 button.md-button.md-default-theme {
@@ -286,7 +285,7 @@ md-checkbox#afo-fit-button {
 
 button.attr{
     height: 80px;
-    width: 100%;
+    width: 110%;
 }
 
 .attr{
@@ -428,19 +427,18 @@ button#edit {
     width: 15px;
 }
 
+.md-raised.attr {
+    background-color: rgba(260,260,260, 1) !important;
+    z-index: 5;
+}
+
 .delete {
     float: right !important;
+    height: 80px;
+    width: 50px;
+    right: -10%;
+    top: 0;
     position: absolute !important;
-    right: -22px;
-    top: 22px;
-}
-
-#delete-left {
-    top: 25px;
-}
-
-#delete-right {
-    top: 25px;
 }
 
 canvas {
@@ -878,7 +876,12 @@ button#right-profile-button {
 /*  ng-animate  */
 /*              */
 
-.wave.ng-enter, .wave.ng-leave {
+.wave.ng-enter,
+.wave.ng-leave,
+.wave-item-delete.ng-enter,
+.wave-item-delete.ng-leave,
+.size-animate
+{
     -webkit-transition: 1000ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
     -moz-transition: 1000ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
     -ms-transition: 1000ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
@@ -905,24 +908,32 @@ button#right-profile-button {
 }
 
 
-.wave.wave-right.ng-enter {
+.wave-item-delete.ng-enter {
     position: absolute;
-    left:425px;
+    right:10px;
+    top: 0;
 }
 
-.wave.wave-right.ng-enter.ng-enter-active {
-    left:225px;
-}
-
-.wave.wave-right.ng-leave {
+.wave-item-delete.ng-enter.ng-enter-active {
     position: absolute;
-    left:225px;
+    right:-10px;
+    top: 0;
 }
 
-.wave.wave-right.ng-leave.ng-leave-active {
-    left:425px;
+.wave-item-delete.ng-leave {
+    position: absolute;
+    right:-10px;
+    top: 0;
 }
 
+.wave-item-delete.ng-leave-active {
+    position: absolute;
+    right:10px;
+    top: 0;
+}
+.size-animate{
+    width:90% !important;
+}
 md-tabs.ng-isolate-scope.md-default-theme {
     margin-top: 560px;
 }
