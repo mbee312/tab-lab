@@ -434,10 +434,10 @@ button#edit {
 
 .delete {
     float: right !important;
-    height: 80px;
-    width: 50px;
+    height: 76px;
+    width: 39px;
     right: -10%;
-    top: 0;
+    top: 2px;
     position: absolute !important;
 }
 
@@ -1064,19 +1064,19 @@ md-tabs.ng-isolate-scope.md-default-theme {
     font-size: 3em;
 
     /* Safari */
-    -webkit-transform: rotate(-45deg);
+    -webkit-transform: rotate(90deg);
 
     /* Firefox */
-    -moz-transform: rotate(-45deg);
+    -moz-transform: rotate(90deg);
 
     /* IE */
-    -ms-transform: rotate(-45deg);
+    -ms-transform: rotate(90deg);
 
     /* Opera */
-    -o-transform: rotate(-45deg);
+    -o-transform: rotate(90deg);
 
     /* Internet Explorer */
-    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1.5);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
 }
 

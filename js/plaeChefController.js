@@ -217,6 +217,7 @@
                     $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                     $scope.clearImage(topViewCanvas, tpcontext, side);
                     $scope.setViews(side);
+                    this.setTabEditMode(side);
                     break;
                 case "right":
                     $scope.subTotal -= $scope.tabRight[0].price;
@@ -226,6 +227,7 @@
                     $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                     $scope.clearImage(topViewCanvas, tpcontext, side);
                     $scope.setViews(side);
+                    this.setTabEditMode(side);
                     break;
                 case "shoe":
                     $scope.subTotal -= $scope.shoeSelected[0].price;
@@ -633,7 +635,6 @@
 
         this.setSizeSelectMode = function (){
             $scope.isSizeEdit = !$scope.isSizeEdit;
-            console.log ("isSizeEdit = " + $scope.isSizeEdit);
         }//end setSizeEditMode()
 
         this.getSizeSelectMode = function (){
@@ -649,6 +650,7 @@
         };
 
         this.setTabEditMode = function (side) {
+            this.setSizeSelectMode();
             if (side == "left") {
                 $scope.tabEditModeL = !$scope.tabEditModeL;
             } else {
