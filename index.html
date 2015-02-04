@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if lt IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html lang="en" ng-app="plaeChefApp" class="customizer" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
 <head>
@@ -15,6 +18,32 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="app/bower_components/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="app/bower_components/slick-carousel/slick/slick.css">
+    <script src="app/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="app/bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script src="components/drumjs/contrib/hammerjs/hammer.min.js"></script>
+    <script src="components/drumjs/contrib/hammerjs/hammer.fakemultitouch.js"></script>
+    <link rel="stylesheet" href="components/drumjs/lib/drum.css">
+    <script src="components/drumjs/lib/drum.js"></script>
+
+    <style>
+
+        div.drum figure {
+            text-align: center;
+        }
+    </style>
+
+
+    <script>
+        "use strict";
+
+       /* Hammer.plugins.fakeMultitouch(); */
+
+        jQuery(document).ready(function () {
+            $("select.drum").drum();
+        });
+
+    </script>
+
 
 
 </head>
@@ -26,80 +55,165 @@
 
 <div ng-view class="view-frame plae-chef-window">
 
-
-
     <md-whiteframe class="md-whiteframe-z2 border-only main"></md-whiteframe>
     <md-whiteframe class="md-whiteframe-z1 border-only slots left"></md-whiteframe>
     <md-whiteframe class="md-whiteframe-z1 border-only slots right"></md-whiteframe>
 
-    <slick class="car"  id="shoe-car" infinite=true center-mode="true" speed="500" center-padding="20px" cssEase="ease" arrows="true" swipeToSlide="true" easing="linear"  init-onload=true slides-to-show="5" slides-to-scroll="3" touch-move="true" touchThreshold="100" focus-on-select="true" current-index="index" data="shoeList">
+    <slick class="car" id="shoe-car"
+           infinite="true"
+           center-mode="true"
+           speed="1000"
+           center-padding="20px"
+           cssEase="ease"
+           arrows="true"
+           swipeToSlide="true"
+           easing="linear"
+           init-onload="true"
+           slides-to-show="5"
+           slides-to-scroll="1"
+           touch-move="true"
+           touchThreshold="10000"
+           focus-on-select="true"
+           current-index="index"
+           data="shoeList">
 
-        <div ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"  class="bgimage">
+        <div ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"
+             class="bgimage">
         </div>
     </slick>
 
-    <slick class="car"  id="tab-left-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="leftTabIndex" data="tabList">
-        <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"  class="tabmenuitem bgimage">
+    <slick class="car" id="tab-left-car"
+           infinite=true
+           center-mode="true"
+           speed="1000"
+           arrows="true"
+           easing="true"
+           init-onload="true"
+           slides-to-show="5"
+           focus-on-select="true"
+           touch-move="true"
+           touchThreshold="10000"
+           slides-to-scroll="3"
+           current-index="leftTabIndex"
+           data="tabList">
+        <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"
+             class="tabmenuitem bgimage">
         </div>
     </slick>
 
-    <slick class="car"  id="tab-right-car" infinite=true center-mode="true" arrows="true" easing=true init-onload=true slides-to-show="5" focus-on-select="true" slides-to-scroll="3" current-index="rightTabIndex" data="tabList">
-        <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"  class="tabmenuitem bgimage">
+    <slick class="car" id="tab-right-car"
+           infinite=true
+           center-mode="true"
+           speed="1000"
+           arrows="true"
+           easing="true"
+           init-onload="true"
+           slides-to-show="5"
+           focus-on-select="true"
+           touch-move="true"
+           touchThreshold="10000"
+           slides-to-scroll="3"
+           current-index="rightTabIndex"
+           data="tabList">
+        <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"
+             class="tabmenuitem bgimage">
         </div>
     </slick>
 
-    <md-whiteframe class="md-whiteframe-z1 plae size" id="plae-size">
+    <div ng-switch="plaeChef.getSizeSelectMode('left')" class="slide-frame">
 
+    <md-whiteframe class="md-whiteframe-z1 wave plae size" id="plae-size" ng-switch-when="true">
         <div class="size selector">
-
             <div class="size select shoe">
-
-                <h4>shoe size: {{shoeSize.label}}</h4>
-                <select class="size selector shoe" ng-model="shoeSize" ng-options="s.label for s in shoeSizeOptions" >
+                <h4>shoe size: {{shoeSize.size.label}}</h4>
+                <select class="size selector shoe" ng-model="shoeSize.size" ng-options="s.label for s in shoeSizeOptions">
                     <option value="" selected>--choose an option--</option>
                 </select>
             </div>
 
-        <!--    <md-checkbox class="size select shoe checkbox" id="autoselect-button" ng-model="fit.autoselect" aria-label="autoselect-tab">
-                auto-select tab size?
-            </md-checkbox> -->
+            <!--    <md-checkbox class="size select shoe checkbox" id="autoselect-button" ng-model="fit.autoselect" aria-label="autoselect-tab">
+                    auto-select tab size?
+                </md-checkbox> -->
 
             <div class="size select tabs">
-
                 <h4>tab size: {{tabs.size.label}}</h4>
                 <select class="size selector tabs" ng-model="tabs.size" ng-options="t.label for t in tabSizeOptions">
                     <option value="" selected>--choose an option--</option>
                 </select>
             </div>
 
-            <md-button class="md-accent sizeShowMoreOptions" aria-label="size more options" ng-click="plaeChef.showMoreOptions()">need more sizing options?</md-button>
+        <!--    <md-button class="md-accent sizeShowMoreOptions" aria-label="size more options"
+                       ng-click="plaeChef.showMoreOptions()">need more sizing options?
+            </md-button>
 
-            <md-checkbox class="size select shoe checkbox wide" id="wide-fit-button" ng-model="fit.wide" aria-label="wide-fit" ng-show="plaeChef.moreOptions()">
+            -->
+            <md-checkbox class="size select shoe checkbox wide" id="wide-fit-button" ng-model="fit.wide"
+                         aria-label="wide-fit"
+                         ng-show="true">
+                       <!--  ng-show="plaeChef.moreOptions()" -->
                 wide?
             </md-checkbox>
 
-            <md-checkbox class="size select shoe checkbox afo" id="afo-fit-button" ng-model="fit.afo" aria-label="afo-fit" ng-show="plaeChef.moreOptions()">
+            <!--
+            <md-checkbox class="size select shoe checkbox afo" id="afo-fit-button" ng-model="fit.afo"
+                         aria-label="afo-fit" ng-show="plaeChef.moreOptions()">
                 afo?
             </md-checkbox>
+            -->
+
+            <md-button class="done-button cart-button md-raised select-size" id="select-size-button-done"
+                       ng-click="plaeChef.setSizeSelectMode('left')"
+                       style="background: #4EAC50;color: #fff;">
+                done
+            </md-button>
         </div>
 
 
     </md-whiteframe>
+
+    <md-whiteframe class="md-whiteframe-z1 select-size plae size" id="plae-size-select" >
+        <div class="display-size">
+            <p>shoe size</p>
+            <md-button class="size-circle" ng-click="plaeChef.setSizeSelectMode('left')">{{shoeSize.size.size}}</md-button>
+            <p>tab size</p>
+            <md-button class="size-circle" ng-click="plaeChef.setSizeSelectMode('left')">{{tabs.size.size}}</md-button>
+            <md-checkbox class="size select shoe checkbox wide" id="wide-fit-button-two" ng-model="fit.wide"
+                         aria-label="wide-fit"
+                         ng-show="true">
+                <!--  ng-show="plaeChef.moreOptions()" -->
+                wide?
+            </md-checkbox>
+        </div>
+        <md-button id="select-size-button-left" class="select-size plae size bg-opacity" aria-label="select size button"
+               ng-click="plaeChef.setSizeSelectMode('left')" ng-show="!plaeChef.isSizeSelected()">
+          <!--  <h1 class="rotate" >Select Size</h1> -->
+            <h1 class="nosize one" ng-show="!plaeChef.isSizeSelected()">?</h1>
+            <h1 class="nosize two" ng-show="!plaeChef.isTabSizeSelected()">?</h1>
+        </md-button>
+    </md-whiteframe>
+
+    </div>
 
     <div class="canvas-container">
         <!--  <canvas class='canvas' id="plae-chef-canvas" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('default')"></canvas>
         <canvas class='canvas' id="plae-chef-canvas-pair" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('pair')"></canvas>
         <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-pair" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('pair')"></canvas>
         -->
-        <canvas class='canvas' id="plae-chef-canvas-left" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('top')" ng-show="plaeChef.isCanvasSet('left')"></canvas>
-        <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-left" ng-swipe-right="plaeChef.setCanvas('right')" ng-swipe-left="plaeChef.setCanvas('top')" ng-show="plaeChef.isCanvasSet('left')"></canvas>
+        <canvas class='canvas' id="plae-chef-canvas-left" ng-swipe-right="plaeChef.setCanvas('right')"
+                ng-swipe-left="plaeChef.setCanvas('top')" ng-show="plaeChef.isCanvasSet('left')"></canvas>
+        <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-left" ng-swipe-right="plaeChef.setCanvas('right')"
+                ng-swipe-left="plaeChef.setCanvas('top')" ng-show="plaeChef.isCanvasSet('left')"></canvas>
 
-        <canvas class='canvas' id="plae-chef-canvas-top" ng-swipe-right="plaeChef.setCanvas('left')" ng-swipe-left="plaeChef.setCanvas('right')" ng-show="plaeChef.isCanvasSet('top')"></canvas>
-        <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-top" ng-swipe-right="plaeChef.setCanvas('left')" ng-swipe-left="plaeChef.setCanvas('right')" ng-show="plaeChef.isCanvasSet('top')"></canvas>
+        <canvas class='canvas' id="plae-chef-canvas-top" ng-swipe-right="plaeChef.setCanvas('left')"
+                ng-swipe-left="plaeChef.setCanvas('right')" ng-show="plaeChef.isCanvasSet('top')"></canvas>
+        <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-top" ng-swipe-right="plaeChef.setCanvas('left')"
+                ng-swipe-left="plaeChef.setCanvas('right')" ng-show="plaeChef.isCanvasSet('top')"></canvas>
 
 
-        <canvas class='canvas' id="plae-chef-canvas-right" ng-swipe-right="plaeChef.setCanvas('top')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
-        <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-right" ng-swipe-right="plaeChef.setCanvas('top')" ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
+        <canvas class='canvas' id="plae-chef-canvas-right" ng-swipe-right="plaeChef.setCanvas('top')"
+                ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
+        <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-right" ng-swipe-right="plaeChef.setCanvas('top')"
+                ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
 
         <md-whiteframe class="md-whiteframe-z3" id="white-bg"></md-whiteframe>
 
@@ -122,88 +236,159 @@
         </div>-->
     </div>
 
+
+
+    <div ng-switch="plaeChef.getSizeSelectMode('right')" class="slide-frame">
+
+        <md-whiteframe class="md-whiteframe-z1 wave-right rcart" id="plae-size-cart" ng-switch-when="true">
+            <div class="size selector">
+                <div class="size select shoe">
+                    <h4>shoe size: {{shoeSize.size.label}}</h4>
+                    <select class="size selector shoe" ng-model="shoeSize.size" ng-options="s.label for s in shoeSizeOptions">
+                        <option value="" selected>--choose an option--</option>
+                    </select>
+                </div>
+
+                <!--    <md-checkbox class="size select shoe checkbox" id="autoselect-button" ng-model="fit.autoselect" aria-label="autoselect-tab">
+                        auto-select tab size?
+                    </md-checkbox> -->
+
+                <div class="size select tabs">
+                    <h4>tab size: {{tabs.size.label}}</h4>
+                    <select class="size selector tabs" ng-model="tabs.size" ng-options="t.label for t in tabSizeOptions">
+                        <option value="" selected>--choose an option--</option>
+                    </select>
+                </div>
+
+                <!--    <md-button class="md-accent sizeShowMoreOptions" aria-label="size more options"
+                               ng-click="plaeChef.showMoreOptions()">need more sizing options?
+                    </md-button>
+
+                    -->
+                <md-checkbox class="size select shoe checkbox wide" id="wide-fit-button-right" ng-model="fit.wide"
+                             aria-label="wide-fit"
+                             ng-show="true">
+                    <!--  ng-show="plaeChef.moreOptions()" -->
+                    wide?
+                </md-checkbox>
+
+                <!--
+                <md-checkbox class="size select shoe checkbox afo" id="afo-fit-button" ng-model="fit.afo"
+                             aria-label="afo-fit" ng-show="plaeChef.moreOptions()">
+                    afo?
+                </md-checkbox>
+                -->
+
+                <md-button class="done-button cart-button md-raised select-size" id="select-size-button-done-right"
+                           ng-click="plaeChef.setSizeSelectMode('right')"
+                           style="background: #4EAC50;color: #fff;">
+                    done
+                </md-button>
+            </div>
+
+
+        </md-whiteframe>
+
+    </div>
+
+
+
     <md-whiteframe class="md-whiteframe-z1 plae basket" id="plae-basket" layout>
 
 
-        <md-button id="edit" aria-label="edit-cart" ng-click="plaeChef.setEditMode()"><img src="img/menu/pen.png"></md-button>
+        <md-button id="edit" aria-label="edit-cart" ng-click="plaeChef.setEditMode()"><img src="img/menu/pen.png">
+        </md-button>
 
         <h3 class="cart title">your shoe</h3>
 
         <div class="plae basket item shoe" ng-repeat="shoe in shoeSelected" ng-model="shoeSelected">
-            <md-button class="md-accent attr name" aria-label="attr name button" ng-click="plaeChef.setShoeEditMode()">
-            <p><h4 class="name">{{shoe.name}}</h4>
-                </md-button>
-              <ul class="details">
-                  <li class="attr price">{{shoe.price | currency}}</li>
-                  <li class=" attr color">color: {{shoe.color}} </li>
-                  <li class="attr size">
-                          size: {{shoeSize.label}}
-
-                      <select class="size selector shoe cart" ng-model="shoeSize" ng-options="s.label for s in shoeSizeOptions" ng-show="plaeChef.isShoeEditMode()">
-                          <option value="" selected>-select a size-</option>
-                      </select>
-                  </li>
-                <md-button class="delete" id="delete-shoe" aria-label="delete-shoe" ng-click="plaeChef.remove('shoe')" ng-show="plaeChef.isShoeEditMode()"><img src="img/menu/remove.png"></md-button>
+            <md-button class="md-raised attr shoe" ng-class="{'size-animate' : shoeEditMode}"
+                       aria-label="attr name button"
+                       ng-click="plaeChef.setSizeSelectMode('right')">
+                <h4 class="product name">{{shoe.name}}</h4>
+            <ul class="details">
+                <li class="attr price">{{shoe.price | currency}}</li>
+                <li class=" attr color">color: {{shoe.color}}</li>
+                <li class="attr size">
+                    size: {{shoeSize.size.label}}
+                </li>
             </ul>
-        </p>
+            </md-button>
 
+            <md-button class="md-raised md-warn delete"
+                       id="delete-shoe"
+                       aria-label="delete-shoe"
+                       ng-click="plaeChef.remove('shoe')">
+                <p class="rotate">remove</p>
+            </md-button>
         </div>
 
-        <div class="plae basket item left" ng-model="tabLeft" ng-repeat="tabL in tabLeft track by $index">
-            <md-button class="md-accent attr name tableft" aria-label="attr tableft button" ng-click="plaeChef.setTabEditMode('left')">
-            <p><h4 class="name">{{tabL.name}}</h4>
-            </md-button>
-            <ul class="details">
-                <li class="attr price">{{tabL.price | currency}}</li>
-                <li class="attr color">color: {{tabL.color}}</li>
-                <li class="attr size">
-                        size: {{tabs.size.label}}
-                    <select class="size selector tabs cart" ng-model="tabs.size" ng-options="t.label for t in tabSizeOptions" ng-show="plaeChef.isTabEditMode('left')">
-                        <option value="" selected>-select a size-</option>
-                    </select>
 
-                </li>
-                <md-button class="delete" id="delete-left" aria-label="delete-left" ng-click="plaeChef.remove('left')"ng-show="plaeChef.isTabEditMode('left')"><img src="img/menu/remove.png"></md-button>
-            </ul>
-            </p>
+        <div class="plae basket item left" ng-model="tabLeft" ng-repeat="tabL in tabLeft track by $index">
+            <md-button class="md-raised attr tableft"
+                       ng-class="{'size-animate' : tabEditModeL}"
+                       aria-label="attr tableft button"
+                       ng-click="plaeChef.setSizeSelectMode('right')">
+                <h4 class="product name">{{tabL.name}}</h4>
+
+                <ul class="details">
+                    <li class="attr price">{{tabL.price | currency}}</li>
+                    <li class="attr color">color: {{tabL.color}}</li>
+                    <li class="attr size">
+                        size: {{tabs.size.label}}
+                    </li>
+                </ul>
+            </md-button>
+            <md-button class="md-raised md-warn delete" id="delete-left" aria-label="delete-left"
+                       ng-click="plaeChef.remove('left')" ng-show="plaeChef.isTabEditMode('left')">
+                <p class="rotate">remove</p>
+            </md-button>
         </div>
 
         <div class="plae basket item right" ng-model="tabRight" ng-repeat="tabR in tabRight track by $index">
-            <md-button class="md-accent attr name tabright" aria-label="attr tabright button" ng-click="plaeChef.setTabEditMode('right')">
-            <p><h4 class="name">{{tabR.name}}</h4>
-            </md-button>
+            <md-button class="md-raised attr tabright" ng-class="{'size-animate' : tabEditModeR}" aria-label="attr tabright button"
+                       ng-click="plaeChef.setSizeSelectMode('right')">
+                <h4 class="product name">{{tabR.name}}</h4>
+
             <ul class="details">
                 <li class="attr price">{{tabR.price | currency}}</li>
                 <li class="attr color">color: {{tabR.color}}</li>
                 <li class="attr size">
                         size: {{tabs.size.label}}
-                    <select class="size selector tabs" ng-model="tabs.size" ng-options="t.label for t in tabSizeOptions" ng-show="plaeChef.isTabEditMode('right')">
-                        <option value="" selected>-select a size-</option>
-                    </select>
-
                 </li>
-                <md-button class="delete" id="delete-right" aria-label="delete-right" ng-click="plaeChef.remove('right')" ng-show="plaeChef.isTabEditMode('right')"><img src="img/menu/remove.png"></md-button>
             </ul>
-            </p>
+            </md-button>
+            <md-button class="md-raised md-warn delete"
+                       id="delete-right"
+                       aria-label="delete-right"
+                       ng-click="plaeChef.remove('right')"
+                       ng-show="plaeChef.isTabEditMode('right')">
+                <p class="rotate">remove</p>
+            </md-button>
         </div>
-
 
 
         <div class="plae basket subtotal" id="subtotal">
             <hr width="100%" size="2" align="center">
-            <p><h3>subtotal</h3>
-                <span class="price subtotal">{{plaeChef.getSubTotal() | currency}}</span></p>
+            <p>
+
+            <h3>subtotal</h3>
+            <span class="price subtotal">{{plaeChef.getSubTotal() | currency}}</span></p>
         </div>
 
-
-        <md-button class="view-button md-raised md-warn" id="reset-button" ng-click="plaeChef.clearSelections()" ng-show="plaeChef.isEditMode()" style="background: #ff0008;color: #fff;">
+    <!--
+        <md-button class="view-button md-raised md-warn" id="reset-button" ng-click="plaeChef.clearSelections()"
+                   ng-show="plaeChef.isEditMode()" style="background: #ff0008;color: #fff;">
             start over
         </md-button>
+        -->
 
-        <md-button class="cart-button md-raised add" id="add-to-cart-button" ng-click="plaeChef.toggleRight()" ng-show="plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
+        <md-button class="cart-button md-raised add" id="add-to-cart-button" ng-click="plaeChef.toggleRight()"
+                   ng-show="plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
             add to cart
         </md-button>
-        <md-button class="cart-button md-raised select-size" id="select-size-button" ng-click="plaeChef.toggleRight()" ng-show="!plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
+        <md-button class="cart-button md-raised select-size" id="select-size-button" ng-click="plaeChef.setSizeSelectMode()"
+                   ng-show="!plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
             select size
         </md-button>
 
@@ -211,8 +396,7 @@
 
 </div>
 
-<script src="app/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="app/bower_components/jquery-ui/jquery-ui.min.js"></script>
+
 <script src="js/share.min.js"></script>
 <script src="app/bower_components/hammerjs/hammer.js"></script>
 <script src="bower_components/angular/angular.js"></script>
@@ -225,7 +409,6 @@
 <script src="app/bower_components/angular-carousel/dist/angular-carousel.js"></script>
 <script src="app/bower_components/slick-carousel/slick/slick.js"></script>
 <script src="app/bower_components/angular-slick/dist/slick.js"></script>
-
 <script src="js/plaeChefController.js"></script>
 
 </body>
