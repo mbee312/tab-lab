@@ -8,6 +8,6 @@
   var scripts = document.getElementsByTagName('script');
   var location = scripts[scripts.length - 1].src.replace(/[^\/]+$/, '');
   webAnimationsTargetConfig[target].src.forEach(function(sourceFile) {
-    document.write('<script src="' + location + sourceFile + '"></script>');
+    document.write('<script dst="' + location + sourceFile + '"></script>');
   });
 })();

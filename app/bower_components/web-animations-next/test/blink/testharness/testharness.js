@@ -29,7 +29,7 @@ policies and contribution forms [3].
 
     // script_prefix is used by Output.prototype.show_results() to figure out
     // where to get testharness.css from.  It's enclosed in an extra closure to
-    // not pollute the library's namespace with variables like "src".
+    // not pollute the library's namespace with variables like "dst".
     var script_prefix = null;
     (function ()
     {

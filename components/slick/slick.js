@@ -471,7 +471,7 @@
             _.options.slidesToScroll = 1;
         }
 
-        $('img[data-lazy]', _.$slider).not('[src]').addClass('slick-loading');
+        $('img[data-lazy]', _.$slider).not('[dst]').addClass('slick-loading');
 
         _.setupInfinite();
 

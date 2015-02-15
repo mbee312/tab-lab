@@ -2060,7 +2060,7 @@ angular.module('material.components.card', [
  * @usage
  * <hljs lang="html">
  * <md-card>
- *  <img src="img/washedout.png" class="md-card-image">
+ *  <img dst="img/washedout.png" class="md-card-image">
  *  <h2>Paracosm</h2>
  *  <p>
  *    The titles of Washed Out's breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
@@ -2864,7 +2864,7 @@ angular.module('material.components.list', [
  *   <md-item ng-repeat="item in todos">
  *     <md-item-content>
  *       <div class="md-tile-left">
- *         <img ng-src="{{item.face}}" class="face" alt="{{item.who}}">
+ *         <img ng-dst="{{item.face}}" class="face" alt="{{item.who}}">
  *       </div>
  *       <div class="md-tile-content">
  *         <h3>{{item.what}}</h3>
@@ -6401,7 +6401,7 @@ angular.module('material.components.tabs')
  * @usage
  * <hljs lang="html">
  * <md-tabs md-selected="selectedIndex" >
- *   <img ng-src="img/angular.png" class="centered">
+ *   <img ng-dst="img/angular.png" class="centered">
  *
  *   <md-tab
  *      ng-repeat="tab in tabs | orderBy:predicate:reversed"
@@ -6411,7 +6411,7 @@ angular.module('material.components.tabs')
  *
  *       <md-tab-label>
  *           {{tab.title}}
- *           <img src="img/removeTab.png"
+ *           <img dst="img/removeTab.png"
  *                ng-click="removeTab(tab)"
  *                class="delete" >
  *       </md-tab-label>

@@ -2,10 +2,10 @@
     'use strict';
 
     // Declare app level module which depends on views, and components
-    var plaeChefApp = angular.module('plaeChefApp', ['ngAnimate', 'ngDragDrop', 'ngTouch', 'ngMaterial', 'ui.bootstrap', 'angular-carousel', 'slick']);
+    var plaeChefApp = angular.module('plaeChefApp', ['ngAnimate', 'ngDragDrop', 'ngTouch', 'ngMaterial', 'ui.bootstrap', 'angular-carousel', 'slick', 'ui.bootstrap.modal']);
 
 
-    plaeChefApp.controller('PlaeChefController', ['$scope', '$http', '$mdDialog', function ($scope, $http, $mdDialog) {
+    plaeChefApp.controller('PlaeChefController', ['$scope', '$http', '$mdDialog','$mdToast', '$animate', '$window', function ($scope, $http, $mdDialog, $mdToast, $animate, $window) {
 
         /* canvas for each main view */
         /*
@@ -673,6 +673,17 @@
             }
         }//end isSizeSelected ()
 
+        $scope.isSurveyOn = false;
+
+        this.getSurveyForm = function (){
+                return $scope.isSurveyOn;
+        }//end getSurveyForm ()
+
+        this.setSurveyMode = function () {
+            $scope.isSurveyOn = !$scope.isSurveyOn;
+        };
+
+
         $scope.shoe = {};
         $scope.tab = {};
 
@@ -877,7 +888,24 @@
             }//end if-else
         }//end showMoreOptions()
 
-    }]);
+
+        $scope.label_3 = "How likely would you recommend Tab Lab to a friend? \n0 to 10. (10 is Extremely likely)";
+
+        $scope.user = {
+            email: '',
+            question_1: '' ,
+            question_2: '' ,
+            question_3: ''
+        };
+
+    }])
+    //end plaeChefApp Controller
+        .config(function($mdThemingProvider) {
+            $mdThemingProvider.theme('default')
+                .primaryPalette('pink')
+                .accentPalette('orange');
+        });
+
 
 })();
 

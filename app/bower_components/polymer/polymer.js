@@ -10006,7 +10006,7 @@ scope.styleResolver = styleResolver;
         // stamp template
         // which includes parsing and applying MDV bindings before being
         // inserted (to avoid {{}} in attribute values)
-        // e.g. to prevent <img src="images/{{icon}}"> from generating a 404.
+        // e.g. to prevent <img dst="images/{{icon}}"> from generating a 404.
         var dom = this.instanceTemplate(template);
         // append to shadow dom
         root.appendChild(dom);
@@ -10028,7 +10028,7 @@ scope.styleResolver = styleResolver;
         // stamp template
         // which includes parsing and applying MDV bindings before being
         // inserted (to avoid {{}} in attribute values)
-        // e.g. to prevent <img src="images/{{icon}}"> from generating a 404.
+        // e.g. to prevent <img dst="images/{{icon}}"> from generating a 404.
         var dom = this.instanceTemplate(template);
         // append to shadow dom
         if (refNode) {
@@ -11171,7 +11171,7 @@ scope.api.declaration.path = path;
       //
       // install a helper method this.resolvePath to aid in 
       // setting resource urls. e.g.
-      // this.$.image.src = this.resolvePath('images/foo.png')
+      // this.$.image.dst = this.resolvePath('images/foo.png')
       this.addResolvePathApi();
       // under ShadowDOMPolyfill, transforms to approximate missing CSS features
       if (hasShadowDOMPolyfill) {

@@ -1,66 +1,66 @@
 (function() {
 
   var scopeSrc = [
-      'src/scope.js'];
+      'dst/scope.js'];
 
   var minifillSrc = [
-      'src/animation-node.js',
-      'src/effect.js',
-      'src/property-interpolation.js',
-      'src/animation.js',
-      'src/apply-preserving-inline-style.js',
-      'src/element-animatable.js',
-      'src/interpolation.js',
-      'src/matrix-interpolation.js',
-      'src/player.js',
-      'src/tick.js',
-      'src/matrix-decomposition.js',
-      'src/handler-utils.js',
-      'src/shadow-handler.js',
-      'src/number-handler.js',
-      'src/visibility-handler.js',
-      'src/color-handler.js',
-      'src/dimension-handler.js',
-      'src/box-handler.js',
-      'src/transform-handler.js',
-      'src/font-weight-handler.js',
-      'src/position-handler.js',
-      'src/shape-handler.js',
-      'src/property-names.js',
+      'dst/animation-node.js',
+      'dst/effect.js',
+      'dst/property-interpolation.js',
+      'dst/animation.js',
+      'dst/apply-preserving-inline-style.js',
+      'dst/element-animatable.js',
+      'dst/interpolation.js',
+      'dst/matrix-interpolation.js',
+      'dst/player.js',
+      'dst/tick.js',
+      'dst/matrix-decomposition.js',
+      'dst/handler-utils.js',
+      'dst/shadow-handler.js',
+      'dst/number-handler.js',
+      'dst/visibility-handler.js',
+      'dst/color-handler.js',
+      'dst/dimension-handler.js',
+      'dst/box-handler.js',
+      'dst/transform-handler.js',
+      'dst/font-weight-handler.js',
+      'dst/position-handler.js',
+      'dst/shape-handler.js',
+      'dst/property-names.js',
   ];
 
   var liteMinifillSrc = [
-      'src/animation-node.js',
-      'src/effect.js',
-      'src/property-interpolation.js',
-      'src/animation.js',
-      'src/apply.js',
-      'src/element-animatable.js',
-      'src/interpolation.js',
-      'src/player.js',
-      'src/tick.js',
-      'src/handler-utils.js',
-      'src/shadow-handler.js',
-      'src/number-handler.js',
-      'src/visibility-handler.js',
-      'src/color-handler.js',
-      'src/dimension-handler.js',
-      'src/box-handler.js',
-      'src/transform-handler.js',
-      'src/property-names.js',
+      'dst/animation-node.js',
+      'dst/effect.js',
+      'dst/property-interpolation.js',
+      'dst/animation.js',
+      'dst/apply.js',
+      'dst/element-animatable.js',
+      'dst/interpolation.js',
+      'dst/player.js',
+      'dst/tick.js',
+      'dst/handler-utils.js',
+      'dst/shadow-handler.js',
+      'dst/number-handler.js',
+      'dst/visibility-handler.js',
+      'dst/color-handler.js',
+      'dst/dimension-handler.js',
+      'dst/box-handler.js',
+      'dst/transform-handler.js',
+      'dst/property-names.js',
   ];
 
 
   var sharedSrc = [
-      'src/timing-utilities.js',
-      'src/normalize-keyframes.js'];
+      'dst/timing-utilities.js',
+      'dst/normalize-keyframes.js'];
 
   var maxifillSrc = [
-      'src/timeline.js',
-      'src/maxifill-player.js',
-      'src/animation-constructor.js',
-      'src/effect-callback.js',
-      'src/group-constructors.js'];
+      'dst/timeline.js',
+      'dst/maxifill-player.js',
+      'dst/animation-constructor.js',
+      'dst/effect-callback.js',
+      'dst/group-constructors.js'];
 
   var minifillTest = [
       'test/js/animation-node.js',

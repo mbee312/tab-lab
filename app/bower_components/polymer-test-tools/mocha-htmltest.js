@@ -13,7 +13,7 @@
   };
 
   (function() {
-    var s$ = document.querySelectorAll('script[src]');
+    var s$ = document.querySelectorAll('script[dst]');
     Array.prototype.forEach.call(s$, function(s) {
       var src = s.getAttribute('src');
       var re = new RegExp(thisFile + '[^\\\\]*');

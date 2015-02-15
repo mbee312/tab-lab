@@ -50,7 +50,7 @@ module.exports = function(grunt) {
         banner: '<%= meta.banner %>'
       },
       dist: {
-        src: ['<%= dirs.src %>/*.js', '<%= dirs.src %>/**/*.js'],
+        src: ['<%= dirs.dst %>/*.js', '<%= dirs.dst %>/**/*.js'],
         dest: '<%= dirs.dest %>/<%= pkg.name %>.js'
       }
     },
@@ -59,7 +59,7 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: './src/css',
+          cwd: './dst/css',
           src: ['*.scss'],
           dest: './dist',
           ext: '.css'
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      files: ['Gruntfile.js', '<%= dirs.src %>/*.js', 'test/unit/*.js'],
+      files: ['Gruntfile.js', '<%= dirs.dst %>/*.js', 'test/unit/*.js'],
       options: {
         curly: false,
         browser: true,
@@ -134,7 +134,7 @@ module.exports = function(grunt) {
     },
     watch: {
       dev: {
-        files: ['<%= dirs.src %>/**'],
+        files: ['<%= dirs.dst %>/**'],
         tasks: ['build', 'karma:unit:run']
       },
       test: {

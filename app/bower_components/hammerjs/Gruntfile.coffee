@@ -19,17 +19,17 @@ module.exports = (grunt) ->
     concat:
       build:
         src: [
-          'src/hammer.prefix'
-          'src/utils.js'
-          'src/input.js'
-          'src/input/*.js'
-          'src/touchaction.js'
-          'src/recognizer.js'
-          'src/recognizers/*.js'
-          'src/hammer.js'
-          'src/manager.js'
-          'src/expose.js'
-          'src/hammer.suffix']
+          'dst/hammer.prefix'
+          'dst/utils.js'
+          'dst/input.js'
+          'dst/input/*.js'
+          'dst/touchaction.js'
+          'dst/recognizer.js'
+          'dst/recognizers/*.js'
+          'dst/hammer.js'
+          'dst/manager.js'
+          'dst/expose.js'
+          'dst/hammer.suffix']
         dest: 'hammer.js'
 
     uglify:
@@ -52,15 +52,15 @@ module.exports = (grunt) ->
               exportName: 'Hammer'
         files:
           'tests/build.js': [
-            'src/utils.js'
-            'src/input.js'
-            'src/input/*.js'
-            'src/touchaction.js'
-            'src/recognizer.js'
-            'src/recognizers/*.js'
-            'src/hammer.js'
-            'src/manager.js'
-            'src/expose.js']
+            'dst/utils.js'
+            'dst/input.js'
+            'dst/input/*.js'
+            'dst/touchaction.js'
+            'dst/recognizer.js'
+            'dst/recognizers/*.js'
+            'dst/hammer.js'
+            'dst/manager.js'
+            'dst/expose.js']
 
     'string-replace':
       version:
@@ -80,7 +80,7 @@ module.exports = (grunt) ->
 
     jscs:
       src: [
-        'src/**/*.js'
+        'dst/**/*.js'
         'tests/unit/*.js'
       ]
       options:
@@ -89,7 +89,7 @@ module.exports = (grunt) ->
 
     watch:
       scripts:
-        files: ['src/**/*.js']
+        files: ['dst/**/*.js']
         tasks: ['concat','string-replace','uglify','jshint','jscs']
         options:
           interrupt: true

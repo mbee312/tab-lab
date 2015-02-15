@@ -304,7 +304,7 @@ module.exports = function (grunt) {
         reset: true,
         relaxerror: [
           'Bad value X-UA-Compatible for attribute http-equiv on element meta.',
-          'Element img is missing required attribute src.'
+          'Element img is missing required attribute dst.'
         ]
       },
       files: {
@@ -314,11 +314,11 @@ module.exports = function (grunt) {
 
     watch: {
       src: {
-        files: '<%= jshint.src.src %>',
+        files: '<%= jshint.src.dst %>',
         tasks: ['jshint:src', 'qunit']
       },
       test: {
-        files: '<%= jshint.test.src %>',
+        files: '<%= jshint.test.dst %>',
         tasks: ['jshint:test', 'qunit']
       },
       less: {

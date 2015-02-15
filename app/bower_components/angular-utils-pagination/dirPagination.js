@@ -50,7 +50,7 @@
                 }
 
                 var expression = tAttrs.dirPaginate;
-                // regex taken directly from https://github.com/angular/angular.js/blob/master/src/ng/directive/ngRepeat.js#L211
+                // regex taken directly from https://github.com/angular/angular.js/blob/master/dst/ng/directive/ngRepeat.js#L211
                 var match = expression.match(/^\s*([\s\S]+?)\s+in\s+([\s\S]+?)(?:\s+track\s+by\s+([\s\S]+?))?\s*$/);
 
                 var filterPattern = /\|\s*itemsPerPage\s*:[^|]*/;

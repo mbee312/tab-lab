@@ -13,11 +13,12 @@
     <title>Plae Chef app</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <link href="app/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+ <!--   <link href="app/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="css/plae-chef.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="app/bower_components/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="app/bower_components/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.css">
     <script src="app/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="app/bower_components/jquery-ui/jquery-ui.min.js"></script>
     <script src="components/drumjs/contrib/hammerjs/hammer.min.js"></script>
@@ -383,7 +384,7 @@
         </md-button>
         -->
 
-        <md-button class="cart-button md-raised add" id="add-to-cart-button" ng-click="plaeChef.toggleRight()"
+        <md-button class="cart-button md-raised add" id="add-to-cart-button" ng-click="plaeChef.setSurveyMode()"
                    ng-show="plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
             add to cart
         </md-button>
@@ -392,12 +393,49 @@
             select size
         </md-button>
 
+
     </md-whiteframe>
+
+
+
+    <div ng-switch="plaeChef.getSurveyForm()" class="slide-frame">
+        <div class="survey survey-container" ng-switch-when="true">
+
+
+             <md-content layout="column" flex="flex" md-theme="default" class="md-padding" layout-align="center center">
+                 <form class="surveyForm" name="surveyForm" ng-submit="submit()">
+                     <md-text-float class="md-default-theme question" label="email (optional)" ng-model="user.email" type="email" name="email">
+                     </md-text-float>
+
+                     <md-text-float class="md-default-theme question" label="Did your kid(s) play with Tab Lab? Yes or No?" ng-model="user.question_1" name="kids tested">
+                     </md-text-float>
+
+                     <md-text-float class="md-default-theme question" label="How can we improve Tab Lab?" ng-model="user.question_2" name="how to improve">
+                     </md-text-float>
+
+                     <md-text-float class="md-default-theme question"
+                                    label={{label_3}}
+                                    ng-model="user.question_3" name="recommend">
+                     </md-text-float>
+                     <md-button class="md-raised submit" id="submit-survey" ng-click="submit()" type="submit"
+                                ng-show="true" style="background: #4EAC50;color: #fff;">
+                         submit
+                     </md-button>
+
+
+
+
+                 </form>
+             </md-content>
+
+
+        </div>
+
+    </div>
+
 
 </div>
 
-
-<script src="js/share.min.js"></script>
 <script src="app/bower_components/hammerjs/hammer.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
@@ -405,10 +443,12 @@
 <script src="components/angular-dragdrop/angular-dragdrop.min.js"></script>
 <script src="app/bower_components/angular-touch/angular-touch.min.js"></script>
 <script src="app/bower_components/angular-aria/angular-aria.js"></script>
-<script src="app/bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
 <script src="app/bower_components/angular-carousel/dist/angular-carousel.js"></script>
 <script src="app/bower_components/slick-carousel/slick/slick.js"></script>
 <script src="app/bower_components/angular-slick/dist/slick.js"></script>
+
+
 <script src="js/plaeChefController.js"></script>
 
 </body>

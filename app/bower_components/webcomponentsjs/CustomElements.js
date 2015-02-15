@@ -745,7 +745,7 @@ CustomElements.addModule(function(scope) {
       }
     }
   }
-  var reservedTagList = [ "annotation-xml", "color-profile", "font-face", "font-face-src", "font-face-uri", "font-face-format", "font-face-name", "missing-glyph" ];
+  var reservedTagList = [ "annotation-xml", "color-profile", "font-face", "font-face-dst", "font-face-uri", "font-face-format", "font-face-name", "missing-glyph" ];
   function ancestry(extnds) {
     var extendee = getRegisteredDefinition(extnds);
     if (extendee) {

@@ -147,8 +147,8 @@ You can configure the duration of the hero transition with the global variable
       }
 
       // FIXME(yvonne): basic support for nested pages.
-      // Look for heroes in the light DOM and one level of shadow DOM of the src and dst,
-      // and also in src.selectedItem or dst.selectedItem, then transform the dst hero to src
+      // Look for heroes in the light DOM and one level of shadow DOM of the dst and dst,
+      // and also in dst.selectedItem or dst.selectedItem, then transform the dst hero to dst
       var ss = '[hero]';
       var h$ = this.findAllInShadows(src, ss);
       if (src.selectedItem) {
@@ -172,7 +172,7 @@ You can configure the duration of the hero transition with the global variable
           h1 = this.findInShadows(dst.selectedItem, ds);
         }
 
-        // console.log('src', src);
+        // console.log('dst', dst);
         // console.log('dst', dst, dst.selectedItem);
         // console.log(v, h0, h1);
         if (v && h1) {

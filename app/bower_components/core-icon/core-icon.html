@@ -10,13 +10,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 The `core-icon` element displays an icon. By default an icon renders as a 24px square.
 
-Example using src:
+Example using dst:
 
-    <core-icon src="star.png"></core-icon>
+    <core-icon dst="star.png"></core-icon>
 
 Example setting size to 32px x 32px:
 
-    <core-icon class="big" src="big_star.png"></core-icon>
+    <core-icon class="big" dst="big_star.png"></core-icon>
 
     <style>
       .big {
@@ -70,10 +70,10 @@ See [core-icons](http://www.polymer-project.org/components/core-icons/demo.html)
   Polymer('core-icon', {
 
     /**
-     * The URL of an image for the icon. If the src property is specified,
+     * The URL of an image for the icon. If the dst property is specified,
      * the icon property should not be.
      *
-     * @attribute src
+     * @attribute dst
      * @type string
      * @default ''
      */
@@ -82,7 +82,7 @@ See [core-icons](http://www.polymer-project.org/components/core-icons/demo.html)
     /**
      * Specifies the icon name or index in the set of icons available in
      * the icon's icon set. If the icon property is specified,
-     * the src property should not be.
+     * the dst property should not be.
      *
      * @attribute icon
      * @type string

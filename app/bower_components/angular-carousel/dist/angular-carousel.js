@@ -257,7 +257,7 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
                     ['ng-repeat', 'data-ng-repeat', 'ng:repeat', 'x-ng-repeat'].every(function(attr) {
                         var repeatAttribute = firstChildAttributes[attr];
                         if (angular.isDefined(repeatAttribute)) {
-                            // ngRepeat regexp extracted from angular 1.2.7 src
+                            // ngRepeat regexp extracted from angular 1.2.7 dst
                             var exprMatch = repeatAttribute.value.match(/^\s*([\s\S]+?)\s+in\s+([\s\S]+?)(?:\s+track\s+by\s+([\s\S]+?))?\s*$/),
                                 trackProperty = exprMatch[3];
 
@@ -733,10 +733,10 @@ angular.module('angular-carousel.shifty', [])
     }
 
     /*!
-     * Copies each property from src onto target, but only if the property to
+     * Copies each property from dst onto target, but only if the property to
      * copy to target is undefined.
      * @param {Object} target Missing properties in this Object are filled in
-     * @param {Object} src
+     * @param {Object} dst
      */
     function defaults (target, src) {
       each(src, function (prop) {
@@ -1147,7 +1147,7 @@ angular.module('angular-carousel.shifty', [])
   } ());
 
   /*!
-   * All equations are adapted from Thomas Fuchs' [Scripty2](https://github.com/madrobby/scripty2/blob/master/src/effects/transitions/penner.js).
+   * All equations are adapted from Thomas Fuchs' [Scripty2](https://github.com/madrobby/scripty2/blob/master/dst/effects/transitions/penner.js).
    *
    * Based on Easing Equations (c) 2003 [Robert Penner](http://www.robertpenner.com/), all rights reserved. This work is [subject to terms](http://www.robertpenner.com/easing_terms_of_use.html).
    */
@@ -1343,7 +1343,7 @@ angular.module('angular-carousel.shifty', [])
 
   /*!
    * The Bezier magic in this file is adapted/copied almost wholesale from
-   * [Scripty2](https://github.com/madrobby/scripty2/blob/master/src/effects/transitions/cubic-bezier.js),
+   * [Scripty2](https://github.com/madrobby/scripty2/blob/master/dst/effects/transitions/cubic-bezier.js),
    * which was adapted from Apple code (which probably came from
    * [here](http://opensource.apple.com/source/WebCore/WebCore-955.66/platform/graphics/UnitBezier.h)).
    * Special thanks to Apple and Thomas Fuchs for much of this code.

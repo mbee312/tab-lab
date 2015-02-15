@@ -157,7 +157,7 @@
                     ['ng-repeat', 'data-ng-repeat', 'ng:repeat', 'x-ng-repeat'].every(function(attr) {
                         var repeatAttribute = firstChildAttributes[attr];
                         if (angular.isDefined(repeatAttribute)) {
-                            // ngRepeat regexp extracted from angular 1.2.7 src
+                            // ngRepeat regexp extracted from angular 1.2.7 dst
                             var exprMatch = repeatAttribute.value.match(/^\s*([\s\S]+?)\s+in\s+([\s\S]+?)(?:\s+track\s+by\s+([\s\S]+?))?\s*$/),
                                 trackProperty = exprMatch[3];
 

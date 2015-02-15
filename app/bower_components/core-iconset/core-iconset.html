@@ -12,7 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
  * @group Polymer Core Elements
  *
  * The `core-iconset` element allows users to define their own icon sets. 
- * The `src` property specifies the url of the icon image. Multiple icons may
+ * The `dst` property specifies the url of the icon image. Multiple icons may
  * be included in this image and they may be organized into rows.
  * The `icons` property is a space separated list of names corresponding to the
  * icons. The names must be ordered as the icons are ordered in the icon image.
@@ -27,7 +27,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
  *
  * Example:
  *
- *     <core-iconset id="my-icons" src="my-icons.png" width="96" iconSize="24"
+ *     <core-iconset id="my-icons" dst="my-icons.png" width="96" iconSize="24"
  *         icons="location place starta stopb bus car train walk">
  *     </core-iconset>
  *
@@ -43,7 +43,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
  * `property` elements that specify a theme with an offsetX and offsetY of the
  * theme within the icon resource. For example.
  *
- *     <core-iconset id="my-icons" src="my-icons.png" width="96" iconSize="24"
+ *     <core-iconset id="my-icons" dst="my-icons.png" width="96" iconSize="24"
  *         icons="location place starta stopb bus car train walk">
  *       <property theme="special" offsetX="256" offsetY="24"></property>
  *     </core-iconset>
@@ -69,7 +69,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       /**
        * The URL of the iconset image.
        *
-       * @attribute src
+       * @attribute dst
        * @type string
        * @default ''
        */
@@ -106,7 +106,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       iconSize: 24,
 
       /**
-       * The horizontal offset of the icon images in the inconset src image.
+       * The horizontal offset of the icon images in the inconset dst image.
        * This is typically used if the image resource contains additional images
        * beside those intended for the iconset.
        *
@@ -116,7 +116,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        */
       offsetX: 0,
       /**
-       * The vertical offset of the icon images in the inconset src image.
+       * The vertical offset of the icon images in the inconset dst image.
        * This is typically used if the image resource contains additional images
        * beside those intended for the iconset.
        *
@@ -134,7 +134,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
   
       ready: function() {
-        // TODO(sorvell): ensure iconset's src is always relative to the main
+        // TODO(sorvell): ensure iconset's dst is always relative to the main
         // document
         if (this.src && (this.ownerDocument !== document)) {
           this.src = this.resolvePath(this.src, this.ownerDocument.baseURI);
@@ -174,7 +174,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       // TODO(ffu): support retrived by index e.g. getOffset(10);
       /**
        * Returns an object containing `offsetX` and `offsetY` properties which
-       * specify the pixel locaion in the iconset's src file for the given
+       * specify the pixel locaion in the iconset's dst file for the given
        * `icon` and `theme`. It's uncommon to call this method. It is useful,
        * for example, to manually position a css backgroundImage to the proper
        * offset. It's more common to use the `applyIcon` method.

@@ -13,7 +13,7 @@ window.WebComponents = window.WebComponents || {};
 (function(scope) {
   var flags = scope.flags || {};
   var file = "webcomponents.js";
-  var script = document.querySelector('script[src*="' + file + '"]');
+  var script = document.querySelector('script[dst*="' + file + '"]');
   var flags = {};
   if (!flags.noOpts) {
     location.search.slice(1).split("&").forEach(function(o) {
@@ -1499,7 +1499,7 @@ CustomElements.addModule(function(scope) {
       }
     }
   }
-  var reservedTagList = [ "annotation-xml", "color-profile", "font-face", "font-face-src", "font-face-uri", "font-face-format", "font-face-name", "missing-glyph" ];
+  var reservedTagList = [ "annotation-xml", "color-profile", "font-face", "font-face-dst", "font-face-uri", "font-face-format", "font-face-name", "missing-glyph" ];
   function ancestry(extnds) {
     var extendee = getRegisteredDefinition(extnds);
     if (extendee) {

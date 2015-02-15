@@ -25,7 +25,7 @@ Example:
 
     <paper-fab icon="add"></paper-fab>
     <paper-fab mini icon="favorite"></paper-fab>
-    <paper-fab src="star.png"></paper-fab>
+    <paper-fab dst="star.png"></paper-fab>
 
 Styling
 -------
@@ -53,7 +53,7 @@ The button is accessible by default if you use the `icon` property. By default, 
 `aria-label` attribute will be set to the `icon` property. If you use a custom icon,
 you should ensure that the `aria-label` attribute is set.
 
-    <paper-fab src="star.png" aria-label="star"></paper-fab>
+    <paper-fab dst="star.png" aria-label="star"></paper-fab>
 
 @element paper-fab
 @extends paper-button-base
@@ -132,10 +132,10 @@ you should ensure that the `aria-label` attribute is set.
       publish: {
 
         /**
-         * The URL of an image for the icon. If the src property is specified,
+         * The URL of an image for the icon. If the dst property is specified,
          * the icon property should not be.
          *
-         * @attribute src
+         * @attribute dst
          * @type string
          * @default ''
          */
@@ -144,7 +144,7 @@ you should ensure that the `aria-label` attribute is set.
         /**
          * Specifies the icon name or index in the set of icons available in
          * the icon's icon set. If the icon property is specified,
-         * the src property should not be.
+         * the dst property should not be.
          *
          * @attribute icon
          * @type string

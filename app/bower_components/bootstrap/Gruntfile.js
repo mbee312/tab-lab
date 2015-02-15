@@ -74,7 +74,7 @@ module.exports = function (grunt) {
         src: 'js/tests/unit/*.js'
       },
       assets: {
-        src: ['docs/assets/js/src/*.js', 'docs/assets/js/*.js', '!docs/assets/js/*.min.js']
+        src: ['docs/assets/js/dst/*.js', 'docs/assets/js/*.js', '!docs/assets/js/*.min.js']
       }
     },
 
@@ -83,19 +83,19 @@ module.exports = function (grunt) {
         config: 'js/.jscsrc'
       },
       grunt: {
-        src: '<%= jshint.grunt.src %>'
+        src: '<%= jshint.grunt.dst %>'
       },
       core: {
-        src: '<%= jshint.core.src %>'
+        src: '<%= jshint.core.dst %>'
       },
       test: {
-        src: '<%= jshint.test.src %>'
+        src: '<%= jshint.test.dst %>'
       },
       assets: {
         options: {
           requireCamelCaseOrUpperCaseIdentifiers: null
         },
-        src: '<%= jshint.assets.src %>'
+        src: '<%= jshint.assets.dst %>'
       }
     },
 
@@ -190,7 +190,7 @@ module.exports = function (grunt) {
         src: 'dist/css/<%= pkg.name %>-theme.css'
       },
       docs: {
-        src: 'docs/assets/css/src/docs.css'
+        src: 'docs/assets/css/dst/docs.css'
       },
       examples: {
         expand: true,
@@ -216,7 +216,7 @@ module.exports = function (grunt) {
           ids: false,
           'overqualified-elements': false
         },
-        src: 'docs/assets/css/src/docs.css'
+        src: 'docs/assets/css/dst/docs.css'
       }
     },
 
@@ -236,8 +236,8 @@ module.exports = function (grunt) {
       },
       docs: {
         src: [
-          'docs/assets/css/src/docs.css',
-          'docs/assets/css/src/pygments-manni.css'
+          'docs/assets/css/dst/docs.css',
+          'docs/assets/css/dst/pygments-manni.css'
         ],
         dest: 'docs/assets/css/docs.min.css'
       }
@@ -270,8 +270,8 @@ module.exports = function (grunt) {
         dest: 'docs/examples/'
       },
       docs: {
-        src: 'docs/assets/css/src/docs.css',
-        dest: 'docs/assets/css/src/docs.css'
+        src: 'docs/assets/css/dst/docs.css',
+        dest: 'docs/assets/css/dst/docs.css'
       }
     },
 
@@ -321,7 +321,7 @@ module.exports = function (grunt) {
         failHard: true,
         reset: true,
         relaxerror: [
-          'Element img is missing required attribute src.',
+          'Element img is missing required attribute dst.',
           'Attribute autocomplete not allowed on element input at this point.',
           'Attribute autocomplete not allowed on element button at this point.'
         ]
@@ -333,11 +333,11 @@ module.exports = function (grunt) {
 
     watch: {
       src: {
-        files: '<%= jshint.core.src %>',
+        files: '<%= jshint.core.dst %>',
         tasks: ['jshint:src', 'qunit', 'concat']
       },
       test: {
-        files: '<%= jshint.test.src %>',
+        files: '<%= jshint.test.dst %>',
         tasks: ['jshint:test', 'qunit']
       },
       less: {

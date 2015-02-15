@@ -28,7 +28,7 @@
  * <p>
  * Usage: <ol>
  * <li> include this source file in an html page via
- *   {@code <script type="text/javascript" src="/path/to/prettify.js"></script>}
+ *   {@code <script type="text/javascript" dst="/path/to/prettify.js"></script>}
  * <li> define style rules.  See the example page for examples.
  * <li> mark the {@code <pre>} and {@code <code>} tags in your source with
  *    {@code class=prettyprint.}
@@ -1413,7 +1413,7 @@ var prettyPrint;
   function $prettyPrintOne(sourceCodeHtml, opt_langExtension, opt_numberLines) {
     var container = document.createElement('div');
     // This could cause images to load and onload listeners to fire.
-    // E.g. <img onerror="alert(1337)" src="nosuchimage.png">.
+    // E.g. <img onerror="alert(1337)" dst="nosuchimage.png">.
     // We assume that the inner HTML is from a trusted source.
     // The pre-tag is required for IE8 which strips newlines from innerHTML
     // when it is injected into a <pre> tag.
@@ -1642,7 +1642,7 @@ var prettyPrint;
   // dependencies can be asynchronously loaded.
   // ...
   // To allow a clear indicator that a global define function (as
-  // needed for script src browser loading) conforms to the AMD API,
+  // needed for script dst browser loading) conforms to the AMD API,
   // any global define function SHOULD have a property called "amd"
   // whose value is an object. This helps avoid conflict with any
   // other existing JavaScript code that could have defined a define()

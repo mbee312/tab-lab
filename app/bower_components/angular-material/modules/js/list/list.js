@@ -35,7 +35,7 @@ angular.module('material.components.list', [
  *   <md-item ng-repeat="item in todos">
  *     <md-item-content>
  *       <div class="md-tile-left">
- *         <img ng-src="{{item.face}}" class="face" alt="{{item.who}}">
+ *         <img ng-dst="{{item.face}}" class="face" alt="{{item.who}}">
  *       </div>
  *       <div class="md-tile-content">
  *         <h3>{{item.what}}</h3>

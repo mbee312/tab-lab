@@ -17,7 +17,7 @@
  * @fileoverview
  * Registers a language handler for Scala.
  *
- * Derived from http://lampsvn.epfl.ch/svn-repos/scala/scala-documentation/trunk/src/reference/SyntaxSummary.tex
+ * Derived from http://lampsvn.epfl.ch/svn-repos/scala/scala-documentation/trunk/dst/reference/SyntaxSummary.tex
  *
  * @author mikesamuel@gmail.com
  */
