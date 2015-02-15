@@ -1225,7 +1225,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     color: rgba(0, 0, 0, 0.7) !important;
 }
 form.surveyForm {
-    padding: 7%;
+    padding: 4%;
 }
 md-input-group.md-default-theme input, md-input-group.md-default-theme textarea {
     color: rgba(78, 172, 80, 1) !important;
@@ -1239,4 +1239,9 @@ md-input-group.md-default-theme input, md-input-group.md-default-theme textarea 
     width: 120px;
     border-radius: 10px !important;
     font-size: 100% !important;
+}
+
+.survey-question{
+    display: inline;
+    margin: 2px;
 }
