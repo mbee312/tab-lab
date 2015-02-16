@@ -891,12 +891,37 @@
 
         $scope.label_3 = "How likely would you recommend Tab Lab to a friend? \n0 to 10. (10 is Extremely likely)";
 
-        $scope.user = {
+        $scope.userSurvey = {
             email: '',
             question_1: '' ,
             question_2: '' ,
             question_3: '',
             question_4: ''
+        };
+
+        // process the form
+        $scope.submit = function() {
+            $http({
+                method  : 'POST',
+                url     : 'process.php',
+                data    : $.param($scope.user),  // pass in data as strings
+                headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+            })
+                .success(function(data) {
+                    console.log(data);
+
+                    if (!data.success) {
+                        // if not successful, bind errors to error variables
+                        $scope.errorEName = data.errors.email;
+                        $scope.errorQuestion_1 = data.errors.question_1;
+                        $scope.errorQuestion_2 = data.errors.question_2;
+                        $scope.errorQuestion_3 = data.errors.question_3;
+                    } else {
+                        // if successful, bind success message to message
+                        $scope.message = data.message;
+                    }
+                });
+
         };
 
     }])
@@ -906,6 +931,7 @@
                 .primaryPalette('pink')
                 .accentPalette('orange');
         });
+
 
 
 })();

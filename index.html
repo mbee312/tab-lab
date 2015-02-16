@@ -50,9 +50,12 @@
 </head>
 <body ng-controller="PlaeChefController as plaeChef">
 
-<div class="shop-menu">
-    <div class="logo"><img src="img/logo.png"></div>
-</div>
+<a href="../../">
+    <md-button class="home button md-raised shop-menu" id="menu-home-button"
+               ng-click="">
+    </md-button>
+</a>
+
 
 <div ng-view class="view-frame plae-chef-window">
 
@@ -152,7 +155,7 @@
                          aria-label="wide-fit"
                          ng-show="true">
                        <!--  ng-show="plaeChef.moreOptions()" -->
-                wide?
+                <div class="checkbox label">wide?</div>
             </md-checkbox>
 
             <!--
@@ -182,7 +185,7 @@
                          aria-label="wide-fit"
                          ng-show="true">
                 <!--  ng-show="plaeChef.moreOptions()" -->
-                wide?
+                <div class="checkbox label">wide?</div>
             </md-checkbox>
         </div>
         <md-button id="select-size-button-left" class="select-size plae size bg-opacity" aria-label="select size button"
@@ -270,7 +273,7 @@
                              aria-label="wide-fit"
                              ng-show="true">
                     <!--  ng-show="plaeChef.moreOptions()" -->
-                    wide?
+                    <div class="checkbox label">wide?</div>
                 </md-checkbox>
 
                 <!--
@@ -404,26 +407,26 @@
 
              <md-content layout="column" flex="flex" md-theme="default" class="md-padding" layout-align="center center">
                  <form class="surveyForm" name="surveyForm" ng-submit="submit()">
-                     <md-text-float class="md-default-theme question" label="email (optional)" ng-model="user.email" type="email" name="email">
+                     <md-text-float class="md-default-theme question" label="email (optional)" ng-model="userSurvey.email" type="email" name="email">
                      </md-text-float>
 
-                     <md-text-float class="md-default-theme question" label="Did your kid(s) play with Tab Lab? Yes or No?" ng-model="user.question_1" name="kids tested">
+                     <md-text-float class="md-default-theme question" label="Did your kid(s) play with Tab Lab? Yes or No?" ng-model="userSurvey.question_1" name="kids tested">
                      </md-text-float>
 
-                     <md-radio-group ng-model="user.question_1" >
+                     <md-radio-group ng-model="userSurvey.question_1" >
                          <md-radio-button class="survey-question" value="yes">yes</md-radio-button>
                          <md-radio-button class="survey-question" value="no"> no </md-radio-button>
                      </md-radio-group>
 
-                     <md-text-float class="md-default-theme question" label="How can we improve Tab Lab?" ng-model="user.question_2" name="how to improve">
+                     <md-text-float class="md-default-theme question" label="How can we improve Tab Lab?" ng-model="userSurvey.question_2" name="how to improve">
                      </md-text-float>
 
                      <md-text-float class="md-default-theme question"
                                     label={{label_3}}
-                                    ng-model="user.question_3" name="recommend">
+                                    ng-model="userSurvey.question_3" name="recommend">
                      </md-text-float>
 
-                     <md-radio-group ng-model="user.question_3" >
+                     <md-radio-group ng-model="userSurvey.question_3" >
                          <md-radio-button class="survey-question" value="0">0</md-radio-button>
                          <md-radio-button class="survey-question" value="1">1</md-radio-button>
                          <md-radio-button class="survey-question" value="2">2</md-radio-button>

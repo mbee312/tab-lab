@@ -78,36 +78,24 @@ body.ng-scope {
 .shop-menu {
     height: 80px;
     width: 140px;
-    position: absolute;
-    margin-left: 10px;
-    margin-top: -10px;
-    /* IE10 Consumer Preview */
-    background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #4EAC50 100%);
+    position: absolute !important;
+    margin-left: 10px !important;
+    margin-top: -10px !important;
 
-    /* Mozilla Firefox */
-    background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #4EAC50 100%);
-
-    /* Opera */
-    background-image: -o-linear-gradient(bottom, #FFFFFF 0%, #4EAC50 100%);
-
-    /* Webkit (Safari/Chrome 10) */
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #4EAC50));
-
-    /* Webkit (Chrome 11+) */
-    background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #4EAC50 100%);
-
-    /* W3C Markup, IE10 Release Preview */
-    background-image: linear-gradient(to top, #4EAC50 0%, #4EAC50 100%);
-    border-radius: 0 0 20px 0;
-    -webkit-border-radius: 0 0 20px 0;
-    -moz-border-radius: 0 0 20px 0;
-    -o-border-radius: 0 0 20px 0;
-    -ms-border-radius: 0 0 20px 0;
-
+    border-radius: 0 0 20px 0 !important;
+    -webkit-border-radius: 0 0 20px 0 !important;
+    -moz-border-radius: 0 0 20px 0 !important;
+    -o-border-radius: 0 0 20px 0 !important;
+    -ms-border-radius: 0 0 20px 0 !important;
+    background-image: url(../img/logo.png) !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-color: #4EAC50 !important;
+/*
     border: 0 solid #D3D3D3;
     -webkit-box-shadow: 0 10px 6px -6px #777;
     -moz-box-shadow: 0 10px 6px -6px #777;
-    box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777; */
 }
 
 .logo {
@@ -192,8 +180,8 @@ body.ng-scope {
 
 #select-size-button-left {
     position: absolute !important;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
 }
 
 #select-size-button-done {
@@ -1244,4 +1232,17 @@ md-input-group.md-default-theme input, md-input-group.md-default-theme textarea 
 .survey-question{
     display: inline;
     margin: 2px;
+}
+
+.md-label {
+    margin-left: -15px !important;
+    margin-right: 10px;
+}
+
+.md-container {
+    top: 25px;
+}
+
+.checkbox.label {
+    margin-left: 18px;
 }
