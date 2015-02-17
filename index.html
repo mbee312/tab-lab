@@ -37,11 +37,11 @@
     <script>
         "use strict";
 
-       /* Hammer.plugins.fakeMultitouch(); */
+       /* Hammer.plugins.fakeMultitouch();
 
         jQuery(document).ready(function () {
             $("select.drum").drum();
-        });
+        });*/
 
     </script>
 
@@ -50,10 +50,17 @@
 </head>
 <body ng-controller="PlaeChefController as plaeChef">
 
+<md-toolbar class="md-primary">
+    <div class="md-toolbar-tools">
+        <span class="tab-lab-header md-flex" align="center">Welcome to Tab Lab <i>alpha</i></span>
+    </div>
+</md-toolbar>
+
 <a href="../../">
     <md-button class="home button md-raised shop-menu" id="menu-home-button"
                ng-click="">
     </md-button>
+
 </a>
 
 
@@ -407,11 +414,11 @@
 
              <md-content layout="column" flex="flex" md-theme="default" class="survey-form" layout-align="center center">
                  <h2 id="survey-h2">feedback on tab lab</h2>
-                 <form class="surveyForm" name="surveyForm" ng-submit="submit()">
+                 <form class="surveyForm" name="surveyForm" ng-submit="submitData(userSurvey, 'ajaxSubmitResult')" novalidate>
                      <md-text-float class="md-default-theme question" label="email (optional)" ng-model="userSurvey.email" type="email" name="email">
                      </md-text-float>
 
-                     <md-text-float class="md-default-theme question" label="Did your kid(s) play with Tab Lab? Yes or No?" ng-model="userSurvey.question_1" name="kids tested">
+                     <md-text-float class="md-default-theme question" label="Did your kid(s) play with Tab Lab? Yes or No?" ng-model="userSurvey.question_1" name="question_1">
                      </md-text-float>
 
                      <md-radio-group ng-model="userSurvey.question_1" >
@@ -419,12 +426,12 @@
                          <md-radio-button class="survey-question" value="no"> no </md-radio-button>
                      </md-radio-group>
 
-                     <md-text-float class="md-default-theme question" label="How can we improve Tab Lab?" ng-model="userSurvey.question_2" name="how to improve">
+                     <md-text-float class="md-default-theme question" label="How can we improve Tab Lab?" ng-model="userSurvey.question_2" name="question_2">
                      </md-text-float>
 
                      <md-text-float class="md-default-theme question"
                                     label={{label_3}}
-                                    ng-model="userSurvey.question_3" name="recommend">
+                                    ng-model="userSurvey.question_3" name="question_3">
                      </md-text-float>
 
                      <md-radio-group ng-model="userSurvey.question_3" >
@@ -442,7 +449,8 @@
                      </md-radio-group>
 
 
-                     <md-button class="md-raised submit" id="submit-survey" ng-click="submit()" type="submit"
+                     <md-button class="md-raised submit" id="submit-survey" type="submit"
+
                                 ng-show="true" style="background: #4EAC50;color: #fff;">
                          submit
                      </md-button>
