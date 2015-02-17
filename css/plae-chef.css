@@ -416,10 +416,10 @@ ul.plae.basket.list {
 }
 
 button#random-button {
-    left: 695px;
-    top: 40px;
+    left: 655px;
+    top: -10px;
     z-index: 95;
-    width: 80px;
+    width: 160px;
 }
 
 #reset-button {
