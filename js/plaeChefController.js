@@ -86,14 +86,26 @@
         $scope.tabEditModeR = false;
 
         $scope.index = Math.floor(Math.random() * 10);
+        if($scope.index == 9){
+            $scope.index--;
+            console.log("$scope.index--");
+        }
         $scope.carouselIndex = $scope.index;
 
         $scope.leftTabIndex = Math.floor(Math.random() * 11);
+        if($scope.leftTabIndex == 10){
+            $scope.leftTabIndex--;
+            console.log("$scope.leftTabIndex--");
+        }
         $scope.lTindex = $scope.leftTabIndex;
 
-        $scope.rightTabIndex = Math.floor(Math.random() * 11);
-        $scope.rTindex =  $scope.rightTabIndex;
 
+        $scope.rightTabIndex = Math.floor(Math.random() * 11);
+        if($scope.rightTabIndex == 10){
+            console.log("$scope.rightTabIndex--");
+            $scope.rightTabIndex--;
+        }
+        $scope.rTindex =  $scope.rightTabIndex;
 
         $scope.hideMeLT = function () {
             return $scope.tabLT.length > 0;
