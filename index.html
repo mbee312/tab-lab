@@ -15,6 +15,7 @@
     <meta name="viewport" content="width=device-width">
  <!--   <link href="app/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="css/plae-chef.css">
+    <link rel="shortcut icon" href="http://goplae.com/tab-lab/favicon.ico"/>
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="app/bower_components/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="app/bower_components/slick-carousel/slick/slick.css">
@@ -227,15 +228,15 @@
                 ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
 
         <md-whiteframe class="md-whiteframe-z3" id="white-bg"></md-whiteframe>
-        <md-button class="random-button c md-raised " id="random-button"
+        <md-button class="random-button c md-raised plae-font" id="random-button"
                    ng-click="random()"
                    style="background: #20D0FF;color: #FFFFFF;">
-            random
+            shuffle
         </md-button>
 
         <!--
                 <div class="views">
-               <!--    <button class="waves-effect waves-button waves-light waves-float" id="default-button" ng-click="plaeChef.setCanvas('default')" style="background: #0d39ff;color: #fff;">
+                   <button class="waves-effect waves-button waves-light waves-float" id="default-button" ng-click="plaeChef.setCanvas('default')" style="background: #0d39ff;color: #fff;">
                             Left & Right
                           </button>
 
@@ -401,7 +402,7 @@
 
         <md-button class="cart-button md-raised add" id="add-to-cart-button" ng-click="setSurveyMode()"
                    ng-show="plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
-            add to cart
+            feedback
         </md-button>
         <md-button class="cart-button md-raised select-size" id="select-size-button" ng-click="plaeChef.setSizeSelectMode()"
                    ng-show="!plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
@@ -419,9 +420,7 @@
 
              <md-content layout="column" flex="flex" md-theme="default" class="survey-form" layout-align="center center">
                  <h2 id="survey-h2">feedback on tab lab</h2>
-                 <form class="surveyForm" name="surveyForm" ng-submit="submitData(userSurvey, 'ajaxSubmitResult')" novalidate>
-                     <md-text-float class="md-default-theme question" label="email (optional)" ng-model="userSurvey.email" type="email" name="email">
-                     </md-text-float>
+                 <form class="surveyForm plae-font" name="surveyForm" ng-submit="submitData(userSurvey, 'ajaxSubmitResult')" novalidate>
 
                      <md-text-float class="md-default-theme question" label="Did your kid(s) play with Tab Lab? Yes or No?" ng-model="userSurvey.question_1" name="question_1">
                      </md-text-float>
@@ -431,15 +430,12 @@
                          <md-radio-button class="survey-question" value="no"> no </md-radio-button>
                      </md-radio-group>
 
-                     <md-text-float class="md-default-theme question" label="How can we improve Tab Lab?" ng-model="userSurvey.question_2" name="question_2">
-                     </md-text-float>
-
                      <md-text-float class="md-default-theme question"
                                     label={{label_3}}
-                                    ng-model="userSurvey.question_3" name="question_3">
+                                    ng-model="userSurvey.question_2" name="question_3">
                      </md-text-float>
 
-                     <md-radio-group ng-model="userSurvey.question_3" >
+                     <md-radio-group ng-model="userSurvey.question_2" >
                          <md-radio-button class="survey-question" value="0">0</md-radio-button>
                          <md-radio-button class="survey-question" value="1">1</md-radio-button>
                          <md-radio-button class="survey-question" value="2">2</md-radio-button>
@@ -453,15 +449,18 @@
                          <md-radio-button class="survey-question" value="10">10</md-radio-button>
                      </md-radio-group>
 
+                     <md-text-float class="md-default-theme question" label="How can we improve Tab Lab?" ng-model="userSurvey.question_3" name="question_3">
+                     </md-text-float>
+
+
+                     <md-text-float class="md-default-theme question" label="email (optional)" ng-model="userSurvey.email" type="email" name="email">
+                     </md-text-float>
+
 
                      <md-button class="md-raised submit" id="submit-survey" type="submit"
-                                ng-disabled="isSurveyEmpty()"
                                 ng-show="true" style="background: #4EAC50;color: #fff;">
                          submit
                      </md-button>
-
-
-
 
                  </form>
              </md-content>
