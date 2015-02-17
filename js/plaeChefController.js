@@ -679,7 +679,7 @@
                 return $scope.isSurveyOn;
         }//end getSurveyForm ()
 
-        this.setSurveyMode = function () {
+        $scope.setSurveyMode = function () {
             $scope.isSurveyOn = !$scope.isSurveyOn;
         };
 
@@ -930,12 +930,14 @@
                 }
             };
 
-            console.log("inside submitData")
+            console.log("inside submitData");
+
 
             $http.post("server.php", null, config)
                 .success(function (data, status, headers, config)
                 {
                     $scope[resultVarName] = data;
+                    $scope.setSurveyMode();
                 })
                 .error(function (data, status, headers, config)
                 {

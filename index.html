@@ -399,7 +399,7 @@
         </md-button>
         -->
 
-        <md-button class="cart-button md-raised add" id="add-to-cart-button" ng-click="plaeChef.setSurveyMode()"
+        <md-button class="cart-button md-raised add" id="add-to-cart-button" ng-click="setSurveyMode()"
                    ng-show="plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
             add to cart
         </md-button>
@@ -455,7 +455,6 @@
 
 
                      <md-button class="md-raised submit" id="submit-survey" type="submit"
-                                ng-click="plaeChef.setSurveyMode()"
                                 ng-disabled="isSurveyEmpty()"
                                 ng-show="true" style="background: #4EAC50;color: #fff;">
                          submit
