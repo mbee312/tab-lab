@@ -415,6 +415,13 @@ ul.plae.basket.list {
     margin-left: -10px;
 }
 
+button#random-button {
+    left: 695px;
+    top: 40px;
+    z-index: 101;
+    width: 80px;
+}
+
 #reset-button {
     float: right;
     top: 10px;

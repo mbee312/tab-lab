@@ -82,9 +82,9 @@
            init-onload="true"
            slides-to-show="5"
            slides-to-scroll="1"
-           touch-move="true"
+           touch-move="false"
            touchThreshold="10000"
-           focus-on-select="true"
+           focus-on-select="false"
            current-index="index"
            data="shoeList">
 
@@ -101,8 +101,8 @@
            easing="true"
            init-onload="true"
            slides-to-show="5"
-           focus-on-select="true"
-           touch-move="true"
+           focus-on-select="false"
+           touch-move="false"
            touchThreshold="10000"
            slides-to-scroll="3"
            current-index="leftTabIndex"
@@ -120,8 +120,8 @@
            easing="true"
            init-onload="true"
            slides-to-show="5"
-           focus-on-select="true"
-           touch-move="true"
+           focus-on-select="false"
+           touch-move="false"
            touchThreshold="10000"
            slides-to-scroll="3"
            current-index="rightTabIndex"
@@ -227,6 +227,11 @@
                 ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
 
         <md-whiteframe class="md-whiteframe-z3" id="white-bg"></md-whiteframe>
+        <md-button class="random-button c md-raised " id="random-button"
+                   ng-click="random()"
+                   style="background: #20FF28;color: #FFFFFF;">
+            random
+        </md-button>
 
         <!--
                 <div class="views">
