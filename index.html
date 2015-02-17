@@ -426,7 +426,7 @@
                      <md-text-float class="md-default-theme question" label="Did your kid(s) play with Tab Lab? Yes or No?" ng-model="userSurvey.question_1" name="question_1">
                      </md-text-float>
 
-                     <md-radio-group ng-model="userSurvey.question_1" >
+                     <md-radio-group ng-model="userSurvey.question_1" id="question_1">
                          <md-radio-button class="survey-question" value="yes">yes</md-radio-button>
                          <md-radio-button class="survey-question" value="no"> no </md-radio-button>
                      </md-radio-group>
@@ -455,7 +455,8 @@
 
 
                      <md-button class="md-raised submit" id="submit-survey" type="submit"
-
+                                ng-click="plaeChef.setSurveyMode()"
+                                ng-disabled="isSurveyEmpty()"
                                 ng-show="true" style="background: #4EAC50;color: #fff;">
                          submit
                      </md-button>

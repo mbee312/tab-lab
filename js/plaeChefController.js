@@ -906,9 +906,20 @@
             email: '',
             question_1: '' ,
             question_2: '' ,
-            question_3: '',
-            question_4: ''
+            question_3: ''
         };
+
+        $scope.isSurveyEmpty = function (){
+            if($scope.userSurvey.email != ''
+                && $scope.userSurvey.question_3 != ''){
+                console.log("inside isSurveyEmpty!!!!");
+                return false;
+            }else{
+                console.log("inside isSurveyEmpty false!!!!");
+                return true;
+            }
+
+        }// is SurveyEmpty()
 
         // process the form
         $scope.submitData = function (survey, resultVarName)
