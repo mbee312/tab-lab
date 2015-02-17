@@ -912,10 +912,8 @@
         $scope.isSurveyEmpty = function (){
             if($scope.userSurvey.email != ''
                 && $scope.userSurvey.question_3 != ''){
-                console.log("inside isSurveyEmpty!!!!");
                 return false;
             }else{
-                console.log("inside isSurveyEmpty false!!!!");
                 return true;
             }
 
@@ -932,12 +930,15 @@
 
             console.log("inside submitData");
 
+            $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
             $http.post("server.php", null, config)
                 .success(function (data, status, headers, config)
                 {
                     $scope[resultVarName] = data;
+                    console.log("inside success");
                     $scope.setSurveyMode();
+
                 })
                 .error(function (data, status, headers, config)
                 {

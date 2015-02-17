@@ -1,4 +1,5 @@
 <?php
+
 if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
   if (isset($_GET["survey"]))
@@ -24,10 +25,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
 
     // Combines the extension with the timestamp. You can remove the echo statement. Use the rename() function to rename the file.
     $newName = $file."-".$timestamp;
-    $dir = "survey/";
+    $survey_dir = "survey/";
 
 
-    $myfile = fopen($dir.$newName, "w") or die("Unable to open file!");
+    $myfile = fopen($survey_dir.$newName, "w") or die("Unable to open file!");
     fwrite($myfile, $result);
     fclose($myfile);
   }
