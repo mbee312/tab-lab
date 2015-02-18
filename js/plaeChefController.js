@@ -125,8 +125,8 @@
 
         $http.get('product/tabs_local.json').success(function (data) {
             $scope.tabList = data;
-            $scope.addTab($scope.tabList[$scope.leftTabIndex], "left", event);
-            $scope.addTab($scope.tabList[$scope.rightTabIndex], "right", event);
+            $scope.addTab($scope.tabList[$scope.leftTabIndex], "left");
+            $scope.addTab($scope.tabList[$scope.rightTabIndex], "right");
         });
 
         $http.get('product/views.json').success(function (data) {
@@ -183,7 +183,7 @@
         }; //end setShoe()
 
         // Add a Item to the list
-        $scope.addTab = function (tab, side, event) {
+        $scope.addTab = function (tab, side) {
             $scope.tabs.push(tab);
             switch (side) {
                 case "left":
@@ -744,7 +744,7 @@
                 $scope.lTIndex = leftTabIndex;
                 console.log('hey, lTIndex has changed! ' + $scope.lTIndex);
                 console.log("the left tab is " + $scope.tabList[leftTabIndex]);
-                $scope.addTab($scope.tabList[leftTabIndex], "left", event);
+                $scope.addTab($scope.tabList[leftTabIndex], "left");
             }
         });
 
@@ -755,7 +755,7 @@
                 $scope.rTIndex = rightTabIndex;
                 console.log('hey, rTIndex has changed! ' + $scope.rTIndex);
                 console.log("the right tab is " + $scope.tabList[rightTabIndex]);
-                $scope.addTab($scope.tabList[rightTabIndex], "right", event);
+                $scope.addTab($scope.tabList[rightTabIndex], "right");
             }
         });
 

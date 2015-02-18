@@ -1072,7 +1072,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
 }
 
 .slick-next {
-    right: -20px !important;
+    right: -50px !important;
     top: 40px !important;
 }
 
@@ -1081,8 +1081,8 @@ md-tabs.ng-isolate-scope.md-default-theme {
 }
 
 .slick-list.draggable {
-    padding-left: 0px !important;
-    padding-right: 0px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 
 }
 
@@ -1281,4 +1281,10 @@ md-input-group.md-default-theme input, md-input-group.md-default-theme textarea 
 
 md-input-group.md-default-theme.question.ng-isolate-scope.ng-valid.ng-touched.md-input-has-value {
     top: 30px !important;
+}
+
+
+.slick-prev, .slick-next {
+    width: 60px !important;
+    height: 60px !important;
 }
