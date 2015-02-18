@@ -71,7 +71,7 @@
     <md-whiteframe class="md-whiteframe-z1 border-only slots left"></md-whiteframe>
     <md-whiteframe class="md-whiteframe-z1 border-only slots right"></md-whiteframe>
 
-    <slick class="car" id="shoe-car"
+    <slick class="car" ng-class="{ '.translate-slider-x': plaeChef.isEndOfShoeList }" id="shoe-car"
            infinite="true"
            center-mode="true"
            speed="1000"
@@ -89,12 +89,12 @@
            current-index="index"
            data="shoeList">
 
-        <div ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"
+        <div ng-class="{ 'translate-slider-x': isEndOfShoeList }" ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImgUrl + ')'}"
              class="bgimage">
         </div>
     </slick>
 
-    <slick class="car" id="tab-left-car"
+    <slick ng-class="{ '.translate-slider-x': paleChef.isEndOfTabListL }" class="car" id="tab-left-car"
            infinite=true
            center-mode="true"
            speed="1000"
@@ -108,7 +108,7 @@
            slides-to-scroll="3"
            current-index="leftTabIndex"
            data="tabList">
-        <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"
+        <div ng-class="{ 'translate-slider-x': isEndOfTabListL }"ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"
              class="tabmenuitem bgimage">
         </div>
     </slick>
@@ -127,7 +127,7 @@
            slides-to-scroll="3"
            current-index="rightTabIndex"
            data="tabList">
-        <div ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"
+        <div ng-class="{ 'translate-slider-x': isEndOfTabListR }" ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"
              class="tabmenuitem bgimage">
         </div>
     </slick>

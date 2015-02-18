@@ -107,6 +107,10 @@
         }
         $scope.rTindex =  $scope.rightTabIndex;
 
+        $scope.isEndOfShoeList = false;
+        $scope.isEndOfTabListL = false;
+        $scope.isEndOfTabListR = false;
+
         $scope.hideMeLT = function () {
             return $scope.tabLT.length > 0;
         };
@@ -730,6 +734,11 @@
             return $scope.index;
         }, function (index, carouselIndex) {
             if (index !== carouselIndex) {
+                if(index == $scope.shoeList.length -1 ){
+                    $scope.isEndOfShoeList = true;
+                }else{
+                    $scope.isEndOfShoeList = false;
+                }
                 $scope.carouselIndex = index;
                 console.log('hey, carouselIndex has changed! ' + $scope.carouselIndex);
                 console.log("the shoe is " + $scope.shoeList[index]);
@@ -741,6 +750,11 @@
             return $scope.leftTabIndex;
         }, function (leftTabIndex, lTIndex) {
             if (leftTabIndex !== lTIndex) {
+                if(leftTabIndex == $scope.tabList.length -1 ){
+                    $scope.isEndOfTabListL = true;
+                }else{
+                    $scope.isEndOfTabListL = false;
+                }
                 $scope.lTIndex = leftTabIndex;
                 console.log('hey, lTIndex has changed! ' + $scope.lTIndex);
                 console.log("the left tab is " + $scope.tabList[leftTabIndex]);
@@ -751,12 +765,20 @@
         $scope.$watch(function () {
             return $scope.rightTabIndex;
         }, function (rightTabIndex, rTIndex) {
+
             if (rightTabIndex !== rTIndex) {
+                if(rightTabIndex == $scope.tabList.length -1 ){
+                    $scope.isEndOfTabListR = true;
+                }else{
+                    $scope.isEndOfTabListR = false;
+                }
                 $scope.rTIndex = rightTabIndex;
                 console.log('hey, rTIndex has changed! ' + $scope.rTIndex);
                 console.log("the right tab is " + $scope.tabList[rightTabIndex]);
                 $scope.addTab($scope.tabList[rightTabIndex], "right");
+                console.log($scope.isEndOfTabListR);
             }
+
         });
 
         $scope.$watch("shoeSize.size.size", function (newValue, oldValue) {
