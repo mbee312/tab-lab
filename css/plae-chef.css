@@ -1293,7 +1293,3 @@ md-input-group.md-default-theme.question.ng-isolate-scope.ng-valid.ng-touched.md
 .translate-slider-x {
     transform: translateX(-40px) !important;
 }
-
-.translate-button-x{
-    transform: translateX(40px);
-}

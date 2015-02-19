@@ -736,8 +736,10 @@
             if (index !== carouselIndex) {
                 if(index == $scope.shoeList.length -1 ){
                     $scope.isEndOfShoeList = true;
+                    $(".slick-shoe .slick-cloned").addClass("translate-slider-x");
                 }else{
                     $scope.isEndOfShoeList = false;
+                    $(".slick-shoe .slick-cloned").removeClass("translate-slider-x");
                 }
                 $scope.carouselIndex = index;
                 console.log('hey, carouselIndex has changed! ' + $scope.carouselIndex);
@@ -752,8 +754,10 @@
             if (leftTabIndex !== lTIndex) {
                 if(leftTabIndex == $scope.tabList.length -1 ){
                     $scope.isEndOfTabListL = true;
+                    $(".slick-left .slick-cloned").addClass("translate-slider-x");
                 }else{
                     $scope.isEndOfTabListL = false;
+                    $(".slick-left .slick-cloned").removeClass("translate-slider-x");
                 }
                 $scope.lTIndex = leftTabIndex;
                 console.log('hey, lTIndex has changed! ' + $scope.lTIndex);
@@ -769,8 +773,10 @@
             if (rightTabIndex !== rTIndex) {
                 if(rightTabIndex == $scope.tabList.length -1 ){
                     $scope.isEndOfTabListR = true;
+                    $(".slick-right .slick-cloned").addClass("translate-slider-x");
                 }else{
                     $scope.isEndOfTabListR = false;
+                    $(".slick-right .slick-cloned").removeClass("translate-slider-x");
                 }
                 $scope.rTIndex = rightTabIndex;
                 console.log('hey, rTIndex has changed! ' + $scope.rTIndex);
