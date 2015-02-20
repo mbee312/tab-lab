@@ -83,6 +83,7 @@ button.md-button.md-default-theme {
 
 body.ng-scope {
     height: 1024px;
+    width: 1280px;
     margin: 0;
 }
 
@@ -120,17 +121,17 @@ body.ng-scope {
 }
 
 #version-button {
+    position: absolute;
     float: right;
     background-color: #8E8E8E;
     -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
+    /* -webkit-transform: rotate(45deg); */
+    /* transform: rotate(45deg); */
     z-index: 2;
-    top: 25px;
-    right: -35px;
-    width: 150px;
-    overflow: hidden;
-    position: absolute;
+    top: 0px;
+    right: 3px;
+    width: 149px;
+    overflow-x: hidden;
 }
 
 .tab-lab-header{
@@ -145,6 +146,7 @@ body.ng-scope {
 
 .version{
     color: white;
+    letter-spacing: 2px;
 }
 
 select, .tab-lab-header {
@@ -174,7 +176,7 @@ select, .tab-lab-header {
 .rcart {
     z-index: 1;
     height: 432px;
-    top: 443px;
+    top: 380px;
     left: 1014px;
     width: 240px;
     position: absolute;
@@ -191,7 +193,7 @@ select, .tab-lab-header {
 
     width: 579px;
     height: 469px;
-    top: 425px;
+    top: 365px;
     left: 430px;
 
 
@@ -452,16 +454,16 @@ ul.plae.basket.list {
 
 button#random-button {
     left: 672px;
-    top: 45px;
+    top: 42px;
     z-index: 95;
     width: 125px;
     -webkit-transition: all 0.7s ease;
     transition: all 0.7s ease;
 }
 
-#random-button:hover {
-    -webkit-transform:scale(1.5);
-    transform:scale(1.5);
+#random-button:hover, #random-button:active, #random-button:focus {
+    -webkit-transform:scale(1.4);
+    transform:scale(1.4);
 }
 
 #reset-button {
@@ -1336,16 +1338,16 @@ md-input-group.md-default-theme.question.ng-isolate-scope.ng-valid.ng-touched.md
 }
 
 .shuffle{
-    text-transform: uppercase;
-    font-size: 1.2em;
-    font-weight: 500;
+    text-transform: lowercase;
+    font-size: 1.3em;
+    font-weight: 600;
     letter-spacing: 5px;
     -webkit-transition: all 0.7s ease;
     transition: all 0.7s ease;
 }
 
 
-.shuffle:hover {
+.shuffle:hover, .shuffle:active, .shuttle:focus {
     /*    -webkit-box-shadow: 0px 0px 15px 15px #fff;
        box-shadow: 0px 0px 15px 15px #fff;
       border-radius:50%; */

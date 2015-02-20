@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Plae Chef app</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
  <!--   <link href="app/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="css/plae-chef.css">
     <link rel="shortcut icon" href="http://goplae.com/tab-lab/favicon.ico"/>
@@ -56,11 +56,12 @@
         <span class="tab-lab-header md-flex">Welcome to Tablab</span>
     </div>
 </md-toolbar>
-
-    <md-button class="md-raised version" id="version-button"
+<div class="version">
+    <md-button class="md-raised" id="version-button"
                ng-click="">
-        <span class="version"><i>alpha version</i></span>
+        <span class="version"><i>alpha edition</i></span>
     </md-button>
+</div>
 <a href="../../">
     <md-button class="home button md-raised shop-menu" id="menu-home-button"
                ng-click="">
@@ -235,7 +236,7 @@
         <md-whiteframe class="md-whiteframe-z3" id="white-bg"></md-whiteframe>
         <md-button class="random-button c md-raised plae-font" id="random-button"
                    ng-click="random()"
-                   style="background: rgba(138, 138, 138, 0.70);;color: #FFFFFF;">
+                   style="background: rgba(193, 193, 193, 0.90);;color: #FFFFFF;">
             <span class="rainbow shuffle">shuffle</span>
         </md-button>
 
