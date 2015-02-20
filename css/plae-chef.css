@@ -135,7 +135,6 @@ body.ng-scope {
 }
 
 .tab-lab-header{
-    width: 100%;
    /* margin-left: 520px !important; */
     text-align: center;
 }
@@ -157,6 +156,11 @@ select, .tab-lab-header {
 
 .tab-lab-header {
     font-size: 140% !important;
+    color: white !important;
+    background-color: #4EAC50 !important;
+    margin-left: 33% !important;
+    float: right !important;
+    width: 400px;
 }
 
 .plae.size {

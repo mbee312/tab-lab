@@ -53,7 +53,10 @@
 
 <md-toolbar class="md-primary tab-lab-header-toolbar">
     <div class="md-toolbar-tools">
-        <span class="tab-lab-header md-flex">Welcome to Tablab</span>
+        <md-button class="md-raised plae-button tab-lab-header" id="title-button"
+                   ng-click="">
+            <span class=" md-flex">Welcome to Tablab</span>
+        </md-button>
     </div>
 </md-toolbar>
 <div class="version">
@@ -236,7 +239,7 @@
         <md-whiteframe class="md-whiteframe-z3" id="white-bg"></md-whiteframe>
         <md-button class="random-button c md-raised plae-font" id="random-button"
                    ng-click="random()"
-                   style="background: rgba(193, 193, 193, 0.90);;color: #FFFFFF;">
+                   style="background: rgba(205, 205, 205, 0.90);;color: #FFFFFF;">
             <span class="rainbow shuffle">shuffle</span>
         </md-button>
 
