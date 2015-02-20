@@ -119,22 +119,24 @@ body.ng-scope {
     margin-left: 15px;
 }
 
-button#version-button {
+#version-button {
     float: right;
     background-color: #8E8E8E;
     -ms-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
     z-index: 2;
-    top: -40px;
+    top: 25px;
     right: -35px;
     width: 150px;
     overflow: hidden;
+    position: absolute;
 }
 
 .tab-lab-header{
     width: 100%;
-    margin-left: 520px !important;
+   /* margin-left: 520px !important; */
+    text-align: center;
 }
 
 .tab-lab-header-toolbar{
