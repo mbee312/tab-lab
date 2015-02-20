@@ -51,17 +51,20 @@
 </head>
 <body ng-controller="PlaeChefController as plaeChef">
 
-<md-toolbar class="md-primary">
+<md-toolbar class="md-primary tab-lab-header-toolbar">
     <div class="md-toolbar-tools">
-        <span class="tab-lab-header md-flex">Welcome to Tab Lab <i>alpha</i></span>
+        <span class="tab-lab-header md-flex">Welcome to Tablab</span>
     </div>
 </md-toolbar>
 
+    <md-button class="md-raised version" id="version-button"
+               ng-click="">
+        <span class="version"><i>alpha version</i></md-button></span>
+    </md-button>
 <a href="../../">
     <md-button class="home button md-raised shop-menu" id="menu-home-button"
                ng-click="">
     </md-button>
-
 </a>
 
 
@@ -230,8 +233,8 @@
         <md-whiteframe class="md-whiteframe-z3" id="white-bg"></md-whiteframe>
         <md-button class="random-button c md-raised plae-font" id="random-button"
                    ng-click="random()"
-                   style="background: #20D0FF;color: #FFFFFF;">
-            shuffle
+                   style="background: rgb(219, 219, 219);;color: #FFFFFF;">
+            <span class="rainbow shuffle">shuffle</span>
         </md-button>
 
         <!--

@@ -27,6 +27,15 @@ p {
 .plae-font{
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
 }
+
+.rainbow {
+    background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+    background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+    color:transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
 blockquote {
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
     font-size: 21px;
@@ -110,9 +119,40 @@ body.ng-scope {
     margin-left: 15px;
 }
 
+button#version-button {
+    float: right;
+    background-color: #8E8E8E;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    z-index: 2;
+    top: -40px;
+    right: -35px;
+    width: 150px;
+    overflow: hidden;
+}
+
 .tab-lab-header{
     width: 100%;
-    margin-left: 460px !important;
+    margin-left: 520px !important;
+}
+
+.tab-lab-header-toolbar{
+    background-color: #4EAC50 !important;
+}
+
+.version{
+    color: white;
+}
+
+select, .tab-lab-header {
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
+    font-size: 100% !important;
+
+}
+
+.tab-lab-header {
+    font-size: 140% !important;
 }
 
 .plae.size {
@@ -215,16 +255,6 @@ select.size.select.tabs {
     margin-bottom: 10px;
     font-weight: normal;
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
-}
-
-select, .tab-lab-header {
-    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
-    font-size: 100% !important;
-
-}
-
-.tab-lab-header {
-    font-size: 120% !important;
 }
 
 .size.selector p {
@@ -423,6 +453,13 @@ button#random-button {
     top: -10px;
     z-index: 95;
     width: 210px;
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+#random-button:hover {
+    -webkit-transform:scale(1.2);
+    transform:scale(1.2);
 }
 
 #reset-button {
@@ -930,11 +967,11 @@ button#right-profile-button {
 .size-animate,
 .survey
 {
-    -webkit-transition: 700ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
-    -moz-transition: 700ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
-    -ms-transition: 700ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
-    -o-transition: 700ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
-    transition: 700ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
+    -webkit-transition: 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
+    -moz-transition: 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
+    -ms-transition: 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
+    -o-transition: 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
+    transition: 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
 }
 
 .wave.ng-enter {
@@ -1292,4 +1329,23 @@ md-input-group.md-default-theme.question.ng-isolate-scope.ng-valid.ng-touched.md
 
 .translate-slider-x {
     transform: translateX(-40px) !important;
+}
+
+.shuffle{
+    text-transform: uppercase;
+    font-size: 1.2em;
+    font-weight: 600;
+    letter-spacing: 4px;
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+
+.shuffle:hover {
+    /*    -webkit-box-shadow: 0px 0px 15px 15px #fff;
+       box-shadow: 0px 0px 15px 15px #fff;
+      border-radius:50%; */
+    opacity: 0.6;
+    -webkit-transform: rotate(720deg);
+    transform: rotate(720deg);
 }
