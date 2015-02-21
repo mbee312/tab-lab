@@ -117,7 +117,7 @@
            slides-to-scroll="3"
            current-index="leftTabIndex"
            data="tabList">
-        <div ng-class="{ 'translate-slider-x': isEndOfTabListL }"ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"
+        <div ng-class="{ 'translate-slider-x': isEndOfTabListL }"ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImgUrl + ')'}"
              class="tabmenuitem bgimage">
         </div>
     </slick>
@@ -136,7 +136,7 @@
            slides-to-scroll="3"
            current-index="rightTabIndex"
            data="tabList">
-        <div ng-class="{ 'translate-slider-x': isEndOfTabListR }" ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg + ')'}"
+        <div ng-class="{ 'translate-slider-x': isEndOfTabListR }" ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImgUrl + ')'}"
              class="tabmenuitem bgimage">
         </div>
     </slick>
@@ -430,7 +430,7 @@
 
 
              <md-content layout="column" flex="flex" md-theme="default" class="survey-form" layout-align="center center">
-                 <h2 id="survey-h2">feedback on tab lab</h2>
+                 <h2 id="survey-h2">what do you think about tab lab?</h2>
                  <form class="surveyForm plae-font" name="surveyForm" ng-submit="submitData(userSurvey, 'ajaxSubmitResult')" novalidate>
 
                      <md-text-float class="md-default-theme question" label="Did your kid(s) play with Tab Lab? Yes or No?" ng-model="userSurvey.question_1" name="question_1">

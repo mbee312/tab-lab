@@ -977,11 +977,11 @@ button#right-profile-button {
 .size-animate,
 .survey
 {
-    -webkit-transition: 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
-    -moz-transition: 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
-    -ms-transition: 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
-    -o-transition: 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
-    transition: 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
+    -webkit-transition: 600ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
+    -moz-transition: 600ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
+    -ms-transition: 600ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
+    -o-transition: 600ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
+    transition: 600ms cubic-bezier(0.455, 0.030, 0.515, 0.955) all;
 }
 
 .wave.ng-enter {
@@ -1174,7 +1174,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
 .border-only.slots {
     border: 2px solid #D3D3D3;
-    height: 345px;
+    height: 355px;
     width: 384px;
     top: -5px;
     z-index: 49;

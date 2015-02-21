@@ -111,24 +111,26 @@
         $scope.isEndOfTabListL = false;
         $scope.isEndOfTabListR = false;
 
+/*
         $scope.hideMeLT = function () {
             return $scope.tabLT.length > 0;
         };
         $scope.hideMeLB = function () {
             return $scope.tabLB.length > 0;
-        };
+        }; */
 
         $http.get('product/shoeStyles_local.json').success(function (data) {
-            console.log(data);
             $scope.shoeStyles = data;
         });
         $http.get('product/shoes_ty_local.json').success(function (data) {
             $scope.shoeList = data;
+            $scope.preLoader ($scope.shoeList);
             $scope.setShoe($scope.shoeList[$scope.index]);
         });
 
         $http.get('product/tabs_local.json').success(function (data) {
             $scope.tabList = data;
+            $scope.preLoader ($scope.tabList);
             $scope.addTab($scope.tabList[$scope.leftTabIndex], "left");
             $scope.addTab($scope.tabList[$scope.rightTabIndex], "right");
         });
@@ -136,6 +138,15 @@
         $http.get('product/views.json').success(function (data) {
             $scope.mainViews = data;
         });
+
+        $scope.preLoader = function (list){
+            for(var i = 0; i < list.length ; i++){
+                list[i].menuImg = new Image();
+                console.log(list[i].menuImgUrl);
+                list[i].menuImg.src=list[i].menuImgUrl;
+                console.log(list[i].menuImg.src);
+            }// end for
+        }// end preLoader()
 
         /*                                 */
         /* helper function to clear canvas */
