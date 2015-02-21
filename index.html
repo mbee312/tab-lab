@@ -54,17 +54,19 @@
 <md-toolbar class="md-primary tab-lab-header-toolbar">
     <div class="md-toolbar-tools">
         <md-button class="md-raised plae-button tab-lab-header" id="title-button"
-                   ng-click="">
-            <span class=" md-flex">Welcome to Tablab</span>
+                   ng-click="random()">
+            <span class=" md-flex">Welcome to Tablab<span class="version"><i>alpha</i></span></span>
         </md-button>
     </div>
 </md-toolbar>
+<!--
 <div class="version">
     <md-button class="md-raised" id="version-button"
                ng-click="">
         <span class="version"><i>alpha edition</i></span>
     </md-button>
 </div>
+-->
 <a href="../../">
     <md-button class="home button md-raised shop-menu" id="menu-home-button"
                ng-click="">
@@ -239,7 +241,7 @@
         <md-whiteframe class="md-whiteframe-z3" id="white-bg"></md-whiteframe>
         <md-button class="random-button c md-raised plae-font" id="random-button"
                    ng-click="random()"
-                   style="background: rgba(205, 205, 205, 0.90);;color: #FFFFFF;">
+                   style="background: rgba(255, 255, 255, 0.90);;color: #FFFFFF;">
             <span class="rainbow shuffle">shuffle</span>
         </md-button>
 

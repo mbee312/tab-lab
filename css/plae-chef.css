@@ -122,14 +122,15 @@ body.ng-scope {
 
 #version-button {
     position: absolute;
+    top: 50px;
     float: right;
+    margin-left: 550px;
     background-color: #8E8E8E;
-    -ms-transform: rotate(45deg);
+   /* -ms-transform: rotate(45deg); */
     /* -webkit-transform: rotate(45deg); */
     /* transform: rotate(45deg); */
     z-index: 2;
-    top: 0px;
-    right: 3px;
+
     width: 149px;
     overflow-x: hidden;
 }
@@ -145,7 +146,7 @@ body.ng-scope {
 
 .version{
     color: white;
-    letter-spacing: 2px;
+    font-size: 50%;
 }
 
 select, .tab-lab-header {
@@ -158,9 +159,9 @@ select, .tab-lab-header {
     font-size: 140% !important;
     color: white !important;
     background-color: #4EAC50 !important;
-    margin-left: 33% !important;
+    margin-left: 35% !important;
     float: right !important;
-    width: 400px;
+    width: 370px;
 }
 
 .plae.size {
@@ -456,19 +457,20 @@ ul.plae.basket.list {
     margin-left: -10px;
 }
 
-button#random-button {
+#random-button {
     left: 672px;
     top: 42px;
     z-index: 95;
     width: 125px;
     -webkit-transition: all 0.7s ease;
     transition: all 0.7s ease;
+    border-radius: 10px !important;
 }
-
+/*
 #random-button:hover, #random-button:active, #random-button:focus {
     -webkit-transform:scale(1.4);
     transform:scale(1.4);
-}
+} */
 
 #reset-button {
     float: right;
