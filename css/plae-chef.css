@@ -1469,14 +1469,14 @@ md-tabs.ng-isolate-scope.md-default-theme {
     /*                   */
 
     #white-bg-mobile {
-        height: 420px;
+        height: 400px;
     }
     canvas {
         left: 54%;
         top: 60px;
     }
     .random-button {
-        top: 400px;
+        top: 380px;
     }
 
     /*  Size section     */
@@ -1491,7 +1491,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         top: 450px;
     }
     .cart-button {
-        top: 400px;
+        top: 380px;
         left: 86%;
     }
 
