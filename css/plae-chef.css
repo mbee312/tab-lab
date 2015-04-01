@@ -288,7 +288,10 @@ img.slide.img.tab {
     border: 2px solid #D3D3D3;
     border-radius: 8px;
     height: 60px;
+}
 
+.car.slick-right .slick-list.draggable {
+    box-shadow: 0 6px 5px -4px rgba(0, 0, 0, .26) !important;
 }
 
 .slick-active {
@@ -413,7 +416,7 @@ canvas#plae-chef-canvas-tab-top {
 } */
 #white-bg-mobile {
     width: 96%;
-    height: 410px;
+    height: 380px;
     z-index: 33;
     position: relative;
     -webkit-border-radius: 12px;
@@ -423,7 +426,7 @@ canvas#plae-chef-canvas-tab-top {
     margin-bottom: 10px;
     left: 2%;
     right: 2%;
-    top: -60px;
+    top: -55px;
     background: #ffffff;
     background: rgb(255, 255, 255);
     background: rgba(255, 255, 255, 0.0);
@@ -438,7 +441,7 @@ canvas#plae-chef-canvas-tab-top {
 
 .plae.size {
     height: 180px;
-    top: 600px;
+    top: 595px;
     left: 2%;
     right: 2%;
     z-index: 0;
@@ -562,7 +565,7 @@ md-checkbox#afo-fit-button {
     height: 450px;
     left: 2%;
     right: 2%;
-    top: 795px;
+    top: 785px;
     z-index: 0;
     width: 96%;
     position: absolute;
