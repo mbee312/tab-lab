@@ -410,21 +410,22 @@
                 ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
 
         <md-whiteframe class="md-whiteframe-z1 white-bg" id="white-bg-mobile"></md-whiteframe>
-        <md-button class="random-button c md-raised plae-font" id="random-button"
-                   ng-click="random()"
-                   style="background: rgba(255, 255, 255, 0.90);;color: #FFFFFF;">
-            <span class="rainbow shuffle">shuffle</span>
-        </md-button>
-        <div class="canvas-button-row" ng-controller="ScrollCtrl">
-                <md-button class="cart-button md-raised select-size" id="select-size-button" ng-click="gotoElement('plae-size-select');"
+        <section layout="row" layout-sm="row" class="canvas-button-row" ng-controller="ScrollCtrl">
+            <md-button class="canvas-button random-button md-raised plae-font" id="random-button"
+                       ng-click="random()"
+                       style="background: rgba(255, 255, 255, 0.90);color: #FFFFFF;">
+                <span class="rainbow shuffle">random</span>
+            </md-button>
+            <md-button class="canvas-button random-button shuffle md-raised plae-font" id="shuffle-button"
+                       ng-click="random()">
+                <i class="fa fa-random fa-2x"></i>
+            </md-button>
+
+                <md-button class="canvas-button cart-button md-raised select-size" id="select-size-button" ng-click="gotoElement('plae-size-select');"
                            ng-show="!plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
-                    <span class="plae-font">select size</span>
+                    <span class="plae-font">size</span>
                 </md-button>
-                <md-button class="cart-button md-raised add" id="survey-button" ng-click="setSurveyMode()"
-                           style="background: #4EAC50;color: #fff;">
-                    <span class="button plae-font">feedback</span>
-                </md-button>
-        </div>
+        </section>
     </div>
 
 <!--

@@ -288,7 +288,10 @@ img.slide.img.tab {
     border: 2px solid #D3D3D3;
     border-radius: 8px;
     height: 60px;
+}
 
+.car.slick-right .slick-list.draggable {
+    box-shadow: 0 6px 5px -4px rgba(0, 0, 0, .26) !important;
 }
 
 .slick-active {
@@ -365,8 +368,8 @@ img.slide.img.tab {
 .shuffle {
     text-transform: lowercase;
     font-size: 1em;
-    font-weight: 600;
-    letter-spacing: 5px;
+    font-weight: 500;
+    letter-spacing: 2px;
     -webkit-transition: all 0.7s ease;
     transition: all 0.7s ease;
 }
@@ -413,7 +416,7 @@ canvas#plae-chef-canvas-tab-top {
 } */
 #white-bg-mobile {
     width: 96%;
-    height: 410px;
+    height: 380px;
     z-index: 33;
     position: relative;
     -webkit-border-radius: 12px;
@@ -423,7 +426,7 @@ canvas#plae-chef-canvas-tab-top {
     margin-bottom: 10px;
     left: 2%;
     right: 2%;
-    top: -60px;
+    top: -55px;
     background: #ffffff;
     background: rgb(255, 255, 255);
     background: rgba(255, 255, 255, 0.0);
@@ -438,7 +441,7 @@ canvas#plae-chef-canvas-tab-top {
 
 .plae.size {
     height: 180px;
-    top: 600px;
+    top: 595px;
     left: 2%;
     right: 2%;
     z-index: 0;
@@ -562,7 +565,7 @@ md-checkbox#afo-fit-button {
     height: 450px;
     left: 2%;
     right: 2%;
-    top: 795px;
+    top: 785px;
     z-index: 0;
     width: 96%;
     position: absolute;
@@ -703,23 +706,6 @@ hr {
 ul.plae.basket.list {
     margin-left: -10px;
 }
-
-.random-button {
-    position: absolute;
-    left: 115px;
-    top: 190px;
-    z-index: 95;
-    width: 90px;
-    -webkit-transition: all 0.7s ease;
-    transition: all 0.7s ease;
-    border-radius: 6px !important;
-}
-
-/*
-#random-button:hover, #random-button:active, #random-button:focus {
-    -webkit-transform:scale(1.4);
-    transform:scale(1.4);
-} */
 #reset-button {
     float: right;
     top: 10px;
@@ -728,17 +714,48 @@ ul.plae.basket.list {
     right: 10px;
 }
 
-.cart-button {
-    float: left;
-    height: 30px;
-    width: 100px;
+section.canvas-button-row{
+    position: absolute;
+    width: 96%;
     top: 550px;
-    left: 115px;
-    border-radius: 6px !important;
-    font-size: 95% !important;
-    position: absolute !important;
-    z-index: 35;
+    left: 14%;
+    right: 10%;
 }
+
+.random-button {
+    position: relative;
+    z-index: 95;
+    width: 34%;
+    height: 30px;
+    padding: 2px !important;
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+    border-radius: 4px !important;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.random-button.shuffle {
+    width: 50px;
+    color: rgba(40, 170, 64, 1) !important;
+}
+.shuffle {
+    text-transform: lowercase;
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+.cart-button {
+    position: relative;
+    border-radius: 4px !important;
+    z-index: 35;
+    width: 100px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
 button#survey-button {
     top: 1200px;
 }
@@ -985,19 +1002,11 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
 @media screen and (min-width: 360px) {
     canvas {
-        left: 5%;
-    }
-
-    .random-button {
-        left: 136px;
-    }
-    .cart-button {
-        left: 135px;
+        left: 8%;
     }
     .bgimage.ng-scope.slick-slide.slick-active {
         transform: translateX(-60px);
     }
-
     .translate-slider-x{
         transform: translateX(-90px) !important;
     }
@@ -1006,10 +1015,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
 @media screen and (min-width: 375px) {
     canvas {
         left: 6%;
-    }
-
-    .random-button {
-        left: 144px;
     }
     .bgimage.ng-scope.slick-slide.slick-active {
         transform: translateX(-55px);
@@ -1024,13 +1029,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
     canvas {
         left: 10%;
     }
-
-    .random-button {
-        left: 165px;
-    }
-    .cart-button {
-        left: 160px;
-    }
     .bgimage.ng-scope.slick-slide.slick-active {
         transform: translateX(-30px);
     }
@@ -1043,13 +1041,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
 @media screen and (min-width: 450px) {
     canvas {
         left: 14%;
-    }
-
-    .random-button {
-        left: 184px;
-    }
-    .cart-button {
-        left: 182px;
     }
     .bgimage.ng-scope.slick-slide.slick-active {
         transform: translateX(-12px);
@@ -1195,18 +1186,26 @@ md-tabs.ng-isolate-scope.md-default-theme {
         float: right;
     }
 
-    .random-button {
-        float: right;
-        left: 59%;
+    section.canvas-button-row{
         height: 30px;
-        top: 205px;
+        position: absolute;
+        width: 38%;
+        left: 58%;
+        top: 200px;
+        margin: 5px;
+    }
+
+    .random-button {
+        width: 40%;
+    }
+    .random-button.shuffle {
+        width: 20%;
+    }
+    .fa.fa-random.fa-2x{
+        font-size: 1.6em;
     }
     .cart-button {
-        float: right;
-        left: 79%;
-        height: 30px;
-        top: 205px;
-        width: 90px;
+        width: 40%;
     }
     .plae.size {
         top: 250px;
@@ -1254,8 +1253,8 @@ md-tabs.ng-isolate-scope.md-default-theme {
     canvas {
         left: 56%;
     }
-    .cart-button {
-        left: 81%;
+    section.canvas-button-row {
+        top: 238px;
     }
 
 }
@@ -1288,14 +1287,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         margin: 5px;
         padding: 0;
     }
-
-    .cart-button {
-        left: 81.5%;
-        top: 245px;
-    }
-    .random-button {
-        top: 245px;
-    }
     #white-bg-mobile {
         height: 260px;
     }
@@ -1315,9 +1306,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
     canvas {
         left: 55%;
     }
-    .cart-button {
-        left: 82.5%;
-    }
     .md-raised.selector.tab {
         top: 120px;
         width: 90px;
@@ -1335,9 +1323,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
 @media screen and (min-width: 660px){
     canvas {
         left: 55%;
-    }
-    .cart-button {
-        left: 84%;
     }
     .md-raised.selector.tab {
         background-size: 90%;
@@ -1481,8 +1466,8 @@ md-tabs.ng-isolate-scope.md-default-theme {
         left: 54%;
         top: 60px;
     }
-    .random-button {
-        top: 380px;
+    section.canvas-button-row {
+        top: 378px;
     }
 
     /*  Size section     */
@@ -1497,20 +1482,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         top: 450px;
     }
     .cart-button {
-        top: 380px;
-        left: 86%;
     }
-
-
-    /*
-    md-checkbox#autoselect-button {
-     float: left;
-     font-size: small;
-     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
-     margin-bottom: 0px;
-    } */
-
-
     #right {
         position: relative;
         float: left;
@@ -1670,7 +1642,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         left: 60%;
     }
     .cart-button {
-        left: 86%;
     }
 }
 
@@ -1830,11 +1801,14 @@ md-tabs.ng-isolate-scope.md-default-theme {
         left: 46%;
         margin-right: 0;
     }
+    section.canvas-button-row {
+        width: 45%;
+        height: 36px;
+        top: 480px;
+        left: 52%;
+    }
     .random-button {
-        left: 62%;
-        top: 490px;
-        width: 90px;
-
+        height: 36px;
     }
     .picker {
         left: 0;
@@ -1867,10 +1841,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
     }
     .cart-button {
-        left: 79%;
-        top: 490px;
-        height: 32px;
-        width: 100px;
     }
 
     #plae-basket{
@@ -2000,7 +1970,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         left: 49.5%;
     }
     .cart-button {
-        left: 79%;
     }
     .white-bg.select-slide-out {
         width: 110%;
@@ -2033,12 +2002,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
     button#survey-button {
         top: 1080px;
     }
-    .random-button {
-        top: 600px;
-    }
-    .cart-button {
-        top: 600px;
-    }
     .picker{
         left: 0;
         width: 100%;
@@ -2053,6 +2016,10 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
     canvas {
         left: 47%;
+    }
+    section.canvas-button-row {
+        top: 600px;
+
     }
     button.md-raised.selector.shoe {
         width: 260px;
