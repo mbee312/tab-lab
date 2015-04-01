@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="app/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="app/slick-carousel/slick/slick-theme.css">
     <link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="css/plae-chef.css">
@@ -66,10 +67,11 @@
         <md-whiteframe class="md-whiteframe-z1 border-only slots left"></md-whiteframe>
         <md-whiteframe class="md-whiteframe-z1 border-only slots right"></md-whiteframe>
 
-    <slick class="car slick-shoe mobile" ng-show="isMobileScreen()" id="shoe-car-mobile"
+    <slick class="car slick-shoe mobile" init-onload=true  ng-show="isMobileScreen()" id="shoe-car-mobile"
            infinite="true"
            center-mode="true"
-           speed="750"
+           speed="1000"
+           initialSlide="index"
            center-padding="25px"
            adaptiveHeight= "true"
            adaptiveWidth= "true"
@@ -82,14 +84,14 @@
            slides-to-show="5"
            slides-to-scroll="1"
            touch-move="true"
-           touchThreshold="100000"
+           touchThreshold="1000"
            focus-on-select="true"
            current-index="index"
            data="shoeList">
 
 
-        <div ng-class="{ 'translate-slider-x': isEndOfShoeList}" ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImg.src + ')'}"
-             class="bgimage">
+        <div ng-class="{ 'translate-slider-x': isEndOfShoeList}" ng-repeat="shoe in shoeList" class="img bgimage">
+            <a><img class="slide img" ng-src={{shoe.menuImg.src}}></a>
         </div>
     </slick>
 
@@ -139,12 +141,12 @@
            slides-to-show="5"
            slides-to-scroll="3"
            touch-move="true"
-           touchThreshold="10000"
+           touchThreshold="1000"
            focus-on-select="true"
            current-index="leftTabIndex"
            data="tabList">
-        <div ng-class="{ 'translate-slider-x': isEndOfTabListL }"ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg.src + ')'}"
-             class="tabmenuitem bgimage">
+        <div ng-class="{ 'translate-slider-x': isEndOfTabListL }"ng-repeat="tab in tabList" class="tabmenuitem bgimage">
+            <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
         </div>
     </slick>
 <!--
@@ -190,12 +192,12 @@
            slides-to-show="5"
            slides-to-scroll="3"
            touch-move="true"
-           touchThreshold="10000"
+           touchThreshold="1000"
            focus-on-select="true"
            current-index="rightTabIndex"
            data="tabList">
-        <div ng-class="{ 'translate-slider-x': isEndOfTabListR }" ng-repeat="tab in tabList" ng-style="{'background-image': 'url(' + tab.menuImg.src + ')'}"
-             class="tabmenuitem bgimage">
+        <div ng-class="{ 'translate-slider-x': isEndOfTabListR }" ng-repeat="tab in tabList" class="tabmenuitem bgimage">
+            <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
         </div>
     </slick>
 
@@ -629,8 +631,7 @@
 
 </div>
 
-
-<script src="app/jquery/jquery-2.1.3.min.js"></script>
+<script src="app/jquery/dist/jquery.js"></script>
 <script src="app/jquery-ui-1.11.4/jquery-ui.min.js"></script>
 <script src="app/angular/angular.js"></script>
 <script src="app/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
