@@ -9,7 +9,7 @@
             'ui.bootstrap',
             'angular-carousel',
             'slick',
-            'ui.bootstrap.modal',
+            'ui.bootstrap.modal'
         ]);
 
 

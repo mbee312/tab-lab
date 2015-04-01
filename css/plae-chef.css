@@ -243,6 +243,13 @@ select, .tab-lab-header {
     background-position: center center;
 }
 
+img.slide.img {
+    width: 100%;
+}
+img.slide.img.tab {
+    width: 100%;
+}
+
 .bgimage.ng-scope.slick-slide.slick-active {
     height: 50px;
     transform: translateX(-80px);
@@ -280,6 +287,8 @@ select, .tab-lab-header {
     width: 100% !important;
     border: 2px solid #D3D3D3;
     border-radius: 8px;
+    height: 60px;
+
 }
 
 .slick-active {
@@ -292,9 +301,6 @@ select, .tab-lab-header {
     display: inline !important;
 }
 
-.tabmenuitem.bgimage.slick-active {
-    /* width: 190px !important; */
-}
 
 .slick-center {
     opacity: 1;
@@ -1010,7 +1016,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
 
     .translate-slider-x{
-        transform: translateX(-80px) !important;
+        transform: translateX(-85px) !important;
     }
 }
 
