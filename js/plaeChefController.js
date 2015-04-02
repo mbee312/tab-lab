@@ -334,7 +334,7 @@
 
             if (side == "left") {
                 ctx.setTransform(1, 0, 0, 1, 0, 0);
-                ctx.clearRect(0, 0, c.width / 2, c.height);
+                ctx.clearRect(0, 0, c.width / 2.5, c.height);
                 console.log("clear left tab");
             } else if (side == "right") {
                 ctx.setTransform(1, 0, 0, 1, 0, 0);
