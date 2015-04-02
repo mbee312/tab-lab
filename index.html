@@ -572,14 +572,20 @@
             </md-button>
         </div>
 
-        <md-button class="cart-button md-raised add" id="add-to-cart-button" ng-click="setSurveyMode()"
-                   ng-show="plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
-            <span class="button plae-font">feedback</span>
-        </md-button>
-        <md-button class="md-raised fa fa-chevron-circle-up right fa-3x"
-                   ng-click="gotoElement('title-button-desktop');"
-                   aria-label="go to top button">
-        </md-button>
+        <section layout="row" layout-sm="row" class="cart-button-row" ng-controller="ScrollCtrl">
+            <md-button class="cart-button feedback md-raised add"
+                       id="feedback-button"
+                       ng-click="setSurveyMode()"
+                       style="background: #4EAC50;color: #fff;">
+                <span class="button plae-font">feedback</span>
+            </md-button>
+            <md-button class="md-raised fa fa-chevron-circle-up right fa-3x"
+                       ng-click="gotoElement('title-button-desktop');"
+                       aria-label="go to top button">
+            </md-button>
+        </section>
+
+
 
 
 

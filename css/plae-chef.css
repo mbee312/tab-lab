@@ -759,8 +759,17 @@ section.canvas-button-row{
 button#survey-button {
     top: 1200px;
 }
-button#add-to-cart-button {
-display: none;
+
+section.cart-button-row.ng-scope {
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    left: 3%;
+    right: 3%;
+    bottom: 2%;
+}
+button#feedback-button {
+    left: 27%;
 }
 
 button.md-raised.fa.fa-chevron-circle-up {
@@ -779,10 +788,12 @@ md-backdrop.md-opaque.md-default-theme {
 }
 
 button#edit {
-    margin: 5px;
+    top: 5px;
     float: left;
     height: 30px;
     width: 40px;
+    left: 3.5%;
+    font-size: 150%;
 }
 
 #edit img {
