@@ -55,7 +55,8 @@
 </md-toolbar>
 <a href="../../">
     <md-button class="home button md-raised shop-menu" id="menu-home-button"
-               ng-click="">
+               ng-click=""
+               aria-label="home button">
     </md-button>
 </a>
 
@@ -67,24 +68,24 @@
         <md-whiteframe class="md-whiteframe-z1 border-only slots left"></md-whiteframe>
         <md-whiteframe class="md-whiteframe-z1 border-only slots right"></md-whiteframe>
 
-    <slick class="car slick-shoe mobile" init-onload=true  ng-show="isMobileScreen()" id="shoe-car-mobile"
+    <slick class="car slick-shoe mobile" ng-show="isMobileScreen()" id="shoe-car-mobile"
+           init-onload="false"
            infinite="true"
            center-mode="true"
-           speed="1000"
-           initialSlide="index"
+           speed="200"
            center-padding="25px"
-           adaptiveHeight= "true"
-           adaptiveWidth= "true"
-           cssEase="linear"
+           cssEase="ease"
            arrows="false"
+           swipe="true"
            swipeToSlide="true"
-           draggable="true"
-           easing="linear"
-           init-onload="true"
-           slides-to-show="5"
-           slides-to-scroll="1"
            touch-move="true"
            touchThreshold="1000"
+           draggable="true"
+           easing="linear"
+           mobileFirst="true"
+           respondTo="window"
+           slides-to-show="5"
+           slides-to-scroll="1"
            focus-on-select="true"
            current-index="index"
            data="shoeList">
@@ -127,21 +128,23 @@
 
 
     <slick class="car slick-left mobile" ng-show="isMobileScreen()" id="tab-left-car"
+           init-onload="false"
            infinite="true"
            center-mode="true"
-           speed="1000"
+           speed="200"
            center-padding="25px"
-           adaptiveHeight= "true"
-           adaptiveWidth= "true"
-           cssEase="linear"
+           cssEase="ease"
            arrows="false"
+           swipe="true"
            swipeToSlide="true"
-           easing="linear"
-           init-onload="true"
-           slides-to-show="5"
-           slides-to-scroll="3"
            touch-move="true"
            touchThreshold="1000"
+           draggable="true"
+           easing="linear"
+           mobileFirst="true"
+           respondTo="window"
+           slides-to-show="5"
+           slides-to-scroll="1"
            focus-on-select="true"
            current-index="leftTabIndex"
            data="tabList">
@@ -178,21 +181,23 @@
         -->
 
     <slick class="car slick-right mobile" ng-show="isMobileScreen()" id="tab-right-car"
+           init-onload="false"
            infinite="true"
            center-mode="true"
-           speed="1000"
+           speed="200"
            center-padding="25px"
-           adaptiveHeight= "true"
-           adaptiveWidth= "true"
-           cssEase="linear"
+           cssEase="ease"
            arrows="false"
+           swipe="true"
            swipeToSlide="true"
-           easing="linear"
-           init-onload="true"
-           slides-to-show="5"
-           slides-to-scroll="3"
            touch-move="true"
            touchThreshold="1000"
+           draggable="true"
+           easing="linear"
+           mobileFirst="true"
+           respondTo="window"
+           slides-to-show="5"
+           slides-to-scroll="1"
            focus-on-select="true"
            current-index="rightTabIndex"
            data="tabList">
@@ -251,7 +256,8 @@
                     <ul class="picker bottom">
                         <li> <md-button class="md-raised select-me tab" ng-repeat="tab in tabList track by $index"
                                         ng-style="{'background-image': 'url(' + tab.menuImg.src + ')'}"
-                                        ng-click="addTab(tab, 'left')">
+                                        ng-click="addTab(tab, 'left')"
+                                        aria-label="select left tab">
                         </md-button>
                         </li>
                     </ul>
@@ -263,7 +269,8 @@
                     <ul class="picker bottom">
                         <li> <md-button class="md-raised select-me tab" ng-repeat="tab in tabList track by $index"
                                         ng-style="{'background-image': 'url(' + tab.menuImg.src + ')'}"
-                                        ng-click="addTab(tab, 'right')">
+                                        ng-click="addTab(tab, 'right')"
+                                        aria-label="select right tab">
                         </md-button>
                         </li>
                     </ul>
@@ -276,13 +283,15 @@
                    ng-model="tabLeft"
                    ng-repeat="tabL in tabLeft track by $index"
                    ng-style="{'background-image': 'url(' + tabL.menuImg.src + ')'}"
-                   ng-click="plaeChef.setSelectorModes('left')">
+                   ng-click="plaeChef.setSelectorModes('left')"
+                   aria-label="left tab selector">
 
         </md-button>
         <md-button class="md-raised selector shoe"
                    ng-repeat="shoe in shoeSelected track by $index"
                    ng-model="shoeSelected"
-                   ng-style="{'background-image': 'url(' + shoe.menuImg.src + ')'}">
+                   ng-style="{'background-image': 'url(' + shoe.menuImg.src + ')'}"
+                   aria-label="shoe selector">
         </md-button>
         <!--
         <md-button class="md-raised selector shoe"
@@ -297,7 +306,9 @@
                    ng-model="tabRight"
                    ng-repeat="tabR in tabRight track by $index"
                    ng-style="{'background-image': 'url(' + tabR.menuImg.src + ')'}"
-                   ng-click="plaeChef.setSelectorModes('right')"></md-button>
+                   ng-click="plaeChef.setSelectorModes('right')"
+                   aria-label="right tab selector">
+        </md-button>
 
     </section>
     <div class="display-container">
@@ -416,8 +427,10 @@
                        style="background: rgba(255, 255, 255, 0.90);color: #FFFFFF;">
                 <span class="rainbow shuffle">random</span>
             </md-button>
-            <md-button class="canvas-button random-button shuffle md-raised plae-font" id="shuffle-button"
-                       ng-click="random()">
+            <md-button class="canvas-button random-button shuffle md-raised plae-font"
+                       id="shuffle-button"
+                       ng-click="random()"
+                       aria-label="shuffle button">
                 <i class="fa fa-random fa-2x"></i>
             </md-button>
 
@@ -563,7 +576,9 @@
                    ng-show="plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
             <span class="button plae-font">feedback</span>
         </md-button>
-        <md-button class="md-raised fa fa-chevron-circle-up right fa-3x" ng-click="gotoElement('title-button-desktop');">
+        <md-button class="md-raised fa fa-chevron-circle-up right fa-3x"
+                   ng-click="gotoElement('title-button-desktop');"
+                   aria-label="go to top button">
         </md-button>
 
 
