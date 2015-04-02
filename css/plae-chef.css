@@ -760,7 +760,7 @@ button#survey-button {
     top: 1200px;
 }
 
-section.cart-button-row.ng-scope {
+section.cart-button-row {
     height: 40px;
     width: 100%;
     position: absolute;
