@@ -163,9 +163,10 @@ select, .tab-lab-header {
 
 .car {
     margin: 10px 10px 0 10px;
-    width: 95%;
+ /*   width: 95%; */
     /* border: 2px solid #D3D3D3; */
     z-index: 49;
+    height: 200px;
 }
 
 .car.slick-left {
@@ -1053,13 +1054,16 @@ md-tabs.ng-isolate-scope.md-default-theme {
     canvas {
         left: 14%;
     }
+/*
     .bgimage.ng-scope.slick-slide.slick-active {
         transform: translateX(-12px);
     }
+    */
+    /*
 
     .translate-slider-x{
         transform: translateX(-25px) !important;
-    }
+    }*/
 }
 
 @media screen and (min-width: 468px) {
@@ -1079,6 +1083,32 @@ md-tabs.ng-isolate-scope.md-default-theme {
     /*  Selector section    */
     /*                      */
 
+    .bgimage.ng-scope.slick-slide.slick-active {
+        transform: translateX(0);
+    }
+    .translate-slider-x {
+        transform: translateY(0) !important;
+    }
+    .slick-list.draggable {
+        width: 90px !important;
+        height: 220px !important;
+    }
+    .car{
+        position: absolute;
+        top: 20px;
+        margin: 0 0 0 0;
+    }
+    .slick-shoe {
+        left: 100px;
+    }
+   .car.slick-left {
+        top: 20px;
+        left: 10px;
+    }
+   .car.slick-right {
+        top: 20px;
+        left: 190px;
+    }
     .select-me {
         display: block;
         width: 22px;

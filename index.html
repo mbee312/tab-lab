@@ -96,37 +96,6 @@
         </div>
     </slick>
 
-<!--
-        <slick class="car slick-shoe desktop" id="shoe-car-desktop"
-               infinite="true"
-               vertical="true"
-               center-mode="true"
-               speed="750"
-               center-padding="25px"
-               adaptiveHeight= "true"
-               adaptiveWidth= "true"
-               cssEase="linear"
-               arrows="true"
-               swipeToSlide="true"
-               easing="linear"
-               init-onload="true"
-               slides-to-show="5"
-               slides-to-scroll="1"
-               touch-move="true"
-               touchThreshold="1000"
-               focus-on-select="true"
-               current-index="index"
-               data="shoeList">
-
-
-            <div ng-repeat="shoe in shoeList" ng-style="{'background-image': 'url(' + shoe.menuImg.src + ')'}"
-                 class="bgimage">
-            </div>
-        </slick>
-
-        -->
-
-
     <slick class="car slick-left mobile" ng-show="isMobileScreen()" id="tab-left-car"
            init-onload="false"
            infinite="true"
@@ -232,8 +201,89 @@
             </div>
         </slick>
         -->
-    </div>
 
+        <slick class="car slick-left desktop" ng-show="!isMobileScreen()" id="tab-left-car-desktop"
+               init-onload="false"
+               infinite="true"
+               center-mode="true"
+               speed="200"
+               center-padding="25px"
+               cssEase="ease"
+               arrows="false"
+               swipe="true"
+               swipeToSlide="true"
+               touch-move="true"
+               touchThreshold="1000"
+               draggable="true"
+               easing="linear"
+               mobileFirst="true"
+               vertical="true"
+               respondTo="window"
+               slides-to-show="5"
+               slides-to-scroll="1"
+               focus-on-select="true"
+               current-index="leftTabIndex"
+               data="tabList">
+            <div ng-class="{ 'translate-slider-x': isEndOfTabListL }"ng-repeat="tab in tabList" class="tabmenuitem bgimage">
+                <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
+            </div>
+        </slick>
+        <slick class="car slick-shoe desktop" ng-show="!isMobileScreen()" id="shoe-car-desktop"
+               init-onload="false"
+               infinite="true"
+               center-mode="true"
+               speed="200"
+               center-padding="25px"
+               cssEase="ease"
+               arrows="false"
+               swipe="true"
+               swipeToSlide="true"
+               touch-move="true"
+               touchThreshold="1000"
+               draggable="true"
+               easing="linear"
+               mobileFirst="true"
+               vertical="true"
+               respondTo="window"
+               slides-to-show="5"
+               slides-to-scroll="1"
+               focus-on-select="true"
+               current-index="index"
+               data="shoeList">
+
+
+            <div ng-class="{ 'translate-slider-x': isEndOfShoeList}" ng-repeat="shoe in shoeList" class="img bgimage">
+                <a><img class="slide img" ng-src={{shoe.menuImg.src}}></a>
+            </div>
+        </slick>
+        <slick class="car slick-right desktop" ng-show="!isMobileScreen()" id="tab-right-car-desktop"
+               init-onload="false"
+               infinite="true"
+               center-mode="true"
+               speed="200"
+               center-padding="25px"
+               cssEase="ease"
+               arrows="false"
+               swipe="true"
+               swipeToSlide="true"
+               touch-move="true"
+               touchThreshold="1000"
+               draggable="true"
+               easing="linear"
+               mobileFirst="true"
+               vertical="true"
+               respondTo="window"
+               slides-to-show="5"
+               slides-to-scroll="1"
+               focus-on-select="true"
+               current-index="rightTabIndex"
+               data="tabList">
+            <div ng-class="{ 'translate-slider-x': isEndOfTabListR }" ng-repeat="tab in tabList" class="tabmenuitem bgimage">
+                <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
+            </div>
+        </slick>
+    </div>
+<!--
     <section class="desktop-section" id="desktop-section" ng-show="!isMobileScreen()" layout="row" layout-sm="column" layout-align="center center">
         <md-whiteframe class="md-whiteframe-z1 white-bg"
                        ng-class="{'select-slide-out': true}" ng-show="!isMobileScreen()" id="selector-frame-top">
@@ -300,7 +350,7 @@
                    ng-style="{'background-image': 'url(' + shoe.menuImg.src + ')'}"
                    ng-click="plaeChef.setSelectorModes('shoe')">
         </md-button>
-        -->
+
         <md-button class="md-raised selector tab tabright"
                    ng-class="{'selector-focus': plaeChef.getSelectorModes('right'), 'selector-not-focus': plaeChef.getSelectorModes('left')}"
                    ng-model="tabRight"
@@ -309,8 +359,8 @@
                    ng-click="plaeChef.setSelectorModes('right')"
                    aria-label="right tab selector">
         </md-button>
-
     </section>
+    -->
     <div class="display-container">
 
 

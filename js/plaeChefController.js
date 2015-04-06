@@ -22,13 +22,14 @@
 
      /*   $scope.index = Math.floor(Math.random() * 10); */
         $scope.index = 0;
-        $scope.carouselIndex;
+        $scope.carouselIndex = 1;
 
         $scope.rightTabIndex = 0;
-        $scope.rTindex;
+        $scope.rTindex = 1;
 
         $scope.leftTabIndex = 0;
-        $scope.lTindex;
+        $scope.lTindex = 1;
+
 
 
 
@@ -321,6 +322,7 @@
         $http.get('product/views.json').success(function (data) {
             $scope.mainViews = data;
         });
+
 
 
         /*                                 */
@@ -1172,11 +1174,36 @@
 
         $scope.random = function (){
 
+            $scope.index =  Math.floor(Math.random() * 10);
+            $scope.carouselIndex = $scope.index;
+
             $scope.leftTabIndex = Math.floor(Math.random() * 11);
             $scope.lTindex = $scope.leftTabIndex;
 
             $scope.rightTabIndex = Math.floor(Math.random() * 11);
             $scope.rTindex =  $scope.rightTabIndex;
+
+        }; //end random ()
+
+        $scope.shuffle = function (){
+
+            $scope.index =  Math.floor(Math.random() * 10);
+            $scope.carouselIndex = $scope.index;
+
+            $scope.leftTabIndex = Math.floor(Math.random() * 11);
+            $scope.lTindex = $scope.leftTabIndex;
+
+            $scope.rightTabIndex = Math.floor(Math.random() * 11);
+            $scope.rTindex =  $scope.rightTabIndex;
+
+            var posTopLeft;
+            var posBottomLeft;
+            var posTopRight;
+            var posBottomRight;
+
+
+            /* number of tab positions. Will vary with different styles */
+            var numOfPos = 4;
 
         }; //end random ()
 
