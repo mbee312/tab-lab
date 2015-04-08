@@ -1084,30 +1084,43 @@ md-tabs.ng-isolate-scope.md-default-theme {
     /*                      */
 
     .bgimage.ng-scope.slick-slide.slick-active {
-        transform: translateX(0);
+        transform: translate(0);
     }
-    .translate-slider-x {
-        transform: translateY(0) !important;
-    }
-    .slick-list.draggable {
-        width: 90px !important;
+    .slick-list.draggable{
         height: 220px !important;
+        padding: 0 0 !important;
     }
-    .car{
+    .slick-active {
+        width: auto !important;
+
+    }
+    .slick-center {
+        width: auto !important;
+    }
+
+
+    .vertical-slick{
         position: absolute;
         top: 20px;
-        margin: 0 0 0 0;
+        width: 80px;
     }
-    .slick-shoe {
-        left: 100px;
-    }
-   .car.slick-left {
-        top: 20px;
+    .vertical-slick.left {
         left: 10px;
     }
-   .car.slick-right {
-        top: 20px;
-        left: 190px;
+    .vertical-slick.shoe{
+        left: 89px;
+        width: 94px;
+    }
+    .vertical-slick.right {
+        left: 182px;
+    }
+    img.slide.img.tab {
+        height: 50px;
+        width: 100px;
+    }
+    img.slide.img.tab {
+        width: 80px;
+        height: 40px;
     }
     .select-me {
         display: block;
@@ -1297,7 +1310,38 @@ md-tabs.ng-isolate-scope.md-default-theme {
     section.canvas-button-row {
         top: 238px;
     }
+    .slick-list.draggable {
+        height: 260px !important;
+    }
+    .slick-active {
+        margin-top: 5px;
+        height: 60px !important;
+    }
+    .vertical-slick{
+        width: 90px;
+    }
+    .vertical-slick.left {
+        left: 10px;
+    }
+    .vertical-slick.shoe {
+        left: 100px;
+        width: 120px;
+    }
+    .vertical-slick.right {
+        left: 220px;
+    }
+    img.slide.img {
+        height: 60px;
+        width: 120px;
+    }
+    img.slide.img.tab {
+        width: 80px;
+        height: 40px;
+    }
 
+    .translate-slider-y-one{
+        transform: translate(0,110px);
+    }
 }
 
 
@@ -1363,7 +1407,20 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
 @media screen and (min-width: 660px){
     canvas {
-        left: 55%;
+        left: 50%;
+    }
+    #white-bg-mobile {
+        width: 50%;
+        left: 48%;
+    }
+    section.canvas-button-row {
+        left: 53%;
+    }
+    .vertical-slick{
+        width: 80px;
+    }
+    .vertical-slick.right {
+        left: 224px;
     }
     .md-raised.selector.tab {
         background-size: 90%;
@@ -1407,7 +1464,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     /*                  */
 @media screen and (min-width: 701px) {
     canvas {
-        left: 58%;
+        left: 53%;
     }
     .md-raised.selector.tab {
         background-size: 90%;
@@ -1495,6 +1552,30 @@ md-tabs.ng-isolate-scope.md-default-theme {
         width: 40px;
         height: 40px;
     }
+    .slick-list.draggable {
+        height: 400px !important;
+    }
+    .slick-active {
+        margin-bottom: 10px;
+    }
+    .vertical-slick{
+        width: 100px;
+    }
+    .vertical-slick.right {
+        left: 254px;
+    }
+    .vertical-slick.shoe {
+        left: 110px;
+        width: 144px;
+    }
+    img.slide.img {
+        height: 70px;
+        width: 140px;
+    }
+    img.slide.img.tab {
+        width: 100px;
+        height: 50px;
+    }
 
 
     /*  Canvas section   */
@@ -1504,7 +1585,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         height: 400px;
     }
     canvas {
-        left: 54%;
+        left: 47%;
         top: 60px;
     }
     section.canvas-button-row {
@@ -1680,9 +1761,19 @@ md-tabs.ng-isolate-scope.md-default-theme {
         background-size: 250%;
     }
     canvas {
-        left: 60%;
+        left: 49%;
     }
     .cart-button {
+    }
+    .vertical-slick{
+        width: 120px;
+    }
+    .vertical-slick.right {
+        left: 268px;
+    }
+    .vertical-slick.shoe {
+        left: 130px;
+        width: 140px;
     }
 }
 
@@ -1754,8 +1845,16 @@ md-tabs.ng-isolate-scope.md-default-theme {
     #tab-left-car-desktop {
         left: 20px;
     }
-    #tab-right-car-desktop {
-        left: 320px;
+
+    .vertical-slick{
+        top: 50px;
+        width: 140px;
+    }
+    .vertical-slick.right {
+        left: 360px;
+    }
+    .slick-list.draggable {
+        height: 480px !important;
     }
 
     .bgimage.ng-scope.slick-slide.slick-active {
@@ -1839,7 +1938,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
     canvas {
         top: 40px;
-        left: 46%;
+        left: 47%;
         margin-right: 0;
     }
     section.canvas-button-row {

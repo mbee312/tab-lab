@@ -13,7 +13,14 @@
         ]);
 
 
-    plaeChefApp.controller('PlaeChefController', ['$scope', '$http', '$mdDialog','$mdToast', '$animate', '$window', function ($scope, $http, $mdDialog, $mdToast, $animate, $window) {
+    plaeChefApp.controller('PlaeChefController',
+        ['$scope',
+            '$http',
+            '$mdDialog',
+            '$mdToast',
+            '$animate',
+            '$window',
+            function ($scope, $http, $mdDialog, $mdToast, $animate, $window) {
 
         /**
          * On init select random shoe and tab
@@ -295,6 +302,7 @@
         $scope.isEndOfShoeList = false;
         $scope.isEndOfTabListL = false;
         $scope.isEndOfTabListR = false;
+                $scope.isTabIndexAtOne = false;
 
         $scope.preLoader = function (list){
             for(var i = 0; i < list.length ; i++){
@@ -1269,6 +1277,24 @@
                 });
         };
 
+                $scope.options = {
+                    display: 'bottom',
+                    mode: 'scroller',
+                    theme: 'ios7',
+                    showLabel: true,
+                    wheels: [
+                        [
+                            {
+                                label: 'first wheel',
+                                values: ['0', '1', '2', '3', '4', '5', '6', '7']
+                            }, {
+                            label: 'second wheel',
+                            values: ['a','b','c','d']
+                        }
+                        ]
+                    ],
+                }
+
 
 
     }])
@@ -1345,6 +1371,14 @@
 
         };
     });
+
+    plaeChefApp.controller('ListController', function($scope, iScrollService) {
+        console.log("inside here");
+        $scope.vm = this;  // Use 'controller as' syntax
+
+        $scope.vm.iScrollState = iScrollService.state;
+    });
+
 
 
 
