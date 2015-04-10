@@ -63,7 +63,7 @@
 
 <div ng-view class="view-frame plae-chef-window">
 
-    <div class="slick-container">
+    <section class="slick-container">
         <md-whiteframe class="md-whiteframe-z2 border-only main"></md-whiteframe>
         <md-whiteframe class="md-whiteframe-z1 border-only slots left"></md-whiteframe>
         <md-whiteframe class="md-whiteframe-z1 border-only slots right"></md-whiteframe>
@@ -149,6 +149,7 @@
     </slick>
 
 
+<section class="vertical-slick-container">
 
         <slick class="vertical-slick left desktop" ng-show="!isMobileScreen()" id="tab-left-car-desktop"
                init-onload="false"
@@ -237,8 +238,10 @@
             </div>
         </slick>
 
+        <md-whiteframe class="md-whiteframe-z1 white-bg" id="slick-white-bg-mobile"></md-whiteframe>
+</section>
 
-    </div>
+    </section>
     <!--
     <div ng-controller="ListController as listCtrl" class="desktop-iscroll-container">
         <section
