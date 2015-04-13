@@ -163,9 +163,10 @@ select, .tab-lab-header {
 
 .car {
     margin: 10px 10px 0 10px;
-    width: 95%;
+ /*   width: 95%; */
     /* border: 2px solid #D3D3D3; */
     z-index: 49;
+    height: 200px;
 }
 
 .car.slick-left {
@@ -421,7 +422,7 @@ canvas#plae-chef-canvas-tab-top {
     position: relative;
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
-    border-radius: 10px;
+    border-radius: 8px;
     display: inline-block;
     margin-bottom: 10px;
     left: 2%;
@@ -1053,13 +1054,16 @@ md-tabs.ng-isolate-scope.md-default-theme {
     canvas {
         left: 14%;
     }
+/*
     .bgimage.ng-scope.slick-slide.slick-active {
         transform: translateX(-12px);
     }
+    */
+    /*
 
     .translate-slider-x{
         transform: translateX(-25px) !important;
-    }
+    }*/
 }
 
 @media screen and (min-width: 468px) {
@@ -1079,6 +1083,51 @@ md-tabs.ng-isolate-scope.md-default-theme {
     /*  Selector section    */
     /*                      */
 
+    .bgimage.ng-scope.slick-slide.slick-active {
+        transform: translate(0);
+    }
+    section.vertical-slick-container {
+        position: absolute;
+        top: 20px;
+        height: 220px;
+        width: 55%;
+        border: 2px solid #D3D3D3;
+        border-radius: 8px;
+    }
+    .slick-list.draggable{
+        height: 216px !important;
+        padding: 0 0 !important;
+        border: 0 solid #D3D3D3;
+        border-radius: 0;
+    }
+    .slick-slider {
+         margin-bottom: 0 !important;
+        display: inline-block !important;
+    }
+    .slick-active {
+        width: auto !important;
+
+    }
+    .slick-center {
+        width: auto !important;
+    }
+    .vertical-slick{
+        width: 28%;
+    }
+    .vertical-slick.left {
+    }
+    .vertical-slick.shoe{
+        width: 38%;
+    }
+    .vertical-slick.right {
+        float: right;
+    }
+    img.slide.img {
+        width: 100%;
+    }
+    img.slide.img.tab {
+        width: 100%;
+    }
     .select-me {
         display: block;
         width: 22px;
@@ -1267,7 +1316,38 @@ md-tabs.ng-isolate-scope.md-default-theme {
     section.canvas-button-row {
         top: 238px;
     }
+    .slick-list.draggable {
+        height: 260px !important;
+    }
+    .slick-active {
+        margin-top: 5px;
+        height: 60px !important;
+    }
+    .vertical-slick{
+        width: 90px;
+        width: 28%;
+    }
+    .vertical-slick.left {
+    }
+    .vertical-slick.shoe {
+        width: 38%
+    }
+    .vertical-slick.right {
+    }
+    img.slide.img {
+    }
+    img.slide.img.tab {
+    }
+    section.vertical-slick-container{
+        height: 260px;
+    }
+    .slick-list.draggable {
+        height: 256px !important;
+    }
 
+    .translate-slider-y-one{
+        transform: translate(0,110px);
+    }
 }
 
 
@@ -1333,7 +1413,22 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
 @media screen and (min-width: 660px){
     canvas {
-        left: 55%;
+        left: 50%;
+    }
+    #white-bg-mobile {
+        width: 50%;
+        left: 48%;
+    }
+    section.canvas-button-row {
+        left: 53%;
+    }
+    section.vertical-slick-container {
+        width: 44%;
+    }
+    .vertical-slick{
+        width: 80px;
+    }
+    .vertical-slick.right {
     }
     .md-raised.selector.tab {
         background-size: 90%;
@@ -1377,7 +1472,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     /*                  */
 @media screen and (min-width: 701px) {
     canvas {
-        left: 58%;
+        left: 53%;
     }
     .md-raised.selector.tab {
         background-size: 90%;
@@ -1461,9 +1556,33 @@ md-tabs.ng-isolate-scope.md-default-theme {
         width: 55%;
         height: 400px;
     }
+    section.vertical-slick-container {
+        height: 390px;
+        top: 30px;
+    }
     .select-me {
         width: 40px;
         height: 40px;
+    }
+    .slick-list.draggable {
+        height: 385px !important;
+    }
+    .slick-active {
+        margin-bottom: 10px;
+    }
+    .vertical-slick{
+        width: 28%;
+    }
+    .vertical-slick.right {
+    }
+    .vertical-slick.shoe {
+        width: 38%;
+    }
+    img.slide.img {
+    }
+    img.slide.img.tab {
+        width: 100%;
+        height: auto;
     }
 
 
@@ -1474,7 +1593,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         height: 400px;
     }
     canvas {
-        left: 54%;
+        left: 47%;
         top: 60px;
     }
     section.canvas-button-row {
@@ -1650,9 +1769,16 @@ md-tabs.ng-isolate-scope.md-default-theme {
         background-size: 250%;
     }
     canvas {
-        left: 60%;
+        left: 49%;
     }
     .cart-button {
+    }
+    .vertical-slick{
+        width: 28%;
+    }
+    .vertical-slick.right {
+    }
+    .vertical-slick.shoe {
     }
 }
 
@@ -1711,21 +1837,36 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .md-button.md-raised:not([disabled]){
         box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
     }
+    section.vertical-slick-container {
+        top: 50px;
+        height: 480px;
+    }
 
     #shoe-car-mobile{
     }
     #shoe-car-desktop{
-        left: 170px;
     }
     #tab-left-car {
     }
     #tab-right-car {
     }
     #tab-left-car-desktop {
-        left: 20px;
     }
-    #tab-right-car-desktop {
-        left: 320px;
+
+    .vertical-slick {
+        width: 28%;
+    }
+
+    .vertical-slick.shoe{
+        width: 38%;
+    }
+
+    .slick-list.draggable {
+        height: 475px !important;
+    }
+    img.slide.img.tab {
+        width: 80%;
+        height: auto;
     }
 
     .bgimage.ng-scope.slick-slide.slick-active {
@@ -1759,29 +1900,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         display: none;
     }
 
-
-    .white-bg{
-        /* Safari 3-4, iOS 1-3.2, Android 1.6- */
-        -webkit-border-radius:  10px;
-        /* Firefox 1-3.6 */
-        -moz-border-radius: 10px;
-
-        /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
-        border-radius: 10px;
-        display: inline-block;
-        background: #ffffff;
-        background: rgb(255, 255, 255); /* Fall-back for browsers that don't
-                                    support rgba */
-        background: rgba(255, 255, 255, 0.0);
-        /*        box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 22px 70px 4px rgba(0,0,0,0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
-                -webkit-box-shadow: 0 10px 6px -6px #777;
-                -moz-box-shadow: 0 10px 6px -6px #777;
-                box-shadow: 0 10px 6px -6px #777; */
-        border: 2px solid #D3D3D3;
-        width: 490px;
-        height: 480px;
-        position: absolute;
-    }
     .white-bg.select-slide-out{
         margin-top: 0;
         width: 111%;
@@ -1809,7 +1927,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
     canvas {
         top: 40px;
-        left: 46%;
+        left: 47%;
         margin-right: 0;
     }
     section.canvas-button-row {
