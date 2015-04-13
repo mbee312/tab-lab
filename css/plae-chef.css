@@ -1120,13 +1120,13 @@ md-tabs.ng-isolate-scope.md-default-theme {
         width: 38%;
     }
     .vertical-slick.right {
+        float: right;
     }
     img.slide.img {
         width: 100%;
     }
     img.slide.img.tab {
         width: 100%;
-        height: 40px;
     }
     .select-me {
         display: block;
@@ -1325,24 +1325,24 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
     .vertical-slick{
         width: 90px;
+        width: 28%;
     }
     .vertical-slick.left {
-        left: 10px;
     }
     .vertical-slick.shoe {
-        left: 100px;
-        width: 120px;
+        width: 38%
     }
     .vertical-slick.right {
-        left: 220px;
     }
     img.slide.img {
-        height: 60px;
-        width: 120px;
     }
     img.slide.img.tab {
-        width: 80px;
-        height: 40px;
+    }
+    section.vertical-slick-container{
+        height: 260px;
+    }
+    .slick-list.draggable {
+        height: 256px !important;
     }
 
     .translate-slider-y-one{
@@ -1422,11 +1422,13 @@ md-tabs.ng-isolate-scope.md-default-theme {
     section.canvas-button-row {
         left: 53%;
     }
+    section.vertical-slick-container {
+        width: 44%;
+    }
     .vertical-slick{
         width: 80px;
     }
     .vertical-slick.right {
-        left: 224px;
     }
     .md-raised.selector.tab {
         background-size: 90%;
@@ -1554,33 +1556,33 @@ md-tabs.ng-isolate-scope.md-default-theme {
         width: 55%;
         height: 400px;
     }
+    section.vertical-slick-container {
+        height: 390px;
+        top: 30px;
+    }
     .select-me {
         width: 40px;
         height: 40px;
     }
     .slick-list.draggable {
-        height: 400px !important;
+        height: 385px !important;
     }
     .slick-active {
         margin-bottom: 10px;
     }
     .vertical-slick{
-        width: 100px;
+        width: 28%;
     }
     .vertical-slick.right {
-        left: 254px;
     }
     .vertical-slick.shoe {
-        left: 110px;
-        width: 144px;
+        width: 38%;
     }
     img.slide.img {
-        height: 70px;
-        width: 140px;
     }
     img.slide.img.tab {
-        width: 100px;
-        height: 50px;
+        width: 100%;
+        height: auto;
     }
 
 
@@ -1772,14 +1774,11 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .cart-button {
     }
     .vertical-slick{
-        width: 120px;
+        width: 28%;
     }
     .vertical-slick.right {
-        left: 268px;
     }
     .vertical-slick.shoe {
-        left: 130px;
-        width: 140px;
     }
 }
 
@@ -1838,29 +1837,36 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .md-button.md-raised:not([disabled]){
         box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
     }
+    section.vertical-slick-container {
+        top: 50px;
+        height: 480px;
+    }
 
     #shoe-car-mobile{
     }
     #shoe-car-desktop{
-        left: 170px;
     }
     #tab-left-car {
     }
     #tab-right-car {
     }
     #tab-left-car-desktop {
-        left: 20px;
     }
 
-    .vertical-slick{
-        top: 50px;
-        width: 140px;
+    .vertical-slick {
+        width: 28%;
     }
-    .vertical-slick.right {
-        left: 360px;
+
+    .vertical-slick.shoe{
+        width: 38%;
     }
+
     .slick-list.draggable {
-        height: 480px !important;
+        height: 475px !important;
+    }
+    img.slide.img.tab {
+        width: 80%;
+        height: auto;
     }
 
     .bgimage.ng-scope.slick-slide.slick-active {
@@ -1894,29 +1900,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         display: none;
     }
 
-
-    .white-bg{
-        /* Safari 3-4, iOS 1-3.2, Android 1.6- */
-        -webkit-border-radius:  10px;
-        /* Firefox 1-3.6 */
-        -moz-border-radius: 10px;
-
-        /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
-        border-radius: 10px;
-        display: inline-block;
-        background: #ffffff;
-        background: rgb(255, 255, 255); /* Fall-back for browsers that don't
-                                    support rgba */
-        background: rgba(255, 255, 255, 0.0);
-        /*        box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 22px 70px 4px rgba(0,0,0,0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
-                -webkit-box-shadow: 0 10px 6px -6px #777;
-                -moz-box-shadow: 0 10px 6px -6px #777;
-                box-shadow: 0 10px 6px -6px #777; */
-        border: 2px solid #D3D3D3;
-        width: 490px;
-        height: 480px;
-        position: absolute;
-    }
     .white-bg.select-slide-out{
         margin-top: 0;
         width: 111%;
