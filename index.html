@@ -150,6 +150,19 @@
 
 
 <section class="md-whiteframe-z1 vertical-slick-container">
+    <section layout="row" layout-sm="row" class="arrows-button-row previous" ng-controller="ScrollCtrl">
+        <md-button class="slick-button previous left md-raised fa fa-chevron-up fa-1x" id="left-prev-button"
+                   ng-click="random()">
+        </md-button>
+        <md-button class="slick-button previous shoe md-raised fa fa-chevron-up fa-1x" id="shoe-prev-button"
+                   ng-click="random()">
+        </md-button>
+        <md-button class="slick-button previous right md-raised fa fa-chevron-up fa-1x" id="right-prev-button"
+                   ng-click="random()">
+        </md-button>
+
+    </section>
+
 
         <slick class="vertical-slick left desktop" ng-show="!isMobileScreen()" id="tab-left-car-desktop"
                init-onload="false"
@@ -238,7 +251,17 @@
             </div>
         </slick>
 
-        <md-whiteframe class="md-whiteframe-z1 white-bg" id="slick-white-bg-mobile"></md-whiteframe>
+    <section layout="row" layout-sm="row" class="arrows-button-row previous" ng-controller="ScrollCtrl">
+        <md-button class="slick-button next left md-raised fa fa-chevron-down fa-1x" id="left-next-button"
+                   ng-click="random()">
+        </md-button>
+        <md-button class="slick-button next shoe md-raised fa fa-chevron-down fa-1x" id="shoe-next-button"
+                   ng-click="random()">
+        </md-button>
+        <md-button class="slick-button next right md-raised fa fa-chevron-down fa-1x" id="right-next-button"
+                   ng-click="random()">
+        </md-button>
+    </section>
 </section>
 
     </section>
