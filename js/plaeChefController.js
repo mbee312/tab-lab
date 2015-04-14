@@ -140,7 +140,7 @@
                 }else if(iWidth < 800){
                     wScaleFactor = .42;
                 }else if (iWidth < 1024){
-                    wScaleFactor = .9;
+                    wScaleFactor = .5;
                 }else if (iWidth < 1200){
                     console.log ("im here width <1200");
                     wScaleFactor = .470;
@@ -992,67 +992,6 @@
             {size: "XL", label: "x-large"}
         ];
 
-        $scope.$watch(function () {
-            return $scope.index;
-        }, function (index, carouselIndex) {
-            if (index !== carouselIndex) {
-                if(index == $scope.shoeList.length -1 ){
-                    $scope.isEndOfShoeList = true;
-                    $(".slick-shoe .slick-cloned").addClass("translate-slider-x");
-                }else{
-                    $scope.isEndOfShoeList = false;
-                    $(".slick-shoe .slick-cloned").removeClass("translate-slider-x");
-                }
-                $scope.carouselIndex = index;
-                // Get the current slide
-                var currentSlide = $("#shoe-car-mobile").slick('slickCurrentSlide');
-                console.log(currentSlide);
-
-                console.log('hey, carouselIndex has changed! ' + $scope.carouselIndex);
-                console.log("the shoe is " + $scope.shoeList[index]);
-                $scope.setShoe($scope.shoeList[index]);
-            }
-        });
-
-        $scope.$watch(function () {
-            return $scope.leftTabIndex;
-        }, function (leftTabIndex, lTIndex) {
-            if (leftTabIndex !== lTIndex) {
-                if(leftTabIndex == $scope.tabList.length -1 ){
-                    $scope.isEndOfTabListL = true;
-                    $(".slick-left .slick-cloned").addClass("translate-slider-x");
-                }else{
-                    $scope.isEndOfTabListL = false;
-                    $(".slick-left .slick-cloned").removeClass("translate-slider-x");
-                }
-                $scope.lTIndex = leftTabIndex;
-                console.log('hey, lTIndex has changed! ' + $scope.lTIndex);
-                console.log("the left tab is " + $scope.tabList[leftTabIndex]);
-                $scope.addTab($scope.tabList[leftTabIndex], "left");
-            }
-        });
-
-        $scope.$watch(function () {
-            return $scope.rightTabIndex;
-        }, function (rightTabIndex, rTIndex) {
-
-            if (rightTabIndex !== rTIndex) {
-                if(rightTabIndex == $scope.tabList.length -1 ){
-                    $scope.isEndOfTabListR = true;
-                    $(".slick-right .slick-cloned").addClass("translate-slider-x");
-                }else{
-                    $scope.isEndOfTabListR = false;
-                    $(".slick-right .slick-cloned").removeClass("translate-slider-x");
-                }
-                $scope.rTIndex = rightTabIndex;
-                console.log('hey, rTIndex has changed! ' + $scope.rTIndex);
-                console.log("the right tab is " + $scope.tabList[rightTabIndex]);
-                $scope.addTab($scope.tabList[rightTabIndex], "right");
-                console.log($scope.isEndOfTabListR);
-            }
-
-        });
-
         $scope.$watch("shoeSize.size.size", function (newValue, oldValue) {
             $scope.setTabSize();
 
@@ -1403,6 +1342,67 @@
                     break;
             } //end switch
         }// end next()
+
+        $scope.$watch(function () {
+            return $scope.index;
+        }, function (index, carouselIndex) {
+            if (index !== carouselIndex) {
+                if(index == $scope.shoeList.length -1 ){
+                    $scope.isEndOfShoeList = true;
+                    $(".slick-shoe .slick-cloned").addClass("translate-slider-x");
+                }else{
+                    $scope.isEndOfShoeList = false;
+                    $(".slick-shoe .slick-cloned").removeClass("translate-slider-x");
+                }
+                $scope.carouselIndex = index;
+                // Get the current slide
+                var currentSlide = $("#shoe-car-mobile").slick('slickCurrentSlide');
+                console.log(currentSlide);
+
+                console.log('hey, carouselIndex has changed! ' + $scope.carouselIndex);
+                console.log("the shoe is " + $scope.shoeList[index]);
+                $scope.setShoe($scope.shoeList[index]);
+            }
+        });
+
+        $scope.$watch(function () {
+            return $scope.leftTabIndex;
+        }, function (leftTabIndex, lTIndex) {
+            if (leftTabIndex !== lTIndex) {
+                if(leftTabIndex == $scope.tabList.length -1 ){
+                    $scope.isEndOfTabListL = true;
+                    $(".slick-left .slick-cloned").addClass("translate-slider-x");
+                }else{
+                    $scope.isEndOfTabListL = false;
+                    $(".slick-left .slick-cloned").removeClass("translate-slider-x");
+                }
+                $scope.lTIndex = leftTabIndex;
+                console.log('hey, lTIndex has changed! ' + $scope.lTIndex);
+                console.log("the left tab is " + $scope.tabList[leftTabIndex]);
+                $scope.addTab($scope.tabList[leftTabIndex], "left");
+            }
+        });
+
+        $scope.$watch(function () {
+            return $scope.rightTabIndex;
+        }, function (rightTabIndex, rTIndex) {
+
+            if (rightTabIndex !== rTIndex) {
+                if(rightTabIndex == $scope.tabList.length -1 ){
+                    $scope.isEndOfTabListR = true;
+                    $(".slick-right .slick-cloned").addClass("translate-slider-x");
+                }else{
+                    $scope.isEndOfTabListR = false;
+                    $(".slick-right .slick-cloned").removeClass("translate-slider-x");
+                }
+                $scope.rTIndex = rightTabIndex;
+                console.log('hey, rTIndex has changed! ' + $scope.rTIndex);
+                console.log("the right tab is " + $scope.tabList[rightTabIndex]);
+                $scope.addTab($scope.tabList[rightTabIndex], "right");
+                console.log($scope.isEndOfTabListR);
+            }
+
+        });
 
 
     });
