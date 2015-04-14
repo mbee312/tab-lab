@@ -1118,6 +1118,9 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .bgimage.ng-scope.slick-slide.slick-active {
         transform: translate(0);
     }
+    .tabmenuitem.bgimage.ng-scope.slick-slide{
+        transform: translate(0,40px) !important;
+    }
     section.vertical-slick-container {
         position: absolute;
         top: 20px;
