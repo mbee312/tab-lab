@@ -1215,6 +1215,8 @@
 
         }; //end random ()
 
+
+
         this.moreOptions = function () {
             return $scope.sizeMoreOptions;
         }//end showMoreOptions()
@@ -1292,7 +1294,7 @@
                             values: ['a','b','c','d']
                         }
                         ]
-                    ],
+                    ]
                 }
 
 
@@ -1372,15 +1374,45 @@
         };
     });
 
+    plaeChefApp.controller('SliderCtrl', function($scope) {
+        $scope.previous = function (side) {
+            switch (side) {
+                case "left":
+                    $('#tab-left-car-desktop').slick('slickPrev');
+                    break;
+                case "center":
+                    $('#shoe-car-desktop').slick('slickPrev');
+                    break;
+                case "right":
+                    $('#tab-right-car-desktop').slick('slickPrev');
+                    break;
+            } //end switch
+
+        }// end previous()
+
+        $scope.next = function (side){
+            switch (side) {
+                case "left":
+                    $('#tab-left-car-desktop').slick('slickNext');
+                    break;
+                case "center":
+                    $('#shoe-car-desktop').slick('slickNext');
+                    break;
+                case "right":
+                    $('#tab-right-car-desktop').slick('slickNext');
+                    break;
+            } //end switch
+        }// end next()
+
+
+    });
+
     plaeChefApp.controller('ListController', function($scope, iScrollService) {
         console.log("inside here");
         $scope.vm = this;  // Use 'controller as' syntax
 
         $scope.vm.iScrollState = iScrollService.state;
     });
-
-
-
 
 
 })();

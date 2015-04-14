@@ -149,16 +149,16 @@
     </slick>
 
 
-<section class="md-whiteframe-z1 vertical-slick-container">
-    <section layout="row" layout-sm="row" class="arrows-button-row previous" ng-controller="ScrollCtrl">
-        <md-button class="slick-button previous left md-raised fa fa-chevron-up fa-1x" id="left-prev-button"
-                   ng-click="random()">
+<section class="md-whiteframe-z1 vertical-slick-container" ng-controller="SliderCtrl">
+    <section layout="row" layout-sm="row" class="arrows-button-row previous" >
+        <md-button class="slick-button previous left fa fa-chevron-up fa-1x" id="left-prev-button"
+                   ng-click="previous('left')">
         </md-button>
-        <md-button class="slick-button previous shoe md-raised fa fa-chevron-up fa-1x" id="shoe-prev-button"
-                   ng-click="random()">
+        <md-button class="slick-button previous shoe fa fa-chevron-up fa-1x" id="shoe-prev-button"
+                   ng-click="previous('center')">
         </md-button>
-        <md-button class="slick-button previous right md-raised fa fa-chevron-up fa-1x" id="right-prev-button"
-                   ng-click="random()">
+        <md-button class="slick-button previous right fa fa-chevron-up fa-1x" id="right-prev-button"
+                   ng-click="previous('right')">
         </md-button>
 
     </section>
@@ -219,7 +219,7 @@
 
 
             <div ng-class="{ 'translate-slider-y': isEndOfShoeList}" ng-repeat="shoe in shoeList" class="img bgimage">
-                <a><img class="slide img" ng-src={{shoe.menuImg.src}}></a>
+                <a><img class="slide img shoe" ng-src={{shoe.menuImg.src}}></a>
             </div>
         </slick>
         <slick class="vertical-slick right desktop" ng-show="!isMobileScreen()" id="tab-right-car-desktop"
@@ -251,15 +251,15 @@
             </div>
         </slick>
 
-    <section layout="row" layout-sm="row" class="arrows-button-row previous" ng-controller="ScrollCtrl">
-        <md-button class="slick-button next left md-raised fa fa-chevron-down fa-1x" id="left-next-button"
-                   ng-click="random()">
+    <section layout="row" layout-sm="row" class="arrows-button-row next">
+        <md-button class="slick-button next left fa fa-chevron-down fa-1x" id="left-next-button"
+                   ng-click="next('left')">
         </md-button>
-        <md-button class="slick-button next shoe md-raised fa fa-chevron-down fa-1x" id="shoe-next-button"
-                   ng-click="random()">
+        <md-button class="slick-button next shoe fa fa-chevron-down fa-1x" id="shoe-next-button"
+                   ng-click="next('center')">
         </md-button>
-        <md-button class="slick-button next right md-raised fa fa-chevron-down fa-1x" id="right-next-button"
-                   ng-click="random()">
+        <md-button class="slick-button next right fa fa-chevron-down fa-1x" id="right-next-button"
+                   ng-click="next('right')">
         </md-button>
     </section>
 </section>
