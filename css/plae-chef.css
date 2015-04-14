@@ -1119,7 +1119,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         transform: translate(0);
     }
     .tabmenuitem.bgimage.ng-scope.slick-slide{
-        transform: translate(0,40px) !important;
+        transform: translate(0,25px) !important;
     }
     section.vertical-slick-container {
         position: absolute;
@@ -1152,6 +1152,8 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
     .slick-center {
         width: auto !important;
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
     .vertical-slick{
         width: 28%;
@@ -1371,6 +1373,9 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
     .bgimage.ng-scope.slick-slide.slick-active {
         height: auto;
+    }
+    .tabmenuitem.bgimage.ng-scope.slick-slide {
+        transform: translate(0,35px) !important;
     }
     .vertical-slick.left {
     }
@@ -1594,6 +1599,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
     /*  Slider section   */
     /*                   */
+
 
     .white-bg.select-slide-out {
         width: 55%;
