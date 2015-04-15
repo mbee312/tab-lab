@@ -295,10 +295,11 @@ img.slide.img.tab {
     box-shadow: 0 6px 5px -4px rgba(0, 0, 0, .26) !important;
 }
 
-.slick-active {
+.slick-slide {
     opacity: .4;
+}
+.slick-active{
     width: 90px !important;
-
 }
 
 .slick-slider {
@@ -1891,46 +1892,16 @@ md-tabs.ng-isolate-scope.md-default-theme {
         width: 49%;
     }
 
-    .bgimage.ng-scope.slick-slide.slick-active {
-    }
-
-    #shoe-car-mobile{
-    }
-    #shoe-car-desktop{
-    }
-    #tab-left-car {
-    }
-    #tab-right-car {
-    }
-    #tab-left-car-desktop {
-    }
-
-    .vertical-slick {
-        width: 28%;
-    }
-
-    .vertical-slick.shoe{
-    }
-
     .slick-list.draggable {
         height: 431px !important;
     }
-    .slick-active {
-    /*    height: 80px !important;
-    */
+    .tabmenuitem.bgimage.ng-scope.slick-slide {
+        transform: translate(0,80px) !important;
     }
 
-    .slick-track {
-        transform: translate3d(0);
-
-    }
     img.slide.img.tab {
         width: 80%;
         height: auto;
-    }
-
-    .bgimage.ng-scope.slick-slide.slick-active {
-        transform: translate(0);
     }
     .selector.shoe{
         background-position: center;
@@ -1955,7 +1926,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
 
     .bgimage.ng-scope.ng-animate.slick-slide.slick-cloned {
-        display: none;
     }
 
     .white-bg.select-slide-out{
