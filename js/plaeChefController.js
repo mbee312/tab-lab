@@ -172,12 +172,12 @@
                 isMobile = true;
                 var cWidth = $scope.calculateCanvasWidth(); // canvas calculated width
                 var cHeight = $scope.calculateCanvasHeight(); // canvas calculated height
-                $scope.setCanvasWidthAndHeight(topViewCanvas,cWidth,400);
-                $scope.setCanvasWidthAndHeight(topViewTabCanvas,cWidth,400);
-                $scope.setCanvasWidthAndHeight(leftProfileCanvas,cWidth,400);
-                $scope.setCanvasWidthAndHeight(leftProfileTabCanvas,cWidth,400);
-                $scope.setCanvasWidthAndHeight(rightProfileCanvas,cWidth,400);
-                $scope.setCanvasWidthAndHeight(rightProfileTabCanvas,cWidth,400);
+                $scope.setCanvasWidthAndHeight(topViewCanvas,cWidth,360);
+                $scope.setCanvasWidthAndHeight(topViewTabCanvas,cWidth,360);
+                $scope.setCanvasWidthAndHeight(leftProfileCanvas,cWidth,360);
+                $scope.setCanvasWidthAndHeight(leftProfileTabCanvas,cWidth,360);
+                $scope.setCanvasWidthAndHeight(rightProfileCanvas,cWidth,360);
+                $scope.setCanvasWidthAndHeight(rightProfileTabCanvas,cWidth,360);
                 $scope.scaleViews(mobileScaleFactor);
 
             }else if (window.innerWidth < 520){

@@ -63,12 +63,22 @@
 
 <div ng-view class="view-frame plae-chef-window">
 
-    <section class="slick-container">
-        <md-whiteframe class="md-whiteframe-z2 border-only main"></md-whiteframe>
-        <md-whiteframe class="md-whiteframe-z1 border-only slots left"></md-whiteframe>
-        <md-whiteframe class="md-whiteframe-z1 border-only slots right"></md-whiteframe>
+    <section class="slick-container" ng-controller="SliderCtrl">
+        <section class="md-whiteframe-z1 horizontal-slick-container">
+            <section layout="column" layout-sm="column" class="arrows-button-column previous" >
+                <md-button class="slick-button column previous middle fa fa-chevron-left fa-1x" id="middle-prev-button"
+                           ng-click="previous('center')">
+                </md-button>
+                <md-button class="slick-button column previous top fa fa-chevron-left fa-1x" id="top-prev-button"
+                           ng-click="previous('left')">
+                </md-button>
+                <md-button class="slick-button column previous bottom fa fa-chevron-left fa-1x" id="bottom-prev-button"
+                           ng-click="previous('right')">
+                </md-button>
 
-    <slick class="car slick-shoe mobile" ng-show="isMobileScreen()" id="shoe-car-mobile"
+            </section>
+
+            <slick class="car slick-shoe mobile" ng-show="isMobileScreen()" id="shoe-car-mobile"
            init-onload="false"
            infinite="true"
            center-mode="true"
@@ -95,8 +105,7 @@
             <a><img class="slide img" ng-src={{shoe.menuImg.src}}></a>
         </div>
     </slick>
-
-    <slick class="car slick-left mobile" ng-show="isMobileScreen()" id="tab-left-car"
+            <slick class="car slick-left mobile" ng-show="isMobileScreen()" id="tab-left-car"
            init-onload="false"
            infinite="true"
            center-mode="true"
@@ -121,8 +130,7 @@
             <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
         </div>
     </slick>
-
-    <slick class="car slick-right mobile" ng-show="isMobileScreen()" id="tab-right-car"
+            <slick class="car slick-right mobile" ng-show="isMobileScreen()" id="tab-right-car"
            init-onload="false"
            infinite="true"
            center-mode="true"
@@ -147,21 +155,30 @@
             <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
         </div>
     </slick>
-
-
-<section class="md-whiteframe-z1 vertical-slick-container" ng-controller="SliderCtrl">
-    <section layout="row" layout-sm="row" class="arrows-button-row previous" >
-        <md-button class="slick-button previous left fa fa-chevron-up fa-1x" id="left-prev-button"
+            <section layout="column" layout-sm="column" class="arrows-button-column next">
+                <md-button class="slick-button column next middle fa fa-chevron-right fa-1x" id="middle-next-button"
+                           ng-click="next('center')">
+                </md-button>
+                <md-button class="slick-button column next top fa fa-chevron-right fa-1x" id="top-next-button"
+                           ng-click="next('left')">
+                </md-button>
+                <md-button class="slick-button column next bottom fa fa-chevron-right fa-1x" id="bottom-next-button"
+                           ng-click="next('right')">
+                </md-button>
+            </section>
+        </section>
+        <section class="md-whiteframe-z1 vertical-slick-container" >
+            <section layout="row" layout-sm="row" class="arrows-button-row previous" >
+                <md-button class="slick-button previous left fa fa-chevron-up fa-1x" id="left-prev-button"
                    ng-click="previous('left')">
-        </md-button>
-        <md-button class="slick-button previous shoe fa fa-chevron-up fa-1x" id="shoe-prev-button"
+                </md-button>
+                <md-button class="slick-button previous shoe fa fa-chevron-up fa-1x" id="shoe-prev-button"
                    ng-click="previous('center')">
-        </md-button>
-        <md-button class="slick-button previous right fa fa-chevron-up fa-1x" id="right-prev-button"
+                </md-button>
+                <md-button class="slick-button previous right fa fa-chevron-up fa-1x" id="right-prev-button"
                    ng-click="previous('right')">
-        </md-button>
-
-    </section>
+                </md-button>
+            </section>
 
 
         <slick class="vertical-slick left desktop" ng-show="!isMobileScreen()" id="tab-left-car-desktop"
@@ -265,116 +282,10 @@
 </section>
 
     </section>
-    <!--
-    <div ng-controller="ListController as listCtrl" class="desktop-iscroll-container">
-        <section
-         ng-class="{
-        'iscroll-on': listCtrl.iScrollState.useIScroll,
-        'iscroll-off': !listCtrl.iScrollState.useIScroll
-        }">
-
-        </section>
 
 
-        <div class="iscroll-wrapper" iscroll iscroll-instance="instance">
-            <div class="iscroll-scroller">
-                <div ng-repeat="shoe in shoeList" class="img bgimage">
-                    <a><img class="slide img" ng-src={{shoe.menuImg.src}}></a>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
-    <section class="mobiscroll">
-
-    <ul mobiscroll-list="{enhance: true}">
-        <li ng-model="index" ng-repeat="shoe in shoeList" class="img bgimage">
-            <a><img class="slide img" ng-src={{shoe.menuImg.src}}></a>
-        </li>
-    </ul>
-    </section>
-    -->
-
-
-<!--
-    <section class="desktop-section" id="desktop-section" ng-show="!isMobileScreen()" layout="row" layout-sm="column" layout-align="center center">
-        <md-whiteframe class="md-whiteframe-z1 white-bg"
-                       ng-class="{'select-slide-out': true}" ng-show="!isMobileScreen()" id="selector-frame-top">
-
-            <div ng-switch="plaeChef.getSelectorModes('shoe')" ng-show="!isMobileScreen()" >
-                <div class="shoe" id="shoe-selector" ng-switch-when="true">
-                    <ul class="picker top">
-                        <li> <md-button class="md-raised select-me" ng-repeat="shoe in shoeList track by $index"
-                                               ng-style="{'background-image': 'url(' + shoe.menuImg.src + ')'}"
-                                               ng-click="setShoe(shoe)"
-                                               aria-label="select a shoe">
-                        </md-button>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-            <div ng-switch="plaeChef.getSelectorModes('left')" ng-show="!isMobileScreen()">
-                <div class="tab-left" id="tab-left-selector" ng-switch-when="true">
-                    <ul class="picker bottom">
-                        <li> <md-button class="md-raised select-me tab" ng-repeat="tab in tabList track by $index"
-                                        ng-style="{'background-image': 'url(' + tab.menuImg.src + ')'}"
-                                        ng-click="addTab(tab, 'left')"
-                                        aria-label="select left tab">
-                        </md-button>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-            <div ng-switch="plaeChef.getSelectorModes('right')" ng-show="!isMobileScreen()">
-                <div class="tab-right" id="tab-right-selector" ng-switch-when="true">
-                    <ul class="picker bottom">
-                        <li> <md-button class="md-raised select-me tab" ng-repeat="tab in tabList track by $index"
-                                        ng-style="{'background-image': 'url(' + tab.menuImg.src + ')'}"
-                                        ng-click="addTab(tab, 'right')"
-                                        aria-label="select right tab">
-                        </md-button>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </md-whiteframe>
-        <md-button class="md-raised selector tab tableft"
-                   ng-class="{'selector-focus': plaeChef.getSelectorModes('left'), 'selector-not-focus': plaeChef.getSelectorModes('right')}"
-                   ng-model="tabLeft"
-                   ng-repeat="tabL in tabLeft track by $index"
-                   ng-style="{'background-image': 'url(' + tabL.menuImg.src + ')'}"
-                   ng-click="plaeChef.setSelectorModes('left')"
-                   aria-label="left tab selector">
-
-        </md-button>
-        <md-button class="md-raised selector shoe"
-                   ng-repeat="shoe in shoeSelected track by $index"
-                   ng-model="shoeSelected"
-                   ng-style="{'background-image': 'url(' + shoe.menuImg.src + ')'}"
-                   aria-label="shoe selector">
-        </md-button>
-        <!--
-        <md-button class="md-raised selector shoe"
-                   ng-repeat="shoe in shoeSelected track by $index"
-                   ng-model="shoeSelected"
-                   ng-style="{'background-image': 'url(' + shoe.menuImg.src + ')'}"
-                   ng-click="plaeChef.setSelectorModes('shoe')">
-        </md-button>
-
-        <md-button class="md-raised selector tab tabright"
-                   ng-class="{'selector-focus': plaeChef.getSelectorModes('right'), 'selector-not-focus': plaeChef.getSelectorModes('left')}"
-                   ng-model="tabRight"
-                   ng-repeat="tabR in tabRight track by $index"
-                   ng-style="{'background-image': 'url(' + tabR.menuImg.src + ')'}"
-                   ng-click="plaeChef.setSelectorModes('right')"
-                   aria-label="right tab selector">
-        </md-button>
-    </section>
-    -->
     <div class="display-container">
 
 

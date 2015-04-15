@@ -96,7 +96,7 @@ body.ng-scope {
 }
 .plae-chef-window {
     position: relative;
-    top: 10px;
+    top: 20px;
 }
 
 
@@ -162,26 +162,22 @@ select, .tab-lab-header {
 /*                   */
 
 .car {
-    margin: 10px 10px 0 10px;
- /*   width: 95%; */
-    /* border: 2px solid #D3D3D3; */
     z-index: 49;
     height: 200px;
 }
 
 .car.slick-left {
-    /*margin-left: 30%; */
-    top: -22px;
+}
+.car.slick-right {
 }
 
-.car.slick-right {
-    top: -44px;
-}
 
 .slick-container {
     margin-left: 2%;
     margin-right: 2%;
-    margin-top: -10px;
+}
+section.horizontal-slick-container {
+    height: 180px;
 }
 
 #shoe-car {
@@ -195,44 +191,6 @@ select, .tab-lab-header {
     height: 0;
     width: 100px;
     background-position: center center;
-}
-
-.iscroll-wrapper{
-    position: relative;
-    width: 100%;
-}
-
-
-.iscroll-scroller{
-    position: relative;
-    width:2040px;
-    height: 75px;
-    float:left;
-    padding:0;
-    margin-left: -25px;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-
-}
-
-
-#scroller ul{
-    float:left;
-    list-style: none;
-    width:100%;
-    height: 100px;
-    padding:0;
-    margin:0;
-    overflow: hidden;
-
-}
-#scroller li{
-    display: block;
-    list-style: none;
-    vertical-align: middle;
-    float: left;
-    width: 5%;
-    height: 50px;
-    overflow: hidden;
 }
 
 .menuImg {
@@ -256,16 +214,32 @@ img.slide.img.tab {
     transform: translateX(-80px);
 }
 
-/*
-.slick-prev, .slick-next{
-    color: rgba(0, 143, 255, 1) !important;
-    background: rgb(178, 178, 178) !important;
-} */
+.slick-button{
+    color: rgba(255, 255, 255, 0.87) !important;
+    background-color: rgb(155, 155, 155) !important;
+    font-size: 60%;
+    border-radius: 0 !important;
+}
+.slick-button.column{
+    height: 30%;
+}
 
 .slick-prev:before, .slick-next:before {
     color: #898989 !important;
     opacity: 0.75 !important;
     font-size: 60px !important;
+}
+
+section.arrows-button-column {
+    width: 30px;
+    position: absolute;
+    height: 200px;
+    z-index: 2;
+}
+section.arrows-button-column.next {
+    float: right;
+    right: 1.8%;
+    top: 0;
 }
 
 .slick-prev {
@@ -286,13 +260,7 @@ img.slide.img.tab {
     padding-left: 0 !important;
     padding-right: 0 !important;
     width: 100% !important;
-    border: 2px solid #D3D3D3;
-    border-radius: 8px;
     height: 60px;
-}
-
-.car.slick-right .slick-list.draggable {
-    box-shadow: 0 6px 5px -4px rgba(0, 0, 0, .26) !important;
 }
 
 .slick-slide {
@@ -329,43 +297,6 @@ img.slide.img.tab {
 .vertical-slick-container{
     display: none;
 }
-
-/*
-.border-only {
-    background-color: rgba(0, 0, 0, 0.0);
-    position: absolute;
-}
-
-.border-only.main {
-    border: 2px solid #D3D3D3;
-    height: 310px;
-    width: 150px;
-    top: -10px;
-    left: 35%;
-    z-index: 48;
-    border-radius: 8px;
-}
-
-.border-only.slots {
-    border: 2px solid #D3D3D3;
-    height: 300px;
-    width: 150px;
-    top: -5px;
-    z-index: 47;
-}
-
-.border-only.slots.left {
-    left: 10px;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-}
-
-.border-only.slots.right {
-    left: 310px;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-*/
 .md-whiteframe-z1 {
     box-shadow: 0 6px 5px -4px rgba(0, 0, 0, .26) !important;
 }
@@ -403,7 +334,7 @@ canvas {
     margin-bottom: 10px;
     margin-left: 2%;
     margin-right: 2%;
-    top: 200px;
+    top: 210px;
 
 }
 
@@ -432,7 +363,7 @@ canvas#plae-chef-canvas-tab-top {
     margin-bottom: 10px;
     left: 2%;
     right: 2%;
-    top: -55px;
+    top: 10px;
     background: #ffffff;
     background: rgb(255, 255, 255);
     background: rgba(255, 255, 255, 0.0);
@@ -1059,16 +990,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
     canvas {
         left: 14%;
     }
-/*
-    .bgimage.ng-scope.slick-slide.slick-active {
-        transform: translateX(-12px);
-    }
-    */
-    /*
-
-    .translate-slider-x{
-        transform: translateX(-25px) !important;
-    }*/
 }
 
 @media screen and (min-width: 468px) {
@@ -1090,14 +1011,16 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .vertical-slick-container{
         display: inherit;
     }
+    section.arrows-button-column {
+        display: none;
+    }
+    section.horizontal-slick-container {
+        display: none;
+    }
 
 
     .slick-button{
-        color: rgba(255, 255, 255, 0.87) !important;
-        background-color: rgb(155, 155, 155) !important;
-        font-size: 60%;
         width: 30%;
-        border-radius: 0 !important;
     }
     .slick-button.shoe{
         width: 40%;
