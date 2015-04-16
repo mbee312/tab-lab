@@ -170,51 +170,53 @@
             rptabcontext.scale(scaleFactor,scaleFactor);
         } //end scaleViews()
 
-        $scope.setCanvasWidthsAndHeight = function (){
+        $scope.setCanvasWidthsAndHeight = function (x, y){
             var cWidth = $scope.calculateCanvasWidth(); // canvas calculated width
-            $scope.setCanvasWidthAndHeight(topViewCanvas,cWidth,cWidth);   // use cWidth for height to make a square canvas
-            $scope.setCanvasWidthAndHeight(topViewTabCanvas,cWidth,cWidth);
-            $scope.setCanvasWidthAndHeight(leftProfileCanvas,cWidth,cWidth);
-            $scope.setCanvasWidthAndHeight(leftProfileTabCanvas,cWidth,cWidth);
-            $scope.setCanvasWidthAndHeight(rightProfileCanvas,cWidth,cWidth);
-            $scope.setCanvasWidthAndHeight(rightProfileTabCanvas,cWidth,cWidth);
+
+            //x and y is used in case canvas is not a square
+            $scope.setCanvasWidthAndHeight(topViewCanvas,cWidth+x,cWidth+y);
+            $scope.setCanvasWidthAndHeight(topViewTabCanvas,cWidth+x,cWidth+y);
+            $scope.setCanvasWidthAndHeight(leftProfileCanvas,cWidth+x,cWidth+y);
+            $scope.setCanvasWidthAndHeight(leftProfileTabCanvas,cWidth+x,cWidth+y);
+            $scope.setCanvasWidthAndHeight(rightProfileCanvas,cWidth+x,cWidth+y);
+            $scope.setCanvasWidthAndHeight(rightProfileTabCanvas,cWidth+x,cWidth+y);
         }
 
         $scope.setCanvasWidthHeightAndUpdateSize = function(){
 
             if (window.innerWidth < 468){
                 isMobile = true;
-                $scope.setCanvasWidthsAndHeight();
+                $scope.setCanvasWidthsAndHeight(0,30);
                 $scope.scaleViews(mobileScaleFactor);
             }else if (window.innerWidth < 520){
                 isMobile = false;
-                $scope.setCanvasWidthsAndHeight();
+                $scope.setCanvasWidthsAndHeight(0,0);
                 $scope.scaleViews(mobileScaleFactorWide);
             }else if (window.innerWidth < 568) {
                 isMobile = false;
-                $scope.setCanvasWidthsAndHeight();
+                $scope.setCanvasWidthsAndHeight(0,0);
                 $scope.scaleViews(mobileScaleFactorWide);
 
             }else if (window.innerWidth < 600){
                 isMobile = false;
-                $scope.setCanvasWidthsAndHeight();
+                $scope.setCanvasWidthsAndHeight(0,0);
                 $scope.scaleViews(mobileScaleFactorWide);
 
             }else if(window.innerWidth < 768){
                 isMobile = false;
-                $scope.setCanvasWidthsAndHeight();
+                $scope.setCanvasWidthsAndHeight(0,0);
                 $scope.scaleViews(smartphoneScaleFactorWide);
             }else if(window.innerWidth < 1024){
                 isMobile = false;
-                $scope.setCanvasWidthsAndHeight();
+                $scope.setCanvasWidthsAndHeight(0,0);
                 $scope.scaleViews(tabletScaleFactorWide);
             }else if(window.innerWidth < 1200){
                 isMobile = false;
-                $scope.setCanvasWidthsAndHeight();
+                $scope.setCanvasWidthsAndHeight(0,0);
                 $scope.scaleViews(tabletScaleFactor);
             }else{
                 isMobile = false;
-                $scope.setCanvasWidthsAndHeight();
+                $scope.setCanvasWidthsAndHeight(0,0);
                 $scope.scaleViews(1);
             } //end if-else
             $scope.setViews();
