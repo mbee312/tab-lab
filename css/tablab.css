@@ -165,19 +165,13 @@ select, .tab-lab-header {
     z-index: 49;
     height: 200px;
 }
-
-.car.slick-left {
-}
-.car.slick-right {
-}
-
-
 .slick-container {
     margin-left: 2%;
     margin-right: 2%;
 }
 section.horizontal-slick-container {
     height: 180px;
+    border-top: 2px solid #D3D3D3;
 }
 
 #shoe-car {
@@ -221,7 +215,21 @@ img.slide.img.tab {
     border-radius: 0 !important;
 }
 .slick-button.column{
-    height: 30%;
+    height: 33.3%;
+}
+
+button#top-prev-button {
+    border-top-left-radius: 6px !important;
+}
+
+button#bottom-prev-button {
+    border-bottom-left-radius: 6px !important;
+}
+button#top-next-button {
+    border-top-right-radius: 6px !important;
+}
+button#bottom-next-button {
+    border-bottom-right-radius: 6px !important;
 }
 
 .slick-prev:before, .slick-next:before {
@@ -233,12 +241,16 @@ img.slide.img.tab {
 section.arrows-button-column {
     width: 30px;
     position: absolute;
-    height: 200px;
+    height: 180px;
     z-index: 2;
+    top: 0;
+}
+section.arrows-button-column.previous {
+    left: 1%;
 }
 section.arrows-button-column.next {
     float: right;
-    right: 1.8%;
+    right: 1%;
     top: 0;
 }
 
