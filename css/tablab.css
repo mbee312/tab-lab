@@ -1075,7 +1075,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         transform: translate(0,5px);
     }
     .tabmenuitem.bgimage.ng-scope.slick-slide{
-        transform: translate(0,40px);
+        transform: translate(0,30px);
     }
     section.vertical-slick-container {
         position: absolute;
@@ -1115,7 +1115,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .vertical-slick.left {
     }
     .vertical-slick.shoe{
-        width: 40%;
+        width: 42%;
     }
     .vertical-slick.right {
         float: right;
@@ -1124,6 +1124,8 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
     img.slide.img.tab{
         width: 90%;
+        margin-bottom: 5px;
+        margin-top: 5px;
     }
     section.arrows-button-row.next{
     }
@@ -1329,7 +1331,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         height: auto;
     }
     .tabmenuitem.bgimage.ng-scope.slick-slide {
-        transform: translate(0,50px);
     }
     .vertical-slick.left {
     }
@@ -1432,7 +1433,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         transform: translate(0,20px);
     }
     .tabmenuitem.bgimage.ng-scope.slick-slide {
-        transform: translate(0,55px);
+        transform: translate(0,45px);
     }
     .vertical-slick{
     }
@@ -1582,7 +1583,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
 
     .tabmenuitem.bgimage.ng-scope.slick-slide {
-        transform: translate(0,60px);
+     /*   transform: translate(0,60px); */
     }
 
     .vertical-slick{
@@ -1869,7 +1870,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         transform: translate(0,10px);
     }
     .tabmenuitem.bgimage.ng-scope.slick-slide {
-        transform: translate(0,65px);
+        transform: translate(0,55px);
     }
 
     img.slide.img.tab {
@@ -2174,7 +2175,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         transform: translate(0,30px);
     }
     .tabmenuitem.bgimage.ng-scope.slick-slide {
-        transform: translate(0,100px);
+        transform: translate(0,80px);
     }
 }
 
