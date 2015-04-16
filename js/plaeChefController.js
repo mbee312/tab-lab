@@ -99,6 +99,8 @@
             return isMobile;
         } //end isMobileScreen()
 
+                /*
+
         $scope.calculateCanvasHeight = function (){
             var iHeight = window.innerHeight;
             var hScaleFactor = 1;
@@ -113,7 +115,7 @@
                 hScaleFactor = .65;
                 console.log ("im here height <360");
             }else if(iHeight < 800){
-                hScaleFactor = .8;
+                hScaleFactor = .5;
             }else if(iHeight < 1024){
                 hScaleFactor = 1;
                 console.log ("im here height <1024");
@@ -127,6 +129,7 @@
 
             return iHeight*hScaleFactor;
         }
+        */
 
         $scope.calculateCanvasWidth = function (){
             var iWidth = window.innerWidth;
@@ -167,100 +170,52 @@
             rptabcontext.scale(scaleFactor,scaleFactor);
         } //end scaleViews()
 
+        $scope.setCanvasWidthsAndHeight = function (){
+            var cWidth = $scope.calculateCanvasWidth(); // canvas calculated width
+            $scope.setCanvasWidthAndHeight(topViewCanvas,cWidth,cWidth);   // use cWidth for height to make a square canvas
+            $scope.setCanvasWidthAndHeight(topViewTabCanvas,cWidth,cWidth);
+            $scope.setCanvasWidthAndHeight(leftProfileCanvas,cWidth,cWidth);
+            $scope.setCanvasWidthAndHeight(leftProfileTabCanvas,cWidth,cWidth);
+            $scope.setCanvasWidthAndHeight(rightProfileCanvas,cWidth,cWidth);
+            $scope.setCanvasWidthAndHeight(rightProfileTabCanvas,cWidth,cWidth);
+        }
+
         $scope.setCanvasWidthHeightAndUpdateSize = function(){
+
             if (window.innerWidth < 468){
                 isMobile = true;
-                var cWidth = $scope.calculateCanvasWidth(); // canvas calculated width
-                var cHeight = $scope.calculateCanvasHeight(); // canvas calculated height
-                $scope.setCanvasWidthAndHeight(topViewCanvas,cWidth,360);
-                $scope.setCanvasWidthAndHeight(topViewTabCanvas,cWidth,360);
-                $scope.setCanvasWidthAndHeight(leftProfileCanvas,cWidth,360);
-                $scope.setCanvasWidthAndHeight(leftProfileTabCanvas,cWidth,360);
-                $scope.setCanvasWidthAndHeight(rightProfileCanvas,cWidth,360);
-                $scope.setCanvasWidthAndHeight(rightProfileTabCanvas,cWidth,360);
+                $scope.setCanvasWidthsAndHeight();
                 $scope.scaleViews(mobileScaleFactor);
-
             }else if (window.innerWidth < 520){
                 isMobile = false;
-                var cWidth = $scope.calculateCanvasWidth(); // canvas calculated width
-                var cHeight = $scope.calculateCanvasHeight(); // canvas calculated height
-                $scope.setCanvasWidthAndHeight(topViewCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(topViewTabCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(leftProfileCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(leftProfileTabCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(rightProfileCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(rightProfileTabCanvas,cWidth,cHeight);
+                $scope.setCanvasWidthsAndHeight();
                 $scope.scaleViews(mobileScaleFactorWide);
-
             }else if (window.innerWidth < 568) {
                 isMobile = false;
-                var cWidth = $scope.calculateCanvasWidth(); // canvas calculated width
-                var cHeight = $scope.calculateCanvasHeight(); // canvas calculated height
-                $scope.setCanvasWidthAndHeight(topViewCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(topViewTabCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(leftProfileCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(leftProfileTabCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(rightProfileCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(rightProfileTabCanvas,cWidth,cHeight);
+                $scope.setCanvasWidthsAndHeight();
                 $scope.scaleViews(mobileScaleFactorWide);
 
             }else if (window.innerWidth < 600){
                 isMobile = false;
-                var cWidth = $scope.calculateCanvasWidth(); // canvas calculated width
-                var cHeight = $scope.calculateCanvasHeight(); // canvas calculated height
-                $scope.setCanvasWidthAndHeight(topViewCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(topViewTabCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(leftProfileCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(leftProfileTabCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(rightProfileCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(rightProfileTabCanvas,cWidth,cHeight);
+                $scope.setCanvasWidthsAndHeight();
                 $scope.scaleViews(mobileScaleFactorWide);
 
             }else if(window.innerWidth < 768){
                 isMobile = false;
-                var cWidth = $scope.calculateCanvasWidth(); // canvas calculated width
-                var cHeight = $scope.calculateCanvasHeight(); // canvas calculated height
-                $scope.setCanvasWidthAndHeight(topViewCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(topViewTabCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(leftProfileCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(leftProfileTabCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(rightProfileCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(rightProfileTabCanvas,cWidth,cHeight);
+                $scope.setCanvasWidthsAndHeight();
                 $scope.scaleViews(smartphoneScaleFactorWide);
-
             }else if(window.innerWidth < 1024){
                 isMobile = false;
-                var cWidth = $scope.calculateCanvasWidth(); // canvas calculated width
-                var cHeight = $scope.calculateCanvasHeight(); // canvas calculated height
-                $scope.setCanvasWidthAndHeight(topViewCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(topViewTabCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(leftProfileCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(leftProfileTabCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(rightProfileCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(rightProfileTabCanvas,cWidth,cHeight);
+                $scope.setCanvasWidthsAndHeight();
                 $scope.scaleViews(tabletScaleFactorWide);
             }else if(window.innerWidth < 1200){
                 isMobile = false;
-                var cWidth = $scope.calculateCanvasWidth(); // canvas calculated width
-                var cHeight = $scope.calculateCanvasHeight(); // canvas calculated height
-                $scope.setCanvasWidthAndHeight(topViewCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(topViewTabCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(leftProfileCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(leftProfileTabCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(rightProfileCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(rightProfileTabCanvas,cWidth,cHeight);
+                $scope.setCanvasWidthsAndHeight();
                 $scope.scaleViews(tabletScaleFactor);
             }else{
                 isMobile = false;
-                var cWidth = $scope.calculateCanvasWidth(); // canvas calculated width
-                var cHeight = $scope.calculateCanvasHeight(); // canvas calculated height
-                $scope.setCanvasWidthAndHeight(topViewCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(topViewTabCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(leftProfileCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(leftProfileTabCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(rightProfileCanvas,cWidth,cHeight);
-                $scope.setCanvasWidthAndHeight(rightProfileTabCanvas,cWidth,cHeight);
-                $scope.scaleViews(1.1);
+                $scope.setCanvasWidthsAndHeight();
+                $scope.scaleViews(1);
             } //end if-else
             $scope.setViews();
             $scope.setTabViews("right");
