@@ -200,12 +200,13 @@ img.slide.img {
     width: 100%;
 }
 img.slide.img.tab {
-    width: 100%;
+    width: 80%;
+    margin-left: 10%;
 }
 
 .bgimage.ng-scope.slick-slide.slick-active {
    /* height: 50px; */
-    transform: translateX(-80px);
+    transform: translateX(-65px);
 }
 
 .slick-button{
@@ -303,7 +304,7 @@ section.arrows-button-column.next {
 }
 
 .translate-slider-x {
-    transform: translateX(-120px) !important;
+    transform: translateX(-97px) !important;
 }
 
 .vertical-slick-container{
@@ -977,11 +978,23 @@ md-tabs.ng-isolate-scope.md-default-theme {
         left: 6%;
     }
     .bgimage.ng-scope.slick-slide.slick-active {
-        transform: translateX(-55px);
+        transform: translateX(-50px);
     }
 
     .translate-slider-x{
-        transform: translateX(-85px) !important;
+        transform: translateX(-75px) !important;
+    }
+}
+@media screen and (min-width: 400px) {
+    canvas {
+        left: 6%;
+    }
+    .bgimage.ng-scope.slick-slide.slick-active {
+        transform: translateX(-35px);
+    }
+
+    .translate-slider-x{
+        transform: translateX(-60px) !important;
     }
 }
 
@@ -994,13 +1007,20 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
 
     .translate-slider-x{
-        transform: translateX(-50px) !important;
+        transform: translateX(-48px) !important;
     }
 }
 
 @media screen and (min-width: 450px) {
     canvas {
         left: 14%;
+    }
+    .bgimage.ng-scope.slick-slide.slick-active {
+        transform: translateX(-30px);
+    }
+
+    .translate-slider-x{
+        transform: translateX(-40px) !important;
     }
 }
 
@@ -1055,7 +1075,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         transform: translate(0,5px);
     }
     .tabmenuitem.bgimage.ng-scope.slick-slide{
-        transform: translate(0,25px);
+        transform: translate(0,40px);
     }
     section.vertical-slick-container {
         position: absolute;
@@ -1102,7 +1122,8 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
     img.slide.img {
     }
-    img.slide.img.tab {
+    img.slide.img.tab{
+        width: 90%;
     }
     section.arrows-button-row.next{
     }
@@ -1302,14 +1323,13 @@ md-tabs.ng-isolate-scope.md-default-theme {
         height: 60px !important; */
     }
     .vertical-slick{
-        width: 90px;
         width: 28%;
     }
     .bgimage.ng-scope.slick-slide.slick-active {
         height: auto;
     }
     .tabmenuitem.bgimage.ng-scope.slick-slide {
-        transform: translate(0,35px);
+        transform: translate(0,50px);
     }
     .vertical-slick.left {
     }
@@ -1412,7 +1432,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         transform: translate(0,20px);
     }
     .tabmenuitem.bgimage.ng-scope.slick-slide {
-        transform: translate(0,45px);
+        transform: translate(0,55px);
     }
     .vertical-slick{
     }
@@ -1562,7 +1582,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
 
     .tabmenuitem.bgimage.ng-scope.slick-slide {
-        transform: translate(0,50px);
+        transform: translate(0,60px);
     }
 
     .vertical-slick{
@@ -1575,7 +1595,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
     img.slide.img.tab {
         width: 100%;
-        height: auto;
+        margin-left: 0;
     }
 
 
