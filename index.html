@@ -67,13 +67,13 @@
         <section class="md-whiteframe-z1 horizontal-slick-container">
             <section layout="column" layout-sm="column" class="arrows-button-column previous" >
                 <md-button class="slick-button column previous top fa fa-chevron-left fa-1x" id="top-prev-button"
-                           ng-click="previous('center')">
+                           ng-click="previous('top')">
                 </md-button>
                 <md-button class="slick-button column previous middle fa fa-chevron-left fa-1x" id="middle-prev-button"
-                           ng-click="previous('left')">
+                           ng-click="previous('middle')">
                 </md-button>
                 <md-button class="slick-button column previous bottom fa fa-chevron-left fa-1x" id="bottom-prev-button"
-                           ng-click="previous('right')">
+                           ng-click="previous('bottom')">
                 </md-button>
 
             </section>
@@ -396,20 +396,20 @@
                 ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
 
         <md-whiteframe class="md-whiteframe-z1 white-bg" id="white-bg-mobile"></md-whiteframe>
-        <section layout="row" layout-sm="row" class="canvas-button-row" ng-controller="ScrollCtrl">
-            <md-button class="canvas-button random-button md-raised plae-font" id="random-button"
+        <section layout="row" layout-sm="row" class="canvas-button-row">
+            <md-button ng-controller="SliderCtrl" class="canvas-button random-button md-raised plae-font" id="random-button"
                        ng-click="random()"
                        style="background: rgba(255, 255, 255, 0.90);color: #FFFFFF;">
                 <span class="rainbow shuffle">random</span>
             </md-button>
-            <md-button class="canvas-button random-button shuffle md-raised plae-font"
+            <md-button ng-controller="SliderCtrl" class="canvas-button random-button shuffle md-raised plae-font"
                        id="shuffle-button"
-                       ng-click="random()"
+                       ng-click="shuffle()"
                        aria-label="shuffle button">
                 <i class="fa fa-random fa-2x"></i>
             </md-button>
 
-                <md-button class="canvas-button cart-button md-raised select-size" id="select-size-button" ng-click="gotoElement('plae-size-select');"
+                <md-button ng-controller="ScrollCtrl" class="canvas-button cart-button md-raised select-size" id="select-size-button" ng-click="gotoElement('plae-size-select');"
                            ng-show="!plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
                     <span class="plae-font">size</span>
                 </md-button>
