@@ -339,16 +339,9 @@ section.arrows-button-column.next {
 /*                   */
 
 canvas {
-
     z-index: 30;
     position: absolute;
     opacity: 1;
-    display: inline-block;
-    margin-bottom: 10px;
-    margin-left: 2%;
-    margin-right: 2%;
-    top: 190px;
-
 }
 
 .canvas.tcanvas {
@@ -663,19 +656,17 @@ ul.plae.basket.list {
     font-size: 10px !important;
     right: 10px;
 }
-
-section.canvas-button-row{
+section.canvas-button-row {
     position: absolute;
-    width: 96%;
-    top: 530px;
-    left: 10%;
-    right: 10%;
+    width: 90%;
+    top: 90%;
+    left: 5%;
+    right: 5%;
 }
-
 .random-button {
     position: relative;
     z-index: 95;
-    width: 34%;
+    width: 35%;
     height: 30px;
     padding: 2px !important;
     -webkit-transition: all 0.7s ease;
@@ -685,7 +676,7 @@ section.canvas-button-row{
     margin-right: 2px;
 }
 .random-button.shuffle {
-    width: 50px;
+    width: 30%;
     color: rgba(40, 170, 64, 1) !important;
 }
 .shuffle {
@@ -701,7 +692,7 @@ section.canvas-button-row{
     position: relative;
     border-radius: 4px !important;
     z-index: 35;
-    width: 100px;
+    width: 35%;
     margin-left: 2px;
     margin-right: 2px;
 }
@@ -962,9 +953,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
     /*                  */
 
 @media screen and (min-width: 360px) {
-    canvas {
-        left: 8%;
-    }
     .bgimage.ng-scope.slick-slide.slick-active {
         transform: translateX(-60px);
     }
@@ -974,9 +962,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
 }
 
 @media screen and (min-width: 375px) {
-    canvas {
-        left: 6%;
-    }
     .bgimage.ng-scope.slick-slide.slick-active {
         transform: translateX(-50px);
     }
@@ -987,7 +972,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
 }
 @media screen and (min-width: 400px) {
     canvas {
-        left: 6%;
     }
     .bgimage.ng-scope.slick-slide.slick-active {
         transform: translateX(-35px);
@@ -999,26 +983,18 @@ md-tabs.ng-isolate-scope.md-default-theme {
 }
 
 @media screen and (min-width: 420px) {
-    canvas {
-        left: 10%;
-    }
     .bgimage.ng-scope.slick-slide.slick-active {
         transform: translateX(-30px);
     }
-
     .translate-slider-x{
         transform: translateX(-48px) !important;
     }
 }
 
 @media screen and (min-width: 450px) {
-    canvas {
-        left: 14%;
-    }
     .bgimage.ng-scope.slick-slide.slick-active {
         transform: translateX(-30px);
     }
-
     .translate-slider-x{
         transform: translateX(-40px) !important;
     }
@@ -1228,13 +1204,9 @@ md-tabs.ng-isolate-scope.md-default-theme {
     /*                  */
 
     canvas {
-        position: absolute;
-        top: 20px;
-        left: 52%;
     }
 
     canvas#plae-chef-canvas-tab-top {
-        position: absolute;
     }
 
     #white-bg-mobile {
@@ -1245,15 +1217,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         right: 2%;
         left: 58%;
         float: right;
-    }
-
-    section.canvas-button-row{
-        height: 30px;
-        position: absolute;
-        width: 38%;
-        left: 58%;
-        top: 200px;
-        margin: 5px;
     }
 
     .random-button {
@@ -1286,7 +1249,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
 @media screen and (min-width: 500px){
     canvas {
-        left: 54%;
     }
     .md-raised.selector.tab {
         top: 105px;
@@ -1311,11 +1273,9 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
 }
 @media screen and (min-width: 568px){
-    canvas {
-        left: 56%;
-    }
+
     section.canvas-button-row {
-        top: 238px;
+        top: 85%;
     }
     .slick-list.draggable {
         height: 260px !important;
@@ -1332,35 +1292,18 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
     .tabmenuitem.bgimage.ng-scope.slick-slide {
     }
-    .vertical-slick.left {
-    }
-    .vertical-slick.shoe {
-    }
-    .vertical-slick.right {
-    }
-    img.slide.img {
-    }
-    img.slide.img.tab {
-    }
     section.vertical-slick-container{
         height: 260px;
     }
     .slick-list.draggable {
         height: 211px !important;
     }
-/*
-    .translate-slider-y-one{
-        transform: translate(0,110px);
-    } */
 }
 
 
 @media screen and (min-width: 568px) and (min-height: 360px){
     .white-bg.select-slide-out {
         height: 260px;
-    }
-    canvas {
-        left: 56%;
     }
     .md-raised.selector.tab {
         top: 130px;
@@ -1398,9 +1341,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
 }
 
 @media screen and (min-width: 600px){
-    canvas {
-        left: 55%;
-    }
     .md-raised.selector.tab {
         top: 120px;
         width: 90px;
@@ -1416,15 +1356,9 @@ md-tabs.ng-isolate-scope.md-default-theme {
 }
 
 @media screen and (min-width: 660px){
-    canvas {
-        left: 50%;
-    }
     #white-bg-mobile {
         width: 50%;
         left: 48%;
-    }
-    section.canvas-button-row {
-        left: 53%;
     }
     section.vertical-slick-container {
         width: 44%;
@@ -1480,9 +1414,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
     /*  phablet range   */
     /*                  */
 @media screen and (min-width: 701px) {
-    canvas {
-        left: 53%;
-    }
     .md-raised.selector.tab {
         background-size: 90%;
         top: 110px;
@@ -1586,14 +1517,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
      /*   transform: translate(0,60px); */
     }
 
-    .vertical-slick{
-    }
-    .vertical-slick.right {
-    }
-    .vertical-slick.shoe {
-    }
-    img.slide.img {
-    }
     img.slide.img.tab {
         width: 100%;
         margin-left: 0;
@@ -1606,12 +1529,8 @@ md-tabs.ng-isolate-scope.md-default-theme {
     #white-bg-mobile {
         height: 400px;
     }
-    canvas {
-        left: 47%;
-        top: 60px;
-    }
     section.canvas-button-row {
-        top: 378px;
+        top: 90%;
     }
 
     /*  Size section     */
@@ -1765,7 +1684,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
     #right-tab-select-size-button {
         top: 50px;
-
     }
 }
 @media screen and (min-width: 840px) {
@@ -1782,17 +1700,8 @@ md-tabs.ng-isolate-scope.md-default-theme {
         top: 30px;
         background-size: 250%;
     }
-    canvas {
-        left: 49%;
-    }
-    .cart-button {
-    }
     .vertical-slick{
         width: 28%;
-    }
-    .vertical-slick.right {
-    }
-    .vertical-slick.shoe {
     }
     .bgimage.ng-scope.slick-slide.slick-active {
         transform: translate(0);
@@ -1923,17 +1832,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         height: 480px;
         top: 50px;
         right: 8%;
-        left: 52%;
-    }
-    canvas {
-        top: 40px;
-        left: 47%;
-        margin-right: 0;
-    }
-    section.canvas-button-row {
-        width: 45%;
-        height: 36px;
-        top: 480px;
         left: 52%;
     }
     .random-button {
@@ -2095,9 +1993,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
 }
 @media screen and (min-width: 1100px) {
-    canvas {
-        left: 49.5%;
-    }
     .cart-button {
     }
     .white-bg.select-slide-out {
@@ -2145,11 +2040,8 @@ md-tabs.ng-isolate-scope.md-default-theme {
     section.vertical-slick-container {
         height: 600px;
     }
-    canvas {
-        left: 47%;
-    }
     section.canvas-button-row {
-        top: 600px;
+        top: 92%;
 
     }
     .slick-list.draggable {

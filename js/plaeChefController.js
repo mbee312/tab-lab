@@ -86,7 +86,7 @@
         rightProfileTabCanvas.style.width = 512;//actual width of canvas
         rightProfileTabCanvas.style.height = 512;//actual height of canvas
 
-        var mobileScaleFactor = .75;
+        var mobileScaleFactor = .70;
         var mobileScaleFactorWide = .40;
         var smartphoneScaleFactor = .85;
         var smartphoneScaleFactorWide = .46;
@@ -139,17 +139,19 @@
             if(!$scope.isMobile) {
                 if (iWidth < 360) {
                     wScaleFactor = .4;
-                }else if(iWidth < 600){
-                    wScaleFactor = .5;
+                }else if(iWidth < 600) {
+                    wScaleFactor = .4;
+                }else if(iWidth < 767){
+                        wScaleFactor = .5;
                 }else if(iWidth < 800){
-                    wScaleFactor = .42;
+                    wScaleFactor = .5;
                 }else if (iWidth < 1024){
                     wScaleFactor = .5;
                 }else if (iWidth < 1200){
                     console.log ("im here width <1200");
-                    wScaleFactor = .470;
+                    wScaleFactor = .5;
                 }else{
-                    wScaleFactor = .48;
+                    wScaleFactor = .46;
                 }
             }
 
@@ -187,7 +189,7 @@
 
             if (window.innerWidth < 468){
                 $scope.isMobile = true;
-                $scope.setCanvasWidthsAndHeight(0,30);
+                $scope.setCanvasWidthsAndHeight(0,0);
                 $scope.scaleViews(mobileScaleFactor);
             }else if (window.innerWidth < 520){
                 $scope.isMobile = false;
@@ -202,10 +204,9 @@
                 $scope.isMobile = false;
                 $scope.setCanvasWidthsAndHeight(0,0);
                 $scope.scaleViews(mobileScaleFactorWide);
-
             }else if(window.innerWidth < 768){
                 $scope.isMobile = false;
-                $scope.setCanvasWidthsAndHeight(0,0);
+                $scope.setCanvasWidthsAndHeight(0,-100);
                 $scope.scaleViews(smartphoneScaleFactorWide);
             }else if(window.innerWidth < 1024){
                 $scope.isMobile = false;
@@ -302,7 +303,7 @@
 
             if (side == "left") {
                 ctx.setTransform(1, 0, 0, 1, 0, 0);
-                ctx.clearRect(0, 0, c.width / 2.5, c.height);
+                ctx.clearRect(0, 0, c.width / 2, c.height);
                 console.log("clear left tab");
             } else if (side == "right") {
                 ctx.setTransform(1, 0, 0, 1, 0, 0);
