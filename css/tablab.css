@@ -1026,7 +1026,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         display: none;
     }
 
-
     .slick-button{
         width: 30%;
     }
@@ -1088,16 +1087,13 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .vertical-slick{
         width: 28%;
     }
-    .vertical-slick.left {
-    }
     .vertical-slick.shoe{
         width: 42%;
     }
     .vertical-slick.right {
         float: right;
     }
-    img.slide.img {
-    }
+
     img.slide.img.tab{
         width: 90%;
         margin-bottom: 5px;
@@ -1203,11 +1199,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
     /*  Canvas section  */
     /*                  */
 
-    canvas {
-    }
-
-    canvas#plae-chef-canvas-tab-top {
-    }
 
     #white-bg-mobile {
         position: absolute;
@@ -1217,6 +1208,9 @@ md-tabs.ng-isolate-scope.md-default-theme {
         right: 2%;
         left: 58%;
         float: right;
+    }
+    section.canvas-button-row {
+        top: 84%;
     }
 
     .random-button {
