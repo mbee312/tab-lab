@@ -46,38 +46,11 @@
                 var topViewTabCanvas = document.getElementById('plae-chef-canvas-tab-top');
                 var tptabcontext = topViewTabCanvas.getContext('2d');
 
-                var leftProfileCanvas = document.getElementById('plae-chef-canvas-left');
-                var lpcontext = leftProfileCanvas.getContext('2d');
-
-                var leftProfileTabCanvas = document.getElementById('plae-chef-canvas-tab-left');
-                var lptabcontext = leftProfileTabCanvas.getContext('2d');
-
-                var rightProfileCanvas = document.getElementById('plae-chef-canvas-right');
-                var rpcontext = rightProfileCanvas.getContext('2d');
-
-                var rightProfileTabCanvas = document.getElementById('plae-chef-canvas-tab-right');
-                var rptabcontext = rightProfileTabCanvas.getContext('2d');
 
                 topViewCanvas.style.width = 512;//actual width of canvas
                 topViewCanvas.style.height = 512;//actual height of canvas
                 topViewTabCanvas.style.width = 512;//actual width of canvas
                 topViewTabCanvas.style.height = 512;//actual height of canvas
-                leftProfileCanvas.style.width = 512;//actual width of canvas
-                leftProfileCanvas.style.height = 512;//actual height of canvas
-                leftProfileTabCanvas.style.width = 512;//actual width of canvas
-                leftProfileTabCanvas.style.height = 512;//actual height of canvas
-                rightProfileCanvas.style.width = 512;//actual width of canvas
-                rightProfileCanvas.style.height = 512;//actual height of canvas
-                rightProfileTabCanvas.style.width = 512;//actual width of canvas
-                rightProfileTabCanvas.style.height = 512;//actual height of canvas
-
-                var mobileScaleFactor = .65;
-                var mobileScaleFactorWide = .40;
-                var smartphoneScaleFactor = .85;
-                var smartphoneScaleFactorWide = .46;
-                var tabletScaleFactor = .91;
-                var tabletScaleFactorWide = .67;
-                var defaultScaleFactor = 1;
 
                 $scope.isMobile = false;
                 $scope.cWidth = 0; // canvas width
@@ -111,76 +84,60 @@
 
                     return iWidth*wScaleFactor;
                 }
-                $scope.scaleViews = function (scaleFactor){
-                    console.log("inside scaleViews")
-                    tpcontext.scale(scaleFactor,scaleFactor);
-                    tptabcontext.scale(scaleFactor,scaleFactor);
-                    lpcontext.scale(scaleFactor,scaleFactor);
-                    lptabcontext.scale(scaleFactor,scaleFactor);
-                    rpcontext.scale(scaleFactor,scaleFactor);
-                    rptabcontext.scale(scaleFactor,scaleFactor);
-                } //end scaleViews()
-
-                $scope.setCanvasWidthAndHeight = function (canvas, width, height){
-                    canvas.width = width;
-                    canvas.height = height;
-                } //end scaleViews()
 
                 $scope.setAllCanvasWidthsAndHeight = function (x, y){
                     $scope.cWidth = $scope.calculateCanvasWidth(); // canvas calculated width
 
                     //x and y is used in case canvas is not a square
-                    $scope.setCanvasWidthAndHeight(topViewCanvas,$scope.cWidth+x,$scope.cWidth+y);
-                    $scope.setCanvasWidthAndHeight(topViewTabCanvas,$scope.cWidth+x,$scope.cWidth+y);
-                    $scope.setCanvasWidthAndHeight(leftProfileCanvas,$scope.cWidth+x,$scope.cWidth+y);
-                    $scope.setCanvasWidthAndHeight(leftProfileTabCanvas,$scope.cWidth+x,$scope.cWidth+y);
-                    $scope.setCanvasWidthAndHeight(rightProfileCanvas,$scope.cWidth+x,$scope.cWidth+y);
-                    $scope.setCanvasWidthAndHeight(rightProfileTabCanvas,$scope.cWidth+x,$scope.cWidth+y);
+                    topViewCanvas.width = $scope.cWidth+x;
+                    topViewCanvas.height = $scope.cWidth+y;
+
+                    topViewTabCanvas.width = $scope.cWidth+x;
+                    topViewTabCanvas.height = $scope.cWidth+y;
                 }
 
-                $scope.setCanvasWidthHeightAndUpdateSize = function(){
+
+                var mobileScaleFactor = .5;
+                var mobileScaleFactorWide = .27;
+                var smartphoneScaleFactor = .85;
+                var smartphoneScaleFactorWide = .27;
+                var tabletScaleFactor = .6;
+                var tabletScaleFactorWide = .5;
+                var defaultScaleFactor = .8;
+
+                $scope.scaleFactor = 1;
+
+                $scope.findAndSetCanvasDimensions = function(){
+                    $scope.setAllCanvasWidthsAndHeight(0,0);
 
                     if (window.innerWidth < 468){
                         $scope.isMobile = true;
-                        $scope.setAllCanvasWidthsAndHeight(0,0);
-                        $scope.scaleViews(mobileScaleFactor);
-                    }else if (window.innerWidth < 520){
-                        $scope.isMobile = false;
-                        $scope.setAllCanvasWidthsAndHeight(0,0);
-                        $scope.scaleViews(mobileScaleFactorWide);
-                    }else if (window.innerWidth < 568) {
-                        $scope.isMobile = false;
-                        $scope.setAllCanvasWidthsAndHeight(0,0);
-                        $scope.scaleViews(mobileScaleFactorWide);
-
+                        $scope.scaleFactor = mobileScaleFactor;
                     }else if (window.innerWidth < 600){
                         $scope.isMobile = false;
-                        $scope.setAllCanvasWidthsAndHeight(0,0);
-                        $scope.scaleViews(mobileScaleFactorWide);
+                        $scope.scaleFactor = mobileScaleFactorWide;
                     }else if(window.innerWidth < 768){
                         $scope.isMobile = false;
-                        $scope.setAllCanvasWidthsAndHeight(0,-100);
-                        $scope.scaleViews(smartphoneScaleFactorWide);
+                        $scope.scaleFactor = smartphoneScaleFactorWide;
                     }else if(window.innerWidth < 1024){
                         $scope.isMobile = false;
-                        $scope.setAllCanvasWidthsAndHeight(0,0);
-                        $scope.scaleViews(tabletScaleFactorWide);
+                        $scope.scaleFactor = tabletScaleFactorWide;
                     }else if(window.innerWidth < 1200){
                         $scope.isMobile = false;
-                        $scope.setAllCanvasWidthsAndHeight(0,0);
-                        $scope.scaleViews(tabletScaleFactor);
+                        $scope.scaleFactor = tabletScaleFactor;
                     }else{
                         $scope.isMobile = false;
-                        $scope.setAllCanvasWidthsAndHeight(0,0);
-                        $scope.scaleViews(1);
+                        $scope.scaleFactor = defaultScaleFactor;
                     } //end if-else
                     $scope.setViews();
                     $scope.setTabViews("right");
                     $scope.setTabViews("left");
+
+
                 } //end checkWindowSize()
 
-                window.onload = $scope.setCanvasWidthHeightAndUpdateSize;       // When the page first loads
-                window.onresize = $scope.setCanvasWidthHeightAndUpdateSize;     // When the browser changes size
+                window.onload = $scope.findAndSetCanvasDimensions;       // When the page first loads
+                window.onresize = $scope.findAndSetCanvasDimensions;     // When the browser changes size
 
                 /*  CANVAS SETUP end   */
 
@@ -230,15 +187,21 @@
                             console.log("loaded " + list[i].topViewLeft.src);
                             console.log("loaded " + list[i].topViewRight.src);
                         }else{
-                            list[i].topViewRightTopTab = new Image();
-                            list[i].topViewRightTopTab.src = list[i].topViewRightOne;
-                            list[i].topViewRightBottomTab = new Image();
-                            list[i].topViewRightBottomTab.src = list[i].topViewRightTwo;
-
                             list[i].topViewLeftTopTab = new Image();
                             list[i].topViewLeftTopTab.src = list[i].topViewLeftOne;
+                            console.log("loaded "  + list[i].topViewLeftTopTab.src);
+
                             list[i].topViewLeftBottomTab = new Image();
                             list[i].topViewLeftBottomTab.src = list[i].topViewLeftTwo;
+                            console.log("loaded "  + list[i].topViewLeftBottomTab.src);
+
+                            list[i].topViewRightTopTab = new Image();
+                            list[i].topViewRightTopTab.src = list[i].topViewRightOne;
+                            console.log("loaded "  + list[i].topViewRightTopTab.src);
+
+                            list[i].topViewRightBottomTab = new Image();
+                            list[i].topViewRightBottomTab.src = list[i].topViewRightTwo;
+                            console.log("loaded "  + list[i].topViewRightBottomTab.src);
 
                         }//end else-if
                     }// end for
@@ -257,14 +220,10 @@
                     $scope.tabList = data;
                     $scope.preLoader ($scope.tabList, false);
                     $scope.addTab($scope.tabList[$scope.leftTabIndex], "left");
+                    console.log("FINISHED LOADING LEFT TABS!");
                     $scope.addTab($scope.tabList[$scope.rightTabIndex], "right");
+                    console.log("FINISHED LOADING RIGHT TABS!");
                 });
-
-                $http.get('product/views.json').success(function (data) {
-                    $scope.mainViews = data;
-                });
-
-
 
                 /*                                 */
                 /* helper function to clear canvas */
@@ -329,6 +288,7 @@
                                 console.log($scope.subTotal);
                             }
                             $scope.tabLeft.push(tab);
+                            console.log("INSIDE addTab(left). topViewLeftTopTab.src=" + $scope.tabLeft[0].topViewLeftTopTab.src);
                             $scope.subTotal += $scope.tabLeft[0].price;
                             console.log("the tab price is " + $scope.tabLeft[0].price);
                             break;
@@ -339,6 +299,7 @@
                                 console.log("tabRight.pop()");
                             }
                             $scope.tabRight.push(tab);
+                            console.log("INSIDE addTab(right). topViewRightTopTab.src=" + $scope.tabRight[0].topViewRightTopTab.src);
                             $scope.subTotal += $scope.tabRight[0].price;
                             console.log("the tab price is " + $scope.tabRight[0].price);
                             break;
@@ -346,6 +307,8 @@
                             console.log("error: no tab side selected in addTab()");
                     }// end switch
 
+
+                    /* only show tabs when there is a shoe selected */
                     if ($scope.shoeSelected.length > 0) {
                         $scope.setViews();
                         $scope.setTabViews(side);
@@ -360,8 +323,6 @@
                         case "left":
                             $scope.subTotal -= $scope.tabLeft[0].price;
                             console.log("popped " + $scope.tabLeft.pop().name + " from tabLeft");
-                            $scope.clearImage(leftProfileTabCanvas, lptabcontext);
-                            $scope.clearImage(leftProfileCanvas, lpcontext);
                             $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                             $scope.clearImage(topViewCanvas, tpcontext, side);
                             $scope.setViews(side);
@@ -369,8 +330,6 @@
                         case "right":
                             $scope.subTotal -= $scope.tabRight[0].price;
                             console.log("popped " + $scope.tabRight.pop().name + " from tabRight");
-                            $scope.clearImage(rightProfileTabCanvas, rptabcontext);
-                            $scope.clearImage(rightProfileCanvas, rpcontext);
                             $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                             $scope.clearImage(topViewCanvas, tpcontext, side);
                             $scope.setViews(side);
@@ -378,11 +337,6 @@
                         case "shoe":
                             $scope.subTotal -= $scope.shoeSelected[0].price;
                             console.log("popped " + $scope.shoeSelected.pop().name + " from shoeSelected");
-                            $scope.clearImage(rightProfileTabCanvas, rptabcontext);
-                            $scope.clearImage(rightProfileCanvas, rpcontext);
-                            $scope.clearImage(leftProfileTabCanvas, lptabcontext);
-                            $scope.clearImage(leftProfileCanvas, lpcontext);
-                            $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                             $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                             $scope.clearImage(topViewCanvas, tpcontext, side);
                             break;
@@ -395,100 +349,75 @@
                     if (side == "left") {
                         console.log("inside left setviews()");
                         $scope.drawTopViewImage(side);
-                        /*    $scope.drawLeftProfileViewImage(); */
                     } else if (side == "right") {
                         console.log("inside right setviews()");
                         $scope.drawTopViewImage(side);
-                        /*   $scope.drawRightProfileViewImage(); */
                     } else {
                         console.log("inside else setviews()");
                         $scope.drawTopViewImage();
-                        /*
-                         $scope.drawLeftProfileViewImage();
-                         $scope.drawRightProfileViewImage(); */
                     }//end else-if
                 }; //end setViews
 
                 $scope.setTabViews = function (side) {
                     $scope.drawTopTabsViewImage(side);
-                    /*    switch (side) {
-                     case "left":
-                     console.log("drawing left side");
-                     $scope.drawLeftTabsProfileViewImage();
-                     break;
-                     case "right":
-                     console.log("drawing right side");
-                     $scope.drawRightTabsProfileViewImage();
-                     break;
-                     default:
-                     console.log("error: no tab view side selected");
-                     }// end switch
-                     */
-
 
                 }; //end setViews
 
-                $scope.drawDefaultViewImage = function () {
-                    $scope.clearImage(canvas, context);
-                    context.fillStyle = "#FFFFFF";
-                    context.fillRect(0, 0, canvas.width, 100);
-                    var base_image = new Image();
-                    if ($scope.isTabSelected()) {
-                        base_image.onload = function () {
-                            context.drawImage(base_image, 150, 60, 800, 409);
-                        };
-                        base_image.src = $scope.shoeSelected[0]["mainViewDefault"];
-                        console.log("drawDefaultImage set!");
-                    } else {
-                        base_image.onload = function () {
-                            context.drawImage(base_image, 150, 60, 800, 409);
-                        };
-                        base_image.src = $scope.shoeSelected[0]["mainViewDefault"];
-                        console.log("drawDefaultImage set!");
-                    }//end if-else
-
-                }; //end drawDefaultViewImage
 
                 $scope.drawTopViewImage = function (side) {
                     $scope.clearImage(topViewCanvas, tpcontext, side);
+                    console.log("THE canvas width is " + topViewCanvas.width);
 
                     var right_image = new Image();
                     var left_image = new Image();
-                    console.log("THE canvas width is " + topViewCanvas.width);
-                    var xOrigin = $scope.cWidth/20;
-                    var yOrigin = $scope.cWidth/20;
+
+                    left_image.src = $scope.shoeSelected[0].topViewLeft.src;
+                    right_image.src = $scope.shoeSelected[0].topViewRight.src;
+
+
+                    /* getImageNaturalDimensions */
+
+                    var leftImageWidth =  left_image.width;
+                    var leftImageHeight = left_image.height;
+                    var rightImageWidth =  right_image.width;
+                    var rightImageHeight = right_image.height;
+
+                    /* scaleImageDimensions */
+                    leftImageWidth = leftImageWidth*$scope.scaleFactor;
+                    leftImageHeight = leftImageHeight*$scope.scaleFactor;
+                    rightImageWidth = rightImageWidth*$scope.scaleFactor;
+                    rightImageHeight = rightImageHeight*$scope.scaleFactor;
+
+                    var leftXOrigin = $scope.cWidth/2 - leftImageWidth;
+                    var yOrigin = $scope.cWidth/50;
+                    var rightXOrigin = $scope.cWidth/2;
+
+                    console.log(leftXOrigin);
+                    console.log(rightXOrigin);
+                    console.log(yOrigin);
 
                     if (side == "left") {
                         //draw just the left shoe
-                        left_image.src = $scope.shoeSelected[0].topViewLeft.src;
                         left_image.onload = function () {
-                            tpcontext.drawImage(left_image, xOrigin, yOrigin, 240, 469);
+                            tpcontext.drawImage(left_image, leftXOrigin, yOrigin, leftImageWidth, leftImageHeight);
                         };
 
-                        console.log("set shoe left" + left_image.src);
                     } else if (side == "right") {
                         //draw just the right shoe
-                        right_image.src = $scope.shoeSelected[0].topViewRight.src;
                         right_image.onload = function () {
-                            tpcontext.drawImage(right_image, 210, yOrigin, 240, 469);
+                            tpcontext.drawImage(right_image, rightXOrigin, yOrigin, rightImageWidth, rightImageHeight);
                         };
 
-                        console.log("set shoe right" + right_image.src);
                     } else {
                         //draw both
-                        left_image.src = $scope.shoeSelected[0].topViewLeft.src;
                         left_image.onload = function () {
-                            tpcontext.drawImage(left_image, xOrigin, yOrigin, 240, 469);
+                            tpcontext.drawImage(left_image, leftXOrigin, yOrigin, leftImageWidth, leftImageHeight);
                         };
 
-                        console.log("set shoe left" + left_image.src);
-
-                        right_image.src = $scope.shoeSelected[0].topViewRight.src;
                         right_image.onload = function () {
-                            tpcontext.drawImage(right_image, 210, yOrigin, 240, 469);
+                            tpcontext.drawImage(right_image,  rightXOrigin, yOrigin, rightImageWidth, rightImageHeight);
                         };
 
-                        console.log("set shoe right" + right_image.src);
                     }//end else-if
                 };// end drawTopViewImage
 
@@ -497,12 +426,8 @@
                 $scope.drawTopTabsViewImage = function (side) {
                     $scope.clearImage(topViewTabCanvas, tptabcontext, side);
 
-                    var tab_image_top_left = new Image();
-                    var tab_image_bot_left = new Image();
-                    var tab_image_top_right = new Image();
-                    var tab_image_bot_right = new Image();
-                    var tabWidth = $scope.shoeSelected[0]["topViewTabWidth"];
-                    var tabHeight = $scope.shoeSelected[0]["topViewTabHeight"];
+                    /* Temp section                                                                 */
+                    /* rotation and and scaling variables for inconsistencies of photographed tabs  */
 
 
                     /** Left Shoe tabs vars **/
@@ -527,33 +452,73 @@
                     switch (side) {
                         case "left":
                             /** Draw Left Shoe tabs **/
+                            var tab_image_top_left = new Image();
+                            var tab_image_bot_left = new Image();
+
+                            tab_image_top_left.src = $scope.tabLeft[0].topViewLeftTopTab.src;
+                            console.log("IN drawTopTabsViewImage tab_image_top_left.src=" + tab_image_top_left.src + " width= " + tab_image_top_left.width);
+                            tab_image_bot_left.src = $scope.tabLeft[0].topViewLeftBottomTab.src;
+                            console.log("IN drawTopTabsViewImage tab_image_bot_left.src=" +  tab_image_bot_left.src);
+
+                            /* getImageNaturalDimensions */
+
+                            var tabTopLeftImageWidth =  tab_image_top_left.width;
+                            console.log("tabTopLeftImageWidth=" + tabTopLeftImageWidth);
+                            var tabTopLeftImageHeight = tab_image_top_left.height;
+                            var tabBottomLeftImageWidth =  tab_image_bot_left.width;
+                            var tabBottomLeftImageHeight = tab_image_bot_left.height;
+
+                            /* scaleImageDimensions */
+                            tabTopLeftImageWidth = tabTopLeftImageWidth*$scope.scaleFactor;
+                            console.log("tabTopLeftImageWidth=" + tabTopLeftImageWidth);
+                            tabTopLeftImageHeight = tabTopLeftImageHeight*$scope.scaleFactor;
+                            tabBottomLeftImageWidth = tabBottomLeftImageWidth*$scope.scaleFactor;
+                            tabBottomLeftImageHeight = tabBottomLeftImageHeight*$scope.scaleFactor;
+
 
                                 tab_image_top_left.onload = function () {
-                                    tptabcontext.drawImage(tab_image_top_left, topXOffsetL - 278, topYOffsetL, tabWidth - 3, tabHeight);
+                                    tptabcontext.drawImage(tab_image_top_left, 0, 0, tabTopLeftImageWidth, tabTopLeftImageHeight);
                                 };
-                                tab_image_top_left.src = $scope.tabLeft[0].topViewLeftTopTab.src;
+
 
                                 tab_image_bot_left.onload = function () {
-                                    tptabcontext.drawImage(tab_image_bot_left, botXOffsetL - 279, botYOffsetL-1, tabWidth - 3, tabHeight);
+                                    tptabcontext.drawImage(tab_image_bot_left, 0, 0, tabBottomLeftImageWidth, tabBottomLeftImageHeight);
                                 };
-                                tab_image_bot_left.src = $scope.tabLeft[0].topViewLeftBottomTab.src;
 
                             break;
 
                         case "right" :
                             /** Draw Right Shoe tabs **/
 
+                            var tab_image_top_right = new Image();
+                            var tab_image_bot_right = new Image();
+
+
+                            tab_image_top_right.src = $scope.tabRight[0].topViewRightTopTab.src;
+                            tab_image_bot_right.src = $scope.tabRight[0].topViewRightBottomTab.src;
+
+                            /* getImageNaturalDimensions */
+
+                            var tabTopRightImageWidth =  tab_image_top_right.width;
+                            var tabTopRightImageHeight = tab_image_top_right.height;
+                            var tabBottomRightImageWidth =  tab_image_bot_right.width;
+                            var tabBottomRightImageHeight = tab_image_bot_right.height;
+
+                            /* scaleImageDimensions */
+                            tabTopRightImageWidth = tabTopRightImageWidth*$scope.scaleFactor;
+                            tabTopRightImageHeight = tabTopRightImageHeight*$scope.scaleFactor;
+                            tabBottomRightImageWidth = tabBottomRightImageWidth*$scope.scaleFactor;
+                            tabBottomRightImageHeight = tabBottomRightImageHeight*$scope.scaleFactor;
+
                                 tab_image_top_right.onload = function () {
-                                    tptabcontext.drawImage(tab_image_top_right, topXOffsetR - 309, topYOffsetR-1, tabWidth - 3, tabHeight);
+                                    tptabcontext.drawImage(tab_image_top_right, 50, 50, tabTopRightImageWidth, tabTopRightImageHeight);
                                 };
-                                tab_image_top_right.src = $scope.tabRight[0].topViewRightTopTab.src;
 
                                 tab_image_bot_right.onload = function () {
-                                    tptabcontext.drawImage(tab_image_bot_right, botXOffsetR - 309, botYOffsetR-1, tabWidth - 3, tabHeight);
+                                    tptabcontext.drawImage(tab_image_bot_right, 50, 50, tabBottomRightImageWidth, tabBottomRightImageHeight);
 
                                 };
-                                tab_image_bot_right.src = $scope.tabRight[0].topViewRightTopTab.src;
-                            
+
                             break;
 
                         default:
@@ -561,99 +526,6 @@
                     }// end switch
 
                 }; //end drawTopTabsViewImage()
-
-
-                $scope.drawLeftProfileViewImage = function () {
-                    $scope.clearImage(leftProfileCanvas, lpcontext);
-                    lpcontext.translate(0, 0);
-                    lpcontext.fillStyle = "#FFFFFF";
-                    lpcontext.fillRect(75, 0, leftProfileCanvas.width - 150, 150);
-                    var base_image = new Image();
-                    if ($scope.tabLeft.length > 0) {
-                        base_image.onload = function () {
-                            lpcontext.drawImage(base_image, 0, 110, 600, 307);
-                        };
-                        base_image.src = $scope.shoeSelected[0]["mainViewLeftProfileNoTab"];
-                    } else {
-                        base_image.onload = function () {
-                            lpcontext.drawImage(base_image, 0, 110, 600, 307);
-                        };
-                        base_image.src = $scope.shoeSelected[0]["mainViewLeftProfile"];
-                    }// end if-else
-                };// end drawLeftProfileViewImage
-
-                $scope.drawRightProfileViewImage = function () {
-                    $scope.clearImage(rightProfileCanvas, rpcontext);
-                    rpcontext.translate(0, 0);
-                    rpcontext.fillStyle = "#FFFFFF";
-                    rpcontext.fillRect(75, 0, rightProfileCanvas.width - 150, 150);
-                    var base_image = new Image();
-                    if ($scope.tabRight.length > 0) {
-                        base_image.onload = function () {
-                            rpcontext.drawImage(base_image, 2, 112, 600, 307);
-                        };
-                        base_image.src = $scope.shoeSelected[0]["mainViewRightProfileNoTab"];
-                    } else {
-                        base_image.onload = function () {
-                            rpcontext.drawImage(base_image, 2, 112, 600, 307);
-                        };
-                        base_image.src = $scope.shoeSelected[0]["mainViewRightProfile"];
-                    }// end if-else
-                }; //end drawRightProfileViewImage
-
-                $scope.drawLeftTabsProfileViewImage = function () {
-                    $scope.clearImage(leftProfileTabCanvas, lptabcontext);
-
-                    var tab_image_top = new Image();
-                    var tab_image_bottom = new Image();
-                    var tabWidth = 275;
-                    var tabHeight = 75;
-
-                    var topXOffset = $scope.shoeSelected[0]["profileTopXOffsetL"];
-                    var topYOffset = $scope.shoeSelected[0]["profileTopYOffsetL"];
-                    var topRotation = $scope.shoeSelected[0]["profileTopRotationL"];
-
-                    var botXOffset = $scope.shoeSelected[0]["profileBotXOffsetL"];
-                    var botYOffset = $scope.shoeSelected[0]["profileBotYOffsetL"];
-                    var botRotation = $scope.shoeSelected[0]["profileBotRotationL"];
-
-                    tab_image_top.onload = function () {
-                        $scope.drawRotated(topRotation, leftProfileTabCanvas, lptabcontext, tab_image_top, topXOffset - 211, topYOffset, tabWidth, tabHeight);
-                    };
-                    tab_image_top.src = $scope.tabLeft[0]["tabOneImg"];
-
-                    tab_image_bottom.onload = function () {
-                        $scope.drawRotated(botRotation, leftProfileTabCanvas, lptabcontext, tab_image_bottom, botXOffset - 211, botYOffset, tabWidth, tabHeight);
-                    };
-                    tab_image_bottom.src = $scope.tabLeft[0]["tabTwoImg"];
-                }; // end drawLeftTabsProfileViewImage
-
-
-                $scope.drawRightTabsProfileViewImage = function () {
-                    $scope.clearImage(rightProfileTabCanvas, rptabcontext);
-                    var tab_image_top = new Image();
-                    var tab_image_bottom = new Image();
-                    var tabWidth = 275;
-                    var tabHeight = 75;
-
-                    var topXOffset = $scope.shoeSelected[0]["profileTopXOffsetR"];
-                    var topYOffset = $scope.shoeSelected[0]["profileTopYOffsetR"];
-                    var topRotation = $scope.shoeSelected[0]["profileTopRotationR"];
-
-                    var botXOffset = $scope.shoeSelected[0]["profileBotXOffsetR"];
-                    var botYOffset = $scope.shoeSelected[0]["profileBotYOffsetR"];
-                    var botRotation = $scope.shoeSelected[0]["profileBotRotationR"];
-
-                    tab_image_top.onload = function () {
-                        $scope.drawRotated(topRotation, rightProfileTabCanvas, rptabcontext, tab_image_top, topXOffset - 205, topYOffset, tabWidth, tabHeight);
-                    };
-                    tab_image_top.src = $scope.tabRight[0]["tabOneImg"];
-
-                    tab_image_bottom.onload = function () {
-                        $scope.drawRotated(botRotation, rightProfileTabCanvas, rptabcontext, tab_image_bottom, botXOffset - 235, botYOffset, tabWidth, tabHeight);
-                    };
-                    tab_image_bottom.src = $scope.tabRight[0]["tabTwoImg"];
-                }; // end drawRightTabsProfileViewImage
 
 
                 /**                                       **/
@@ -687,11 +559,7 @@
                     $scope.subTotal = 0;
                     /*    $scope.clearImage(canvas,context ); */
                     $scope.clearImage(topViewCanvas, tpcontext);
-                    $scope.clearImage(leftProfileCanvas, lpcontext);
-                    $scope.clearImage(rightProfileCanvas, rpcontext);
                     $scope.clearImage(topViewTabCanvas, tptabcontext);
-                    $scope.clearImage(leftProfileTabCanvas, lptabcontext);
-                    $scope.clearImage(rightProfileTabCanvas, rptabcontext);
                     this.canvasView = "top";
 
                     this.setEditMode();
