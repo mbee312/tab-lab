@@ -452,7 +452,7 @@
                     var botYOffsetR = $scope.shoeSelected[0]["topViewRightShoeBottomTabYOffset"];
                     var botRotationR = $scope.shoeSelected[0]["topViewRightShoeBottomTabRotation"];
 
-                    var tabTopY = 20 + ($scope.leftImageHeight *.33);
+                    var tabTopY = 20 + ($scope.leftImageHeight *.34);
                     var tabBottomY = 20 + ($scope.leftImageHeight *.48);
 
 
@@ -465,8 +465,8 @@
                             tab_image_top_left.src = $scope.tabLeft[0].topViewLeftTopTab.src;
                             tab_image_bot_left.src = $scope.tabLeft[0].topViewLeftBottomTab.src;
 
-                            var tabTopLeftX = $scope.cWidth/2 - ($scope.leftImageWidth *.87);
-                            var tabBottomLeftX = $scope.cWidth/2 - ($scope.leftImageWidth *.87);
+                            var tabTopLeftX = $scope.cWidth/2 - ($scope.leftImageWidth *.89);
+                            var tabBottomLeftX = $scope.cWidth/2 - ($scope.leftImageWidth *.89);
 
 
                             /* getImageNaturalDimensions */
@@ -485,12 +485,12 @@
 
 
                                 tab_image_top_left.onload = function () {
-                                    tptabcontext.drawImage(tab_image_top_left, tabTopLeftX, tabTopY, tabTopLeftImageWidth-10, tabTopLeftImageHeight+5);
+                                    tptabcontext.drawImage(tab_image_top_left, tabTopLeftX, tabTopY, tabTopLeftImageWidth-11, tabTopLeftImageHeight+5);
                                 };
 
 
                                 tab_image_bot_left.onload = function () {
-                                    tptabcontext.drawImage(tab_image_bot_left, tabBottomLeftX, tabBottomY, tabBottomLeftImageWidth-10, tabBottomLeftImageHeight+5);
+                                    tptabcontext.drawImage(tab_image_bot_left, tabBottomLeftX, tabBottomY, tabBottomLeftImageWidth-11, tabBottomLeftImageHeight+5);
                                 };
 
                             break;
@@ -523,11 +523,11 @@
                             tabBottomRightImageHeight = tabBottomRightImageHeight*$scope.scaleFactor*1.25;
 
                                 tab_image_top_right.onload = function () {
-                                    tptabcontext.drawImage(tab_image_top_right, tabTopRightX, tabTopY, tabTopRightImageWidth-10, tabTopRightImageHeight+5);
+                                    tptabcontext.drawImage(tab_image_top_right, tabTopRightX, tabTopY, tabTopRightImageWidth-11, tabTopRightImageHeight+5);
                                 };
 
                                 tab_image_bot_right.onload = function () {
-                                    tptabcontext.drawImage(tab_image_bot_right, tabBottomRightX, tabBottomY, tabBottomRightImageWidth-10, tabBottomRightImageHeight+5);
+                                    tptabcontext.drawImage(tab_image_bot_right, tabBottomRightX, tabBottomY, tabBottomRightImageWidth-11, tabBottomRightImageHeight+5);
 
                                 };
 
