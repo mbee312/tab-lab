@@ -245,6 +245,7 @@
 
                     while ($scope.shoeSelected.length > 0) {
                         $scope.subTotal -= $scope.shoeSelected[0].price;
+                        console.log($scope.shoeSelected.pop() + " was removed as selected style");
                     }
                     $scope.shoeSelected.push(shoe);
                     $scope.subTotal += $scope.shoeSelected[0].price;
@@ -300,18 +301,21 @@
                     switch (side) {
                         case "left":
                             $scope.subTotal -= $scope.tabLeft[0].price;
+                            console.log("popped " + $scope.tabLeft.pop().name + " from tabLeft");
                             $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                             $scope.clearImage(topViewCanvas, tpcontext, side);
                             $scope.setViews(side);
                             break;
                         case "right":
                             $scope.subTotal -= $scope.tabRight[0].price;
+                            console.log("popped " + $scope.tabRight.pop().name + " from tabRight");
                             $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                             $scope.clearImage(topViewCanvas, tpcontext, side);
                             $scope.setViews(side);
                             break;
                         case "shoe":
                             $scope.subTotal -= $scope.shoeSelected[0].price;
+                            console.log("popped " + $scope.shoeSelected.pop().name + " from shoeSelected");
                             $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                             $scope.clearImage(topViewCanvas, tpcontext, side);
                             break;
