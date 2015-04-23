@@ -77,7 +77,6 @@
                         }else if (iWidth < 1024){
                             wScaleFactor = .5;
                         }else if (iWidth < 1200){
-                            console.log ("im here width <1200");
                             wScaleFactor = .5;
                         }else{
                             wScaleFactor = .46;
@@ -178,31 +177,23 @@
                     for(var i = 0; i < list.length ; i++){
                         list[i].menuImg = new Image();
                         list[i].menuImg.src=list[i].menuImgUrl;
-                        console.log("loaded "  + list[i].menuImg.src);
-
                         if(shoeBool){
                             list[i].topViewLeft = new Image();
                             list[i].topViewLeft.src=list[i].mainViewTopLeft;
                             list[i].topViewRight = new Image();
                             list[i].topViewRight.src=list[i].mainViewTopRight;
-                            console.log("loaded " + list[i].topViewLeft.src);
-                            console.log("loaded " + list[i].topViewRight.src);
                         }else{
                             list[i].topViewLeftTopTab = new Image();
                             list[i].topViewLeftTopTab.src = list[i].topViewLeftOne;
-                            console.log("loaded "  + list[i].topViewLeftTopTab.src);
 
                             list[i].topViewLeftBottomTab = new Image();
                             list[i].topViewLeftBottomTab.src = list[i].topViewLeftTwo;
-                            console.log("loaded "  + list[i].topViewLeftBottomTab.src);
 
                             list[i].topViewRightTopTab = new Image();
                             list[i].topViewRightTopTab.src = list[i].topViewRightOne;
-                            console.log("loaded "  + list[i].topViewRightTopTab.src);
 
                             list[i].topViewRightBottomTab = new Image();
                             list[i].topViewRightBottomTab.src = list[i].topViewRightTwo;
-                            console.log("loaded "  + list[i].topViewRightBottomTab.src);
 
                         }//end else-if
                     }// end for
@@ -221,9 +212,7 @@
                     $scope.tabList = data;
                     $scope.preLoader ($scope.tabList, false);
                     $scope.addTab($scope.tabList[$scope.leftTabIndex], "left");
-                    console.log("FINISHED LOADING LEFT TABS!");
                     $scope.addTab($scope.tabList[$scope.rightTabIndex], "right");
-                    console.log("FINISHED LOADING RIGHT TABS!");
                 });
 
                 /*                                 */
@@ -238,7 +227,6 @@
                     if (side == "left") {
                         ctx.setTransform(1, 0, 0, 1, 0, 0);
                         ctx.clearRect(0, 0, c.width / 2, c.height);
-                        console.log("clear left tab");
                     } else if (side == "right") {
                         ctx.setTransform(1, 0, 0, 1, 0, 0);
                         ctx.clearRect(c.width / 2, 0, c.width / 2, c.height);
@@ -254,15 +242,11 @@
                 }; // end clearImage
 
                 $scope.setShoe = function (shoe) {
-                    console.log("inside setShoe");
 
                     while ($scope.shoeSelected.length > 0) {
                         $scope.subTotal -= $scope.shoeSelected[0].price;
-                        console.log($scope.shoeSelected.pop() + " was removed as selected style");
                     }
                     $scope.shoeSelected.push(shoe);
-                    console.log(shoe.name + " style selected");
-                    console.log("the price is " + $scope.shoeSelected[0].price);
                     $scope.subTotal += $scope.shoeSelected[0].price;
 
                     $scope.setViews();
@@ -285,24 +269,17 @@
                             if ($scope.tabLeft.length > 0) {
                                 $scope.subTotal -= $scope.tabLeft[0].price;
                                 $scope.tabLeft.pop();
-                                console.log("tabLeft.pop()");
-                                console.log($scope.subTotal);
                             }
                             $scope.tabLeft.push(tab);
-                            console.log("INSIDE addTab(left). topViewLeftTopTab.src=" + $scope.tabLeft[0].topViewLeftTopTab.src);
                             $scope.subTotal += $scope.tabLeft[0].price;
-                            console.log("the tab price is " + $scope.tabLeft[0].price);
                             break;
                         case "right":
                             if ($scope.tabRight.length > 0) {
                                 $scope.subTotal -= $scope.tabRight[0].price;
                                 $scope.tabRight.pop();
-                                console.log("tabRight.pop()");
                             }
                             $scope.tabRight.push(tab);
-                            console.log("INSIDE addTab(right). topViewRightTopTab.src=" + $scope.tabRight[0].topViewRightTopTab.src);
                             $scope.subTotal += $scope.tabRight[0].price;
-                            console.log("the tab price is " + $scope.tabRight[0].price);
                             break;
                         default :
                             console.log("error: no tab side selected in addTab()");
@@ -323,21 +300,18 @@
                     switch (side) {
                         case "left":
                             $scope.subTotal -= $scope.tabLeft[0].price;
-                            console.log("popped " + $scope.tabLeft.pop().name + " from tabLeft");
                             $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                             $scope.clearImage(topViewCanvas, tpcontext, side);
                             $scope.setViews(side);
                             break;
                         case "right":
                             $scope.subTotal -= $scope.tabRight[0].price;
-                            console.log("popped " + $scope.tabRight.pop().name + " from tabRight");
                             $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                             $scope.clearImage(topViewCanvas, tpcontext, side);
                             $scope.setViews(side);
                             break;
                         case "shoe":
                             $scope.subTotal -= $scope.shoeSelected[0].price;
-                            console.log("popped " + $scope.shoeSelected.pop().name + " from shoeSelected");
                             $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                             $scope.clearImage(topViewCanvas, tpcontext, side);
                             break;
@@ -348,13 +322,10 @@
 
                 $scope.setViews = function (side) {
                     if (side == "left") {
-                        console.log("inside left setviews()");
                         $scope.drawTopViewImage(side);
                     } else if (side == "right") {
-                        console.log("inside right setviews()");
                         $scope.drawTopViewImage(side);
                     } else {
-                        console.log("inside else setviews()");
                         $scope.drawTopViewImage();
                     }//end else-if
                 }; //end setViews
@@ -398,9 +369,9 @@
                     var yOrigin = 20;
                     var rightXOrigin = $scope.cWidth/2;
 
-                    console.log(leftXOrigin);
-                    console.log(rightXOrigin);
-                    console.log(yOrigin);
+                    console.log("leftXOrigin = " + leftXOrigin);
+                    console.log("rightXOrigin = " + rightXOrigin);
+                    console.log("yOrigin = " + yOrigin);
 
                     if (side == "left") {
                         //draw just the left shoe
@@ -559,7 +530,6 @@
                 this.clearSelections = function () {
                     if ($scope.shoeSelected.length > 0) {
                         console.log("popped " + $scope.shoeSelected.pop().name);
-
                     }
                     while ($scope.tabs.length > 0) {
                         console.log("popped " + $scope.tabs.pop().name + " from tabs");
@@ -608,7 +578,6 @@
                 };
 
                 this.isTabSelected = function () {
-                    console.log($scope.tabs.length > 0);
                     return $scope.tabs.length > 0;
                 };
 
@@ -710,7 +679,6 @@
                 } //end getSelectorModes()
 
                 this.setSelectorModes = function (side){
-                    console.log("inside setSelectorModes");
                     if(side == "left"){
                         if($scope.selectorModes[0] == false){
                             $scope.selectorModes[0] = !$scope.selectorModes[0];
@@ -779,8 +747,6 @@
                 });
 
                 $scope.setTabSize = function () {
-                    console.log($scope.fit.wide);
-                    console.log($scope.shoeSize.size);
                     if( $scope.shoeSize.size != null){
                         if ($scope.fit.wide == false) {
                             switch ($scope.shoeSize.size.size) {
@@ -940,15 +906,12 @@
                         }
                     };
 
-                    console.log("inside submitData");
-
                     $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
                     $http.post("server.php", null, config)
                         .success(function (data, status, headers, config)
                         {
                             $scope[resultVarName] = data;
-                            console.log("inside success");
                             $scope.setSurveyMode();
 
                         })
@@ -1208,7 +1171,6 @@
     });
 
     plaeChefApp.controller('ListController', function($scope, iScrollService) {
-        console.log("inside here");
         $scope.vm = this;  // Use 'controller as' syntax
 
         $scope.vm.iScrollState = iScrollService.state;
