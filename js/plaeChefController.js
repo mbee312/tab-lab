@@ -68,6 +68,8 @@
                             wScaleFactor = .4;
                         }else if(iWidth < 600) {
                             wScaleFactor = .4;
+                        }else if(iWidth < 660){
+                                wScaleFactor = .4;
                         }else if(iWidth < 767){
                             wScaleFactor = .5;
                         }else if(iWidth < 800){
@@ -459,22 +461,22 @@
                     switch (side) {
                         case "left":
                             /** Draw Left Shoe tabs **/
-                            var tab_image_top_left = new Image();
-                            var tab_image_bot_left = new Image();
+                            $scope.tab_image_top_left = new Image();
+                            $scope.tab_image_bot_left = new Image();
 
-                            tab_image_top_left.src = $scope.tabLeft[0].topViewLeftTopTab.src;
-                            tab_image_bot_left.src = $scope.tabLeft[0].topViewLeftBottomTab.src;
+                            $scope.tab_image_top_left.src = $scope.tabLeft[0].topViewLeftTopTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabLeft[0].topViewLeftBottomTab.src;
 
                             var tabTopLeftX = $scope.cWidth/2 - ($scope.leftImageWidth *.89);
                             var tabBottomLeftX = $scope.cWidth/2 - ($scope.leftImageWidth *.89);
 
 
                             /* getImageNaturalDimensions */
-                            var tabTopLeftImageWidth =  tab_image_top_left.width;
+                            var tabTopLeftImageWidth =  $scope.tab_image_top_left.width;
                             console.log("tabTopLeftImageWidth=" + tabTopLeftImageWidth);
-                            var tabTopLeftImageHeight = tab_image_top_left.height;
-                            var tabBottomLeftImageWidth =  tab_image_bot_left.width;
-                            var tabBottomLeftImageHeight = tab_image_bot_left.height;
+                            var tabTopLeftImageHeight = $scope.tab_image_top_left.height;
+                            var tabBottomLeftImageWidth =  $scope.tab_image_bot_left.width;
+                            var tabBottomLeftImageHeight = $scope.tab_image_bot_left.height;
 
                             /* scaleImageDimensions */
                             tabTopLeftImageWidth = tabTopLeftImageWidth*$scope.scaleFactor*1.25;
@@ -484,13 +486,13 @@
                             tabBottomLeftImageHeight = tabBottomLeftImageHeight*$scope.scaleFactor*1.25;
 
 
-                                tab_image_top_left.onload = function () {
-                                    tptabcontext.drawImage(tab_image_top_left, tabTopLeftX, tabTopY, tabTopLeftImageWidth-11, tabTopLeftImageHeight+5);
+                            $scope.tab_image_top_left.onload = function () {
+                                    tptabcontext.drawImage($scope.tab_image_top_left, tabTopLeftX, tabTopY, tabTopLeftImageWidth-11, tabTopLeftImageHeight+5);
                                 };
 
 
-                                tab_image_bot_left.onload = function () {
-                                    tptabcontext.drawImage(tab_image_bot_left, tabBottomLeftX, tabBottomY, tabBottomLeftImageWidth-11, tabBottomLeftImageHeight+5);
+                            $scope.tab_image_bot_left.onload = function () {
+                                    tptabcontext.drawImage($scope.tab_image_bot_left, tabBottomLeftX, tabBottomY, tabBottomLeftImageWidth-11, tabBottomLeftImageHeight+5);
                                 };
 
                             break;
