@@ -423,14 +423,14 @@
 
         <h3 class="cart title">your shoe</h3>
 
-        <div class="plae basket item shoe" ng-repeat="shoe in shoeSelected" ng-model="shoeSelected">
+        <div class="plae basket item shoe" ng-model="shoeSelected">
             <md-button class="md-raised attr shoe" ng-class="{'size-animate' : shoeEditMode}"
                        aria-label="attr name button"
                        ng-click="plaeChef.setSizeSelectMode('right')">
-                <h4 class="product name plae-font">{{shoe.name}}</h4>
+                <h4 class="product name plae-font">{{shoeSelected.name}}</h4>
             <ul class="details">
-                <li class="attr price plae-font">{{shoe.price | currency}}</li>
-                <li class=" attr color plae-font">color: {{shoe.color}}</li>
+                <li class="attr price plae-font">{{shoeSelected.price | currency}}</li>
+                <li class=" attr color plae-font">color: {{shoeSelected.color}}</li>
                 <li class="attr size plae-font">
                     size: {{shoeSize.size.label}}
                 </li>

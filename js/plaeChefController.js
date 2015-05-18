@@ -131,7 +131,6 @@
                         $scope.scaleFactor = defaultScaleFactor;
                     } //end if-else
                     $scope.setAllCanvasWidthsAndHeight(0,0);
-                    $scope.setViews();
                     $scope.setTabViews("right");
                     $scope.setTabViews("left");
 
@@ -148,7 +147,11 @@
                 $scope.tabLeft = [];
                 $scope.tabRight = [];
 
-                $scope.shoeSelected = [];
+                $scope.shoeSelected = {};
+                $scope.shoeSelected.tab = {};
+                $scope.shoeSelected.tab.left = {};
+                $scope.shoeSelected.tab.right = {}; 
+
                 $scope.shoeSize = {};
                 $scope.shoeSize.size = {};
                 $scope.fit = {};
@@ -197,6 +200,7 @@
 
                         }//end else-if
                     }// end for
+                    return list;
                 }// end preLoader()
 
                 $http.get('product/shoeStyles_local.json').success(function (data) {
@@ -204,20 +208,47 @@
                 });
                 $http.get('product/shoes_ty_local.json').success(function (data) {
                     $scope.shoeList = data;
-                    $scope.preLoader ($scope.shoeList, true);
-                    $scope.setShoe($scope.shoeList[$scope.index]);
+                    $scope.shoeList = $scope.preLoader ($scope.shoeList, true);
+                 /*   $scope.setShoe($scope.shoeList[$scope.index]);
+                    $scope.setViews();
+                    
+                    if ($scope.tabLeft.length > 0) {
+                        this.setTabViews("left");
+                    }//end if
+                    if ($scope.tabRight.length > 0) {
+                        this.setTabViews("right");
+                    }//end if
+                    */
                 });
 
                 $http.get('product/tabs_local.json').success(function (data) {
                     $scope.tabList = data;
-                    $scope.preLoader ($scope.tabList, false);
-                    $scope.addTab($scope.tabList[$scope.leftTabIndex], "left");
-                    $scope.addTab($scope.tabList[$scope.rightTabIndex], "right");
+                    $scope.tabList = $scope.preLoader ($scope.tabList, false);
+
+                //    $scope.addTab($scope.tabList[$scope.leftTabIndex], "left");
+                 //   $scope.addTab($scope.tabList[$scope.rightTabIndex], "right");
+                 //   $scope.setDefaultTabs();
                 });
+
+                $scope.calculateSubTotal = function (){
+                    var sTotal = 0;
+                    if ($scope.tabs.length > 0){
+                        sTotal = $scope.shoeSelected.price + $scope.tabs[0].price + tabs[1].price;
+                        console.log("calculateSubTotal");
+                    }
+                    return sTotal;
+                };
 
                 /*                                 */
                 /* helper function to clear canvas */
                 /*                                 */
+
+                $scope.setDefaultTabs = function (){
+                    $scope.shoeSelected.tab.left.top = $scope.tabs[0].top;
+                    $scope.shoeSelected.tab.left.bottom = $scope.tabs[0].bottom;
+                    $scope.shoeSelected.tab.right.top = $scope.tabs[1].top;
+                    $scope.shoeSelected.tab.right.bottom = $scope.tabs[1].bottom;
+                }
 
                 $scope.clearImage = function (c, ctx, side) {
 
@@ -242,23 +273,7 @@
                 }; // end clearImage
 
                 $scope.setShoe = function (shoe) {
-
-                    while ($scope.shoeSelected.length > 0) {
-                        $scope.subTotal -= $scope.shoeSelected[0].price;
-                        console.log($scope.shoeSelected.pop() + " was removed as selected style");
-                    }
-                    $scope.shoeSelected.push(shoe);
-                    $scope.subTotal += $scope.shoeSelected[0].price;
-
-                    $scope.setViews();
-                    if ($scope.tabLeft.length > 0) {
-                        this.setTabViews("left");
-                    }//end if
-                    if ($scope.tabRight.length > 0) {
-                        this.setTabViews("right");
-                    }//end if
-
-
+                    $scope.shoeSelected = shoe;
                 }; //end setShoe()
 
 
@@ -288,11 +303,11 @@
 
 
                     /* only show tabs when there is a shoe selected */
-                    if ($scope.shoeSelected.length > 0) {
-                        $scope.setViews();
-                        $scope.setTabViews(side);
-                    } else {
+                    if ($scope.shoeSelected === undefined || $scope.shoeSelected === null) {
                         console.log("no shoe selected");
+                        console.log($scope.shoeSelected.name + " is selected");
+                    } else {
+                        $scope.setTabViews(side);
                     }// end-if
 
                 }; //end addTab()
@@ -314,8 +329,8 @@
                             $scope.setViews(side);
                             break;
                         case "shoe":
-                            $scope.subTotal -= $scope.shoeSelected[0].price;
-                            console.log("popped " + $scope.shoeSelected.pop().name + " from shoeSelected");
+                            $scope.subTotal -= $scope.shoeSelected.price;
+                            $scope.shoeSelected = null;
                             $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                             $scope.clearImage(topViewCanvas, tpcontext, side);
                             break;
@@ -324,52 +339,57 @@
                     }
                 };
 
-                $scope.setViews = function (side) {
-                    if (side == "left") {
-                        $scope.drawTopViewImage(side);
-                    } else if (side == "right") {
-                        $scope.drawTopViewImage(side);
-                    } else {
-                        $scope.drawTopViewImage();
-                    }//end else-if
-                }; //end setViews
-
                 $scope.setTabViews = function (side) {
                     $scope.drawTopTabsViewImage(side);
-
-                }; //end setViews
+                }; //end setTabViews
 
                 $scope.leftImageWidth =  0;
                 $scope.leftImageHeight = 0;
                 $scope.rightImageWidth =  0;
                 $scope.rightImageHeight = 0;
 
+                $scope.tab_image_top_left = new Image();
+                $scope.tab_image_bot_left = new Image();
+                $scope.tab_image_top_right = new Image();
+                $scope.tab_image_bot_right = new Image();
 
-                $scope.drawTopViewImage = function (side) {
-                    $scope.clearImage(topViewCanvas, tpcontext, side);
-                    console.log("THE canvas width is " + topViewCanvas.width);
-
-                    var right_image = new Image();
-                    var left_image = new Image();
-
-                    left_image.src = $scope.shoeSelected[0].topViewLeft.src;
-                    right_image.src = $scope.shoeSelected[0].topViewRight.src;
-
-
+                $scope.getImageNaturalDimensionsAndScale = function (image, scaleFactor){
+                    
                     /* getImageNaturalDimensions */
+                    var imageWidth =  image.width;
+                    var imageHeight = image.height;
 
-                    $scope.leftImageWidth =  left_image.width;
-                    $scope.leftImageHeight = left_image.height;
-                    $scope.rightImageWidth =  right_image.width;
-                    $scope.rightImageHeight = right_image.height;
+                     /* scaleImage */
+                    imageWidth *= $scope.scaleFactor;
+                    imageHeight *= $scope.scaleFactor;
 
-                    /* scaleImageDimensions */
-                    $scope.leftImageWidth = $scope.leftImageWidth*$scope.scaleFactor;
-                    $scope.leftImageHeight = $scope.leftImageHeight*$scope.scaleFactor;
-                    $scope.rightImageWidth = $scope.rightImageWidth*$scope.scaleFactor;
-                    $scope.rightImageHeight = $scope.rightImageHeight*$scope.scaleFactor;
+                    return{
+                        width: imageWidth,
+                        height: imageHeight
+                    };
 
-                    var leftXOrigin = $scope.cWidth/2 - $scope.leftImageWidth;
+                } //end getImageNaturalDimensionsAndScale ()
+
+                $scope.right_image = new Image();
+                $scope.left_image = new Image();
+
+                $scope.drawShoe = function (side) {
+                 //   $scope.clearImage(topViewCanvas, tpcontext, side);
+
+                    $scope.left_image.src = $scope.shoeSelected.topViewLeft.src;
+                    $scope.right_image.src = $scope.shoeSelected.topViewRight.src;
+
+                    var leftImage = $scope.getImageNaturalDimensionsAndScale(
+                        $scope.left_image, 
+                        $scope.scaleFactor);
+
+                    var rightImage = $scope.getImageNaturalDimensionsAndScale(
+                        $scope.right_image, 
+                        $scope.scaleFactor);
+
+
+
+                    var leftXOrigin = $scope.cWidth/2 - leftImage.width;
                     var yOrigin = 20;
                     var rightXOrigin = $scope.cWidth/2;
 
@@ -379,55 +399,36 @@
 
                     if (side == "left") {
                         //draw just the left shoe
-                        left_image.onload = function () {
-                            tpcontext.drawImage(left_image, leftXOrigin, yOrigin, $scope.leftImageWidth, $scope.leftImageHeight);
+                        $scope.left_image.onload = function () {
+                            tpcontext.drawImage($scope.left_image, leftXOrigin, yOrigin, leftImage.width, leftImage.height);
                         };
 
                     } else if (side == "right") {
                         //draw just the right shoe
-                        right_image.onload = function () {
-                            tpcontext.drawImage(right_image, rightXOrigin, yOrigin, $scope.rightImageWidth, $scope.rightImageHeight);
+                        $scope.right_image.onload = function () {
+                            tpcontext.drawImage($scope.right_image, rightXOrigin, yOrigin, rightImage.width, rightImage.height);
                         };
 
                     } else {
                         //draw both
-                        left_image.onload = function () {
-                            tpcontext.drawImage(left_image, leftXOrigin, yOrigin, $scope.leftImageWidth, $scope.leftImageHeight);
+                        $scope.left_image.onload = function () {
+                            tpcontext.drawImage($scope.left_image, leftXOrigin, yOrigin, leftImage.width, leftImage.height);
                         };
 
-                        right_image.onload = function () {
-                            tpcontext.drawImage(right_image,  rightXOrigin, yOrigin, $scope.rightImageWidth, $scope.rightImageHeight);
+                        $scope.right_image.onload = function () {
+                            tpcontext.drawImage($scope.right_image,  rightXOrigin, yOrigin, rightImage.width, rightImage.height);
                         };
 
                     }//end else-if
-                };// end drawTopViewImage
+                };// end drawShoe()
 
 
 
                 $scope.drawTopTabsViewImage = function (side) {
-                    $scope.clearImage(topViewTabCanvas, tptabcontext, side);
+                //    $scope.clearImage(topViewTabCanvas, tptabcontext, side);
 
                     /* Temp section                                                                 */
                     /* rotation and and scaling variables for inconsistencies of photographed tabs  */
-
-
-                    /** Left Shoe tabs vars **/
-                    var topXOffsetL = $scope.shoeSelected[0]["topViewLeftShoeTopTabXOffset"];
-                    var topYOffsetL = $scope.shoeSelected[0]["topViewLeftShoeTopTabYOffset"];
-                    var topRotationL = $scope.shoeSelected[0]["topViewLeftShoeTopTabRotation"];
-
-                    var botXOffsetL = $scope.shoeSelected[0]["topViewLeftShoeBottomTabXOffset"];
-                    var botYOffsetL = $scope.shoeSelected[0]["topViewLeftShoeBottomTabYOffset"];
-                    var botRotationL = $scope.shoeSelected[0]["topViewLeftShoeBottomTabRotation"];
-
-                    /** Right Shoe tabs vars **/
-                    var topXOffsetR = $scope.shoeSelected[0]["topViewRightShoeTopTabXOffset"];
-                    var topYOffsetR = $scope.shoeSelected[0]["topViewRightShoeTopTabYOffset"];
-                    var topRotationR = $scope.shoeSelected[0]["topViewRightShoeTopTabRotation"];
-
-                    var botXOffsetR = $scope.shoeSelected[0]["topViewRightShoeBottomTabXOffset"];
-                    var botYOffsetR = $scope.shoeSelected[0]["topViewRightShoeBottomTabYOffset"];
-                    var botRotationR = $scope.shoeSelected[0]["topViewRightShoeBottomTabRotation"];
 
                     var tabTopY = 20 + ($scope.leftImageHeight *.34);
                     var tabBottomY = 20 + ($scope.leftImageHeight *.48);
@@ -436,8 +437,6 @@
                     switch (side) {
                         case "left":
                             /** Draw Left Shoe tabs **/
-                            $scope.tab_image_top_left = new Image();
-                            $scope.tab_image_bot_left = new Image();
 
                             $scope.tab_image_top_left.src = $scope.tabLeft[0].topViewLeftTopTab.src;
                             $scope.tab_image_bot_left.src = $scope.tabLeft[0].topViewLeftBottomTab.src;
@@ -448,14 +447,12 @@
 
                             /* getImageNaturalDimensions */
                             var tabTopLeftImageWidth =  $scope.tab_image_top_left.width;
-                            console.log("tabTopLeftImageWidth=" + tabTopLeftImageWidth);
                             var tabTopLeftImageHeight = $scope.tab_image_top_left.height;
                             var tabBottomLeftImageWidth =  $scope.tab_image_bot_left.width;
                             var tabBottomLeftImageHeight = $scope.tab_image_bot_left.height;
 
                             /* scaleImageDimensions */
                             tabTopLeftImageWidth = tabTopLeftImageWidth*$scope.scaleFactor*1.25;
-                            console.log("tabTopLeftImageWidth=" + tabTopLeftImageWidth);
                             tabTopLeftImageHeight = tabTopLeftImageHeight*$scope.scaleFactor*1.25;
                             tabBottomLeftImageWidth = tabBottomLeftImageWidth*$scope.scaleFactor*1.25;
                             tabBottomLeftImageHeight = tabBottomLeftImageHeight*$scope.scaleFactor*1.25;
@@ -475,12 +472,8 @@
                         case "right" :
                             /** Draw Right Shoe tabs **/
 
-                            var tab_image_top_right = new Image();
-                            var tab_image_bot_right = new Image();
-
-
-                            tab_image_top_right.src = $scope.tabRight[0].topViewRightTopTab.src;
-                            tab_image_bot_right.src = $scope.tabRight[0].topViewRightBottomTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabRight[0].topViewRightTopTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabRight[0].topViewRightBottomTab.src;
 
                             var tabTopRightX = $scope.cWidth/2 + ($scope.rightImageWidth *.2);
                             var tabBottomRightX = $scope.cWidth/2 + ($scope.rightImageWidth *.2);
@@ -488,10 +481,10 @@
 
                             /* getImageNaturalDimensions */
 
-                            var tabTopRightImageWidth =  tab_image_top_right.width;
-                            var tabTopRightImageHeight = tab_image_top_right.height;
-                            var tabBottomRightImageWidth =  tab_image_bot_right.width;
-                            var tabBottomRightImageHeight = tab_image_bot_right.height;
+                            var tabTopRightImageWidth =  $scope.tab_image_top_right.width;
+                            var tabTopRightImageHeight = $scope.tab_image_top_right.height;
+                            var tabBottomRightImageWidth =  $scope.tab_image_bot_right.width;
+                            var tabBottomRightImageHeight = $scope.tab_image_bot_right.height;
 
                             /* scaleImageDimensions */
                             tabTopRightImageWidth = tabTopRightImageWidth*$scope.scaleFactor*1.25;
@@ -499,12 +492,12 @@
                             tabBottomRightImageWidth = tabBottomRightImageWidth*$scope.scaleFactor*1.25;
                             tabBottomRightImageHeight = tabBottomRightImageHeight*$scope.scaleFactor*1.25;
 
-                                tab_image_top_right.onload = function () {
-                                    tptabcontext.drawImage(tab_image_top_right, tabTopRightX, tabTopY, tabTopRightImageWidth-11, tabTopRightImageHeight+5);
+                                $scope.tab_image_top_right.onload = function () {
+                                    tptabcontext.drawImage($scope.tab_image_top_right, tabTopRightX, tabTopY, tabTopRightImageWidth-11, tabTopRightImageHeight+5);
                                 };
 
-                                tab_image_bot_right.onload = function () {
-                                    tptabcontext.drawImage(tab_image_bot_right, tabBottomRightX, tabBottomY, tabBottomRightImageWidth-11, tabBottomRightImageHeight+5);
+                                $scope.tab_image_bot_right.onload = function () {
+                                    tptabcontext.drawImage($scope.tab_image_bot_right, tabBottomRightX, tabBottomY, tabBottomRightImageWidth-11, tabBottomRightImageHeight+5);
 
                                 };
 
@@ -585,7 +578,7 @@
                     return $scope.tabs.length > 0;
                 };
 
-                this.getSubTotal = function () {
+                $scope.getSubTotal = function () {
                     return $scope.subTotal;
                 };
 
@@ -1129,6 +1122,10 @@
                 console.log('hey, carouselIndex has changed! ' + $scope.carouselIndex);
                 console.log("the shoe is " + $scope.shoeList[index]);
                 $scope.setShoe($scope.shoeList[index]);
+                $scope.drawShoe();
+                console.log("drawShoe complete. calculate subtotal...");
+                $scope.calculateSubTotal();
+                console.log("watch shoe. complete");
             }
         });
 
@@ -1166,7 +1163,6 @@
                 console.log('hey, rTIndex has changed! ' + $scope.rTIndex);
                 console.log("the right tab is " + $scope.tabList[rightTabIndex]);
                 $scope.addTab($scope.tabList[rightTabIndex], "right");
-                console.log($scope.isEndOfTabListR);
             }
 
         });
