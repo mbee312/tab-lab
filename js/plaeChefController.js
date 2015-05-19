@@ -22,12 +22,105 @@
             '$window',
             function ($scope, $http, $mdDialog, $mdToast, $animate, $window) {
 
+                
+                /*  CANVAS SETUP end   */
+                // Tabs on canvas List Arrays
+                $scope.tabs = {};
+                $scope.tabs.size;
+                $scope.tabs.left = {};
+                $scope.tabs.left.price = 0;
+                $scope.tabs.right = {};
+                $scope.tabs.right.price = 0;
+
+                $scope.shoeSelected = {};
+                $scope.shoeSelected.tab = {};
+                $scope.shoeSelected.tab.left = {};
+                $scope.shoeSelected.tab.right = {}; 
+
+                $scope.shoeSize = {};
+                $scope.shoeSize.size = {};
+                $scope.fit = {};
+                //  $scope.fit.autoselect = true;
+                $scope.fit.wide = false;
+                $scope.sizeMoreOptions = false;
+                $scope.tabSelectorFocus = false; //false equals left tab selector focus
+
+                $scope.basket = [];
+                $scope.subTotal = 0;
+                $scope.editMode = false;
+                $scope.shoeEditMode = false;
+                $scope.isSizeEdit = false;
+                $scope.isSizeEditRight = false;
+
+                $scope.tabEditModeL = false;
+                $scope.tabEditModeR = false;
+
+
+                $scope.isEndOfShoeList = false;
+                $scope.isEndOfTabListL = false;
+                $scope.isEndOfTabListR = false;
+                $scope.isTabIndexAtOne = false;
+
+                $scope.numOfTabs = 0;
+                $scope.numofShoes = 0;
+
+                $scope.preLoader = function (list, shoeBool ){
+                    for(var i = 0; i < list.length ; i++){
+                        list[i].menuImg = new Image();
+                        list[i].menuImg.src=list[i].menuImgUrl;
+                        if(shoeBool){
+                            list[i].topViewLeft = new Image();
+                            list[i].topViewLeft.src=list[i].mainViewTopLeft;
+                            list[i].topViewRight = new Image();
+                            list[i].topViewRight.src=list[i].mainViewTopRight;
+                        }else{
+                            list[i].topViewLeftTopTab = new Image();
+                            list[i].topViewLeftTopTab.src = list[i].topViewLeftOne;
+
+                            list[i].topViewLeftBottomTab = new Image();
+                            list[i].topViewLeftBottomTab.src = list[i].topViewLeftTwo;
+
+                            list[i].topViewRightTopTab = new Image();
+                            list[i].topViewRightTopTab.src = list[i].topViewRightOne;
+
+                            list[i].topViewRightBottomTab = new Image();
+                            list[i].topViewRightBottomTab.src = list[i].topViewRightTwo;
+
+                        }//end else-if
+                    }// end for
+                    return list;
+                }// end preLoader()
+
+                $http.get('product/shoeStyles_local.json').success(function (data) {
+                    $scope.shoeStyles = data;
+                });
+                $http.get('product/shoes_ty_local.json').success(function (data) {
+                    $scope.shoeList = data;
+                    $scope.shoeList = $scope.preLoader ($scope.shoeList, true);
+                    $scope.numofShoes = $scope.shoeList.length;
+                    $scope.setShoe($scope.shoeList[$scope.index]);
+                    $scope.drawShoe();
+                    $scope.calculateSubTotal();
+                });
+
+                $http.get('product/tabs_local.json').success(function (data) {
+                    $scope.tabList = data;
+                    $scope.tabList = $scope.preLoader ($scope.tabList, false);
+                    $scope.numOfTabs = $scope.tabList.length;
+                    $scope.addTab($scope.tabList[$scope.leftTabIndex], "left");
+                    $scope.addTab($scope.tabList[$scope.rightTabIndex], "right");
+                    $scope.setTabPositions();
+                    $scope.drawTabs("left");
+                    $scope.drawTabs("right");
+                    $scope.calculateSubTotal();
+                    
+                });
+
                 /**
                  * On init select random shoe and tab
                  *
                  */
 
-                /*   $scope.index = Math.floor(Math.random() * 10); */
                 $scope.index = 0;
                 $scope.carouselIndex = 1;
 
@@ -132,101 +225,21 @@
                         $scope.scaleFactor = defaultScaleFactor;
                     } //end if-else
                     $scope.setAllCanvasWidthsAndHeight(0,0);
-            //        $scope.setTabViews("right");
-             //       $scope.setTabViews("left");
-
 
                 } //end checkWindowSize()
 
-                window.onload = $scope.findAndSetCanvasDimensions;       // When the page first loads
-                window.onresize = $scope.findAndSetCanvasDimensions;     // When the browser changes size
-
-                /*  CANVAS SETUP end   */
-                // Tabs on canvas List Arrays
-                $scope.tabs = {};
-                $scope.tabs.size;
-                $scope.tabs.left = {};
-                $scope.tabs.left.price = 0;
-                $scope.tabs.right = {};
-                $scope.tabs.right.price = 0;
-
-                $scope.shoeSelected = {};
-                $scope.shoeSelected.tab = {};
-                $scope.shoeSelected.tab.left = {};
-                $scope.shoeSelected.tab.right = {}; 
-
-                $scope.shoeSize = {};
-                $scope.shoeSize.size = {};
-                $scope.fit = {};
-                //  $scope.fit.autoselect = true;
-                $scope.fit.wide = false;
-                $scope.sizeMoreOptions = false;
-                $scope.tabSelectorFocus = false; //false equals left tab selector focus
-
-                $scope.basket = [];
-                $scope.subTotal = 0;
-                $scope.editMode = false;
-                $scope.shoeEditMode = false;
-                $scope.isSizeEdit = false;
-                $scope.isSizeEditRight = false;
-
-                $scope.tabEditModeL = false;
-                $scope.tabEditModeR = false;
-
-
-                $scope.isEndOfShoeList = false;
-                $scope.isEndOfTabListL = false;
-                $scope.isEndOfTabListR = false;
-                $scope.isTabIndexAtOne = false;
-
-                $scope.preLoader = function (list, shoeBool ){
-                    for(var i = 0; i < list.length ; i++){
-                        list[i].menuImg = new Image();
-                        list[i].menuImg.src=list[i].menuImgUrl;
-                        if(shoeBool){
-                            list[i].topViewLeft = new Image();
-                            list[i].topViewLeft.src=list[i].mainViewTopLeft;
-                            list[i].topViewRight = new Image();
-                            list[i].topViewRight.src=list[i].mainViewTopRight;
-                        }else{
-                            list[i].topViewLeftTopTab = new Image();
-                            list[i].topViewLeftTopTab.src = list[i].topViewLeftOne;
-
-                            list[i].topViewLeftBottomTab = new Image();
-                            list[i].topViewLeftBottomTab.src = list[i].topViewLeftTwo;
-
-                            list[i].topViewRightTopTab = new Image();
-                            list[i].topViewRightTopTab.src = list[i].topViewRightOne;
-
-                            list[i].topViewRightBottomTab = new Image();
-                            list[i].topViewRightBottomTab.src = list[i].topViewRightTwo;
-
-                        }//end else-if
-                    }// end for
-                    return list;
-                }// end preLoader()
-
-                $http.get('product/shoeStyles_local.json').success(function (data) {
-                    $scope.shoeStyles = data;
-                });
-                $http.get('product/shoes_ty_local.json').success(function (data) {
-                    $scope.shoeList = data;
-                    $scope.shoeList = $scope.preLoader ($scope.shoeList, true);
-                    $scope.setShoe($scope.shoeList[$scope.index]);
-                    $scope.drawShoe();
-                    $scope.calculateSubTotal();
-                });
-
-                $http.get('product/tabs_local.json').success(function (data) {
-                    $scope.tabList = data;
-                    $scope.tabList = $scope.preLoader ($scope.tabList, false);
-                    $scope.addTab($scope.tabList[$scope.leftTabIndex], "left");
-                    $scope.drawTabs("left");
-                    $scope.addTab($scope.tabList[$scope.rightTabIndex], "right");
-                    $scope.drawTabs("right");
-                    $scope.calculateSubTotal();
+                // When the page first loads
+                 window.onload = function (){
+                    $scope.findAndSetCanvasDimensions();
                     
-                });
+                };
+                // When the browser changes size
+                window.onresize = function (){
+                    $scope.findAndSetCanvasDimensions;
+                    console.log("inside resize");
+                    $scope.reDraw(); 
+                };  
+
 
                 $scope.calculateSubTotal = function (){
                     var sTotal = 0;
@@ -245,6 +258,26 @@
                     $scope.shoeSelected.tab.right.top = $scope.tabs[1].top;
                     $scope.shoeSelected.tab.right.bottom = $scope.tabs[1].bottom;
                 }
+
+                $scope.initRandom = function (){
+                    $scope.index = Math.floor(Math.random() * 10);
+                    $scope.carouselIndex = $scope.index;
+                    $scope.leftTabIndex = Math.floor(Math.random() * 11);
+                    $scope.lTindex = $scope.leftTabIndex;
+                    $scope.rightTabIndex = Math.floor(Math.random() * 11);
+                    $scope.rTindex = $scope.rightTabIndex;
+/*
+                    if(!$scope.isMobile) {
+                        $('#shoe-car-desktop').slick('slickGoTo', $scope.carouselIndex, false);
+                        $('#tab-left-car-desktop').slick('slickGoTo', $scope.lTindex, false);
+                        $('#tab-right-car-desktop').slick('slickGoTo', $scope.rTindex, false);
+                    }else{
+                        $('#shoe-car-mobile').slick('slickGoTo', $scope.carouselIndex, false);
+                        $('#tab-left-car').slick('slickGoTo', $scope.lTindex, false);
+                        $('#tab-right-car').slick('slickGoTo', $scope.rTindex, false);
+                    }
+                    */
+                };
 
                 $scope.clearImage = function (c, ctx, side) {
                     console.log("clearing image");
@@ -348,7 +381,13 @@
                 $scope.right_image = new Image();
                 $scope.left_image = new Image();
 
+                $scope.reDraw = function (){
+                    $scope.drawShoe();
+                    console.log("redrawing resize");
+                }
+
                 $scope.drawShoe = function (side) {
+                    
                     $scope.left_image.src = $scope.shoeSelected.topViewLeft.src;
                     $scope.right_image.src = $scope.shoeSelected.topViewRight.src;
 
@@ -398,6 +437,161 @@
                     }//end else-if
                 };// end drawShoe()
 
+                $scope.setTabPositions = function (num){
+                    /*     
+                    *   Tab Positions 
+                    *       1   3
+                    *       2   4
+                    */
+                    switch (num){
+                        case 1: // 1 2 4 3
+                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftTopTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightBottomTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightTopTab.src;
+                            break;
+                        case 2: // 1 3 2 4
+                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftTopTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftTopTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightBottomTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightBottomTab.src;
+                            break;
+                        case 3: // 1 3 4 2
+                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftTopTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftTopTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightBottomTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightBottomTab.src;
+                            break;
+                        case 4: // 1 4 3 2
+                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftTopTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightTopTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightBottomTab.src;
+                            break;
+                        case 5: // 1 4 2 3
+                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftTopTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightBottomTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightTopTab.src;
+                            break;
+                        case 6: // 2 1 3 4
+                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftTopTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightTopTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightBottomTab.src;
+                            break;
+                        case 7: // 2 1 4 3
+                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftTopTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightBottomTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightTopTab.src;
+                            break;
+                        case 8: // 2 3 1 4
+                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftTopTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightTopTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightBottomTab.src;
+                            break;
+                        case 9: // 2 3 4 1
+                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftTopTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightBottomTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightTopTab.src;
+                            break;
+                        case 10: // 2 4 1 3
+                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightTopTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightTopTab.src;
+                            break;
+                        case 11: // 2 4 3 1
+                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightTopTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightTopTab.src;
+                            break;
+                        case 12: // 3 1 2 4
+                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftTopTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftTopTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightBottomTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightBottomTab.src;
+                            break;
+                        case 13: // 3 1 4 2
+                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftTopTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftTopTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightBottomTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightBottomTab.src;
+                            break;
+                        case 14: // 3 2 1 4
+                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftTopTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightTopTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightBottomTab.src;
+                            break;
+                        case 15: // 3 2 4 1
+                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftTopTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightBottomTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightTopTab.src;
+                            break;
+                        case 16: // 3 4 1 2
+                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftTopTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightTopTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightBottomTab.src;
+                            break;
+                        case 17: // 3 4 2 1
+                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftTopTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightBottomTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightTopTab.src;
+                            break;
+                        case 18: // 4 1 2 3
+                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftTopTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightBottomTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightTopTab.src;
+                            break;
+                        case 19: // 4 2 3 1
+                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightTopTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightTopTab.src;
+                            break;
+                        case 20: // 4 3 1 2
+                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftTopTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightTopTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightBottomTab.src;
+                            break;
+                        case 21: // 4 1 3 2
+                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftTopTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightTopTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightBottomTab.src;
+                            break;
+                        case 22: // 4 2 1 3
+                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightTopTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightTopTab.src;
+                            break;
+                        case 23: // 4 3 2 1
+                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftTopTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightBottomTab.src; 
+                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightTopTab.src;
+                            break;
+                        default: // default : 1 2 3 4
+                            console.log("inside setTabPositions");
+                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftTopTab.src;
+                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
+                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightTopTab.src;
+                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightBottomTab.src;
+                    }
+
+                };
+
 
 
                 $scope.drawTabs = function (side) {
@@ -406,8 +600,6 @@
                         case "left":
                             /** Draw Left Shoe tabs **/
 
-                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftTopTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
                             var tabTopY = 20 + ($scope.leftShoeImage.height *.34);
                             var tabBottomY = 20 + ($scope.leftShoeImage.height *.48);
 
@@ -426,10 +618,8 @@
                             var tabBottomLeftX = $scope.cWidth/2 - ($scope.leftShoeImage.width *.89);
                             console.log("tabTopLeftX="+tabTopLeftX);
 
-                            
-
                             $scope.tab_image_top_left.onload = function () {
-                                $scope.clearImage(topViewTabCanvas, tptabcontext, side);
+                            //    $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                                     tptabcontext.drawImage($scope.tab_image_top_left, tabTopLeftX, tabTopY, tabTopLeftImage.width-11, tabTopLeftImage.height+5);
                                 };
 
@@ -441,8 +631,6 @@
                         case "right" :
                             /** Draw Right Shoe tabs **/
 
-                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightTopTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightBottomTab.src;
                             var tabTopY = 20 + ($scope.rightShoeImage.height *.34);
                             var tabBottomY = 20 + ($scope.rightShoeImage.height *.48);
 
@@ -462,7 +650,7 @@
                             console.log("$scope.clearTabImage=" + $scope.clearTabImage);
 
                             $scope.tab_image_top_right.onload = function () {
-                                $scope.clearImage(topViewTabCanvas, tptabcontext, side);
+                            //    $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                                 tptabcontext.drawImage($scope.tab_image_top_right, tabTopRightX, tabTopY, tabTopRightImage.width-11, tabTopRightImage.height+5);
                             };
 
@@ -984,6 +1172,10 @@
     });
 
     plaeChefApp.controller('SliderCtrl', function($scope) {
+
+        $scope.innerWidthSize = 0;
+        $scope.innerWidthSizeNew = window.innerWidth;
+
         $scope.random = function (){
             $scope.index = Math.floor(Math.random() * 10);
             $scope.carouselIndex = $scope.index;
@@ -1005,24 +1197,11 @@
         }; //end random ()
 
         $scope.shuffle = function (){
-
-            $scope.index =  Math.floor(Math.random() * 10);
-            $scope.carouselIndex = $scope.index;
-
-            $scope.leftTabIndex = Math.floor(Math.random() * 11);
-            $scope.lTindex = $scope.leftTabIndex;
-
-            $scope.rightTabIndex = Math.floor(Math.random() * 11);
-            $scope.rTindex =  $scope.rightTabIndex;
-
-            var posTopLeft;
-            var posBottomLeft;
-            var posTopRight;
-            var posBottomRight;
-
-
-            /* number of tab positions. Will vary with different styles */
-            var numOfPos = 4;
+            var randomNum = Math.floor(Math.random() * 24 );
+            console.log("randomNum=" + randomNum);
+            $scope.setTabPositions(randomNum);
+            $scope.drawTabs("left");
+            $scope.drawTabs("right");
 
         }; //end shuffle ()
 
@@ -1115,6 +1294,7 @@
                 console.log('hey, lTIndex has changed! ' + $scope.lTIndex);
                 console.log("the left tab is " + $scope.tabList[leftTabIndex]);
                 $scope.addTab($scope.tabList[leftTabIndex], "left");
+                $scope.setTabPositions();
                 $scope.drawTabs("left");
                 $scope.calculateSubTotal();
             }
@@ -1136,6 +1316,7 @@
                 console.log('hey, rTIndex has changed! ' + $scope.rTIndex);
                 console.log("the right tab is " + $scope.tabList[rightTabIndex]);
                 $scope.addTab($scope.tabList[rightTabIndex], "right");
+                $scope.setTabPositions();
                 $scope.drawTabs("right");
 
             }
