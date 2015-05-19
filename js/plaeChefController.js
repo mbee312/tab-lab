@@ -247,6 +247,7 @@
                 }
 
                 $scope.clearImage = function (c, ctx, side) {
+                    console.log("clearing image");
 
                     // Store the current transformation matrix
                     ctx.save();
@@ -348,8 +349,6 @@
                 $scope.left_image = new Image();
 
                 $scope.drawShoe = function (side) {
-                 //   $scope.clearImage(topViewCanvas, tpcontext, side);
-
                     $scope.left_image.src = $scope.shoeSelected.topViewLeft.src;
                     $scope.right_image.src = $scope.shoeSelected.topViewRight.src;
 
@@ -426,9 +425,11 @@
                             var tabTopLeftX = $scope.cWidth/2 - ($scope.leftShoeImage.width *.89);
                             var tabBottomLeftX = $scope.cWidth/2 - ($scope.leftShoeImage.width *.89);
                             console.log("tabTopLeftX="+tabTopLeftX);
-                            $scope.clearImage(topViewTabCanvas, tptabcontext, side);
+
+                            
 
                             $scope.tab_image_top_left.onload = function () {
+                                $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                                     tptabcontext.drawImage($scope.tab_image_top_left, tabTopLeftX, tabTopY, tabTopLeftImage.width-11, tabTopLeftImage.height+5);
                                 };
 
@@ -457,9 +458,11 @@
 
                             var tabTopRightX = $scope.cWidth/2 + ($scope.rightShoeImage.width *.2);
                             var tabBottomRightX = $scope.cWidth/2 + ($scope.rightShoeImage.width *.2);
-                            $scope.clearImage(topViewTabCanvas, tptabcontext, side);
+
+                            console.log("$scope.clearTabImage=" + $scope.clearTabImage);
 
                             $scope.tab_image_top_right.onload = function () {
+                                $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                                 tptabcontext.drawImage($scope.tab_image_top_right, tabTopRightX, tabTopY, tabTopRightImage.width-11, tabTopRightImage.height+5);
                             };
 
@@ -505,7 +508,6 @@
                         console.log("popped " + $scope.tabRight.pop().name + " from tabRight");
                     }
                     $scope.subTotal = 0;
-                    /*    $scope.clearImage(canvas,context ); */
                     $scope.clearImage(topViewCanvas, tpcontext);
                     $scope.clearImage(topViewTabCanvas, tptabcontext);
                     this.canvasView = "top";
