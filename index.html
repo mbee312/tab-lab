@@ -446,16 +446,16 @@
         </div>
 
 
-        <div class="plae basket item left" ng-model="tabLeft" ng-repeat="tabL in tabLeft track by $index">
+        <div class="plae basket item left" ng-model="tabs.left">
             <md-button class="md-raised attr tableft"
                        ng-class="{'size-animate' : tabEditModeL}"
                        aria-label="attr tableft button"
                        ng-click="plaeChef.setSizeSelectMode('right')">
-                <h4 class="product name plae-font">{{tabL.name}}</h4>
+                <h4 class="product name plae-font">{{tabs.left.name}}</h4>
 
                 <ul class="details">
-                    <li class="attr price plae-font">{{tabL.price | currency}}</li>
-                    <li class="attr color plae-font">color: {{tabL.color}}</li>
+                    <li class="attr price plae-font">{{tabs.left.price | currency}}</li>
+                    <li class="attr color plae-font">color: {{tabs.left.color}}</li>
                     <li class="attr size plae-font">
                         size: {{tabs.size.label}}
                     </li>
@@ -467,14 +467,14 @@
             </md-button>
         </div>
 
-        <div class="plae basket item right" ng-model="tabRight" ng-repeat="tabR in tabRight track by $index">
+        <div class="plae basket item right" ng-model="tabs.right">
             <md-button class="md-raised attr tabright" ng-class="{'size-animate' : tabEditModeR}" aria-label="attr tabright button"
                        ng-click="plaeChef.setSizeSelectMode('right')">
-                <h4 class="product name plae-font">{{tabR.name}}</h4>
+                <h4 class="product name plae-font">{{tabs.right.name}}</h4>
 
             <ul class="details">
-                <li class="attr price plae-font">{{tabR.price | currency}}</li>
-                <li class="attr color plae-font">color: {{tabR.color}}</li>
+                <li class="attr price plae-font">{{tabs.right.price | currency}}</li>
+                <li class="attr color plae-font">color: {{tabs.right.color}}</li>
                 <li class="attr size plae-font">
                         size: {{tabs.size.label}}
                 </li>
