@@ -209,16 +209,8 @@
                 $http.get('product/shoes_ty_local.json').success(function (data) {
                     $scope.shoeList = data;
                     $scope.shoeList = $scope.preLoader ($scope.shoeList, true);
-                 /*   $scope.setShoe($scope.shoeList[$scope.index]);
-                    $scope.setViews();
-                    
-                    if ($scope.tabLeft.length > 0) {
-                        this.setTabViews("left");
-                    }//end if
-                    if ($scope.tabRight.length > 0) {
-                        this.setTabViews("right");
-                    }//end if
-                    */
+                    $scope.setShoe($scope.shoeList[$scope.index]);
+                    $scope.drawShoe();
                 });
 
                 $http.get('product/tabs_local.json').success(function (data) {
@@ -232,11 +224,14 @@
 
                 $scope.calculateSubTotal = function (){
                     var sTotal = 0;
+                    console.log("$scope.tabs.length " + $scope.tabs.length);
                     if ($scope.tabs.length > 0){
                         sTotal = $scope.shoeSelected.price + $scope.tabs[0].price + tabs[1].price;
-                        console.log("calculateSubTotal");
+                    }else{
+                        sTotal = $scope.shoeSelected.price;
+                        console.log("inside calculateSubTotal no tabs");
                     }
-                    return sTotal;
+                    $scope.subTotal = sTotal;
                 };
 
                 /*                                 */
@@ -340,7 +335,7 @@
                 };
 
                 $scope.setTabViews = function (side) {
-                    $scope.drawTopTabsViewImage(side);
+                    $scope.drawTabs(side);
                 }; //end setTabViews
 
                 $scope.leftImageWidth =  0;
@@ -424,11 +419,8 @@
 
 
 
-                $scope.drawTopTabsViewImage = function (side) {
+                $scope.drawTabs = function (side) {
                 //    $scope.clearImage(topViewTabCanvas, tptabcontext, side);
-
-                    /* Temp section                                                                 */
-                    /* rotation and and scaling variables for inconsistencies of photographed tabs  */
 
                     var tabTopY = 20 + ($scope.leftImageHeight *.34);
                     var tabBottomY = 20 + ($scope.leftImageHeight *.48);
@@ -507,7 +499,7 @@
                             console.log("error: no tab view side selected");
                     }// end switch
 
-                }; //end drawTopTabsViewImage()
+                }; //end drawTabs()
 
 
                 /**                                       **/
@@ -579,6 +571,7 @@
                 };
 
                 $scope.getSubTotal = function () {
+                    console.log("subtotal is " + $scope.subTotal);
                     return $scope.subTotal;
                 };
 
@@ -1125,6 +1118,7 @@
                 $scope.drawShoe();
                 console.log("drawShoe complete. calculate subtotal...");
                 $scope.calculateSubTotal();
+                console.log($scope.getSubTotal());
                 console.log("watch shoe. complete");
             }
         });

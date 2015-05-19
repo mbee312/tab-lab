@@ -490,12 +490,12 @@
         </div>
 
 
-        <div class="plae basket subtotal" id="subtotal">
+        <div class="plae basket subtotal" id="subtotal" ng-model="subTotal">
             <md-button class="md-raised attr subtotal plae-font">
                 <p>
                 <h3>subtotal</h3>
                 </p>
-                <span class="price subtotal">{{plaeChef.getSubTotal() | currency}}</span>
+                <span class="price subtotal">{{subTotal | currency}}</span>
 
             </md-button>
         </div>
