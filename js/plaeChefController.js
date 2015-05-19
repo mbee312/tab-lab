@@ -214,21 +214,23 @@
                     $scope.shoeList = $scope.preLoader ($scope.shoeList, true);
                     $scope.setShoe($scope.shoeList[$scope.index]);
                     $scope.drawShoe();
+                    $scope.calculateSubTotal();
                 });
 
                 $http.get('product/tabs_local.json').success(function (data) {
                     $scope.tabList = data;
                     $scope.tabList = $scope.preLoader ($scope.tabList, false);
-
-                //    $scope.addTab($scope.tabList[$scope.leftTabIndex], "left");
-                 //   $scope.addTab($scope.tabList[$scope.rightTabIndex], "right");
-                 //   $scope.setDefaultTabs();
+                    $scope.addTab($scope.tabList[$scope.leftTabIndex], "left");
+                    $scope.drawTabs("left");
+                    $scope.addTab($scope.tabList[$scope.rightTabIndex], "right");
+                    $scope.drawTabs("right");
+                    $scope.calculateSubTotal();
+                    
                 });
 
                 $scope.calculateSubTotal = function (){
                     var sTotal = 0;
-                    
-                        sTotal = $scope.shoeSelected.price + $scope.tabs.left.price;
+                        sTotal = $scope.shoeSelected.price + $scope.tabs.left.price + $scope.tabs.right.price;
                     console.log("subtotal=" +sTotal);
                     $scope.subTotal = sTotal;
                 };
@@ -442,16 +444,11 @@
                             $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightBottomTab.src;
                             var tabTopY = 20 + ($scope.rightShoeImage.height *.34);
                             var tabBottomY = 20 + ($scope.rightShoeImage.height *.48);
-                            console.log("tabTopY="+tabTopY);
-                            console.log("tabBottomY="+tabBottomY);
-
-
 
                             var tabTopRightImage = $scope.getImageNaturalDimensionsAndScale(
                                 $scope.tab_image_top_right, 
                                 $scope.scaleFactor,
                                 $scope.tabScaleFactorOffset);
-
 
                             var tabBottomRightImage = $scope.getImageNaturalDimensionsAndScale(
                                 $scope.tab_image_bot_right, 
@@ -460,20 +457,16 @@
 
                             var tabTopRightX = $scope.cWidth/2 + ($scope.rightShoeImage.width *.2);
                             var tabBottomRightX = $scope.cWidth/2 + ($scope.rightShoeImage.width *.2);
-                            console.log("tabTopRightX="+tabTopRightX);
-                            console.log("tabBottomRightX="+tabBottomRightX);
-                            console.log("$scope.tab_image_top_right.src=" + $scope.tab_image_top_right.src);
                             $scope.clearImage(topViewTabCanvas, tptabcontext, side);
 
+                            $scope.tab_image_top_right.onload = function () {
+                                tptabcontext.drawImage($scope.tab_image_top_right, tabTopRightX, tabTopY, tabTopRightImage.width-11, tabTopRightImage.height+5);
+                            };
 
-                                $scope.tab_image_top_right.onload = function () {
-                                    tptabcontext.drawImage($scope.tab_image_top_right, tabTopRightX, tabTopY, tabTopRightImage.width-11, tabTopRightImage.height+5);
-                                };
+                            $scope.tab_image_bot_right.onload = function () {
+                                tptabcontext.drawImage($scope.tab_image_bot_right, tabBottomRightX, tabBottomY, tabBottomRightImage.width-11, tabBottomRightImage.height+5);
 
-                                $scope.tab_image_bot_right.onload = function () {
-                                    tptabcontext.drawImage($scope.tab_image_bot_right, tabBottomRightX, tabBottomY, tabBottomRightImage.width-11, tabBottomRightImage.height+5);
-
-                                };
+                            };
 
                             break;
 
