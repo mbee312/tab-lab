@@ -64,19 +64,6 @@
                 $scope.numOfTabs = 0;
                 $scope.numofShoes = 0;
 
-                /* 0: left shoe, 
-                1: right shoe, 
-                2: both shoes, 
-                3: tab - top left, 
-                4: tab - bottom left, 
-                5: tab - top right, 
-                6: bottom right, 
-                7: tabs - left shoe, 
-                8: tabs - right shoe, 
-                9: all tabs
-                */
-                $scope.clearImage = [false, false, false, false, false, false, false, false, false, false]; 
-
                 $scope.preLoader = function (list, shoeBool ){
                     for(var i = 0; i < list.length ; i++){
                         list[i].menuImg = new Image();
@@ -658,8 +645,6 @@
                             var tabTopRightX = $scope.cWidth/2 + ($scope.rightShoeImage.width *.2);
                             var tabBottomRightX = $scope.cWidth/2 + ($scope.rightShoeImage.width *.2);
 
-                            console.log("$scope.clearTabImage=" + $scope.clearTabImage);
-
                             $scope.clearImage(topViewTabCanvas, tptabcontext, side);
                             tptabcontext.drawImage($scope.tab_image_top_right, tabTopRightX, tabTopY, tabTopRightImage.width-11, tabTopRightImage.height+5);
                             tptabcontext.drawImage($scope.tab_image_bot_right, tabBottomRightX, tabBottomY, tabBottomRightImage.width-11, tabBottomRightImage.height+5);
@@ -684,6 +669,7 @@
 
                             var tabTopLeftX = $scope.cWidth/2 - ($scope.leftShoeImage.width *.89);
                             var tabBottomLeftX = $scope.cWidth/2 - ($scope.leftShoeImage.width *.89);
+                           // $scope.clearImage(topViewTabCanvas, tptabcontext);
 
                                 tptabcontext.drawImage($scope.tab_image_top_left, tabTopLeftX, tabTopY, tabTopLeftImage.width-11, tabTopLeftImage.height+5);
                                 tptabcontext.drawImage($scope.tab_image_bot_left, tabBottomLeftX, tabBottomY, tabBottomLeftImage.width-11, tabBottomLeftImage.height+5);

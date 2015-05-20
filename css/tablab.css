@@ -1512,7 +1512,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
 
     img.slide.img.tab {
-        width: 100%;
+    /*    width: 100%; */
         margin-left: 0;
     }
 
@@ -1770,7 +1770,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         height: 431px !important;
     }
     .bgimage.ng-scope.slick-slide.slick-active {
-        transform: translate(0,10px);
+        transform: translate(0,0);
     }
     .tabmenuitem.bgimage.ng-scope.slick-slide {
         transform: translate(0,55px);
@@ -2058,7 +2058,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         left: 9%;
     }
     .bgimage.ng-scope.slick-slide.slick-active {
-        transform: translate(0,30px);
+        transform: translate(0,0); 
     }
     .tabmenuitem.bgimage.ng-scope.slick-slide {
         transform: translate(0,80px);
