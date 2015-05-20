@@ -225,20 +225,17 @@
                         $scope.scaleFactor = defaultScaleFactor;
                     } //end if-else
                     $scope.setAllCanvasWidthsAndHeight(0,0);
+                    $scope.drawShoe();
+                    $scope.drawTabs();
+                    
 
                 } //end checkWindowSize()
 
                 // When the page first loads
-                 window.onload = function (){
-                    $scope.findAndSetCanvasDimensions();
+                 window.onload = $scope.findAndSetCanvasDimensions;
                     
-                };
                 // When the browser changes size
-                window.onresize = function (){
-                    $scope.findAndSetCanvasDimensions;
-                    console.log("inside resize");
-                    $scope.reDraw(); 
-                };  
+                window.onresize = $scope.findAndSetCanvasDimensions;
 
 
                 $scope.calculateSubTotal = function (){
@@ -279,16 +276,16 @@
                     */
                 };
 
-                $scope.clearImage = function (c, ctx, side) {
+                $scope.clearImage = function (c, ctx, pos) {
                     console.log("clearing image");
 
                     // Store the current transformation matrix
                     ctx.save();
 
-                    if (side == "left") {
+                    if (pos == "left") {
                         ctx.setTransform(1, 0, 0, 1, 0, 0);
                         ctx.clearRect(0, 0, c.width / 2, c.height);
-                    } else if (side == "right") {
+                    } else if (pos == "right") {
                         ctx.setTransform(1, 0, 0, 1, 0, 0);
                         ctx.clearRect(c.width / 2, 0, c.width / 2, c.height);
                     } else {
@@ -381,11 +378,6 @@
                 $scope.right_image = new Image();
                 $scope.left_image = new Image();
 
-                $scope.reDraw = function (){
-                    $scope.drawShoe();
-                    console.log("redrawing resize");
-                }
-
                 $scope.drawShoe = function (side) {
                     
                     $scope.left_image.src = $scope.shoeSelected.topViewLeft.src;
@@ -411,28 +403,39 @@
                     console.log("leftXOrigin = " + leftXOrigin);
                     console.log("rightXOrigin = " + rightXOrigin);
                     console.log("yOrigin = " + yOrigin);
+                    
+
 
                     if (side == "left") {
                         //draw just the left shoe
-                        $scope.left_image.onload = function () {
+                    //    $scope.left_image.onload = function () {
+                            console.log("leftImage.width = " + leftImage.width);
+                            console.log("leftImage.height = " + leftImage.height);
                             tpcontext.drawImage($scope.left_image, leftXOrigin, yOrigin, leftImage.width, leftImage.height);
-                        };
+                    //    };
 
                     } else if (side == "right") {
                         //draw just the right shoe
-                        $scope.right_image.onload = function () {
+                    //    $scope.right_image.onload = function () {
+                            console.log("rightImage.width = " + rightImage.width);
+                            console.log("rightImage.height = " + rightImage.height);
                             tpcontext.drawImage($scope.right_image, rightXOrigin, yOrigin, rightImage.width, rightImage.height);
-                        };
+                    //    };
 
                     } else {
+                        console.log("drawing both shoes");
                         //draw both
-                        $scope.left_image.onload = function () {
+                     //   $scope.left_image.onload = function () {
+                            console.log("leftImage.width = " + leftImage.width);
+                            console.log("leftImage.height = " + leftImage.height);
                             tpcontext.drawImage($scope.left_image, leftXOrigin, yOrigin, leftImage.width, leftImage.height);
-                        };
+                      //  };
 
-                        $scope.right_image.onload = function () {
+                    //    $scope.right_image.onload = function () {
+                            console.log("rightImage.width = " + rightImage.width);
+                            console.log("rightImage.height = " + rightImage.height);
                             tpcontext.drawImage($scope.right_image,  rightXOrigin, yOrigin, rightImage.width, rightImage.height);
-                        };
+                    //    };
 
                     }//end else-if
                 };// end drawShoe()
@@ -583,7 +586,6 @@
                             $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightTopTab.src;
                             break;
                         default: // default : 1 2 3 4
-                            console.log("inside setTabPositions");
                             $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftTopTab.src;
                             $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
                             $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightTopTab.src;
@@ -618,14 +620,10 @@
                             var tabBottomLeftX = $scope.cWidth/2 - ($scope.leftShoeImage.width *.89);
                             console.log("tabTopLeftX="+tabTopLeftX);
 
-                            $scope.tab_image_top_left.onload = function () {
-                            //    $scope.clearImage(topViewTabCanvas, tptabcontext, side);
-                                    tptabcontext.drawImage($scope.tab_image_top_left, tabTopLeftX, tabTopY, tabTopLeftImage.width-11, tabTopLeftImage.height+5);
-                                };
+                            $scope.clearImage(topViewTabCanvas, tptabcontext, side);
+                            tptabcontext.drawImage($scope.tab_image_top_left, tabTopLeftX, tabTopY, tabTopLeftImage.width-11, tabTopLeftImage.height+5);
+                            tptabcontext.drawImage($scope.tab_image_bot_left, tabBottomLeftX, tabBottomY, tabBottomLeftImage.width-11, tabBottomLeftImage.height+5);
 
-                            $scope.tab_image_bot_left.onload = function () {
-                                    tptabcontext.drawImage($scope.tab_image_bot_left, tabBottomLeftX, tabBottomY, tabBottomLeftImage.width-11, tabBottomLeftImage.height+5);
-                                };
                             break;
 
                         case "right" :
@@ -647,22 +645,51 @@
                             var tabTopRightX = $scope.cWidth/2 + ($scope.rightShoeImage.width *.2);
                             var tabBottomRightX = $scope.cWidth/2 + ($scope.rightShoeImage.width *.2);
 
-                            console.log("$scope.clearTabImage=" + $scope.clearTabImage);
-
-                            $scope.tab_image_top_right.onload = function () {
-                            //    $scope.clearImage(topViewTabCanvas, tptabcontext, side);
-                                tptabcontext.drawImage($scope.tab_image_top_right, tabTopRightX, tabTopY, tabTopRightImage.width-11, tabTopRightImage.height+5);
-                            };
-
-                            $scope.tab_image_bot_right.onload = function () {
-                                tptabcontext.drawImage($scope.tab_image_bot_right, tabBottomRightX, tabBottomY, tabBottomRightImage.width-11, tabBottomRightImage.height+5);
-
-                            };
+                            $scope.clearImage(topViewTabCanvas, tptabcontext, side);
+                            tptabcontext.drawImage($scope.tab_image_top_right, tabTopRightX, tabTopY, tabTopRightImage.width-11, tabTopRightImage.height+5);
+                            tptabcontext.drawImage($scope.tab_image_bot_right, tabBottomRightX, tabBottomY, tabBottomRightImage.width-11, tabBottomRightImage.height+5);
 
                             break;
 
-                        default:
-                            console.log("error: no tab view side selected");
+                        default: //  Draw both
+                            console.log("error: no tab view side selected. Drawing both sides");
+
+                            var tabTopY = 20 + ($scope.leftShoeImage.height *.34);
+                            var tabBottomY = 20 + ($scope.leftShoeImage.height *.48);
+
+                            var tabTopLeftImage = $scope.getImageNaturalDimensionsAndScale(
+                                $scope.tab_image_top_left, 
+                                $scope.scaleFactor,
+                                $scope.tabScaleFactorOffset);
+
+                            var tabBottomLeftImage = $scope.getImageNaturalDimensionsAndScale(
+                                $scope.tab_image_bot_left, 
+                                $scope.scaleFactor, 
+                                $scope.tabScaleFactorOffset);
+
+                            var tabTopLeftX = $scope.cWidth/2 - ($scope.leftShoeImage.width *.89);
+                            var tabBottomLeftX = $scope.cWidth/2 - ($scope.leftShoeImage.width *.89);
+                           // $scope.clearImage(topViewTabCanvas, tptabcontext);
+
+                                tptabcontext.drawImage($scope.tab_image_top_left, tabTopLeftX, tabTopY, tabTopLeftImage.width-11, tabTopLeftImage.height+5);
+                                tptabcontext.drawImage($scope.tab_image_bot_left, tabBottomLeftX, tabBottomY, tabBottomLeftImage.width-11, tabBottomLeftImage.height+5);
+
+                            var tabTopRightImage = $scope.getImageNaturalDimensionsAndScale(
+                                $scope.tab_image_top_right, 
+                                $scope.scaleFactor,
+                                $scope.tabScaleFactorOffset);
+
+                            var tabBottomRightImage = $scope.getImageNaturalDimensionsAndScale(
+                                $scope.tab_image_bot_right, 
+                                $scope.scaleFactor, 
+                                $scope.tabScaleFactorOffset);
+
+                            var tabTopRightX = $scope.cWidth/2 + ($scope.rightShoeImage.width *.2);
+                            var tabBottomRightX = $scope.cWidth/2 + ($scope.rightShoeImage.width *.2);
+
+                                tptabcontext.drawImage($scope.tab_image_top_right, tabTopRightX, tabTopY, tabTopRightImage.width-11, tabTopRightImage.height+5);
+                                tptabcontext.drawImage($scope.tab_image_bot_right, tabBottomRightX, tabBottomY, tabBottomRightImage.width-11, tabBottomRightImage.height+5);
+                            
                     }// end switch
 
                 }; //end drawTabs()
