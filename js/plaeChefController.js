@@ -64,6 +64,19 @@
                 $scope.numOfTabs = 0;
                 $scope.numofShoes = 0;
 
+                /* 0: left shoe, 
+                1: right shoe, 
+                2: both shoes, 
+                3: tab - top left, 
+                4: tab - bottom left, 
+                5: tab - top right, 
+                6: bottom right, 
+                7: tabs - left shoe, 
+                8: tabs - right shoe, 
+                9: all tabs
+                */
+                $scope.clearImage = [false, false, false, false, false, false, false, false, false, false]; 
+
                 $scope.preLoader = function (list, shoeBool ){
                     for(var i = 0; i < list.length ; i++){
                         list[i].menuImg = new Image();
@@ -232,10 +245,8 @@
                 } //end checkWindowSize()
 
                 // When the page first loads
-                 window.onload = function (){
-                    $scope.findAndSetCanvasDimensions();
+                 window.onload = $scope.findAndSetCanvasDimensions;
                     
-                };
                 // When the browser changes size
                 window.onresize = $scope.findAndSetCanvasDimensions;
 
@@ -278,16 +289,16 @@
                     */
                 };
 
-                $scope.clearImage = function (c, ctx, side) {
+                $scope.clearImage = function (c, ctx, pos) {
                     console.log("clearing image");
 
                     // Store the current transformation matrix
                     ctx.save();
 
-                    if (side == "left") {
+                    if (pos == "left") {
                         ctx.setTransform(1, 0, 0, 1, 0, 0);
                         ctx.clearRect(0, 0, c.width / 2, c.height);
-                    } else if (side == "right") {
+                    } else if (pos == "right") {
                         ctx.setTransform(1, 0, 0, 1, 0, 0);
                         ctx.clearRect(c.width / 2, 0, c.width / 2, c.height);
                     } else {
@@ -588,7 +599,6 @@
                             $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightTopTab.src;
                             break;
                         default: // default : 1 2 3 4
-                            console.log("inside setTabPositions");
                             $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftTopTab.src;
                             $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
                             $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightTopTab.src;
@@ -623,14 +633,10 @@
                             var tabBottomLeftX = $scope.cWidth/2 - ($scope.leftShoeImage.width *.89);
                             console.log("tabTopLeftX="+tabTopLeftX);
 
-                    //        $scope.tab_image_top_left.onload = function () {
-                            //    $scope.clearImage(topViewTabCanvas, tptabcontext, side);
-                                    tptabcontext.drawImage($scope.tab_image_top_left, tabTopLeftX, tabTopY, tabTopLeftImage.width-11, tabTopLeftImage.height+5);
-                    //            };
+                            $scope.clearImage(topViewTabCanvas, tptabcontext, side);
+                            tptabcontext.drawImage($scope.tab_image_top_left, tabTopLeftX, tabTopY, tabTopLeftImage.width-11, tabTopLeftImage.height+5);
+                            tptabcontext.drawImage($scope.tab_image_bot_left, tabBottomLeftX, tabBottomY, tabBottomLeftImage.width-11, tabBottomLeftImage.height+5);
 
-                    //        $scope.tab_image_bot_left.onload = function () {
-                                    tptabcontext.drawImage($scope.tab_image_bot_left, tabBottomLeftX, tabBottomY, tabBottomLeftImage.width-11, tabBottomLeftImage.height+5);
-                    //            };
                             break;
 
                         case "right" :
@@ -654,15 +660,9 @@
 
                             console.log("$scope.clearTabImage=" + $scope.clearTabImage);
 
-                    //        $scope.tab_image_top_right.onload = function () {
-                            //    $scope.clearImage(topViewTabCanvas, tptabcontext, side);
-                                tptabcontext.drawImage($scope.tab_image_top_right, tabTopRightX, tabTopY, tabTopRightImage.width-11, tabTopRightImage.height+5);
-                    //        };
-
-                    //        $scope.tab_image_bot_right.onload = function () {
-                                tptabcontext.drawImage($scope.tab_image_bot_right, tabBottomRightX, tabBottomY, tabBottomRightImage.width-11, tabBottomRightImage.height+5);
-
-                    //        };
+                            $scope.clearImage(topViewTabCanvas, tptabcontext, side);
+                            tptabcontext.drawImage($scope.tab_image_top_right, tabTopRightX, tabTopY, tabTopRightImage.width-11, tabTopRightImage.height+5);
+                            tptabcontext.drawImage($scope.tab_image_bot_right, tabBottomRightX, tabBottomY, tabBottomRightImage.width-11, tabBottomRightImage.height+5);
 
                             break;
 
@@ -700,7 +700,7 @@
 
                             var tabTopRightX = $scope.cWidth/2 + ($scope.rightShoeImage.width *.2);
                             var tabBottomRightX = $scope.cWidth/2 + ($scope.rightShoeImage.width *.2);
-                            
+
                                 tptabcontext.drawImage($scope.tab_image_top_right, tabTopRightX, tabTopY, tabTopRightImage.width-11, tabTopRightImage.height+5);
                                 tptabcontext.drawImage($scope.tab_image_bot_right, tabBottomRightX, tabBottomY, tabBottomRightImage.width-11, tabBottomRightImage.height+5);
                             
