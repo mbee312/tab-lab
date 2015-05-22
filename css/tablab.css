@@ -324,17 +324,6 @@ section.arrows-button-column.next {
     transition: all 0.7s ease;
 }
 
-.shuffle:hover, .shuffle:active, .shuttle:focus {
-    /*    -webkit-box-shadow: 0px 0px 15px 15px #fff;
-       box-shadow: 0px 0px 15px 15px #fff;
-      border-radius:50%; */
-    opacity: 0.6;
-    -webkit-transform: rotate(720deg);
-    transform: rotate(720deg);
-}
-
-
-
 /*  Canvas section   */
 /*                   */
 
