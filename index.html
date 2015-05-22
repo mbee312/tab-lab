@@ -273,6 +273,17 @@
                 <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
             </div>
         </slick>
+      <section layout="row" layout-sm="row" class="thumbnails-button-row">
+        <md-button class="thumbnails-button left fa fa-th fa-1x" id="thumb-button-left"
+                   ng-click="next('left')">
+        </md-button>
+        <md-button class="thumbnails-button center fa fa-th fa-1x" id="thumb-button-center"
+                   ng-click="next('left')">
+        </md-button>
+        <md-button class="thumbnails-button right fa fa-th fa-1x" id="thumb-button-right"
+                   ng-click="next('left')">
+        </md-button>
+    </section>
 
     <section layout="row" layout-sm="row" class="arrows-button-row next">
         <md-button class="slick-button next left fa fa-chevron-down fa-1x" aria-label="left next button" id="left-next-button"

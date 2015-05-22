@@ -314,6 +314,19 @@ section.arrows-button-column.next {
     box-shadow: 0 6px 5px -4px rgba(0, 0, 0, .26) !important;
 }
 
+section.thumbnails-button-row {
+  position: absolute;
+  top: 35%;
+  border: 1px solid #D3D3D3;
+  height: 21%;
+  width: 100%;
+}
+.thumbnails-button {
+  width: 28%;
+}
+.thumbnails-button.center {
+  width: 42%;
+}
 
 .shuffle {
     text-transform: lowercase;
