@@ -327,6 +327,11 @@ section.thumbnails-button-row {
 .thumbnails-button.center {
   width: 42%;
 }
+.thumbnail-icon {
+  right: 7px;
+  bottom: 5px;
+  position: absolute;
+}
 
 .shuffle {
     text-transform: lowercase;
