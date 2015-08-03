@@ -13,25 +13,25 @@
     <title>Plae Chef app</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-    <!--   <link href="app/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-   <!-- <link rel="stylesheet" type="text/css" href="style.css" media="screen, handheld" />
-    <link rel="stylesheet" type="text/css" href="enhanced.css" media="screen  and (min-width: 40.5em)" />
+    <!--   <link href="app/bower_components/bootstrap/dist/styles/bootstrap.min.styles" rel="stylesheet"> -->
+   <!-- <link rel="stylesheet" type="text/styles" href="style.styles" media="screen, handheld" />
+    <link rel="stylesheet" type="text/styles" href="enhanced.styles" media="screen  and (min-width: 40.5em)" />
     -->
 
     <link rel="shortcut icon" href="http://goplae.com/tab-lab/favicon.ico"/>
-    <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="styles/animate.min.css">
+    <link rel="stylesheet" href="styles/angular-material/angular-material.min.css">
 
-    <link rel="stylesheet" href="app/slick-carousel/slick/slick.css">
-    <link rel="stylesheet" href="app/slick-carousel/slick/slick-theme.css">
+    <link rel="stylesheet" href="assets/libs/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="assets/libs/slick-carousel/slick/slick-theme.css">
      <!--
-    <link rel="stylesheet" href="app/slick-carousel/slick-1.5.0/slick/slick.css">
-    <link rel="stylesheet" href="app/slick-carousel/slick-1.5.0/slick/slick-theme.css">
+    <link rel="stylesheet" href="app/slick-carousel/slick-1.5.0/slick/slick.styles">
+    <link rel="stylesheet" href="app/slick-carousel/slick-1.5.0/slick/slick-theme.styles">
      -->
 
-    <link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="css/tablab.css">
+    <link rel="stylesheet" href="assets/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/tablab.css">
 
 
     <script>
@@ -527,94 +527,28 @@
                        style="background: #4EAC50;color: #fff;">
                 <span class="button plae-font">feedback</span>
             </md-button>
- <!--           <md-button class="md-raised fa fa-chevron-circle-up right fa-3x"
-                       ng-click="gotoElement('title-button-desktop');"
-                       aria-label="go to top button">
-            </md-button> -->
         </section>
 
-
-
-
-
-
-
     </md-whiteframe>
-
-    <div ng-switch="plaeChef.getSurveyForm()" class="slide-frame">
-        <div class="survey survey-container" ng-switch-when="true">
-
-
-             <md-content layout="column" flex="flex" md-theme="default" class="md-whiteframe-z1 survey-form" layout-align="center center">
-                 <h2 id="survey-h2">what do you think about tab lab?</h2>
-                 <form class="surveyForm plae-font" name="surveyForm" ng-submit="submitData(userSurvey, 'ajaxSubmitResult')" novalidate>
-
-                     <md-text-float class="md-default-theme question" label="Did your kid(s) play with Tab Lab? Yes or No?" ng-model="userSurvey.question_1" name="question_1">
-                     </md-text-float>
-
-                     <md-radio-group ng-model="userSurvey.question_1" id="question_1">
-                         <md-radio-button class="survey-question" value="yes">yes</md-radio-button>
-                         <md-radio-button class="survey-question" value="no"> no </md-radio-button>
-                     </md-radio-group>
-
-                     <md-text-float class="md-default-theme question"
-                                    label={{label_3}}
-                                    ng-model="userSurvey.question_2" name="question_3">
-                     </md-text-float>
-
-                     <md-radio-group ng-model="userSurvey.question_2" >
-                         <md-radio-button class="survey-question" value="0">0</md-radio-button>
-                         <md-radio-button class="survey-question" value="1">1</md-radio-button>
-                         <md-radio-button class="survey-question" value="2">2</md-radio-button>
-                         <md-radio-button class="survey-question" value="3">3</md-radio-button>
-                         <md-radio-button class="survey-question" value="4">4</md-radio-button>
-                         <md-radio-button class="survey-question" value="5">5</md-radio-button>
-                         <md-radio-button class="survey-question" value="6">6</md-radio-button>
-                         <md-radio-button class="survey-question" value="7">7</md-radio-button>
-                         <md-radio-button class="survey-question" value="8">8</md-radio-button>
-                         <md-radio-button class="survey-question" value="9">9</md-radio-button>
-                         <md-radio-button class="survey-question" value="10">10</md-radio-button>
-                     </md-radio-group>
-
-                     <md-text-float class="md-default-theme question" label="How can we improve Tab Lab?" ng-model="userSurvey.question_3" name="question_3">
-                     </md-text-float>
-
-
-                     <md-text-float class="md-default-theme question" label="email (optional)" ng-model="userSurvey.email" type="email" name="email">
-                     </md-text-float>
-
-
-                     <md-button class="md-raised submit" id="submit-survey" type="submit"
-                                ng-show="true" style="background: #4EAC50;color: #fff;">
-                         submit
-                     </md-button>
-
-                 </form>
-             </md-content>
-
-
-        </div>
-
-    </div>
     </div>
 
 </div>
 
-<script src="app/jquery/dist/jquery.js"></script>
-<script src="app/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-<script src="app/angular/angular.js"></script>
-<script src="app/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-<script src="app/angular-animate/angular-animate.js"></script>
-<script src="app/angular-touch/angular-touch.min.js"></script>
-<script src="app/angular-aria/angular-aria.js"></script>
-<script src="app/angular-material/angular-material.js"></script>
-<script src="app/angular-carousel/dist/angular-carousel.js"></script>
-<script src="app/slick-carousel/slick/slick.js"></script>
+<script src="assets/libs/jquery/dist/jquery.js"></script>
+<script src="assets/libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="assets/libs/angular/angular.js"></script>
+<script src="assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="assets/libs/angular-animate/angular-animate.js"></script>
+<script src="assets/libs/angular-touch/angular-touch.min.js"></script>
+<script src="assets/libs/angular-aria/angular-aria.js"></script>
+<script src="assets/libs/angular-material/angular-material.js"></script>
+<script src="assets/libs/angular-carousel/dist/angular-carousel.js"></script>
+<script src="assets/libs/slick-carousel/slick/slick.js"></script>
 <!-- <script src="app/slick-carousel/slick-1.5.0/slick/slick.min.js"></script>  -->
-<script src="app/angular-slick/dist/slick.js"></script>
-<script src="app/bootstrap/dist/js/bootstrap.min.js"></script>
-
-<script src="js/plaeChefController.js"></script>
+<script src="assets/libs/angular-slick/dist/slick.js"></script>
+<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="assets/libs/three.min.js"></script>
+<script src="app/plaeChefController.js"></script>
 
 
 
