@@ -91,10 +91,10 @@
                     return list;
                 }// end preLoader()
 
-                $http.get('data/shoeStyles_local.json').success(function (data) {
+                $http.get('assets/data/shoeStyles_local.json').success(function (data) {
                     $scope.shoeStyles = data;
                 });
-                $http.get('data/shoes_ty_local.json').success(function (data) {
+                $http.get('assets/data/shoes_ty_local.json').success(function (data) {
                     $scope.shoeList = data;
                     $scope.shoeList = $scope.preLoader ($scope.shoeList, true);
                     $scope.numofShoes = $scope.shoeList.length;
@@ -103,7 +103,7 @@
                     $scope.calculateSubTotal();
                 });
 
-                $http.get('data/tabs_local.json').success(function (data) {
+                $http.get('assets/data/tabs_local.json').success(function (data) {
                     $scope.tabList = data;
                     $scope.tabList = $scope.preLoader ($scope.tabList, false);
                     $scope.numOfTabs = $scope.tabList.length;
@@ -380,8 +380,8 @@
 
                 $scope.drawShoe = function (side) {
                     
-                    $scope.left_image.src = $scope.shoeSelected.topViewLeft.src;
-                    $scope.right_image.src = $scope.shoeSelected.topViewRight.src;
+                //    $scope.left_image.src = $scope.shoeSelected.topViewLeft.src;
+                //    $scope.right_image.src = $scope.shoeSelected.topViewRight.src;
 
                     var leftImage = $scope.getImageNaturalDimensionsAndScale(
                         $scope.left_image, 
