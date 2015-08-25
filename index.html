@@ -398,23 +398,10 @@
 
     </div>
 
-    <section class="md-whiteframe-z1 white-bg canvas-container" id="white-bg-mobile">
-        <canvas class='canvas' id="plae-chef-canvas-left" ng-swipe-right="plaeChef.setCanvas('right')"
-                ng-swipe-left="plaeChef.setCanvas('top')" ng-show="plaeChef.isCanvasSet('left')"></canvas>
-        <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-left" ng-swipe-right="plaeChef.setCanvas('right')"
-                ng-swipe-left="plaeChef.setCanvas('top')" ng-show="plaeChef.isCanvasSet('left')"></canvas>
+    <section ng-controller="SceneCtrl" class="md-whiteframe-z1 white-bg canvas-container" id="white-bg-mobile">
+        <div class="tablab-viewer">
 
-        <canvas class='canvas' id="plae-chef-canvas-top" ng-swipe-right="plaeChef.setCanvas('left')"
-                ng-swipe-left="plaeChef.setCanvas('right')" ng-show="plaeChef.isCanvasSet('top')"></canvas>
-        <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-top" ng-swipe-right="plaeChef.setCanvas('left')"
-                ng-swipe-left="plaeChef.setCanvas('right')" ng-show="plaeChef.isCanvasSet('top')"></canvas>
-
-
-        <canvas class='canvas' id="plae-chef-canvas-right" ng-swipe-right="plaeChef.setCanvas('top')"
-                ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
-        <canvas class='canvas tcanvas' id="plae-chef-canvas-tab-right" ng-swipe-right="plaeChef.setCanvas('top')"
-                ng-swipe-left="plaeChef.setCanvas('left')" ng-show="plaeChef.isCanvasSet('right')"></canvas>
-
+        </div>
         <section layout="row" layout-sm="row" class="canvas-button-row">
             <md-button ng-controller="SliderCtrl" class="canvas-button random-button md-raised plae-font" id="random-button"
                        ng-click="random()"
@@ -549,6 +536,8 @@
 <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="assets/libs/three.min.js"></script>
 <script src="app/plaeChefController.js"></script>
+<script src="app/sceneController.js"></script>
+<script src="app/sliderController.js"></script>
 
 
 
