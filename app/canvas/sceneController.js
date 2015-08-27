@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    var app = angular.module('plaeChefApp');
+    var app = angular.module('tabLabApp');
     app.controller('SceneCtrl', ['$scope', function($scope) {
     var container, scene, renderer, camera, clock, loader;
     var WIDTH, HEIGHT, VIEW_ANGLE, ASPECT, NEAR, FAR;
@@ -136,8 +136,12 @@
 
 
     loader = new THREE.JSONLoader();
-    var mesh;
-    loader.load('assets/models/max/shoe.js', function (geometry, materials) {
+        var mesh;
+        var shoeModel;
+        shoeModel = $scope.shoeSelected.model;
+        console.log(shoeModel);
+
+    loader.load($scope.shoeSelected.model, function (geometry, materials) {
         var material = new THREE.MeshPhongMaterial({
             map: THREE.ImageUtils.loadTexture('assets/models/texture/shoe/max/left/suede-camo-print-steel-camo/Difuse.jpg'),
             normalMap: THREE.ImageUtils.loadTexture( "assets/models/texture/shoe/max/left/suede-camo-print-steel-camo/Normal.jpg" ),

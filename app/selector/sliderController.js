@@ -5,7 +5,7 @@
 (function () {
     'use strict';
 
-    var app = angular.module('plaeChefApp');
+    var app = angular.module('tabLabApp');
     app.controller('SliderCtrl', ['$scope', function($scope) {
 
     $scope.innerWidthSize = 0;

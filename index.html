@@ -6,17 +6,13 @@
 <!--[if IE 8]>
 <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html lang="en" ng-app="plaeChefApp" class="customizer" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
+<html lang="en" ng-app="tabLabApp" class="customizer" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Plae Chef app</title>
+    <title>Tab Lab App</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-    <!--   <link href="app/bower_components/bootstrap/dist/styles/bootstrap.min.styles" rel="stylesheet"> -->
-   <!-- <link rel="stylesheet" type="text/styles" href="style.styles" media="screen, handheld" />
-    <link rel="stylesheet" type="text/styles" href="enhanced.styles" media="screen  and (min-width: 40.5em)" />
-    -->
 
     <link rel="shortcut icon" href="http://goplae.com/tab-lab/favicon.ico"/>
     <link rel="stylesheet" href="styles/animate.min.css">
@@ -24,10 +20,6 @@
 
     <link rel="stylesheet" href="assets/libs/slick-carousel/slick/slick.css">
     <link rel="stylesheet" href="assets/libs/slick-carousel/slick/slick-theme.css">
-     <!--
-    <link rel="stylesheet" href="app/slick-carousel/slick-1.5.0/slick/slick.styles">
-    <link rel="stylesheet" href="app/slick-carousel/slick-1.5.0/slick/slick-theme.styles">
-     -->
 
     <link rel="stylesheet" href="assets/libs/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
@@ -42,7 +34,7 @@
 
 
 </head>
-<body ng-controller="PlaeChefController as plaeChef" ng-class="{
+<body ng-controller="tabLabController as tabLab" ng-class="{
       'iscroll-on': app.iScrollState.useIScroll,
       'iscroll-off': !app.iScrollState.useIScroll
       }">
@@ -309,7 +301,7 @@
     <div class="display-container">
 
 
-    <div ng-switch="plaeChef.getSizeSelectMode('left')" class="slide-frame">
+    <div ng-switch="tabLab.getSizeSelectMode('left')" class="slide-frame">
 
     <md-whiteframe class="md-whiteframe-z1 white-bg wave plae size" id="plae-size" ng-switch-when="true">
         <div class="size selector">
@@ -334,13 +326,6 @@
                 <div class="checkbox label plae-font"><h4>wide?</h4></div>
             </md-checkbox>
 
-<!--
-            <md-button class="done-button cart-button md-raised select-size" id="select-size-button-done"
-                       ng-click="plaeChef.setSizeSelectMode('left')"
-                       style="background: #4EAC50;color: #fff;">
-                done
-            </md-button>
-            -->
         </div>
 
 
@@ -369,31 +354,8 @@
                 <div class="checkbox label">wide?</div>
             </md-checkbox>
 
-<!--
-            <md-button class="done-button cart-button md-raised select-size" id="select-size-button-done-right"
-                       ng-click="plaeChef.setSizeSelectMode('right')"
-                       style="background: #4EAC50;color: #fff;">
-                done
-            </md-button>
-            -->
         </div>
-        <!--    <div class="display-size">
-               <p>shoe size</p>
-               <md-button class="size-circle" ng-click="plaeChef.setSizeSelectMode('left')">{{shoeSize.size.size}}</md-button>
-               <p>tab size</p>
-               <md-button class="size-circle" ng-click="plaeChef.setSizeSelectMode('left')">{{tabs.size.size}}</md-button>
-               <md-checkbox class="size select shoe checkbox wide" id="wide-fit-button-two" ng-model="fit.wide"
-                            aria-label="wide-fit"
-                            ng-show="true">
-                   <div class="checkbox label">wide?</div>
-               </md-check           </div>
-           <!--
-          <md-button id="select-size-button-left" class="select-size plae size bg-opacity" aria-label="select size button"
-                  ng-click="plaeChef.setSizeSelectMode('left')" ng-show="!plaeChef.isSizeSelected()">
-               <h1 class="nosize one" ng-show="!plaeChef.isSizeSelected()">?</h1>
-               <h1 class="nosize two" ng-show="!plaeChef.isTabSizeSelected()">?</h1>
-           </md-button>
-           -->
+
     </md-whiteframe>
 
     </div>
@@ -416,7 +378,7 @@
             </md-button>
 
                 <md-button ng-controller="ScrollCtrl" class="canvas-button cart-button md-raised select-size" id="select-size-button" ng-click="gotoElement('plae-size-select');"
-                           ng-show="!plaeChef.isSizeSelected()" style="background: #4EAC50;color: #fff;">
+                           ng-show="!tabLab.isSizeSelected()" style="background: #4EAC50;color: #fff;">
                     <span class="plae-font">size</span>
                 </md-button>
         </section>
@@ -425,7 +387,7 @@
     <md-whiteframe class="md-whiteframe-z1 white-bg plae basket" id="plae-basket" layout>
 
 
-        <md-button class="md-raised fa fa-pencil-square-o fa-1" id="edit" aria-label="edit-cart" ng-click="plaeChef.setEditMode()">
+        <md-button class="md-raised fa fa-pencil-square-o fa-1" id="edit" aria-label="edit-cart" ng-click="tabLab.setEditMode()">
         </md-button>
 
         <h3 class="cart title">your shoe</h3>
@@ -433,7 +395,7 @@
         <div class="plae basket item shoe" ng-model="shoeSelected">
             <md-button class="md-raised attr shoe" ng-class="{'size-animate' : shoeEditMode}"
                        aria-label="attr name button"
-                       ng-click="plaeChef.setSizeSelectMode('right')">
+                       ng-click="tabLab.setSizeSelectMode('right')">
                 <h4 class="product name plae-font">{{shoeSelected.name}}</h4>
             <ul class="details">
                 <li class="attr price plae-font">{{shoeSelected.price | currency}}</li>
@@ -447,7 +409,7 @@
             <md-button class="md-raised md-warn delete"
                        id="delete-shoe"
                        aria-label="delete-shoe"
-                       ng-click="plaeChef.remove('shoe')">
+                       ng-click="tabLab.remove('shoe')">
                 <p class="rotate">remove</p>
             </md-button>
         </div>
@@ -457,7 +419,7 @@
             <md-button class="md-raised attr tableft"
                        ng-class="{'size-animate' : tabEditModeL}"
                        aria-label="attr tableft button"
-                       ng-click="plaeChef.setSizeSelectMode('right')">
+                       ng-click="tabLab.setSizeSelectMode('right')">
                 <h4 class="product name plae-font">{{tabs.left.name}}</h4>
 
                 <ul class="details">
@@ -469,14 +431,14 @@
                 </ul>
             </md-button>
             <md-button class="md-raised md-warn delete" id="delete-left" aria-label="delete-left"
-                       ng-click="plaeChef.remove('left')" ng-show="plaeChef.isTabEditMode('left')">
+                       ng-click="tabLab.remove('left')" ng-show="tabLab.isTabEditMode('left')">
                 <p class="rotate">remove</p>
             </md-button>
         </div>
 
         <div class="plae basket item right" ng-model="tabs.right">
             <md-button class="md-raised attr tabright" ng-class="{'size-animate' : tabEditModeR}" aria-label="attr tabright button"
-                       ng-click="plaeChef.setSizeSelectMode('right')">
+                       ng-click="tabLab.setSizeSelectMode('right')">
                 <h4 class="product name plae-font">{{tabs.right.name}}</h4>
 
             <ul class="details">
@@ -490,8 +452,8 @@
             <md-button class="md-raised md-warn delete"
                        id="delete-right"
                        aria-label="delete-right"
-                       ng-click="plaeChef.remove('right')"
-                       ng-show="plaeChef.isTabEditMode('right')">
+                       ng-click="tabLab.remove('right')"
+                       ng-show="tabLab.isTabEditMode('right')">
                 <p class="rotate plae-font">remove</p>
             </md-button>
         </div>
@@ -531,11 +493,10 @@
 <script src="assets/libs/angular-material/angular-material.js"></script>
 <script src="assets/libs/angular-carousel/dist/angular-carousel.js"></script>
 <script src="assets/libs/slick-carousel/slick/slick.js"></script>
-<!-- <script src="app/slick-carousel/slick-1.5.0/slick/slick.min.js"></script>  -->
 <script src="assets/libs/angular-slick/dist/slick.js"></script>
 <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="assets/libs/three.min.js"></script>
-<script src="app/plaeChefController.js"></script>
+<script src="app/tabLabController.js"></script>
 <script src="app/canvas/sceneController.js"></script>
 <script src="app/selector/sliderController.js"></script>
 

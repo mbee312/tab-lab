@@ -2,7 +2,7 @@
     'use strict';
 
     // Declare app level module which depends on views, and components
-    var plaeChefApp = angular.module('plaeChefApp',
+    var tabLabApp = angular.module('tabLabApp',
         ['ngAnimate',
             'ngTouch',
             'ngMaterial',
@@ -13,7 +13,7 @@
         ]);
 
 
-    plaeChefApp.controller('PlaeChefController',
+    tabLabApp.controller('tabLabController',
         ['$scope',
             '$http',
             '$mdDialog',
@@ -22,8 +22,6 @@
             '$window',
             function ($scope, $http, $mdDialog, $mdToast, $animate, $window) {
 
-                
-                /*  CANVAS SETUP end   */
                 // Tabs on canvas List Arrays
                 $scope.tabs = {};
                 $scope.tabs.size;
@@ -64,55 +62,36 @@
                 $scope.numOfTabs = 0;
                 $scope.numofShoes = 0;
 
-                $scope.preLoader = function (list, shoeBool ){
+                var loadMenu = function (list, shoeBool ){
                     for(var i = 0; i < list.length ; i++){
                         list[i].menuImg = new Image();
                         list[i].menuImg.src=list[i].menuImgUrl;
-                        if(shoeBool){
-                            list[i].topViewLeft = new Image();
-                            list[i].topViewLeft.src=list[i].mainViewTopLeft;
-                            list[i].topViewRight = new Image();
-                            list[i].topViewRight.src=list[i].mainViewTopRight;
-                        }else{
-                            list[i].topViewLeftTopTab = new Image();
-                            list[i].topViewLeftTopTab.src = list[i].topViewLeftOne;
-
-                            list[i].topViewLeftBottomTab = new Image();
-                            list[i].topViewLeftBottomTab.src = list[i].topViewLeftTwo;
-
-                            list[i].topViewRightTopTab = new Image();
-                            list[i].topViewRightTopTab.src = list[i].topViewRightOne;
-
-                            list[i].topViewRightBottomTab = new Image();
-                            list[i].topViewRightBottomTab.src = list[i].topViewRightTwo;
-
-                        }//end else-if
                     }// end for
                     return list;
                 }// end preLoader()
 
-                $http.get('assets/data/shoeStyles_local.json').success(function (data) {
+                $http.get('assets/data/shoeStyles.json').success(function (data) {
                     $scope.shoeStyles = data;
                 });
-                $http.get('assets/data/shoes_ty_local.json').success(function (data) {
+                $http.get('assets/data/shoes_max.json').success(function (data) {
                     $scope.shoeList = data;
-                    $scope.shoeList = $scope.preLoader ($scope.shoeList, true);
+                    $scope.shoeList = loadMenu ($scope.shoeList, true);
                     $scope.numofShoes = $scope.shoeList.length;
                     $scope.setShoe($scope.shoeList[$scope.index]);
-                    $scope.drawShoe();
-                    $scope.calculateSubTotal();
+                //    $scope.drawShoe();
+                //    $scope.calculateSubTotal();
                 });
 
-                $http.get('assets/data/tabs_local.json').success(function (data) {
+                $http.get('assets/data/tabs.json').success(function (data) {
                     $scope.tabList = data;
-                    $scope.tabList = $scope.preLoader ($scope.tabList, false);
+                    $scope.tabList = loadMenu ($scope.tabList, false);
                     $scope.numOfTabs = $scope.tabList.length;
-                    $scope.addTab($scope.tabList[$scope.leftTabIndex], "left");
-                    $scope.addTab($scope.tabList[$scope.rightTabIndex], "right");
-                    $scope.setTabPositions();
-                    $scope.drawTabs("left");
-                    $scope.drawTabs("right");
-                    $scope.calculateSubTotal();
+                //    $scope.addTab($scope.tabList[$scope.leftTabIndex], "left");
+                //    $scope.addTab($scope.tabList[$scope.rightTabIndex], "right");
+                //    $scope.setTabPositions();
+                //    $scope.drawTabs("left");
+                //    $scope.drawTabs("right");
+                //    $scope.calculateSubTotal();
                     
                 });
 
@@ -129,35 +108,6 @@
 
                 $scope.leftTabIndex = 0;
                 $scope.lTindex = 1;
-
-                /*  CANVAS SETUP start   */
-
-
-        /*        var topViewCanvas = document.getElementById('plae-chef-canvas-top');
-                var tpcontext = topViewCanvas.getContext('2d');
-
-                var topViewTabCanvas = document.getElementById('plae-chef-canvas-tab-top');
-                var tptabcontext = topViewTabCanvas.getContext('2d');
-
-
-                topViewCanvas.style.width = 512;//actual width of canvas
-                topViewCanvas.style.height = 512;//actual height of canvas
-                topViewTabCanvas.style.width = 512;//actual width of canvas
-                topViewTabCanvas.style.height = 512;//actual height of canvas
-        */
-
-
-
-
-
-
-
-
-                /*
-                *
-                *
-                * */
-
 
                 $scope.calculateSubTotal = function (){
                     var sTotal = 0;
@@ -184,17 +134,6 @@
                     $scope.lTindex = $scope.leftTabIndex;
                     $scope.rightTabIndex = Math.floor(Math.random() * 11);
                     $scope.rTindex = $scope.rightTabIndex;
-/*
-                    if(!$scope.isMobile) {
-                        $('#shoe-car-desktop').slick('slickGoTo', $scope.carouselIndex, false);
-                        $('#tab-left-car-desktop').slick('slickGoTo', $scope.lTindex, false);
-                        $('#tab-right-car-desktop').slick('slickGoTo', $scope.rTindex, false);
-                    }else{
-                        $('#shoe-car-mobile').slick('slickGoTo', $scope.carouselIndex, false);
-                        $('#tab-left-car').slick('slickGoTo', $scope.lTindex, false);
-                        $('#tab-right-car').slick('slickGoTo', $scope.rTindex, false);
-                    }
-                    */
                 };
 
                 $scope.clearImage = function (c, ctx, pos) {
@@ -222,6 +161,7 @@
 
                 $scope.setShoe = function (shoe) {
                     $scope.shoeSelected = shoe;
+                    console.log("setShoe! " + shoe.model);
                 }; //end setShoe()
 
 
@@ -1045,14 +985,10 @@
 
 
             }])
-        //end plaeChefApp Controller
-        .config(function($mdThemingProvider) {
-            $mdThemingProvider.theme('default')
-                .primaryPalette('pink')
-                .accentPalette('orange');
-        });
+        //end tabLabAppController
 
-    plaeChefApp.service('anchorSmoothScroll', function(){
+
+    tabLabApp.service('anchorSmoothScroll', function(){
 
         this.scrollTo = function(eID) {
 
@@ -1106,7 +1042,7 @@
 
     });
 
-    plaeChefApp.controller('ScrollCtrl', function($scope, $location, anchorSmoothScroll) {
+    tabLabApp.controller('ScrollCtrl', function($scope, $location, anchorSmoothScroll) {
 
         $scope.gotoElement = function (eID){
             // set the location.hash to the id of
@@ -1119,7 +1055,7 @@
         };
     });
 
-    plaeChefApp.controller('ListController', function($scope, iScrollService) {
+    tabLabApp.controller('ListController', function($scope, iScrollService) {
         $scope.vm = this;  // Use 'controller as' syntax
 
         $scope.vm.iScrollState = iScrollService.state;
