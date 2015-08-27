@@ -11,6 +11,22 @@
             'slick',
             'ui.bootstrap.modal'
         ]);
+    tabLabApp.service('sharedProperties', function(){
+        var shoeSelected = {};
+
+        return {
+            getShoe: function () {
+                console.log("returning shoe: ");
+                console.log(shoeSelected);
+                return shoeSelected;
+            },
+            setShoeSelected: function(shoe) {
+                shoeSelected = shoe;
+                console.log("setShoe: ");
+                console.log(shoeSelected);
+            }
+        };
+    });
 
 
     tabLabApp.controller('tabLabController',
@@ -20,7 +36,8 @@
             '$mdToast',
             '$animate',
             '$window',
-            function ($scope, $http, $mdDialog, $mdToast, $animate, $window) {
+            'sharedProperties',
+            function ($scope, $http, $mdDialog, $mdToast, $animate, $window, sharedProperties) {
 
                 // Tabs on canvas List Arrays
                 $scope.tabs = {};
@@ -70,6 +87,10 @@
                     return list;
                 }// end preLoader()
 
+                $scope.setShoe = function(shoe){
+                    sharedProperties.setShoeSelected(shoe);
+                };
+
                 $http.get('assets/data/shoeStyles.json').success(function (data) {
                     $scope.shoeStyles = data;
                 });
@@ -77,7 +98,10 @@
                     $scope.shoeList = data;
                     $scope.shoeList = loadMenu ($scope.shoeList, true);
                     $scope.numofShoes = $scope.shoeList.length;
-                    $scope.setShoe($scope.shoeList[$scope.index]);
+                    $scope.shoeSelected = $scope.shoeList[$scope.index];
+                    console.log("loaded: ");
+                    console.log($scope.shoeSelected);
+                    $scope.setShoe($scope.shoeSelected);
                 //    $scope.drawShoe();
                 //    $scope.calculateSubTotal();
                 });
@@ -94,6 +118,14 @@
                 //    $scope.calculateSubTotal();
                     
                 });
+
+                $http.get('assets/data/shoeSizes.json').success(function (data) {
+                    $scope.shoeSizeOptions = data;
+                });
+                $http.get('assets/data/tabSizes.json').success(function (data) {
+                    $scope.tabSizeOptions = data;
+                });
+
 
                 /**
                  * On init select random shoe and tab
@@ -158,11 +190,12 @@
                     // Restore the transform
                     ctx.restore();
                 }; // end clearImage
-
+/*
                 $scope.setShoe = function (shoe) {
                     $scope.shoeSelected = shoe;
                     console.log("setShoe! " + shoe.model);
                 }; //end setShoe()
+                */
 
 
                 // Add a Item to the list
@@ -239,6 +272,7 @@
                 $scope.right_image = new Image();
                 $scope.left_image = new Image();
 
+                /*
                 $scope.drawShoe = function (side) {
                     
                 //    $scope.left_image.src = $scope.shoeSelected.topViewLeft.src;
@@ -300,6 +334,8 @@
 
                     }//end else-if
                 };// end drawShoe()
+
+                */
 
                 $scope.setTabPositions = function (num){
                     /*     
@@ -752,33 +788,6 @@
                 $scope.shoe = {};
                 $scope.tab = {};
 
-                $scope.shoeSizeOptions = [
-                    {size: 8, label: "8 - kids"},
-                    {size: 8.5, label: "8.5 - kids"},
-                    {size: 9, label: "9 - kids"},
-                    {size: 9.5, label: "9.5 - kids"},
-                    {size: 10, label: "10 - kids"},
-                    {size: 10.5, label: "10.5 - kids"},
-                    {size: 11, label: "11 - kids"},
-                    {size: 11.5, label: "11.5 - kids"},
-                    {size: 12, label: "12 - kids"},
-                    {size: 12.5, label: "12.5 - kids"},
-                    {size: 13, label: "13 - kids"},
-                    {size: 13.5, label: "13.5 - kids"},
-                    {size: 1, label: "1 - youth"},
-                    {size: 1.5, label: "1.5 - youth"},
-                    {size: 2, label: "2 - youth"},
-                    {size: 2.5, label: "2.5 - youth"},
-                    {size: 3, label: "3 - youth"}
-                ];
-
-                $scope.tabSizeOptions = [
-                    {size: "S", label: "small"},
-                    {size: "M", label: "medium"},
-                    {size: "L", label: "large"},
-                    {size: "XL", label: "x-large"}
-                ];
-
                 $scope.$watch("shoeSize.size.size", function (newValue, oldValue) {
                     $scope.setTabSize();
 
@@ -987,6 +996,25 @@
             }])
         //end tabLabAppController
 
+    tabLabApp.controller('ScrollCtrl', function($scope, $location, anchorSmoothScroll) {
+
+        $scope.gotoElement = function (eID){
+            // set the location.hash to the id of
+            // the element you wish to scroll to.
+            $location.hash('bottom');
+
+            // call $anchorScroll()
+            anchorSmoothScroll.scrollTo(eID);
+
+        };
+    });
+
+    tabLabApp.controller('ListController', function($scope, iScrollService) {
+        $scope.vm = this;  // Use 'controller as' syntax
+
+        $scope.vm.iScrollState = iScrollService.state;
+    });
+
 
     tabLabApp.service('anchorSmoothScroll', function(){
 
@@ -1041,25 +1069,5 @@
         };
 
     });
-
-    tabLabApp.controller('ScrollCtrl', function($scope, $location, anchorSmoothScroll) {
-
-        $scope.gotoElement = function (eID){
-            // set the location.hash to the id of
-            // the element you wish to scroll to.
-            $location.hash('bottom');
-
-            // call $anchorScroll()
-            anchorSmoothScroll.scrollTo(eID);
-
-        };
-    });
-
-    tabLabApp.controller('ListController', function($scope, iScrollService) {
-        $scope.vm = this;  // Use 'controller as' syntax
-
-        $scope.vm.iScrollState = iScrollService.state;
-    });
-
 
 })();

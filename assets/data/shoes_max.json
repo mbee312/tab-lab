@@ -8,6 +8,8 @@
     "price": 59.95,
     "menuImgUrl": "assets/media/thumbnails/shoes/Max_L_Black.jpg",
     "model": "assets/models/max/shoe.js",
+    "d": "assets/models/texture/shoe/max/left/leather-black/Difuse.jpg",
+    "normal": "assets/models/texture/shoe/max/left/leather-black/Normal.jpg",
     "tabTopTextureNormalsDefault": "assets/models/texture/shoe/max/tabs/default/leather-black/normals1.jpg",
     "tabBottomTextureNormalsDefault": "assets/models/texture/shoe/max/tabs/default/leather-black/normals2.jpg",
     "tabTopTextureDifuseDefault": "assets/models/texture/shoe/max/tabs/default/leather-black/difuse1.jpg",

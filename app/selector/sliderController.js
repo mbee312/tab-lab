@@ -6,10 +6,14 @@
     'use strict';
 
     var app = angular.module('tabLabApp');
-    app.controller('SliderCtrl', ['$scope', function($scope) {
+    app.controller('SliderCtrl', ['$scope', 'sharedProperties', function($scope, sharedProperties) {
 
-    $scope.innerWidthSize = 0;
-    $scope.innerWidthSizeNew = window.innerWidth;
+        $scope.innerWidthSize = 0;
+        $scope.innerWidthSizeNew = window.innerWidth;
+
+        $scope.setShoe = function(shoe){
+            sharedProperties.setShoeSelected(shoe);
+        };
 
     $scope.random = function (){
         $scope.index = Math.floor(Math.random() * 10);
@@ -102,11 +106,10 @@
             // Get the current slide
             var currentSlide = $("#shoe-car-mobile").slick('slickCurrentSlide');
             console.log(currentSlide);
-
             console.log('hey, carouselIndex has changed! ' + $scope.carouselIndex);
             console.log("the shoe is " + $scope.shoeList[index]);
             $scope.setShoe($scope.shoeList[index]);
-            $scope.drawShoe();
+            console.log("inside SlideController! " + sharedProperties.getShoe());
             console.log("drawShoe complete. calculate subtotal...");
             $scope.calculateSubTotal();
             console.log($scope.getSubTotal());
