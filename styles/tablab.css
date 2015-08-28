@@ -169,7 +169,7 @@ select, .tab-lab-header {
     margin-left: 2%;
     margin-right: 2%;
 }
-section.horizontal-slick-container {
+.horizontal-slick-container {
     height: 180px;
     border-top: 2px solid #D3D3D3;
 }
@@ -239,17 +239,17 @@ button#bottom-next-button {
     font-size: 60px !important;
 }
 
-section.arrows-button-column {
+.arrows-button-column {
     width: 30px;
     position: absolute;
     height: 180px;
     z-index: 2;
     top: 0;
 }
-section.arrows-button-column.previous {
+.arrows-button-column.previous {
     left: 1%;
 }
-section.arrows-button-column.next {
+.arrows-button-column.next {
     float: right;
     right: 1%;
     top: 0;
@@ -314,7 +314,7 @@ section.arrows-button-column.next {
     box-shadow: 0 6px 5px -4px rgba(0, 0, 0, .26) !important;
 }
 
-section.thumbnails-button-row {
+.thumbnails-button-row {
   position: absolute;
   top: 35%;
   border: 1px solid #D3D3D3;
@@ -663,7 +663,7 @@ ul.plae.basket.list {
     font-size: 10px !important;
     right: 10px;
 }
-section.canvas-button-row {
+.canvas-button-row {
     position: absolute;
     width: 90%;
     top: 90%;
@@ -708,7 +708,7 @@ button#survey-button {
     top: 1200px;
 }
 
-section.cart-button-row {
+.cart-button-row {
     height: 40px;
     width: 100%;
     position: absolute;
@@ -1026,10 +1026,10 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .vertical-slick-container{
         display: inherit;
     }
-    section.arrows-button-column {
+    .arrows-button-column {
         display: none;
     }
-    section.horizontal-slick-container {
+    .horizontal-slick-container {
         display: none;
     }
 
@@ -1059,7 +1059,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .tabmenuitem.bgimage.ng-scope.slick-slide{
         transform: translate(0,30px);
     }
-    section.vertical-slick-container {
+    .vertical-slick-container {
         position: absolute;
         top: 20px;
         height: 220px;
@@ -1106,7 +1106,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         margin-bottom: 5px;
         margin-top: 5px;
     }
-    section.arrows-button-row.next{
+    .arrows-button-row.next{
     }
     .select-me {
         display: block;
@@ -1216,7 +1216,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         left: 58%;
         float: right;
     }
-    section.canvas-button-row {
+    .canvas-button-row {
         top: 84%;
     }
 
@@ -1275,7 +1275,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
 }
 @media screen and (min-width: 568px){
 
-    section.canvas-button-row {
+    .canvas-button-row {
         top: 85%;
     }
     .slick-list.draggable {
@@ -1293,7 +1293,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
     .tabmenuitem.bgimage.ng-scope.slick-slide {
     }
-    section.vertical-slick-container{
+    .vertical-slick-container{
         height: 260px;
     }
     .slick-list.draggable {
@@ -1361,7 +1361,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         width: 50%;
         left: 48%;
     }
-    section.vertical-slick-container {
+    .vertical-slick-container {
         width: 44%;
     }
     .bgimage.ng-scope.slick-slide.slick-active {
@@ -1498,7 +1498,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         width: 55%;
         height: 400px;
     }
-    section.vertical-slick-container {
+    .vertical-slick-container {
         height: 390px;
         top: 30px;
     }
@@ -1530,7 +1530,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     #white-bg-mobile {
         height: 400px;
     }
-    section.canvas-button-row {
+    .canvas-button-row {
         top: 90%;
     }
 
@@ -1767,7 +1767,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .md-button.md-raised:not([disabled]){
         box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
     }
-    section.vertical-slick-container {
+    .vertical-slick-container {
         top: 50px;
         height: 480px;
         width: 49%;
@@ -2038,10 +2038,10 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .select-me {
         left: 0;
     }
-    section.vertical-slick-container {
+    .vertical-slick-container {
         height: 600px;
     }
-    section.canvas-button-row {
+    .canvas-button-row {
         top: 92%;
 
     }
