@@ -307,7 +307,7 @@
         <div class="size selector">
             <div class="size select shoe">
                 <h4>shoe size: {{shoeSize.size.label}}</h4>
-                <md-select class="size selector shoes" ng-model="shoeSize.size" placeholder="Favorite Topping">
+                <md-select class="size selector shoes" ng-model="shoeSize.size">
                         <md-option ng-value="s.size.size" ng-repeat="s in shoeSizeOptions">{{s.size.label}}</md-option>
                 </md-select>
             </div>
@@ -384,101 +384,100 @@
         </section>
     </section>
 
-    <md-whiteframe class="md-whiteframe-z1 white-bg plae basket" id="plae-basket" layout>
+        <section ng-controller="CartCtrl" >
+            <md-white-frame class="md-whiteframe-z1 white-bg plae basket" id="plae-basket">
+                <md-button class="md-raised fa fa-pencil-square-o fa-1" id="edit" aria-label="edit-cart" ng-click="tabLab.setEditMode()">
+                </md-button>
+
+                <h3 class="cart title">your shoe</h3>
+
+                <div class="plae basket item shoe" ng-model="shoeSelected">
+                    <md-button class="md-raised attr shoe" ng-class="{'size-animate' : shoeEditMode}"
+                               aria-label="attr name button"
+                               ng-click="tabLab.setSizeSelectMode('right')">
+                        <h4 class="product name plae-font">{{shoeSelected.name}}</h4>
+                    <ul class="details">
+                        <li class="attr price plae-font">{{shoeSelected.price | currency}}</li>
+                        <li class=" attr color plae-font">color: {{shoeSelected.color}}</li>
+                        <li class="attr size plae-font">
+                            size: {{shoeSize.size.label}}
+                        </li>
+                    </ul>
+                    </md-button>
+
+                    <md-button class="md-raised md-warn delete"
+                               id="delete-shoe"
+                               aria-label="delete-shoe"
+                               ng-click="tabLab.remove('shoe')">
+                        <p class="rotate">remove</p>
+                    </md-button>
+                </div>
 
 
-        <md-button class="md-raised fa fa-pencil-square-o fa-1" id="edit" aria-label="edit-cart" ng-click="tabLab.setEditMode()">
-        </md-button>
+                <div class="plae basket item left" ng-model="tabs.left">
+                    <md-button class="md-raised attr tableft"
+                               ng-class="{'size-animate' : tabEditModeL}"
+                               aria-label="attr tableft button"
+                               ng-click="tabLab.setSizeSelectMode('right')">
+                        <h4 class="product name plae-font">{{tabs.left.name}}</h4>
 
-        <h3 class="cart title">your shoe</h3>
+                        <ul class="details">
+                            <li class="attr price plae-font">{{tabs.left.price | currency}}</li>
+                            <li class="attr color plae-font">color: {{tabs.left.color}}</li>
+                            <li class="attr size plae-font">
+                                size: {{tabs.size.label}}
+                            </li>
+                        </ul>
+                    </md-button>
+                    <md-button class="md-raised md-warn delete" id="delete-left" aria-label="delete-left"
+                               ng-click="tabLab.remove('left')" ng-show="tabLab.isTabEditMode('left')">
+                        <p class="rotate">remove</p>
+                    </md-button>
+                </div>
 
-        <div class="plae basket item shoe" ng-model="shoeSelected">
-            <md-button class="md-raised attr shoe" ng-class="{'size-animate' : shoeEditMode}"
-                       aria-label="attr name button"
-                       ng-click="tabLab.setSizeSelectMode('right')">
-                <h4 class="product name plae-font">{{shoeSelected.name}}</h4>
-            <ul class="details">
-                <li class="attr price plae-font">{{shoeSelected.price | currency}}</li>
-                <li class=" attr color plae-font">color: {{shoeSelected.color}}</li>
-                <li class="attr size plae-font">
-                    size: {{shoeSize.size.label}}
-                </li>
-            </ul>
-            </md-button>
+                <div class="plae basket item right" ng-model="tabs.right">
+                    <md-button class="md-raised attr tabright" ng-class="{'size-animate' : tabEditModeR}" aria-label="attr tabright button"
+                               ng-click="tabLab.setSizeSelectMode('right')">
+                        <h4 class="product name plae-font">{{tabs.right.name}}</h4>
 
-            <md-button class="md-raised md-warn delete"
-                       id="delete-shoe"
-                       aria-label="delete-shoe"
-                       ng-click="tabLab.remove('shoe')">
-                <p class="rotate">remove</p>
-            </md-button>
-        </div>
-
-
-        <div class="plae basket item left" ng-model="tabs.left">
-            <md-button class="md-raised attr tableft"
-                       ng-class="{'size-animate' : tabEditModeL}"
-                       aria-label="attr tableft button"
-                       ng-click="tabLab.setSizeSelectMode('right')">
-                <h4 class="product name plae-font">{{tabs.left.name}}</h4>
-
-                <ul class="details">
-                    <li class="attr price plae-font">{{tabs.left.price | currency}}</li>
-                    <li class="attr color plae-font">color: {{tabs.left.color}}</li>
-                    <li class="attr size plae-font">
-                        size: {{tabs.size.label}}
-                    </li>
-                </ul>
-            </md-button>
-            <md-button class="md-raised md-warn delete" id="delete-left" aria-label="delete-left"
-                       ng-click="tabLab.remove('left')" ng-show="tabLab.isTabEditMode('left')">
-                <p class="rotate">remove</p>
-            </md-button>
-        </div>
-
-        <div class="plae basket item right" ng-model="tabs.right">
-            <md-button class="md-raised attr tabright" ng-class="{'size-animate' : tabEditModeR}" aria-label="attr tabright button"
-                       ng-click="tabLab.setSizeSelectMode('right')">
-                <h4 class="product name plae-font">{{tabs.right.name}}</h4>
-
-            <ul class="details">
-                <li class="attr price plae-font">{{tabs.right.price | currency}}</li>
-                <li class="attr color plae-font">color: {{tabs.right.color}}</li>
-                <li class="attr size plae-font">
-                        size: {{tabs.size.label}}
-                </li>
-            </ul>
-            </md-button>
-            <md-button class="md-raised md-warn delete"
-                       id="delete-right"
-                       aria-label="delete-right"
-                       ng-click="tabLab.remove('right')"
-                       ng-show="tabLab.isTabEditMode('right')">
-                <p class="rotate plae-font">remove</p>
-            </md-button>
-        </div>
+                    <ul class="details">
+                        <li class="attr price plae-font">{{tabs.right.price | currency}}</li>
+                        <li class="attr color plae-font">color: {{tabs.right.color}}</li>
+                        <li class="attr size plae-font">
+                                size: {{tabs.size.label}}
+                        </li>
+                    </ul>
+                    </md-button>
+                    <md-button class="md-raised md-warn delete"
+                               id="delete-right"
+                               aria-label="delete-right"
+                               ng-click="tabLab.remove('right')"
+                               ng-show="tabLab.isTabEditMode('right')">
+                        <p class="rotate plae-font">remove</p>
+                    </md-button>
+                </div>
 
 
-        <div class="plae basket subtotal" id="subtotal" ng-model="subTotal">
-            <md-button class="md-raised attr subtotal plae-font">
-                <p>
-                <h3>subtotal</h3>
-                </p>
-                <span class="price subtotal">{{subTotal | currency}}</span>
+                <div class="plae basket subtotal" id="subtotal" ng-model="subTotal">
+                    <md-button class="md-raised attr subtotal plae-font">
+                        <p>
+                        <h3>subtotal</h3>
+                        </p>
+                        <span class="price subtotal">{{subTotal | currency}}</span>
 
-            </md-button>
-        </div>
+                    </md-button>
+                </div>
 
-        <section layout="row" layout-sm="row" class="cart-button-row" ng-controller="ScrollCtrl">
-            <md-button class="cart-button feedback md-raised add"
-                       id="feedback-button"
-                       ng-click="setSurveyMode()"
-                       style="background: #4EAC50;color: #fff;">
-                <span class="button plae-font">feedback</span>
-            </md-button>
+                <section layout="row" layout-sm="row" class="cart-button-row" ng-controller="ScrollCtrl">
+                    <md-button class="cart-button feedback md-raised add"
+                               id="feedback-button"
+                               ng-click="setSurveyMode()"
+                               style="background: #4EAC50;color: #fff;">
+                        <span class="button plae-font">feedback</span>
+                    </md-button>
+                </section>
+            </md-white-frame>
         </section>
-
-    </md-whiteframe>
     </div>
 
 </div>
