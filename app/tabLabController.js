@@ -77,7 +77,16 @@
                 $scope.isTabIndexAtOne = false;
 
                 $scope.numOfTabs = 0;
-                $scope.numofShoes = 0;
+                $scope.numofShoes = 1;
+
+                $scope.index;
+                $scope.carouselIndex;
+
+                $scope.rightTabIndex;
+                $scope.rTindex;
+
+                $scope.leftTabIndex;
+                $scope.lTindex;
 
                 var loadMenu = function (list, shoeBool ){
                     for(var i = 0; i < list.length ; i++){
@@ -91,40 +100,55 @@
                     sharedProperties.setShoeSelected(shoe);
                 };
 
-                $http.get('assets/data/shoeStyles.json').success(function (data) {
-                    $scope.shoeStyles = data;
-                });
-                $http.get('assets/data/shoes_max.json').success(function (data) {
-                    $scope.shoeList = data;
-                    $scope.shoeList = loadMenu ($scope.shoeList, true);
-                    $scope.numofShoes = $scope.shoeList.length;
-                    $scope.shoeSelected = $scope.shoeList[$scope.index];
-                    console.log("loaded: ");
-                    console.log($scope.shoeSelected);
-                    $scope.setShoe($scope.shoeSelected);
-                //    $scope.drawShoe();
-                //    $scope.calculateSubTotal();
-                });
+                var initLoad = function () {
 
-                $http.get('assets/data/tabs.json').success(function (data) {
-                    $scope.tabList = data;
-                    $scope.tabList = loadMenu ($scope.tabList, false);
-                    $scope.numOfTabs = $scope.tabList.length;
-                //    $scope.addTab($scope.tabList[$scope.leftTabIndex], "left");
-                //    $scope.addTab($scope.tabList[$scope.rightTabIndex], "right");
-                //    $scope.setTabPositions();
-                //    $scope.drawTabs("left");
-                //    $scope.drawTabs("right");
-                //    $scope.calculateSubTotal();
-                    
-                });
+                    $http.get('assets/data/shoeStyles.json').success(function (data) {
+                        $scope.shoeStyles = data;
+                    });
+                    $http.get('assets/data/tabs.json').success(function (data) {
+                        $scope.tabList = data;
+                        $scope.tabList = loadMenu($scope.tabList, false);
+                        $scope.numOfTabs = $scope.tabList.length;
+                        //    $scope.addTab($scope.tabList[$scope.leftTabIndex], "left");
+                        //    $scope.addTab($scope.tabList[$scope.rightTabIndex], "right");
+                        //    $scope.setTabPositions();
+                        //    $scope.drawTabs("left");
+                        //    $scope.drawTabs("right");
+                        //    $scope.calculateSubTotal();
 
-                $http.get('assets/data/shoeSizes.json').success(function (data) {
-                    $scope.shoeSizeOptions = data;
-                });
-                $http.get('assets/data/tabSizes.json').success(function (data) {
-                    $scope.tabSizeOptions = data;
-                });
+                    });
+                    $http.get('assets/data/shoeSizes.json').success(function (data) {
+                        $scope.shoeSizeOptions = data;
+                    });
+                    $http.get('assets/data/tabSizes.json').success(function (data) {
+                        $scope.tabSizeOptions = data;
+                    });
+                } // end initLoad()
+
+                var loadShoeStyle = function () {
+
+                    $http.get('assets/data/shoes_max.json').success(function (data) {
+                        $scope.shoeList = data;
+                        $scope.shoeList = loadMenu($scope.shoeList, true);
+                        $scope.numofShoes = $scope.shoeList.length;
+                        $scope.shoeSelected = $scope.shoeList[$scope.index];
+                        console.log("loaded: ");
+                        console.log($scope.shoeSelected);
+                        $scope.setShoe($scope.shoeSelected);
+                        //    $scope.drawShoe();
+                        //    $scope.calculateSubTotal();
+                    });
+                }// end loadShoeStyle()
+
+                var initRandomSliderIndex = function (){
+                    $scope.index = Math.floor(Math.random() * $scope.numofShoes);
+                    $scope.carouselIndex = $scope.index;
+                    $scope.leftTabIndex = Math.floor(Math.random() * $scope.numOfTabs);
+                    $scope.lTindex = $scope.leftTabIndex;
+                    $scope.rightTabIndex = Math.floor(Math.random() * $scope.numOfTabs);
+                    $scope.rTindex = $scope.rightTabIndex;
+                }// end initRandomIndex()
+
 
 
                 /**
@@ -132,21 +156,9 @@
                  *
                  */
 
-                $scope.index = 0;
-                $scope.carouselIndex = 1;
-
-                $scope.rightTabIndex = 0;
-                $scope.rTindex = 1;
-
-                $scope.leftTabIndex = 0;
-                $scope.lTindex = 1;
-
-                $scope.calculateSubTotal = function (){
-                    var sTotal = 0;
-                        sTotal = $scope.shoeSelected.price + $scope.tabs.left.price + $scope.tabs.right.price;
-                    console.log("subtotal=" +sTotal);
-                    $scope.subTotal = sTotal;
-                };
+                initLoad();
+                loadShoeStyle();
+                initRandomSliderIndex();
 
                 /*                                 */
                 /* helper function to clear canvas */
@@ -159,14 +171,6 @@
                     $scope.shoeSelected.tab.right.bottom = $scope.tabs[1].bottom;
                 }
 
-                $scope.initRandom = function (){
-                    $scope.index = Math.floor(Math.random() * 10);
-                    $scope.carouselIndex = $scope.index;
-                    $scope.leftTabIndex = Math.floor(Math.random() * 11);
-                    $scope.lTindex = $scope.leftTabIndex;
-                    $scope.rightTabIndex = Math.floor(Math.random() * 11);
-                    $scope.rTindex = $scope.rightTabIndex;
-                };
 
                 $scope.clearImage = function (c, ctx, pos) {
                     console.log("clearing image");
@@ -190,13 +194,6 @@
                     // Restore the transform
                     ctx.restore();
                 }; // end clearImage
-/*
-                $scope.setShoe = function (shoe) {
-                    $scope.shoeSelected = shoe;
-                    console.log("setShoe! " + shoe.model);
-                }; //end setShoe()
-                */
-
 
                 // Add a Item to the list
                 $scope.addTab = function (tab, side) {
@@ -212,33 +209,6 @@
                             console.log("error: no tab side selected in addTab()");
                     }// end switch
                 }; //end addTab()
-
-                this.remove = function (side) {
-                    switch (side) {
-                        case "left":
-                            $scope.subTotal -= $scope.tabLeft[0].price;
-                            console.log("popped " + $scope.tabLeft.pop().name + " from tabLeft");
-                            $scope.clearImage(topViewTabCanvas, tptabcontext, side);
-                            $scope.clearImage(topViewCanvas, tpcontext, side);
-                            $scope.setViews(side);
-                            break;
-                        case "right":
-                            $scope.subTotal -= $scope.tabRight[0].price;
-                            console.log("popped " + $scope.tabRight.pop().name + " from tabRight");
-                            $scope.clearImage(topViewTabCanvas, tptabcontext, side);
-                            $scope.clearImage(topViewCanvas, tpcontext, side);
-                            $scope.setViews(side);
-                            break;
-                        case "shoe":
-                            $scope.subTotal -= $scope.shoeSelected.price;
-                            $scope.shoeSelected = null;
-                            $scope.clearImage(topViewTabCanvas, tptabcontext, side);
-                            $scope.clearImage(topViewCanvas, tpcontext, side);
-                            break;
-                        default:
-                            console.log("no tabs removed");
-                    }
-                };
 
                 $scope.leftShoeImage = {};
                 $scope.leftShoeImage.width =  0;
@@ -591,21 +561,6 @@
 
                 }; //end drawTabs()
 
-
-                /**                                       **/
-                /*      Logic to set viewable canvas       */
-                /**                                       **/
-                this.canvasView = "top";
-
-                this.isCanvasSet = function (checkCanvas) {
-                    return this.canvasView === checkCanvas;
-                };
-
-                this.setCanvas = function (setCanvas) {
-                    this.canvasView = setCanvas;
-                };
-                /* end canvas view logic code */
-
                 this.clearSelections = function () {
                     if ($scope.shoeSelected.length > 0) {
                         console.log("popped " + $scope.shoeSelected.pop().name);
@@ -659,10 +614,6 @@
                     return $scope.tabs.length > 0;
                 };
 
-                $scope.getSubTotal = function () {
-                    console.log("subtotal is " + $scope.subTotal);
-                    return $scope.subTotal;
-                };
 
                 this.setEditMode = function () {
                     if ($scope.editMode == true) {
