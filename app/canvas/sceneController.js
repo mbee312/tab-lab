@@ -5,7 +5,11 @@
     'use strict';
 
     var app = angular.module('tabLabApp');
-    app.controller('SceneCtrl', ['$scope', 'sharedProperties', function($scope, sharedProperties) {
+    app.controller('SceneCtrl',
+        ['$scope',
+            'tabLabProperties',
+            'sizeProperties',
+            function($scope, tabLabProperties, sizeProperties) {
         var container, renderer, camera, clock, loader;
         var WIDTH, HEIGHT, VIEW_ANGLE, ASPECT, NEAR, FAR;
         $scope.scene;
@@ -173,7 +177,7 @@
         }
 
         $scope.getShoe = function(shoe){
-            shoeSelected = sharedProperties.getShoe();
+            shoeSelected = tabLabProperties.getShoe();
         };
 
         var drawShoe = function (mesh){

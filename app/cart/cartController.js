@@ -6,7 +6,11 @@
     'use strict';
 
     var app = angular.module('tabLabApp');
-    app.controller('CartCtrl', ['$scope', 'sharedProperties', function ($scope, sharedProperties) {
+    app.controller('CartCtrl',
+        ['$scope',
+            'tabLabProperties',
+            'sizeProperties',
+            function ($scope, tabLabProperties, sizeProperties) {
 
         $scope.getSubTotal = function () {
             console.log("subtotal is " + $scope.subTotal);
@@ -19,7 +23,7 @@
             console.log("subtotal=" +sTotal);
             $scope.subTotal = sTotal;
         };
-        
+
         $scope.remove = function (side) {
             switch (side) {
                 case "left":

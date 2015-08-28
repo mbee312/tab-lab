@@ -6,13 +6,17 @@
     'use strict';
 
     var app = angular.module('tabLabApp');
-    app.controller('SliderCtrl', ['$scope', 'sharedProperties', function($scope, sharedProperties) {
+    app.controller('SliderCtrl',
+        ['$scope',
+            'tabLabProperties',
+            'sizeProperties',
+            function ($scope, tabLabProperties, sizeProperties) {
 
         $scope.innerWidthSize = 0;
         $scope.innerWidthSizeNew = window.innerWidth;
 
         $scope.setShoe = function(shoe){
-            sharedProperties.setShoeSelected(shoe);
+            tabLabProperties.setShoeSelected(shoe);
         };
 
     $scope.random = function (){
@@ -109,7 +113,7 @@
             console.log('hey, carouselIndex has changed! ' + $scope.carouselIndex);
             console.log("the shoe is " + $scope.shoeList[index]);
             $scope.setShoe($scope.shoeList[index]);
-            console.log("inside SlideController! " + sharedProperties.getShoe());
+            console.log("inside SlideController! " + tabLabProperties.getShoe());
             console.log("drawShoe complete. calculate subtotal...");
             $scope.calculateSubTotal();
             console.log($scope.getSubTotal());

@@ -11,7 +11,7 @@
             'slick',
             'ui.bootstrap.modal'
         ]);
-    tabLabApp.service('sharedProperties', function(){
+    tabLabApp.service('tabLabProperties', function(){
         var shoeSelected = {};
 
         return {
@@ -27,8 +27,33 @@
             }
         };
     });
+    tabLabApp.service('sizeProperties', function (){
+        var shoeSize = '';
+        var tabSize = '';
 
-
+        return {
+            getShoeSize: function () {
+                console.log("returning shoe size: ");
+                console.log(shoeSize);
+                return shoeSize;
+            },
+            setShoeSize: function (size) {
+                shoeSize = size;
+                console.log("setShoeSize: ");
+                console.log(shoeSize);
+            },
+            getTabSize: function () {
+                console.log("returning tab size: ");
+                console.log(tabSize);
+                return tabSize;
+            },
+            setTabSize: function (size) {
+                shoeSize = size;
+                console.log("setTabSize: ");
+                console.log(tabSize);
+            }
+        };
+    });
     tabLabApp.controller('tabLabController',
         ['$scope',
             '$http',
@@ -36,12 +61,12 @@
             '$mdToast',
             '$animate',
             '$window',
-            'sharedProperties',
-            function ($scope, $http, $mdDialog, $mdToast, $animate, $window, sharedProperties) {
+            'tabLabProperties',
+            'sizeProperties',
+            function ($scope, $http, $mdDialog, $mdToast, $animate, $window, tabLabProperties, sizeProperties) {
 
                 // Tabs on canvas List Arrays
                 $scope.tabs = {};
-                $scope.tabs.size;
                 $scope.tabs.left = {};
                 $scope.tabs.left.price = 0;
                 $scope.tabs.right = {};
@@ -50,10 +75,7 @@
                 $scope.shoeSelected = {};
                 $scope.shoeSelected.tab = {};
                 $scope.shoeSelected.tab.left = {};
-                $scope.shoeSelected.tab.right = {}; 
-
-                $scope.shoeSize = {};
-                $scope.shoeSize.size = {};
+                $scope.shoeSelected.tab.right = {};
                 $scope.fit = {};
                 //  $scope.fit.autoselect = true;
                 $scope.fit.wide = false;
@@ -97,7 +119,7 @@
                 }// end preLoader()
 
                 $scope.setShoe = function(shoe){
-                    sharedProperties.setShoeSelected(shoe);
+                    tabLabProperties.setShoeSelected(shoe);
                 };
 
                 var initLoad = function () {
@@ -152,7 +174,8 @@
 
 
                 /**
-                 * On init select random shoe and tab
+                 *
+                 * initiliaze and load
                  *
                  */
 
@@ -642,30 +665,6 @@
                     this.setSizeSelectMode();
                 };
 
-                this.isSizeSelected = function () {
-                    if ($scope.shoeSize.size.size != null) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }//end isSizeSelected ()
-
-                this.setSizeSelectMode = function (side){
-                    if(side == 'left') {
-                        $scope.isSizeEdit = !$scope.isSizeEdit;
-                    }else{
-                        $scope.isSizeEditRight = !$scope.isSizeEditRight;
-                    }
-                }//end setSizeEditMode()
-
-                this.getSizeSelectMode = function (side){
-                    if(side == 'left') {
-                        return $scope.isSizeEdit;
-                    }else{
-                        return $scope.isSizeEditRight;
-                    }
-                }//end getSizeSelectMode ()
-
                 this.isTabEditMode = function (side) {
                     if (side == "left") {
                         return $scope.tabEditModeL;
@@ -738,148 +737,6 @@
 
                 $scope.shoe = {};
                 $scope.tab = {};
-
-                $scope.$watch("shoeSize.size.size", function (newValue, oldValue) {
-                    $scope.setTabSize();
-
-                });
-
-                $scope.$watch("fit.wide", function (newValue, oldValue) {
-                    $scope.setTabSize();
-
-                });
-
-                $scope.setTabSize = function () {
-                    if( $scope.shoeSize.size != null){
-                        if ($scope.fit.wide == false) {
-                            switch ($scope.shoeSize.size.size) {
-                                case 8 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[0];
-                                    break;
-                                case 8.5 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[0];
-                                    break;
-                                case 9 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[0];
-                                    break;
-                                case 9.5 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[1];
-                                    break;
-                                case 10 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[1];
-                                    break;
-                                case 10.5 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[1];
-                                    break;
-                                case 11 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[1];
-                                    break;
-                                case 11.5 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[1];
-                                    break;
-                                case 12 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[1];
-                                    break;
-                                case 12.5 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[1];
-                                    break;
-                                case 13 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[2];
-                                    break;
-                                case 13.5 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[2];
-                                    break;
-                                case 1 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[2];
-                                    break;
-                                case 1.5 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[2];
-                                    break;
-                                case 2 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[2];
-                                    break;
-                                case 2.5 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[2];
-                                    break;
-                                case 3 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[2];
-                                    break;
-                            }
-                        } else {
-                            switch ($scope.shoeSize.size.size) {
-                                case 8 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[1];
-                                    break;
-                                case 8.5 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[1];
-                                    break;
-                                case 9 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[1];
-                                    break;
-                                case 9.5 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[2];
-                                    break;
-                                case 10 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[2];
-                                    break;
-                                case 10.5 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[2];
-                                    break;
-                                case 11 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[2];
-                                    break;
-                                case 11.5 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[2];
-                                    break;
-                                case 12 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[2];
-                                    break;
-                                case 12.5 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[2];
-                                    break;
-                                case 13 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[3];
-                                    break;
-                                case 13.5 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[3];
-                                    break;
-                                case 1 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[3];
-                                    break;
-                                case 1.5 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[3];
-                                    break;
-                                case 2 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[3];
-                                    break;
-                                case 2.5 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[3];
-                                    break;
-                                case 3 :
-                                    $scope.tabs.size = $scope.tabSizeOptions[3];
-                                    break;
-                            }// end switch
-                        }//end if-else
-                    }//end if-else
-                };// end setTabSize()
-
-
-
-                this.moreOptions = function () {
-                    return $scope.sizeMoreOptions;
-                }//end showMoreOptions()
-
-                this.showMoreOptions = function () {
-                    console.log("inside showMoreOptions()");
-                    if ($scope.sizeMoreOptions) {
-                        $scope.sizeMoreOptions = false;
-                        console.log("$scope.sizeMoreOptions set to false");
-                    } else {
-                        $scope.sizeMoreOptions = true;
-                        console.log("$scope.sizeMoreOptions set to true");
-                    }//end if-else
-                }//end showMoreOptions()
-
 
                 $scope.label_3 = "How likely would you recommend Tab Lab to a friend? \n0 to 10. (10 is Extremely likely)";
 
