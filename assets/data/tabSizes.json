@@ -1,0 +1,20 @@
+[
+  {
+    "size" : "S",
+    "label" : "small"
+  },
+  {
+    "size" : "M",
+    "label" : "medium"
+  },
+  {
+    "size" : "L",
+    "label" : "Large"
+  },
+  {
+    "size" : "XL",
+    "label" : "x-large"
+  }
+]
+
+
