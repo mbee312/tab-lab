@@ -52,115 +52,118 @@
     <body ng-controller="tabLabController as tabLab" ng-class="{
           'iscroll-on': app.iScrollState.useIScroll,
           'iscroll-off': !app.iScrollState.useIScroll
-          }">
+          }" >
 
         <section ng-view class="view-frame plae-chef-window">
 
             <section class="slick-container" ng-controller="SliderCtrl">
-                <div class="md-whiteframe-z1 horizontal-slick-container">
-                    <div layout="column" layout-sm="column" class="arrows-button-column previous" >
-                        <md-button class="slick-button column previous top fa fa-chevron-left fa-1x" aria-label="top previous button" id="top-prev-button"
-                                   ng-click="previous('top')">
-                        </md-button>
-                        <md-button class="slick-button column previous middle fa fa-chevron-left fa-1x" aria-label="middle previous button" id="middle-prev-button"
-                                   ng-click="previous('middle')">
-                        </md-button>
-                        <md-button class="slick-button column previous bottom fa fa-chevron-left fa-1x" aria-label="bottom previous button" id="bottom-prev-button"
-                                   ng-click="previous('bottom')">
-                        </md-button>
+                <md-whiteframe class="md-whiteframe-z1 horizontal-slick-container">
+                    <img id="mySpinner" src="/my/loading/spinner.gif" ng-show="loading" />
+                    <md-progress-circular class="md-hue-2" md-mode="indeterminate" ng-show="loading" ></md-progress-circular>
+                    <div ng-show=!"loading">
+                        <div layout="column" layout-sm="column" class="arrows-button-column previous" >
+                            <md-button class="slick-button column previous top fa fa-chevron-left fa-1x" aria-label="top previous button" id="top-prev-button"
+                                       ng-click="previous('top')">
+                            </md-button>
+                            <md-button class="slick-button column previous middle fa fa-chevron-left fa-1x" aria-label="middle previous button" id="middle-prev-button"
+                                       ng-click="previous('middle')">
+                            </md-button>
+                            <md-button class="slick-button column previous bottom fa fa-chevron-left fa-1x" aria-label="bottom previous button" id="bottom-prev-button"
+                                       ng-click="previous('bottom')">
+                            </md-button>
 
-                    </div>
-
-                    <slick class="car slick-shoe mobile" ng-show="isMobileScreen()" id="shoe-car-mobile"
-                       init-onload="false"
-                       infinite="true"
-                       center-mode="true"
-                       speed="200"
-                       center-padding="25px"
-                       cssEase="ease"
-                       arrows="false"
-                       swipe="true"
-                       swipeToSlide="true"
-                       touch-move="true"
-                       touchThreshold="1000"
-                       draggable="true"
-                       easing="linear"
-                       mobileFirst="true"
-                       respondTo="window"
-                       slides-to-show="5"
-                       slides-to-scroll="1"
-                       focus-on-select="true"
-                       current-index="index"
-                       data="shoeList">
-
-
-                        <div ng-class="{ 'translate-slider-x': isEndOfShoeList}" ng-repeat="shoe in shoeList" class="img bgimage">
-                            <a><img class="slide img" ng-src={{shoe.menuImg.src}}></a>
                         </div>
-                    </slick>
-                    <slick class="car slick-left mobile" ng-show="isMobileScreen()" id="tab-left-car"
-                       init-onload="false"
-                       infinite="true"
-                       center-mode="true"
-                       speed="200"
-                       center-padding="25px"
-                       cssEase="ease"
-                       arrows="false"
-                       swipe="true"
-                       swipeToSlide="true"
-                       touch-move="true"
-                       touchThreshold="1000"
-                       draggable="true"
-                       easing="linear"
-                       mobileFirst="true"
-                       respondTo="window"
-                       slides-to-show="5"
-                       slides-to-scroll="1"
-                       focus-on-select="true"
-                       current-index="leftTabIndex"
-                       data="tabList">
-                    <div ng-class="{ 'translate-slider-x': isEndOfTabListL }"ng-repeat="tab in tabList" class="tabmenuitem bgimage">
-                        <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
+                        <slick class="car slick-shoe mobile" ng-show="isMobileScreen()" id="shoe-car-mobile"
+                           init-onload="false"
+                           infinite="true"
+                           center-mode="true"
+                           speed="200"
+                           center-padding="25px"
+                           cssEase="ease"
+                           arrows="false"
+                           swipe="true"
+                           swipeToSlide="true"
+                           touch-move="true"
+                           touchThreshold="1000"
+                           draggable="true"
+                           easing="linear"
+                           mobileFirst="true"
+                           respondTo="window"
+                           slides-to-show="5"
+                           slides-to-scroll="1"
+                           focus-on-select="true"
+                           current-index="index"
+                           data="shoeList">
+
+
+                            <div ng-class="{ 'translate-slider-x': isEndOfShoeList}" ng-repeat="shoe in shoeList" class="img bgimage">
+                                <a><img class="slide img" ng-src={{shoe.menuImg.src}}></a>
+                            </div>
+                        </slick>
+                        <slick class="car slick-left mobile" ng-show="isMobileScreen()" id="tab-left-car"
+                           init-onload="false"
+                           infinite="true"
+                           center-mode="true"
+                           speed="200"
+                           center-padding="25px"
+                           cssEase="ease"
+                           arrows="false"
+                           swipe="true"
+                           swipeToSlide="true"
+                           touch-move="true"
+                           touchThreshold="1000"
+                           draggable="true"
+                           easing="linear"
+                           mobileFirst="true"
+                           respondTo="window"
+                           slides-to-show="5"
+                           slides-to-scroll="1"
+                           focus-on-select="true"
+                           current-index="leftTabIndex"
+                           data="tabList">
+                        <div ng-class="{ 'translate-slider-x': isEndOfTabListL }"ng-repeat="tab in tabList" class="tabmenuitem bgimage">
+                            <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
+                        </div>
+                        </slick>
+                        <slick class="car slick-right mobile" ng-show="isMobileScreen()" id="tab-right-car"
+                           init-onload="false"
+                           infinite="true"
+                           center-mode="true"
+                           speed="200"
+                           center-padding="25px"
+                           cssEase="ease"
+                           arrows="false"
+                           swipe="true"
+                           swipeToSlide="true"
+                           touch-move="true"
+                           touchThreshold="1000"
+                           draggable="true"
+                           easing="linear"
+                           mobileFirst="true"
+                           respondTo="window"
+                           slides-to-show="5"
+                           slides-to-scroll="1"
+                           focus-on-select="true"
+                           current-index="rightTabIndex"
+                           data="tabList">
+                        <div ng-class="{ 'translate-slider-x': isEndOfTabListR }" ng-repeat="tab in tabList" class="tabmenuitem bgimage">
+                            <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
+                        </div>
+                        </slick>
+                        <div layout="column" layout-sm="column" class="arrows-button-column next">
+                            <md-button class="slick-button column next top fa fa-chevron-right fa-1x" aria-label="top next button" id="top-next-button"
+                                       ng-click="next('center')">
+                            </md-button>
+                            <md-button class="slick-button column next middle fa fa-chevron-right fa-1x" aria-label="middle next button" id="middle-next-button"
+                                       ng-click="next('left')">
+                            </md-button>
+                            <md-button class="slick-button column next bottom fa fa-chevron-right fa-1x" aria-label="bottom next button" id="bottom-next-button"
+                                       ng-click="next('right')">
+                            </md-button>
+                        </div>
                     </div>
-                    </slick>
-                    <slick class="car slick-right mobile" ng-show="isMobileScreen()" id="tab-right-car"
-                       init-onload="false"
-                       infinite="true"
-                       center-mode="true"
-                       speed="200"
-                       center-padding="25px"
-                       cssEase="ease"
-                       arrows="false"
-                       swipe="true"
-                       swipeToSlide="true"
-                       touch-move="true"
-                       touchThreshold="1000"
-                       draggable="true"
-                       easing="linear"
-                       mobileFirst="true"
-                       respondTo="window"
-                       slides-to-show="5"
-                       slides-to-scroll="1"
-                       focus-on-select="true"
-                       current-index="rightTabIndex"
-                       data="tabList">
-                    <div ng-class="{ 'translate-slider-x': isEndOfTabListR }" ng-repeat="tab in tabList" class="tabmenuitem bgimage">
-                        <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
-                    </div>
-                    </slick>
-                    <div layout="column" layout-sm="column" class="arrows-button-column next">
-                        <md-button class="slick-button column next top fa fa-chevron-right fa-1x" aria-label="top next button" id="top-next-button"
-                                   ng-click="next('center')">
-                        </md-button>
-                        <md-button class="slick-button column next middle fa fa-chevron-right fa-1x" aria-label="middle next button" id="middle-next-button"
-                                   ng-click="next('left')">
-                        </md-button>
-                        <md-button class="slick-button column next bottom fa fa-chevron-right fa-1x" aria-label="bottom next button" id="bottom-next-button"
-                                   ng-click="next('right')">
-                        </md-button>
-                    </div>
-                </div>
-                <div class="md-whiteframe-z1 vertical-slick-container" >
+                </md-whiteframe>
+                <md-whiteframe class="md-whiteframe-z1 vertical-slick-container" >
                     <div layout="row" layout-sm="row" class="arrows-button-row previous" >
                         <md-button class="slick-button previous left fa fa-chevron-up fa-1x" aria-label="left previous button" id="left-prev-button"
                            ng-click="previous('left')">
@@ -283,7 +286,7 @@
                                ng-click="next('right')">
                     </md-button>
                 </div>
-                </div>
+                </md-whiteframe>
             </section>
             <section ng-controller="SizeCtrl" ng-switch="tabLab.getSizeSelectMode('left')" class="slide-frame">
                 <md-whiteframe class="md-whiteframe-z1 white-bg wave plae size" id="plae-size" ng-switch-when="true">
@@ -338,28 +341,30 @@
 
             </md-whiteframe>
             </section>
-            <section ng-controller="SceneCtrl" class="md-whiteframe-z1 white-bg canvas-container" id="white-bg-mobile">
-                <div class="tablab-viewer">
+            <section>
+                <md-whiteframe class="md-whiteframe-z1 white-bg canvas-container" id="white-bg-mobile">
+                    <div class="tablab-viewer">
 
-                </div>
-                <div layout="row" layout-sm="row" class="canvas-button-row">
-                    <md-button ng-controller="SliderCtrl" class="canvas-button random-button md-raised plae-font" id="random-button"
-                               ng-click="random()"
-                               style="background: rgba(255, 255, 255, 0.90);color: #FFFFFF;">
-                        <span class="rainbow shuffle">random</span>
-                    </md-button>
-                    <md-button ng-controller="SliderCtrl" class="canvas-button random-button shuffle md-raised plae-font"
-                               id="shuffle-button"
-                               ng-click="shuffle()"
-                               aria-label="shuffle button">
-                        <i class="fa fa-random fa-2x"></i>
-                    </md-button>
-
-                        <md-button ng-controller="ScrollCtrl" class="canvas-button cart-button md-raised select-size" id="select-size-button" ng-click="gotoElement('plae-size-select');"
-                                   ng-show="!tabLab.isSizeSelected()" style="background: #4EAC50;color: #fff;">
-                            <span class="plae-font">size</span>
+                    </div>
+                    <div layout="row" layout-sm="row" class="canvas-button-row">
+                        <md-button ng-controller="SliderCtrl" class="canvas-button random-button md-raised plae-font" id="random-button"
+                                   ng-click="random()"
+                                   style="background: rgba(255, 255, 255, 0.90);color: #FFFFFF;">
+                            <span class="rainbow shuffle">random</span>
                         </md-button>
-                </div>
+                        <md-button ng-controller="SliderCtrl" class="canvas-button random-button shuffle md-raised plae-font"
+                                   id="shuffle-button"
+                                   ng-click="shuffle()"
+                                   aria-label="shuffle button">
+                            <i class="fa fa-random fa-2x"></i>
+                        </md-button>
+
+                            <md-button ng-controller="ScrollCtrl" class="canvas-button cart-button md-raised select-size" id="select-size-button" ng-click="gotoElement('plae-size-select');"
+                                       ng-show="!tabLab.isSizeSelected()" style="background: #4EAC50;color: #fff;">
+                                <span class="plae-font">size</span>
+                            </md-button>
+                    </div>
+                </md-whiteframe>
             </section>
             <section ng-controller="CartCtrl" >
                 <md-white-frame class="md-whiteframe-z1 white-bg plae basket" id="plae-basket">
@@ -471,8 +476,8 @@
         <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="assets/libs/three.min.js"></script>
         <script src="app/tabLabController.js"></script>
-        <script src="app/canvas/sceneController.js"></script>
         <script src="app/selector/sliderController.js"></script>
+        <script src="app/canvas/sceneController.js"></script>
         <script src="app/cart/cartController.js"></script>
         <script src="app/size/sizeController.js"></script>
 

@@ -110,7 +110,7 @@
                 $scope.leftTabIndex;
                 $scope.lTindex;
 
-                var loadMenu = function (list, shoeBool ){
+                $scope.loadMenu = function (list, shoeBool ){
                     for(var i = 0; i < list.length ; i++){
                         list[i].menuImg = new Image();
                         list[i].menuImg.src=list[i].menuImgUrl;
@@ -122,22 +122,15 @@
                     tabLabProperties.setShoeSelected(shoe);
                 };
 
-                var initLoad = function () {
+                $scope.initLoad = function () {
 
                     $http.get('assets/data/shoeStyles.json').success(function (data) {
                         $scope.shoeStyles = data;
                     });
                     $http.get('assets/data/tabs.json').success(function (data) {
                         $scope.tabList = data;
-                        $scope.tabList = loadMenu($scope.tabList, false);
+                        $scope.tabList = $scope.loadMenu($scope.tabList, false);
                         $scope.numOfTabs = $scope.tabList.length;
-                        //    $scope.addTab($scope.tabList[$scope.leftTabIndex], "left");
-                        //    $scope.addTab($scope.tabList[$scope.rightTabIndex], "right");
-                        //    $scope.setTabPositions();
-                        //    $scope.drawTabs("left");
-                        //    $scope.drawTabs("right");
-                        //    $scope.calculateSubTotal();
-
                     });
                     $http.get('assets/data/shoeSizes.json').success(function (data) {
                         $scope.shoeSizeOptions = data;
@@ -147,22 +140,23 @@
                     });
                 } // end initLoad()
 
-                var loadShoeStyle = function () {
 
-                    $http.get('assets/data/shoes_max.json').success(function (data) {
+                $scope.loadShoeStyle = function (file) {
+
+                    $http.get(file).success(function (data) {
                         $scope.shoeList = data;
-                        $scope.shoeList = loadMenu($scope.shoeList, true);
+                        $scope.shoeList = $scope.loadMenu($scope.shoeList, true);
                         $scope.numofShoes = $scope.shoeList.length;
                         $scope.shoeSelected = $scope.shoeList[$scope.index];
                         console.log("loaded: ");
                         console.log($scope.shoeSelected);
                         $scope.setShoe($scope.shoeSelected);
-                        //    $scope.drawShoe();
-                        //    $scope.calculateSubTotal();
+                        $scope.drawShoe($scope.mesh);
+                        //    $scope.calculateSubTotal
                     });
                 }// end loadShoeStyle()
 
-                var initRandomSliderIndex = function (){
+                $scope.initRandomSliderIndex = function (){
                     $scope.index = Math.floor(Math.random() * $scope.numofShoes);
                     $scope.carouselIndex = $scope.index;
                     $scope.leftTabIndex = Math.floor(Math.random() * $scope.numOfTabs);
@@ -179,9 +173,250 @@
                  *
                  */
 
-                initLoad();
-                loadShoeStyle();
-                initRandomSliderIndex();
+
+
+                /*
+                    START Canvas Drawing
+
+                 */
+
+
+                $scope.container;
+                $scope.renderer
+                $scope.camera;
+                $scope.clock;
+                $scope.loader;
+                var WIDTH, HEIGHT, VIEW_ANGLE, ASPECT, NEAR, FAR;
+                $scope.scene;
+                $scope.mesh;
+                $scope.oldMesh
+
+
+                var mobileScaleFactor = .41;
+                var mobileScaleFactorWide = .27;
+                var smartphoneScaleFactor = .85;
+                var smartphoneScaleFactorWide = .27;
+                var tabletScaleFactor = .6;
+                var tabletScaleFactorWide = .5;
+                var defaultScaleFactor = .8;
+
+                $scope.scaleFactor = 1;
+                $scope.tabScaleFactorOffset = 1.25;
+                $scope.isMobile = false;
+                $scope.cWidth = 0; // canvas width
+
+                $scope.isMobileScreen = function (){
+                    return $scope.isMobile;
+                }; //end isMobileScreen()
+
+                $scope.calculateCanvasWidth = function (){
+                    var iWidth = window.innerWidth;
+                    console.log ( "innerWidth " + window.innerWidth);
+                    var wScaleFactor = .96; // canvas border % on mobile set in styles
+                    if(!$scope.isMobile) {
+                        if (iWidth < 360) {
+                            wScaleFactor = .4;
+                        }else if(iWidth < 600) {
+                            wScaleFactor = .4;
+                        }else if(iWidth < 660){
+                            wScaleFactor = .4;
+                        }else if(iWidth < 767){
+                            wScaleFactor = .5;
+                        }else if(iWidth < 800){
+                            wScaleFactor = .5;
+                        }else if (iWidth < 1024){
+                            wScaleFactor = .5;
+                        }else if (iWidth < 1200){
+                            wScaleFactor = .5;
+                        }else{
+                            wScaleFactor = .46;
+                        }
+                    }
+
+                    return iWidth*wScaleFactor;
+                };
+
+                $scope.setAllCanvasWidthsAndHeight = function (x, y){
+                    $scope.cWidth = $scope.calculateCanvasWidth(); // canvas calculated width
+
+                    //x and y is used in case canvas is not a square
+                    WIDTH = $scope.cWidth+x;
+                    HEIGHT = $scope.cWidth+y;
+                };
+
+                $scope.findAndSetCanvasDimensions = function(){
+
+                    if (window.innerWidth < 468){
+                        $scope.isMobile = true;
+                        $scope.scaleFactor = mobileScaleFactor;
+                    }else if (window.innerWidth < 600){
+                        $scope.isMobile = false;
+                        $scope.scaleFactor = mobileScaleFactorWide;
+                    }else if(window.innerWidth < 768){
+                        $scope.isMobile = false;
+                        $scope.scaleFactor = smartphoneScaleFactorWide;
+                    }else if(window.innerWidth < 1024){
+                        $scope.isMobile = false;
+                        $scope.scaleFactor = tabletScaleFactorWide;
+                    }else if(window.innerWidth < 1200){
+                        $scope.isMobile = false;
+                        $scope.scaleFactor = tabletScaleFactor;
+                    }else{
+                        $scope.isMobile = false;
+                        $scope.scaleFactor = defaultScaleFactor;
+                    } //end if-else
+                    $scope.setAllCanvasWidthsAndHeight(0,0);
+                    $scope.drawShoe($scope.mesh);
+                    //   $scope.drawTabs();
+
+                }; //end checkWindowSize()
+
+                $scope.createScene = function (){
+                    WIDTH = 600;
+                    HEIGHT = 600;
+
+                    VIEW_ANGLE = 40;
+                    ASPECT = WIDTH / HEIGHT;
+                    NEAR = 1;
+                    FAR = 100;
+
+                    $scope.container = document.querySelector('.tablab-viewer');
+                    $scope.clock = new THREE.Clock();
+
+                    $scope.scene = new THREE.Scene();
+                    $scope.renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+                    $scope.renderer.setSize(WIDTH, HEIGHT);
+                    $scope.renderer.shadowMapEnabled = true;
+                    $scope.renderer.shadowMapSoft = true;
+                    $scope.renderer.shadowMapType = THREE.PCFShadowMap;
+                    $scope.renderer.shadowMapAutoUpdate = true;
+                    $scope.renderer.setClearColor(0xffffff, 1);
+
+                    $scope.container.appendChild($scope.renderer.domElement);
+
+                    $scope.camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
+
+                    $scope.camera.position.set(0, 10, 30);
+                    $scope.camera.rotation.x = -Math.PI / 12;
+
+                    $scope.scene.add($scope.camera);
+                };
+
+                $scope.addLight = function (){
+                    var lightKey = new THREE.DirectionalLight(0xffffff);
+
+                    lightKey.position.set(-3, 5, 3);
+                    lightKey.target.position.x = 0;
+                    lightKey.target.position.y = 0;
+                    lightKey.target.position.z = 0;
+                    lightKey.castShadow = false;
+                    lightKey.intensity = .9
+                    lightKey.shadowCameraLeft = -60;
+                    lightKey.shadowCameraTop = -60;
+                    lightKey.shadowCameraRight = 60;
+                    lightKey.shadowCameraBottom = 60;
+                    lightKey.shadowCameraNear = 1;
+                    lightKey.shadowCameraFar = 1000;
+                    lightKey.shadowBias = -.0001
+                    lightKey.shadowMapWidth = lightKey.shadowMapHeight = 2048;
+                    lightKey.shadowDarkness = .7;
+
+                    $scope.scene.add(lightKey);
+
+                    var lightFill = new THREE.DirectionalLight(0xffffff);
+
+                    lightFill.position.set(3, 5, 3);
+                    lightFill.intensity = .6
+                    lightFill.castShadow = false;
+
+
+                    $scope.scene.add(lightFill);
+
+                    var lightRim = new THREE.DirectionalLight(0xffffff);
+
+                    lightRim.position.set(0, 5, -3);
+                    lightRim.intensity = .2
+                    lightRim.castShadow = false;
+
+
+                    $scope.scene.add(lightRim);
+                };
+
+                $scope.render = function (mesh) {
+                    var time = $scope.clock.getElapsedTime();
+                    mesh.rotation.y += .01;
+
+                    $scope.renderer.render($scope.scene, $scope.camera);
+                    requestAnimationFrame($scope.render);
+                };
+
+                $scope.getShoe = function(shoe){
+                    var shoeSelected = tabLabProperties.getShoe();
+                    console.log("shoe selected !!: ");
+                    console.log(shoeSelected);
+                    return shoeSelected;
+                };
+
+                $scope.drawShoe = function (mesh){
+                    //   $scope.scene.remove($scope.oldMesh);
+                    $scope.shoeSelected = $scope.getShoe();
+                    console.log("Inside scene controller" + $scope.shoeSelected.modelLeft);
+
+                    $scope.loader.load($scope.shoeSelected.modelLeft, function (geometry, materials) {
+                        console.log("shoe selected normals: ");
+                        console.log($scope.shoeSelected.normalsLeft);
+                        console.log("shoe selected diffuse: ");
+                        console.log($scope.shoeSelected.diffuseLeft);
+                        var material = new THREE.MeshPhongMaterial({
+                            map: THREE.ImageUtils.loadTexture($scope.shoeSelected.diffuseLeft),
+                            normalMap: THREE.ImageUtils.loadTexture( $scope.shoeSelected.normalsLeft ),
+                            normalScale: new THREE.Vector2( 0.6, 0.6 ),
+                            colorAmbient: [0.480000026226044, 0.480000026226044, 0.480000026226044],
+                            colorDiffuse: [0.480000026226044, 0.480000026226044, 0.480000026226044],
+                            colorSpecular: [0.8999999761581421, 0.8999999761581421, 0.8999999761581421],
+                            shininess: 15
+                        });
+
+                        mesh = new THREE.Mesh(
+                            geometry,
+                            material
+                        );
+
+                        mesh.receiveShadow = true;
+                        mesh.castShadow = true;
+                        mesh.rotation.y = -Math.PI/5;
+                        mesh.scale.multiplyScalar(3);
+
+                        $scope.scene.add(mesh);
+                        $scope.render(mesh);
+                        $scope.addLight();
+                        $scope.oldMesh = mesh;
+                    });
+                };
+
+                // When the page first loads
+                window.onload = $scope.findAndSetCanvasDimensions;
+
+                // When the browser changes size
+                window.onresize = $scope.findAndSetCanvasDimensions;
+
+                $scope.loader = new THREE.JSONLoader();
+
+                $scope.initLoad();
+                $scope.shoeStyleFile = 'assets/data/shoes_max.json';
+                $scope.loadShoeStyle($scope.shoeStyleFile);
+                $scope.initRandomSliderIndex();
+                $scope.createScene();
+            //    $scope.drawShoe();
+
+
+
+                /*
+                    END Canvas Drawing
+                 */
+
+
+
 
                 /*                                 */
                 /* helper function to clear canvas */
