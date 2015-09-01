@@ -2,7 +2,7 @@
   {
     "name": "max",
     "id": 1361,
-    "number of tabs": 4,
+    "numOfTabs": 4,
     "color": "leather-black",
     "sku": "105010-001",
     "price": 59.95,
@@ -11,7 +11,7 @@
   {
     "name": "max",
     "id": 1362,
-    "number of tabs": 4,
+    "numOfTabs": 4,
     "color": "steel-navy",
     "sku": "105021-055",
     "price": 59.95,
@@ -20,7 +20,7 @@
   {
     "name": "max",
     "id": 1363,
-    "number of tabs": 4,
+    "numOfTabs": 4,
     "color": "pink-camo",
     "sku": "105022-652",
     "price": 59.95,
@@ -29,7 +29,7 @@
   {
     "name": "max",
     "id": 1364,
-    "number of tabs": 4,
+    "numOfTabs": 4,
     "color": "metallic-silver",
     "sku": "105022-040",
     "price": 59.95,
@@ -38,7 +38,7 @@
   {
     "name": "max",
     "id": 1374,
-    "number of tabs": 4,
+    "numOfTabs": 4,
     "color": "steel-camo",
     "sku": "105021-054",
     "price": 59.95,
@@ -47,7 +47,7 @@
   {
     "name": "max",
     "id": 2031,
-    "number of tabs": 4,
+    "numOfTabs": 4,
     "color": "leather-ribbon-red",
     "sku": "105010-613",
     "price": 64.95,
