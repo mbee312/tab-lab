@@ -47,9 +47,10 @@
         });
 
         $scope.setTabSize = function () {
-            if( $scope.shoeSize.size != null){
-                if ($scope.fit.wide == false) {
-                    switch ($scope.shoeSize.size.size) {
+            var size = sizeProperties.getShoeSize();
+            if( size  != null){
+                if (sizeProperties.getFitWide() == false) {
+                    switch (size) {
                         case 8 :
                             $scope.tabs.size = $scope.tabSizeOptions[0];
                             break;
@@ -103,7 +104,7 @@
                             break;
                     }
                 } else {
-                    switch ($scope.shoeSize.size.size) {
+                    switch (size) {
                         case 8 :
                             $scope.tabs.size = $scope.tabSizeOptions[1];
                             break;
