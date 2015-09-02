@@ -14,10 +14,7 @@
     tabLabApp.service('tabLabProperties', function(){
         var shoeSelected = {};
         var isShoeSelected = false;
-        var tabsRight = {};
-        var areTabsRightSelected = false;
-        var tabsLeft = {};
-        var areTabsLeftSelected = false;
+        var tabs = [];
 
         return {
             getShoe: function () {
@@ -36,35 +33,33 @@
                 console.log(isShoeSelected);
                 return isShoeSelected;
             },
-            getTab: function (side) {
-                console.log("returning tab: ");
-                var tab = 'tabs'+side;
-                console.log(tab);
-                return tab;
-            },
-            setTabSelected: function(tab, side) {
-                if(side == 'right') {
-                    tabsRight = tab;
-                    areTabsRightSelected = true;
-                    console.log("setTab: ");
-                    console.log(tabsRight);
-                }else{
-                    tabsLeft = tab;
-                    areTabsLeftSelected = true;
-                    console.log("setTab: ");
-                    console.log(tabsLeft);
-                }// end if-else
-            },
-            isTabSelected: function (side) {
-                console.log("is tab set: ");
-                if(side=='right'){
-                    console.log(areTabsRightSelected);
-                    return areTabsRightSelected;
-                }else{
-                    console.log(areTabsLeftSelected);
-                    return areTabsLeftSelected;
-                }//end if-else
 
+            /*
+             *          Tab positions
+             *          Left    Right
+             *   Top     0       1
+             *   Bottom  2       3
+             *
+             */
+
+            getTab: function (pos) {
+                console.log("returning tab: ");
+                console.log(tabs[pos]);
+                return tabs[pos];
+            },
+            setTabSelected: function(tab, pos) {
+                tabs[pos] = tab;
+                console.log("setTab: ");
+                console.log(tabs[pos]);
+            },
+            isTabSelected: function (pos) {
+                console.log("is tab set: ");
+                console.log(tabs[pos]);
+                if(tabs[pos] != null) {
+                    return tabs[pos];
+                }else{
+                    return false;
+                }//end else-if
             }
         };
     });
@@ -108,8 +103,8 @@
     });
     tabLabApp.service('sliderProperties', function (){
         var shoeIndex;
-        var tabOneIndex;
-        var tabTwoIndex;
+        var tabIndex = [];
+
 
         return {
             getShoeIndex: function () {
@@ -122,27 +117,12 @@
                 console.log("setShoeIndex: ");
                 console.log(shoeIndex);
             },
-            getTabIndex: function (tabNum) {
-                var tabIndex;
-                console.log("returning tab index: ");
-                if(tabNum == 1) {
-                    tabIndex = tabOneIndex;
-                    console.log("tabOneIndex=" + tabIndex);
-                }else{
-                    tabIndex = tabTwoIndex;
-                    console.log("tabTwoIndex=" + tabIndex);
-                }
-                return tabIndex;
+            getTabIndex: function (pos) {
+                return tabIndex[pos];
             },
-            setTabIndex: function (tabNum, index) {
-                console.log("set tab index: ");
-                if(tabNum == 1) {
-                    tabOneIndex = index;
-                    console.log("tabOneIndex=" + tabOneIndex);
-                }else{
-                    tabTwoIndex = index;
-                    console.log("tabTwoIndex=" + tabTwoIndex);
-                }// end if-else
+            setTabIndex: function (pos, index) {
+                tabIndex[pos] = index;
+                console.log("set tab index: " + tabIndex[pos]);
             }
         };
     });
@@ -166,9 +146,8 @@
                 $scope.tabs.right.price = 0;
 
                 $scope.shoeSelected = {};
-                $scope.shoeSelected.tab = {};
-                $scope.shoeSelected.tab.left = {};
-                $scope.shoeSelected.tab.right = {};
+                $scope.tabSelected = [];
+
                 $scope.fit = {};
                 //  $scope.fit.autoselect = true;
                 $scope.fit.wide = false;
@@ -211,23 +190,39 @@
                     return list;
                 }// end preLoader()
 
-                $scope.setShoe = function(shoe){
-                    tabLabProperties.setShoeSelected(shoe);
-                };
+
 
                 $scope.setRandomIndex = function (type, pos){
                     if(type == 'shoe'){
                         sliderProperties.setShoeIndex(Math.floor(Math.random() * $scope.numOfShoes));
                     } else{
-                        sliderProperties.setTabIndex(pos, Math.floor(Math.random() * $scope.numOfTabs));
+                        if(pos == 0) {
+                            sliderProperties.setTabIndex(0, Math.floor(Math.random() * $scope.numOfTabs));
+                            sliderProperties.setTabIndex(2, sliderProperties.getTabIndex(0));
+                        }else{
+                            sliderProperties.setTabIndex(1, Math.floor(Math.random() * $scope.numOfTabs));
+                            sliderProperties.setTabIndex(3, sliderProperties.getTabIndex(1));
+                        }
                     }
                 };// end setRandomIndex()
 
-                $scope.isIndexSet = function() {
+                $scope.getShoeIndex = function() {
                     // returns shoe index or null if not set
                     return sliderProperties.getShoeIndex();
                 };
 
+                $scope.setShoe = function(shoe){
+                    tabLabProperties.setShoeSelected(shoe);
+                };
+
+                $scope.getTabIndex = function(pos) {
+                    // returns shoe index or null if not set
+                    return sliderProperties.getTabIndex(pos);
+                };
+
+                $scope.setTab = function(tab, pos){
+                    tabLabProperties.setTabSelected(tab, pos);
+                };
                 $scope.loadShoeStyle = function (file) {
 
                     $http.get(file).success(function (data) {
@@ -251,20 +246,31 @@
                 $scope.initializeSelected = function (){
                     if($scope.loaded.indexOf('shoeList') && $scope.loaded.indexOf('shoeList') != -1) {
                         $scope.setRandomIndex('shoe', 0);
+                        $scope.setRandomIndex('tab', 0);
                         $scope.setRandomIndex('tab', 1);
-                        $scope.setRandomIndex('tab', 2);
-                        var sliderIndexSelected = false;
-                        while (!sliderIndexSelected) {
-                            var i = $scope.isIndexSet();
-                            if (i >= 0) {
-                                sliderIndexSelected = true;
+                        var sliderIndexesSelected = false;
+                        var i = $scope.getShoeIndex();
+                        var j = $scope.getTabIndex(0);
+                        var k = $scope.getTabIndex(1);
+                        while (!sliderIndexesSelected) {
+                            console.log("indexes:" + i + " " + j + " " + k);
+                            if (i && j && k >= 0) {
+                                sliderIndexesSelected = true;
                             }
                         }// end while
 
+                        // set initial shoe
                         $scope.shoeSelected = $scope.shoeList[i];
                         console.log("loaded: ");
                         console.log($scope.shoeSelected);
                         $scope.setShoe($scope.shoeSelected);
+
+                        // set initial tabs
+                        $scope.tabSelected[0] = $scope.tabList[j];
+                        $scope.tabSelected[1] = $scope.tabList[k];
+                        $scope.setTab($scope.tabSelected[0], 0);
+                        $scope.setTab($scope.tabSelected[1], 1);
+
                     }else {
                         // wait until all is loaded
                         setTimeout($scope.initializeSelected, 500); // check again in a .5 second
@@ -495,11 +501,7 @@
 
                 };
 
-                $scope.drawTabs = function (scene, mesh, side, isDefault){
-                    var def = '';
-                    if(isDefault){
-                        def = 'default';
-                    }
+                $scope.drawTabs = function (scene, mesh, side){
 
                     // load tab
                     var meshPath = 'assets/models/' + $scope.shoeSelected.name + '/' + $scope.shoeSelected.name;
