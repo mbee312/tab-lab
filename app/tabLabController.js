@@ -106,6 +106,46 @@
             }
         };
     });
+    tabLabApp.service('sliderProperties', function (){
+        var shoeIndex;
+        var tabOneIndex;
+        var tabTwoIndex;
+
+        return {
+            getShoeIndex: function () {
+                console.log("returning shoe index: ");
+                console.log(shoeIndex);
+                return shoeIndex;
+            },
+            setShoeIndex: function (index) {
+                shoeIndex = index;
+                console.log("setShoeIndex: ");
+                console.log(shoeIndex);
+            },
+            getTabIndex: function (tabNum) {
+                var tabIndex;
+                console.log("returning tab index: ");
+                if(tabNum == 1) {
+                    tabIndex = tabOneIndex;
+                    console.log("tabOneIndex=" + tabIndex);
+                }else{
+                    tabIndex = tabTwoIndex;
+                    console.log("tabTwoIndex=" + tabIndex);
+                }
+                return tabIndex;
+            },
+            setTabIndex: function (tabNum, index) {
+                console.log("set tab index: ");
+                if(tabNum == 1) {
+                    tabOneIndex = index;
+                    console.log("tabOneIndex=" + tabOneIndex);
+                }else{
+                    tabTwoIndex = index;
+                    console.log("tabTwoIndex=" + tabTwoIndex);
+                }// end if-else
+            }
+        };
+    });
     tabLabApp.controller('tabLabController',
         ['$scope',
             '$http',
@@ -115,7 +155,8 @@
             '$window',
             'tabLabProperties',
             'sizeProperties',
-            function ($scope, $http, $mdDialog, $mdToast, $animate, $window, tabLabProperties, sizeProperties) {
+            'sliderProperties',
+            function ($scope, $http, $mdDialog, $mdToast, $animate, $window, tabLabProperties, sizeProperties, sliderProperties) {
 
                 // Tabs on canvas List Arrays
                 $scope.tabs = {};
@@ -151,10 +192,10 @@
                 $scope.isTabIndexAtOne = false;
 
                 $scope.numOfTabs = 0;
-                $scope.numofShoes = 1;
+                $scope.numOfShoes = 1;
 
-                $scope.index=0;
-                $scope.carouselIndex=0;
+                $scope.shoeIndex=0;
+                $scope.shoeIndexNew=0;
 
                 $scope.rightTabIndex=0;
                 $scope.rTindex=0;
@@ -174,51 +215,85 @@
                     tabLabProperties.setShoeSelected(shoe);
                 };
 
-                $scope.initLoad = function () {
+                $scope.setRandomIndex = function (type, pos){
+                    if(type == 'shoe'){
+                        sliderProperties.setShoeIndex(Math.floor(Math.random() * $scope.numOfShoes));
+                    } else{
+                        sliderProperties.setTabIndex(pos, Math.floor(Math.random() * $scope.numOfTabs));
+                    }
+                };// end setRandomIndex()
 
-                    $http.get('assets/data/shoeStyles.json').success(function (data) {
-                        $scope.shoeStyles = data;
-                    });
-                    $http.get('assets/data/tabs.json').success(function (data) {
-                        $scope.tabList = data;
-                        $scope.tabList = $scope.loadMenu($scope.tabList, false);
-                        $scope.numOfTabs = $scope.tabList.length;
-                    });
-                    $http.get('assets/data/shoeSizes.json').success(function (data) {
-                        $scope.shoeSizeOptions = data;
-                    });
-                    $http.get('assets/data/tabSizes.json').success(function (data) {
-                        $scope.tabSizeOptions = data;
-                    });
-                    $scope.shoeStyleFile = 'assets/data/shoes_max.json';
-                    $scope.loadShoeStyle($scope.shoeStyleFile);
-
-                } // end initLoad()
-
+                $scope.isIndexSet = function() {
+                    // returns shoe index or null if not set
+                    return sliderProperties.getShoeIndex();
+                };
 
                 $scope.loadShoeStyle = function (file) {
 
                     $http.get(file).success(function (data) {
                         $scope.shoeList = data;
                         $scope.shoeList = $scope.loadMenu($scope.shoeList, true);
-                        $scope.numofShoes = $scope.shoeList.length;
-                        $scope.initRandomSliderIndex();
-                        $scope.shoeSelected = $scope.shoeList[$scope.index];
+                        $scope.numOfShoes = $scope.shoeList.length;
+                        $scope.loaded.push('shoeList');
+                    });
+                };// end loadShoeStyle()
+
+                $scope.loadTabStyles = function (file) {
+
+                    $http.get(file).success(function (data) {
+                        $scope.tabList = data;
+                        $scope.tabList = $scope.loadMenu($scope.tabList, false);
+                        $scope.numOfTabs = $scope.tabList.length;
+                        $scope.loaded.push('tabList');
+                    });
+                };// end loadTabStyles()
+
+                $scope.initializeSelected = function (){
+                    if($scope.loaded.indexOf('shoeList') && $scope.loaded.indexOf('shoeList') != -1) {
+                        $scope.setRandomIndex('shoe', 0);
+                        $scope.setRandomIndex('tab', 1);
+                        $scope.setRandomIndex('tab', 2);
+                        var sliderIndexSelected = false;
+                        while (!sliderIndexSelected) {
+                            var i = $scope.isIndexSet();
+                            if (i >= 0) {
+                                sliderIndexSelected = true;
+                            }
+                        }// end while
+
+                        $scope.shoeSelected = $scope.shoeList[i];
                         console.log("loaded: ");
                         console.log($scope.shoeSelected);
                         $scope.setShoe($scope.shoeSelected);
-                        //    $scope.calculateSubTotal
-                    });
-                }// end loadShoeStyle()
+                    }else {
+                        // wait until all is loaded
+                        setTimeout($scope.initializeSelected, 500); // check again in a .5 second
+                    }// end else-if
+                };
 
-                $scope.initRandomSliderIndex = function (){
-                    $scope.index = Math.floor(Math.random() * $scope.numofShoes);
-                    $scope.carouselIndex = $scope.index;
-                    $scope.leftTabIndex = Math.floor(Math.random() * $scope.numOfTabs);
-                    $scope.lTindex = $scope.leftTabIndex;
-                    $scope.rightTabIndex = Math.floor(Math.random() * $scope.numOfTabs);
-                    $scope.rTindex = $scope.rightTabIndex;
-                }// end initRandomIndex()
+                $scope.loaded = [];
+
+                $scope.initLoad = function () {
+
+                    $http.get('assets/data/shoeStyles.json').success(function (data) {
+                        $scope.shoeStyles = data;
+                        $scope.loaded.push('shoeStyles');
+                    });
+                    $http.get('assets/data/shoeSizes.json').success(function (data) {
+                        $scope.shoeSizeOptions = data;
+                        $scope.loaded.push('shoeSizeOptions');
+                    });
+                    $http.get('assets/data/tabSizes.json').success(function (data) {
+                        $scope.tabSizeOptions = data;
+                        $scope.loaded.push('tabSizeOptions');
+                    });
+                    $scope.shoeStyleFile = 'assets/data/shoes_max.json';
+                    $scope.loadShoeStyle($scope.shoeStyleFile);
+                    $scope.tabsFile = 'assets/data/tabs.json';
+                    $scope.loadTabStyles($scope.tabsFile);
+                    $scope.initializeSelected();
+
+                } // end initLoad()
 
                 /*
                     START Canvas Drawing
@@ -470,7 +545,7 @@
                         $scope.drawShoe($scope.scene, $scope.mesh, 'right', -1.5);
                     }
                     else {
-                        setTimeout(checkIfShoeHasBeenSet, 500); // check again in a second
+                        setTimeout(checkIfShoeHasBeenSet, 500); // check again in a .5 second
                     }
                 };
 

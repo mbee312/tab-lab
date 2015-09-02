@@ -6,7 +6,7 @@
     'use strict';
 
     var app = angular.module('tabLabApp');
-    app.controller('SliderCtrl', ['$scope', 'tabLabProperties', 'sizeProperties', function ($scope, tabLabProperties, sizeProperties) {
+    app.controller('SliderCtrl', ['$scope', 'tabLabProperties', 'sizeProperties', 'sliderProperties', function ($scope, tabLabProperties, sizeProperties, sliderProperties) {
         $scope.innerWidthSize = 0;
         $scope.innerWidthSizeNew = window.innerWidth;
 
