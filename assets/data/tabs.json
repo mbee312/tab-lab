@@ -2,7 +2,7 @@
   {
     "name": "dominique",
     "id": 1909,
-    "color": "pink-brown",
+    "color": "pink",
     "sku": "201152-660",
     "price": 4.95,
     "menuImgUrl": "assets/media/thumbnails/tabs/dominique.jpg"
@@ -18,7 +18,7 @@
   {
     "name": "camo",
     "id": 624,
-    "color": "limestone",
+    "color": "green",
     "sku": "201101-950",
     "price": 4.95,
     "menuImgUrl": "assets/media/thumbnails/tabs/camo-green.jpg"
@@ -26,18 +26,10 @@
   {
     "name": "camo",
     "id": 628,
-    "color": "limestone-red",
+    "color": "red",
     "sku": "201101-951",
     "price": 4.95,
     "menuImgUrl": "assets/media/thumbnails/tabs/camo-red.jpg"
-  },
-  {
-    "name": "camo",
-    "id": 632,
-    "color": "limestone-orange",
-    "sku": "201101-952",
-    "price": 4.95,
-    "menuImgUrl": "assets/media/thumbnails/tabs/camo-orange.jpg"
   },
   {
     "name": "shimmer",
@@ -86,5 +78,29 @@
     "sku": "201110-610",
     "price": 4.95,
     "menuImgUrl": "assets/media/thumbnails/tabs/lcd-white-blank.jpg"
+  },
+  {
+    "name": "be-happy",
+    "id": 1991,
+    "color": "sunshine",
+    "sku": "201080-715",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/be-happy.jpg"
+  },
+  {
+    "name": "bouquet",
+    "id": 3048,
+    "color": "flower",
+    "sku": "201072-617",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/bouquet-flower.jpg"
+  },
+  {
+    "name": "bow-tie",
+    "id": 1990,
+    "color": "white-pink",
+    "sku": "201122-119",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/bow-tie.jpg"
   }
 ]
