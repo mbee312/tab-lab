@@ -256,12 +256,12 @@
                         var j = $scope.getTabIndex(0);
                         var k = $scope.getTabIndex(1);
                         console.log("indexes:" + i + " " + j + " " + k);
-                    //    while (!sliderIndexesSelected) {
-                    //        
-                    //        if (i && j && k >= 0) {
-                    //            sliderIndexesSelected = true;
-                    //        }
-                     //   }// end while
+                        //    while (!sliderIndexesSelected) {
+                        //
+                        //        if (i && j && k >= 0) {
+                        //            sliderIndexesSelected = true;
+                        //        }
+                        //   }// end while
 
                         // set initial shoe
                         $scope.shoeSelected = $scope.shoeList[i];
@@ -308,7 +308,7 @@
                 } // end initLoad()
 
                 /*
-                    START Canvas Drawing
+                 START Canvas Drawing
 
                  */
 
@@ -411,14 +411,14 @@
                 $scope.createScene = function (){
                     $scope.camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
                     $scope.camera.position.set(-1, 1, 10);
-                  //  $scope.camera.rotation.x = -Math.PI / 12;
+                    //  $scope.camera.rotation.x = -Math.PI / 12;
                     $scope.addLight();
                     $scope.scene.add($scope.camera);
                     $scope.renderer.setSize($scope.WIDTH, $scope.HEIGHT);
-                //    $scope.renderer.shadowMapEnabled = false;
-                //    $scope.renderer.shadowMapSoft = true;
-                //    $scope.renderer.shadowMapType = THREE.PCFShadowMap;
-                //    $scope.renderer.shadowMapAutoUpdate = true;
+                    //    $scope.renderer.shadowMapEnabled = false;
+                    //    $scope.renderer.shadowMapSoft = true;
+                    //    $scope.renderer.shadowMapType = THREE.PCFShadowMap;
+                    //    $scope.renderer.shadowMapAutoUpdate = true;
                     $scope.renderer.setClearColor(0xffffff, 1);
                     $scope.container.appendChild($scope.renderer.domElement);
 
@@ -430,7 +430,7 @@
                     lightKey.position.set(5, 5, 5);
                     lightKey.castShadow = false;
 
-                   lightKey.target.position.x = 0;
+                    lightKey.target.position.x = 0;
                     lightKey.target.position.y = 0;
                     lightKey.target.position.z = 0;
 
@@ -455,7 +455,7 @@
 
                 $scope.render = function (mesh) {
                     var time = $scope.clock.getElapsedTime();
-                   // mesh.rotation.y += .01;
+                    // mesh.rotation.y += .01;
 
                     $scope.renderer.render($scope.scene, $scope.camera);
                     requestAnimationFrame($scope.render);
@@ -496,7 +496,7 @@
                         mesh.receiveShadow = false;
                         mesh.castShadow = true;
                         mesh.rotation.y = 3*Math.PI/4;
-                     //   mesh.scale.multiplyScalar(3);
+                        //   mesh.scale.multiplyScalar(3);
                         mesh.position.x = x;
                         mesh.position.y = 0;
                         mesh.position.z = 0;
@@ -519,7 +519,7 @@
                         side = 'left';
                     }
 
-                    if(pos == 1){
+                    if(p == 1){
                         pos = 'bottom';
                     }
 
@@ -573,10 +573,10 @@
 
 
                         $scope.drawTabs($scope.scene, $scope.mesh, 0, 0, 0, -1.5, 0, 0);
-                        $scope.drawTabs($scope.scene, $scope.mesh, 0, 1, 1, -1.8, -.6, .5);
+                        $scope.drawTabs($scope.scene, $scope.mesh, 0, 1, 1, -1.5, 0, 0);
 
                         $scope.drawTabs($scope.scene, $scope.mesh, 1, 0, 0, 1.5, 0, 0);
-                        $scope.drawTabs($scope.scene, $scope.mesh, 1, 1, 1, 1.05, -.6, .5);
+                        $scope.drawTabs($scope.scene, $scope.mesh, 1, 1, 1, 1.5, 0, 0);
 
                     }
                     else {
@@ -600,61 +600,9 @@
                 }
 
                 /*
-                    END Canvas Drawing
+                 END Canvas Drawing
                  */
 
-
-
-
-                /*                                 */
-                /* helper function to clear canvas */
-                /*                                 */
-
-                $scope.setDefaultTabs = function (){
-                    $scope.shoeSelected.tab.left.top = $scope.tabs[0].top;
-                    $scope.shoeSelected.tab.left.bottom = $scope.tabs[0].bottom;
-                    $scope.shoeSelected.tab.right.top = $scope.tabs[1].top;
-                    $scope.shoeSelected.tab.right.bottom = $scope.tabs[1].bottom;
-                }
-
-
-                $scope.clearImage = function (c, ctx, pos) {
-                    console.log("clearing image");
-
-                    // Store the current transformation matrix
-                    ctx.save();
-
-                    if (pos == "left") {
-                        ctx.setTransform(1, 0, 0, 1, 0, 0);
-                        ctx.clearRect(0, 0, c.width / 2, c.height);
-                    } else if (pos == "right") {
-                        ctx.setTransform(1, 0, 0, 1, 0, 0);
-                        ctx.clearRect(c.width / 2, 0, c.width / 2, c.height);
-                    } else {
-                        // Use the identity matrix while clearing the canvas
-                        ctx.setTransform(1, 0, 0, 1, 0, 0);
-                        ctx.clearRect(0, 0, c.width, c.height);
-                    }//end if-else
-
-
-                    // Restore the transform
-                    ctx.restore();
-                }; // end clearImage
-
-                // Add a Item to the list
-                $scope.addTab = function (tab, side) {
-                    
-                    switch (side) {
-                        case "left":
-                            $scope.tabs.left = tab;
-                            break;
-                        case "right":
-                            $scope.tabs.right = tab;
-                            break;
-                        default :
-                            console.log("error: no tab side selected in addTab()");
-                    }// end switch
-                }; //end addTab()
 
                 $scope.leftShoeImage = {};
                 $scope.leftShoeImage.width =  0;
@@ -669,12 +617,12 @@
                 $scope.tab_image_bot_right = new Image();
 
                 $scope.getImageNaturalDimensionsAndScale = function (image, scaleFactor, tabScale){
-                    
+
                     /* getImageNaturalDimensions */
                     var imageWidth =  image.width;
                     var imageHeight = image.height;
 
-                     /* scaleImage */
+                    /* scaleImage */
                     imageWidth *= $scope.scaleFactor * tabScale;
                     imageHeight *= $scope.scaleFactor * tabScale;
 
@@ -691,10 +639,10 @@
 
                 $scope.setTabPositions = function (num){
                     /*     
-                    *   Tab Positions 
-                    *       1   3
-                    *       2   4
-                    */
+                     *   Tab Positions
+                     *       1   3
+                     *       2   4
+                     */
                     switch (num){
                         case 1: // 1 2 4 3
                             $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftTopTab.src;
@@ -831,7 +779,7 @@
                         case 23: // 4 3 2 1
                             $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
                             $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftTopTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightBottomTab.src; 
+                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightBottomTab.src;
                             $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightTopTab.src;
                             break;
                         default: // default : 1 2 3 4
@@ -863,30 +811,8 @@
 
                     this.setEditMode();
 
-
                 };
 
-                $scope.drawRotated = function (degrees, cnvs, ctx, image, xOffset, yOffset, tabWidth, tabHeight) {
-
-                    // save the unrotated context of the canvas so we can restore it later
-                    // the alternative is to untranslate & unrotate after drawing
-                    ctx.save();
-
-                    // move to the center of the canvas
-                    //   ctx.translate(cnvs.width/2,cnvs.height/2);
-                    ctx.translate(xOffset, yOffset);
-
-                    // rotate the canvas to the specified degrees
-                    ctx.rotate(degrees * Math.PI / 180);
-
-                    // draw the image
-                    // since the context is rotated, the image will be rotated also
-                    ctx.drawImage(image, -image.width / 2, -image.width / 2, tabWidth, tabHeight);
-
-                    // we’re done with the rotating so restore the unrotated context
-                    ctx.restore();
-                    ctx.save();
-                }; //end drawRotated()
 
                 this.isShoeSelected = function () {
                     return $scope.shoeSelected.length > 0;
@@ -983,30 +909,32 @@
 
                 } //end setSelectorModes()
 
-                $scope.isSurveyOn = false;
+                /**** Start Survey *********
 
-                this.getSurveyForm = function (){
+                 $scope.isSurveyOn = false;
+
+                 this.getSurveyForm = function (){
                     return $scope.isSurveyOn;
                 }//end getSurveyForm ()
 
-                $scope.setSurveyMode = function () {
+                 $scope.setSurveyMode = function () {
                     $scope.isSurveyOn = !$scope.isSurveyOn;
                 };
 
 
-                $scope.shoe = {};
-                $scope.tab = {};
+                 $scope.shoe = {};
+                 $scope.tab = {};
 
-                $scope.label_3 = "How likely would you recommend Tab Lab to a friend? \n0 to 10. (10 is Extremely likely)";
+                 $scope.label_3 = "How likely would you recommend Tab Lab to a friend? \n0 to 10. (10 is Extremely likely)";
 
-                $scope.userSurvey = {
+                 $scope.userSurvey = {
                     email: '',
                     question_1: '' ,
                     question_2: '' ,
                     question_3: ''
                 };
 
-                $scope.isSurveyEmpty = function (){
+                 $scope.isSurveyEmpty = function (){
                     if($scope.userSurvey.email != ''
                         && $scope.userSurvey.question_3 != ''){
                         return false;
@@ -1016,29 +944,31 @@
 
                 }// is SurveyEmpty()
 
-                // process the form
-                $scope.submitData = function (survey, resultVarName)
-                {
-                    var config = {
-                        params: {
-                            survey: survey
-                        }
-                    };
+                 // process the form
+                 $scope.submitData = function (survey, resultVarName)
+                 {
+                     var config = {
+                         params: {
+                             survey: survey
+                         }
+                     };
 
-                    $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+                     $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
-                    $http.post("server.php", null, config)
-                        .success(function (data, status, headers, config)
-                        {
-                            $scope[resultVarName] = data;
-                            $scope.setSurveyMode();
+                     $http.post("server.php", null, config)
+                         .success(function (data, status, headers, config)
+                         {
+                             $scope[resultVarName] = data;
+                             $scope.setSurveyMode();
 
-                        })
-                        .error(function (data, status, headers, config)
-                        {
-                            $scope[resultVarName] = "SUBMIT ERROR";
-                        });
-                };
+                         })
+                         .error(function (data, status, headers, config)
+                         {
+                             $scope[resultVarName] = "SUBMIT ERROR";
+                         });
+                 };
+
+                 **** End Survey *********/
 
                 $scope.options = {
                     display: 'bottom',
@@ -1061,7 +991,7 @@
 
 
             }])
-        //end tabLabAppController
+    //end tabLabAppController
 
     tabLabApp.controller('ScrollCtrl', function($scope, $location, anchorSmoothScroll) {
 
