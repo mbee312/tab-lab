@@ -15,19 +15,19 @@
         };
 
         $scope.random = function (){
-            $scope.index = Math.floor(Math.random() * 10);
-            $scope.carouselIndex = $scope.index;
+            $scope.shoeIndex = Math.floor(Math.random() * 10);
+            $scope.shoeIndexNew = $scope.shoeIndex;
             $scope.leftTabIndex = Math.floor(Math.random() * 11);
             $scope.lTindex = $scope.leftTabIndex;
             $scope.rightTabIndex = Math.floor(Math.random() * 11);
             $scope.rTindex = $scope.rightTabIndex;
 
             if(!$scope.isMobile) {
-                $('#shoe-car-desktop').slick('slickGoTo', $scope.carouselIndex, false);
+                $('#shoe-car-desktop').slick('slickGoTo', $scope.shoeIndexNew, false);
                 $('#tab-left-car-desktop').slick('slickGoTo', $scope.lTindex, false);
                 $('#tab-right-car-desktop').slick('slickGoTo', $scope.rTindex, false);
             }else{
-                $('#shoe-car-mobile').slick('slickGoTo', $scope.carouselIndex, false);
+                $('#shoe-car-mobile').slick('slickGoTo', $scope.shoeIndexNew, false);
                 $('#tab-left-car').slick('slickGoTo', $scope.lTindex, false);
                 $('#tab-right-car').slick('slickGoTo', $scope.rTindex, false);
             }
@@ -91,27 +91,30 @@
         };// end next()
 
         $scope.$watch(function () {
-            return $scope.index;
-        }, function (index, carouselIndex) {
-            if (index !== carouselIndex) {
-                if(index == $scope.shoeList.length -1 ){
+            return $scope.shoeIndex;
+        }, function (shoeIndex, shoeIndexNew) {
+            if (shoeIndex !== shoeIndexNew) {
+                if(shoeIndex == $scope.shoeList.length -1 ){
                     $scope.isEndOfShoeList = true;
                     $(".slick-shoe .slick-cloned").addClass("translate-slider-x");
                 }else{
                     $scope.isEndOfShoeList = false;
                     $(".slick-shoe .slick-cloned").removeClass("translate-slider-x");
                 }
-                $scope.carouselIndex = index;
+                $scope.shoeIndexNew = shoeIndex;
                 // Get the current slide
                 var currentSlide = $("#shoe-car-mobile").slick('slickCurrentSlide');
                 console.log(currentSlide);
-                console.log('hey, carouselIndex has changed! ' + $scope.carouselIndex);
-                console.log("the shoe is " + $scope.shoeList[index]);
-                $scope.setShoe($scope.shoeList[index]);
+                console.log('hey, the shoe index has changed! ' + $scope.shoeIndexNew);
+                console.log("the shoe is " + $scope.shoeList[shoeIndex]);
+                $scope.shoeSelected = $scope.shoeList[shoeIndex];
+                $scope.setShoe($scope.shoeSelected);
+                $scope.drawShoe($scope.scene, $scope.mesh, 'left', 1.5);
+                $scope.drawShoe($scope.scene, $scope.mesh, 'right', -1.5);
                 console.log("inside SlideController! " + tabLabProperties.getShoe());
-                console.log("drawShoe complete. calculate subtotal...");
-                $scope.calculateSubTotal();
-                console.log($scope.getSubTotal());
+             //   console.log("drawShoe complete. calculate subtotal...");
+            //    $scope.calculateSubTotal();
+            //    console.log($scope.getSubTotal());
                 console.log("watch shoe. complete");
             }
         });
@@ -130,10 +133,13 @@
                 $scope.lTIndex = leftTabIndex;
                 console.log('hey, lTIndex has changed! ' + $scope.lTIndex);
                 console.log("the left tab is " + $scope.tabList[leftTabIndex]);
-                $scope.addTab($scope.tabList[leftTabIndex], "left");
-                $scope.setTabPositions();
-                $scope.drawTabs("left");
-                $scope.calculateSubTotal();
+                $scope.tabSelected[0] = $scope.tabList[leftTabIndex];
+                console.log($scope.tabSelected[0]);
+                $scope.setTab($scope.tabSelected[0], 1);
+                $scope.setTab($scope.tabSelected[0], 3);
+                $scope.drawTabs($scope.scene, $scope.mesh, 0, 0, 0, -1.5, 0, 0);
+                $scope.drawTabs($scope.scene, $scope.mesh, 0, 1, 1, -1.8, -.6, .5);
+
             }
         });
 
@@ -151,10 +157,13 @@
                 }
                 $scope.rTIndex = rightTabIndex;
                 console.log('hey, rTIndex has changed! ' + $scope.rTIndex);
-                console.log("the right tab is " + $scope.tabList[rightTabIndex]);
-                $scope.addTab($scope.tabList[rightTabIndex], "right");
-                $scope.setTabPositions();
-                $scope.drawTabs("right");
+                console.log("the right tab is ");
+                $scope.tabSelected[1] = $scope.tabList[rightTabIndex];
+                console.log($scope.tabSelected[1]);
+                $scope.setTab($scope.tabSelected[1], 1);
+                $scope.setTab($scope.tabSelected[1], 3);
+                $scope.drawTabs($scope.scene, $scope.mesh, 1, 0, 0, 1.5, 0, 0);
+                $scope.drawTabs($scope.scene, $scope.mesh, 1, 1, 1, 1.5, -.75, .5);
 
             }
 

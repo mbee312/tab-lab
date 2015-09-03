@@ -455,13 +455,13 @@
 
                 $scope.render = function (mesh) {
                     var time = $scope.clock.getElapsedTime();
-                    mesh.rotation.y += .01;
+                   // mesh.rotation.y += .01;
 
                     $scope.renderer.render($scope.scene, $scope.camera);
                     requestAnimationFrame($scope.render);
                 };
 
-                $scope.getShoe = function(shoe){
+                $scope.getShoe = function(){
                     var shoeSelected = tabLabProperties.getShoe();
                     console.log("shoe selected !!: ");
                     console.log(shoeSelected);
@@ -470,9 +470,11 @@
 
 
                 $scope.drawShoe = function (scene, mesh, side, x){
+                    var s = $scope.getShoe();
+
                     // load shoe
-                    var meshPath = 'assets/models/' + $scope.shoeSelected.name + '/' + $scope.shoeSelected.name;
-                    var texturePath = 'assets/models/texture/shoe/' + $scope.shoeSelected.name + '/' + side + '/' +$scope.shoeSelected.color;
+                    var meshPath = 'assets/models/' + s.name + '/' + s.name;
+                    var texturePath = 'assets/models/texture/shoe/' + s.name + '/' + side + '/' + s.color;
                     var loader = new THREE.JSONLoader();
 
                     loader.load(meshPath + '-shoe-'+ side + '.js', function (geometry, materials) {
@@ -492,7 +494,7 @@
                         );
 
                         mesh.receiveShadow = false;
-                        mesh.castShadow = false;
+                        mesh.castShadow = true;
                         mesh.rotation.y = 3*Math.PI/4;
                      //   mesh.scale.multiplyScalar(3);
                         mesh.position.x = x;
@@ -511,6 +513,7 @@
                     var side = 'right';
                     var pos = 'top';
                     var whichTab = 'top';
+                    var shoe = $scope.getShoe();
 
                     if(s == 1){
                         side = 'left';
@@ -524,8 +527,9 @@
                         whichTab = 'bottom';
                     }
 
+
                     // load tab
-                    var meshPath = 'assets/models/' + $scope.shoeSelected.name + '/' + $scope.shoeSelected.name;
+                    var meshPath = 'assets/models/' + shoe.name + '/' + shoe.name;
                     var texturePath = 'assets/models/texture/tabs/' + $scope.tabSelected[s].name + '-' + $scope.tabSelected[s].color;
                     var loader = new THREE.JSONLoader();
 
@@ -546,12 +550,12 @@
                         );
 
                         mesh.receiveShadow = false;
-                        mesh.castShadow = false;
+                        mesh.castShadow = true;
                         mesh.rotation.y = 3*Math.PI/4;
                         //   mesh.scale.multiplyScalar(3);
                         mesh.position.x = x;
-                      //  mesh.position.y = y;
-                      //  mesh.position.z = z;
+                        mesh.position.y = y;
+                        mesh.position.z = z;
 
                         $scope.scene.add(mesh);
                         $scope.render(mesh);
@@ -567,11 +571,12 @@
                         $scope.drawShoe($scope.scene, $scope.mesh, 'left', 1.5);
                         $scope.drawShoe($scope.scene, $scope.mesh, 'right', -1.5);
 
+
                         $scope.drawTabs($scope.scene, $scope.mesh, 0, 0, 0, -1.5, 0, 0);
                         $scope.drawTabs($scope.scene, $scope.mesh, 0, 1, 1, -1.8, -.6, .5);
 
                         $scope.drawTabs($scope.scene, $scope.mesh, 1, 0, 0, 1.5, 0, 0);
-                        $scope.drawTabs($scope.scene, $scope.mesh, 1, 1, 1, 1.1, -.6, .5);
+                        $scope.drawTabs($scope.scene, $scope.mesh, 1, 1, 1, 1.5, -.75, 0.5);
 
                     }
                     else {
