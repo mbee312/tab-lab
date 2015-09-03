@@ -35,10 +35,10 @@
             },
 
             /*
-             *          Tab positions
-             *          Left    Right
-             *   Top     0       1
-             *   Bottom  2       3
+             *                          Shoe Positions
+             *   Tab Positions       Left(0)    Right(1)
+             *   Top(0)                 0           1
+             *   Bottom(1)              2           3
              *
              */
 
@@ -47,10 +47,10 @@
                 console.log(tabs[pos]);
                 return tabs[pos];
             },
-            setTabSelected: function(tab, pos) {
-                tabs[pos] = tab;
+            setTabSelected: function(tab, shoePos) {
+                tabs[shoePos] = tab;
                 console.log("setTab: ");
-                console.log(tabs[pos]);
+                console.log(tabs[shoePos]);
             },
             isTabSelected: function (pos) {
                 console.log("is tab set: ");
@@ -196,9 +196,12 @@
                     if(type == 'shoe'){
                         sliderProperties.setShoeIndex(Math.floor(Math.random() * $scope.numOfShoes));
                     } else{
+                        // if right shoe
                         if(pos == 0) {
                             sliderProperties.setTabIndex(0, Math.floor(Math.random() * $scope.numOfTabs));
                             sliderProperties.setTabIndex(2, sliderProperties.getTabIndex(0));
+
+                            //else left shoe
                         }else{
                             sliderProperties.setTabIndex(1, Math.floor(Math.random() * $scope.numOfTabs));
                             sliderProperties.setTabIndex(3, sliderProperties.getTabIndex(1));
@@ -220,8 +223,8 @@
                     return sliderProperties.getTabIndex(pos);
                 };
 
-                $scope.setTab = function(tab, pos){
-                    tabLabProperties.setTabSelected(tab, pos);
+                $scope.setTab = function(tab, shoePos){
+                    tabLabProperties.setTabSelected(tab, shoePos);
                 };
                 $scope.loadShoeStyle = function (file) {
 
@@ -252,12 +255,13 @@
                         var i = $scope.getShoeIndex();
                         var j = $scope.getTabIndex(0);
                         var k = $scope.getTabIndex(1);
-                        while (!sliderIndexesSelected) {
-                            console.log("indexes:" + i + " " + j + " " + k);
-                            if (i && j && k >= 0) {
-                                sliderIndexesSelected = true;
-                            }
-                        }// end while
+                        console.log("indexes:" + i + " " + j + " " + k);
+                    //    while (!sliderIndexesSelected) {
+                    //        
+                    //        if (i && j && k >= 0) {
+                    //            sliderIndexesSelected = true;
+                    //        }
+                     //   }// end while
 
                         // set initial shoe
                         $scope.shoeSelected = $scope.shoeList[i];
@@ -269,7 +273,9 @@
                         $scope.tabSelected[0] = $scope.tabList[j];
                         $scope.tabSelected[1] = $scope.tabList[k];
                         $scope.setTab($scope.tabSelected[0], 0);
+                        $scope.setTab($scope.tabSelected[0], 2);
                         $scope.setTab($scope.tabSelected[1], 1);
+                        $scope.setTab($scope.tabSelected[1], 3);
 
                     }else {
                         // wait until all is loaded
@@ -314,8 +320,8 @@
                 $scope.camera;
 
                 $scope.loader;
-                $scope.WIDTH = 600;
-                $scope.HEIGHT = 600;
+                $scope.WIDTH = 400;
+                $scope.HEIGHT = 400;
 
                 var VIEW_ANGLE = 45;
                 var ASPECT = $scope.WIDTH / $scope.HEIGHT;
@@ -374,8 +380,8 @@
                     $scope.cWidth = $scope.calculateCanvasWidth(); // canvas calculated width
 
                     //x and y is used in case canvas is not a square
-                    $scope.WIDTH = $scope.cWidth+x;
-                    $scope.HEIGHT = $scope.cWidth+y;
+                    $scope.WIDTH = $scope.cWidth-100;
+                    $scope.HEIGHT = $scope.cWidth-100;
                 };
 
                 $scope.findAndSetCanvasDimensions = function(){
@@ -404,7 +410,7 @@
 
                 $scope.createScene = function (){
                     $scope.camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
-                    $scope.camera.position.set(0, 1, 10);
+                    $scope.camera.position.set(-1, 1, 10);
                   //  $scope.camera.rotation.x = -Math.PI / 12;
                     $scope.addLight();
                     $scope.scene.add($scope.camera);
@@ -501,17 +507,32 @@
 
                 };
 
-                $scope.drawTabs = function (scene, mesh, side){
+                $scope.drawTabs = function (scene, mesh, s, p, wTab, x, y, z){
+                    var side = 'right';
+                    var pos = 'top';
+                    var whichTab = 'top';
+
+                    if(s == 1){
+                        side = 'left';
+                    }
+
+                    if(pos == 1){
+                        pos = 'bottom';
+                    }
+
+                    if(wTab ==  1){
+                        whichTab = 'bottom';
+                    }
 
                     // load tab
                     var meshPath = 'assets/models/' + $scope.shoeSelected.name + '/' + $scope.shoeSelected.name;
-                    var texturePath = 'assets/models/texture/shoe/' + $scope.shoeSelected.name + '/tabs/' + def + '/' + $scope.tabSelected.name;
+                    var texturePath = 'assets/models/texture/tabs/' + $scope.tabSelected[s].name + '-' + $scope.tabSelected[s].color;
                     var loader = new THREE.JSONLoader();
 
-                    loader.load(meshPath + '-tab-'+ side + '.js', function (geometry, materials) {
+                    loader.load(meshPath + '-tab-'+ side + '-' + pos +'.js', function (geometry, materials) {
                         var material = new THREE.MeshPhongMaterial({
-                            map: THREE.ImageUtils.loadTexture(texturePath + '/Difuse.jpg'),
-                            normalMap: THREE.ImageUtils.loadTexture( texturePath + '/Normal.jpg' ),
+                            map: THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg'),
+                            normalMap: THREE.ImageUtils.loadTexture( texturePath + '/normals-' + whichTab + '.jpg' ),
                             normalScale: new THREE.Vector2( 0.6, 0.6 ),
                             colorAmbient: [0.480000026226044, 0.480000026226044, 0.480000026226044],
                             colorDiffuse: [0.480000026226044, 0.480000026226044, 0.480000026226044],
@@ -528,9 +549,9 @@
                         mesh.castShadow = false;
                         mesh.rotation.y = 3*Math.PI/4;
                         //   mesh.scale.multiplyScalar(3);
-                      //  mesh.position.x = x;
-                      //  mesh.position.y = 0;
-                      //  mesh.position.z = 0;
+                        mesh.position.x = x;
+                      //  mesh.position.y = y;
+                      //  mesh.position.z = z;
 
                         $scope.scene.add(mesh);
                         $scope.render(mesh);
@@ -545,6 +566,13 @@
                     if(tabLabProperties.isShoeSelected()){
                         $scope.drawShoe($scope.scene, $scope.mesh, 'left', 1.5);
                         $scope.drawShoe($scope.scene, $scope.mesh, 'right', -1.5);
+
+                        $scope.drawTabs($scope.scene, $scope.mesh, 0, 0, 0, -1.5, 0, 0);
+                        $scope.drawTabs($scope.scene, $scope.mesh, 0, 1, 1, -1.8, -.6, .5);
+
+                        $scope.drawTabs($scope.scene, $scope.mesh, 1, 0, 0, 1.5, 0, 0);
+                        $scope.drawTabs($scope.scene, $scope.mesh, 1, 1, 1, 1.1, -.6, .5);
+
                     }
                     else {
                         setTimeout(checkIfShoeHasBeenSet, 500); // check again in a .5 second
@@ -809,106 +837,6 @@
                     }
 
                 };
-
-
-
-                $scope.drawTabs = function (side) {
-
-                    switch (side) {
-                        case "left":
-                            /** Draw Left Shoe tabs **/
-
-                            var tabTopY = 20 + ($scope.leftShoeImage.height *.34);
-                            var tabBottomY = 20 + ($scope.leftShoeImage.height *.48);
-
-                            var tabTopLeftImage = $scope.getImageNaturalDimensionsAndScale(
-                                $scope.tab_image_top_left, 
-                                $scope.scaleFactor,
-                                $scope.tabScaleFactorOffset);
-
-
-                            var tabBottomLeftImage = $scope.getImageNaturalDimensionsAndScale(
-                                $scope.tab_image_bot_left, 
-                                $scope.scaleFactor, 
-                                $scope.tabScaleFactorOffset);
-
-                            var tabTopLeftX = $scope.cWidth/2 - ($scope.leftShoeImage.width *.89);
-                            var tabBottomLeftX = $scope.cWidth/2 - ($scope.leftShoeImage.width *.89);
-                            console.log("tabTopLeftX="+tabTopLeftX);
-
-                            $scope.clearImage(topViewTabCanvas, tptabcontext, side);
-                            tptabcontext.drawImage($scope.tab_image_top_left, tabTopLeftX, tabTopY, tabTopLeftImage.width-11, tabTopLeftImage.height+5);
-                            tptabcontext.drawImage($scope.tab_image_bot_left, tabBottomLeftX, tabBottomY, tabBottomLeftImage.width-11, tabBottomLeftImage.height+5);
-
-                            break;
-
-                        case "right" :
-                            /** Draw Right Shoe tabs **/
-
-                            var tabTopY = 20 + ($scope.rightShoeImage.height *.34);
-                            var tabBottomY = 20 + ($scope.rightShoeImage.height *.48);
-
-                            var tabTopRightImage = $scope.getImageNaturalDimensionsAndScale(
-                                $scope.tab_image_top_right, 
-                                $scope.scaleFactor,
-                                $scope.tabScaleFactorOffset);
-
-                            var tabBottomRightImage = $scope.getImageNaturalDimensionsAndScale(
-                                $scope.tab_image_bot_right, 
-                                $scope.scaleFactor, 
-                                $scope.tabScaleFactorOffset);
-
-                            var tabTopRightX = $scope.cWidth/2 + ($scope.rightShoeImage.width *.2);
-                            var tabBottomRightX = $scope.cWidth/2 + ($scope.rightShoeImage.width *.2);
-
-                            $scope.clearImage(topViewTabCanvas, tptabcontext, side);
-                            tptabcontext.drawImage($scope.tab_image_top_right, tabTopRightX, tabTopY, tabTopRightImage.width-11, tabTopRightImage.height+5);
-                            tptabcontext.drawImage($scope.tab_image_bot_right, tabBottomRightX, tabBottomY, tabBottomRightImage.width-11, tabBottomRightImage.height+5);
-
-                            break;
-
-                        default: //  Draw both
-                            console.log("error: no tab view side selected. Drawing both sides");
-
-                            var tabTopY = 20 + ($scope.leftShoeImage.height *.34);
-                            var tabBottomY = 20 + ($scope.leftShoeImage.height *.48);
-
-                            var tabTopLeftImage = $scope.getImageNaturalDimensionsAndScale(
-                                $scope.tab_image_top_left, 
-                                $scope.scaleFactor,
-                                $scope.tabScaleFactorOffset);
-
-                            var tabBottomLeftImage = $scope.getImageNaturalDimensionsAndScale(
-                                $scope.tab_image_bot_left, 
-                                $scope.scaleFactor, 
-                                $scope.tabScaleFactorOffset);
-
-                            var tabTopLeftX = $scope.cWidth/2 - ($scope.leftShoeImage.width *.89);
-                            var tabBottomLeftX = $scope.cWidth/2 - ($scope.leftShoeImage.width *.89);
-                           // $scope.clearImage(topViewTabCanvas, tptabcontext);
-
-                                tptabcontext.drawImage($scope.tab_image_top_left, tabTopLeftX, tabTopY, tabTopLeftImage.width-11, tabTopLeftImage.height+5);
-                                tptabcontext.drawImage($scope.tab_image_bot_left, tabBottomLeftX, tabBottomY, tabBottomLeftImage.width-11, tabBottomLeftImage.height+5);
-
-                            var tabTopRightImage = $scope.getImageNaturalDimensionsAndScale(
-                                $scope.tab_image_top_right, 
-                                $scope.scaleFactor,
-                                $scope.tabScaleFactorOffset);
-
-                            var tabBottomRightImage = $scope.getImageNaturalDimensionsAndScale(
-                                $scope.tab_image_bot_right, 
-                                $scope.scaleFactor, 
-                                $scope.tabScaleFactorOffset);
-
-                            var tabTopRightX = $scope.cWidth/2 + ($scope.rightShoeImage.width *.2);
-                            var tabBottomRightX = $scope.cWidth/2 + ($scope.rightShoeImage.width *.2);
-
-                                tptabcontext.drawImage($scope.tab_image_top_right, tabTopRightX, tabTopY, tabTopRightImage.width-11, tabTopRightImage.height+5);
-                                tptabcontext.drawImage($scope.tab_image_bot_right, tabBottomRightX, tabBottomY, tabBottomRightImage.width-11, tabBottomRightImage.height+5);
-                            
-                    }// end switch
-
-                }; //end drawTabs()
 
                 this.clearSelections = function () {
                     if ($scope.shoeSelected.length > 0) {
