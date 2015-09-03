@@ -519,7 +519,7 @@
                         side = 'left';
                     }
 
-                    if(pos == 1){
+                    if(p == 1){
                         pos = 'bottom';
                     }
 
@@ -573,10 +573,10 @@
 
 
                         $scope.drawTabs($scope.scene, $scope.mesh, 0, 0, 0, -1.5, 0, 0);
-                        $scope.drawTabs($scope.scene, $scope.mesh, 0, 1, 1, -1.8, -.6, .5);
+                        $scope.drawTabs($scope.scene, $scope.mesh, 0, 1, 1, -1.5, 0, 0);
 
                         $scope.drawTabs($scope.scene, $scope.mesh, 1, 0, 0, 1.5, 0, 0);
-                        $scope.drawTabs($scope.scene, $scope.mesh, 1, 1, 1, 1.05, -.6, .5);
+                        $scope.drawTabs($scope.scene, $scope.mesh, 1, 1, 1, 1.5, 0, 0);
 
                     }
                     else {
