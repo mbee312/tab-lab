@@ -511,7 +511,7 @@
                         scene.add($scope.shoeMesh);
                         $scope.render($scope.shoeMesh);
                         $scope.currentShoeObj['\'' + side +'\'' ] = $scope.shoeMesh;
-                        $scope.currentShoeObj['\'' + side +'\'' ].name = s.name + '-' + s.color + '-' + side;
+                        $scope.currentShoeObj['\'' + side +'\''].name = s.name + '-' + s.color;
                     });
 
                 };
@@ -520,6 +520,8 @@
                 };
 
                 var removeFromScene = function ( scene, obj) {
+                    console.log("REMOVE FROM SCENE");
+                    console.log(obj);
                     var removeMeObj = scene.getObjectByName( obj.name );
                     $scope.scene.remove(removeMeObj);
                     console.log(scene);
@@ -544,7 +546,9 @@
                     }
 
                     //first remove current tab
-                    if(_.isEmpty($scope.currentTabObj) == false) {
+                    if(_.isEmpty($scope.currentTabObj['\'' + side + '\'']) == false) {
+                        console.log("remove this from scene");
+                        console.log($scope.currentTabObj['\'' + side + '\'']);
                         removeFromScene(scene, $scope.currentTabObj['\'' + side + '\'']);
                     }
 
@@ -580,7 +584,8 @@
 
                         scene.add($scope.tabMesh['\'' + side +'\'' ]);
                         $scope.render($scope.tabMesh['\'' + side +'\'' ]);
-
+                        $scope.currentTabObj['\'' + side +'\'' ] = $scope.tabMesh['\'' + side +'\'' ];
+                        $scope.currentTabObj['\'' + side +'\''].name = shoe.name + '-' + $scope.tabSelected[s].name + '-' + $scope.tabSelected[s].color + '-' + side;
                     });
 
                 };
