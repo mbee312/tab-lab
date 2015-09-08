@@ -109,13 +109,13 @@
                 console.log("the shoe is " + $scope.shoeList[shoeIndex]);
                 $scope.shoeSelected = $scope.shoeList[shoeIndex];
                 $scope.setShoe($scope.shoeSelected);
-                $scope.drawShoe($scope.scene, 'left', 1.5);
-                $scope.drawShoe($scope.scene, 'right', -1.5);
-                console.log("inside SlideController! " + tabLabProperties.getShoe());
+                $scope.updateShoe($scope.scene, 'left');
+                $scope.updateShoe($scope.scene, 'right');
+            //    $scope.drawShoe($scope.scene, 'left', 1.5);
+            //    $scope.drawShoe($scope.scene, 'right', -1.5);
              //   console.log("drawShoe complete. calculate subtotal...");
             //    $scope.calculateSubTotal();
             //    console.log($scope.getSubTotal());
-                console.log("watch shoe. complete");
             }
         });
 
@@ -134,11 +134,14 @@
                 console.log('hey, lTIndex has changed! ' + $scope.lTIndex);
                 console.log("the left tab is " + $scope.tabList[leftTabIndex]);
                 $scope.tabSelected[0] = $scope.tabList[leftTabIndex];
+                $scope.tabSelected[2] = $scope.tabList[leftTabIndex];
                 console.log($scope.tabSelected[0]);
-                $scope.setTab($scope.tabSelected[0], 1);
-                $scope.setTab($scope.tabSelected[0], 3);
-                $scope.drawTabs($scope.scene, 0, 0, 0, -1.5, 0, 0);
-                $scope.drawTabs($scope.scene, 0, 1, 1, -1.5, 0, 0);
+                $scope.setTab($scope.tabSelected[0], 0);
+                $scope.setTab($scope.tabSelected[2], 2);
+                $scope.updateTabs($scope.scene, 0);
+                $scope.updateTabs($scope.scene, 2);
+            //    $scope.drawTabs($scope.scene, 0, 0, 0, -1.5, 0, 0);
+            //    $scope.drawTabs($scope.scene, 0, 1, 1, -1.5, 0, 0);
 
             }
         });
@@ -159,11 +162,14 @@
                 console.log('hey, rTIndex has changed! ' + $scope.rTIndex);
                 console.log("the right tab is ");
                 $scope.tabSelected[1] = $scope.tabList[rightTabIndex];
+                $scope.tabSelected[3] = $scope.tabList[rightTabIndex];
                 console.log($scope.tabSelected[1]);
                 $scope.setTab($scope.tabSelected[1], 1);
-                $scope.setTab($scope.tabSelected[1], 3);
-                $scope.drawTabs($scope.scene, 1, 0, 0, 1.5, 0, 0);
-                $scope.drawTabs($scope.scene, 1, 1, 1, 1.5, 0, 0);
+                $scope.setTab($scope.tabSelected[3], 3);
+                $scope.updateTabs($scope.scene, 1);
+                $scope.updateTabs($scope.scene, 3);
+            //    $scope.drawTabs($scope.scene, 1, 0, 0, 1.5, 0, 0);
+            //    $scope.drawTabs($scope.scene, 1, 1, 1, 1.5, 0, 0);
 
             }
 
