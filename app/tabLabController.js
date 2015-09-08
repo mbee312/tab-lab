@@ -146,7 +146,12 @@
                 $scope.tabs.right.price = 0;
 
                 $scope.shoeSelected = {};
+                $scope.shoeMesh;
+                $scope.currentShoeObj = {};
                 $scope.tabSelected = [];
+                $scope.tabMesh = {};
+                $scope.currentTabObj = {};
+
 
                 $scope.fit = {};
                 //  $scope.fit.autoselect = true;
@@ -328,10 +333,6 @@
                 var NEAR = 1;
                 var FAR = 100;
 
-                $scope.mesh;
-                $scope.oldMesh
-
-
                 var mobileScaleFactor = .41;
                 var mobileScaleFactorWide = .27;
                 var smartphoneScaleFactor = .85;
@@ -469,15 +470,21 @@
                 };
 
 
-                $scope.drawShoe = function (scene, mesh, side, x){
+                $scope.drawShoe = function (scene, side, x){
+                    //first remove current shoe
+                    if(_.isEmpty($scope.currentShoeObj) == false) {
+                        removeFromScene(scene, $scope.currentShoeObj['\'' + side + '\'']);
+                    }
+
+
                     var s = $scope.getShoe();
 
                     // load shoe
-                    var meshPath = 'assets/models/' + s.name + '/' + s.name;
+                    var shoePath = 'assets/models/' + s.name + '/' + s.name;
                     var texturePath = 'assets/models/texture/shoe/' + s.name + '/' + side + '/' + s.color;
                     var loader = new THREE.JSONLoader();
 
-                    loader.load(meshPath + '-shoe-'+ side + '.js', function (geometry, materials) {
+                    loader.load(shoePath + '-shoe-'+ side + '.js', function (geometry, materials) {
                         var material = new THREE.MeshPhongMaterial({
                             map: THREE.ImageUtils.loadTexture(texturePath + '/Difuse.jpg'),
                             normalMap: THREE.ImageUtils.loadTexture( texturePath + '/Normal.jpg' ),
@@ -488,28 +495,37 @@
                             shininess: 15
                         });
 
-                        mesh = new THREE.Mesh(
+                        $scope.shoeMesh = new THREE.Mesh(
                             geometry,
                             material
                         );
 
-                        mesh.receiveShadow = false;
-                        mesh.castShadow = true;
-                        mesh.rotation.y = 3*Math.PI/4;
+                        $scope.shoeMesh.receiveShadow = false;
+                        $scope.shoeMesh.castShadow = true;
+                        $scope.shoeMesh.rotation.y = 3*Math.PI/4;
                         //   mesh.scale.multiplyScalar(3);
-                        mesh.position.x = x;
-                        mesh.position.y = 0;
-                        mesh.position.z = 0;
+                        $scope.shoeMesh.position.x = x;
+                        $scope.shoeMesh.position.y = 0;
+                        $scope.shoeMesh.position.z = 0;
 
-                        $scope.scene.add(mesh);
-                        $scope.render(mesh);
-                        $scope.oldMesh = mesh;
-
+                        scene.add($scope.shoeMesh);
+                        $scope.render($scope.shoeMesh);
+                        $scope.currentShoeObj['\'' + side +'\'' ] = $scope.shoeMesh;
+                        $scope.currentShoeObj['\'' + side +'\'' ].name = s.name + '-' + s.color + '-' + side;
                     });
 
                 };
+                $scope.updateShoe = function (scene, side){
 
-                $scope.drawTabs = function (scene, mesh, s, p, wTab, x, y, z){
+                };
+
+                var removeFromScene = function ( scene, obj) {
+                    var removeMeObj = scene.getObjectByName( obj.name );
+                    $scope.scene.remove(removeMeObj);
+                    console.log(scene);
+                };
+
+                $scope.drawTabs = function (scene, s, p, wTab, x, y, z){
                     var side = 'right';
                     var pos = 'top';
                     var whichTab = 'top';
@@ -525,6 +541,11 @@
 
                     if(wTab ==  1){
                         whichTab = 'bottom';
+                    }
+
+                    //first remove current tab
+                    if(_.isEmpty($scope.currentTabObj) == false) {
+                        removeFromScene(scene, $scope.currentTabObj['\'' + side + '\'']);
                     }
 
 
@@ -544,22 +565,21 @@
                             shininess: 15
                         });
 
-                        mesh = new THREE.Mesh(
+                        $scope.tabMesh['\'' + side +'\'' ] = new THREE.Mesh(
                             geometry,
                             material
                         );
 
-                        mesh.receiveShadow = false;
-                        mesh.castShadow = true;
-                        mesh.rotation.y = 3*Math.PI/4;
+                        $scope.tabMesh['\'' + side +'\'' ].receiveShadow = false;
+                        $scope.tabMesh['\'' + side +'\'' ].castShadow = true;
+                        $scope.tabMesh['\'' + side +'\'' ].rotation.y = 3*Math.PI/4;
                         //   mesh.scale.multiplyScalar(3);
-                        mesh.position.x = x;
-                        mesh.position.y = y;
-                        mesh.position.z = z;
+                        $scope.tabMesh['\'' + side +'\'' ].position.x = x;
+                        $scope.tabMesh['\'' + side +'\'' ].position.y = y;
+                        $scope.tabMesh['\'' + side +'\'' ].position.z = z;
 
-                        $scope.scene.add(mesh);
-                        $scope.render(mesh);
-                        $scope.oldMesh = mesh;
+                        scene.add($scope.tabMesh['\'' + side +'\'' ]);
+                        $scope.render($scope.tabMesh['\'' + side +'\'' ]);
 
                     });
 
@@ -568,15 +588,15 @@
 
                 var checkIfShoeHasBeenSet = function(){
                     if(tabLabProperties.isShoeSelected()){
-                        $scope.drawShoe($scope.scene, $scope.mesh, 'left', 1.5);
-                        $scope.drawShoe($scope.scene, $scope.mesh, 'right', -1.5);
+                        $scope.drawShoe($scope.scene, 'left', 1.5);
+                        $scope.drawShoe($scope.scene, 'right', -1.5);
 
 
-                        $scope.drawTabs($scope.scene, $scope.mesh, 0, 0, 0, -1.5, 0, 0);
-                        $scope.drawTabs($scope.scene, $scope.mesh, 0, 1, 1, -1.5, 0, 0);
+                        $scope.drawTabs($scope.scene, 0, 0, 0, -1.5, 0, 0);
+                        $scope.drawTabs($scope.scene, 0, 1, 1, -1.5, 0, 0);
 
-                        $scope.drawTabs($scope.scene, $scope.mesh, 1, 0, 0, 1.5, 0, 0);
-                        $scope.drawTabs($scope.scene, $scope.mesh, 1, 1, 1, 1.5, 0, 0);
+                        $scope.drawTabs($scope.scene, 1, 0, 0, 1.5, 0, 0);
+                        $scope.drawTabs($scope.scene, 1, 1, 1, 1.5, 0, 0);
 
                     }
                     else {
@@ -595,8 +615,8 @@
                 // When the browser changes size
                 window.onresize = function (){
                     $scope.findAndSetCanvasDimensions();
-                    $scope.drawShoe($scope.scene, $scope.mesh, 'left', 1.5);
-                    $scope.drawShoe($scope.scene, $scope.mesh, 'right', -1.5);
+                    $scope.drawShoe($scope.scene, 'left', 1.5);
+                    $scope.drawShoe($scope.scene, 'right', -1.5);
                 }
 
                 /*

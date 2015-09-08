@@ -109,8 +109,8 @@
                 console.log("the shoe is " + $scope.shoeList[shoeIndex]);
                 $scope.shoeSelected = $scope.shoeList[shoeIndex];
                 $scope.setShoe($scope.shoeSelected);
-                $scope.drawShoe($scope.scene, $scope.mesh, 'left', 1.5);
-                $scope.drawShoe($scope.scene, $scope.mesh, 'right', -1.5);
+                $scope.drawShoe($scope.scene, 'left', 1.5);
+                $scope.drawShoe($scope.scene, 'right', -1.5);
                 console.log("inside SlideController! " + tabLabProperties.getShoe());
              //   console.log("drawShoe complete. calculate subtotal...");
             //    $scope.calculateSubTotal();
@@ -137,8 +137,8 @@
                 console.log($scope.tabSelected[0]);
                 $scope.setTab($scope.tabSelected[0], 1);
                 $scope.setTab($scope.tabSelected[0], 3);
-                $scope.drawTabs($scope.scene, $scope.mesh, 0, 0, 0, -1.5, 0, 0);
-                $scope.drawTabs($scope.scene, $scope.mesh, 0, 1, 1, -1.5, 0, 0);
+                $scope.drawTabs($scope.scene, 0, 0, 0, -1.5, 0, 0);
+                $scope.drawTabs($scope.scene, 0, 1, 1, -1.5, 0, 0);
 
             }
         });
@@ -162,8 +162,8 @@
                 console.log($scope.tabSelected[1]);
                 $scope.setTab($scope.tabSelected[1], 1);
                 $scope.setTab($scope.tabSelected[1], 3);
-                $scope.drawTabs($scope.scene, $scope.mesh, 1, 0, 0, 1.5, 0, 0);
-                $scope.drawTabs($scope.scene, $scope.mesh, 1, 1, 1, 1.5, 0, 0);
+                $scope.drawTabs($scope.scene, 1, 0, 0, 1.5, 0, 0);
+                $scope.drawTabs($scope.scene, 1, 1, 1, 1.5, 0, 0);
 
             }
 
