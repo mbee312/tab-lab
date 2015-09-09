@@ -231,12 +231,46 @@
                 $scope.setTab = function(tab, shoePos){
                     tabLabProperties.setTabSelected(tab, shoePos);
                 };
+
+                var loadNormals = function (){
+                    var s;
+                    var texturePathLeft;
+                    var texturePathRight;
+                    var imgMap = {};
+                    var imgNormalMap = {};
+                    var i;
+                    for (i = 0 ; i < $scope.numOfShoes ; i++ ){
+                        s = $scope.shoeList[i];
+                        $scope.shoeList[i].map = [];
+                        $scope.shoeList[i].normalMap = [];
+
+                        texturePathLeft = 'assets/models/texture/shoe/' + s.name + '/left/' + s.color;
+                        texturePathRight = 'assets/models/texture/shoe/' + s.name + '/right/' + s.color;
+                        imgMap['left'] = new Image();
+                        imgMap['left'].src = texturePathLeft + '/Difuse.jpg';
+                        $scope.shoeList[i].map['left'] =  imgMap['left'];
+
+                        imgMap['right'] = new Image();
+                        imgMap['right'].src = texturePathRight + '/Difuse.jpg';
+                        $scope.shoeList[i].map['right'] =  imgMap['right'];
+
+                        imgNormalMap['left'] = new Image();
+                        imgNormalMap['left'].src = texturePathLeft + '/Normal.jpg';
+                        $scope.shoeList[i].normalMap['left'] = imgNormalMap['left'];
+
+                        imgNormalMap['right'] = new Image();
+                        imgNormalMap['right'].src = texturePathRight + '/Normal.jpg';
+                        $scope.shoeList[i].normalMap['right'] = imgNormalMap['right'];
+                    }
+                };
+
                 $scope.loadShoeStyle = function (file) {
 
                     $http.get(file).success(function (data) {
                         $scope.shoeList = data;
                         $scope.shoeList = $scope.loadMenu($scope.shoeList, true);
                         $scope.numOfShoes = $scope.shoeList.length;
+                        loadNormals();
                         $scope.loaded.push('shoeList');
                     });
                 };// end loadShoeStyle()
@@ -512,18 +546,16 @@
                         removeFromScene(scene, $scope.currentShoeObj['\'' + side + '\'']);
                     }
 
-
                     var s = $scope.getShoe();
 
                     // load shoe
                     var shoePath = 'assets/models/' + s.name + '/' + s.name;
-                    var texturePath = 'assets/models/texture/shoe/' + s.name + '/' + side + '/' + s.color;
                     var loader = new THREE.JSONLoader();
 
                     loader.load(shoePath + '-shoe-'+ side + '.js', function (geometry, materials) {
                         var material = new THREE.MeshPhongMaterial({
-                            map: THREE.ImageUtils.loadTexture(texturePath + '/Difuse.jpg'),
-                            normalMap: THREE.ImageUtils.loadTexture( texturePath + '/Normal.jpg' ),
+                            map: THREE.ImageUtils.loadTexture(s.map[side].src),
+                            normalMap: THREE.ImageUtils.loadTexture(s.normalMap[side].src),
                             normalScale: new THREE.Vector2( 0.6, 0.6 ),
                             colorAmbient: [0.480000026226044, 0.480000026226044, 0.480000026226044],
                             colorDiffuse: [0.480000026226044, 0.480000026226044, 0.480000026226044],
