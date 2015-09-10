@@ -105,7 +105,6 @@
         var shoeIndex;
         var tabIndex = [];
 
-
         return {
             getShoeIndex: function () {
                 console.log("returning shoe index: ");
@@ -138,6 +137,12 @@
             'sliderProperties',
             function ($scope, $http, $mdDialog, $mdToast, $animate, $window, tabLabProperties, sizeProperties, sliderProperties) {
 
+                var originatorEv;
+                this.openMenu = function($mdOpenMenu, ev) {
+                    originatorEv = ev;
+                    $mdOpenMenu(ev);
+                };
+
                 // Tabs on canvas List Arrays
                 $scope.tabs = {};
                 $scope.tabs.left = {};
@@ -146,6 +151,7 @@
                 $scope.tabs.right.price = 0;
 
                 $scope.shoeSelected = {};
+                $scope.styleName = "emme";
                 $scope.shoeMesh = {};
                 $scope.currentShoeObj = {};
                 $scope.tabSelected = [];
@@ -187,15 +193,67 @@
                 $scope.leftTabIndex=0;
                 $scope.lTindex=0;
 
+
+                var loadNormals = function (){
+                    var s;
+                    var texturePathLeft;
+                    var texturePathRight;
+                    var imgMap = {};
+                    var imgNormalMap = {};
+                    var i;
+                    for (i = 0 ; i < $scope.numOfShoes ; i++ ){
+                        s = $scope.shoeList[i];
+                        $scope.shoeList[i].map = [];
+                        $scope.shoeList[i].normalMap = [];
+
+                        texturePathLeft = 'assets/models/texture/shoe/' + s.name + '/left/' + s.color;
+                        texturePathRight = 'assets/models/texture/shoe/' + s.name + '/right/' + s.color;
+                        imgMap['left'] = new Image();
+                        imgMap['left'].src = texturePathLeft + '/Difuse.jpg';
+                        $scope.shoeList[i].map['left'] =  imgMap['left'];
+
+                        imgMap['right'] = new Image();
+                        imgMap['right'].src = texturePathRight + '/Difuse.jpg';
+                        $scope.shoeList[i].map['right'] =  imgMap['right'];
+
+                        imgNormalMap['left'] = new Image();
+                        imgNormalMap['left'].src = texturePathLeft + '/Normal.jpg';
+                        $scope.shoeList[i].normalMap['left'] = imgNormalMap['left'];
+
+                        imgNormalMap['right'] = new Image();
+                        imgNormalMap['right'].src = texturePathRight + '/Normal.jpg';
+                        $scope.shoeList[i].normalMap['right'] = imgNormalMap['right'];
+                    }
+                };
+
                 $scope.loadMenu = function (list, shoeBool ){
                     for(var i = 0; i < list.length ; i++){
                         list[i].menuImg = new Image();
                         list[i].menuImg.src=list[i].menuImgUrl;
                     }// end for
                     return list;
-                }// end preLoader()
+                }// end loadMenu()
 
+                $scope.loadShoeStyle = function (file) {
 
+                    $http.get(file).success(function (data) {
+                        $scope.shoeList = data;
+                        $scope.shoeList = $scope.loadMenu($scope.shoeList, true);
+                        $scope.numOfShoes = $scope.shoeList.length;
+                        loadNormals();
+                        $scope.loaded.push('shoeList');
+                    });
+                };// end loadShoeStyle()
+
+                $scope.loadTabStyles = function (file) {
+
+                    $http.get(file).success(function (data) {
+                        $scope.tabList = data;
+                        $scope.tabList = $scope.loadMenu($scope.tabList, false);
+                        $scope.numOfTabs = $scope.tabList.length;
+                        $scope.loaded.push('tabList');
+                    });
+                };// end loadTabStyles()
 
                 $scope.setRandomIndex = function (type, pos){
                     if(type == 'shoe'){
@@ -219,40 +277,21 @@
                     return sliderProperties.getShoeIndex();
                 };
 
-                $scope.setShoe = function(shoe){
-                    tabLabProperties.setShoeSelected(shoe);
-                };
-
                 $scope.getTabIndex = function(pos) {
                     // returns shoe index or null if not set
                     return sliderProperties.getTabIndex(pos);
                 };
 
+                $scope.setShoe = function(shoe){
+                    tabLabProperties.setShoeSelected(shoe);
+                };
+
                 $scope.setTab = function(tab, shoePos){
                     tabLabProperties.setTabSelected(tab, shoePos);
                 };
-                $scope.loadShoeStyle = function (file) {
-
-                    $http.get(file).success(function (data) {
-                        $scope.shoeList = data;
-                        $scope.shoeList = $scope.loadMenu($scope.shoeList, true);
-                        $scope.numOfShoes = $scope.shoeList.length;
-                        $scope.loaded.push('shoeList');
-                    });
-                };// end loadShoeStyle()
-
-                $scope.loadTabStyles = function (file) {
-
-                    $http.get(file).success(function (data) {
-                        $scope.tabList = data;
-                        $scope.tabList = $scope.loadMenu($scope.tabList, false);
-                        $scope.numOfTabs = $scope.tabList.length;
-                        $scope.loaded.push('tabList');
-                    });
-                };// end loadTabStyles()
 
                 $scope.initializeSelected = function (){
-                    if($scope.loaded.indexOf('shoeList') && $scope.loaded.indexOf('shoeList') != -1) {
+                    if($scope.loaded.indexOf('shoeList') && $scope.loaded.indexOf('tabList') != -1) {
                         $scope.setRandomIndex('shoe', 0);
                         $scope.setRandomIndex('tab', 0);
                         $scope.setRandomIndex('tab', 1);
@@ -260,13 +299,6 @@
                         var i = $scope.getShoeIndex();
                         var j = $scope.getTabIndex(0);
                         var k = $scope.getTabIndex(1);
-                        console.log("indexes:" + i + " " + j + " " + k);
-                        //    while (!sliderIndexesSelected) {
-                        //
-                        //        if (i && j && k >= 0) {
-                        //            sliderIndexesSelected = true;
-                        //        }
-                        //   }// end while
 
                         // set initial shoe
                         $scope.shoeSelected = $scope.shoeList[i];
@@ -306,7 +338,7 @@
                         $scope.tabSizeOptions = data;
                         $scope.loaded.push('tabSizeOptions');
                     });
-                    $scope.shoeStyleFile = 'assets/data/shoes_max.json';
+                    $scope.shoeStyleFile = 'assets/data/shoesMaxTest.json';
                     $scope.loadShoeStyle($scope.shoeStyleFile);
                     $scope.tabsFile = 'assets/data/tabs.json';
                     $scope.loadTabStyles($scope.tabsFile);
@@ -488,7 +520,6 @@
 
                     if(pos == 2 ||  pos == 3){
                         whichTab = 'bottom';
-                        console.log("update the bottom");
                     }
 
                     // load path
@@ -512,18 +543,16 @@
                         removeFromScene(scene, $scope.currentShoeObj['\'' + side + '\'']);
                     }
 
-
                     var s = $scope.getShoe();
 
                     // load shoe
                     var shoePath = 'assets/models/' + s.name + '/' + s.name;
-                    var texturePath = 'assets/models/texture/shoe/' + s.name + '/' + side + '/' + s.color;
                     var loader = new THREE.JSONLoader();
 
                     loader.load(shoePath + '-shoe-'+ side + '.js', function (geometry, materials) {
                         var material = new THREE.MeshPhongMaterial({
-                            map: THREE.ImageUtils.loadTexture(texturePath + '/Difuse.jpg'),
-                            normalMap: THREE.ImageUtils.loadTexture( texturePath + '/Normal.jpg' ),
+                            map: THREE.ImageUtils.loadTexture(s.map[side].src),
+                            normalMap: THREE.ImageUtils.loadTexture(s.normalMap[side].src),
                             normalScale: new THREE.Vector2( 0.6, 0.6 ),
                             colorAmbient: [0.480000026226044, 0.480000026226044, 0.480000026226044],
                             colorDiffuse: [0.480000026226044, 0.480000026226044, 0.480000026226044],

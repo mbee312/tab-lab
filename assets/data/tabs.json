@@ -1,85 +1,5 @@
 [
   {
-    "name": "dominique",
-    "id": 1909,
-    "color": "pink",
-    "sku": "201152-660",
-    "price": 4.95,
-    "menuImgUrl": "assets/media/thumbnails/tabs/dominique.jpg"
-  },
-  {
-    "name": "dominic",
-    "id": 1910,
-    "color": "chocolate",
-    "sku": "201151-240",
-    "price": 4.95,
-    "menuImgUrl": "assets/media/thumbnails/tabs/dominic.jpg"
-  },
-  {
-    "name": "camo",
-    "id": 624,
-    "color": "green",
-    "sku": "201101-950",
-    "price": 4.95,
-    "menuImgUrl": "assets/media/thumbnails/tabs/camo-green.jpg"
-  },
-  {
-    "name": "camo",
-    "id": 628,
-    "color": "red",
-    "sku": "201101-951",
-    "price": 4.95,
-    "menuImgUrl": "assets/media/thumbnails/tabs/camo-red.jpg"
-  },
-  {
-    "name": "shimmer",
-    "id": 591,
-    "color": "suede-lavender",
-    "sku": "201032-541",
-    "price": 4.95,
-    "menuImgUrl": "assets/media/thumbnails/tabs/shimmer-leather-lavender.png"
-  },
-  {
-    "name": "lcd",
-    "id": 655,
-    "color": "red",
-    "sku": "201110-610",
-    "price": 4.95,
-    "menuImgUrl": "assets/media/thumbnails/tabs/lcd-red-blank.jpg"
-  },
-  {
-    "name": "lcd",
-    "id": 900,
-    "color": "yellow",
-    "sku": "201110-730",
-    "price": 4.95,
-    "menuImgUrl": "assets/media/thumbnails/tabs/lcd-neon-yellow-blank.jpg"
-  },
-  {
-    "name": "lcd",
-    "id": 781,
-    "color": "orange",
-    "sku": "201110-822",
-    "price": 4.95,
-    "menuImgUrl": "assets/media/thumbnails/tabs/lcd-neon-orange-blank.jpg"
-  },
-  {
-    "name": "lcd",
-    "id": 782,
-    "color": "pink",
-    "sku": "201112-631",
-    "price": 4.95,
-    "menuImgUrl": "assets/media/thumbnails/tabs/lcd-neon-pink-blank.jpg"
-  },
-  {
-    "name": "lcd",
-    "id": 655,
-    "color": "white",
-    "sku": "201110-610",
-    "price": 4.95,
-    "menuImgUrl": "assets/media/thumbnails/tabs/lcd-white-blank.jpg"
-  },
-  {
     "name": "be-happy",
     "id": 1991,
     "color": "sunshine",
@@ -102,5 +22,205 @@
     "sku": "201122-119",
     "price": 4.95,
     "menuImgUrl": "assets/media/thumbnails/tabs/bow-tie.jpg"
+  },
+  {
+    "name": "camo",
+    "id": 624,
+    "color": "green",
+    "sku": "201101-950",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/camo-green.jpg"
+  },
+  {
+    "name": "camo",
+    "id": 628,
+    "color": "red",
+    "sku": "201101-951",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/camo-red.jpg"
+  },
+  {
+    "name": "cheetah",
+    "id": 628,
+    "color": "zebra-pink",
+    "sku": "201101-951",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/cheetah-zebra-pink.jpg"
+  },
+  {
+    "name": "confetti-flowers",
+    "id": 628,
+    "color": "pink",
+    "sku": "201101-951",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/confetti-flowers-pink.jpg"
+  },
+  {
+    "name": "dino-boom",
+    "id": 628,
+    "color": "graffiti",
+    "sku": "201101-951",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/dino-boom-graffiti.jpg"
+  },
+  {
+    "name": "dominic",
+    "id": 1910,
+    "color": "chocolate",
+    "sku": "201151-240",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/dominic.jpg"
+  },
+  {
+    "name": "dominique",
+    "id": 1909,
+    "color": "pink",
+    "sku": "201152-660",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/dominique.jpg"
+  },
+  {
+    "name": "flames",
+    "id": 1909,
+    "color": "fiery-red",
+    "sku": "201152-660",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/flames-fiery-red.jpg"
+  },
+  {
+    "name": "flower-print",
+    "id": 1909,
+    "color": "neon-loganberry",
+    "sku": "201152-660",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/flower-print-neon-loganberry.jpg"
+  },
+  {
+    "name": "funky",
+    "id": 1909,
+    "color": "multi",
+    "sku": "201152-660",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/funky-multi.jpg"
+  },
+  {
+    "name": "hittin-waves",
+    "id": 1909,
+    "color": "tiki",
+    "sku": "201152-660",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/hittin-waves-tiki.jpg"
+  },
+  {
+    "name": "lcd",
+    "id": 655,
+    "color": "red",
+    "sku": "201110-610",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/lcd-red-blank.jpg"
+  },
+  {
+    "name": "metallic-shimmer",
+    "id": 655,
+    "color": "multi",
+    "sku": "201110-610",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/metallic-shimmer-multi.jpg"
+  },
+  {
+    "name": "metallic-suede",
+    "id": 655,
+    "color": "silver",
+    "sku": "201110-610",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/metallic-suede-silver.jpg"
+  },
+  {
+    "name": "neon-fluo",
+    "id": 655,
+    "color": "blue",
+    "sku": "201110-610",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/neon-fluo-blue.jpg"
+  },
+  {
+    "name": "neon-fluo",
+    "id": 655,
+    "color": "yellow",
+    "sku": "201110-610",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/neon-fluo-yellow.jpg"
+  },
+  {
+    "name": "pow",
+    "id": 655,
+    "color": "orange-blue",
+    "sku": "201110-610",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/pow-orange-blue.jpg"
+  },
+  {
+    "name": "racin-stripes",
+    "id": 655,
+    "color": "black-white",
+    "sku": "201110-610",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/racin-stripes-black-white.jpg"
+  },
+  {
+    "name": "shimmer-suede",
+    "id": 655,
+    "color": "lavender",
+    "sku": "201110-610",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/shimmer-suede-lavender.jpg"
+  },
+  {
+    "name": "skull-bones",
+    "id": 655,
+    "color": "black",
+    "sku": "201110-610",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/skull-bones-black.jpg"
+  },
+  {
+    "name": "sports",
+    "id": 655,
+    "color": "baseball-soccer",
+    "sku": "201110-610",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/sports-baseball-soccer.jpg"
+  },
+  {
+    "name": "sports",
+    "id": 655,
+    "color": "basketball-football",
+    "sku": "201110-610",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/sports-basketball-football.jpg"
+  },
+  {
+    "name": "surfs-up",
+    "id": 655,
+    "color": "pink-blue",
+    "sku": "201110-610",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/surfs-up-pink-blue.jpg"
+  },
+  {
+  "name": "wonderland-too",
+  "id": 655,
+  "color": "irisdescent",
+  "sku": "201110-610",
+  "price": 4.95,
+  "menuImgUrl": "assets/media/thumbnails/tabs/wonderland-too-iridescent.jpg"
+  },
+  {
+    "name": "wow-bam",
+    "id": 655,
+    "color": "pink-lavender",
+    "sku": "201110-610",
+    "price": 4.95,
+    "menuImgUrl": "assets/media/thumbnails/tabs/wow-bam-pink-lavender.jpg"
   }
 ]

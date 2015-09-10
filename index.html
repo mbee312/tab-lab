@@ -161,7 +161,7 @@
                         </div>
                     </div>
                 </md-whiteframe>
-                <md-whiteframe class="md-whiteframe-z1 vertical-slick-container" >
+                <md-whiteframe class="md-whiteframe-z1 vertical-slick-container">
                     <div layout="row" layout-sm="row" class="arrows-button-row previous" >
                         <md-button class="slick-button previous left fa fa-chevron-up fa-1x" aria-label="left previous button" id="left-prev-button"
                            ng-click="previous('left')">
@@ -259,20 +259,26 @@
                             <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
                         </div>
                     </slick>
-                <div layout="row" layout-sm="row" class="thumbnails-button-row">
-                    <md-button class="thumbnails-button left" id="thumb-button-left"
-                               ng-click="next('left')">
-                               <i class="thumbnail-icon fa fa-th fa-1x"></i>
-                    </md-button>
-                    <md-button class="thumbnails-button center" id="thumb-button-center"
-                               ng-click="next('left')">
-                               <i class="thumbnail-icon fa fa-th fa-1x"></i>
-                    </md-button>
-                    <md-button class="thumbnails-button right" id="thumb-button-right"
-                               ng-click="next('left')">
-                               <i class="thumbnail-icon fa fa-th fa-1x"></i>
-                    </md-button>
-                </div>
+                <md-menu layout="row" layout-sm="row" class="thumbnails-button-row">
+
+                        <md-button class="thumbnails-button left" id="thumb-button-left" ng-click="tabLab.openMenu($mdOpenMenu, $event)">
+                                   <i class="thumbnail-icon fa fa-th fa-1x"></i>
+                        </md-button>
+                  <!--      <md-menu-content width="6">
+                            <md-menu-item ng-repeat="style in shoeStyles">
+                                <md-button ng-click=""> <a><img class="slide img tab" ng-src={{style.menuIconUrl}}></a> </md-button>
+                            </md-menu-item>
+                        </md-menu-content> -->
+                        <md-button class="thumbnails-button center" id="thumb-button-center"
+                                   ng-click="next('left')">
+                                   <i class="thumbnail-icon fa fa-th fa-1x"></i>
+                        </md-button>
+                        <md-button class="thumbnails-button right" id="thumb-button-right"
+                                   ng-click="next('left')">
+                                   <i class="thumbnail-icon fa fa-th fa-1x"></i>
+                        </md-button>
+
+                </md-menu>
                     <div layout="row" layout-sm="row" class="arrows-button-row next">
                     <md-button class="slick-button next left fa fa-chevron-down fa-1x" aria-label="left next button" id="left-next-button"
                                ng-click="next('left')">

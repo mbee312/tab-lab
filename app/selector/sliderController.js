@@ -101,6 +101,8 @@
                     $scope.isEndOfShoeList = false;
                     $(".slick-shoe .slick-cloned").removeClass("translate-slider-x");
                 }
+                // save old shoe for comparison
+                var oldShoe = $scope.shoeList[$scope.shoeIndexNew];
                 $scope.shoeIndexNew = shoeIndex;
                 // Get the current slide
                 var currentSlide = $("#shoe-car-mobile").slick('slickCurrentSlide');
@@ -109,10 +111,20 @@
                 console.log("the shoe is " + $scope.shoeList[shoeIndex]);
                 $scope.shoeSelected = $scope.shoeList[shoeIndex];
                 $scope.setShoe($scope.shoeSelected);
-                $scope.updateShoe($scope.scene, 'left');
-                $scope.updateShoe($scope.scene, 'right');
-            //    $scope.drawShoe($scope.scene, 'left', 1.5);
-            //    $scope.drawShoe($scope.scene, 'right', -1.5);
+                if(oldShoe.name.toString() == $scope.shoeSelected.name.toString()){
+                    $scope.updateShoe($scope.scene, 'left');
+                    $scope.updateShoe($scope.scene, 'right');
+                }else {
+                    $scope.drawShoe($scope.scene, 'left', 1.5);
+                    $scope.drawShoe($scope.scene, 'right', -1.5);
+
+                    // redraw tabs
+                    $scope.drawTabs($scope.scene, 0, -1.5, 0, 0);
+                    $scope.drawTabs($scope.scene, 2, -1.5, 0, 0);
+
+                    $scope.drawTabs($scope.scene, 1, 1.5, 0, 0);
+                    $scope.drawTabs($scope.scene, 3, 1.5, 0, 0);
+                }
              //   console.log("drawShoe complete. calculate subtotal...");
             //    $scope.calculateSubTotal();
             //    console.log($scope.getSubTotal());
