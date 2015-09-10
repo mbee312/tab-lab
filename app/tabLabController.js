@@ -338,7 +338,7 @@
                         $scope.tabSizeOptions = data;
                         $scope.loaded.push('tabSizeOptions');
                     });
-                    $scope.shoeStyleFile = 'assets/data/shoes.json';
+                    $scope.shoeStyleFile = 'assets/data/shoesMaxTest.json';
                     $scope.loadShoeStyle($scope.shoeStyleFile);
                     $scope.tabsFile = 'assets/data/tabs.json';
                     $scope.loadTabStyles($scope.tabsFile);
