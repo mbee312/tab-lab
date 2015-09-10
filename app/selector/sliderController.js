@@ -15,11 +15,11 @@
         };
 
         $scope.random = function (){
-            $scope.shoeIndex = Math.floor(Math.random() * 10);
+            $scope.shoeIndex = Math.floor(Math.random() * sliderProperties.getNumOfShoes());
             $scope.shoeIndexNew = $scope.shoeIndex;
-            $scope.leftTabIndex = Math.floor(Math.random() * 11);
+            $scope.leftTabIndex = Math.floor(Math.random() * sliderProperties.getNumOfTabs());
             $scope.lTindex = $scope.leftTabIndex;
-            $scope.rightTabIndex = Math.floor(Math.random() * 11);
+            $scope.rightTabIndex = Math.floor(Math.random() * sliderProperties.getNumOfTabs());
             $scope.rTindex = $scope.rightTabIndex;
 
             if(!$scope.isMobile) {
@@ -35,6 +35,8 @@
         }; //end random ()
 
         $scope.shuffle = function (){
+            var numOfCombinations = 24;
+
             var randomNum = Math.floor(Math.random() * 24 );
             console.log("randomNum=" + randomNum);
             $scope.setTabPositions(randomNum);
@@ -106,9 +108,6 @@
                 $scope.shoeIndexNew = shoeIndex;
                 // Get the current slide
                 var currentSlide = $("#shoe-car-mobile").slick('slickCurrentSlide');
-                console.log(currentSlide);
-                console.log('hey, the shoe index has changed! ' + $scope.shoeIndexNew);
-                console.log("the shoe is " + $scope.shoeList[shoeIndex]);
                 $scope.shoeSelected = $scope.shoeList[shoeIndex];
                 $scope.setShoe($scope.shoeSelected);
                 if(oldShoe.name.toString() == $scope.shoeSelected.name.toString()){
@@ -143,11 +142,8 @@
                     $(".slick-left .slick-cloned").removeClass("translate-slider-x");
                 }
                 $scope.lTIndex = leftTabIndex;
-                console.log('hey, lTIndex has changed! ' + $scope.lTIndex);
-                console.log("the left tab is " + $scope.tabList[leftTabIndex]);
                 $scope.tabSelected[0] = $scope.tabList[leftTabIndex];
                 $scope.tabSelected[2] = $scope.tabList[leftTabIndex];
-                console.log($scope.tabSelected[0]);
                 $scope.setTab($scope.tabSelected[0], 0);
                 $scope.setTab($scope.tabSelected[2], 2);
                 $scope.updateTabs($scope.scene, 0);
@@ -171,11 +167,8 @@
                     $(".slick-right .slick-cloned").removeClass("translate-slider-x");
                 }
                 $scope.rTIndex = rightTabIndex;
-                console.log('hey, rTIndex has changed! ' + $scope.rTIndex);
-                console.log("the right tab is ");
                 $scope.tabSelected[1] = $scope.tabList[rightTabIndex];
                 $scope.tabSelected[3] = $scope.tabList[rightTabIndex];
-                console.log($scope.tabSelected[1]);
                 $scope.setTab($scope.tabSelected[1], 1);
                 $scope.setTab($scope.tabSelected[3], 3);
                 $scope.updateTabs($scope.scene, 1);

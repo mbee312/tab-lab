@@ -104,6 +104,8 @@
     tabLabApp.service('sliderProperties', function (){
         var shoeIndex;
         var tabIndex = [];
+        var numOfShoes;
+        var numOfTabs;
 
         return {
             getShoeIndex: function () {
@@ -122,6 +124,26 @@
             setTabIndex: function (pos, index) {
                 tabIndex[pos] = index;
                 console.log("set tab index: " + tabIndex[pos]);
+            },
+            getNumOfShoes: function () {
+                console.log("returning number of shoes in list: ");
+                console.log(numOfShoes);
+                return numOfShoes;
+            },
+            setNumOfShoes: function (number) {
+                numOfShoes = number;
+                console.log("number of shoes set: ");
+                console.log(numOfShoes);
+            },
+            getNumOfTabs: function () {
+                console.log("returning number of tabs in list: ");
+                console.log(numOfTabs);
+                return numOfTabs;
+            },
+            setNumOfTabs: function (number) {
+                numOfTabs = number;
+                console.log("number of tabs set: ");
+                console.log(numOfTabs);
             }
         };
     });
@@ -136,12 +158,6 @@
             'sizeProperties',
             'sliderProperties',
             function ($scope, $http, $mdDialog, $mdToast, $animate, $window, tabLabProperties, sizeProperties, sliderProperties) {
-
-                var originatorEv;
-                this.openMenu = function($mdOpenMenu, ev) {
-                    originatorEv = ev;
-                    $mdOpenMenu(ev);
-                };
 
                 // Tabs on canvas List Arrays
                 $scope.tabs = {};
@@ -181,8 +197,6 @@
                 $scope.isEndOfTabListR = false;
                 $scope.isTabIndexAtOne = false;
 
-                $scope.numOfTabs = 0;
-                $scope.numOfShoes = 1;
 
                 $scope.shoeIndex=0;
                 $scope.shoeIndexNew=0;
@@ -201,7 +215,7 @@
                     var imgMap = {};
                     var imgNormalMap = {};
                     var i;
-                    for (i = 0 ; i < $scope.numOfShoes ; i++ ){
+                    for (i = 0 ; i < getNumOfShoesInList() ; i++ ){
                         s = $scope.shoeList[i];
                         $scope.shoeList[i].map = [];
                         $scope.shoeList[i].normalMap = [];
@@ -234,12 +248,28 @@
                     return list;
                 }// end loadMenu()
 
+                var setNumOfShoesInList = function (number){
+                    sliderProperties.setNumOfShoes(number);
+                };
+
+                var getNumOfShoesInList = function (){
+                    return sliderProperties.getNumOfShoes();
+                };
+
+                var setNumOfTabsInList = function (number){
+                    sliderProperties.setNumOfTabs(number);
+                };
+
+                var getNumOfTabsInList = function (){
+                    return sliderProperties.getNumOfTabs();
+                };
+
                 $scope.loadShoeStyle = function (file) {
 
                     $http.get(file).success(function (data) {
                         $scope.shoeList = data;
                         $scope.shoeList = $scope.loadMenu($scope.shoeList, true);
-                        $scope.numOfShoes = $scope.shoeList.length;
+                        setNumOfShoesInList($scope.shoeList.length);
                         loadNormals();
                         $scope.loaded.push('shoeList');
                     });
@@ -250,23 +280,24 @@
                     $http.get(file).success(function (data) {
                         $scope.tabList = data;
                         $scope.tabList = $scope.loadMenu($scope.tabList, false);
-                        $scope.numOfTabs = $scope.tabList.length;
+                        setNumOfTabsInList($scope.tabList.length);
                         $scope.loaded.push('tabList');
                     });
                 };// end loadTabStyles()
 
                 $scope.setRandomIndex = function (type, pos){
                     if(type == 'shoe'){
-                        sliderProperties.setShoeIndex(Math.floor(Math.random() * $scope.numOfShoes));
+                        console.log("numOfShoes:::" + getNumOfShoesInList());
+                        sliderProperties.setShoeIndex(Math.floor(Math.random() * getNumOfShoesInList()));
                     } else{
                         // if right shoe
                         if(pos == 0) {
-                            sliderProperties.setTabIndex(0, Math.floor(Math.random() * $scope.numOfTabs));
+                            sliderProperties.setTabIndex(0, Math.floor(Math.random() * getNumOfTabsInList()));
                             sliderProperties.setTabIndex(2, sliderProperties.getTabIndex(0));
 
                             //else left shoe
                         }else{
-                            sliderProperties.setTabIndex(1, Math.floor(Math.random() * $scope.numOfTabs));
+                            sliderProperties.setTabIndex(1, Math.floor(Math.random() * getNumOfTabsInList()));
                             sliderProperties.setTabIndex(3, sliderProperties.getTabIndex(1));
                         }
                     }
@@ -338,7 +369,7 @@
                         $scope.tabSizeOptions = data;
                         $scope.loaded.push('tabSizeOptions');
                     });
-                    $scope.shoeStyleFile = 'assets/data/shoesMaxTest.json';
+                    $scope.shoeStyleFile = 'assets/data/shoes.json';
                     $scope.loadShoeStyle($scope.shoeStyleFile);
                     $scope.tabsFile = 'assets/data/tabs.json';
                     $scope.loadTabStyles($scope.tabsFile);
@@ -441,7 +472,24 @@
                         $scope.scaleFactor = defaultScaleFactor;
                     } //end if-else
                     $scope.setAllCanvasWidthsAndHeight(0,0);
-                }; //end checkWindowSize()
+                }; //end findAndSetCanvasDimensions()
+
+                $scope.getImageNaturalDimensionsAndScale = function (image, scaleFactor, tabScale){
+
+                    /* getImageNaturalDimensions */
+                    var imageWidth =  image.width;
+                    var imageHeight = image.height;
+
+                    /* scaleImage */
+                    imageWidth *= $scope.scaleFactor * tabScale;
+                    imageHeight *= $scope.scaleFactor * tabScale;
+
+                    return{
+                        width: imageWidth,
+                        height: imageHeight
+                    };
+
+                }; //end getImageNaturalDimensionsAndScale ()
 
                 $scope.createScene = function (){
                     $scope.camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
@@ -496,6 +544,24 @@
                     requestAnimationFrame($scope.render);
                 };
 
+                var checkIfShoeHasBeenSet = function(){
+                    if(tabLabProperties.isShoeSelected()){
+                        $scope.drawShoe($scope.scene, 'left', 1.5);
+                        $scope.drawShoe($scope.scene, 'right', -1.5);
+
+
+                        $scope.drawTabs($scope.scene, 0, -1.5, 0, 0);
+                        $scope.drawTabs($scope.scene, 2, -1.5, 0, 0);
+
+                        $scope.drawTabs($scope.scene, 1, 1.5, 0, 0);
+                        $scope.drawTabs($scope.scene, 3, 1.5, 0, 0);
+
+                    }
+                    else {
+                        setTimeout(checkIfShoeHasBeenSet, 500); // check again in a .5 second
+                    }
+                };
+
                 var removeFromScene = function ( scene, obj) {
                     var removeMeObj = scene.getObjectByName( obj.name );
                     $scope.scene.remove(removeMeObj);
@@ -523,7 +589,6 @@
                     }
 
                     // load path
-                    var meshPath = 'assets/models/' + shoe.name + '/' + shoe.name;
                     var texturePath = 'assets/models/texture/tabs/' + $scope.tabSelected[pos].name + '-' + $scope.tabSelected[pos].color;
 
                     $scope.tabMesh[pos].material.map = THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg');
@@ -535,7 +600,6 @@
                     var shoeSelected = tabLabProperties.getShoe();
                     return shoeSelected;
                 };
-
 
                 $scope.drawShoe = function (scene, side, x){
                     //first remove current shoe
@@ -580,7 +644,6 @@
                     });
 
                 };
-
 
                 $scope.drawTabs = function (scene, pos, x, y, z){
                     var shoe = $scope.getShoe();
@@ -640,25 +703,6 @@
 
                 };
 
-
-                var checkIfShoeHasBeenSet = function(){
-                    if(tabLabProperties.isShoeSelected()){
-                        $scope.drawShoe($scope.scene, 'left', 1.5);
-                        $scope.drawShoe($scope.scene, 'right', -1.5);
-
-
-                        $scope.drawTabs($scope.scene, 0, -1.5, 0, 0);
-                        $scope.drawTabs($scope.scene, 2, -1.5, 0, 0);
-
-                        $scope.drawTabs($scope.scene, 1, 1.5, 0, 0);
-                        $scope.drawTabs($scope.scene, 3, 1.5, 0, 0);
-
-                    }
-                    else {
-                        setTimeout(checkIfShoeHasBeenSet, 500); // check again in a .5 second
-                    }
-                };
-
                 // When the page first loads
                 window.onload = function (){
                     $scope.findAndSetCanvasDimensions();
@@ -691,22 +735,7 @@
                 $scope.tab_image_top_right = new Image();
                 $scope.tab_image_bot_right = new Image();
 
-                $scope.getImageNaturalDimensionsAndScale = function (image, scaleFactor, tabScale){
 
-                    /* getImageNaturalDimensions */
-                    var imageWidth =  image.width;
-                    var imageHeight = image.height;
-
-                    /* scaleImage */
-                    imageWidth *= $scope.scaleFactor * tabScale;
-                    imageHeight *= $scope.scaleFactor * tabScale;
-
-                    return{
-                        width: imageWidth,
-                        height: imageHeight
-                    };
-
-                } //end getImageNaturalDimensionsAndScale ()
 
                 $scope.right_image = new Image();
                 $scope.left_image = new Image();
@@ -944,7 +973,7 @@
 
                 this.setTabSelectorFocus = function (){
                     this.tabSelectorFocus = !this.tabSelectorFocus;
-                } //end setTabSelectorFocus
+                }; //end setTabSelectorFocus
 
                 this.isTabSizeSelected = function () {
                     if ($scope.tabs.size.size != null) {
@@ -952,37 +981,8 @@
                     } else {
                         return false;
                     }
-                }//end isSizeSelected ()
+                };//end isSizeSelected ()
 
-                $scope.selectorModes = [true, true, false];
-
-
-                this.getSelectorModes = function (side){
-                    if(side == "left"){
-                        return $scope.selectorModes[0];
-                    }else if(side == "right"){
-                        return $scope.selectorModes[2];
-                    }else{
-                        return $scope.selectorModes[1];
-                    } //end else-if
-                } //end getSelectorModes()
-
-                this.setSelectorModes = function (side){
-                    if(side == "left"){
-                        if($scope.selectorModes[0] == false){
-                            $scope.selectorModes[0] = !$scope.selectorModes[0];
-                            $scope.selectorModes[2] = !$scope.selectorModes[2];
-                        }
-                    }else if(side == "right"){
-                        if($scope.selectorModes[2] == false){
-                            $scope.selectorModes[2] = !$scope.selectorModes[2];
-                            $scope.selectorModes[0] = !$scope.selectorModes[0];
-                        }
-                    }else{
-                        $scope.selectorModes[1] = !$scope.selectorModes[1];
-                    } //end else-if
-
-                } //end setSelectorModes()
 
                 /**** Start Survey *********
 
@@ -1065,7 +1065,7 @@
 
 
 
-            }])
+            }]);
     //end tabLabAppController
 
     tabLabApp.controller('ScrollCtrl', function($scope, $location, anchorSmoothScroll) {
