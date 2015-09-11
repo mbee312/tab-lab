@@ -159,6 +159,7 @@
             'sliderProperties',
             function ($scope, $http, $mdDialog, $mdToast, $animate, $window, tabLabProperties, sizeProperties, sliderProperties) {
 
+                $scope.MENUIMGPATH = "assets/media/thumbnails/";
                 // Tabs on canvas List Arrays
                 $scope.tabs = {};
                 $scope.tabs.left = {};
@@ -240,10 +241,10 @@
                     }
                 };
 
-                $scope.loadMenu = function (list, shoeBool ){
+                $scope.loadMenu = function (list, shoesOrTabs ){
                     for(var i = 0; i < list.length ; i++){
                         list[i].menuImg = new Image();
-                        list[i].menuImg.src=list[i].menuImgUrl;
+                        list[i].menuImg.src= $scope.MENUIMGPATH + shoesOrTabs + '/' + list[i].name + '-' + list[i].color + '.jpg';
                     }// end for
                     return list;
                 }// end loadMenu()
@@ -268,7 +269,7 @@
 
                     $http.get(file).success(function (data) {
                         $scope.shoeList = data;
-                        $scope.shoeList = $scope.loadMenu($scope.shoeList, true);
+                        $scope.shoeList = $scope.loadMenu($scope.shoeList, 'shoes');
                         setNumOfShoesInList($scope.shoeList.length);
                         loadNormals();
                         $scope.loaded.push('shoeList');
@@ -279,7 +280,7 @@
 
                     $http.get(file).success(function (data) {
                         $scope.tabList = data;
-                        $scope.tabList = $scope.loadMenu($scope.tabList, false);
+                        $scope.tabList = $scope.loadMenu($scope.tabList, 'tabs');
                         setNumOfTabsInList($scope.tabList.length);
                         $scope.loaded.push('tabList');
                     });
@@ -311,6 +312,14 @@
                 $scope.getTabIndex = function(pos) {
                     // returns shoe index or null if not set
                     return sliderProperties.getTabIndex(pos);
+                };
+
+                var getShoe = function(){
+                    return tabLabProperties.getShoe();
+                };
+
+                var getTab = function (){
+                    tabLabProperties.getTab();
                 };
 
                 $scope.setShoe = function(shoe){
@@ -567,12 +576,14 @@
                     $scope.scene.remove(removeMeObj);
                 };
 
-                $scope.updateShoe = function (scene, side ){
+                $scope.updateShoe = function (scene, side, styleChange ){
 
-                    var s = $scope.getShoe();
+                    var s = getShoe();
 
                     // load path
                     var texturePath = 'assets/models/texture/shoe/' + s.name + '/' + side + '/' + s.color;
+                    var loader = new THREE.JSONLoader();
+
 
                     $scope.shoeMesh['\'' + side +'\'' ].material.map = THREE.ImageUtils.loadTexture( texturePath + '/Difuse.jpg' );
                     $scope.shoeMesh['\'' + side +'\'' ].material.normalMap = THREE.ImageUtils.loadTexture( texturePath + '/Normal.jpg' );
@@ -580,7 +591,7 @@
                 };
 
                 $scope.updateTabs= function (scene, pos ){
-                    var shoe = $scope.getShoe();
+                    var shoe = getShoe();
 
                     var whichTab = 'top';
 
@@ -596,18 +607,15 @@
                     $scope.tabMesh[pos].material.needsUpdate = true;
                 };
 
-                $scope.getShoe = function(){
-                    var shoeSelected = tabLabProperties.getShoe();
-                    return shoeSelected;
-                };
-
                 $scope.drawShoe = function (scene, side, x){
                     //first remove current shoe
                     if(_.isEmpty($scope.currentShoeObj) == false) {
                         removeFromScene(scene, $scope.currentShoeObj['\'' + side + '\'']);
                     }
 
-                    var s = $scope.getShoe();
+                    console.log(scene);
+
+                    var s = getShoe();
 
                     // load shoe
                     var shoePath = 'assets/models/' + s.name + '/' + s.name;
@@ -623,6 +631,8 @@
                             colorSpecular: [0.8999999761581421, 0.8999999761581421, 0.8999999761581421],
                             shininess: 15
                         });
+
+                        geometry.dynamic = true;
 
                         $scope.shoeMesh['\'' + side +'\'' ] = new THREE.Mesh(
                             geometry,
@@ -646,7 +656,9 @@
                 };
 
                 $scope.drawTabs = function (scene, pos, x, y, z){
-                    var shoe = $scope.getShoe();
+                    var shoe = getShoe();
+                    console.log("inside drawTabs and the shoe is...");
+                    console.log(shoe);
                     var whichTab = 'top';
                     var side = 'left';
 
@@ -665,7 +677,6 @@
                         removeFromScene(scene, $scope.currentTabObj['\'' + side + '\'']);
                     }
 
-
                     // load tab
                     var meshPath = 'assets/models/' + shoe.name + '/' + shoe.name;
                     var texturePath = 'assets/models/texture/tabs/' + $scope.tabSelected[pos].name + '-' + $scope.tabSelected[pos].color;
@@ -681,6 +692,8 @@
                             colorSpecular: [0.8999999761581421, 0.8999999761581421, 0.8999999761581421],
                             shininess: 15
                         });
+
+                        geometry.dynamic = true;
 
                         $scope.tabMesh[pos] = new THREE.Mesh(
                             geometry,

@@ -111,8 +111,8 @@
                 $scope.shoeSelected = $scope.shoeList[shoeIndex];
                 $scope.setShoe($scope.shoeSelected);
                 if(oldShoe.name.toString() == $scope.shoeSelected.name.toString()){
-                    $scope.updateShoe($scope.scene, 'left');
-                    $scope.updateShoe($scope.scene, 'right');
+                    $scope.updateShoe($scope.scene, 'left', false);
+                    $scope.updateShoe($scope.scene, 'right', false);
                 }else {
                     $scope.drawShoe($scope.scene, 'left', 1.5);
                     $scope.drawShoe($scope.scene, 'right', -1.5);
