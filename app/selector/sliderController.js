@@ -38,7 +38,6 @@
             var numOfCombinations = 24;
 
             var randomNum = Math.floor(Math.random() * 24 );
-            console.log("randomNum=" + randomNum);
             $scope.setTabPositions(randomNum);
             $scope.drawTabs("left");
             $scope.drawTabs("right");
@@ -108,21 +107,30 @@
                 $scope.shoeIndexNew = shoeIndex;
                 // Get the current slide
                 var currentSlide = $("#shoe-car-mobile").slick('slickCurrentSlide');
-                $scope.shoeSelected = $scope.shoeList[shoeIndex];
-                $scope.setShoe($scope.shoeSelected);
-                if(oldShoe.name.toString() == $scope.shoeSelected.name.toString()){
-                    $scope.updateShoe($scope.scene, 'left');
-                    $scope.updateShoe($scope.scene, 'right');
+                tabLabProperties.setShoeSelected($scope.shoeList[shoeIndex]);
+                var shoe = tabLabProperties.getShoe();
+                if(oldShoe.name.toString() == shoe.name.toString()){
+                    $scope.updateShoe($scope.scene, 'left', false);
+                    $scope.updateShoe($scope.scene, 'right', false);
                 }else {
                     $scope.drawShoe($scope.scene, 'left', 1.5);
                     $scope.drawShoe($scope.scene, 'right', -1.5);
 
                     // redraw tabs
                     $scope.drawTabs($scope.scene, 0, -1.5, 0, 0);
-                    $scope.drawTabs($scope.scene, 2, -1.5, 0, 0);
-
                     $scope.drawTabs($scope.scene, 1, 1.5, 0, 0);
-                    $scope.drawTabs($scope.scene, 3, 1.5, 0, 0);
+                    if(shoe.numOfTabs != 1) {
+                        $scope.drawTabs($scope.scene, 2, -1.5, 0, 0);
+                        $scope.drawTabs($scope.scene, 3, 1.5, 0, 0);
+                    }else{
+                        //remove current bottom tabs
+                        if (_.isEmpty($scope.currentTabObj[2]) == false) {
+                            $scope.removeFromScene($scope.scene, $scope.currentTabObj[2]);
+                        }
+                        if (_.isEmpty($scope.currentTabObj[3]) == false) {
+                            $scope.removeFromScene($scope.scene, $scope.currentTabObj[3]);
+                        }
+                    }
                 }
              //   console.log("drawShoe complete. calculate subtotal...");
             //    $scope.calculateSubTotal();
@@ -148,9 +156,6 @@
                 $scope.setTab($scope.tabSelected[2], 2);
                 $scope.updateTabs($scope.scene, 0);
                 $scope.updateTabs($scope.scene, 2);
-            //    $scope.drawTabs($scope.scene, 0, 0, 0, -1.5, 0, 0);
-            //    $scope.drawTabs($scope.scene, 0, 1, 1, -1.5, 0, 0);
-
             }
         });
 
@@ -173,9 +178,6 @@
                 $scope.setTab($scope.tabSelected[3], 3);
                 $scope.updateTabs($scope.scene, 1);
                 $scope.updateTabs($scope.scene, 3);
-            //    $scope.drawTabs($scope.scene, 1, 0, 0, 1.5, 0, 0);
-            //    $scope.drawTabs($scope.scene, 1, 1, 1, 1.5, 0, 0);
-
             }
 
         });
