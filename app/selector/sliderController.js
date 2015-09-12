@@ -38,7 +38,6 @@
             var numOfCombinations = 24;
 
             var randomNum = Math.floor(Math.random() * 24 );
-            console.log("randomNum=" + randomNum);
             $scope.setTabPositions(randomNum);
             $scope.drawTabs("left");
             $scope.drawTabs("right");
@@ -119,10 +118,19 @@
 
                     // redraw tabs
                     $scope.drawTabs($scope.scene, 0, -1.5, 0, 0);
-                    $scope.drawTabs($scope.scene, 2, -1.5, 0, 0);
-
                     $scope.drawTabs($scope.scene, 1, 1.5, 0, 0);
-                    $scope.drawTabs($scope.scene, 3, 1.5, 0, 0);
+                    if(shoe.numOfTabs != 1) {
+                        $scope.drawTabs($scope.scene, 2, -1.5, 0, 0);
+                        $scope.drawTabs($scope.scene, 3, 1.5, 0, 0);
+                    }else{
+                        //remove current bottom tabs
+                        if (_.isEmpty($scope.currentTabObj[2]) == false) {
+                            $scope.removeFromScene($scope.scene, $scope.currentTabObj[2]);
+                        }
+                        if (_.isEmpty($scope.currentTabObj[3]) == false) {
+                            $scope.removeFromScene($scope.scene, $scope.currentTabObj[3]);
+                        }
+                    }
                 }
              //   console.log("drawShoe complete. calculate subtotal...");
             //    $scope.calculateSubTotal();
@@ -148,9 +156,6 @@
                 $scope.setTab($scope.tabSelected[2], 2);
                 $scope.updateTabs($scope.scene, 0);
                 $scope.updateTabs($scope.scene, 2);
-            //    $scope.drawTabs($scope.scene, 0, 0, 0, -1.5, 0, 0);
-            //    $scope.drawTabs($scope.scene, 0, 1, 1, -1.5, 0, 0);
-
             }
         });
 
@@ -173,9 +178,6 @@
                 $scope.setTab($scope.tabSelected[3], 3);
                 $scope.updateTabs($scope.scene, 1);
                 $scope.updateTabs($scope.scene, 3);
-            //    $scope.drawTabs($scope.scene, 1, 0, 0, 1.5, 0, 0);
-            //    $scope.drawTabs($scope.scene, 1, 1, 1, 1.5, 0, 0);
-
             }
 
         });

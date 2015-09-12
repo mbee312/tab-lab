@@ -2,129 +2,114 @@
   {
     "name": "emme",
     "id": 901,
-    "number of straps": 2,
+    "numOfTabs": 1,
     "color": "silver-pink",
-    "sku": "103012-040",
-    "menuImgUrl": "assets/media/thumbnails/shoes/emme-silver-pink.jpg"
+    "sku": "103012-040"
   },
   {
     "name": "emme",
     "id": 556,
-    "number of straps": 2,
+    "numOfTabs": 1,
     "color": "lavender-violet",
-    "sku": "103012-510",
-    "menuImgUrl": "assets/media/thumbnails/shoes/emme-lavender-violet.jpg"
+    "sku": "103012-510"
   },
   {
     "name": "ty",
     "id": 448,
-    "number of straps": 4,
+    "numOfTabs": 2,
     "color": "navy-limestone",
-    "sku": "102011-410",
-    "menuImgUrl": "assets/media/thumbnails/shoes/ty-navy-limestone.jpg"
+    "sku": "102011-410"
   },
   {
     "name": "ty",
     "id": 430,
-    "number of straps": 4,
+    "numOfTabs": 2,
     "color": "red-steel",
-    "sku": "102011-620",
-    "menuImgUrl": "assets/media/thumbnails/shoes/ty-red-steel.jpg"
+    "sku": "102011-620"
   },
   {
     "name": "ty",
     "id": 486,
-    "number of straps": 4,
+    "numOfTabs": 2,
     "color": "silver-pink",
-    "sku": "102022-040",
-    "menuImgUrl": "assets/media/thumbnails/shoes/ty-silver-pink.jpg"
+    "sku": "102022-040"
   },
   {
     "name": "ty",
     "id": 902,
-    "number of straps": 4,
+    "numOfTabs": 2,
     "color": "pink-dewberry",
-    "sku": "102022-651",
-    "menuImgUrl": "assets/media/thumbnails/shoes/ty-pink-dewberry.jpg"
+    "sku": "102022-651"
   },
   {
     "name": "ty",
     "id": 466,
-    "number of straps": 4,
+    "numOfTabs": 2,
     "color": "denim-navy",
-    "sku": "102021-401",
-    "menuImgUrl": "assets/media/thumbnails/shoes/ty-denim-navy.jpg"
+    "sku": "102021-401"
   },
   {
     "name": "roan",
     "id": 1356,
-    "number of straps": 4,
+    "numOfTabs": 2,
     "color": "all-over-black",
     "sku": "101010-002",
-    "price": 59.95,
-    "menuImgUrl": "assets/media/thumbnails/shoes/roan-all-over-black.jpg"
+    "price": 59.95
   },
   {
     "name": "roan",
     "id": 412,
-    "number of straps": 4,
+    "numOfTabs": 2,
     "color": "white",
     "sku": "101010-101",
-    "price": 59.95,
-    "menuImgUrl": "assets/media/thumbnails/shoes/roan-white.jpg"
+    "price": 59.95
   },
   {
     "name": "max",
     "id": 1361,
-    "numOfTabs": 4,
+    "numOfTabs": 2,
     "color": "leather-black",
     "sku": "105010-001",
-    "price": 59.95,
-    "menuImgUrl": "assets/media/thumbnails/shoes/Max_L_Black.jpg"
+    "price": 59.95
   },
   {
     "name": "max",
     "id": 1362,
-    "numOfTabs": 4,
+    "numOfTabs": 2,
     "color": "steel-navy",
     "sku": "105021-055",
-    "price": 59.95,
-    "menuImgUrl": "assets/media/thumbnails/shoes/Max_N_Navy_Steel.jpg"
+    "price": 59.95
   },
   {
     "name": "max",
     "id": 1363,
-    "numOfTabs": 4,
+    "numOfTabs": 2,
     "color": "pink-camo",
     "sku": "105022-652",
-    "price": 59.95,
-    "menuImgUrl": "assets/media/thumbnails/shoes/Max_N_Pink_Camo.jpg"
+    "price": 59.95
   },
   {
     "name": "max",
     "id": 1364,
-    "numOfTabs": 4,
+    "numOfTabs": 2,
     "color": "metallic-silver",
     "sku": "105022-040",
-    "price": 59.95,
-    "menuImgUrl": "assets/media/thumbnails/shoes/Max_N_Silver.jpg"
+    "price": 59.95
   },
   {
     "name": "max",
     "id": 1374,
-    "numOfTabs": 4,
+    "numOfTabs": 2,
     "color": "steel-camo",
     "sku": "105021-054",
-    "price": 59.95,
-    "menuImgUrl": "assets/media/thumbnails/shoes/Max_N_Steel_Camo.jpg"
+    "price": 59.95
   },
   {
     "name": "max",
     "id": 2031,
-    "numOfTabs": 4,
+    "numOfTabs": 2,
     "color": "leather-ribbon-red",
     "sku": "105010-613",
-    "price": 64.95,
-    "menuImgUrl": "assets/media/thumbnails/shoes/max-ribbon-red.jpg"
+    "price": 64.95
   }
 ]
