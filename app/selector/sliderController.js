@@ -108,9 +108,9 @@
                 $scope.shoeIndexNew = shoeIndex;
                 // Get the current slide
                 var currentSlide = $("#shoe-car-mobile").slick('slickCurrentSlide');
-                $scope.shoeSelected = $scope.shoeList[shoeIndex];
-                $scope.setShoe($scope.shoeSelected);
-                if(oldShoe.name.toString() == $scope.shoeSelected.name.toString()){
+                tabLabProperties.setShoeSelected($scope.shoeList[shoeIndex]);
+                var shoe = tabLabProperties.getShoe();
+                if(oldShoe.name.toString() == shoe.name.toString()){
                     $scope.updateShoe($scope.scene, 'left', false);
                     $scope.updateShoe($scope.scene, 'right', false);
                 }else {

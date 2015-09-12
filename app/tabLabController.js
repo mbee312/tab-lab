@@ -626,9 +626,6 @@
                             map: THREE.ImageUtils.loadTexture(s.map[side].src),
                             normalMap: THREE.ImageUtils.loadTexture(s.normalMap[side].src),
                             normalScale: new THREE.Vector2( 0.6, 0.6 ),
-                            colorAmbient: [0.480000026226044, 0.480000026226044, 0.480000026226044],
-                            colorDiffuse: [0.480000026226044, 0.480000026226044, 0.480000026226044],
-                            colorSpecular: [0.8999999761581421, 0.8999999761581421, 0.8999999761581421],
                             shininess: 15
                         });
 
@@ -649,6 +646,8 @@
 
                         scene.add($scope.shoeMesh['\'' + side +'\'' ]);
                         $scope.render($scope.shoeMesh['\'' + side +'\'' ]);
+
+                        // remember current shoe object
                         $scope.currentShoeObj['\'' + side +'\'' ] = $scope.shoeMesh['\'' + side +'\'' ];
                         $scope.currentShoeObj['\'' + side +'\''].name = s.name + '-' + s.color;
                     });
@@ -673,8 +672,8 @@
                     //first remove current tab
                     if(_.isEmpty($scope.currentTabObj[pos]) == false) {
                         console.log("remove this from scene");
-                        console.log($scope.currentTabObj['\'' + side + '\'']);
-                        removeFromScene(scene, $scope.currentTabObj['\'' + side + '\'']);
+                        console.log($scope.currentTabObj[pos]);
+                        removeFromScene(scene, $scope.currentTabObj[pos]);
                     }
 
                     // load tab
@@ -687,9 +686,6 @@
                             map: THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg'),
                             normalMap: THREE.ImageUtils.loadTexture( texturePath + '/normals-' + whichTab + '.jpg' ),
                             normalScale: new THREE.Vector2( 0.6, 0.6 ),
-                            colorAmbient: [0.480000026226044, 0.480000026226044, 0.480000026226044],
-                            colorDiffuse: [0.480000026226044, 0.480000026226044, 0.480000026226044],
-                            colorSpecular: [0.8999999761581421, 0.8999999761581421, 0.8999999761581421],
                             shininess: 15
                         });
 
@@ -710,6 +706,8 @@
 
                         scene.add($scope.tabMesh[pos]);
                         $scope.render($scope.tabMesh[pos]);
+
+                        // remember current tab object
                         $scope.currentTabObj[pos] = $scope.tabMesh[pos];
                         $scope.currentTabObj[pos].name = shoe.name + '-' + $scope.tabSelected[pos].name + '-' + $scope.tabSelected[pos].color + '-' + side;
                     });
