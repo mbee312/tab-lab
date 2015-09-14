@@ -6,6 +6,39 @@
     'use strict';
 
     var app = angular.module('tabLabApp');
+    app.service('sliderProperties', function (){
+        var shoeIndex;
+        var tabIndex = [];
+        var numOfShoes;
+        var numOfTabs;
+
+        return {
+            getShoeIndex: function () {
+                return shoeIndex;
+            },
+            setShoeIndex: function (index) {
+                shoeIndex = index;
+            },
+            getTabIndex: function (pos) {
+                return tabIndex[pos];
+            },
+            setTabIndex: function (pos, index) {
+                tabIndex[pos] = index;
+            },
+            getNumOfShoes: function () {
+                return numOfShoes;
+            },
+            setNumOfShoes: function (number) {
+                numOfShoes = number;
+            },
+            getNumOfTabs: function () {
+                return numOfTabs;
+            },
+            setNumOfTabs: function (number) {
+                numOfTabs = number;
+            }
+        };
+    });
     app.controller('SliderCtrl', ['$scope', 'tabLabProperties', 'sizeProperties', 'sliderProperties', function ($scope, tabLabProperties, sizeProperties, sliderProperties) {
         $scope.innerWidthSize = 0;
         $scope.innerWidthSizeNew = window.innerWidth;

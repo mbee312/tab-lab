@@ -85,39 +85,7 @@
             }
         };
     });
-    tabLabApp.service('sliderProperties', function (){
-        var shoeIndex;
-        var tabIndex = [];
-        var numOfShoes;
-        var numOfTabs;
 
-        return {
-            getShoeIndex: function () {
-                return shoeIndex;
-            },
-            setShoeIndex: function (index) {
-                shoeIndex = index;
-            },
-            getTabIndex: function (pos) {
-                return tabIndex[pos];
-            },
-            setTabIndex: function (pos, index) {
-                tabIndex[pos] = index;
-            },
-            getNumOfShoes: function () {
-                return numOfShoes;
-            },
-            setNumOfShoes: function (number) {
-                numOfShoes = number;
-            },
-            getNumOfTabs: function () {
-                return numOfTabs;
-            },
-            setNumOfTabs: function (number) {
-                numOfTabs = number;
-            }
-        };
-    });
     tabLabApp.controller('tabLabController',
         ['$scope',
             '$http',
@@ -303,7 +271,6 @@
                         $scope.setRandomIndex('shoe', 0);
                         $scope.setRandomIndex('tab', 0);
                         $scope.setRandomIndex('tab', 1);
-                        var sliderIndexesSelected = false;
                         var i = $scope.getShoeIndex();
                         var j = $scope.getTabIndex(0);
                         var k = $scope.getTabIndex(1);
