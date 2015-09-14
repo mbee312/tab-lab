@@ -95,13 +95,14 @@
             return $scope.shoeIndex;
         }, function (shoeIndex, shoeIndexNew) {
             if (shoeIndex !== shoeIndexNew) {
-                if(shoeIndex == $scope.shoeList.length -1 ){
+            /*    if(shoeIndex == $scope.shoeList.length -1 ){
                     $scope.isEndOfShoeList = true;
                     $(".slick-shoe .slick-cloned").addClass("translate-slider-x");
                 }else{
                     $scope.isEndOfShoeList = false;
                     $(".slick-shoe .slick-cloned").removeClass("translate-slider-x");
                 }
+                */
                 // save old shoe for comparison
                 var oldShoe = $scope.shoeList[$scope.shoeIndexNew];
                 $scope.shoeIndexNew = shoeIndex;
@@ -142,18 +143,17 @@
             return $scope.leftTabIndex;
         }, function (leftTabIndex, lTIndex) {
             if (leftTabIndex !== lTIndex) {
-                if(leftTabIndex == $scope.tabList.length -1 ){
+            /*    if(leftTabIndex == $scope.tabList.length -1 ){
                     $scope.isEndOfTabListL = true;
                     $(".slick-left .slick-cloned").addClass("translate-slider-x");
                 }else{
                     $scope.isEndOfTabListL = false;
                     $(".slick-left .slick-cloned").removeClass("translate-slider-x");
                 }
+                */
                 $scope.lTIndex = leftTabIndex;
-                $scope.tabSelected[0] = $scope.tabList[leftTabIndex];
-                $scope.tabSelected[2] = $scope.tabList[leftTabIndex];
-                $scope.setTab($scope.tabSelected[0], 0);
-                $scope.setTab($scope.tabSelected[2], 2);
+                $scope.setTab($scope.tabList[leftTabIndex], 0);
+                $scope.setTab($scope.tabList[leftTabIndex], 2);
                 $scope.updateTabs($scope.scene, 0);
                 $scope.updateTabs($scope.scene, 2);
             }
@@ -172,10 +172,8 @@
                     $(".slick-right .slick-cloned").removeClass("translate-slider-x");
                 }
                 $scope.rTIndex = rightTabIndex;
-                $scope.tabSelected[1] = $scope.tabList[rightTabIndex];
-                $scope.tabSelected[3] = $scope.tabList[rightTabIndex];
-                $scope.setTab($scope.tabSelected[1], 1);
-                $scope.setTab($scope.tabSelected[3], 3);
+                $scope.setTab($scope.tabList[rightTabIndex], 1);
+                $scope.setTab($scope.tabList[rightTabIndex], 3);
                 $scope.updateTabs($scope.scene, 1);
                 $scope.updateTabs($scope.scene, 3);
             }
