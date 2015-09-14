@@ -133,7 +133,6 @@
                 $scope.styleName = "emme";
                 $scope.shoeMesh = {};
                 $scope.currentShoeObj = {};
-                $scope.tabSelected = [];
                 $scope.tabMesh = {};
                 $scope.currentTabObj = {};
 
@@ -279,8 +278,8 @@
                     return tabLabProperties.getShoe();
                 };
 
-                var getTab = function (){
-                    tabLabProperties.getTab();
+                var getTab = function (pos){
+                    return tabLabProperties.getTab(pos);
                 };
 
                 $scope.setShoe = function(shoe){
@@ -305,14 +304,10 @@
                         $scope.setShoe($scope.shoeList[i]);
 
                         // set initial tabs
-                        $scope.tabSelected[0] = $scope.tabList[j];
-                        $scope.tabSelected[2] = $scope.tabList[j];
-                        $scope.tabSelected[1] = $scope.tabList[k];
-                        $scope.tabSelected[3] = $scope.tabList[k];
-                        $scope.setTab($scope.tabSelected[0], 0);
-                        $scope.setTab($scope.tabSelected[2], 2);
-                        $scope.setTab($scope.tabSelected[1], 1);
-                        $scope.setTab($scope.tabSelected[3], 3);
+                        $scope.setTab($scope.tabList[j], 0);
+                        $scope.setTab($scope.tabList[j], 2);
+                        $scope.setTab($scope.tabList[k], 1);
+                        $scope.setTab($scope.tabList[k], 3);
 
                     }else {
                         // wait until all is loaded
@@ -552,6 +547,7 @@
 
                 $scope.updateTabs= function (scene, pos){
                     var shoe = getShoe();
+                    var tab = getTab(pos);
 
                     var whichTab = 'top';
 
@@ -560,7 +556,7 @@
                     }
 
                     // load path
-                    var texturePath = 'assets/models/texture/tabs/' + $scope.tabSelected[pos].name + '-' + $scope.tabSelected[pos].color;
+                    var texturePath = 'assets/models/texture/tabs/' + tab.name + '-' + tab.color;
 
                     $scope.tabMesh[pos].material.map = THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg');
                     $scope.tabMesh[pos].material.normalMap = THREE.ImageUtils.loadTexture( texturePath + '/normals-' + whichTab + '.jpg' );
@@ -615,6 +611,7 @@
 
                 $scope.drawTabs = function (scene, pos, x, y, z){
                     var shoe = getShoe();
+                    var tab = getTab(pos);
                     var whichTab = 'top';
                     var side = 'left';
 
@@ -633,7 +630,7 @@
 
                     // load tab
                     var meshPath = 'assets/models/' + shoe.name + '/' + shoe.name;
-                    var texturePath = 'assets/models/texture/tabs/' + $scope.tabSelected[pos].name + '-' + $scope.tabSelected[pos].color;
+                    var texturePath = 'assets/models/texture/tabs/' + tab.name + '-' + tab.color;
                     var loader = new THREE.JSONLoader();
 
                     loader.load(meshPath + '-tab-' + side + '-' + whichTab + '.js', function (geometry, materials) {
@@ -663,7 +660,7 @@
 
                         // remember current tab object
                         $scope.currentTabObj[pos] = $scope.tabMesh[pos];
-                        $scope.currentTabObj[pos].name = shoe.name + '-' + $scope.tabSelected[pos].name + '-' + $scope.tabSelected[pos].color + '-' + side;
+                        $scope.currentTabObj[pos].name = shoe.name + '-' + tab.name + '-' + tab.color + '-' + side;
                     });
                 };
 
@@ -882,7 +879,6 @@
 
                 };
 
-
                 this.isShoeSelected = function () {
                     return tabLabProperties.getShoe().length > 0;
                 };
@@ -947,68 +943,6 @@
                         return false;
                     }
                 };//end isSizeSelected ()
-
-
-                /**** Start Survey *********
-
-                 $scope.isSurveyOn = false;
-
-                 this.getSurveyForm = function (){
-                    return $scope.isSurveyOn;
-                }//end getSurveyForm ()
-
-                 $scope.setSurveyMode = function () {
-                    $scope.isSurveyOn = !$scope.isSurveyOn;
-                };
-
-
-                 $scope.shoe = {};
-                 $scope.tab = {};
-
-                 $scope.label_3 = "How likely would you recommend Tab Lab to a friend? \n0 to 10. (10 is Extremely likely)";
-
-                 $scope.userSurvey = {
-                    email: '',
-                    question_1: '' ,
-                    question_2: '' ,
-                    question_3: ''
-                };
-
-                 $scope.isSurveyEmpty = function (){
-                    if($scope.userSurvey.email != ''
-                        && $scope.userSurvey.question_3 != ''){
-                        return false;
-                    }else{
-                        return true;
-                    }
-
-                }// is SurveyEmpty()
-
-                 // process the form
-                 $scope.submitData = function (survey, resultVarName)
-                 {
-                     var config = {
-                         params: {
-                             survey: survey
-                         }
-                     };
-
-                     $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-
-                     $http.post("server.php", null, config)
-                         .success(function (data, status, headers, config)
-                         {
-                             $scope[resultVarName] = data;
-                             $scope.setSurveyMode();
-
-                         })
-                         .error(function (data, status, headers, config)
-                         {
-                             $scope[resultVarName] = "SUBMIT ERROR";
-                         });
-                 };
-
-                 **** End Survey *********/
 
                 $scope.options = {
                     display: 'bottom',
