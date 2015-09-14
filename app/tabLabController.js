@@ -48,6 +48,14 @@
                 }else{
                     return false;
                 }//end else-if
+            },
+            getAllTabs: function () {
+                return tabs;
+            },
+            setAllTabs: function(tabArray) {
+                for( var i = 0; i < tabArray.length; i++){
+                    tabs[i] = tabArray[i];
+                }
             }
         };
     });
@@ -585,6 +593,9 @@
                             map: THREE.ImageUtils.loadTexture(s.map[side].src),
                             normalMap: THREE.ImageUtils.loadTexture(s.normalMap[side].src),
                             normalScale: new THREE.Vector2( 0.6, 0.6 ),
+                            colorAmbient: [0.480000026226044, 0.480000026226044, 0.480000026226044],
+                            colorDiffuse: [0.480000026226044, 0.480000026226044, 0.480000026226044],
+                            colorSpecular: [0.8999999761581421, 0.8999999761581421, 0.8999999761581421],
                             shininess: 15
                         });
 
@@ -642,6 +653,9 @@
                             map: THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg'),
                             normalMap: THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg'),
                             normalScale: new THREE.Vector2(0.6, 0.6),
+                            colorAmbient: [0.480000026226044, 0.480000026226044, 0.480000026226044],
+                            colorDiffuse: [0.480000026226044, 0.480000026226044, 0.480000026226044],
+                            colorSpecular: [0.8999999761581421, 0.8999999761581421, 0.8999999761581421],
                             shininess: 15
                         });
 
@@ -686,179 +700,6 @@
                 /*
                  END Canvas Drawing
                  */
-
-
-                $scope.leftShoeImage = {};
-                $scope.leftShoeImage.width =  0;
-                $scope.leftShoeImage.height = 0;
-                $scope.rightShoeImage = {};
-                $scope.rightShoeImage.width =  0;
-                $scope.rightShoeImage.height = 0;
-
-                $scope.tab_image_top_left = new Image();
-                $scope.tab_image_bot_left = new Image();
-                $scope.tab_image_top_right = new Image();
-                $scope.tab_image_bot_right = new Image();
-
-
-
-                $scope.right_image = new Image();
-                $scope.left_image = new Image();
-
-
-                $scope.setTabPositions = function (num){
-                    /*     
-                     *   Tab Positions
-                     *       1   3
-                     *       2   4
-                     */
-                    switch (num){
-                        case 1: // 1 2 4 3
-                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftTopTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightBottomTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightTopTab.src;
-                            break;
-                        case 2: // 1 3 2 4
-                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftTopTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftTopTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightBottomTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightBottomTab.src;
-                            break;
-                        case 3: // 1 3 4 2
-                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftTopTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftTopTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightBottomTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightBottomTab.src;
-                            break;
-                        case 4: // 1 4 3 2
-                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftTopTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightTopTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightBottomTab.src;
-                            break;
-                        case 5: // 1 4 2 3
-                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftTopTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightBottomTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightTopTab.src;
-                            break;
-                        case 6: // 2 1 3 4
-                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftTopTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightTopTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightBottomTab.src;
-                            break;
-                        case 7: // 2 1 4 3
-                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftTopTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightBottomTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightTopTab.src;
-                            break;
-                        case 8: // 2 3 1 4
-                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftTopTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightTopTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightBottomTab.src;
-                            break;
-                        case 9: // 2 3 4 1
-                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftTopTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightBottomTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightTopTab.src;
-                            break;
-                        case 10: // 2 4 1 3
-                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightTopTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightTopTab.src;
-                            break;
-                        case 11: // 2 4 3 1
-                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightTopTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightTopTab.src;
-                            break;
-                        case 12: // 3 1 2 4
-                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftTopTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftTopTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightBottomTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightBottomTab.src;
-                            break;
-                        case 13: // 3 1 4 2
-                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftTopTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftTopTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightBottomTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightBottomTab.src;
-                            break;
-                        case 14: // 3 2 1 4
-                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftTopTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightTopTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightBottomTab.src;
-                            break;
-                        case 15: // 3 2 4 1
-                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftTopTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightBottomTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightTopTab.src;
-                            break;
-                        case 16: // 3 4 1 2
-                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftTopTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightTopTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightBottomTab.src;
-                            break;
-                        case 17: // 3 4 2 1
-                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftTopTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightBottomTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightTopTab.src;
-                            break;
-                        case 18: // 4 1 2 3
-                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftTopTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightBottomTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightTopTab.src;
-                            break;
-                        case 19: // 4 2 3 1
-                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightTopTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightTopTab.src;
-                            break;
-                        case 20: // 4 3 1 2
-                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftTopTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightTopTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightBottomTab.src;
-                            break;
-                        case 21: // 4 1 3 2
-                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftTopTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightTopTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightBottomTab.src;
-                            break;
-                        case 22: // 4 2 1 3
-                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightTopTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightTopTab.src;
-                            break;
-                        case 23: // 4 3 2 1
-                            $scope.tab_image_top_left.src = $scope.tabs.right.topViewLeftBottomTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.right.topViewLeftTopTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.left.topViewRightBottomTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.left.topViewRightTopTab.src;
-                            break;
-                        default: // default : 1 2 3 4
-                            $scope.tab_image_top_left.src = $scope.tabs.left.topViewLeftTopTab.src;
-                            $scope.tab_image_bot_left.src = $scope.tabs.left.topViewLeftBottomTab.src;
-                            $scope.tab_image_top_right.src = $scope.tabs.right.topViewRightTopTab.src;
-                            $scope.tab_image_bot_right.src = $scope.tabs.right.topViewRightBottomTab.src;
-                    }
-
-                };
 
                 this.clearSelections = function () {
                     var s = tabLabProperties.getShoe();
