@@ -10,10 +10,6 @@
         $scope.innerWidthSize = 0;
         $scope.innerWidthSizeNew = window.innerWidth;
 
-        $scope.setShoe = function(shoe){
-            tabLabProperties.setShoeSelected(shoe);
-        };
-
         $scope.random = function (){
             $scope.shoeIndex = Math.floor(Math.random() * sliderProperties.getNumOfShoes());
             $scope.shoeIndexNew = $scope.shoeIndex;
@@ -31,16 +27,24 @@
                 $('#tab-left-car').slick('slickGoTo', $scope.lTindex, false);
                 $('#tab-right-car').slick('slickGoTo', $scope.rTindex, false);
             }
-
         }; //end random ()
 
         $scope.shuffle = function (){
             var numOfCombinations = 24;
 
             var randomNum = Math.floor(Math.random() * 24 );
-            $scope.setTabPositions(randomNum);
-            $scope.drawTabs("left");
-            $scope.drawTabs("right");
+            var tabs = tabLabProperties.getAllTabs();
+            for (var n = 0; n < tabs.length - 1; n++) {
+                var k = n + Math.floor(Math.random() * (tabs.length - n));
+                var temp = tabs[k];
+                tabs[k] = tabs[n];
+                tabs[n] = temp;
+            }
+            tabLabProperties.setAllTabs(tabs)
+            $scope.updateTabs($scope.scene, 0);
+            $scope.updateTabs($scope.scene, 1);
+            $scope.updateTabs($scope.scene, 2);
+            $scope.updateTabs($scope.scene, 3);
 
         }; //end shuffle ()
 
