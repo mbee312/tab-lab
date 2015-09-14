@@ -8,9 +8,10 @@
     var app = angular.module('tabLabApp');
     app.controller('CartCtrl',
         ['$scope',
+            '$http',
             'tabLabProperties',
             'sizeProperties',
-            function ($scope, tabLabProperties, sizeProperties) {
+            function ($scope, $http, tabLabProperties, sizeProperties) {
 
         $scope.getSubTotal = function () {
             console.log("subtotal is " + $scope.subTotal);
@@ -51,5 +52,56 @@
             }
         };
 
+        $scope.addToCart = function () {
+
+            var url = '/ajax/index/add/product/';
+            var shoe = tabLabProperties.getShoe();
+            var tabs = {};
+            for (var i = 0; i < 4; i++) {
+                var tab = tabLabProperties.getTab(i);
+                tabs[tab.id] = (tabs[tab.id] || 0) + 1;
+            }
+            if (shoe) {
+                var size = sizeProperties.getShoeSize();
+                var shoeParams = {'isAjax':1};
+                shoeParams["super_attribute[" + $scope.attributeOptions["code"]["color"] + "]"] = $scope.attributeOptions["color"][shoe.name][shoe.color];
+                shoeParams["super_attribute[" + $scope.attributeOptions["code"]["size"] + "]"] = "216";
+                var shoeurl = url + shoe.id;
+
+                var responsePromise = $http.get(shoeurl, {'params': shoeParams});
+
+                responsePromise.success(function(data, status, headers, config) {
+                    if (status == 200) {
+                        console.log(data);
+                    } else {
+                        console.log("Adding " + shoe.id + " failed!");
+                    }
+                });
+                responsePromise.error(function(data, status, headers, config) {
+                    console.log("Adding " + shoe.id + " failed!");
+                });
+            }
+            _.each(tabs, function(tabCount, tabId){
+                var tabUrl = url + tabId;
+                var tabParams = {'isAjax':1};
+                tabParams["super_attribute[" + $scope.attributeOptions["code"]["tabsize"] + "]"] = $scope.tabs.size.id;
+                tabParams["qty"] = tabCount / 2;
+
+                var tabResponsePromise = $http.get(tabUrl, {'params': tabParams});
+
+                tabResponsePromise.success(function(data, status, headers, config) {
+                    if (status == 200) {
+                        console.log(data);
+                    } else {
+                        console.log("Adding " + tabSelected[0] + " failed!");
+                    }
+                });
+                tabResponsePromise.error(function(data, status, headers, config) {
+                    console.log("Adding " + tabSelected[0] + " failed!");
+                });
+            });
+        }
+
     }]);
+    console.log(app.contorl)
 }());

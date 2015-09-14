@@ -394,7 +394,7 @@
                             <md-button class="md-raised md-warn delete"
                                        id="delete-shoe"
                                        aria-label="delete-shoe"
-                                       ng-click="tabLab.remove('shoe')">
+                                       ng-click="remove('shoe')">
                                 <p class="rotate">remove</p>
                             </md-button>
                         </div>
@@ -416,7 +416,7 @@
                                 </ul>
                             </md-button>
                             <md-button class="md-raised md-warn delete" id="delete-left" aria-label="delete-left"
-                                       ng-click="tabLab.remove('left')" ng-show="tabLab.isTabEditMode('left')">
+                                       ng-click="remove('left')" ng-show="tabLab.isTabEditMode('left')">
                                 <p class="rotate">remove</p>
                             </md-button>
                         </div>
@@ -437,7 +437,7 @@
                             <md-button class="md-raised md-warn delete"
                                        id="delete-right"
                                        aria-label="delete-right"
-                                       ng-click="tabLab.remove('right')"
+                                       ng-click="remove('right')"
                                        ng-show="tabLab.isTabEditMode('right')">
                                 <p class="rotate plae-font">remove</p>
                             </md-button>
@@ -460,6 +460,11 @@
                                        ng-click="setSurveyMode()"
                                        style="background: #4EAC50;color: #fff;">
                                 <span class="button plae-font">feedback</span>
+                            </md-button>
+                            <md-button ng-controller="CartCtrl" class="cart-button addtocart md-raised add" id="addtocart-button"
+                                       ng-click="addToCart();"
+                                       style="background: #4EAC50;color: #fff;">
+                                <span class="button plae-font">add to cart</span>
                             </md-button>
                         </section>
                     </md-white-frame>

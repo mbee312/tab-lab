@@ -331,6 +331,10 @@
                         $scope.tabSizeOptions = data;
                         $scope.loaded.push('tabSizeOptions');
                     });
+                    $http.get('assets/data/attributes.json').success(function (data) {
+                        $scope.attributeOptions = data;
+                        $scope.loaded.push('attributeOptions');
+                    });
                     $scope.shoeStyleFile = 'assets/data/shoes.json';
                     $scope.loadShoeStyle($scope.shoeStyleFile);
                     $scope.tabsFile = 'assets/data/tabs.json';

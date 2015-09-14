@@ -1,19 +1,23 @@
 [
   {
     "size" : "S",
-    "label" : "small"
+    "label" : "small",
+    "id" : 219
   },
   {
     "size" : "M",
-    "label" : "medium"
+    "label" : "medium",
+    "id" : 218
   },
   {
     "size" : "L",
-    "label" : "large"
+    "label" : "large",
+    "id" : 217
   },
   {
     "size" : "XL",
-    "label" : "x-large"
+    "label" : "x-large",
+    "id" : 225
   }
 ]
 
