@@ -11,7 +11,7 @@
         var shoeSize = '';
         var tabSize = '';
         var wide = false;
-        var debug = true;
+        var DEBUG = true;
 
         return {
             getShoeSize: function () {
@@ -19,7 +19,7 @@
             },
             setShoeSize: function (size) {
                 shoeSize = size;
-                if(debug) {
+                if(DEBUG) {
                     console.log("shoe size is set:");
                     console.log(shoeSize.size);
                 }
@@ -29,7 +29,7 @@
             },
             setTabSize: function (size) {
                 tabSize = size;
-                if(debug) {
+                if(DEBUG) {
                     console.log("tab size is set:");
                     console.log(tabSize.size);
                 }
