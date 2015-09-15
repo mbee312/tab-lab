@@ -25,10 +25,11 @@
         $scope.calculateSubtotal = function (){
                 cartProperties.calculateSubTotal($scope.shoeSelected,$scope.tabsSelected);
         };
-
+        /*
         $scope.$watch( function () { return cartProperties.getSubTotal(); }, function ( subTotal ) {
             $scope.subTotal = subTotal;
         });
+        */
         $scope.remove = function (side) {
             switch (side) {
                 case "left":
