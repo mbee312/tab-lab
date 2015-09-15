@@ -76,10 +76,14 @@
                 $scope.MENUIMGPATH = "assets/media/thumbnails/";
                 // Tabs on canvas List Arrays
                 $scope.tabs = {};
+                $scope.tabsSelected = [];
                 $scope.tabs.left = {};
                 $scope.tabs.left.price = 0;
                 $scope.tabs.right = {};
                 $scope.tabs.right.price = 0;
+
+                $scope.shoe = {};
+                $scope.shoeSelected = {};
 
                 $scope.styleName = "emme";
                 $scope.shoeMesh = {};
@@ -95,7 +99,6 @@
                 $scope.tabSelectorFocus = false; //false equals left tab selector focus
 
                 $scope.basket = [];
-                $scope.subTotal = 0;
                 $scope.editMode = false;
                 $scope.shoeEditMode = false;
                 $scope.isSizeEdit = false;
@@ -235,10 +238,13 @@
 
                 $scope.setShoe = function(shoe){
                     tabLabProperties.setShoeSelected(shoe);
+                    // set shoe variable for template
+                    $scope.shoeSelected = shoe;
                 };
 
                 $scope.setTab = function(tab, shoePos){
                     tabLabProperties.setTabSelected(tab, shoePos);
+                    $scope.tabsSelected[shoePos] = tab;
                 };
 
                 $scope.initializeSelected = function (){
@@ -657,7 +663,7 @@
                     while ($scope.tabRight.length > 0) {
                         console.log("popped " + $scope.tabRight.pop().name + " from tabRight");
                     }
-                    $scope.subTotal = 0;
+
                     $scope.clearImage(topViewCanvas, tpcontext);
                     $scope.clearImage(topViewTabCanvas, tptabcontext);
                     this.canvasView = "top";
