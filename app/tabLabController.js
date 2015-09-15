@@ -59,32 +59,7 @@
             }
         };
     });
-    tabLabApp.service('sizeProperties', function (){
-        var shoeSize = '';
-        var tabSize = '';
-        var wide = false;
 
-        return {
-            getShoeSize: function () {
-                return shoeSize;
-            },
-            setShoeSize: function (size) {
-                shoeSize = size;
-            },
-            getTabSize: function () {
-                return tabSize;
-            },
-            setTabSize: function (size) {
-                shoeSize = size;
-            },
-            getFitWide: function () {
-                return wide;
-            },
-            setFitWide: function () {
-                wide = !wide;
-            }
-        };
-    });
 
     tabLabApp.controller('tabLabController',
         ['$scope',
