@@ -6,6 +6,7 @@
     'use strict';
 
     var app = angular.module('tabLabApp');
+    app.$inject = ['$scope', 'sliderProperties'];
     app.service('sliderProperties', function (){
         var shoeIndex;
         var tabIndex = [];
@@ -39,7 +40,7 @@
             }
         };
     });
-    app.controller('SliderCtrl', ['$scope', 'tabLabProperties', 'sizeProperties', 'sliderProperties', function ($scope, tabLabProperties, sizeProperties, sliderProperties) {
+    app.controller('SliderCtrl', ['$scope', 'tabLabProperties', 'sizeProperties', 'sliderProperties', 'cartProperties', function ($scope, tabLabProperties, sizeProperties, sliderProperties, cartProperties) {
         $scope.innerWidthSize = 0;
         $scope.innerWidthSizeNew = window.innerWidth;
 
@@ -145,8 +146,10 @@
                 $scope.shoeIndexNew = shoeIndex;
                 // Get the current slide
                 var currentSlide = $("#shoe-car-mobile").slick('slickCurrentSlide');
-                tabLabProperties.setShoeSelected($scope.shoeList[shoeIndex]);
+                $scope.setShoe($scope.shoeList[shoeIndex]);
                 var shoe = tabLabProperties.getShoe();
+                // set shoe variable for template
+                console.log($scope.shoeSelected);
                 if(oldShoe.name.toString() == shoe.name.toString()){
                     $scope.updateShoe($scope.scene, 'left', false);
                     $scope.updateShoe($scope.scene, 'right', false);
@@ -157,7 +160,7 @@
                     // redraw tabs
                     $scope.drawTabs($scope.scene, 0, -1.5, 0, 0);
                     $scope.drawTabs($scope.scene, 1, 1.5, 0, 0);
-                    if(shoe.numOfTabs != 1) {
+                    if(shoe.numOfTabs != 2) {
                         $scope.drawTabs($scope.scene, 2, -1.5, 0, 0);
                         $scope.drawTabs($scope.scene, 3, 1.5, 0, 0);
                     }else{
@@ -170,9 +173,6 @@
                         }
                     }
                 }
-             //   console.log("drawShoe complete. calculate subtotal...");
-            //    $scope.calculateSubTotal();
-            //    console.log($scope.getSubTotal());
             }
         });
 
@@ -188,11 +188,14 @@
                     $(".slick-left .slick-cloned").removeClass("translate-slider-x");
                 }
                 */
+                var shoe = tabLabProperties.getShoe();
                 $scope.lTIndex = leftTabIndex;
                 $scope.setTab($scope.tabList[leftTabIndex], 0);
                 $scope.setTab($scope.tabList[leftTabIndex], 2);
                 $scope.updateTabs($scope.scene, 0);
-                $scope.updateTabs($scope.scene, 2);
+                if(shoe.numOfTabs != 2) {
+                    $scope.updateTabs($scope.scene, 2);
+                }
             }
         });
 
@@ -208,13 +211,17 @@
                     $scope.isEndOfTabListR = false;
                     $(".slick-right .slick-cloned").removeClass("translate-slider-x");
                 }
+
+
+                var shoe = tabLabProperties.getShoe();
                 $scope.rTIndex = rightTabIndex;
                 $scope.setTab($scope.tabList[rightTabIndex], 1);
                 $scope.setTab($scope.tabList[rightTabIndex], 3);
                 $scope.updateTabs($scope.scene, 1);
-                $scope.updateTabs($scope.scene, 3);
+                if(shoe.numOfTabs != 2) {
+                    $scope.updateTabs($scope.scene, 3);
+                }
             }
-
         });
 
     }]);

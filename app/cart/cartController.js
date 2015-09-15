@@ -6,25 +6,30 @@
     'use strict';
 
     var app = angular.module('tabLabApp');
-    app.controller('CartCtrl',
-        ['$scope',
-            '$http',
-            'tabLabProperties',
-            'sizeProperties',
-            function ($scope, $http, tabLabProperties, sizeProperties) {
-
-        $scope.getSubTotal = function () {
-            console.log("subtotal is " + $scope.subTotal);
-            return $scope.subTotal;
+    app.$inject = ['$scope', 'cartProperties'];
+    app.service('cartProperties', function (){
+        var subTotal = 0;
+        return{
+            getSubTotal: function () {
+                console.log("return subtotal" + subTotal);
+                return subTotal;
+            },
+            calculateSubTotal: function (shoe, tabs) {
+                subTotal = shoe.price + tabs[0].price + tabs[1].price;
+                console.log(subTotal);
+            }
         };
+    });
+    app.controller('CartCtrl', ['$scope', '$http', 'tabLabProperties', 'sizeProperties', 'cartProperties', function ($scope, $http, tabLabProperties, sizeProperties, cartProperties) {
 
-        $scope.calculateSubTotal = function (){
-            var sTotal = 0;
-            sTotal = $scope.shoeSelected.price + $scope.tabs.left.price + $scope.tabs.right.price;
-            console.log("subtotal=" +sTotal);
-            $scope.subTotal = sTotal;
+        $scope.calculateSubtotal = function (){
+                cartProperties.calculateSubTotal($scope.shoeSelected,$scope.tabsSelected);
         };
-
+        /*
+        $scope.$watch( function () { return cartProperties.getSubTotal(); }, function ( subTotal ) {
+            $scope.subTotal = subTotal;
+        });
+        */
         $scope.remove = function (side) {
             switch (side) {
                 case "left":

@@ -76,10 +76,14 @@
                 $scope.MENUIMGPATH = "assets/media/thumbnails/";
                 // Tabs on canvas List Arrays
                 $scope.tabs = {};
+                $scope.tabsSelected = [];
                 $scope.tabs.left = {};
                 $scope.tabs.left.price = 0;
                 $scope.tabs.right = {};
                 $scope.tabs.right.price = 0;
+
+                $scope.shoe = {};
+                $scope.shoeSelected = {};
 
                 $scope.styleName = "emme";
                 $scope.shoeMesh = {};
@@ -95,7 +99,6 @@
                 $scope.tabSelectorFocus = false; //false equals left tab selector focus
 
                 $scope.basket = [];
-                $scope.subTotal = 0;
                 $scope.editMode = false;
                 $scope.shoeEditMode = false;
                 $scope.isSizeEdit = false;
@@ -235,10 +238,13 @@
 
                 $scope.setShoe = function(shoe){
                     tabLabProperties.setShoeSelected(shoe);
+                    // set shoe variable for template
+                    $scope.shoeSelected = shoe;
                 };
 
                 $scope.setTab = function(tab, shoePos){
                     tabLabProperties.setTabSelected(tab, shoePos);
+                    $scope.tabsSelected[shoePos] = tab;
                 };
 
                 $scope.initializeSelected = function (){
@@ -466,11 +472,22 @@
                         $scope.drawShoe($scope.scene, 'left', 1.5);
                         $scope.drawShoe($scope.scene, 'right', -1.5);
 
+
                         // redraw tabs
                         $scope.drawTabs($scope.scene, 0, -1.5, 0, 0);
                         $scope.drawTabs($scope.scene, 1, 1.5, 0, 0);
-                        $scope.drawTabs($scope.scene, 2, -1.5, 0, 0);
-                        $scope.drawTabs($scope.scene, 3, 1.5, 0, 0);
+                        if(s.numOfTabs != 2) {
+                            $scope.drawTabs($scope.scene, 2, -1.5, 0, 0);
+                            $scope.drawTabs($scope.scene, 3, 1.5, 0, 0);
+                        }else{
+                            //remove current bottom tabs
+                            if (_.isEmpty($scope.currentTabObj[2]) == false) {
+                                $scope.removeFromScene($scope.scene, $scope.currentTabObj[2]);
+                            }
+                            if (_.isEmpty($scope.currentTabObj[3]) == false) {
+                                $scope.removeFromScene($scope.scene, $scope.currentTabObj[3]);
+                            }
+                        }
 
                     }else {
                         setTimeout(checkIfShoeHasBeenSet, 500); // check again in a .5 second
@@ -657,7 +674,7 @@
                     while ($scope.tabRight.length > 0) {
                         console.log("popped " + $scope.tabRight.pop().name + " from tabRight");
                     }
-                    $scope.subTotal = 0;
+
                     $scope.clearImage(topViewCanvas, tpcontext);
                     $scope.clearImage(topViewTabCanvas, tptabcontext);
                     this.canvasView = "top";
