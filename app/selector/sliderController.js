@@ -188,11 +188,14 @@
                     $(".slick-left .slick-cloned").removeClass("translate-slider-x");
                 }
                 */
+                var shoe = tabLabProperties.getShoe();
                 $scope.lTIndex = leftTabIndex;
                 $scope.setTab($scope.tabList[leftTabIndex], 0);
                 $scope.setTab($scope.tabList[leftTabIndex], 2);
                 $scope.updateTabs($scope.scene, 0);
-                $scope.updateTabs($scope.scene, 2);
+                if(shoe.numOfTabs != 2) {
+                    $scope.updateTabs($scope.scene, 2);
+                }
             }
         });
 
@@ -208,11 +211,16 @@
                     $scope.isEndOfTabListR = false;
                     $(".slick-right .slick-cloned").removeClass("translate-slider-x");
                 }
+
+
+                var shoe = tabLabProperties.getShoe();
                 $scope.rTIndex = rightTabIndex;
                 $scope.setTab($scope.tabList[rightTabIndex], 1);
                 $scope.setTab($scope.tabList[rightTabIndex], 3);
                 $scope.updateTabs($scope.scene, 1);
-                $scope.updateTabs($scope.scene, 3);
+                if(shoe.numOfTabs != 2) {
+                    $scope.updateTabs($scope.scene, 3);
+                }
             }
         });
 

@@ -472,11 +472,22 @@
                         $scope.drawShoe($scope.scene, 'left', 1.5);
                         $scope.drawShoe($scope.scene, 'right', -1.5);
 
+
                         // redraw tabs
                         $scope.drawTabs($scope.scene, 0, -1.5, 0, 0);
                         $scope.drawTabs($scope.scene, 1, 1.5, 0, 0);
-                        $scope.drawTabs($scope.scene, 2, -1.5, 0, 0);
-                        $scope.drawTabs($scope.scene, 3, 1.5, 0, 0);
+                        if(s.numOfTabs != 2) {
+                            $scope.drawTabs($scope.scene, 2, -1.5, 0, 0);
+                            $scope.drawTabs($scope.scene, 3, 1.5, 0, 0);
+                        }else{
+                            //remove current bottom tabs
+                            if (_.isEmpty($scope.currentTabObj[2]) == false) {
+                                $scope.removeFromScene($scope.scene, $scope.currentTabObj[2]);
+                            }
+                            if (_.isEmpty($scope.currentTabObj[3]) == false) {
+                                $scope.removeFromScene($scope.scene, $scope.currentTabObj[3]);
+                            }
+                        }
 
                     }else {
                         setTimeout(checkIfShoeHasBeenSet, 500); // check again in a .5 second
