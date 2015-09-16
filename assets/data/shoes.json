@@ -4,49 +4,56 @@
     "id": 901,
     "numOfTabs": 2,
     "color": "silver-pink",
-    "sku": "103012-040"
+    "sku": "103012-040",
+    "price": 49.95
   },
   {
     "name": "emme",
     "id": 556,
     "numOfTabs": 2,
     "color": "lavender-violet",
-    "sku": "103012-510"
+    "sku": "103012-510",
+    "price": 49.95
   },
   {
     "name": "ty",
     "id": 448,
     "numOfTabs": 4,
     "color": "navy-limestone",
-    "sku": "102011-410"
+    "sku": "102011-410",
+    "price": 54.95
   },
   {
     "name": "ty",
     "id": 430,
     "numOfTabs": 4,
     "color": "red-steel",
-    "sku": "102011-620"
+    "sku": "102011-620",
+    "price": 54.95
   },
   {
     "name": "ty",
     "id": 486,
     "numOfTabs": 4,
     "color": "silver-pink",
-    "sku": "102022-040"
+    "sku": "102022-040",
+    "price": 54.95
   },
   {
     "name": "ty",
     "id": 902,
     "numOfTabs": 4,
     "color": "pink-dewberry",
-    "sku": "102022-651"
+    "sku": "102022-651",
+    "price": 54.95
   },
   {
     "name": "ty",
     "id": 466,
     "numOfTabs": 4,
     "color": "denim-navy",
-    "sku": "102021-401"
+    "sku": "102021-401",
+    "price": 54.95
   },
   {
     "name": "roan",

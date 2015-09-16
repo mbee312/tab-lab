@@ -63,6 +63,7 @@
 
     tabLabApp.controller('tabLabController',
         ['$scope',
+            '$rootScope',
             '$http',
             '$mdDialog',
             '$mdToast',
@@ -71,26 +72,19 @@
             'tabLabProperties',
             'sizeProperties',
             'sliderProperties',
-            function ($scope, $http, $mdDialog, $mdToast, $animate, $window, tabLabProperties, sizeProperties, sliderProperties) {
+            'cartProperties',
+            function ($scope, $rootScope, $http, $mdDialog, $mdToast, $animate, $window, tabLabProperties, sizeProperties, sliderProperties, cartProperties) {
 
                 $scope.MENUIMGPATH = "assets/media/thumbnails/";
                 // Tabs on canvas List Arrays
                 $scope.tabs = {};
                 $scope.tabsSelected = [];
-                $scope.tabs.left = {};
-                $scope.tabs.left.price = 0;
-                $scope.tabs.right = {};
-                $scope.tabs.right.price = 0;
 
                 $scope.shoe = {};
-                $scope.shoeSelected = {};
-
-                $scope.styleName = "emme";
                 $scope.shoeMesh = {};
                 $scope.currentShoeObj = {};
                 $scope.tabMesh = {};
                 $scope.currentTabObj = {};
-
 
                 $scope.fit = {};
                 //  $scope.fit.autoselect = true;
@@ -107,21 +101,14 @@
                 $scope.tabEditModeL = false;
                 $scope.tabEditModeR = false;
 
+                $scope.shoeIndex=1;
+                $scope.shoeIndexNew=0;
 
-                $scope.isEndOfShoeList = false;
-                $scope.isEndOfTabListL = false;
-                $scope.isEndOfTabListR = false;
-                $scope.isTabIndexAtOne = false;
+                $scope.rightTabIndex=1;
+                $scope.rTindex=0;
 
-
-                $scope.shoeIndex=0;
-                $scope.shoeIndexNew=1;
-
-                $scope.rightTabIndex=0;
-                $scope.rTindex=1;
-
-                $scope.leftTabIndex=0;
-                $scope.lTindex=1;
+                $scope.leftTabIndex=1;
+                $scope.lTindex=0;
 
 
                 var loadNormals = function (){
@@ -238,14 +225,22 @@
 
                 $scope.setShoe = function(shoe){
                     tabLabProperties.setShoeSelected(shoe);
-                    // set shoe variable for template
-                    $scope.shoeSelected = shoe;
+                    $rootScope.$broadcast('shoe-set');
+
                 };
+
+                $scope.$on('shoe-set', function(event, args) {
+                    $scope.shoeSelected = tabLabProperties.getShoe();
+                });
 
                 $scope.setTab = function(tab, shoePos){
                     tabLabProperties.setTabSelected(tab, shoePos);
-                    $scope.tabsSelected[shoePos] = tab;
+                    $rootScope.$broadcast('tab-set', shoePos);
                 };
+
+                $scope.$on('tab-set', function(event, pos) {
+                    $scope.tabsSelected[pos] = tabLabProperties.getTab(pos);
+                });
 
                 $scope.initializeSelected = function (){
                     if($scope.loaded.indexOf('shoeList') && $scope.loaded.indexOf('tabList') != -1) {
@@ -258,13 +253,13 @@
 
                         // set initial shoe
                         $scope.setShoe($scope.shoeList[i]);
+                        var shoe = getShoe();
 
                         // set initial tabs
                         $scope.setTab($scope.tabList[j], 0);
                         $scope.setTab($scope.tabList[j], 2);
                         $scope.setTab($scope.tabList[k], 1);
                         $scope.setTab($scope.tabList[k], 3);
-
                     }else {
                         // wait until all is loaded
                         setTimeout($scope.initializeSelected, 500); // check again in a .5 second
