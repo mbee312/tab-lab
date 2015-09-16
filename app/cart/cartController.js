@@ -9,27 +9,46 @@
     app.$inject = ['$scope', 'cartProperties'];
     app.service('cartProperties', function (){
         var subTotal = 0;
+        var cart = {};
         return{
+            getCart: function (){
+                return cart;
+            },
+            updateCart: function(item, type){
+                cart[type] = item;
+            },
             getSubTotal: function () {
-                console.log("return subtotal" + subTotal);
                 return subTotal;
             },
-            calculateSubTotal: function (shoe, tabs) {
-                subTotal = shoe.price + tabs[0].price + tabs[1].price;
-                console.log(subTotal);
+            calculateSubTotal: function () {
+                var cartSize = _.size(cart)
+                if(cartSize == 3) {
+                    subTotal = cart["shoe"].price + cart["tabLeft"].price + cart["tabRight"].price;
+                }
+                return subTotal;
             }
         };
     });
     app.controller('CartCtrl', ['$scope', '$http', 'tabLabProperties', 'sizeProperties', 'cartProperties', function ($scope, $http, tabLabProperties, sizeProperties, cartProperties) {
 
-        $scope.calculateSubtotal = function (){
-                cartProperties.calculateSubTotal($scope.shoeSelected,$scope.tabsSelected);
-        };
-        /*
-        $scope.$watch( function () { return cartProperties.getSubTotal(); }, function ( subTotal ) {
-            $scope.subTotal = subTotal;
+        $scope.$on('shoe-set', function(event, args) {
+            cartProperties.updateCart(tabLabProperties.getShoe(), "shoe");
+            $scope.subTotal = cartProperties.calculateSubTotal();
+
         });
-        */
+
+        $scope.$on('tab-set', function(event, pos) {
+            var type = "tabLeft";
+            if(pos == 1 || pos == 3){
+                type = "tabRight";
+            }
+            cartProperties.updateCart(tabLabProperties.getTab(pos), type);
+            $scope.subTotal = cartProperties.calculateSubTotal();
+
+        });
+
+
+
         $scope.remove = function (side) {
             switch (side) {
                 case "left":

@@ -148,8 +148,8 @@
                 var currentSlide = $("#shoe-car-mobile").slick('slickCurrentSlide');
                 $scope.setShoe($scope.shoeList[shoeIndex]);
                 var shoe = tabLabProperties.getShoe();
-                // set shoe variable for template
-                console.log($scope.shoeSelected);
+
+                cartProperties.updateCart(shoe, "shoe");
                 if(oldShoe.name.toString() == shoe.name.toString()){
                     $scope.updateShoe($scope.scene, 'left', false);
                     $scope.updateShoe($scope.scene, 'right', false);
@@ -196,6 +196,8 @@
                 if(shoe.numOfTabs != 2) {
                     $scope.updateTabs($scope.scene, 2);
                 }
+                var tabLeft = tabLabProperties.getTab(1);
+                cartProperties.updateCart(tabLeft, "tabLeft");
             }
         });
 
@@ -211,8 +213,6 @@
                     $scope.isEndOfTabListR = false;
                     $(".slick-right .slick-cloned").removeClass("translate-slider-x");
                 }
-
-
                 var shoe = tabLabProperties.getShoe();
                 $scope.rTIndex = rightTabIndex;
                 $scope.setTab($scope.tabList[rightTabIndex], 1);
@@ -221,6 +221,8 @@
                 if(shoe.numOfTabs != 2) {
                     $scope.updateTabs($scope.scene, 3);
                 }
+                var tabRight = tabLabProperties.getTab(1);
+                cartProperties.updateCart(tabRight, "tabRight");
             }
         });
 

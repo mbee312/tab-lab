@@ -74,28 +74,15 @@
         };//end getSizeSelectMode ()
 
         $scope.$watch(function () { return $scope.shoe.size; }, function (newValue, oldValue) {
-            if($scope.DEBUG) {
-                console.log("shoe size changed:");
-                console.log(newValue);
-            }
             sizeProperties.setShoeSize(newValue);
             setTabSize();
         });
 
         $scope.$watch(function () { return $scope.tabs.size; }, function (newValue, oldValue) {
-            if($scope.DEBUG) {
-                console.log("tab size changed:");
-                console.log(newValue);
-            }
             sizeProperties.setTabSize(newValue);
         });
 
         $scope.$watch(function () { return $scope.fit.wide; }, function (newValue, oldValue) {
-            if($scope.DEBUG) {
-                console.log("fit wide changed:");
-                console.log(newValue);
-            }
-
             setTabSize();
         });
 
@@ -113,12 +100,8 @@
             if(size){
                 if (sizeProperties.getFitWide() == true) {
                     wideOffset = 1;
-                    console.log("wide fit = " + wideOffset);
                 }
 
-                if($scope.DEBUG){
-                    console.log(size.size);
-                }
                 // 8-9=S 9.5-12.5=M 13-3-L
                 switch (size.size) {
                     case "8":
