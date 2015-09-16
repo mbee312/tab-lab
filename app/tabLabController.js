@@ -260,6 +260,15 @@
                         $scope.setTab($scope.tabList[j], 2);
                         $scope.setTab($scope.tabList[k], 1);
                         $scope.setTab($scope.tabList[k], 3);
+                        if(!$scope.isMobile) {
+                            $('#shoe-car-desktop').slick('slickGoTo', i, false);
+                            $('#tab-left-car-desktop').slick('slickGoTo', j, false);
+                            $('#tab-right-car-desktop').slick('slickGoTo', k, false);
+                        }else{
+                            $('#shoe-car-mobile').slick('slickGoTo', i, false);
+                            $('#tab-left-car').slick('slickGoTo', j, false);
+                            $('#tab-right-car').slick('slickGoTo', k, false);
+                        }
                     }else {
                         // wait until all is loaded
                         setTimeout($scope.initializeSelected, 500); // check again in a .5 second

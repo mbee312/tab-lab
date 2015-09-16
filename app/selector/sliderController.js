@@ -44,14 +44,8 @@
         $scope.innerWidthSize = 0;
         $scope.innerWidthSizeNew = window.innerWidth;
 
-        $scope.random = function (){
-            $scope.shoeIndex = Math.floor(Math.random() * sliderProperties.getNumOfShoes());
-            $scope.shoeIndexNew = $scope.shoeIndex;
-            $scope.leftTabIndex = Math.floor(Math.random() * sliderProperties.getNumOfTabs());
-            $scope.lTindex = $scope.leftTabIndex;
-            $scope.rightTabIndex = Math.floor(Math.random() * sliderProperties.getNumOfTabs());
-            $scope.rTindex = $scope.rightTabIndex;
 
+        $scope.moveSlider = function (){
             if(!$scope.isMobile) {
                 $('#shoe-car-desktop').slick('slickGoTo', $scope.shoeIndexNew, false);
                 $('#tab-left-car-desktop').slick('slickGoTo', $scope.lTindex, false);
@@ -61,6 +55,16 @@
                 $('#tab-left-car').slick('slickGoTo', $scope.lTindex, false);
                 $('#tab-right-car').slick('slickGoTo', $scope.rTindex, false);
             }
+        };
+
+        $scope.random = function (){
+            $scope.shoeIndex = Math.floor(Math.random() * sliderProperties.getNumOfShoes());
+            $scope.shoeIndexNew = $scope.shoeIndex;
+            $scope.leftTabIndex = Math.floor(Math.random() * sliderProperties.getNumOfTabs());
+            $scope.lTindex = $scope.leftTabIndex;
+            $scope.rightTabIndex = Math.floor(Math.random() * sliderProperties.getNumOfTabs());
+            $scope.rTindex = $scope.rightTabIndex;
+            $scope.moveSlider();
         }; //end random ()
 
         $scope.shuffle = function (){
