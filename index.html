@@ -71,8 +71,8 @@
                             </md-button>
 
                         </div>
-                        <slick class="car slick-shoe mobile" ng-show="isMobileScreen()" id="shoe-car-mobile"
-                           init-onload="true"
+                        <slick class="car slick-shoe mobile" ng-show="isMobileScreen()" id="shoe-slider"
+                           init-onload="false"
                            infinite="true"
                            center-mode="true"
                            speed="200"
@@ -98,8 +98,8 @@
                                 <a><img class="slide img" ng-src={{shoe.menuImg.src}}></a>
                             </div>
                         </slick>
-                        <slick class="car slick-left mobile" ng-show="isMobileScreen()" id="tab-left-car"
-                           init-onload="true"
+                        <slick class="car slick-left mobile" ng-show="isMobileScreen()" id="tab-left-slider"
+                           init-onload="false"
                            infinite="true"
                            center-mode="true"
                            speed="200"
@@ -123,8 +123,8 @@
                             <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
                         </div>
                         </slick>
-                        <slick class="car slick-right mobile" ng-show="isMobileScreen()" id="tab-right-car"
-                           init-onload="true"
+                        <slick class="car slick-right mobile" ng-show="isMobileScreen()" id="tab-right-slider"
+                           init-onload="false"
                            infinite="true"
                            center-mode="true"
                            speed="200"
@@ -173,8 +173,8 @@
                            ng-click="previous('right')">
                         </md-button>
                     </div>
-                    <slick class="vertical-slick left desktop" ng-show="!isMobileScreen()" id="tab-left-car-desktop"
-                           init-onload="true"
+                    <slick class="vertical-slick left desktop" ng-show="!isMobileScreen()" id="tab-left-slider-desktop"
+                           init-onload="false"
                            infinite="true"
                            center-mode="true"
                            speed="200"
@@ -201,8 +201,8 @@
                             <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
                         </div>
                     </slick>
-                    <slick class="vertical-slick shoe desktop" ng-show="!isMobileScreen()" id="shoe-car-desktop"
-                           init-onload="true"
+                    <slick class="vertical-slick shoe desktop" ng-show="!isMobileScreen()" id="shoe-slider-desktop"
+                           init-onload="false"
                            infinite="true"
                            center-mode="true"
                            speed="200"
@@ -231,8 +231,8 @@
                             <a><img class="slide img shoe" ng-src={{shoe.menuImg.src}}></a>
                         </div>
                     </slick>
-                    <slick class="vertical-slick right desktop" ng-show="!isMobileScreen()" id="tab-right-car-desktop"
-                           init-onload="true"
+                    <slick class="vertical-slick right desktop" ng-show="!isMobileScreen()" id="tab-right-slider-desktop"
+                           init-onload="false"
                            infinite="true"
                            center-mode="true"
                            speed="200"

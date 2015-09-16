@@ -45,16 +45,36 @@
         $scope.innerWidthSizeNew = window.innerWidth;
 
 
-        $scope.moveSlider = function (){
-            if(!$scope.isMobile) {
-                $('#shoe-car-desktop').slick('slickGoTo', $scope.shoeIndexNew, false);
-                $('#tab-left-car-desktop').slick('slickGoTo', $scope.lTindex, false);
-                $('#tab-right-car-desktop').slick('slickGoTo', $scope.rTindex, false);
-            }else{
-                $('#shoe-car-mobile').slick('slickGoTo', $scope.shoeIndexNew, false);
-                $('#tab-left-car').slick('slickGoTo', $scope.lTindex, false);
-                $('#tab-right-car').slick('slickGoTo', $scope.rTindex, false);
+        $scope.$on('move-slider-shoe', function(event, pos) {
+            $scope.moveSlider('shoe', pos);
+        });
+
+        $scope.$on('move-slider-tab', function(event, pos) {
+            $scope.moveSlider('tab', pos);
+        });
+
+        $scope.moveSlider = function (type, pos){
+            var selector = "#" + type;
+            var screen = "";
+            var index;
+            if (!$scope.isMobile) {
+                screen = "-desktop";
             }
+            if(type != 'shoe') {
+                if (pos == 0 || pos == 2) {
+                    index = $scope.getTabIndex(0);
+                    selector += "-left";
+                } else {
+                    index = $scope.getTabIndex(1);
+                    selector += "-right";
+                }
+            }else{
+                index = $scope.getShoeIndex();
+            }
+
+            selector = selector + "-slider" + screen;
+            console.log(selector);
+            $(selector).slick('slickGoTo', index, false);
         };
 
         $scope.random = function (){
@@ -64,7 +84,6 @@
             $scope.lTindex = $scope.leftTabIndex;
             $scope.rightTabIndex = Math.floor(Math.random() * sliderProperties.getNumOfTabs());
             $scope.rTindex = $scope.rightTabIndex;
-            $scope.moveSlider();
         }; //end random ()
 
         $scope.shuffle = function (){
@@ -89,22 +108,22 @@
         $scope.previous = function (side) {
             switch (side) {
                 case "left":
-                    $('#tab-left-car-desktop').slick('slickPrev');
+                    $('#tab-left-slider-desktop').slick('slickPrev');
                     break;
                 case "center":
-                    $('#shoe-car-desktop').slick('slickPrev');
+                    $('#shoe-slider-desktop').slick('slickPrev');
                     break;
                 case "right":
-                    $('#tab-right-car-desktop').slick('slickPrev');
+                    $('#tab-right-slider-desktop').slick('slickPrev');
                     break;
                 case "top":
-                    $('#shoe-car-mobile').slick('slickPrev');
+                    $('#shoe-slider').slick('slickPrev');
                     break;
                 case "middle":
-                    $('#tab-left-car').slick('slickPrev');
+                    $('#tab-left-slider').slick('slickPrev');
                     break;
                 case "bottom":
-                    $('#tab-right-car').slick('slickPrev');
+                    $('#tab-right-slider').slick('slickPrev');
                     break;
             } //end switch
 
@@ -113,22 +132,22 @@
         $scope.next = function (side){
             switch (side) {
                 case "left":
-                    $('#tab-left-car-desktop').slick('slickNext');
+                    $('#tab-left-slider-desktop').slick('slickNext');
                     break;
                 case "center":
-                    $('#shoe-car-desktop').slick('slickNext');
+                    $('#shoe-slider-desktop').slick('slickNext');
                     break;
                 case "right":
-                    $('#tab-right-car-desktop').slick('slickNext');
+                    $('#tab-right-slider-desktop').slick('slickNext');
                     break;
                 case "top":
-                    $('#shoe-car-mobile').slick('slickNext');
+                    $('#shoe-slider').slick('slickNext');
                     break;
                 case "middle":
-                    $('#tab-left-car').slick('slickNext');
+                    $('#tab-left-slider').slick('slickNext');
                     break;
                 case "bottom":
-                    $('#tab-right-car').slick('slickNext');
+                    $('#tab-right-slider').slick('slickNext');
                     break;
             } //end switch
         };// end next()
@@ -147,9 +166,11 @@
                 */
                 // save old shoe for comparison
                 var oldShoe = $scope.shoeList[$scope.shoeIndexNew];
+                console.log("old shoe is:");
+                console.log(oldShoe);
                 $scope.shoeIndexNew = shoeIndex;
                 // Get the current slide
-                var currentSlide = $("#shoe-car-mobile").slick('slickCurrentSlide');
+             //   var currentSlide = $("#shoe-slider-mobile").slick('slickCurrentSlide');
                 $scope.setShoe($scope.shoeList[shoeIndex]);
                 var shoe = tabLabProperties.getShoe();
 
@@ -158,6 +179,10 @@
                     $scope.updateShoe($scope.scene, 'left', false);
                     $scope.updateShoe($scope.scene, 'right', false);
                 }else {
+
+                    // need to add promise to delete old shoe first
+
+
                     $scope.drawShoe($scope.scene, 'left', 1.5);
                     $scope.drawShoe($scope.scene, 'right', -1.5);
 
