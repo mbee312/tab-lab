@@ -101,13 +101,13 @@
                 $scope.tabEditModeL = false;
                 $scope.tabEditModeR = false;
 
-                $scope.shoeIndex=1;
+                $scope.shoeIndex=0;
                 $scope.shoeIndexNew=0;
 
-                $scope.rightTabIndex=1;
+                $scope.rightTabIndex=0;
                 $scope.rTindex=0;
 
-                $scope.leftTabIndex=1;
+                $scope.leftTabIndex=0;
                 $scope.lTindex=0;
 
 
@@ -196,7 +196,6 @@
                         if(pos == 0) {
                             sliderProperties.setTabIndex(0, Math.floor(Math.random() * getNumOfTabsInList()));
                             sliderProperties.setTabIndex(2, sliderProperties.getTabIndex(0));
-
                             //else left shoe
                         }else{
                             sliderProperties.setTabIndex(1, Math.floor(Math.random() * getNumOfTabsInList()));
@@ -231,6 +230,8 @@
 
                 $scope.$on('shoe-set', function(event, args) {
                     $scope.shoeSelected = tabLabProperties.getShoe();
+                    var i = $scope.getShoeIndex();
+                    $rootScope.$broadcast('move-slider-shoe', 0);
                 });
 
                 $scope.setTab = function(tab, shoePos){
@@ -240,6 +241,7 @@
 
                 $scope.$on('tab-set', function(event, pos) {
                     $scope.tabsSelected[pos] = tabLabProperties.getTab(pos);
+                    $rootScope.$broadcast('move-slider-tab', pos);
                 });
 
                 $scope.initializeSelected = function (){
@@ -254,21 +256,14 @@
                         // set initial shoe
                         $scope.setShoe($scope.shoeList[i]);
                         var shoe = getShoe();
+                        console.log("initializedSelected:");
+                        console.log(shoe);
 
                         // set initial tabs
                         $scope.setTab($scope.tabList[j], 0);
                         $scope.setTab($scope.tabList[j], 2);
                         $scope.setTab($scope.tabList[k], 1);
                         $scope.setTab($scope.tabList[k], 3);
-                        if(!$scope.isMobile) {
-                            $('#shoe-car-desktop').slick('slickGoTo', i, false);
-                            $('#tab-left-car-desktop').slick('slickGoTo', j, false);
-                            $('#tab-right-car-desktop').slick('slickGoTo', k, false);
-                        }else{
-                            $('#shoe-car-mobile').slick('slickGoTo', i, false);
-                            $('#tab-left-car').slick('slickGoTo', j, false);
-                            $('#tab-right-car').slick('slickGoTo', k, false);
-                        }
                     }else {
                         // wait until all is loaded
                         setTimeout($scope.initializeSelected, 500); // check again in a .5 second
@@ -476,7 +471,6 @@
                         $scope.drawShoe($scope.scene, 'left', 1.5);
                         $scope.drawShoe($scope.scene, 'right', -1.5);
 
-
                         // redraw tabs
                         $scope.drawTabs($scope.scene, 0, -1.5, 0, 0);
                         $scope.drawTabs($scope.scene, 1, 1.5, 0, 0);
@@ -541,6 +535,7 @@
                 $scope.drawShoe = function (scene, side, x){
                     //first remove current shoe
                     if(_.isEmpty($scope.currentShoeObj) == false) {
+                        console.log("remove shoe:" + side);
                         $scope.removeFromScene(scene, $scope.currentShoeObj['\'' + side + '\'']);
                     }
                     console.log(scene);
