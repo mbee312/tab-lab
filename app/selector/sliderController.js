@@ -8,6 +8,7 @@
     var app = angular.module('tabLabApp');
     app.$inject = ['$scope', 'sliderProperties'];
     app.service('sliderProperties', function (){
+        var DEBUG = true;
         var shoeIndex;
         var tabIndex = [];
         var numOfShoes;
@@ -19,12 +20,18 @@
             },
             setShoeIndex: function (index) {
                 shoeIndex = index;
+                if(DEBUG) {
+                    console.log("shoe index is set:" + shoeIndex);
+                }
             },
             getTabIndex: function (pos) {
                 return tabIndex[pos];
             },
             setTabIndex: function (pos, index) {
                 tabIndex[pos] = index;
+                if(DEBUG) {
+                    console.log("tab index: " + pos + " is set to: " + tabIndex[pos]);
+                }
             },
             getNumOfShoes: function () {
                 return numOfShoes;
@@ -73,7 +80,8 @@
             }
 
             selector = selector + "-slider" + screen;
-            console.log(selector);
+            console.log("selector:" + selector);
+            console.log("index:" + index);
             $(selector).slick('slickGoTo', index, false);
         };
 

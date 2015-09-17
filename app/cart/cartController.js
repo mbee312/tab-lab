@@ -127,5 +127,5 @@
         }
 
     }]);
-    console.log(app.contorl)
+    console.log(app.control)
 }());
