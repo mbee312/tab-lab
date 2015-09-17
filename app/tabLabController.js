@@ -145,14 +145,6 @@
                     }
                 };
 
-                $scope.loadMenu = function (list, shoesOrTabs ){
-                    for(var i = 0; i < list.length ; i++){
-                        list[i].menuImg = new Image();
-                        list[i].menuImg.src= $scope.MENUIMGPATH + shoesOrTabs + '/' + list[i].name + '-' + list[i].color + '.jpg';
-                    }// end for
-                    return list;
-                }// end loadMenu()
-
                 var setNumOfShoesInList = function (number){
                     sliderProperties.setNumOfShoes(number);
                 };
@@ -168,6 +160,14 @@
                 var getNumOfTabsInList = function (){
                     return sliderProperties.getNumOfTabs();
                 };
+
+                $scope.loadMenu = function (list, shoesOrTabs ){
+                    for(var i = 0; i < list.length ; i++){
+                        list[i].menuImg = new Image();
+                        list[i].menuImg.src= $scope.MENUIMGPATH + shoesOrTabs + '/' + list[i].name + '-' + list[i].color + '.jpg';
+                    }// end for
+                    return list;
+                }// end loadMenu()
 
                 $scope.loadShoeStyle = function (file) {
 
@@ -305,12 +305,10 @@
                  START Canvas Drawing
 
                  */
-
-
                 $scope.container = document.querySelector('.tablab-viewer');
                 $scope.renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
                 $scope.clock = new THREE.Clock();
-                $scope.scene = new THREE.Scene();
+                $scope.scene;
                 $scope.camera;
 
                 $scope.loader;
@@ -392,8 +390,8 @@
                         $scope.HEIGHT = windowWidth*0.38;
                     }else{
                         $scope.isMobile = false;
-                        $scope.WIDTH = windowWidth*0.39;
-                        $scope.HEIGHT = windowWidth*0.39;
+                        $scope.WIDTH = windowWidth*0.38;
+                        $scope.HEIGHT = windowWidth*0.38;
                     } //end if-else
                 }; //end findAndSetCanvasDimensions()
 
@@ -401,6 +399,7 @@
                     $scope.camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
                     $scope.camera.position.set(-1, 1, 10);
                     //  $scope.camera.rotation.x = -Math.PI / 12;
+                    $scope.scene = new THREE.Scene();
                     $scope.addLight();
                     $scope.scene.add($scope.camera);
                     $scope.renderer.setSize($scope.WIDTH, $scope.HEIGHT);
@@ -431,10 +430,19 @@
                     $scope.scene.add(lightFill);
 
                     var lightRim = new THREE.DirectionalLight(0xffffff);
-                    lightRim.position.set(0, 5, 50);
+                    lightRim.position.set(0, 5, -3);
                     lightRim.intensity = .3;
                     lightRim.castShadow = false;
                     $scope.scene.add(lightRim);
+
+                    var lightBottom = new THREE.DirectionalLight(0xffffff);
+                    lightBottom.position.set(0, -5, 0);
+                    lightBottom.intensity = .6;
+                    lightBottom.castShadow = false;
+                    $scope.scene.add(lightBottom);
+
+                    var lightAmbient = lightKey = new THREE.AmbientLight(0x2b2b2a);
+                    $scope.scene.add(lightAmbient);
                 };
 
                 $scope.render = function (mesh) {
@@ -527,11 +535,7 @@
                         var material = new THREE.MeshPhongMaterial({
                             map: THREE.ImageUtils.loadTexture(s.map[side].src),
                             normalMap: THREE.ImageUtils.loadTexture(s.normalMap[side].src),
-                            normalScale: new THREE.Vector2( 0.6, 0.6 ),
-                            colorAmbient: [0.480000026226044, 0.480000026226044, 0.480000026226044],
-                            colorDiffuse: [0.480000026226044, 0.480000026226044, 0.480000026226044],
-                            colorSpecular: [0.8999999761581421, 0.8999999761581421, 0.8999999761581421],
-                            shininess: 15
+                            shininess: 35
                         });
 
                         geometry.dynamic = true;
@@ -542,7 +546,7 @@
                         );
 
                         $scope.shoeMesh['\'' + side +'\'' ].receiveShadow = false;
-                        $scope.shoeMesh['\'' + side +'\'' ].castShadow = true;
+                        $scope.shoeMesh['\'' + side +'\'' ].castShadow = false;
                         $scope.shoeMesh['\'' + side +'\'' ].rotation.y = 3*Math.PI/4;
                         //   mesh.scale.multiplyScalar(3);
                         $scope.shoeMesh['\'' + side +'\'' ].position.x = x;
@@ -588,11 +592,7 @@
                         var material = new THREE.MeshPhongMaterial({
                             map: THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg'),
                             normalMap: THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg'),
-                            normalScale: new THREE.Vector2(0.6, 0.6),
-                            colorAmbient: [0.480000026226044, 0.480000026226044, 0.480000026226044],
-                            colorDiffuse: [0.480000026226044, 0.480000026226044, 0.480000026226044],
-                            colorSpecular: [0.8999999761581421, 0.8999999761581421, 0.8999999761581421],
-                            shininess: 15
+                            shininess: 35
                         });
 
                         geometry.dynamic = true;
@@ -603,7 +603,7 @@
                         );
 
                         $scope.tabMesh[pos].receiveShadow = false;
-                        $scope.tabMesh[pos].castShadow = true;
+                        $scope.tabMesh[pos].castShadow = false;
                         $scope.tabMesh[pos].rotation.y = 3 * Math.PI / 4;
                         $scope.tabMesh[pos].position.x = x;
                         $scope.tabMesh[pos].position.y = y;

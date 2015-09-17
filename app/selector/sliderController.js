@@ -86,12 +86,18 @@
         };
 
         $scope.random = function (){
+        //    $scope.shoeIndexNew = 0;
             $scope.shoeIndex = Math.floor(Math.random() * sliderProperties.getNumOfShoes());
             $scope.shoeIndexNew = $scope.shoeIndex;
+
             $scope.leftTabIndex = Math.floor(Math.random() * sliderProperties.getNumOfTabs());
-            $scope.lTindex = $scope.leftTabIndex;
+
+
             $scope.rightTabIndex = Math.floor(Math.random() * sliderProperties.getNumOfTabs());
             $scope.rTindex = $scope.rightTabIndex;
+            $scope.moveSlider('shoe', 0);
+            $scope.moveSlider('tab', 0);
+            $scope.moveSlider('tab', 1);
         }; //end random ()
 
         $scope.shuffle = function (){
@@ -226,7 +232,8 @@
                 }
                 */
                 var shoe = tabLabProperties.getShoe();
-                $scope.lTIndex = leftTabIndex;
+                $scope.lTindex = $scope.leftTabIndex;
+            //    $scope.lTIndex = leftTabIndex;
                 $scope.setTab($scope.tabList[leftTabIndex], 0);
                 $scope.setTab($scope.tabList[leftTabIndex], 2);
                 $scope.updateTabs($scope.scene, 0);
