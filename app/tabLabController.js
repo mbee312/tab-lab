@@ -11,7 +11,7 @@
             'slick',
             'ui.bootstrap.modal'
         ]);
-    tabLabApp.service('tabLabProperties', function(){
+    tabLabApp.service('tabLabProperties', ['$http', '$q', '$rootScope', function($http, $q, $rootScope){
         var shoeSelected = {};
         var isShoeSelected = false;
         var tabs = [];
@@ -23,6 +23,7 @@
             setShoeSelected: function(shoe) {
                 shoeSelected = shoe;
                 isShoeSelected = true;
+                return shoeSelected;
             },
             isShoeSelected: function () {
                 return isShoeSelected;
@@ -58,11 +59,12 @@
                 }
             }
         };
-    });
+    }]);
 
 
     tabLabApp.controller('tabLabController',
         ['$scope',
+            '$q',
             '$rootScope',
             '$http',
             '$mdDialog',
@@ -73,7 +75,7 @@
             'sizeProperties',
             'sliderProperties',
             'cartProperties',
-            function ($scope, $rootScope, $http, $mdDialog, $mdToast, $animate, $window, tabLabProperties, sizeProperties, sliderProperties, cartProperties) {
+            function ($scope, $q, $rootScope, $http, $mdDialog, $mdToast, $animate, $window, tabLabProperties, sizeProperties, sliderProperties, cartProperties) {
 
                 $scope.MENUIMGPATH = "assets/media/thumbnails/";
                 // Tabs on canvas List Arrays
@@ -189,19 +191,23 @@
                 };// end loadTabStyles()
 
                 $scope.setRandomIndex = function (type, pos){
+                    var index;
                     if(type == 'shoe'){
-                        sliderProperties.setShoeIndex(Math.floor(Math.random() * getNumOfShoesInList()));
+                        index = Math.floor(Math.random() * getNumOfShoesInList())
+                        sliderProperties.setShoeIndex(index);
                     } else{
+                        index = Math.floor(Math.random() * getNumOfTabsInList());
                         // if right shoe
                         if(pos == 0) {
-                            sliderProperties.setTabIndex(0, Math.floor(Math.random() * getNumOfTabsInList()));
-                            sliderProperties.setTabIndex(2, sliderProperties.getTabIndex(0));
+                            sliderProperties.setTabIndex(0, index);
+                            sliderProperties.setTabIndex(2, index);
                             //else left shoe
                         }else{
-                            sliderProperties.setTabIndex(1, Math.floor(Math.random() * getNumOfTabsInList()));
-                            sliderProperties.setTabIndex(3, sliderProperties.getTabIndex(1));
+                            sliderProperties.setTabIndex(1, index);
+                            sliderProperties.setTabIndex(3, index);
                         }
                     }
+                    return index;
                 };// end setRandomIndex()
 
                 $scope.getShoeIndex = function() {
@@ -224,12 +230,12 @@
 
                 $scope.setShoe = function(shoe){
                     tabLabProperties.setShoeSelected(shoe);
-                    $rootScope.$broadcast('shoe-set');
+                    $rootScope.$broadcast('shoe-set', shoe);
 
                 };
 
-                $scope.$on('shoe-set', function(event, args) {
-                    $scope.shoeSelected = tabLabProperties.getShoe();
+                $scope.$on('shoe-set', function(event, shoe) {
+                    $scope.shoeSelected = shoe;
                     var i = $scope.getShoeIndex();
                     $rootScope.$broadcast('move-slider-shoe', 0);
                 });
@@ -246,12 +252,9 @@
 
                 $scope.initializeSelected = function (){
                     if($scope.loaded.indexOf('shoeList') && $scope.loaded.indexOf('tabList') != -1) {
-                        $scope.setRandomIndex('shoe', 0);
-                        $scope.setRandomIndex('tab', 0);
-                        $scope.setRandomIndex('tab', 1);
-                        var i = $scope.getShoeIndex();
-                        var j = $scope.getTabIndex(0);
-                        var k = $scope.getTabIndex(1);
+                        var i = $scope.setRandomIndex('shoe', 0);
+                        var j = $scope.setRandomIndex('tab', 0);
+                        var k = $scope.setRandomIndex('tab', 1);
 
                         // set initial shoe
                         $scope.setShoe($scope.shoeList[i]);
@@ -318,99 +321,81 @@
                 var ASPECT = $scope.WIDTH / $scope.HEIGHT;
                 var NEAR = 1;
                 var FAR = 100;
-
-                var mobileScaleFactor = .41;
-                var mobileScaleFactorWide = .27;
-                var smartphoneScaleFactor = .85;
-                var smartphoneScaleFactorWide = .27;
-                var tabletScaleFactor = .6;
-                var tabletScaleFactorWide = .5;
-                var defaultScaleFactor = .8;
-
-                $scope.scaleFactor = 1;
-                $scope.tabScaleFactorOffset = 1.25;
                 $scope.isMobile = false;
-                $scope.cWidth = 0; // canvas width
 
                 $scope.isMobileScreen = function (){
                     return $scope.isMobile;
                 }; //end isMobileScreen()
 
-                $scope.calculateCanvasWidth = function (){
-                    var iWidth = window.innerWidth;
-                    console.log ( "innerWidth " + window.innerWidth);
-                    var wScaleFactor = .96; // canvas border % on mobile set in styles
-                    if(!$scope.isMobile) {
-                        if (iWidth < 360) {
-                            wScaleFactor = .4;
-                        }else if(iWidth < 600) {
-                            wScaleFactor = .4;
-                        }else if(iWidth < 660){
-                            wScaleFactor = .4;
-                        }else if(iWidth < 767){
-                            wScaleFactor = .5;
-                        }else if(iWidth < 800){
-                            wScaleFactor = .5;
-                        }else if (iWidth < 1024){
-                            wScaleFactor = .5;
-                        }else if (iWidth < 1200){
-                            wScaleFactor = .5;
-                        }else{
-                            wScaleFactor = .46;
-                        }
-                    }
-
-                    return iWidth*wScaleFactor;
-                };
-
-                $scope.setAllCanvasWidthsAndHeight = function (x, y){
-                    $scope.cWidth = $scope.calculateCanvasWidth(); // canvas calculated width
-
-                    //x and y is used in case canvas is not a square
-                    $scope.WIDTH = $scope.cWidth-100;
-                    $scope.HEIGHT = $scope.cWidth-100;
-                };
-
                 $scope.findAndSetCanvasDimensions = function(){
+                    $scope.isMobile = true;
 
-                    if (window.innerWidth < 468){
-                        $scope.isMobile = true;
-                        $scope.scaleFactor = mobileScaleFactor;
-                    }else if (window.innerWidth < 600){
+                    var windowWidth = window.innerWidth;
+
+                    if(windowWidth < 321){
+                        $scope.WIDTH = windowWidth*0.93;
+                        $scope.HEIGHT = windowWidth*0.93;
+
+                        // iphone 6 portrait
+                    }else if(windowWidth < 376) {
+                        $scope.WIDTH = windowWidth*0.94;
+                        $scope.HEIGHT = windowWidth*0.94;
+
+                        // iphone 6 Plus portrait
+                    }else if(windowWidth < 415) {
+                        $scope.WIDTH = windowWidth * 0.90;
+                        $scope.HEIGHT = windowWidth * 0.90;
+
+                    }else if(windowWidth < 468){
+                            $scope.WIDTH = windowWidth*0.80;
+                            $scope.HEIGHT = windowWidth*0.80;
+
+                        // iphone 4 landscape
+                    } else if (windowWidth < 481){
+                        $scope.WIDTH = windowWidth*0.39;
+                        $scope.HEIGHT = windowWidth*0.39;
+
+                        // iphone 5 landscape
+                    } else if (windowWidth < 569){
+                        $scope.WIDTH = windowWidth*0.39;
+                        $scope.HEIGHT = windowWidth*0.39;
+
+                        // Samsung Galaxy Note II landscape
+                    } else if (windowWidth < 641){
+                        $scope.WIDTH = windowWidth*0.39;
+                        $scope.HEIGHT = windowWidth*0.39;
+
+                        // iphone 6 landscape
+                    } else if (windowWidth < 668){
+                        $scope.WIDTH = windowWidth*0.44;
+                        $scope.HEIGHT = windowWidth*0.44;
+
+                        // iphone 6 Plus landscape
+                    } else if (windowWidth < 739){
+                        $scope.WIDTH = windowWidth*0.44;
+                        $scope.HEIGHT = windowWidth*0.44;
+
+                        // iPad Mini Portrait
+                    } else if(windowWidth < 769){
                         $scope.isMobile = false;
-                        $scope.scaleFactor = mobileScaleFactorWide;
-                    }else if(window.innerWidth < 768){
+                        $scope.WIDTH = windowWidth*0.48;
+                        $scope.HEIGHT = windowWidth*0.48;
+
+                        // the rest of the desktop screens
+                    }else if(window.innerWidth < 1025){
                         $scope.isMobile = false;
-                        $scope.scaleFactor = smartphoneScaleFactorWide;
-                    }else if(window.innerWidth < 1024){
+                        $scope.WIDTH = windowWidth*0.44;
+                        $scope.HEIGHT = windowWidth*0.44;
+                    }else if(window.innerWidth < 1201){
                         $scope.isMobile = false;
-                        $scope.scaleFactor = tabletScaleFactorWide;
-                    }else if(window.innerWidth < 1200){
-                        $scope.isMobile = false;
-                        $scope.scaleFactor = tabletScaleFactor;
+                        $scope.WIDTH = windowWidth*0.38;
+                        $scope.HEIGHT = windowWidth*0.38;
                     }else{
                         $scope.isMobile = false;
-                        $scope.scaleFactor = defaultScaleFactor;
+                        $scope.WIDTH = windowWidth*0.39;
+                        $scope.HEIGHT = windowWidth*0.39;
                     } //end if-else
-                    $scope.setAllCanvasWidthsAndHeight(0,0);
                 }; //end findAndSetCanvasDimensions()
-
-                $scope.getImageNaturalDimensionsAndScale = function (image, scaleFactor, tabScale){
-
-                    /* getImageNaturalDimensions */
-                    var imageWidth =  image.width;
-                    var imageHeight = image.height;
-
-                    /* scaleImage */
-                    imageWidth *= $scope.scaleFactor * tabScale;
-                    imageHeight *= $scope.scaleFactor * tabScale;
-
-                    return{
-                        width: imageWidth,
-                        height: imageHeight
-                    };
-
-                }; //end getImageNaturalDimensionsAndScale ()
 
                 $scope.createScene = function (){
                     $scope.camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
@@ -425,8 +410,6 @@
                     //    $scope.renderer.shadowMapAutoUpdate = true;
                     $scope.renderer.setClearColor(0xffffff, 1);
                     $scope.container.appendChild($scope.renderer.domElement);
-
-
                 };
 
                 $scope.addLight = function (scene){
@@ -441,7 +424,6 @@
                     lightKey.intensity = .6;
                     $scope.scene.add(lightKey);
 
-
                     var lightFill = new THREE.DirectionalLight(0xffffff);
                     lightFill.position.set(-5, 5, 5);
                     lightFill.intensity = .3;
@@ -453,8 +435,6 @@
                     lightRim.intensity = .3;
                     lightRim.castShadow = false;
                     $scope.scene.add(lightRim);
-
-
                 };
 
                 $scope.render = function (mesh) {
@@ -486,7 +466,6 @@
                                 $scope.removeFromScene($scope.scene, $scope.currentTabObj[3]);
                             }
                         }
-
                     }else {
                         setTimeout(checkIfShoeHasBeenSet, 500); // check again in a .5 second
                     }//end if-else
@@ -497,7 +476,6 @@
                     console.log("removed from scene");
                     console.log(removeMeObj);
                     $scope.scene.remove(removeMeObj);
-
                 };
 
                 $scope.updateShoe = function (scene, side, styleChange){
@@ -507,7 +485,6 @@
                     // load path
                     var texturePath = 'assets/models/texture/shoe/' + s.name + '/' + side + '/' + s.color;
                     var loader = new THREE.JSONLoader();
-
 
                     $scope.shoeMesh['\'' + side +'\'' ].material.map = THREE.ImageUtils.loadTexture( texturePath + '/Difuse.jpg' );
                     $scope.shoeMesh['\'' + side +'\'' ].material.normalMap = THREE.ImageUtils.loadTexture( texturePath + '/Normal.jpg' );
@@ -576,6 +553,7 @@
                         $scope.render($scope.shoeMesh['\'' + side +'\'' ]);
 
                         // remember current shoe object
+                        $scope.currentShoeObj["shoe"] = s;
                         $scope.currentShoeObj['\'' + side +'\'' ] = $scope.shoeMesh['\'' + side +'\'' ];
                         $scope.currentShoeObj['\'' + side +'\''].name = s.name + '-' + s.color;
                     });
@@ -658,29 +636,6 @@
                 /*
                  END Canvas Drawing
                  */
-
-                this.clearSelections = function () {
-                    var s = tabLabProperties.getShoe();
-                    if (s.length > 0) {
-                        console.log("popped " + s.pop().name);
-                    }
-                    while ($scope.tabs.length > 0) {
-                        console.log("popped " + $scope.tabs.pop().name + " from tabs");
-                    }
-                    while ($scope.tabLeft.length > 0) {
-                        console.log("popped " + $scope.tabLeft.pop().name + " from tabLeft");
-                    }
-                    while ($scope.tabRight.length > 0) {
-                        console.log("popped " + $scope.tabRight.pop().name + " from tabRight");
-                    }
-
-                    $scope.clearImage(topViewCanvas, tpcontext);
-                    $scope.clearImage(topViewTabCanvas, tptabcontext);
-                    this.canvasView = "top";
-
-                    this.setEditMode();
-
-                };
 
                 this.isShoeSelected = function () {
                     return tabLabProperties.getShoe().length > 0;
