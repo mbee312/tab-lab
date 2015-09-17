@@ -553,6 +553,7 @@
                         $scope.render($scope.shoeMesh['\'' + side +'\'' ]);
 
                         // remember current shoe object
+                        $scope.currentShoeObj["shoe"] = s;
                         $scope.currentShoeObj['\'' + side +'\'' ] = $scope.shoeMesh['\'' + side +'\'' ];
                         $scope.currentShoeObj['\'' + side +'\''].name = s.name + '-' + s.color;
                     });

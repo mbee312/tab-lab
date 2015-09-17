@@ -173,7 +173,7 @@
                 }
                 */
                 // save old shoe for comparison
-                var oldShoe = $scope.shoeList[$scope.shoeIndexNew];
+                var oldShoe = $scope.currentShoeObj["shoe"];
                 console.log("old shoe is:");
                 console.log(oldShoe);
                 $scope.shoeIndexNew = shoeIndex;
@@ -183,7 +183,7 @@
                 var shoe = tabLabProperties.getShoe();
 
                 cartProperties.updateCart(shoe, "shoe");
-                if(oldShoe.name.toString() == shoe.name.toString()){
+                if(oldShoe.name == shoe.name.toString()){
                     $scope.updateShoe($scope.scene, 'left', false);
                     $scope.updateShoe($scope.scene, 'right', false);
                 }else {
