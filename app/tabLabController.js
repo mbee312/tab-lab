@@ -64,8 +64,8 @@
 
     tabLabApp.controller('tabLabController',
         ['$scope',
-            '$q',
             '$rootScope',
+            '$q',
             '$http',
             '$mdDialog',
             '$mdToast',
@@ -75,7 +75,7 @@
             'sizeProperties',
             'sliderProperties',
             'cartProperties',
-            function ($scope, $q, $rootScope, $http, $mdDialog, $mdToast, $animate, $window, tabLabProperties, sizeProperties, sliderProperties, cartProperties) {
+            function ($scope, $rootScope, $q, $http, $mdDialog, $mdToast, $animate, $window, tabLabProperties, sizeProperties, sliderProperties, cartProperties) {
 
                 $scope.MENUIMGPATH = "assets/media/thumbnails/";
                 // Tabs on canvas List Arrays
@@ -125,8 +125,8 @@
                         $scope.shoeList[i].map = [];
                         $scope.shoeList[i].normalMap = [];
 
-                        texturePathLeft = 'assets/models/texture/shoe/' + s.name + '/left/' + s.color;
-                        texturePathRight = 'assets/models/texture/shoe/' + s.name + '/right/' + s.color;
+                        texturePathLeft = 'assets/models/texture/shoe/' + s.name + '/left/' + s.sku;
+                        texturePathRight = 'assets/models/texture/shoe/' + s.name + '/right/' + s.sku;
                         imgMap['left'] = new Image();
                         imgMap['left'].src = texturePathLeft + '/Difuse.jpg';
                         $scope.shoeList[i].map['left'] =  imgMap['left'];
@@ -145,6 +145,14 @@
                     }
                 };
 
+                $scope.loadMenu = function (list, shoesOrTabs ){
+                    for(var i = 0; i < list.length ; i++){
+                        list[i].menuImg = new Image();
+                        list[i].menuImg.src = '/media/catalog/product' + list[i].image_url; // $scope.MENUIMGPATH + shoesOrTabs + '/' + list[i].name + '-' + list[i].color + '.jpg';
+                    }// end for
+                    return list;
+                }// end loadMenu()
+
                 var setNumOfShoesInList = function (number){
                     sliderProperties.setNumOfShoes(number);
                 };
@@ -161,33 +169,19 @@
                     return sliderProperties.getNumOfTabs();
                 };
 
-                $scope.loadMenu = function (list, shoesOrTabs ){
-                    for(var i = 0; i < list.length ; i++){
-                        list[i].menuImg = new Image();
-                        list[i].menuImg.src= $scope.MENUIMGPATH + shoesOrTabs + '/' + list[i].name + '-' + list[i].color + '.jpg';
-                    }// end for
-                    return list;
-                }// end loadMenu()
-
-                $scope.loadShoeStyle = function (file) {
-
-                    $http.get(file).success(function (data) {
-                        $scope.shoeList = data;
-                        $scope.shoeList = $scope.loadMenu($scope.shoeList, 'shoes');
-                        setNumOfShoesInList($scope.shoeList.length);
-                        loadNormals();
-                        $scope.loaded.push('shoeList');
-                    });
+                $scope.loadShoeStyle = function (data) {
+                    $scope.shoeList = data;
+                    $scope.shoeList = $scope.loadMenu($scope.shoeList, 'shoes');
+                    setNumOfShoesInList($scope.shoeList.length);
+                    loadNormals();
+                    $scope.loaded.push('shoeList');
                 };// end loadShoeStyle()
 
-                $scope.loadTabStyles = function (file) {
-
-                    $http.get(file).success(function (data) {
-                        $scope.tabList = data;
-                        $scope.tabList = $scope.loadMenu($scope.tabList, 'tabs');
-                        setNumOfTabsInList($scope.tabList.length);
-                        $scope.loaded.push('tabList');
-                    });
+                $scope.loadTabStyles = function (data) {
+                    $scope.tabList = data;
+                    $scope.tabList = $scope.loadMenu($scope.tabList, 'tabs');
+                    setNumOfTabsInList($scope.tabList.length);
+                    $scope.loaded.push('tabList');
                 };// end loadTabStyles()
 
                 $scope.setRandomIndex = function (type, pos){
@@ -251,54 +245,77 @@
                 });
 
                 $scope.initializeSelected = function (){
-                    if($scope.loaded.indexOf('shoeList') && $scope.loaded.indexOf('tabList') != -1) {
-                        var i = $scope.setRandomIndex('shoe', 0);
-                        var j = $scope.setRandomIndex('tab', 0);
-                        var k = $scope.setRandomIndex('tab', 1);
+                    var i = $scope.setRandomIndex('shoe', 0);
+                    var j = $scope.setRandomIndex('tab', 0);
+                    var k = $scope.setRandomIndex('tab', 1);
 
-                        // set initial shoe
-                        $scope.setShoe($scope.shoeList[i]);
-                        var shoe = getShoe();
-                        console.log("initializedSelected:");
-                        console.log(shoe);
+                    // set initial shoe
+                    $scope.setShoe($scope.shoeList[i]);
+                    var shoe = getShoe();
+                    console.log("initializedSelected:");
+                    console.log(shoe);
 
-                        // set initial tabs
-                        $scope.setTab($scope.tabList[j], 0);
-                        $scope.setTab($scope.tabList[j], 2);
-                        $scope.setTab($scope.tabList[k], 1);
-                        $scope.setTab($scope.tabList[k], 3);
-                    }else {
-                        // wait until all is loaded
-                        setTimeout($scope.initializeSelected, 500); // check again in a .5 second
-                    }// end else-if
+                    // set initial tabs
+                    $scope.setTab($scope.tabList[j], 0);
+                    $scope.setTab($scope.tabList[j], 2);
+                    $scope.setTab($scope.tabList[k], 1);
+                    $scope.setTab($scope.tabList[k], 3);
                 };
 
                 $scope.loaded = [];
 
                 $scope.initLoad = function () {
 
-                    $http.get('assets/data/shoeStyles.json').success(function (data) {
-                        $scope.shoeStyles = data;
-                        $scope.loaded.push('shoeStyles');
-                    });
-                    $http.get('assets/data/shoeSizes.json').success(function (data) {
-                        $scope.shoeSizeOptions = data;
-                        $scope.loaded.push('shoeSizeOptions');
-                    });
-                    $http.get('assets/data/tabSizes.json').success(function (data) {
-                        $scope.tabSizeOptions = data;
-                        $scope.loaded.push('tabSizeOptions');
-                    });
-                    $http.get('assets/data/attributes.json').success(function (data) {
-                        $scope.attributeOptions = data;
-                        $scope.loaded.push('attributeOptions');
-                    });
-                    $scope.shoeStyleFile = 'assets/data/shoes.json';
-                    $scope.loadShoeStyle($scope.shoeStyleFile);
-                    $scope.tabsFile = 'assets/data/tabs.json';
-                    $scope.loadTabStyles($scope.tabsFile);
-                    $scope.initializeSelected();
+                    var updateProductData = function(products, productData) {
+                        _.each(products, function(product, productIndex) {
+                            _.extend(product, productData[product.sku.substr(0,3)] || {});
+                        })
+                    }
 
+                    // load products
+                    var loadConfigurableProductsFromSkus = function(skus, productData, callback) {
+                        var deferred = $q.defer();
+                        var params = [{
+                            // configurable products that are shoes
+                            'sku':{'in':skus},
+                            'type': 'configurable',
+                            'status': '1'
+                        }];
+                        var magento = new MagentoClient();
+                        magento.login().then(function() {
+                            magento.call('catalog_product.list', params).then(
+                                function(products) {
+                                    updateProductData(products, productData);
+                                    callback(products);
+                                    deferred.resolve(products);
+                                },
+                                function(error) {
+                                    alert('Magento API error: ' + error);
+                                    deferred.reject('Magento API error: ' + error);
+                                }
+                            );
+                        });
+                        return deferred.promise;
+                    }
+
+                    $http.get('assets/data/data.json').success(function (data) {
+                        $scope.dataOptions = data;
+                        $scope.loaded.push('dataOptions');
+                        $scope.shoeSizeOptions = data.shoeSizes;
+                        $scope.loaded.push('shoeSizeOptions');
+                        $scope.tabSizeOptions = data.tabSizes;
+                        $scope.loaded.push('tabSizeOptions');
+
+                        var shoePromise = loadConfigurableProductsFromSkus(data.shoeSkus, data.shoeData, function(shoes) {
+                            $scope.loadShoeStyle(shoes);
+                        });
+                        var tabPromise = loadConfigurableProductsFromSkus(data.tabSkus, {}, function(tabs) {
+                            $scope.loadTabStyles(tabs);
+                        });
+                        $q.all([shoePromise, tabPromise]).then(function(data){
+                            $scope.initializeSelected();
+                        });
+                    });
                 } // end initLoad()
 
                 /*
@@ -491,7 +508,7 @@
                     var s = getShoe();
 
                     // load path
-                    var texturePath = 'assets/models/texture/shoe/' + s.name + '/' + side + '/' + s.color;
+                    var texturePath = 'assets/models/texture/shoe/' + s.name + '/' + side + '/' + s.sku;
                     var loader = new THREE.JSONLoader();
 
                     $scope.shoeMesh['\'' + side +'\'' ].material.map = THREE.ImageUtils.loadTexture( texturePath + '/Difuse.jpg' );
@@ -510,7 +527,7 @@
                     }
 
                     // load path
-                    var texturePath = 'assets/models/texture/tabs/' + tab.name + '-' + tab.color;
+                    var texturePath = 'assets/models/texture/tabs/' + tab.sku;
 
                     $scope.tabMesh[pos].material.map = THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg');
                     $scope.tabMesh[pos].material.normalMap = THREE.ImageUtils.loadTexture( texturePath + '/normals-' + whichTab + '.jpg' );
@@ -585,7 +602,7 @@
 
                     // load tab
                     var meshPath = 'assets/models/' + shoe.name + '/' + shoe.name;
-                    var texturePath = 'assets/models/texture/tabs/' + tab.name + '-' + tab.color;
+                    var texturePath = 'assets/models/texture/tabs/' + tab.sku;
                     var loader = new THREE.JSONLoader();
 
                     loader.load(meshPath + '-tab-' + side + '-' + whichTab + '.js', function (geometry, materials) {

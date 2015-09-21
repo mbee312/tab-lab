@@ -88,8 +88,8 @@
             if (shoe) {
                 var size = sizeProperties.getShoeSize();
                 var shoeParams = {'isAjax':1};
-                shoeParams["super_attribute[" + $scope.attributeOptions["code"]["color"] + "]"] = $scope.attributeOptions["color"][shoe.name][shoe.color];
-                shoeParams["super_attribute[" + $scope.attributeOptions["code"]["size"] + "]"] = "216";
+                shoeParams["super_attribute[" + $scope.dataOptions["code"]["color"] + "]"] = $scope.dataOptions["color"][shoe.name][shoe.color];
+                shoeParams["super_attribute[" + $scope.dataOptions["code"]["size"] + "]"] = "216";
                 var shoeurl = url + shoe.id;
 
                 var responsePromise = $http.get(shoeurl, {'params': shoeParams});
@@ -108,7 +108,7 @@
             _.each(tabs, function(tabCount, tabId){
                 var tabUrl = url + tabId;
                 var tabParams = {'isAjax':1};
-                tabParams["super_attribute[" + $scope.attributeOptions["code"]["tabsize"] + "]"] = $scope.tabs.size.id;
+                tabParams["super_attribute[" + $scope.dataOptions["code"]["tabsize"] + "]"] = $scope.tabs.size.id;
                 tabParams["qty"] = tabCount / 2;
 
                 var tabResponsePromise = $http.get(tabUrl, {'params': tabParams});
