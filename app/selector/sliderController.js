@@ -80,24 +80,21 @@
             }
 
             selector = selector + "-slider" + screen;
-            console.log("selector:" + selector);
-            console.log("index:" + index);
             $(selector).slick('slickGoTo', index, false);
         };
 
         $scope.random = function (){
-        //    $scope.shoeIndexNew = 0;
-            $scope.shoeIndex = Math.floor(Math.random() * sliderProperties.getNumOfShoes());
-            $scope.shoeIndexNew = $scope.shoeIndex;
+            var i = $scope.setRandomIndex('shoe', 0);
+            var j = $scope.setRandomIndex('tab', 0);
+            var k = $scope.setRandomIndex('tab', 1);
 
-            $scope.leftTabIndex = Math.floor(Math.random() * sliderProperties.getNumOfTabs());
+            // set  shoe
+            $scope.$broadcast('new-shoe-index', i);
 
+            // set  tabs
+            $scope.$broadcast('new-tab-left-index', j);
+            $scope.$broadcast('new-tab-right-index', k);
 
-            $scope.rightTabIndex = Math.floor(Math.random() * sliderProperties.getNumOfTabs());
-            $scope.rTindex = $scope.rightTabIndex;
-            $scope.moveSlider('shoe', 0);
-            $scope.moveSlider('tab', 0);
-            $scope.moveSlider('tab', 1);
         }; //end random ()
 
         $scope.shuffle = function (){
@@ -120,72 +117,101 @@
         }; //end shuffle ()
 
         $scope.previous = function (side) {
+            var i;
+            var selector;
             switch (side) {
                 case "left":
-                    $('#tab-left-slider-desktop').slick('slickPrev');
+                    selector = '#tab-left-slider-desktop';
+                    $(selector).slick('slickPrev');
+                    i = $(selector).slick('slickCurrentSlide');
+                    $scope.$broadcast('new-tab-left-index', i);
                     break;
                 case "center":
-                    $('#shoe-slider-desktop').slick('slickPrev');
+                    selector = '#shoe-slider-desktop';
+                    $(selector).slick('slickPrev');
+                    i = $(selector).slick('slickCurrentSlide');
+                    $scope.$broadcast('new-shoe-index', i);
                     break;
                 case "right":
-                    $('#tab-right-slider-desktop').slick('slickPrev');
+                    selector = '#tab-right-slider-desktop';
+                    $(selector).slick('slickPrev');
+                    i = $(selector).slick('slickCurrentSlide');
+                    $scope.$broadcast('new-tab-left-index', i);
                     break;
                 case "top":
-                    $('#shoe-slider').slick('slickPrev');
+                    selector = '#shoe-slider';
+                    $(selector).slick('slickPrev');
+                    i = $(selector).slick('slickCurrentSlide');
+                    $scope.$broadcast('new-shoe-index', i);
                     break;
                 case "middle":
-                    $('#tab-left-slider').slick('slickPrev');
+                    selector = '#tab-left-slider';
+                    $(selector).slick('slickPrev');
+                    i = $(selector).slick('slickCurrentSlide');
+                    $scope.$broadcast('new-tab-left-index', i);
                     break;
                 case "bottom":
-                    $('#tab-right-slider').slick('slickPrev');
+                    selector = '#tab-right-slider';
+                    $(selector).slick('slickPrev');
+                    i = $(selector).slick('slickCurrentSlide');
+                    $scope.$broadcast('new-tab-left-index', i);
                     break;
             } //end switch
 
         };// end previous()
 
         $scope.next = function (side){
+            var i;
+            var selector;
             switch (side) {
                 case "left":
-                    $('#tab-left-slider-desktop').slick('slickNext');
+                    selector = '#tab-left-slider-desktop';
+                    $(selector).slick('slickNext');
+                    i = $(selector).slick('slickCurrentSlide');
+                    $scope.$broadcast('new-tab-left-index', i);
                     break;
                 case "center":
-                    $('#shoe-slider-desktop').slick('slickNext');
+                    selector = '#shoe-slider-desktop';
+                    $(selector).slick('slickNext');
+                    i = $(selector).slick('slickCurrentSlide');
+                    $scope.$broadcast('new-shoe-index', i);
                     break;
                 case "right":
-                    $('#tab-right-slider-desktop').slick('slickNext');
+                    selector = '#tab-right-slider-desktop';
+                    $(selector).slick('slickNext');
+                    i = $(selector).slick('slickCurrentSlide');
+                    $scope.$broadcast('new-tab-left-index', i);
                     break;
                 case "top":
-                    $('#shoe-slider').slick('slickNext');
+                    selector = '#shoe-slider';
+                    $(selector).slick('slickNext');
+                    i = $(selector).slick('slickCurrentSlide');
+                    $scope.$broadcast('new-shoe-index', i);
                     break;
                 case "middle":
-                    $('#tab-left-slider').slick('slickNext');
+                    selector = '#tab-left-slider';
+                    $(selector).slick('slickNext');
+                    i = $(selector).slick('slickCurrentSlide');
+                    $scope.$broadcast('new-tab-left-index', i);
                     break;
                 case "bottom":
-                    $('#tab-right-slider').slick('slickNext');
+                    selector = '#tab-right-slider';
+                    $(selector).slick('slickNext');
+                    i = $(selector).slick('slickCurrentSlide');
+                    $scope.$broadcast('new-tab-left-index', i);
                     break;
             } //end switch
         };// end next()
 
-        $scope.$watch(function () {
-            return $scope.shoeIndex;
-        }, function (shoeIndex, shoeIndexNew) {
-            if (shoeIndex !== shoeIndexNew) {
-            /*    if(shoeIndex == $scope.shoeList.length -1 ){
-                    $scope.isEndOfShoeList = true;
-                    $(".slick-shoe .slick-cloned").addClass("translate-slider-x");
-                }else{
-                    $scope.isEndOfShoeList = false;
-                    $(".slick-shoe .slick-cloned").removeClass("translate-slider-x");
+        $scope.$on('new-shoe-index', function(event, index) {
+                if(tabLabProperties.isShoeSelected()){
+                    // save old shoe for comparison
+                    var oldShoe = $scope.currentShoeObj["shoe"];
+                    console.log("old shoe is:");
+                    console.log(oldShoe);
                 }
-                */
-                // save old shoe for comparison
-                var oldShoe = $scope.currentShoeObj["shoe"];
-                console.log("old shoe is:");
-                console.log(oldShoe);
-                $scope.shoeIndexNew = shoeIndex;
-                // Get the current slide
-             //   var currentSlide = $("#shoe-slider-mobile").slick('slickCurrentSlide');
-                $scope.setShoe($scope.shoeList[shoeIndex]);
+                $scope.setShoe($scope.shoeList[index]);
+
                 var shoe = tabLabProperties.getShoe();
 
                 cartProperties.updateCart(shoe, "shoe");
@@ -193,9 +219,6 @@
                     $scope.updateShoe($scope.scene, 'left', false);
                     $scope.updateShoe($scope.scene, 'right', false);
                 }else {
-
-                    // need to add promise to delete old shoe first
-
 
                     $scope.drawShoe($scope.scene, 'left', 1.5);
                     $scope.drawShoe($scope.scene, 'right', -1.5);
@@ -216,58 +239,30 @@
                         }
                     }
                 }
-            }
         });
 
-        $scope.$watch(function () {
-            return $scope.leftTabIndex;
-        }, function (leftTabIndex, lTIndex) {
-            if (leftTabIndex !== lTIndex) {
-            /*    if(leftTabIndex == $scope.tabList.length -1 ){
-                    $scope.isEndOfTabListL = true;
-                    $(".slick-left .slick-cloned").addClass("translate-slider-x");
-                }else{
-                    $scope.isEndOfTabListL = false;
-                    $(".slick-left .slick-cloned").removeClass("translate-slider-x");
-                }
-                */
+        $scope.$on('new-tab-left-index', function(event, index) {
                 var shoe = tabLabProperties.getShoe();
-                $scope.lTindex = $scope.leftTabIndex;
-            //    $scope.lTIndex = leftTabIndex;
-                $scope.setTab($scope.tabList[leftTabIndex], 0);
-                $scope.setTab($scope.tabList[leftTabIndex], 2);
+                $scope.setTab($scope.tabList[index], 0);
+                $scope.setTab($scope.tabList[index], 2);
                 $scope.updateTabs($scope.scene, 0);
                 if(shoe.numOfTabs != 2) {
                     $scope.updateTabs($scope.scene, 2);
                 }
                 var tabLeft = tabLabProperties.getTab(1);
                 cartProperties.updateCart(tabLeft, "tabLeft");
-            }
         });
 
-        $scope.$watch(function () {
-            return $scope.rightTabIndex;
-        }, function (rightTabIndex, rTIndex) {
-
-            if (rightTabIndex !== rTIndex) {
-                if(rightTabIndex == $scope.tabList.length -1 ){
-                    $scope.isEndOfTabListR = true;
-                    $(".slick-right .slick-cloned").addClass("translate-slider-x");
-                }else{
-                    $scope.isEndOfTabListR = false;
-                    $(".slick-right .slick-cloned").removeClass("translate-slider-x");
-                }
+        $scope.$on('new-tab-right-index', function(event, index) {
                 var shoe = tabLabProperties.getShoe();
-                $scope.rTIndex = rightTabIndex;
-                $scope.setTab($scope.tabList[rightTabIndex], 1);
-                $scope.setTab($scope.tabList[rightTabIndex], 3);
+                $scope.setTab($scope.tabList[index], 1);
+                $scope.setTab($scope.tabList[index], 3);
                 $scope.updateTabs($scope.scene, 1);
                 if(shoe.numOfTabs != 2) {
                     $scope.updateTabs($scope.scene, 3);
                 }
                 var tabRight = tabLabProperties.getTab(1);
                 cartProperties.updateCart(tabRight, "tabRight");
-            }
         });
 
     }]);

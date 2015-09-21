@@ -29,11 +29,12 @@
                 return isShoeSelected;
             },
 
-            /*
+            /*                              Toes
              *                          Shoe Positions
              *   Tab Positions       Left(0)    Right(1)
              *   Top(0)                 0           1
              *   Bottom(1)              2           3
+             *                              Heel
              *
              */
 
@@ -189,16 +190,19 @@
                     if(type == 'shoe'){
                         index = Math.floor(Math.random() * getNumOfShoesInList())
                         sliderProperties.setShoeIndex(index);
+                        $scope.shoeIndex = index;
                     } else{
                         index = Math.floor(Math.random() * getNumOfTabsInList());
                         // if right shoe
                         if(pos == 0) {
-                            sliderProperties.setTabIndex(0, index);
-                            sliderProperties.setTabIndex(2, index);
-                            //else left shoe
-                        }else{
                             sliderProperties.setTabIndex(1, index);
                             sliderProperties.setTabIndex(3, index);
+                            $scope.rightTabIndex =  index;
+                            //else left shoe
+                        }else{
+                            sliderProperties.setTabIndex(0, index);
+                            sliderProperties.setTabIndex(2, index);
+                            $scope.leftTabIndex =  index;
                         }
                     }
                     return index;
@@ -224,25 +228,15 @@
 
                 $scope.setShoe = function(shoe){
                     tabLabProperties.setShoeSelected(shoe);
-                    $rootScope.$broadcast('shoe-set', shoe);
-
-                };
-
-                $scope.$on('shoe-set', function(event, shoe) {
                     $scope.shoeSelected = shoe;
-                    var i = $scope.getShoeIndex();
                     $rootScope.$broadcast('move-slider-shoe', 0);
-                });
+                };
 
                 $scope.setTab = function(tab, shoePos){
                     tabLabProperties.setTabSelected(tab, shoePos);
-                    $rootScope.$broadcast('tab-set', shoePos);
+                    $scope.tabsSelected[shoePos] = tab;
+                    $rootScope.$broadcast('move-slider-tab', shoePos);
                 };
-
-                $scope.$on('tab-set', function(event, pos) {
-                    $scope.tabsSelected[pos] = tabLabProperties.getTab(pos);
-                    $rootScope.$broadcast('move-slider-tab', pos);
-                });
 
                 $scope.initializeSelected = function (){
                     var i = $scope.setRandomIndex('shoe', 0);
@@ -414,21 +408,9 @@
 
                 $scope.createScene = function (){
                     $scope.camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
-                    $scope.camera.position.set(-1, 1, 10);
+                    $scope.camera.position.set(-1, 1, 9.8);
                     //  $scope.camera.rotation.x = -Math.PI / 12;
                     $scope.scene = new THREE.Scene();
-                    $scope.addLight();
-                    $scope.scene.add($scope.camera);
-                    $scope.renderer.setSize($scope.WIDTH, $scope.HEIGHT);
-                    //    $scope.renderer.shadowMapEnabled = false;
-                    //    $scope.renderer.shadowMapSoft = true;
-                    //    $scope.renderer.shadowMapType = THREE.PCFShadowMap;
-                    //    $scope.renderer.shadowMapAutoUpdate = true;
-                    $scope.renderer.setClearColor(0xffffff, 1);
-                    $scope.container.appendChild($scope.renderer.domElement);
-                };
-
-                $scope.addLight = function (scene){
                     var lightKey = new THREE.DirectionalLight(0xffffff);
                     lightKey.position.set(5, 5, 5);
                     lightKey.castShadow = false;
@@ -460,6 +442,14 @@
 
                     var lightAmbient = lightKey = new THREE.AmbientLight(0x2b2b2a);
                     $scope.scene.add(lightAmbient);
+                    $scope.scene.add($scope.camera);
+                    $scope.renderer.setSize($scope.WIDTH, $scope.HEIGHT);
+                    //    $scope.renderer.shadowMapEnabled = false;
+                    //    $scope.renderer.shadowMapSoft = true;
+                    //    $scope.renderer.shadowMapType = THREE.PCFShadowMap;
+                    //    $scope.renderer.shadowMapAutoUpdate = true;
+                    $scope.renderer.setClearColor(0xffffff, 1);
+                    $scope.container.appendChild($scope.renderer.domElement);
                 };
 
                 $scope.render = function (mesh) {
