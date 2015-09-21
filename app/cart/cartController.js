@@ -83,14 +83,19 @@
             var tabs = {};
             for (var i = 0; i < 4; i++) {
                 var tab = tabLabProperties.getTab(i);
-                tabs[tab.id] = (tabs[tab.id] || 0) + 1;
+                tabs[tab.product_id] = (tabs[tab.product_id] || 0) + 1;
             }
+            debugger;
             if (shoe) {
-                var size = sizeProperties.getShoeSize();
+                var shoeSize = sizeProperties.getShoeSize();
+                if (!shoeSize) {
+                    alert("Please select a shoe size.");
+                    return;
+                }
                 var shoeParams = {'isAjax':1};
-                shoeParams["super_attribute[" + $scope.dataOptions["code"]["color"] + "]"] = $scope.dataOptions["color"][shoe.name][shoe.color];
-                shoeParams["super_attribute[" + $scope.dataOptions["code"]["size"] + "]"] = "216";
-                var shoeurl = url + shoe.id;
+                shoeParams["super_attribute[" + $scope.dataOptions["code"]["color"] + "]"] = $scope.dataOptions["color"][shoe.name][shoe.color]; //TODO: needs to be fixed.
+                shoeParams["super_attribute[" + $scope.dataOptions["code"]["size"] + "]"] = shoeSize.id;
+                var shoeurl = url + shoe.product_id;
 
                 var responsePromise = $http.get(shoeurl, {'params': shoeParams});
 
@@ -105,10 +110,17 @@
                     console.log("Adding " + shoe.id + " failed!");
                 });
             }
+            if (!_.isEmpty(tabs)) {
+                var tabSize = sizeProperties.getTabSize();
+                if (!tabSize) {
+                    alert("Please select a tab size.");
+                    return;
+                }
+            }
             _.each(tabs, function(tabCount, tabId){
                 var tabUrl = url + tabId;
                 var tabParams = {'isAjax':1};
-                tabParams["super_attribute[" + $scope.dataOptions["code"]["tabsize"] + "]"] = $scope.tabs.size.id;
+                tabParams["super_attribute[" + $scope.dataOptions["code"]["tabsize"] + "]"] = tabSize.id;
                 tabParams["qty"] = tabCount / 2;
 
                 var tabResponsePromise = $http.get(tabUrl, {'params': tabParams});
