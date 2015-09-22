@@ -29,12 +29,12 @@
                 return isShoeSelected;
             },
 
-            /*                              Toes
+            /*                              Heel
              *                          Shoe Positions
-             *   Tab Positions       Left(0)    Right(1)
+             *   Tab Positions   Right Shoe(0)    Left Shoe(1)
              *   Top(0)                 0           1
              *   Bottom(1)              2           3
-             *                              Heel
+             *                              Toe
              *
              */
 
@@ -188,21 +188,24 @@
                 $scope.setRandomIndex = function (type, pos){
                     var index;
                     if(type == 'shoe'){
-                        index = Math.floor(Math.random() * getNumOfShoesInList())
+                        index = Math.floor(Math.random() * getNumOfShoesInList());
                         sliderProperties.setShoeIndex(index);
                         $scope.shoeIndex = index;
+
                     } else{
                         index = Math.floor(Math.random() * getNumOfTabsInList());
-                        // if right shoe
+                        // if left shoe
                         if(pos == 0) {
-                            sliderProperties.setTabIndex(1, index);
-                            sliderProperties.setTabIndex(3, index);
-                            $scope.rightTabIndex =  index;
-                            //else left shoe
-                        }else{
                             sliderProperties.setTabIndex(0, index);
                             sliderProperties.setTabIndex(2, index);
+                            $scope.rightTabIndex =  index;
+
+                            //else right shoe
+                        }else{
+                            sliderProperties.setTabIndex(1, index);
+                            sliderProperties.setTabIndex(3, index);
                             $scope.leftTabIndex =  index;
+                            $rootScope.$broadcast('move-slider-tab', pos);
                         }
                     }
                     return index;

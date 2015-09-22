@@ -72,7 +72,7 @@
 
                         </div>
                         <slick class="car slick-shoe mobile" ng-show="isMobileScreen()" id="shoe-slider"
-                           init-onload="false"
+                           init-onload="true"
                            infinite="true"
                            center-mode="true"
                            speed="200"
@@ -99,7 +99,7 @@
                             </div>
                         </slick>
                         <slick class="car slick-left mobile" ng-show="isMobileScreen()" id="tab-left-slider"
-                           init-onload="false"
+                           init-onload="true"
                            infinite="true"
                            center-mode="true"
                            speed="200"
@@ -124,7 +124,7 @@
                         </div>
                         </slick>
                         <slick class="car slick-right mobile" ng-show="isMobileScreen()" id="tab-right-slider"
-                           init-onload="false"
+                           init-onload="true"
                            infinite="true"
                            center-mode="true"
                            speed="200"
@@ -174,7 +174,7 @@
                         </md-button>
                     </div>
                     <slick class="vertical-slick left desktop" ng-show="!isMobileScreen()" id="tab-left-slider-desktop"
-                           init-onload="false"
+                           init-onload="true"
                            infinite="true"
                            center-mode="true"
                            speed="200"
@@ -202,7 +202,7 @@
                         </div>
                     </slick>
                     <slick class="vertical-slick shoe desktop" ng-show="!isMobileScreen()" id="shoe-slider-desktop"
-                           init-onload="false"
+                           init-onload="true"
                            infinite="true"
                            center-mode="true"
                            speed="200"
@@ -232,7 +232,7 @@
                         </div>
                     </slick>
                     <slick class="vertical-slick right desktop" ng-show="!isMobileScreen()" id="tab-right-slider-desktop"
-                           init-onload="false"
+                           init-onload="true"
                            infinite="true"
                            center-mode="true"
                            speed="200"
@@ -403,50 +403,47 @@
                                 <p class="rotate">remove</p>
                             </md-button>
                         </div>
+                    <div class="plae basket item left" ng-model="tabSelected">
+                        <md-button class="md-raised attr tableft"
+                                   ng-class="{'size-animate' : tabEditModeL}"
+                                   aria-label="attr tableft button"
+                                   ng-click="tabLab.setSizeSelectMode('right')">
+                            <h4 class="product name plae-font">{{tabsSelected[0].name}}</h4>
 
-
-                        <div class="plae basket item left" ng-model="tabSelected">
-                            <md-button class="md-raised attr tableft"
-                                       ng-class="{'size-animate' : tabEditModeL}"
-                                       aria-label="attr tableft button"
-                                       ng-click="tabLab.setSizeSelectMode('right')">
-                                <h4 class="product name plae-font">{{tabsSelected[0].name}}</h4>
-
-                                <ul class="details">
-                                    <li class="attr price plae-font">{{tabsSelected[0].price | currency}}</li>
-                                    <li class="attr color plae-font">color: {{tabsSelected[0].color}}</li>
-                                    <li class="attr size plae-font">
-                                        size: {{tabs.size.label}}
-                                    </li>
-                                </ul>
-                            </md-button>
-                            <md-button class="md-raised md-warn delete" id="delete-left" aria-label="delete-left"
-                                       ng-click="remove('left')" ng-show="tabLab.isTabEditMode('left')">
-                                <p class="rotate">remove</p>
-                            </md-button>
-                        </div>
-
-                        <div class="plae basket item right" ng-model="tabSelected">
-                            <md-button class="md-raised attr tabright" ng-class="{'size-animate' : tabEditModeR}" aria-label="attr tabright button"
-                                       ng-click="tabLab.setSizeSelectMode('right')">
-                                <h4 class="product name plae-font">{{tabsSelected[1].name}}</h4>
+                            <ul class="details">
+                                <li class="attr price plae-font">{{tabsSelected[0].price | currency}}</li>
+                                <li class="attr color plae-font">color: {{tabsSelected[0].color}}</li>
+                                <li class="attr size plae-font">
+                                    size: {{tabs.size.label}}
+                                </li>
+                            </ul>
+                        </md-button>
+                        <md-button class="md-raised md-warn delete" id="delete-left" aria-label="delete-left"
+                                   ng-click="remove('left')" ng-show="tabLab.isTabEditMode('left')">
+                            <p class="rotate">remove</p>
+                        </md-button>
+                    </div>
+                    <div class="plae basket item right" ng-model="tabSelected">
+                        <md-button class="md-raised attr tabright" ng-class="{'size-animate' : tabEditModeR}" aria-label="attr tabright button"
+                                   ng-click="tabLab.setSizeSelectMode('right')">
+                            <h4 class="product name plae-font">{{tabsSelected[1].name}}</h4>
 
                             <ul class="details">
                                 <li class="attr price plae-font">{{tabsSelected[1].price | currency}}</li>
                                 <li class="attr color plae-font">color: {{tabsSelected[1].color}}</li>
                                 <li class="attr size plae-font">
-                                        size: {{tabs.size.label}}
+                                    size: {{tabs.size.label}}
                                 </li>
                             </ul>
-                            </md-button>
-                            <md-button class="md-raised md-warn delete"
-                                       id="delete-right"
-                                       aria-label="delete-right"
-                                       ng-click="remove('right')"
-                                       ng-show="tabLab.isTabEditMode('right')">
-                                <p class="rotate plae-font">remove</p>
-                            </md-button>
-                        </div>
+                        </md-button>
+                        <md-button class="md-raised md-warn delete"
+                                   id="delete-right"
+                                   aria-label="delete-right"
+                                   ng-click="remove('right')"
+                                   ng-show="tabLab.isTabEditMode('right')">
+                            <p class="rotate plae-font">remove</p>
+                        </md-button>
+                    </div>
 
 
                         <div class="plae basket subtotal" id="subtotal" ng-model="subTotal">
