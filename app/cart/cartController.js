@@ -85,7 +85,6 @@
                 var tab = tabLabProperties.getTab(i);
                 tabs[tab.product_id] = (tabs[tab.product_id] || 0) + 1;
             }
-            debugger;
             if (shoe) {
                 var shoeSize = sizeProperties.getShoeSize();
                 if (!shoeSize) {
@@ -93,7 +92,7 @@
                     return;
                 }
                 var shoeParams = {'isAjax':1};
-                shoeParams["super_attribute[" + $scope.dataOptions["code"]["color"] + "]"] = $scope.dataOptions["color"][shoe.name][shoe.color]; //TODO: needs to be fixed.
+                shoeParams["super_attribute[" + $scope.dataOptions["code"]["color"] + "]"] = shoe.color;
                 shoeParams["super_attribute[" + $scope.dataOptions["code"]["size"] + "]"] = shoeSize.id;
                 var shoeurl = url + shoe.product_id;
 

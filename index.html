@@ -323,7 +323,8 @@
                         <select class="size selector shoe"
                                 ng-model="shoe.size"
                                 ng-change="setShoeSize(size)"
-                                ng-options="size.label for size in shoeSizeOptions">
+                                ng-options="size.label for size in shoeSizeOptions"
+                                ng-disabled="size.disabled == true">
                             <option value="" selected>--choose an option--</option>
                         </select>
                     </div>
@@ -387,7 +388,7 @@
                                 <h4 class="product name plae-font">{{shoeSelected.name}}</h4>
                             <ul class="details">
                                 <li class="attr price plae-font">{{shoeSelected.price | currency}}</li>
-                                <li class=" attr color plae-font">color: {{shoeSelected.color}}</li>
+                                <li class=" attr color plae-font">color: {{shoeSelected.color_label}}</li>
                                 <li class="attr size plae-font"
                                     ng-model="shoe.size">
                                     size: {{shoe.size.label}}
