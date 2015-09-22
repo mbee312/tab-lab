@@ -256,12 +256,15 @@
                                         });
                                         if (product) {
                                             s.disabled = (!product.is_saleable || !product.has_qty || !product.in_stock);
-                                            s.hide = false;
+                                            s.show = true;
                                         }
                                         else {
-                                            s.hide = true;
+                                            s.show = false;
                                         }
                                     })
+//                                  $scope.$apply(function(){$scope.shoe.size = 0});
+                                    $scope.shoe.size = 0;
+                                    $scope.$apply(function(){$scope.shoeSizeOptions = _.toArray($scope.shoeSizeOptions)});
 
                                     $scope.loaded.push('shoeSizeOptions');
                                 }
