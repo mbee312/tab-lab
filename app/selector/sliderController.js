@@ -80,7 +80,7 @@
             }
 
             selector = selector + "-slider" + screen;
-            $(selector).slick('slickGoTo', index, false);
+            console.log(selector);
         };
 
         $scope.random = function (){
@@ -136,7 +136,7 @@
                     selector = '#tab-right-slider-desktop';
                     $(selector).slick('slickPrev');
                     i = $(selector).slick('slickCurrentSlide');
-                    $scope.$broadcast('new-tab-left-index', i);
+                    $scope.$broadcast('new-tab-right-index', i);
                     break;
                 case "top":
                     selector = '#shoe-slider';
@@ -154,7 +154,7 @@
                     selector = '#tab-right-slider';
                     $(selector).slick('slickPrev');
                     i = $(selector).slick('slickCurrentSlide');
-                    $scope.$broadcast('new-tab-left-index', i);
+                    $scope.$broadcast('new-tab-right-index', i);
                     break;
             } //end switch
 
@@ -180,7 +180,7 @@
                     selector = '#tab-right-slider-desktop';
                     $(selector).slick('slickNext');
                     i = $(selector).slick('slickCurrentSlide');
-                    $scope.$broadcast('new-tab-left-index', i);
+                    $scope.$broadcast('new-tab-right-index', i);
                     break;
                 case "top":
                     selector = '#shoe-slider';
@@ -198,7 +198,7 @@
                     selector = '#tab-right-slider';
                     $(selector).slick('slickNext');
                     i = $(selector).slick('slickCurrentSlide');
-                    $scope.$broadcast('new-tab-left-index', i);
+                    $scope.$broadcast('new-tab-right-index', i);
                     break;
             } //end switch
         };// end next()
@@ -241,7 +241,7 @@
                 }
         });
 
-        $scope.$on('new-tab-left-index', function(event, index) {
+        $scope.$on('new-tab-right-index', function(event, index) {
                 var shoe = tabLabProperties.getShoe();
                 $scope.setTab($scope.tabList[index], 0);
                 $scope.setTab($scope.tabList[index], 2);
@@ -249,11 +249,11 @@
                 if(shoe.numOfTabs != 2) {
                     $scope.updateTabs($scope.scene, 2);
                 }
-                var tabLeft = tabLabProperties.getTab(1);
-                cartProperties.updateCart(tabLeft, "tabLeft");
+                var tabLeft = tabLabProperties.getTab(0);
+                cartProperties.updateCart(tabRight, "tabRight");
         });
 
-        $scope.$on('new-tab-right-index', function(event, index) {
+        $scope.$on('new-tab-left-index', function(event, index) {
                 var shoe = tabLabProperties.getShoe();
                 $scope.setTab($scope.tabList[index], 1);
                 $scope.setTab($scope.tabList[index], 3);
@@ -262,7 +262,7 @@
                     $scope.updateTabs($scope.scene, 3);
                 }
                 var tabRight = tabLabProperties.getTab(1);
-                cartProperties.updateCart(tabRight, "tabRight");
+                cartProperties.updateCart(tabLeft, "tabLeft");
         });
 
     }]);
