@@ -323,8 +323,7 @@
                         <select class="size selector shoe"
                                 ng-model="shoe.size"
                                 ng-change="setShoeSize(size)"
-                                ng-options="size.label for size in shoeSizeOptions"
-                                ng-disabled="size.disabled == true">
+                                ng-options="size.label disable when size.disabled == true for size in shoeSizeOptions | filter:showSize">
                             <option value="" selected>--choose an option--</option>
                         </select>
                     </div>
@@ -473,11 +472,11 @@
         <script src="assets/libs/jquery/dist/jquery.js"></script>
         <script src="assets/libs/underscore/underscore-min.js"></script>
         <script src="assets/libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-        <script src="assets/libs/angular/angular.js"></script>
+        <script src="assets/libs/angular-1.4.6/angular.js"></script>
         <script src="assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-        <script src="assets/libs/angular-animate/angular-animate.js"></script>
-        <script src="assets/libs/angular-touch/angular-touch.min.js"></script>
-        <script src="assets/libs/angular-aria/angular-aria.js"></script>
+        <script src="assets/libs/angular-1.4.6/angular-animate.js"></script>
+        <script src="assets/libs/angular-1.4.6/angular-touch.min.js"></script>
+        <script src="assets/libs/angular-1.4.6/angular-aria.js"></script>
         <script src="assets/libs/angular-material/angular-material.js"></script>
         <script src="assets/libs/angular-carousel/dist/angular-carousel.js"></script>
         <script src="assets/libs/slick-carousel/slick/slick.js"></script>

@@ -73,6 +73,11 @@
             }
         };//end getSizeSelectMode ()
 
+        $scope.showSize = function(size) {
+            console.log(size);
+            return size.show;
+        };//end showSize) ()
+
         $scope.$watch(function () { return $scope.shoe.size; }, function (newValue, oldValue) {
             sizeProperties.setShoeSize(newValue);
             setTabSize();
