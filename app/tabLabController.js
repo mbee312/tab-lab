@@ -228,6 +228,46 @@
 
                 $scope.setShoe = function(shoe){
                     tabLabProperties.setShoeSelected(shoe);
+                    // check the simple products to make sure we have htem in stock
+                    var params = [{
+                        // configurable products that are shoes
+                        'type':"simple",
+                        'sku':{'like': shoe.sku + '-%'},
+                        'status': '1'
+                    }, 0, {"includeStockInfo":true}];
+                    var magento = new MagentoClient();
+                    magento.login().then(function() {
+                        magento.call('catalog_product.list', params).then(
+                            function(products) {
+                                shoe.simpleProducts = products;
+                                // do something with the simple products
+                                if(products && products[0]) {
+                                    // update the color info since we have it
+                                    shoe.color = products[0].color;
+                                    shoe.color_label = products[0].color_label;
+
+                                    _.each($scope.shoeSizeOptions, function(s){
+                                       var product = _.find(products, function(product) {
+                                            var productSize = product.sku.split('-').pop();
+                                            return s.size === productSize;
+                                        });
+                                        if (product) {
+                                            s.disabled = (!product.is_saleable || !product.has_qty || !product.in_stock);
+                                            s.hide = false;
+                                        }
+                                        else {
+                                            s.hide = true;
+                                        }
+                                    })
+
+                                    $scope.loaded.push('shoeSizeOptions');
+                                }
+                            },
+                            function(error) {
+                                alert('Magento API error: ' + error);
+                            }
+                        );
+                    });
                     $scope.shoeSelected = shoe;
                     $rootScope.$broadcast('move-slider-shoe', 0);
                 };
