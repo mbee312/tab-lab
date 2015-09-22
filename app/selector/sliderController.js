@@ -249,7 +249,7 @@
                 if(shoe.numOfTabs != 2) {
                     $scope.updateTabs($scope.scene, 2);
                 }
-                var tabLeft = tabLabProperties.getTab(0);
+                var tabRight = tabLabProperties.getTab(0);
                 cartProperties.updateCart(tabRight, "tabRight");
         });
 
@@ -261,7 +261,7 @@
                 if(shoe.numOfTabs != 2) {
                     $scope.updateTabs($scope.scene, 3);
                 }
-                var tabRight = tabLabProperties.getTab(1);
+                var tabLeft = tabLabProperties.getTab(1);
                 cartProperties.updateCart(tabLeft, "tabLeft");
         });
 
