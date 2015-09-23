@@ -520,6 +520,7 @@
                     document.addEventListener( 'mousedown', onDocumentMouseDown, false );
                     document.addEventListener( 'touchstart', onDocumentTouchStart, false );
                     document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+                    window.addEventListener( 'resize', onWindowResize, false );
                 };
 
                 $scope.render = function () {
@@ -748,12 +749,12 @@
                     $scope.initLoad();
                 };
 
-                // When the browser changes size
-                window.onresize = function (){
+                function onWindowResize (){
                     $scope.findAndSetCanvasDimensions();
-                    // need to add clear drawing
-                    $scope.initLoad();
-                };
+                    $scope.camera.updateProjectionMatrix();
+
+                    $scope.renderer.setSize($scope.WIDTH, $scope.HEIGHT);
+                }
 
                 function onDocumentMouseDown( event ) {
 
