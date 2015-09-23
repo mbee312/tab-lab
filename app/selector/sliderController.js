@@ -219,15 +219,13 @@
             console.log(shoe.name);
             console.log(shoe);
 
+            $scope.updateShoeTexture($scope.scene, $scope.group, oldShoe, shoe);
 
-                if(oldShoe.name === shoe.name){
-                    $scope.updateShoeTexture($scope.scene, $scope.group, shoe, "left");
-                    $scope.updateShoeTexture($scope.scene, $scope.group, shoe, "right");
-                }else {
-
-                    $scope.reDrawShoe($scope.scene, 'left', 1);
-                    $scope.reDrawShoe($scope.scene, 'right', -1);
-/*
+        //        if(oldShoe.name === shoe.name){
+        //            $scope.updateShoeTexture($scope.scene, $scope.group, oldShoe, shoe);
+        //        }else {
+        //            $scope.updateShoeTexture();
+                    /*
                     // redraw tabs
                  //   $scope.drawTabs($scope.scene, 0, -1, 0, 0);
                  //   $scope.drawTabs($scope.scene, 1, 1, 0, 0);
@@ -243,7 +241,7 @@
                             $scope.removeFromScene($scope.scene, $scope.currentTabObj[3]);
                         }
                     }*/
-                }
+        //        }
             cartProperties.updateCart(shoe, "shoe");
         });
 
