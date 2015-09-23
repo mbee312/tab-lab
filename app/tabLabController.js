@@ -84,7 +84,6 @@
                 $scope.tabsSelected = [];
 
                 $scope.shoe = {};
-                $scope.shoeMesh = {};
                 $scope.currentShoeObj = {};
                 $scope.tabMesh = {};
                 $scope.currentTabObj = {};
@@ -369,11 +368,11 @@
                 $scope.clock = new THREE.Clock();
                 $scope.scene;
                 $scope.camera;
-
                 $scope.loader;
                 $scope.WIDTH = 400;
                 $scope.HEIGHT = 400;
                 $scope.group = new THREE.Object3D();
+
                 var text;
                 var plane;
 
@@ -551,6 +550,7 @@
 
                 function initDrawScene (){
                     if(tabLabProperties.isShoeSelected()){
+                        var shoeMesh = {};
                         var s = tabLabProperties.getShoe();
 
                         // load left shoe
@@ -562,19 +562,16 @@
                         loader.load(shoePath + '-shoe-'+ 'left' + '.js', function (geometry, materials) {
                             var material = new THREE.MeshPhongMaterial({map: textureMap, normalMap: normalMap, shininess: 35});
                             geometry.dynamic = true;
-                            $scope.shoeMesh['left'] = new THREE.Mesh(
-                                geometry,
-                                material
-                            );
-                            $scope.shoeMesh['left'].receiveShadow = false;
-                            $scope.shoeMesh['left'].castShadow = false;
-                            $scope.shoeMesh['left'].rotation.y = 3*Math.PI/4;
-                            $scope.shoeMesh['left'].position.x = 1.5;
-                            $scope.shoeMesh['left'].position.y = 0;
-                            $scope.shoeMesh['left' ].position.z = 0;
-                            $scope.group.add($scope.shoeMesh['left']);
+                            shoeMesh['left'] = new THREE.Mesh(geometry, material);
+                            shoeMesh['left'].receiveShadow = false;
+                            shoeMesh['left'].castShadow = false;
+                            shoeMesh['left'].rotation.y = 3*Math.PI/4;
+                            shoeMesh['left'].position.x = 1.5;
+                            shoeMesh['left'].position.y = 0;
+                            shoeMesh['left'].position.z = 0;
+                            shoeMesh['left'].name = s.name + "-left";
+                            $scope.group.add( shoeMesh['left']);
                         });
-
 
                         // load right shoe
                         textureMap = THREE.ImageUtils.loadTexture(s.map['right'].src);
@@ -583,14 +580,15 @@
                         loader.load(shoePath + '-shoe-'+ 'right' + '.js', function (geometry, materials) {
                             var material = new THREE.MeshPhongMaterial({map: textureMap, normalMap: normalMap, shininess: 35});
                             geometry.dynamic = true;
-                            $scope.shoeMesh['right' ] = new THREE.Mesh(geometry, material);
-                            $scope.shoeMesh['right'].receiveShadow = false;
-                            $scope.shoeMesh['right'].castShadow = false;
-                            $scope.shoeMesh['right'].rotation.y = 3*Math.PI/4;
-                            $scope.shoeMesh['right'].position.x = -1.5;
-                            $scope.shoeMesh['right'].position.y = 0;
-                            $scope.shoeMesh['right'].position.z = 0;
-                            $scope.group.add($scope.shoeMesh['right']);
+                            shoeMesh['right'] = new THREE.Mesh(geometry, material);
+                            shoeMesh['right'].receiveShadow = false;
+                            shoeMesh['right'].castShadow = false;
+                            shoeMesh['right'].rotation.y = 3*Math.PI/4;
+                            shoeMesh['right'].position.x = -1.5;
+                            shoeMesh['right'].position.y = 0;
+                            shoeMesh['right'].position.z = 0;
+                            shoeMesh['right'].name = s.name + "-right";
+                            $scope.group.add(shoeMesh['right']);
                         });
 
                         // draw tabs
@@ -608,15 +606,22 @@
                                 $scope.removeFromScene($scope.scene, $scope.currentTabObj[3]);
                             }
                         }
+                        // remember current shoe object
+                        $scope.currentShoeObj["shoe"] = s;
+                        console.log($scope.currentShoeObj["shoe"]);
                     }else {
                         setTimeout(initDrawScene, 500); // check again in a .5 second
                     }//end if-else
+
+                    $scope.group.name = s.name;
                     $scope.scene.add($scope.group);
                     $scope.render();
+
                     console.log("in my group: ");
                     console.log($scope.group);
                     console.log("in my scene: ");
                     console.log($scope.scene);
+
                 }
 
                 function initDrawTabHelper(scene, pos, x, y, z){
@@ -665,17 +670,42 @@
                     $scope.scene.remove(removeMeObj);
                 };
 
-                $scope.updateShoe = function (scene, side, styleChange){
+                function removeFromGroup (group, obj) {
+                    var removeMeObj = group.getObjectByName(obj.name);
+                    console.log("removed from scene");
+                    console.log(removeMeObj);
+                    $scope.scene.remove(removeMeObj);
+                }
 
-                    var s = getShoe();
+                $scope.updateShoe = function (scene, side){
+
+                    var s = tabLabProperties.getShoe();
 
                     // load path
                     var texturePath = 'assets/models/texture/shoe/' + s.name + '/' + side + '/' + s.sku;
                     var loader = new THREE.JSONLoader();
 
+                    console.log("shoeMesh: " + side + $scope.shoeMesh['\'' + side +'\'' ]);
+
                     $scope.shoeMesh['\'' + side +'\'' ].material.map = THREE.ImageUtils.loadTexture( texturePath + '/Difuse.jpg' );
                     $scope.shoeMesh['\'' + side +'\'' ].material.normalMap = THREE.ImageUtils.loadTexture( texturePath + '/Normal.jpg' );
                     $scope.shoeMesh['\'' + side +'\'' ].material.needsUpdate = true;
+                };
+
+                $scope.updateShoeTexture = function (scene, group, name, side){
+
+                    var s = getShoe();
+                    // load path
+                    var texturePath = 'assets/models/texture/shoe/' + s.name + '/' + side + '/' + s.sku;
+                    var loader = new THREE.JSONLoader();
+                    var updateMe = scene.getObjectByName(s.name).getObjectByName(name + "-" + side);
+
+                    updateMe.material.map = THREE.ImageUtils.loadTexture( texturePath + '/Difuse.jpg' );
+                    updateMe.material.normalMap = THREE.ImageUtils.loadTexture( texturePath + '/Normal.jpg' );
+                    updateMe.material.needsUpdate = true;
+
+                    // $scope.removeFromScene($scope.group, obj);
+                  //  initDrawScene();
                 };
 
                 $scope.updateTabs= function (scene, pos){
