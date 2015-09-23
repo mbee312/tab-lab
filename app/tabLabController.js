@@ -527,7 +527,7 @@
                         setTimeout(initDrawScene, 500); // check again in a .5 second
                     }//end if-else
 
-                    $scope.group.name = s.name;
+                    $scope.group.name = "group";
                     $scope.scene.add($scope.group);
                     $scope.render();
 
@@ -612,13 +612,13 @@
 
                 $scope.updateShoeTexture = function (scene, group, og, shoe){
 
-                    var i = $scope.scene.getObjectByName(og.name).children.length - 1;
+                    var i = $scope.scene.getObjectByName("group").children.length - 1;
                     while(i >= 0) {
                         console.log("updateTabTexture:");
-                        console.log($scope.scene.getObjectByName(og.name).children[i].name);
-                        $scope.scene.getObjectByName(og.name).children[i].material.dispose();
-                        $scope.scene.getObjectByName(og.name).remove($scope.scene.getObjectByName(og.name).children[i]);
-                        $scope.group.remove($scope.scene.getObjectByName(og.name).children[i]);
+                        console.log($scope.scene.getObjectByName("group").children[i].name);
+                        $scope.scene.getObjectByName("group").children[i].material.dispose();
+                        $scope.scene.getObjectByName("group").remove($scope.scene.getObjectByName("group").children[i]);
+                        $scope.group.remove($scope.scene.getObjectByName("group").children[i]);
                         i--;
                     }
                     initDrawScene();
@@ -627,13 +627,13 @@
                 $scope.updateTabTexture = function (scene, pos){
                     var s = getShoe();
 
-                    var i = $scope.scene.getObjectByName(s.name).children.length - 1;
+                    var i = $scope.scene.getObjectByName("group").children.length - 1;
                     while(i >= 0) {
                         console.log("updateTabTexture:");
-                        console.log($scope.scene.getObjectByName(s.name).children[i].name);
-                        if($scope.scene.getObjectByName(s.name).children[i].name.indexOf("tab"+pos) != -1 ) {
-                            $scope.scene.getObjectByName(s.name).children[i].material.dispose();
-                            $scope.scene.getObjectByName(s.name).remove($scope.scene.getObjectByName(s.name).children[i]);
+                        console.log($scope.scene.getObjectByName("group").children[i].name);
+                        if($scope.scene.getObjectByName("group").children[i].name.indexOf("tab"+pos) != -1 ) {
+                            $scope.scene.getObjectByName("group").children[i].material.dispose();
+                            $scope.scene.getObjectByName("group").remove($scope.scene.getObjectByName("group").children[i]);
                         }
                         i--;
                     }
@@ -698,7 +698,7 @@
                 window.onload = function (){
                     $scope.findAndSetCanvasDimensions();
                     $scope.initLoad();
-                    animate();
+                  //  animate();
                 };
 
                 function onWindowResize (){
