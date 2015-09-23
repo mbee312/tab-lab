@@ -216,8 +216,8 @@
 
                 cartProperties.updateCart(shoe, "shoe");
                 if(oldShoe.name == shoe.name.toString()){
-                    $scope.updateShoe($scope.scene, 'left', false);
-                    $scope.updateShoe($scope.scene, 'right', false);
+                    $scope.updateShoeTexture($scope.scene, $scope.group, shoe.name, "left");
+                    $scope.updateShoeTexture($scope.scene, $scope.group, shoe.name, "right");
                 }else {
 
                     $scope.drawShoe($scope.scene, 'left', 1.5);
@@ -245,7 +245,7 @@
                 var shoe = tabLabProperties.getShoe();
                 $scope.setTab($scope.tabList[index], 0);
                 $scope.setTab($scope.tabList[index], 2);
-                $scope.updateTabs($scope.scene, 0);
+                $scope.updateTabTexture($scope.scene, 0);
                 if(shoe.numOfTabs != 2) {
                     $scope.updateTabs($scope.scene, 2);
                 }
