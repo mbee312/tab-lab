@@ -354,6 +354,8 @@
                         });
                         $q.all([shoePromise, tabPromise]).then(function(data){
                             $scope.initializeSelected();
+                            $scope.createScene();
+                            initDrawScene();
                         });
                     });
                 } // end initLoad()
@@ -371,6 +373,7 @@
                 $scope.loader;
                 $scope.WIDTH = 400;
                 $scope.HEIGHT = 400;
+                $scope.group = new THREE.Object3D();
 
                 var VIEW_ANGLE = 45;
                 var ASPECT = $scope.WIDTH / $scope.HEIGHT;
@@ -506,11 +509,76 @@
                     requestAnimationFrame($scope.render);
                 };
 
-                var checkIfShoeHasBeenSet = function(){
+                function initDrawScene (){
                     if(tabLabProperties.isShoeSelected()){
                         var s = tabLabProperties.getShoe();
-                        $scope.drawShoe($scope.scene, 'left', 1.5);
-                        $scope.drawShoe($scope.scene, 'right', -1.5);
+                        var x = 1.5;
+                      //  $scope.drawShoe($scope.scene, 'left', 1.5);
+
+                        // load shoe
+                        var shoePath = 'assets/models/' + s.name + '/' + s.name;
+                        var loader = new THREE.JSONLoader();
+                        var textureMap = THREE.ImageUtils.loadTexture(s.map['left'].src);
+                        var normalMap = THREE.ImageUtils.loadTexture(s.normalMap['left'].src);
+
+                        loader.load(shoePath + '-shoe-'+ 'left' + '.js', function (geometry, materials) {
+                            var material = new THREE.MeshPhongMaterial({map: textureMap, normalMap: normalMap, shininess: 35});
+
+                            geometry.dynamic = true;
+
+                            $scope.shoeMesh['left'] = new THREE.Mesh(
+                                geometry,
+                                material
+                            );
+
+                            $scope.shoeMesh['left'].receiveShadow = false;
+                            $scope.shoeMesh['left'].castShadow = false;
+                            $scope.shoeMesh['left'].rotation.y = 3*Math.PI/4;
+                            $scope.shoeMesh['left'].position.x = 1.5;
+                            $scope.shoeMesh['left'].position.y = 0;
+                            $scope.shoeMesh['left' ].position.z = 0;
+                            $scope.group.add($scope.shoeMesh['left']);
+                         //   $scope.scene.add($scope.group);
+                            $scope.render($scope.shoeMesh['left']);
+
+                            // remember current shoe object
+                            /*
+                            $scope.currentShoeObj["shoe"] = s;
+                            $scope.currentShoeObj['left'] = $scope.shoeMesh['\'' + 'left' +'\'' ];
+                            $scope.currentShoeObj['left'].name = s.name + '-' + s.color;
+                            */
+                        });
+                      //  $scope.drawShoe($scope.scene, 'right', -1.5);
+
+                        //  $scope.drawShoe($scope.scene, 'left', 1.5);
+
+                        // load shoe
+                        textureMap = THREE.ImageUtils.loadTexture(s.map['right'].src);
+                        normalMap = THREE.ImageUtils.loadTexture(s.normalMap['right'].src);
+
+                        loader.load(shoePath + '-shoe-'+ 'right' + '.js', function (geometry, materials) {
+                            var material = new THREE.MeshPhongMaterial({map: textureMap, normalMap: normalMap, shininess: 35});
+
+                            geometry.dynamic = true;
+
+                            $scope.shoeMesh['right' ] = new THREE.Mesh(geometry, material);
+                            $scope.shoeMesh['right'].receiveShadow = false;
+                            $scope.shoeMesh['right'].castShadow = false;
+                            $scope.shoeMesh['right'].rotation.y = 3*Math.PI/4;
+                            $scope.shoeMesh['right'].position.x = -1.5;
+                            $scope.shoeMesh['right'].position.y = 0;
+                            $scope.shoeMesh['right'].position.z = 0;
+                            $scope.group.add($scope.shoeMesh['right']);
+                            $scope.scene.add($scope.group);
+                            $scope.render($scope.shoeMesh['right']);
+
+                            // remember current shoe object
+                            /*
+                            $scope.currentShoeObj["shoe"] = s;
+                            $scope.currentShoeObj['right'] = $scope.shoeMesh['\'' + 'right' +'\'' ];
+                            $scope.currentShoeObj['right'].name = s.name + '-' + s.color;
+                            */
+                        });
 
                         // redraw tabs
                         $scope.drawTabs($scope.scene, 0, -1.5, 0, 0);
@@ -528,7 +596,7 @@
                             }
                         }
                     }else {
-                        setTimeout(checkIfShoeHasBeenSet, 500); // check again in a .5 second
+                        setTimeout(initDrawScene, 500); // check again in a .5 second
                     }//end if-else
                 };
 
@@ -570,7 +638,7 @@
                     $scope.tabMesh[pos].material.needsUpdate = true;
                 };
 
-                $scope.drawShoe = function (scene, side, x){
+                $scope.drawShoeMe = function (scene, side, x){
                     //first remove current shoe
                     if(_.isEmpty($scope.currentShoeObj) == false) {
                         console.log("remove shoe:" + side);
@@ -674,9 +742,7 @@
                 // When the page first loads
                 window.onload = function (){
                     $scope.findAndSetCanvasDimensions();
-                    $scope.createScene();
                     $scope.initLoad();
-                    checkIfShoeHasBeenSet();
                 };
 
                 // When the browser changes size
