@@ -610,9 +610,6 @@
                         i--;
                     }
                     initDrawScene();
-
-
-
                 };
 
                 $scope.updateTabTexture = function (scene, pos){
@@ -630,11 +627,11 @@
                     }
 
                     // draw tabs
-                    initDrawTabHelper($scope.scene, 0, -1, 0, 0);
-                    initDrawTabHelper($scope.scene, 1, 1, 0, 0);
+                    initDrawTabHelper($scope.scene, 0, -1, 2, 0);
+                    initDrawTabHelper($scope.scene, 1, 1, 2, 0);
                     if(s.numOfTabs != 2) {
-                        initDrawTabHelper($scope.scene, 2, -1, 0, 0);
-                        initDrawTabHelper($scope.scene, 3, 1, 0, 0);
+                        initDrawTabHelper($scope.scene, 2, -1, 2, 0);
+                        initDrawTabHelper($scope.scene, 3, 1, 2, 0);
                     }else{
                         //remove current bottom tabs
                         if (_.isEmpty($scope.currentTabObj[2]) == false) {
