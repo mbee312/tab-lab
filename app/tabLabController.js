@@ -387,8 +387,8 @@
                 var mouseY = 0;
                 var mouseYOnMouseDown = 0;
 
-                var windowHalfX = window.innerWidth / 2;
-                var windowHalfY = window.innerHeight / 2;
+                var windowHalfX = $scope.WIDTH / 2;
+                var windowHalfY = $scope.HEIGHT / 2;
 
                 var finalRotationY;
 
