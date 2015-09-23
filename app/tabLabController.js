@@ -392,10 +392,10 @@
 
                 var finalRotationY;
 
-                var VIEW_ANGLE = 45;
+                var VIEW_ANGLE = 55;
                 var ASPECT = $scope.WIDTH / $scope.HEIGHT;
                 var NEAR = 1;
-                var FAR = 100;
+                var FAR = 500;
                 $scope.isMobile = false;
 
                 $scope.isMobileScreen = function (){
@@ -421,8 +421,7 @@
 
                 $scope.createScene = function (){
                     $scope.camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
-                    $scope.camera.position.set(-1, 1, 9.8);
-                    //  $scope.camera.rotation.x = -Math.PI / 12;
+                    $scope.camera.position.set(0, 3, 7);
                     $scope.scene = new THREE.Scene();
                     var lightKey = new THREE.DirectionalLight(0xffffff);
                     lightKey.position.set(5, 5, 5);
@@ -457,10 +456,6 @@
                     $scope.scene.add(lightAmbient);
                     $scope.scene.add($scope.camera);
                     $scope.renderer.setSize($scope.WIDTH, $scope.HEIGHT);
-                    //    $scope.renderer.shadowMapEnabled = false;
-                    //    $scope.renderer.shadowMapSoft = true;
-                    //    $scope.renderer.shadowMapType = THREE.PCFShadowMap;
-                    //    $scope.renderer.shadowMapAutoUpdate = true;
                     $scope.renderer.setClearColor(0xffffff, 1);
                     $scope.container.appendChild($scope.renderer.domElement);
 
@@ -499,15 +494,15 @@
                     if(tabLabProperties.isShoeSelected()){
                         var s = tabLabProperties.getShoe();
 
-                        initDrawShoeHelper($scope.scene, $scope.group, s, 'left', 1, 0, 0);
-                        initDrawShoeHelper($scope.scene, $scope.group, s, 'right', -1, 0, 0);
+                        initDrawShoeHelper($scope.scene, $scope.group, s, 'left', 1, 2, 0);
+                        initDrawShoeHelper($scope.scene, $scope.group, s, 'right', -1, 2, 0);
 
                         // draw tabs
-                        initDrawTabHelper($scope.scene, 0, -1, 0, 0);
-                        initDrawTabHelper($scope.scene, 1, 1, 0, 0);
+                        initDrawTabHelper($scope.scene, 0, -1, 2, 0);
+                        initDrawTabHelper($scope.scene, 1, 1, 2, 0);
                         if(s.numOfTabs != 2) {
-                            initDrawTabHelper($scope.scene, 2, -1, 0, 0);
-                            initDrawTabHelper($scope.scene, 3, 1, 0, 0);
+                            initDrawTabHelper($scope.scene, 2, -1, 2, 0);
+                            initDrawTabHelper($scope.scene, 3, 1, 2, 0);
                         }else{
                             //remove current bottom tabs
                             if (_.isEmpty($scope.currentTabObj[2]) == false) {
