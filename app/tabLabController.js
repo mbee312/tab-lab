@@ -751,8 +751,8 @@
                 // When the browser changes size
                 window.onresize = function (){
                     $scope.findAndSetCanvasDimensions();
-                    $scope.drawShoe($scope.scene, 'left', 1.5);
-                    $scope.drawShoe($scope.scene, 'right', -1.5);
+                    // need to add clear drawing
+                    $scope.initLoad();
                 };
 
                 function onDocumentMouseDown( event ) {
