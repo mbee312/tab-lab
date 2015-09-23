@@ -564,8 +564,8 @@
                             shoeMesh['left'] = new THREE.Mesh(geometry, material);
                             shoeMesh['left'].receiveShadow = false;
                             shoeMesh['left'].castShadow = false;
-                            shoeMesh['left'].rotation.y = 3*Math.PI/4;
-                            shoeMesh['left'].position.x = 1.5;
+                            shoeMesh['left'].rotation.y = Math.PI;
+                            shoeMesh['left'].position.x = 1;
                             shoeMesh['left'].position.y = 0;
                             shoeMesh['left'].position.z = 0;
                             shoeMesh['left'].name = s.name + "-left";
@@ -582,8 +582,8 @@
                             shoeMesh['right'] = new THREE.Mesh(geometry, material);
                             shoeMesh['right'].receiveShadow = false;
                             shoeMesh['right'].castShadow = false;
-                            shoeMesh['right'].rotation.y = 3*Math.PI/4;
-                            shoeMesh['right'].position.x = -1.5;
+                            shoeMesh['right'].rotation.y = Math.PI;
+                            shoeMesh['right'].position.x = -1;
                             shoeMesh['right'].position.y = 0;
                             shoeMesh['right'].position.z = 0;
                             shoeMesh['right'].name = s.name + "-right";
@@ -591,11 +591,11 @@
                         });
 
                         // draw tabs
-                        initDrawTabHelper($scope.scene, 0, -1.5, 0, 0);
-                        initDrawTabHelper($scope.scene, 1, 1.5, 0, 0);
+                        initDrawTabHelper($scope.scene, 0, -1, 0, 0);
+                        initDrawTabHelper($scope.scene, 1, 1, 0, 0);
                         if(s.numOfTabs != 2) {
-                            initDrawTabHelper($scope.scene, 2, -1.5, 0, 0);
-                            initDrawTabHelper($scope.scene, 3, 1.5, 0, 0);
+                            initDrawTabHelper($scope.scene, 2, -1, 0, 0);
+                            initDrawTabHelper($scope.scene, 3, 1, 0, 0);
                         }else{
                             //remove current bottom tabs
                             if (_.isEmpty($scope.currentTabObj[2]) == false) {
@@ -638,6 +638,7 @@
                     }
 
                     // load tab
+                    var tabMesh = {};
                     var meshPath = 'assets/models/' + shoe.name + '/' + shoe.name;
                     var texturePath = 'assets/models/texture/tabs/' + tab.sku;
                     var textureMap = THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg');
@@ -647,18 +648,18 @@
                     loader.load(meshPath + '-tab-' + side + '-' + whichTab + '.js', function (geometry, materials) {
                         var material = new THREE.MeshPhongMaterial({map: textureMap, normalMap: normalMap, shininess: 35});
                         geometry.dynamic = true;
-                        $scope.tabMesh[pos] = new THREE.Mesh(geometry, material);
-                        $scope.tabMesh[pos].receiveShadow = false;
-                        $scope.tabMesh[pos].castShadow = false;
-                        $scope.tabMesh[pos].rotation.y = 3 * Math.PI / 4;
-                        $scope.tabMesh[pos].position.x = x;
-                        $scope.tabMesh[pos].position.y = y;
-                        $scope.tabMesh[pos].position.z = z;
-                        $scope.tabMesh[pos].name = tab.name + '-' + whichTab  + '-' + side;
-                        $scope.group.add($scope.tabMesh[pos]);
+                        tabMesh[pos] = new THREE.Mesh(geometry, material);
+                        tabMesh[pos].receiveShadow = false;
+                        tabMesh[pos].castShadow = false;
+                        tabMesh[pos].rotation.y = Math.PI;
+                        tabMesh[pos].position.x = x;
+                        tabMesh[pos].position.y = y;
+                        tabMesh[pos].position.z = z;
+                        tabMesh[pos].name = tab.name + '-' + whichTab  + '-' + side;
+                        $scope.group.add(tabMesh[pos]);
 
                         // remember current tab object
-                        $scope.currentTabObj[pos] = $scope.tabMesh[pos];
+                        $scope.currentTabObj[pos] = tabMesh[pos];
                         console.log("currentTabObj[" + pos.toString() +"]");
                         console.log($scope.currentTabObj[pos].name);
                     });

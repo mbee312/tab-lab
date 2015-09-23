@@ -247,7 +247,7 @@
                 $scope.setTab($scope.tabList[index], 2);
                 $scope.updateTabTexture($scope.scene, 0);
                 if(shoe.numOfTabs != 2) {
-                    $scope.updateTabs($scope.scene, 2);
+                    $scope.updateTabTexture($scope.scene, 2);
                 }
                 var tabRight = tabLabProperties.getTab(0);
                 cartProperties.updateCart(tabRight, "tabRight");
@@ -257,9 +257,9 @@
                 var shoe = tabLabProperties.getShoe();
                 $scope.setTab($scope.tabList[index], 1);
                 $scope.setTab($scope.tabList[index], 3);
-                $scope.updateTabs($scope.scene, 1);
+                $scope.updateTabTexture($scope.scene, 1);
                 if(shoe.numOfTabs != 2) {
-                    $scope.updateTabs($scope.scene, 3);
+                    $scope.updateTabTexture($scope.scene, 3);
                 }
                 var tabLeft = tabLabProperties.getTab(1);
                 cartProperties.updateCart(tabLeft, "tabLeft");
