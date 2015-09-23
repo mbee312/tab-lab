@@ -109,10 +109,10 @@
                 tabs[n] = temp;
             }
             tabLabProperties.setAllTabs(tabs)
-            $scope.updateTabs($scope.scene, 0);
-            $scope.updateTabs($scope.scene, 1);
-            $scope.updateTabs($scope.scene, 2);
-            $scope.updateTabs($scope.scene, 3);
+            $scope.updateTabTexture($scope.scene, 0);
+            $scope.updateTabTexture($scope.scene, 1);
+            $scope.updateTabTexture($scope.scene, 2);
+            $scope.updateTabTexture($scope.scene, 3);
 
         }; //end shuffle ()
 
@@ -208,27 +208,32 @@
                     // save old shoe for comparison
                     var oldShoe = $scope.currentShoeObj["shoe"];
                     console.log("old shoe is:");
+                    console.log(oldShoe.name);
                     console.log(oldShoe);
                 }
                 $scope.setShoe($scope.shoeList[index]);
 
-                var shoe = tabLabProperties.getShoe();
+                var shoe = $scope.shoeList[index];
 
-                cartProperties.updateCart(shoe, "shoe");
-                if(oldShoe.name == shoe.name.toString()){
-                    $scope.updateShoeTexture($scope.scene, $scope.group, shoe.name, "left");
-                    $scope.updateShoeTexture($scope.scene, $scope.group, shoe.name, "right");
+            console.log("new shoe is:");
+            console.log(shoe.name);
+            console.log(shoe);
+
+
+                if(oldShoe.name === shoe.name){
+                    $scope.updateShoeTexture($scope.scene, $scope.group, shoe, "left");
+                    $scope.updateShoeTexture($scope.scene, $scope.group, shoe, "right");
                 }else {
 
-                    $scope.drawShoe($scope.scene, 'left', 1.5);
-                    $scope.drawShoe($scope.scene, 'right', -1.5);
-
+                    $scope.reDrawShoe($scope.scene, 'left', 1);
+                    $scope.reDrawShoe($scope.scene, 'right', -1);
+/*
                     // redraw tabs
-                    $scope.drawTabs($scope.scene, 0, -1.5, 0, 0);
-                    $scope.drawTabs($scope.scene, 1, 1.5, 0, 0);
+                 //   $scope.drawTabs($scope.scene, 0, -1, 0, 0);
+                 //   $scope.drawTabs($scope.scene, 1, 1, 0, 0);
                     if(shoe.numOfTabs != 2) {
-                        $scope.drawTabs($scope.scene, 2, -1.5, 0, 0);
-                        $scope.drawTabs($scope.scene, 3, 1.5, 0, 0);
+                        $scope.drawTabs($scope.scene, 2, -1, 0, 0);
+                        $scope.drawTabs($scope.scene, 3, 1, 0, 0);
                     }else{
                         //remove current bottom tabs
                         if (_.isEmpty($scope.currentTabObj[2]) == false) {
@@ -237,8 +242,9 @@
                         if (_.isEmpty($scope.currentTabObj[3]) == false) {
                             $scope.removeFromScene($scope.scene, $scope.currentTabObj[3]);
                         }
-                    }
+                    }*/
                 }
+            cartProperties.updateCart(shoe, "shoe");
         });
 
         $scope.$on('new-tab-right-index', function(event, index) {
