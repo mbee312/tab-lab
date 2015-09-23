@@ -1,5 +1,7 @@
-(function () {
+(function ($) {
     'use strict';
+
+    var assetRoot = "/tab-lab/";
 
     // Declare app level module which depends on views, and components
     var tabLabApp = angular.module('tabLabApp',
@@ -78,7 +80,7 @@
             'cartProperties',
             function ($scope, $rootScope, $q, $http, $mdDialog, $mdToast, $animate, $window, tabLabProperties, sizeProperties, sliderProperties, cartProperties) {
 
-                $scope.MENUIMGPATH = "assets/media/thumbnails/";
+                $scope.MENUIMGPATH = assetRoot + "assets/media/thumbnails/";
                 // Tabs on canvas List Arrays
                 $scope.tabs = {};
                 $scope.tabsSelected = [];
@@ -125,8 +127,8 @@
                         $scope.shoeList[i].map = [];
                         $scope.shoeList[i].normalMap = [];
 
-                        texturePathLeft = 'assets/models/texture/shoe/' + s.name + '/left/' + s.sku;
-                        texturePathRight = 'assets/models/texture/shoe/' + s.name + '/right/' + s.sku;
+                        texturePathLeft = assetRoot + 'assets/models/texture/shoe/' + s.name + '/left/' + s.sku;
+                        texturePathRight = assetRoot + 'assets/models/texture/shoe/' + s.name + '/right/' + s.sku;
                         imgMap['left'] = new Image();
                         imgMap['left'].src = texturePathLeft + '/Difuse.jpg';
                         $scope.shoeList[i].map['left'] =  imgMap['left'];
@@ -336,7 +338,7 @@
                         return deferred.promise;
                     }
 
-                    $http.get('assets/data/data.json').success(function (data) {
+                    $http.get(assetRoot + 'assets/data/data.json').success(function (data) {
                         $scope.dataOptions = data;
                         $scope.loaded.push('dataOptions');
                         $scope.shoeSizeOptions = data.shoeSizes;
@@ -535,7 +537,7 @@
                     console.log($scope.currentShoeObj["shoe"]);
 
                     // load shoe
-                    var shoePath = 'assets/models/' + shoe.name + '/' + shoe.name;
+                    var shoePath = assetRoot + '/assets/models/' + shoe.name + '/' + shoe.name;
                     var loader = new THREE.JSONLoader();
                     var textureMap = THREE.ImageUtils.loadTexture(shoe.map[side].src);
                     var normalMap = THREE.ImageUtils.loadTexture(shoe.normalMap[side].src);
@@ -571,8 +573,8 @@
 
                     // load tab
                     var tabMesh = {};
-                    var meshPath = 'assets/models/' + shoe.name + '/' + shoe.name;
-                    var texturePath = 'assets/models/texture/tabs/' + tab.sku;
+                    var meshPath = assetRoot + 'assets/models/' + shoe.name + '/' + shoe.name;
+                    var texturePath = assetRoot + 'assets/models/texture/tabs/' + tab.sku;
                     var textureMap = THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg');
                     var normalMap = THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg');
                     var loader = new THREE.JSONLoader();
@@ -662,7 +664,7 @@
                     }
 
                     // load path
-                    var texturePath = 'assets/models/texture/tabs/' + t.sku;
+                    var texturePath = assetRoot + 'assets/models/texture/tabs/' + t.sku;
                     console.log("tabObj name:");
                     console.log(tabObj.name);
                     var updateMe = scene.getObjectByName(s.name).getObjectByName(tabObj.name);
@@ -940,4 +942,4 @@
 
     });
 
-})();
+})(jQuery);

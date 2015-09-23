@@ -2,7 +2,7 @@
  * CartCtrl.js
  * Created by albertllavore on 8/28/15.
  */
-(function () {
+(function ($) {
     'use strict';
 
     var app = angular.module('tabLabApp');
@@ -138,5 +138,4 @@
         }
 
     }]);
-    console.log(app.control)
-}());
+}(jQuery));
