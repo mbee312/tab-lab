@@ -2,7 +2,7 @@
 /**
  * SliderCtrl.js
  */
-(function () {
+(function ($) {
     'use strict';
 
     var app = angular.module('tabLabApp');
@@ -270,4 +270,4 @@
         });
 
     }]);
-}());
+}(jQuery));

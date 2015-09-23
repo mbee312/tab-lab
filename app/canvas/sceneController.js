@@ -1,7 +1,7 @@
 /**
 * SceneCtrl.js
 */
-(function () {
+(function ($) {
     'use strict';
 
     var app = angular.module('tabLabApp');
@@ -20,4 +20,4 @@
         var finalRotationY;
 }]);
 
-}());
+}(jQuery));
