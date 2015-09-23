@@ -364,7 +364,14 @@
                  */
                 $scope.container = document.querySelector('.tablab-viewer');
                 $scope.renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
-                $scope.clock = new THREE.Clock();
+                $scope.stats = new Stats();
+                $scope.stats.domElement.style.position = 'absolute';
+                $scope.stats.domElement.style.top = '0px';
+              /*  $scope.container.appendChild( $scope.stats.domElement );
+                // for debuging stats
+                $scope.interval = setInterval( debugInfo, 50 );
+              */
+
                 $scope.scene;
                 $scope.camera;
                 $scope.loader;
@@ -456,7 +463,7 @@
                     $scope.scene.add(lightAmbient);
                     $scope.scene.add($scope.camera);
                     $scope.renderer.setSize($scope.WIDTH, $scope.HEIGHT);
-                    $scope.renderer.setClearColor(0xffffff, 1);
+                    $scope.renderer.setClearColor(0xffffff,.2);
                     $scope.container.appendChild($scope.renderer.domElement);
 
                     $( document ).ready(function() {
@@ -544,6 +551,7 @@
 
                     loader.load(shoePath + '-shoe-'+ side + '.js', function (geometry, materials) {
                         var material = new THREE.MeshPhongMaterial({map: textureMap, normalMap: normalMap, shininess: 35});
+                        material.side = THREE.DoubleSide;
                         geometry.dynamic = true;
                         shoeMesh[side] = new THREE.Mesh(geometry, material);
                         shoeMesh[side].receiveShadow = false;
@@ -688,6 +696,7 @@
                 window.onload = function (){
                     $scope.findAndSetCanvasDimensions();
                     $scope.initLoad();
+                    animate();
                 };
 
                 function onWindowResize (){
@@ -772,7 +781,14 @@
 
                 function animate() {
                     requestAnimationFrame( animate );
-                    render();
+                    $scope.render();
+                 //   $scope.stats.update();
+                }
+
+                function debugInfo()
+                {
+                    $('#debug').html("mouseX : " + mouseX + "   mouseY : " + mouseY );
+
                 }
 
 
