@@ -518,6 +518,10 @@
                     //    $scope.renderer.shadowMapAutoUpdate = true;
                     $scope.renderer.setClearColor(0xffffff, 1);
                     $scope.container.appendChild($scope.renderer.domElement);
+
+                    document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+                    document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+                    document.addEventListener( 'touchmove', onDocumentTouchMove, false );
                 };
 
                 $scope.render = function () {
@@ -804,7 +808,87 @@
                     $scope.findAndSetCanvasDimensions();
                     $scope.drawShoe($scope.scene, 'left', 1.5);
                     $scope.drawShoe($scope.scene, 'right', -1.5);
+                };
+
+                function onDocumentMouseDown( event ) {
+
+                    event.preventDefault();
+
+                    document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+                    document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+                    document.addEventListener( 'mouseout', onDocumentMouseOut, false );
+
+                    mouseXOnMouseDown = event.clientX - windowHalfX;
+                    targetRotationOnMouseDownX = targetRotationX;
+
+                    mouseYOnMouseDown = event.clientY - windowHalfY;
+                    targetRotationOnMouseDownY = targetRotationY;
+
                 }
+
+                function onDocumentMouseMove( event ) {
+
+                    mouseX = event.clientX - windowHalfX;
+                    mouseY = event.clientY - windowHalfY;
+
+                    targetRotationY = targetRotationOnMouseDownY + (mouseY - mouseYOnMouseDown) * 0.02;
+                    targetRotationX = targetRotationOnMouseDownX + (mouseX - mouseXOnMouseDown) * 0.02;
+
+                }
+
+                function onDocumentMouseUp( event ) {
+
+                    document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+                    document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+                    document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
+
+                }
+
+                function onDocumentMouseOut( event ) {
+
+                    document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+                    document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+                    document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
+
+                }
+
+                function onDocumentTouchStart( event ) {
+
+                    if ( event.touches.length == 1 ) {
+
+                        event.preventDefault();
+
+                        mouseXOnMouseDown = event.touches[ 0 ].pageX - windowHalfX;
+                        targetRotationOnMouseDownX = targetRotationX;
+
+                        mouseYOnMouseDown = event.touches[ 0 ].pageY - windowHalfY;
+                        targetRotationOnMouseDownY = targetRotationY;
+
+                    }
+
+                }
+
+                function onDocumentTouchMove( event ) {
+
+                    if ( event.touches.length == 1 ) {
+
+                        event.preventDefault();
+
+                        mouseX = event.touches[ 0 ].pageX - windowHalfX;
+                        targetRotationX = targetRotationOnMouseDownX + ( mouseX - mouseXOnMouseDown ) * 0.05;
+
+                        mouseY = event.touches[ 0 ].pageY - windowHalfY;
+                        targetRotationY = targetRotationOnMouseDownY + (mouseY - mouseYOnMouseDown) * 0.05;
+
+                    }
+
+                }
+
+                function animate() {
+                    requestAnimationFrame( animate );
+                    render();
+                }
+
 
                 /*
                  END Canvas Drawing
