@@ -459,10 +459,12 @@
                     $scope.renderer.setClearColor(0xffffff, 1);
                     $scope.container.appendChild($scope.renderer.domElement);
 
-                    document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-                    document.addEventListener( 'touchstart', onDocumentTouchStart, false );
-                    document.addEventListener( 'touchmove', onDocumentTouchMove, false );
-                    window.addEventListener( 'resize', onWindowResize, false );
+                    $( document ).ready(function() {
+                        document.getElementById("white-bg-mobile").addEventListener( 'mousedown', onDocumentMouseDown, false );
+                        document.getElementById("white-bg-mobile").addEventListener( 'touchstart', onDocumentTouchStart, false );
+                        document.getElementById("white-bg-mobile").addEventListener( 'touchmove', onDocumentTouchMove, false );
+                        window.addEventListener( 'resize', onWindowResize, false );
+                    });
                 };
 
                 $scope.render = function () {
