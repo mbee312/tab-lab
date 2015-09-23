@@ -404,72 +404,19 @@
 
                 $scope.findAndSetCanvasDimensions = function(){
                     $scope.isMobile = true;
-
                     var windowWidth = window.innerWidth;
 
-                    if(windowWidth < 321){
-                        $scope.WIDTH = windowWidth*0.93;
-                        $scope.HEIGHT = windowWidth*0.93;
-
-                        // iphone 6 portrait
-                    }else if(windowWidth < 376) {
-                        $scope.WIDTH = windowWidth*0.94;
-                        $scope.HEIGHT = windowWidth*0.94;
-
-                        // iphone 6 Plus portrait
-                    }else if(windowWidth < 415) {
-                        $scope.WIDTH = windowWidth * 0.90;
-                        $scope.HEIGHT = windowWidth * 0.90;
-
-                    }else if(windowWidth < 468){
-                            $scope.WIDTH = windowWidth*0.80;
-                            $scope.HEIGHT = windowWidth*0.80;
-
-                        // iphone 4 landscape
-                    } else if (windowWidth < 481){
-                        $scope.WIDTH = windowWidth*0.39;
-                        $scope.HEIGHT = windowWidth*0.39;
-
-                        // iphone 5 landscape
-                    } else if (windowWidth < 569){
-                        $scope.WIDTH = windowWidth*0.39;
-                        $scope.HEIGHT = windowWidth*0.39;
-
-                        // Samsung Galaxy Note II landscape
-                    } else if (windowWidth < 641){
-                        $scope.WIDTH = windowWidth*0.39;
-                        $scope.HEIGHT = windowWidth*0.39;
-
-                        // iphone 6 landscape
-                    } else if (windowWidth < 668){
-                        $scope.WIDTH = windowWidth*0.44;
-                        $scope.HEIGHT = windowWidth*0.44;
-
-                        // iphone 6 Plus landscape
-                    } else if (windowWidth < 739){
-                        $scope.WIDTH = windowWidth*0.44;
-                        $scope.HEIGHT = windowWidth*0.44;
-
-                        // iPad Mini Portrait
-                    } else if(windowWidth < 769){
+                    if(windowWidth > 768){
                         $scope.isMobile = false;
-                        $scope.WIDTH = windowWidth*0.48;
-                        $scope.HEIGHT = windowWidth*0.48;
-
                         // the rest of the desktop screens
-                    }else if(window.innerWidth < 1025){
-                        $scope.isMobile = false;
-                        $scope.WIDTH = windowWidth*0.44;
-                        $scope.HEIGHT = windowWidth*0.44;
-                    }else if(window.innerWidth < 1201){
-                        $scope.isMobile = false;
-                        $scope.WIDTH = windowWidth*0.38;
-                        $scope.HEIGHT = windowWidth*0.38;
-                    }else{
-                        $scope.isMobile = false;
-                        $scope.WIDTH = windowWidth*0.38;
-                        $scope.HEIGHT = windowWidth*0.38;
-                    } //end if-else
+                    }
+
+                    var s = "#white-bg-mobile";
+                    var canvasWindowWidth = $(s).css('width').replace(/[^-\d\.]/g, '') - 10;
+                    var canvasWindowHeight = $(s).css('height').replace(/[^-\d\.]/g, '') - 10;
+                    $scope.WIDTH = Number(canvasWindowWidth);
+                    $scope.HEIGHT = Number(canvasWindowHeight);
+
                 }; //end findAndSetCanvasDimensions()
 
                 $scope.createScene = function (){
@@ -752,7 +699,6 @@
                 function onWindowResize (){
                     $scope.findAndSetCanvasDimensions();
                     $scope.camera.updateProjectionMatrix();
-
                     $scope.renderer.setSize($scope.WIDTH, $scope.HEIGHT);
                 }
 
