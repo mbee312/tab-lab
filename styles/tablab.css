@@ -349,21 +349,9 @@ canvas {
     z-index: 30;
     position: absolute;
     opacity: 1;
+    padding-left: 10px;
 }
 
-.canvas.tcanvas {
-    z-index: 29;
-}
-
-canvas#plae-chef-canvas-tab-top {
-    z-index: 30;
-}
-
-/*
-.canvas.container {
-    width: 1014px;
-    height: 512px;
-} */
 #white-bg-mobile {
     width: 96%;
     height: 380px;
@@ -977,8 +965,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
 }
 @media screen and (min-width: 400px) {
-    canvas {
-    }
     .bgimage.ng-scope.slick-slide.slick-active {
         transform: translateX(-35px);
     }
@@ -1248,8 +1234,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
 }
 
 @media screen and (min-width: 500px){
-    canvas {
-    }
     .md-raised.selector.tab {
         top: 105px;
         width: 65px;
