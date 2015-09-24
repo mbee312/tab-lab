@@ -74,7 +74,6 @@
         };//end getSizeSelectMode ()
 
         $scope.showSize = function(size) {
-            console.log(size);
             return size.show;
         };//end showSize) ()
 
@@ -109,6 +108,10 @@
 
                 // 8-9=S 9.5-12.5=M 13-3-L
                 switch (size.size) {
+                    case "6":
+                    case "6.5":
+                    case "7":
+                    case "7.5":
                     case "8":
                     case "8.5":
                     case "9":
