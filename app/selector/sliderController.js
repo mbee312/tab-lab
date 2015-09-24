@@ -60,6 +60,18 @@
             $scope.moveSlider('tab', pos);
         });
 
+        $scope.sliderSetShoe = function(i){
+            $scope.$broadcast('new-shoe-index', i);
+        };
+
+        $scope.sliderSetLeftTab = function(i){
+            $scope.$broadcast('new-tab-left-index', i);
+        };
+
+        $scope.sliderSetRightTab = function(i){
+            $scope.$broadcast('new-tab-right-index', i);
+        };
+
         $scope.moveSlider = function (type, pos){
             var selector = "#" + type;
             var screen = "";
