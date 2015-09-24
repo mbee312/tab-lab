@@ -121,11 +121,13 @@
                     var texturePathRight;
                     var imgMap = {};
                     var imgNormalMap = {};
+                    var specularMap = {};
                     var i;
                     for (i = 0 ; i < getNumOfShoesInList() ; i++ ){
                         s = $scope.shoeList[i];
                         $scope.shoeList[i].map = [];
                         $scope.shoeList[i].normalMap = [];
+                        $scope.shoeList[i].specularMap = [];
 
                         texturePathLeft = assetRoot + 'assets/models/texture/shoe/' + s.name + '/left/' + s.sku;
                         texturePathRight = assetRoot + 'assets/models/texture/shoe/' + s.name + '/right/' + s.sku;
@@ -144,6 +146,24 @@
                         imgNormalMap['right'] = new Image();
                         imgNormalMap['right'].src = texturePathRight + '/Normal.jpg';
                         $scope.shoeList[i].normalMap['right'] = imgNormalMap['right'];
+
+                        try {
+                            specularMap['left'] = new Image();
+                            specularMap['left'].src = texturePathLeft + '/specular-50.jpg';
+                            $scope.shoeList[i].specularMap['left'] = specularMap['left'];
+                        }
+                        catch(err) {
+                          //  console.log(err);
+                        }
+
+                        try {
+                            specularMap['right'] = new Image();
+                            specularMap['right'].src = texturePathRight + '/specular-50.jpg';
+                            $scope.shoeList[i].specularMap['right'] = specularMap['right'];
+                        }
+                        catch(err) {
+                           // console.log(err);
+                        }
                     }
                 };
 
@@ -375,7 +395,6 @@
 
 
                 $scope.scene;
-                $scope.camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
                 $scope.loader;
                 $scope.WIDTH = 400;
                 $scope.HEIGHT = 400;
@@ -401,11 +420,12 @@
 
                 var finalRotationY;
 
-                var VIEW_ANGLE = 55;
+                var VIEW_ANGLE = 45;
                 var ASPECT = $scope.WIDTH / $scope.HEIGHT;
                 var NEAR = 1;
-                var FAR = 500;
+                var FAR = 1000;
                 $scope.isMobile = false;
+                $scope.camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
 
                 $scope.isMobileScreen = function (){
                     return $scope.isMobile;
@@ -430,7 +450,8 @@
 
                 $scope.createScene = function (){
 
-                    $scope.camera.position.set(0, 3, 7);
+                    $scope.camera.position.set(0, 6, 6);
+                    $scope.camera.lookAt(new THREE.Vector3 (0.0, -1.0, 0.0));
                     $scope.scene = new THREE.Scene();
                     var lightKey = new THREE.DirectionalLight(0xffffff);
                     lightKey.position.set(5, 5, 5);
@@ -465,7 +486,7 @@
                     $scope.scene.add(lightAmbient);
                     $scope.scene.add($scope.camera);
                     $scope.renderer.setSize($scope.WIDTH, $scope.HEIGHT);
-                    $scope.renderer.setClearColor(0xffffff,.2);
+                    $scope.renderer.setClearColor(0xffffff,0);
                     $scope.container.appendChild($scope.renderer.domElement);
 
                     $( document ).ready(function() {
@@ -505,15 +526,15 @@
                     if(tabLabProperties.isShoeSelected()){
                         var s = tabLabProperties.getShoe();
 
-                        initDrawShoeHelper($scope.scene, $scope.group, s, 'left', 1, 2, 0);
-                        initDrawShoeHelper($scope.scene, $scope.group, s, 'right', -1, 2, 0);
+                        initDrawShoeHelper($scope.scene, $scope.group, s, 'left', 1, -1, 0);
+                        initDrawShoeHelper($scope.scene, $scope.group, s, 'right', -1, -1, 0);
 
                         // draw tabs
-                        initDrawTabHelper($scope.scene, 0, -1, 2, 0);
-                        initDrawTabHelper($scope.scene, 1, 1, 2, 0);
+                        initDrawTabHelper($scope.scene, 0, -1, -1, 0);
+                        initDrawTabHelper($scope.scene, 1, 1, -1, 0);
                         if(s.numOfTabs != 2) {
-                            initDrawTabHelper($scope.scene, 2, -1, 2, 0);
-                            initDrawTabHelper($scope.scene, 3, 1, 2, 0);
+                            initDrawTabHelper($scope.scene, 2, -1, -1, 0);
+                            initDrawTabHelper($scope.scene, 3, 1, -1, 0);
                         }else{
                             //remove current bottom tabs
                             if (_.isEmpty($scope.currentTabObj[2]) == false) {
@@ -541,18 +562,20 @@
                 function initDrawShoeHelper(scene, group, shoe, side, x, y, z){
                     var shoeMesh = {};
 
-                    // remember current shoe object
-                    $scope.currentShoeObj["shoe"] = shoe;
-                    console.log($scope.currentShoeObj["shoe"]);
-
                     // load shoe
                     var shoePath = assetRoot + '/assets/models/' + shoe.name + '/' + shoe.name;
                     var loader = new THREE.JSONLoader();
                     var textureMap = THREE.ImageUtils.loadTexture(shoe.map[side].src);
                     var normalMap = THREE.ImageUtils.loadTexture(shoe.normalMap[side].src);
+                    var specularMap;
+                    if(shoe.specularMap[side]) {
+                        specularMap = THREE.ImageUtils.loadTexture(shoe.specularMap[side].src);
+                        console.log("specularMap:");
+                        console.log(specularMap);
+                    }
 
                     loader.load(shoePath + '-shoe-'+ side + '.js', function (geometry, materials) {
-                        var material = new THREE.MeshPhongMaterial({map: textureMap, normalMap: normalMap, shininess: 35});
+                        var material = new THREE.MeshPhongMaterial({map: textureMap, normalMap: normalMap, specularMap: specularMap, shininess: 35});
                         material.side = THREE.DoubleSide;
                         geometry.dynamic = true;
                         shoeMesh[side] = new THREE.Mesh(geometry, material);
@@ -564,6 +587,12 @@
                         shoeMesh[side].position.z = z;
                         shoeMesh[side].name = shoe.name + "-" + side;
                         $scope.group.add( shoeMesh[side]);
+
+                        // remember the current shoe object
+                        // remember current shoe object
+                        $scope.currentShoeObj = shoe;
+                        console.log("currentShoeObj:");
+                        console.log($scope.currentShoeObj);
                     });
                 }
 
@@ -610,23 +639,61 @@
                     });
                 }
 
-                $scope.updateShoeTexture = function (scene, group, og, shoe){
+                $scope.updateShoeTexture = function (scene, group, og, shoe, side){
+                /*
+                    if(og.name == shoe.name){
+                        // load path
+                        var shoeObj = $scope.currentShoeObj;
+                        var texturePath =  '/assets/models/texture/shoe/' + shoe.name + '/' + side + '/' + shoe.sku;
+                        var textureMap = THREE.ImageUtils.loadTexture(texturePath + '/difuse.jpg');
+                        var normalMap = THREE.ImageUtils.loadTexture(texturePath + '/Normal.jpg');
+                        var specularMap;
+                        if(shoe.specularMap[side] != null) {
+                            specularMap = THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg');
+                            console.log("specularMap:");
+                            console.log(specularMap);
+                        }
 
-                    var i = $scope.scene.getObjectByName("group").children.length - 1;
+                        console.log("shoeObj:");
+                        console.log(shoeObj);
+                        var updateMe = scene.getObjectByName("group").getObjectByName(shoeObj.name + "-" + side);
+
+                        console.log("updateMe object:");
+                        console.log(updateMe);
+
+                        updateMe.material.map = THREE.ImageUtils.loadTexture(textureMap);
+                        updateMe.material.normalMap = THREE.ImageUtils.loadTexture(normalMap);
+
+                        if(specularMap != null) {
+                            updateMe.material.specularMap = THREE.ImageUtils.loadTexture(specularMap);
+                        }
+                        updateMe.material.needsUpdate = true;
+                       // updateMe.material.map.needsUpdate = true;
+
+
+                   }else{
+                */
+                    var grp = $scope.scene.getObjectByName("group");
+                    var i = grp.children.length - 1;
+
                     while(i >= 0) {
                         console.log("updateTabTexture:");
                         console.log($scope.scene.getObjectByName("group").children[i].name);
-                        $scope.scene.getObjectByName("group").children[i].material.dispose();
-                        $scope.scene.getObjectByName("group").remove($scope.scene.getObjectByName("group").children[i]);
-                        $scope.group.remove($scope.scene.getObjectByName("group").children[i]);
+                        grp.children[i].material.dispose();
+                        grp.remove(grp.getObjectByName(grp.children[i].name));
                         i--;
                     }
                     initDrawScene();
+                //    }
+                    console.log("in my group: ");
+                    console.log($scope.group);
+                    console.log("in my scene: ");
+                    console.log($scope.scene);
                 };
 
                 $scope.updateTabTexture = function (scene, pos){
                     var s = getShoe();
-
+                /*
                     var i = $scope.scene.getObjectByName("group").children.length - 1;
                     while(i >= 0) {
                         console.log("updateTabTexture:");
@@ -636,14 +703,16 @@
                             $scope.scene.getObjectByName("group").remove($scope.scene.getObjectByName("group").children[i]);
                         }
                         i--;
+
+
                     }
 
                     // draw tabs
-                    initDrawTabHelper($scope.scene, 0, -1, 2, 0);
-                    initDrawTabHelper($scope.scene, 1, 1, 2, 0);
+                    initDrawTabHelper($scope.scene, 0, -1, -1, 0);
+                    initDrawTabHelper($scope.scene, 1, 1, -1, 0);
                     if(s.numOfTabs != 2) {
-                        initDrawTabHelper($scope.scene, 2, -1, 2, 0);
-                        initDrawTabHelper($scope.scene, 3, 1, 2, 0);
+                        initDrawTabHelper($scope.scene, 2, -1, -1, 0);
+                        initDrawTabHelper($scope.scene, 3, 1, -1, 0);
                     }else{
                         //remove current bottom tabs
                         if (_.isEmpty($scope.currentTabObj[2]) == false) {
@@ -653,14 +722,8 @@
                             removeFromScene($scope.scene, $scope.currentTabObj[3]);
                         }
                     }
+                    */
 
-                    console.log("in my group: ");
-                    console.log($scope.group);
-                    console.log("in my scene: ");
-                    console.log($scope.scene);
-
-                    /*
-                    var s = getShoe();
                     var tabObj = $scope.currentTabObj[pos];
                     var t = getTab(pos);
                     var side = "left";
@@ -675,14 +738,18 @@
 
                     // load path
                     var texturePath = assetRoot + 'assets/models/texture/tabs/' + t.sku;
-                    console.log("tabObj name:");
-                    console.log(tabObj.name);
-                    var updateMe = scene.getObjectByName(s.name).getObjectByName(tabObj.name);
+                    console.log("tabObj:");
+                    console.log(tabObj);
+                    var updateMe = scene.getObjectByName("group").getObjectByName(tabObj.name);
 
                     updateMe.material.map = THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg');
                     updateMe.material.normalMap = THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg');
                     updateMe.material.needsUpdate = true;
-                    */
+
+                    console.log("in my group: ");
+                    console.log($scope.group);
+                    console.log("in my scene: ");
+                    console.log($scope.scene);
 
                 };
 
