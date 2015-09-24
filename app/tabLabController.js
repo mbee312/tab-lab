@@ -653,7 +653,7 @@
 
                 $scope.updateTabTexture = function (scene, pos){
                     var s = getShoe();
-
+                /*
                     var i = $scope.scene.getObjectByName("group").children.length - 1;
                     while(i >= 0) {
                         console.log("updateTabTexture:");
@@ -663,6 +663,8 @@
                             $scope.scene.getObjectByName("group").remove($scope.scene.getObjectByName("group").children[i]);
                         }
                         i--;
+
+
                     }
 
                     // draw tabs
@@ -680,14 +682,8 @@
                             removeFromScene($scope.scene, $scope.currentTabObj[3]);
                         }
                     }
+                    */
 
-                    console.log("in my group: ");
-                    console.log($scope.group);
-                    console.log("in my scene: ");
-                    console.log($scope.scene);
-
-                    /*
-                    var s = getShoe();
                     var tabObj = $scope.currentTabObj[pos];
                     var t = getTab(pos);
                     var side = "left";
@@ -704,12 +700,17 @@
                     var texturePath = assetRoot + 'assets/models/texture/tabs/' + t.sku;
                     console.log("tabObj name:");
                     console.log(tabObj.name);
-                    var updateMe = scene.getObjectByName(s.name).getObjectByName(tabObj.name);
+                    var updateMe = scene.getObjectByName("group").getObjectByName(tabObj.name);
 
                     updateMe.material.map = THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg');
                     updateMe.material.normalMap = THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg');
                     updateMe.material.needsUpdate = true;
-                    */
+
+
+                    console.log("in my group: ");
+                    console.log($scope.group);
+                    console.log("in my scene: ");
+                    console.log($scope.scene);
 
                 };
 
