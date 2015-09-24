@@ -369,13 +369,13 @@
                 $scope.stats = new Stats();
                 $scope.stats.domElement.style.position = 'absolute';
                 $scope.stats.domElement.style.top = '0px';
-              /*  $scope.container.appendChild( $scope.stats.domElement );
+                $scope.container.appendChild( $scope.stats.domElement );
                 // for debuging stats
                 $scope.interval = setInterval( debugInfo, 50 );
-              */
+
 
                 $scope.scene;
-                $scope.camera;
+                $scope.camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
                 $scope.loader;
                 $scope.WIDTH = 400;
                 $scope.HEIGHT = 400;
@@ -429,7 +429,7 @@
                 }; //end findAndSetCanvasDimensions()
 
                 $scope.createScene = function (){
-                    $scope.camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
+
                     $scope.camera.position.set(0, 3, 7);
                     $scope.scene = new THREE.Scene();
                     var lightKey = new THREE.DirectionalLight(0xffffff);
@@ -784,7 +784,7 @@
                 function animate() {
                     requestAnimationFrame( animate );
                     $scope.render();
-                 //   $scope.stats.update();
+                   // $scope.stats.update();
                 }
 
                 function debugInfo()
