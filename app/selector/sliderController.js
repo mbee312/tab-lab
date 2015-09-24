@@ -96,13 +96,12 @@
         };
 
         $scope.random = function (){
+            /*
             if(tabLabProperties.isShoeSelected()){
                 // save old shoe for comparison
                 var oldShoe = $scope.currentShoeObj;
-                console.log("old shoe is:");
-                console.log(oldShoe.name);
-                console.log(oldShoe);
             }
+            */
             var i = $scope.setRandomIndex('shoe', 0);
             var j = $scope.setRandomIndex('tab', 0);
             var k = $scope.setRandomIndex('tab', 1);
@@ -114,7 +113,6 @@
             $scope.setTab($scope.tabList[k], 3);
 
             $scope.$broadcast('new-shoe-index', i);
-            
             $scope.$broadcast('new-tab-left-index-random', j);
             $scope.$broadcast('new-tab-right-index-random', k);
 
@@ -237,11 +235,6 @@
             $scope.setShoe($scope.shoeList[index]);
 
             var shoe = $scope.shoeList[index];
-
-            console.log("new shoe is:");
-            console.log(shoe.name);
-            console.log(shoe);
-
             $scope.updateShoeTexture($scope.scene, $scope.group, oldShoe, shoe);
             cartProperties.updateCart(shoe, "shoe");
         });
