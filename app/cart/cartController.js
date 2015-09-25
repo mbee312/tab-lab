@@ -47,8 +47,6 @@
 
         });
 
-
-
         $scope.remove = function (side) {
             switch (side) {
                 case "left":

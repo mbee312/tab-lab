@@ -132,24 +132,24 @@
                         texturePathLeft = assetRoot + 'assets/models/texture/shoe/' + s.name + '/left/' + s.sku;
                         texturePathRight = assetRoot + 'assets/models/texture/shoe/' + s.name + '/right/' + s.sku;
                         imgMap['left'] = new Image();
-                        imgMap['left'].src = texturePathLeft + '/Difuse.jpg';
+                        imgMap['left'].src = texturePathLeft + '/diffuse.jpg';
                         $scope.shoeList[i].map['left'] =  imgMap['left'];
 
                         imgMap['right'] = new Image();
-                        imgMap['right'].src = texturePathRight + '/Difuse.jpg';
+                        imgMap['right'].src = texturePathRight + '/diffuse.jpg';
                         $scope.shoeList[i].map['right'] =  imgMap['right'];
 
                         imgNormalMap['left'] = new Image();
-                        imgNormalMap['left'].src = texturePathLeft + '/Normal.jpg';
+                        imgNormalMap['left'].src = texturePathLeft + '/normal.jpg';
                         $scope.shoeList[i].normalMap['left'] = imgNormalMap['left'];
 
                         imgNormalMap['right'] = new Image();
-                        imgNormalMap['right'].src = texturePathRight + '/Normal.jpg';
+                        imgNormalMap['right'].src = texturePathRight + '/normal.jpg';
                         $scope.shoeList[i].normalMap['right'] = imgNormalMap['right'];
 
                         try {
                             specularMap['left'] = new Image();
-                            specularMap['left'].src = texturePathLeft + '/specular-50.jpg';
+                            specularMap['left'].src = texturePathLeft + '/specular.jpg';
                             $scope.shoeList[i].specularMap['left'] = specularMap['left'];
                         }
                         catch(err) {
@@ -158,7 +158,7 @@
 
                         try {
                             specularMap['right'] = new Image();
-                            specularMap['right'].src = texturePathRight + '/specular-50.jpg';
+                            specularMap['right'].src = texturePathRight + '/specular.jpg';
                             $scope.shoeList[i].specularMap['right'] = specularMap['right'];
                         }
                         catch(err) {
@@ -676,9 +676,8 @@
                     var grp = $scope.scene.getObjectByName("group");
                     var i = grp.children.length - 1;
 
+                    // remove all meshes from 3D object
                     while(i >= 0) {
-                        console.log("updateTabTexture:");
-                        console.log($scope.scene.getObjectByName("group").children[i].name);
                         grp.children[i].material.dispose();
                         grp.remove(grp.getObjectByName(grp.children[i].name));
                         i--;
@@ -703,10 +702,7 @@
                             $scope.scene.getObjectByName("group").remove($scope.scene.getObjectByName("group").children[i]);
                         }
                         i--;
-
-
                     }
-
                     // draw tabs
                     initDrawTabHelper($scope.scene, 0, -1, -1, 0);
                     initDrawTabHelper($scope.scene, 1, 1, -1, 0);
@@ -722,7 +718,7 @@
                             removeFromScene($scope.scene, $scope.currentTabObj[3]);
                         }
                     }
-                    */
+                */
 
                     var tabObj = $scope.currentTabObj[pos];
                     var t = getTab(pos);
