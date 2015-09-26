@@ -15,6 +15,27 @@ h3 {
     font-weight: 500;
     line-height: 16px;
 }
+/* overrides to angular css that's altering the main page css */
+h6 {
+    font-size: 16px !important;
+    margin: 0 !important;
+}
+address {
+    color: #7c7c7c;
+}
+
+header .signup .txt {
+    margin-top: -8px;
+}
+
+.shipping-bar {
+    padding-top: 4px;
+}
+
+header .signup p.txt, .shipping-bar p {
+    line-height: normal;
+}
+/* end overrides */
 
 p {
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
@@ -29,11 +50,12 @@ p {
 }
 
 .rainbow {
-    background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
-    background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+    background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #26a9e0), color-stop(0.2, #37b34a), color-stop(0.4, #d91c5c), color-stop(0.6, #00a69c), color-stop(0.8, #f6921e),color-stop(1, #ec297b) );
+    background-image: gradient( linear, left top, right top, color-stop(0, #26a9e0), color-stop(0.2, #37b34a), color-stop(0.4, #d91c5c), color-stop(0.6, #00a69c), color-stop(0.8, #f6921e),color-stop(1, #ec297b) );
     color:transparent;
     -webkit-background-clip: text;
     background-clip: text;
+    font-weight: bold;
 }
 
 blockquote {
@@ -67,6 +89,14 @@ button.md-button.md-default-theme {
     text-transform: lowercase;
 }
 
+.md-button.md-default-theme.md-raised.cart-button {
+    background-color: #21aa50;
+    color: #fff;
+}
+
+.md-button.md-default-theme.md-raised.cart-button.addtocart {
+    margin: 0 15% 0 auto;
+}
 .md-button:hover {
     box-shadow: none;
     border: none;
@@ -87,6 +117,11 @@ md-checkbox {
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
     margin-top: 0px;
 }
+
+md-checkbox.md-default-theme.md-checked .md-icon {
+    background-color: #21aa50;
+}
+
 html.customizer.ng-scope {
     overflow-x: hidden !important;
 }
@@ -96,7 +131,7 @@ body.ng-scope {
 }
 .plae-chef-window {
     position: relative;
-    top: 20px;
+    top: 50px;
 }
 
 
@@ -333,15 +368,6 @@ button#bottom-next-button {
   position: absolute;
 }
 
-.shuffle {
-    text-transform: lowercase;
-    font-size: 1em;
-    font-weight: 500;
-    letter-spacing: 2px;
-    -webkit-transition: all 0.7s ease;
-    transition: all 0.7s ease;
-}
-
 /*  Canvas section   */
 /*                   */
 
@@ -514,6 +540,9 @@ md-checkbox#afo-fit-button {
 }
 .plae.basket p {
     font-size: 85%;
+    position:absolute;
+    left: -5px;
+    bottom: 16px;
 }
 
 .plae.basket.item {
@@ -529,11 +558,11 @@ md-checkbox#afo-fit-button {
 
 .plae.basket.item.left {
     position: absolute;
-    top: 130px;
+    top: 150px;
 }
 
 .plae.basket.item.right {
-    top: 220px;
+    top: 260px;
     position: absolute;
 }
 .details {
@@ -543,10 +572,15 @@ md-checkbox#afo-fit-button {
 }
 
 button.attr {
-    height: 80px;
+    height: 100px;
     width: 110%;
     left: 2%;
-    right: 2%
+    right: 2%;
+    margin-top:10px;
+}
+
+.subtotal h3 {
+    margin-left: 20px;
 }
 
 .attr {
@@ -630,7 +664,6 @@ hr {
     width: 100%;
     text-align: center;
     font-weight: 500 !important;
-    margin-left: -60px;
 }
 
 #tabs-h3 {
@@ -677,7 +710,7 @@ ul.plae.basket.list {
 .shuffle {
     text-transform: lowercase;
     font-size: 1em;
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: 1px;
     -webkit-transition: all 0.7s ease;
     transition: all 0.7s ease;
@@ -702,7 +735,7 @@ button#survey-button {
     position: absolute;
     left: 3%;
     right: 3%;
-    bottom: 2%;
+    bottom: 4%;
 }
 button#feedback-button {
 }
@@ -723,11 +756,11 @@ md-backdrop.md-opaque.md-default-theme {
 }
 
 button#edit {
-    top: 5px;
+    top: 10px;
     float: left;
     height: 30px;
     width: 40px;
-    left: 3.5%;
+    left: 4%;
     font-size: 150%;
 }
 
@@ -748,9 +781,9 @@ button#edit {
 .delete {
     float: right !important;
     height: 76px;
-    width: 39px;
+    width: 36px;
     right: -8%;
-    top: 2px;
+    top: 20px;
     position: absolute !important;
 }
 
@@ -1214,8 +1247,8 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .fa.fa-random.fa-2x{
         font-size: 1.6em;
     }
-    .cart-button {
-        width: 40%;
+    .cart-button.addtocart {
+        width: 200px;
     }
     .plae.size {
         top: 250px;
@@ -1743,8 +1776,8 @@ md-tabs.ng-isolate-scope.md-default-theme {
         background-position: center;
         background-color: white;
     }
-    .md-button.md-default-theme.md-raised:not([disabled]):hover,.md-button.md-default-theme.md-raised:not([disabled]):focus {
-        background-color: white;
+    .cart-button.md-button.md-default-theme.md-raised:not([disabled]):hover,.cart-button.md-button.md-default-theme.md-raised:not([disabled]):focus {
+        background-color: #007c4c;
     }
 
     .md-button.md-raised:not([disabled]){
@@ -1854,14 +1887,13 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
     #plae-basket{
         top: 550px;
-        width: 63%;
-        left: 35%;
+        width: 65%;
+        left: 17.5%;
     }
     .plae.basket {
         left: 450px;
         top: 550px;
         width: 470px;
-        height: 480px;
         margin-bottom: 20px;
     }
     .plae.basket.item {
@@ -1874,23 +1906,22 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
     .plae.basket.item {
         border: none;
-        height: 2px !important;
+        height: 0px !important;
     }
     .plae.basket.subtotal {
         left: 20px;
-        top: 320px;
+        top: 382px;
         height: 0;
     }
     button.md-raised.attr.subtotal {
         margin-top: -2px;
         margin-left: -2px;
-        width: 110.5%;
+        width: 110%;
     }
     .plae.size {
         height: 480px;
         top: 550px;
         padding-top: 20px;
-        left: 4%;
         width: 30%;
     }
     .plae.basket h3 {
@@ -1910,7 +1941,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
     .size.selector {
         width: 95%;
-        height: 100px;
+        height: 36px;
     }
     #scroll-to-button {
         position: relative;
@@ -1967,9 +1998,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         height: 50px;
         width: 200px;
         font-size: 130% !important;
-    }
-    .button.plae-font {
-        font-size: 150%;
     }
 
 
