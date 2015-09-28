@@ -22,10 +22,10 @@
     "105021-055"
   ],
   "shoeData": {
-    "101": {"name": "roan" ,"numOfTabs":4},
-    "102": {"name": "ty" ,"numOfTabs":4},
-    "103": {"name": "emme" ,"numOfTabs":2},
-    "105": {"name": "max" ,"numOfTabs":4}
+    "101": {"name": "roan" ,"numOfTabs":4, "super_id":"3007"},
+    "102": {"name": "ty" ,"numOfTabs":4, "super_id":"3003"},
+    "103": {"name": "emme" ,"numOfTabs":2, "super_id":"3004"},
+    "105": {"name": "max" ,"numOfTabs":4, "super_id":"3005"}
   },
   "tabSkus": [
     "201080-715",

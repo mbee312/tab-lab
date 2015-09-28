@@ -347,6 +347,7 @@
                     var updateProductData = function(products, productData) {
                         _.each(products, function(product, productIndex) {
                             _.extend(product, productData[product.sku.substr(0,3)] || {});
+                            _.extend(product, productData[product.sku] || {});
                         })
                     };
 
