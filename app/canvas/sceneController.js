@@ -5,7 +5,7 @@
     'use strict';
 
     var app = angular.module('tabLabApp');
-    app.controller('SceneCtrl', ['$scope', 'tabLabProperties', 'sizeProperties', function($scope, tabLabProperties, sizeProperties) {
+    app.controller('SceneCtrl', ['$scope', 'tabLabProperties', function($scope, tabLabProperties) {
 }]);
 
 }(jQuery));

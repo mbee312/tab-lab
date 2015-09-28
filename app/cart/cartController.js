@@ -8,6 +8,10 @@
     var app = angular.module('tabLabApp');
     app.$inject = ['$scope', 'cartProperties'];
     app.service('cartProperties', function (){
+        var DEBUG = true;
+        var shoeSize = '';
+        var tabSize = '';
+        var wide = false;
         var subTotal = 0;
         var cart = {};
         return{
@@ -26,10 +30,147 @@
                     subTotal = cart["shoe"].price + cart["tabLeft"].price + cart["tabRight"].price;
                 }
                 return subTotal;
+            },
+            getShoeSize: function () {
+                return shoeSize;
+            },
+            setShoeSize: function (size) {
+                shoeSize = size;
+                if(DEBUG) {
+                    console.log("shoe size is set:");
+                    if (shoeSize) console.log(shoeSize.size);
+                }
+            },
+            getTabSize: function () {
+                return tabSize;
+            },
+            setTabSize: function (size) {
+                tabSize = size;
+                if(DEBUG) {
+                    console.log("tab size is set:");
+                    if (tabSize) console.log(tabSize.size);
+                }
+            },
+            getFitWide: function () {
+                return wide;
+            },
+            setFitWide: function () {
+                wide = !wide;
             }
         };
     });
-    app.controller('CartCtrl', ['$scope', '$http', '$q', 'tabLabProperties', 'sizeProperties', 'cartProperties', function ($scope, $http, $q, tabLabProperties, sizeProperties, cartProperties) {
+    app.controller('CartCtrl', ['$scope', '$http', '$q', 'tabLabProperties', 'cartProperties', function ($scope, $http, $q, tabLabProperties, cartProperties) {
+
+        $scope.DEBUG = true;
+        // shoeSize variable for use in template
+        $scope.shoe.size = 0;
+        $scope.tabs.size = 0;
+
+        $scope.isSizeSelected = function () {
+            if (cartProperties.getShoeSize != null) {
+                return true;
+            } else {
+                return false;
+            }
+        };//end isSizeSelected ()
+
+        $scope.setSizeSelectMode = function (side){
+            if(side == 'left') {
+                $scope.isSizeEdit = !$scope.isSizeEdit;
+            }else{
+                $scope.isSizeEditRight = !$scope.isSizeEditRight;
+            }
+        };//end setSizeEditMode()
+
+        $scope.getSizeSelectMode = function (side){
+            if(side == 'left') {
+                return $scope.isSizeEdit;
+            }else{
+                return $scope.isSizeEditRight;
+            }
+        };//end getSizeSelectMode ()
+
+        $scope.showSize = function(size) {
+            return size.show;
+        };//end showSize) ()
+
+        $scope.$watch(function () { return $scope.shoe.size; }, function (newValue, oldValue) {
+            cartProperties.setShoeSize(newValue);
+            setTabSize();
+        });
+
+        $scope.$watch(function () { return $scope.tabs.size; }, function (newValue, oldValue) {
+            cartProperties.setTabSize(newValue);
+        });
+
+        $scope.$watch(function () { return $scope.fit.wide; }, function (newValue, oldValue) {
+            setTabSize();
+        });
+
+        $scope.$watch("fit.wide", function (newValue, oldValue) {
+            setTabSize();
+        });
+
+        $scope.setWideFit = function (){
+            cartProperties.setFitWide();
+        };
+
+        var setTabSize = function () {
+            var size = cartProperties.getShoeSize();
+            var wideOffset = 0;
+            if(size){
+                if (cartProperties.getFitWide() == true) {
+                    wideOffset = 1;
+                }
+
+                // 8-9=S 9.5-12.5=M 13-3-L
+                switch (size.size) {
+                    case "6":
+                    case "6.5":
+                    case "7":
+                    case "7.5":
+                    case "8":
+                    case "8.5":
+                    case "9":
+                        $scope.tabs.size = $scope.tabSizeOptions[wideOffset];
+                        break;
+                    case "9.5":
+                    case "10":
+                    case "10.5":
+                    case "11":
+                    case "11.5":
+                    case "12":
+                    case "12.5":
+                        $scope.tabs.size = $scope.tabSizeOptions[1 + wideOffset];
+                        break;
+                    case "13":
+                    case "13.5":
+                    case "1":
+                    case "1.5":
+                    case "2":
+                    case "2.5":
+                    case "3":
+                        $scope.tabs.size = $scope.tabSizeOptions[2 + wideOffset];
+                        break;
+                }// end switch
+                cartProperties.setTabSize($scope.tabs.size);
+            }//end if-else
+        };// end setTabSize()
+
+        $scope.moreOptions = function () {
+            return $scope.sizeMoreOptions;
+        };//end showMoreOptions()
+
+        $scope.showMoreOptions = function () {
+            console.log("inside showMoreOptions()");
+            if ($scope.sizeMoreOptions) {
+                $scope.sizeMoreOptions = false;
+                console.log("$scope.sizeMoreOptions set to false");
+            } else {
+                $scope.sizeMoreOptions = true;
+                console.log("$scope.sizeMoreOptions set to true");
+            }//end if-else
+        };//end showMoreOptions()
 
         $scope.$on('shoe-set', function(event, args) {
             cartProperties.updateCart(tabLabProperties.getShoe(), "shoe");
@@ -87,13 +228,13 @@
                 var tab = tabLabProperties.getTab(i);
                 tabs[tab.product_id] = (tabs[tab.product_id] || 0) + 1;
             }
-            var shoeSize = sizeProperties.getShoeSize();
+            var shoeSize = cartProperties.getShoeSize();
             if (shoe && !shoeSize) {
                 toastr.error("Please select a shoe size.");
                 return;
             }
             if (!_.isEmpty(tabs)) {
-                var tabSize = sizeProperties.getTabSize();
+                var tabSize = cartProperties.getTabSize();
                 if (!tabSize) {
                     toastr.error("Please select a tab size.");
                     return;
