@@ -458,7 +458,7 @@
                     var canvasWindowWidth = $(s).css('width').replace(/[^-\d\.]/g, '') - 10;
                     var canvasWindowHeight = $(s).css('height').replace(/[^-\d\.]/g, '') - 10;
                     $scope.WIDTH = Number(canvasWindowWidth);
-                    $scope.HEIGHT = Number(canvasWindowHeight);
+                    $scope.HEIGHT = $scope.WIDTH;
 
                 }; //end findAndSetCanvasDimensions()
 
