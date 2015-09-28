@@ -395,6 +395,7 @@
                             $scope.initializeSelected();
                             $scope.createScene();
                             initDrawScene();
+                            jQuery('#fullmask').addClass('fade');
                         });
                     });
                 }; // end initLoad()
