@@ -103,7 +103,7 @@
                 var shoeParams = {'isAjax':1};
                 shoeParams["super_attribute[" + $scope.dataOptions["code"]["color"] + "]"] = shoe.color;
                 shoeParams["super_attribute[" + $scope.dataOptions["code"]["size"] + "]"] = shoeSize.id;
-                var shoeurl = url + shoe.product_id;
+                var shoeurl = url + shoe.super_id;
 
                 callsData.push(shoe);
                 calls.push(function() {return $http.get(shoeurl, {'params': shoeParams})});
@@ -142,7 +142,7 @@
                         if(data.length > 0) {
                             var lastDataIndex = data.length - 1;
                             var header = data[lastDataIndex].header;
-                            while (!header) {
+                            while (!header && lastDataIndex > 0) {
                                 lastDataIndex = lastDataIndex - 1;
                                 header = data[lastDataIndex].header;
                             }
