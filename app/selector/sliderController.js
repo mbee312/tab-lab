@@ -60,17 +60,23 @@
             $scope.moveSlider('tab', pos);
         });
 
-        $scope.sliderSetShoe = function(i){
+        $scope.sliderSetShoe = _.debounce(_sliderSetShoe, 500, true);
+
+        function _sliderSetShoe (i){
             $scope.$broadcast('new-shoe-index', i);
-        };
+        }
 
-        $scope.sliderSetLeftTab = function(i){
+        $scope.sliderSetLeftTab = _.debounce(_sliderSetLeftTab, 500, true);
+
+        function _sliderSetLeftTab (i){
             $scope.$broadcast('new-tab-left-index', i);
-        };
+        }
 
-        $scope.sliderSetRightTab = function(i){
+        $scope.sliderSetRightTab = _.debounce(_sliderSetRightTab, 500, true);
+
+        function _sliderSetRightTab (i){
             $scope.$broadcast('new-tab-right-index', i);
-        };
+        }
 
         $scope.moveSlider = function (type, pos){
             var selector = "#" + type;
@@ -95,7 +101,9 @@
             console.log(selector);
         };
 
-        $scope.random = function (){
+        $scope.random = _.debounce(_random, 500, true);
+
+        function _random(){
             /*
             if(tabLabProperties.isShoeSelected()){
                 // save old shoe for comparison
@@ -116,9 +124,11 @@
             $scope.$broadcast('new-tab-left-index-random', j);
             $scope.$broadcast('new-tab-right-index-random', k);
 
-        }; //end random ()
+        } //end random ()
 
-        $scope.shuffle = function (){
+        $scope.shuffle = _.debounce(_shuffle, 500, true);
+
+        function _shuffle(){
             var numOfCombinations = 24;
 
             var randomNum = Math.floor(Math.random() * numOfCombinations );
@@ -177,9 +187,11 @@
             $scope.updateTabTextureShuffle(newTabs);
 
 
-        }; //end shuffle ()
+        } //end shuffle ()
 
-        $scope.previous = function (side) {
+        $scope.previous = _.debounce(_previous, 500, true);
+
+        function _previous (side) {
             var i;
             var selector;
             switch (side) {
@@ -221,9 +233,11 @@
                     break;
             } //end switch
 
-        };// end previous()
+        }// end previous()
 
-        $scope.next = function (side){
+        $scope.next = _.debounce(_next, 500, true);
+
+        function _next (side){
             var i;
             var selector;
             switch (side) {
@@ -264,7 +278,7 @@
                     $scope.$broadcast('new-tab-right-index', i);
                     break;
             } //end switch
-        };// end next()
+        }// end next()
 
         $scope.$on('new-shoe-index', function(event, index) {
             if(tabLabProperties.isShoeSelected()){

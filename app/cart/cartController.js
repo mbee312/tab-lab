@@ -74,7 +74,9 @@
             }
         };
 
-        $scope.addToCart = function () {
+        $scope.addToCart = _.debounce(_addToCart, 500, true);
+
+        function _addToCart () {
 
             var url = '/ajax/index/add/product/';
             var shoe = tabLabProperties.getShoe();
