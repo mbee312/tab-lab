@@ -126,14 +126,13 @@
 
                 $scope.shoeIndex=0;
                 $scope.shoeIndexNew=0;
-
                 $scope.rightTabIndex=0;
                 $scope.rTindex=0;
-
                 $scope.leftTabIndex=0;
                 $scope.lTindex=0;
 
-
+                $scope.tabsNoMirror = ["201110-610", "201122-908", "201131-009", "201161-822"];
+            /*
                 var loadNormals = function (){
                     var s;
                     var texturePathLeft;
@@ -185,6 +184,7 @@
                         }
                     }
                 };
+            */
 
                 $scope.loadMenu = function (list, shoesOrTabs ){
                     for(var i = 0; i < list.length ; i++){
@@ -300,7 +300,7 @@
                                         else {
                                             s.show = false;
                                         }
-                                    })
+                                    });
 //                                  $scope.$apply(function(){$scope.shoe.size = 0});
                                     $scope.shoe.size = 0;
                                     $scope.$apply(function(){$scope.shoeSizeOptions = _.toArray($scope.shoeSizeOptions)});
@@ -349,7 +349,7 @@
                         _.each(products, function(product, productIndex) {
                             _.extend(product, productData[product.sku.substr(0,3)] || {});
                         })
-                    }
+                    };
 
                     // load products
                     var loadConfigurableProductsFromSkus = function(skus, productData, callback) {
@@ -375,7 +375,7 @@
                             );
                         });
                         return deferred.promise;
-                    }
+                    };
 
                     $http.get(assetRoot + 'assets/data/data.json').success(function (data) {
                         $scope.dataOptions = data;
@@ -397,7 +397,7 @@
                             initDrawScene();
                         });
                     });
-                } // end initLoad()
+                }; // end initLoad()
 
                 /*
                  START Canvas Drawing
@@ -413,8 +413,6 @@
                 // for debuging stats
                 $scope.interval = setInterval( debugInfo, 50 );
              */
-
-
                 $scope.scene;
                 $scope.loader;
                 $scope.WIDTH = 400;
@@ -426,21 +424,15 @@
 
                 var targetRotationX = 0;
                 var targetRotationOnMouseDownX = 0;
-
                 var targetRotationY = 0;
                 var targetRotationOnMouseDownY = 0;
-
                 var mouseX = 0;
                 var mouseXOnMouseDown = 0;
-
                 var mouseY = 0;
                 var mouseYOnMouseDown = 0;
-
                 var windowHalfX = $scope.WIDTH / 2;
                 var windowHalfY = $scope.HEIGHT / 2;
-
                 var finalRotationY;
-
                 var VIEW_ANGLE = 45;
             //    var ASPECT = $scope.WIDTH / $scope.HEIGHT;
                 var ASPECT = 1;
@@ -512,7 +504,7 @@
                     $scope.renderer.setClearColor(0xffffff,0);
                     $scope.container.appendChild($scope.renderer.domElement);
 
-                    $( document ).ready(function() {
+                    $(document).ready(function() {
                         document.getElementById("white-bg-mobile").addEventListener( 'mousedown', onDocumentMouseDown, false );
                         document.getElementById("white-bg-mobile").addEventListener( 'touchstart', onDocumentTouchStart, false );
                         document.getElementById("white-bg-mobile").addEventListener( 'touchmove', onDocumentTouchMove, false );
@@ -529,16 +521,13 @@
                     finalRotationY = (targetRotationY - $scope.group.rotation.x);
 
                     if ($scope.group.rotation.x  <= 1 && $scope.group.rotation.x >= -1 ) {
-
                         $scope.group.rotation.x += finalRotationY * 0.1;
                     }
                     if ($scope.group.rotation.x  > 1 ) {
-
                         $scope.group.rotation.x = 1
                     }
 
                     if ($scope.group.rotation.x  < -1 ) {
-
                         $scope.group.rotation.x = -1
                     }
 
@@ -580,7 +569,6 @@
                     console.log($scope.group);
                     console.log("in my scene: ");
                     console.log($scope.scene);
-
                 }
 
                 function initDrawShoeHelper(scene, group, shoe, side, x, y, z){
@@ -629,7 +617,8 @@
                     var shoe = getShoe();
                     var tab = getTab(pos);
                     var whichTab = 'top';
-                    var side = 'left';
+                    var side='left';
+                    var tabSide='';
 
                     if(pos == 0 || pos == 2){
                         side = 'right';
@@ -637,6 +626,17 @@
 
                     if(pos == 2 ||  pos == 3){
                         whichTab = 'bottom';
+                    }
+
+                    // check for non-mirror tabs
+                    if(_.indexOf($scope.tabsNoMirror, tab.sku) != -1){
+                        if(pos == 0 || pos == 2){
+                            tabSide = '/right';
+                        }else{
+                            tabSide = '/left';
+                        }// end else-if
+                        console.log("tabSide:");
+                        console.log(tabSide);
                     }
 
                     // load tab
@@ -647,8 +647,8 @@
                 //    var textureMap = THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg');
                 //    var normalMap = THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg');
                     var uniqueName = tab.name + '-' + tab.sku + '-' + whichTab;
-                    var textureMap = $scope.renderer._microCache.getSet(uniqueName + "-textureMap", THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg'));
-                    var normalMap = $scope.renderer._microCache.getSet(uniqueName + "-normalMap", THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg'));
+                    var textureMap = $scope.renderer._microCache.getSet(uniqueName + "-textureMap", THREE.ImageUtils.loadTexture(texturePath + tabSide + '/difuse-' + whichTab + '.jpg'));
+                    var normalMap = $scope.renderer._microCache.getSet(uniqueName + "-normalMap", THREE.ImageUtils.loadTexture(texturePath + tabSide + '/normals-' + whichTab + '.jpg'));
                     var specularMap;
                     try{
                     //    specularMap = THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg');
