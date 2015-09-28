@@ -99,10 +99,12 @@
         $scope.$watch(function () { return $scope.shoe.size; }, function (newValue, oldValue) {
             cartProperties.setShoeSize(newValue);
             setTabSize();
+            $scope.$broadcast('calculate-subtotal');
         });
 
         $scope.$watch(function () { return $scope.tabs.size; }, function (newValue, oldValue) {
             cartProperties.setTabSize(newValue);
+            $scope.$broadcast('calculate-subtotal');
         });
 
         $scope.$watch(function () { return $scope.fit.wide; }, function (newValue, oldValue) {
