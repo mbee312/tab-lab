@@ -13,21 +13,23 @@
         var tabSize = '';
         var wide = false;
         var subTotal = 0;
-        var cart = {};
+        var cart = [];
         return{
             getCart: function (){
                 return cart;
             },
-            updateCart: function(item, type){
-                cart[type] = item;
+            updateCart: function(item, pos){
+                cart[pos] = item;
+                console.log("Cart:");
+                console.log(cart);
             },
             getSubTotal: function () {
                 return subTotal;
             },
             calculateSubTotal: function () {
-                var cartSize = _.size(cart)
+                var cartSize = _.size(cart);
                 if(cartSize == 3) {
-                    subTotal = cart["shoe"].price + cart["tabLeft"].price + cart["tabRight"].price;
+                    subTotal = Number(cart[2].price) + Number(cart[1].price) + Number(cart[0].price);
                 }
                 return subTotal;
             },
@@ -59,7 +61,7 @@
             }
         };
     });
-    app.controller('CartCtrl', ['$scope', '$http', '$q', 'tabLabProperties', 'cartProperties', function ($scope, $http, $q, tabLabProperties, cartProperties) {
+    app.controller('CartCtrl', ['$scope', '$rootScope', '$http', '$q', 'tabLabProperties', 'cartProperties', function ($scope, $rootScope, $http, $q, tabLabProperties, cartProperties) {
 
         $scope.DEBUG = true;
         // shoeSize variable for use in template
@@ -172,20 +174,10 @@
             }//end if-else
         };//end showMoreOptions()
 
-        $scope.$on('shoe-set', function(event, args) {
-            cartProperties.updateCart(tabLabProperties.getShoe(), "shoe");
+        $scope.$on('calculate-subtotal', function(event, args) {
             $scope.subTotal = cartProperties.calculateSubTotal();
-
-        });
-
-        $scope.$on('tab-set', function(event, pos) {
-            var type = "tabLeft";
-            if(pos == 1 || pos == 3){
-                type = "tabRight";
-            }
-            cartProperties.updateCart(tabLabProperties.getTab(pos), type);
-            $scope.subTotal = cartProperties.calculateSubTotal();
-
+            console.log("subtotal:");
+            console.log($scope.subTotal);
         });
 
         $scope.remove = function (side) {
