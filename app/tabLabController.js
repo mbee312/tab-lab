@@ -405,12 +405,14 @@
                  */
                 $scope.container = document.querySelector('.tablab-viewer');
                 $scope.renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
-                $scope.stats = new Stats();
+                $scope.renderer._microCache = new MicroCache();
+            /*    $scope.stats = new Stats();
                 $scope.stats.domElement.style.position = 'absolute';
                 $scope.stats.domElement.style.top = '0px';
                 $scope.container.appendChild( $scope.stats.domElement );
                 // for debuging stats
                 $scope.interval = setInterval( debugInfo, 50 );
+             */
 
 
                 $scope.scene;
@@ -586,13 +588,14 @@
                     var shoePath = assetRoot + '/assets/models/' + shoe.name + '/' + shoe.name;
                     var loader = new THREE.JSONLoader();
                     var texturePath = assetRoot + 'assets/models/texture/shoe/' + shoe.name + '/' + side + '/' + shoe.sku;
-                    var textureMap = THREE.ImageUtils.loadTexture(texturePath + '/diffuse.jpg');
-                    var normalMap = THREE.ImageUtils.loadTexture(texturePath + '/normal.jpg');
+                //    var textureMap = THREE.ImageUtils.loadTexture(texturePath + '/diffuse.jpg');
+                //    var normalMap = THREE.ImageUtils.loadTexture(texturePath + '/normal.jpg');
+                    var textureMap = $scope.renderer._microCache.getSet(shoe.name + "-textureMap", THREE.ImageUtils.loadTexture(texturePath + '/diffuse.jpg'));
+                    var normalMap = $scope.renderer._microCache.getSet(shoe.name + "-normalMap", THREE.ImageUtils.loadTexture(texturePath + '/normal.jpg'));
                     var specularMap;
                     if(texturePath + '/specular.jpg') {
-                        specularMap = THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg');
-                        console.log("specularMap:");
-                        console.log(specularMap);
+                    //    specularMap = THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg');
+                        specularMap = $scope.renderer._microCache.getSet(shoe.name + "-specular", THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg'));
                     }
 
                     loader.load(shoePath + '-shoe-'+ side + '.js', function (geometry, materials) {
@@ -636,13 +639,15 @@
                     var loader = new THREE.JSONLoader();
                     var meshPath = assetRoot + 'assets/models/' + shoe.name + '/' + shoe.name;
                     var texturePath = assetRoot + 'assets/models/texture/tabs/' + tab.sku;
-                    var textureMap = THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg');
-                    var normalMap = THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg');
+                //    var textureMap = THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg');
+                //    var normalMap = THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg');
+
+                    var textureMap = $scope.renderer._microCache.getSet(tab.name + "-textureMap", THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg'));
+                    var normalMap = $scope.renderer._microCache.getSet(tab.name + "-normalMap", THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg'));
                     var specularMap;
                     try{
-                        specularMap = THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg');
-                        console.log("specularMap:");
-                        console.log(specularMap);
+                    //    specularMap = THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg');
+                        specularMap = $scope.renderer._microCache.getSet(t.name + "-specular", THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg'));
                     }catch(err) {
                         console.log(err);
                     }
@@ -727,21 +732,19 @@
 
                     // load path
                     var texturePath = assetRoot + 'assets/models/texture/tabs/' + t.sku;
+                    var updateMe = scene.getObjectByName("group").getObjectByName(tabObj.name);
+                    updateMe.material.map = $scope.renderer._microCache.getSet(t.name + "-textureMap", THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg'));
+                    updateMe.material.normalMap = $scope.renderer._microCache.getSet(t.name + "-normalMap", THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg'));
                     var specularMap;
                     try{
-                        specularMap = THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg');
-                        console.log("specularMap:");
-                        console.log(specularMap);
+                    //    specularMap = THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg');
+                        specularMap = $scope.renderer._microCache.getSet(t.name + "-specular", THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg'));
+                        if(specularMap != null){
+                            updateMe.material.specularMap = specularMap;
+                        }
+
                     }catch(err) {
                         console.log(err);
-                    }
-
-                    var updateMe = scene.getObjectByName("group").getObjectByName(tabObj.name);
-
-                    updateMe.material.map = THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg');
-                    updateMe.material.normalMap = THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg');
-                    if(specularMap != null){
-                        updateMe.material.specularMap = specularMap;
                     }
                     updateMe.material.needsUpdate = true;
 
@@ -761,15 +764,6 @@
                     for(var i = 0; i < tabs.length; i++){
                         // load path
                         texturePath = assetRoot + 'assets/models/texture/tabs/' + tabs[i].sku;
-
-                        try{
-                            specularMap = THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg');
-                            console.log("specularMap:");
-                            console.log(specularMap);
-                        }catch(err) {
-                            console.log(err);
-                        }
-
                         updateMe = $scope.scene.getObjectByName("group").getObjectByName("tab"+i);
 
                         if(tabs[i].pos == 2 || tabs[i].pos == 3){
@@ -778,10 +772,17 @@
                             console.log("whichTab=" +  whichTab);
                         }
 
-                        updateMe.material.map = THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg');
-                        updateMe.material.normalMap = THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg');
-                        if(specularMap != null){
-                            updateMe.material.specularMap = specularMap;
+                        updateMe.material.map = $scope.renderer._microCache.getSet(t.name + "-textureMap", THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg'));
+                        updateMe.material.normalMap = $scope.renderer._microCache.getSet(t.name + "-normalMap", THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg'));
+                        try{
+                            //    specularMap = THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg');
+                            specularMap = $scope.renderer._microCache.getSet(tabs[i].name + "-specular", THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg'));
+                            if(specularMap != null){
+                                updateMe.material.specularMap = specularMap;
+                            }
+
+                        }catch(err) {
+                            console.log(err);
                         }
                         updateMe.material.needsUpdate = true;
                     }

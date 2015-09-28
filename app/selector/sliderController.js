@@ -121,19 +121,61 @@
         $scope.shuffle = function (){
             var numOfCombinations = 24;
 
-            var randomNum = Math.floor(Math.random() * 24 );
+            var randomNum = Math.floor(Math.random() * numOfCombinations );
             var tabs = tabLabProperties.getAllTabs();
-            for (var n = 0; n < tabs.length - 1; n++) {
-                var k = n + Math.floor(Math.random() * (tabs.length - n));
-                var temp = tabs[k];
-                tabs[k] = tabs[n];
-                tabs[n] = temp;
-            }
-            tabLabProperties.setAllTabs(tabs)
-            $scope.updateTabTexture($scope.scene, 0);
-            $scope.updateTabTexture($scope.scene, 1);
-            $scope.updateTabTexture($scope.scene, 2);
-            $scope.updateTabTexture($scope.scene, 3);
+            var newTabs = [];
+            console.log("TABS:");
+            console.log(tabs);
+                                // represents the physical tabs
+                                // [0]  [1]
+                                // [2]  [3]
+            var tabPos = ['rt','lt','rb','lb'];
+            tabPos = _.shuffle(tabPos);
+            var topOrBottom;
+
+            console.log("tabsPos:");
+            console.log(tabPos);
+
+
+            for(var i = 0; i < tabs.length; i++){
+                if(tabPos[i] == 'rt'){
+                    newTabs[i] = tabs[0];
+                    newTabs[i].pos = '0';
+                    console.log("tab:" + i);
+                    console.log(newTabs[i]);
+                    console.log("pos:");
+                    console.log(newTabs[i].pos);
+                }else if(tabPos[i] == 'lt'){
+                    newTabs[i] = tabs[1];
+                    newTabs[i].pos = '1';
+                    console.log("tab:" + i);
+                    console.log(newTabs[i]);
+                    console.log("pos:");
+                    console.log(newTabs[i].pos);
+                }else if(tabPos[i] == 'rb'){
+                    newTabs[i] = tabs[2];
+                    newTabs[i].pos = '2';
+                    console.log("tab:" + i);
+                    console.log(newTabs[i]);
+                    console.log("pos:");
+                    console.log(newTabs[i].pos);
+                }else{
+                    newTabs[i] = tabs[3];
+                    newTabs[i].pos = '3';
+                    console.log("tab:" + i);
+                    console.log(newTabs[i]);
+                    console.log("pos:");
+                    console.log(newTabs[i].pos);
+                } // end if-else
+
+            } //end for
+
+           // tabs = tabLabProperties.getAllTabs();
+            console.log("TABS SHUFFLED:");
+            console.log(newTabs);
+
+            $scope.updateTabTextureShuffle(newTabs);
+
 
         }; //end shuffle ()
 
@@ -243,24 +285,28 @@
             var shoe = tabLabProperties.getShoe();
             $scope.setTab($scope.tabList[index], 0);
             $scope.setTab($scope.tabList[index], 2);
-            $scope.updateTabTexture($scope.scene, 0);
+            $scope.updateTabTexture($scope.scene, 0, 'top');
             if(shoe.numOfTabs != 2) {
-                $scope.updateTabTexture($scope.scene, 2);
+                $scope.updateTabTexture($scope.scene, 2, 'bottom');
             }
             var tabRight = tabLabProperties.getTab(0);
             cartProperties.updateCart(tabRight, "tabRight");
+            console.log("current right tab:");
+            console.log($scope.tabList[index]);
         });
 
         $scope.$on('new-tab-left-index', function(event, index) {
             var shoe = tabLabProperties.getShoe();
             $scope.setTab($scope.tabList[index], 1);
             $scope.setTab($scope.tabList[index], 3);
-            $scope.updateTabTexture($scope.scene, 1);
+            $scope.updateTabTexture($scope.scene, 1, 'top');
             if(shoe.numOfTabs != 2) {
-                $scope.updateTabTexture($scope.scene, 3);
+                $scope.updateTabTexture($scope.scene, 3, 'bottom');
             }
             var tabLeft = tabLabProperties.getTab(1);
             cartProperties.updateCart(tabLeft, "tabLeft");
+            console.log("current left tab:");
+            console.log($scope.tabList[index]);
         });
 
         $scope.$on('new-tab-right-index-random', function(event, index) {
