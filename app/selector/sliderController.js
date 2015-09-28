@@ -48,7 +48,7 @@
             }
         };
     });
-    app.controller('SliderCtrl', ['$scope', 'tabLabProperties', 'sizeProperties', 'sliderProperties', 'cartProperties', function ($scope, tabLabProperties, sizeProperties, sliderProperties, cartProperties) {
+    app.controller('SliderCtrl', ['$scope', 'tabLabProperties', 'sliderProperties', 'cartProperties', function ($scope, tabLabProperties, sliderProperties, cartProperties) {
         $scope.innerWidthSize = 0;
         $scope.innerWidthSizeNew = window.innerWidth;
 

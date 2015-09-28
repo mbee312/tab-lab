@@ -94,10 +94,9 @@
             '$animate',
             '$window',
             'tabLabProperties',
-            'sizeProperties',
             'sliderProperties',
             'cartProperties',
-            function ($scope, $rootScope, $q, $http, $mdDialog, $mdToast, $animate, $window, tabLabProperties, sizeProperties, sliderProperties, cartProperties) {
+            function ($scope, $rootScope, $q, $http, $mdDialog, $mdToast, $animate, $window, tabLabProperties, sliderProperties, cartProperties) {
 
                 $scope.MENUIMGPATH = assetRoot + "assets/media/thumbnails/";
                 // Tabs on canvas List Arrays
