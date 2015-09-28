@@ -655,8 +655,9 @@ button.attr {
 }
 
 .price.subtotal {
-    margin-top: 15px;
-    margin-right: 5px;
+    position: absolute;
+    margin-top: 18px;
+    margin-left: 15px;
     font-size: medium;
     font-weight: bold;
 }
@@ -1928,11 +1929,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         float: left;
         font-size: large;
     }
-    .price.subtotal {
-        margin-top: 10px;
-        margin-right: 5px;
-        font-size: medium;
-    }
 
     .checkbox.label {
         font-size: 18px;
@@ -2092,8 +2088,13 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
 
     .plae.basket.subtotal h3 {
-        bottom: 20px;
+        bottom: 15px;
         position:absolute;
+    }
+
+    .price.subtotal {
+        bottom: 30px;
+        margin-left: 105px;
     }
 
     .plae.basket.item {
@@ -2146,8 +2147,15 @@ md-tabs.ng-isolate-scope.md-default-theme {
         height: 430px;
     }
 
+    .plae.basket.subtotal {
+        margin-left: 30%;
+    }
     .plae.basket.subtotal h3 {
-        bottom: 10px;
+        bottom: 5px;
+    }
+
+    .price.subtotal {
+        bottom: 20px;
     }
 
     .cart-button-row {
