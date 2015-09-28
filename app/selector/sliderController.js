@@ -14,6 +14,7 @@
         var numOfShoes;
         var numOfTabs;
 
+
         return {
             getShoeIndex: function () {
                 return shoeIndex;
@@ -50,7 +51,6 @@
     app.controller('SliderCtrl', ['$scope', 'tabLabProperties', 'sizeProperties', 'sliderProperties', 'cartProperties', function ($scope, tabLabProperties, sizeProperties, sliderProperties, cartProperties) {
         $scope.innerWidthSize = 0;
         $scope.innerWidthSizeNew = window.innerWidth;
-
 
         $scope.$on('move-slider-shoe', function(event, pos) {
             $scope.moveSlider('shoe', pos);
@@ -129,63 +129,38 @@
         $scope.shuffle = _.debounce(_shuffle, 500, true);
 
         function _shuffle(){
-            var numOfCombinations = 24;
-
-            var randomNum = Math.floor(Math.random() * numOfCombinations );
             var tabs = tabLabProperties.getAllTabs();
             var newTabs = [];
-            console.log("TABS:");
-            console.log(tabs);
-                                // represents the physical tabs
-                                // [0]  [1]
-                                // [2]  [3]
+            var newTabsPosition = [];
+            var newTabsTopOrBottom = [];
+
+            // represents the physical tabs
+            // [0]  [1]
+            // [2]  [3]
             var tabPos = ['rt','lt','rb','lb'];
             tabPos = _.shuffle(tabPos);
-            var topOrBottom;
-
-            console.log("tabsPos:");
-            console.log(tabPos);
-
 
             for(var i = 0; i < tabs.length; i++){
                 if(tabPos[i] == 'rt'){
                     newTabs[i] = tabs[0];
-                    newTabs[i].pos = '0';
-                    console.log("tab:" + i);
-                    console.log(newTabs[i]);
-                    console.log("pos:");
-                    console.log(newTabs[i].pos);
+                    newTabsPosition[i] = 0;
+                    newTabsTopOrBottom[i] = 'top';
                 }else if(tabPos[i] == 'lt'){
                     newTabs[i] = tabs[1];
-                    newTabs[i].pos = '1';
-                    console.log("tab:" + i);
-                    console.log(newTabs[i]);
-                    console.log("pos:");
-                    console.log(newTabs[i].pos);
+                    newTabsPosition[i] = 1;
+                    newTabsTopOrBottom[i] = 'top';
                 }else if(tabPos[i] == 'rb'){
                     newTabs[i] = tabs[2];
-                    newTabs[i].pos = '2';
-                    console.log("tab:" + i);
-                    console.log(newTabs[i]);
-                    console.log("pos:");
-                    console.log(newTabs[i].pos);
+                    newTabsPosition[i] = 2;
+                    newTabsTopOrBottom[i] = 'bottom';
                 }else{
                     newTabs[i] = tabs[3];
-                    newTabs[i].pos = '3';
-                    console.log("tab:" + i);
-                    console.log(newTabs[i]);
-                    console.log("pos:");
-                    console.log(newTabs[i].pos);
+                    newTabsPosition[i] = 3;
+                    newTabsTopOrBottom[i] = 'bottom';
                 } // end if-else
+                $scope.updateTabTextureShuffle(i, newTabs[i], newTabsPosition[i], newTabsTopOrBottom[i]);
 
             } //end for
-
-           // tabs = tabLabProperties.getAllTabs();
-            console.log("TABS SHUFFLED:");
-            console.log(newTabs);
-
-            $scope.updateTabTextureShuffle(newTabs);
-
 
         } //end shuffle ()
 
@@ -300,9 +275,14 @@
             $scope.setTab($scope.tabList[index], 0);
             $scope.setTab($scope.tabList[index], 2);
             $scope.updateTabTexture($scope.scene, 0, 'top');
+            // update just in case shuffle
+            $scope.updateTabTexture($scope.scene, 1, 'top');
             if(shoe.numOfTabs != 2) {
                 $scope.updateTabTexture($scope.scene, 2, 'bottom');
+                // update just in case shuffle
+                $scope.updateTabTexture($scope.scene, 3, 'bottom');
             }
+
             var tabRight = tabLabProperties.getTab(0);
             cartProperties.updateCart(tabRight, "tabRight");
             console.log("current right tab:");
@@ -314,13 +294,19 @@
             $scope.setTab($scope.tabList[index], 1);
             $scope.setTab($scope.tabList[index], 3);
             $scope.updateTabTexture($scope.scene, 1, 'top');
+            // update just in case shuffle
+            $scope.updateTabTexture($scope.scene, 0, 'top');
             if(shoe.numOfTabs != 2) {
                 $scope.updateTabTexture($scope.scene, 3, 'bottom');
+                // update just in case shuffle
+                $scope.updateTabTexture($scope.scene, 2, 'bottom');
             }
+            
             var tabLeft = tabLabProperties.getTab(1);
             cartProperties.updateCart(tabLeft, "tabLeft");
             console.log("current left tab:");
             console.log($scope.tabList[index]);
+
         });
 
         $scope.$on('new-tab-right-index-random', function(event, index) {
