@@ -273,68 +273,6 @@
                 </div>
                 </md-whiteframe>
             </section>
-            <!--<section ng-controller="SizeCtrl" ng-switch="tabLab.getSizeSelectMode('left')" class="slide-frame">
-                <md-whiteframe class="md-whiteframe-z1 white-bg wave plae size" id="plae-size" ng-switch-when="true">
-                <div class="size selector">
-                    <div class="size select shoe">
-                        <h4>shoe size: {{shoeSize.label}}</h4>
-                        <md-select class="size selector shoes"
-                                   ng-model="shoeSize">
-                                <md-option
-                                        ng-value="s.size.size"
-                                        ng-repeat="s in shoeSizeOptions">{{s.size.label}}</md-option>
-                        </md-select>
-                    </div>
-
-
-                    <div class="size select tabs">
-                        <h4>tab size: {{tabSize.label}}</h4>
-                        <select class="size selector tabs" ng-model="tabs.size" ng-options="t.label for t in tabSizeOptions">
-                            <option value="" selected>--choose an option--</option>
-                        </select>
-                    </div>
-
-                    <md-checkbox class="size select shoe checkbox wide" id="wide-fit-button" ng-model="fit.wide"
-                                 aria-label="wide-fit"
-                                 ng-show="true">
-                        <div class="checkbox label plae-font"><h4>wide?</h4></div>
-                    </md-checkbox>
-
-                </div>
-            </md-whiteframe>
-                <md-whiteframe class="md-whiteframe-z1 white-bg select-size plae size" id="plae-size-select" >
-                <div class="size selector">
-                    <div class="size select shoe">
-                        <h4>shoe size: {{shoe.size.label}}</h4>
-                        <select class="size selector shoe"
-                                ng-model="shoe.size"
-                                ng-change="setShoeSize(size)"
-                                ng-options="size.label disable when size.disabled == true for size in shoeSizeOptions | filter:showSize">
-                            <option value="" selected>--choose an option--</option>
-                        </select>
-                    </div>
-                    <div class="size select tabs">
-                        <h4>tab size: {{tabs.size.label}}</h4>
-                        <select class="size selector tabs"
-                                ng-model="tabs.size"
-                                ng-change="setTabSize(size)"
-                                ng-options="size.label for size in tabSizeOptions">
-                            <option value="" selected>--choose an option--</option>
-                        </select>
-                    </div>
-
-                    <md-checkbox class="size select shoe checkbox wide" id="wide-fit-button-right" ng-model="fit.wide"
-                                 aria-label="wide-fit"
-                                 ng-show="true"
-                                 ng-change="setWideFit()">
-                        <div class="checkbox label">wide?</div>
-                    </md-checkbox>
-
-                </div>
-
-            </md-whiteframe>
-            </section>
-            -->
             <section>
                 <md-whiteframe class="md-whiteframe-z1 white-bg canvas-container col-sm-6" id="white-bg-mobile">
                     <div class="tablab-viewer">
@@ -361,7 +299,7 @@
                 </md-whiteframe>
             </section>
             <section ng-controller="CartCtrl" >
-              <md-white-frame class="md-whiteframe-z1 white-bg plae basket col-sm-8 col-sm-offset-2" id="plae-basket">
+              <md-white-frame class="md-whiteframe-z1 white-bg plae basket col-sm-8 col-sm-offset-2 col-xs-12" id="plae-basket">
                   <md-button class="md-raised fa fa-pencil-square-o fa-1" id="edit" aria-label="edit-cart" ng-click="tabLab.setEditMode()" ng-show="false">
                   </md-button>
 

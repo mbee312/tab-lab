@@ -14,6 +14,7 @@ h3 {
     font-variant: normal;
     font-weight: 500;
     line-height: 16px;
+    color: #434343;
 }
 
 .main-container.container {
@@ -25,6 +26,10 @@ h3 {
     margin: 0 1%;
 }
 /* overrides to angular css that's altering the main page css */
+body {
+    color: #7c7c7c;
+}
+
 h6 {
     font-size: 16px !important;
     margin: 0 !important;
@@ -115,6 +120,14 @@ button.delete {
     border: none;
     transform: none;
     -webkit-transform: none;
+}
+
+.cart-button.md-button.md-default-theme.md-raised:not([disabled]):hover,.cart-button.md-button.md-default-theme.md-raised:not([disabled]):focus {
+    background-color: #007c4c;
+}
+
+.md-button.md-default-theme.md-raised:not([disabled]):hover, .md-button.md-default-theme.md-raised:not([disabled]):focus {
+    background-color: #fff;
 }
 
 .md-switch-thumb.md-default-theme {
@@ -287,15 +300,15 @@ button#bottom-next-button {
     position: absolute;
     height: 180px;
     z-index: 2;
-    top: 0;
 }
+
 .arrows-button-column.previous {
     left: 1%;
 }
 .arrows-button-column.next {
     float: right;
+    top: 108px;
     right: 1%;
-    top: 0;
 }
 
 .slick-prev {
@@ -696,9 +709,6 @@ ul.plae.basket.list {
 .canvas-button-row {
     position: absolute;
     width: 90%;
-    top: 90%;
-    left: 5%;
-    right: 5%;
 }
 .random-button {
     position: relative;
@@ -1034,7 +1044,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
 }
 
-@media screen and (min-width: 468px) {
+@media screen and (min-width: 768px) {
 
     /*  Header section   */
     /*                   */
@@ -1302,14 +1312,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
 @media screen and (min-width: 568px){
 
     .canvas-button-row {
-        top: 85%;
-    }
-    .slick-list.draggable {
-        height: 260px !important;
-    }
-    .slick-active {
-    /*    margin-top: 5px;
-        height: 60px !important; */
+        top: 75%;
     }
     .vertical-slick{
         width: 28%;
@@ -1321,9 +1324,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
     .vertical-slick-container{
         height: 260px;
-    }
-    .slick-list.draggable {
-        height: 211px !important;
     }
 }
 
@@ -1383,13 +1383,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
 }
 
 @media screen and (min-width: 660px){
-    /*#white-bg-mobile {
-        width: 50%;
-        left: 48%;
-    }
-    .vertical-slick-container {
-        width: 44%;
-    }*/
     .bgimage.ng-scope.slick-slide.slick-active {
         transform: translate(0,20px);
     }
@@ -1786,9 +1779,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         background-position: center;
         background-color: white;
     }
-    .cart-button.md-button.md-default-theme.md-raised:not([disabled]):hover,.cart-button.md-button.md-default-theme.md-raised:not([disabled]):focus {
-        background-color: #007c4c;
-    }
 
     .md-button.md-raised:not([disabled]){
         box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
@@ -2112,6 +2102,63 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
     button.attr {
         width: 105%;
+    }
+}
+
+@media (max-width: 768px) {
+    #white-bg-mobile {
+        width: 100%;
+        border: none;
+        box-shadow: none !important;
+        position: static;
+        height: auto;
+        padding: 0;
+    }
+
+    canvas {
+        position: static;
+        margin-top: 10px;
+    }
+
+    button.attr {
+        left: 2%
+    }
+
+    .canvas-button-row {
+        position:static;
+        top: inherit;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .cart-button-row .cart-button.addtocart {
+        margin: 0 auto;
+    }
+
+    .md-button.md-default-theme.md-raised.cart-button.addtocart {
+        margin-right: 9%;
+    }
+}
+
+@media (max-width: 480px) {
+    .plae.basket {
+        margin-bottom: 80px;
+        height: 430px;
+    }
+
+    .plae.basket.subtotal h3 {
+        bottom: 10px;
+    }
+
+    .cart-button-row {
+        position:relative;
+        margin-top: 466px;
+        height: auto;
+    }
+
+    .md-button.md-default-theme.md-raised.cart-button.addtocart {
+        margin: 0 auto;
+        width: 150px;
     }
 }
 
