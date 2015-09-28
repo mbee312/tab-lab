@@ -632,7 +632,6 @@ button.attr {
 }
 
 .price.subtotal {
-    float: right;
     margin-top: 15px;
     margin-right: 5px;
     font-size: medium;

@@ -48,7 +48,7 @@
             }
         };
     });
-    app.controller('SliderCtrl', ['$scope', 'tabLabProperties', 'sliderProperties', 'cartProperties', function ($scope, tabLabProperties, sliderProperties, cartProperties) {
+    app.controller('SliderCtrl', ['$scope', '$rootScope', 'tabLabProperties', 'sliderProperties', 'cartProperties', function ($scope, $rootScope, tabLabProperties, sliderProperties, cartProperties) {
         $scope.innerWidthSize = 0;
         $scope.innerWidthSizeNew = window.innerWidth;
 
@@ -267,7 +267,8 @@
 
             var shoe = $scope.shoeList[index];
             $scope.updateShoeTexture($scope.scene, $scope.group, oldShoe, shoe);
-            cartProperties.updateCart(shoe, "shoe");
+            cartProperties.updateCart(shoe, 2);
+            $rootScope.$broadcast('calculate-subtotal');
         });
 
         $scope.$on('new-tab-right-index', function(event, index) {
@@ -284,9 +285,9 @@
             }
 
             var tabRight = tabLabProperties.getTab(0);
-            cartProperties.updateCart(tabRight, "tabRight");
+            cartProperties.updateCart(tabRight, 0);
             console.log("current right tab:");
-            console.log($scope.tabList[index]);
+            console.log(tabRight);
         });
 
         $scope.$on('new-tab-left-index', function(event, index) {
@@ -303,22 +304,22 @@
             }
             
             var tabLeft = tabLabProperties.getTab(1);
-            cartProperties.updateCart(tabLeft, "tabLeft");
+            cartProperties.updateCart(tabLeft, 1);
             console.log("current left tab:");
-            console.log($scope.tabList[index]);
+            console.log(tabLeft);
 
         });
 
         $scope.$on('new-tab-right-index-random', function(event, index) {
             var shoe = tabLabProperties.getShoe();
             var tabRight = tabLabProperties.getTab(0);
-            cartProperties.updateCart(tabRight, "tabRight");
+            cartProperties.updateCart(tabRight, 0);
         });
 
         $scope.$on('new-tab-left-index-random', function(event, index) {
             var shoe = tabLabProperties.getShoe();
             var tabLeft = tabLabProperties.getTab(1);
-            cartProperties.updateCart(tabLeft, "tabLeft");
+            cartProperties.updateCart(tabLeft, 1);
         });
 
     }]);

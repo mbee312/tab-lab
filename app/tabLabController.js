@@ -338,6 +338,11 @@
                     $scope.setTab($scope.tabList[j], 2);
                     $scope.setTab($scope.tabList[k], 1);
                     $scope.setTab($scope.tabList[k], 3);
+
+                    cartProperties.updateCart(getShoe(), 2);
+                    cartProperties.updateCart(getTab(0), 0);
+                    cartProperties.updateCart(getTab(1), 1);
+                    $rootScope.$broadcast('calculate-subtotal');
                 };
 
                 $scope.loaded = [];
