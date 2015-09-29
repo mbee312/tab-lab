@@ -460,19 +460,14 @@ canvas {
 .survey {
     z-index: 99;
     width: 90%;
-    height: 520px;
-    top: 620px;
+    height: 80%;
+    top: 100px;
     left: 5%;
     right: 5%;
     position: absolute;
-    margin-left: 0;
-    -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
-    border-radius: 10px;
     border: 2px #000000;
     opacity: 1;
-    display: inline-block;
-    background: #ffffff;
 }
 
 #plae-size {
@@ -865,7 +860,8 @@ md-input-group.md-default-theme input, md-input-group.md-default-theme textarea 
 }
 
 .survey-form {
-    height: 120%;
+    height: 100%;
+    border: 1px solid rgb(150, 150, 150);
 }
 
 #question_1 {
@@ -1276,8 +1272,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         left: 40%;
     }
     .survey {
-        top: 260px;
-
+        top: 100px;
     }
 }
 
@@ -1964,17 +1959,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         top: 960px;
         border-radius: 50%;
         background-color: white;
-    }
-    .survey {
-        width: 970px;
-        height: 440px;
-        top: 550px;
-        left: 40px;
-        margin-left: 0;
-        opacity: 1;
-        display: inline-block;
-        background: #ffffff;
-        border: 2px solid #D3D3D3;
     }
     form.surveyForm {
         padding-left: 0;

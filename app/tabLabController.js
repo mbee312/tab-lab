@@ -29,7 +29,8 @@
             'ui.bootstrap',
             'angular-carousel',
             'slick',
-            'ui.bootstrap.modal'
+            'ui.bootstrap.modal',
+            'ngModal'
         ]);
     tabLabApp.service('tabLabProperties', ['$http', '$q', '$rootScope', function($http, $q, $rootScope){
         var shoeSelected = {};
@@ -966,6 +967,61 @@
                     }
                 };//end isSizeSelected ()
 
+
+                $scope.isSurveyOn = false;
+
+                $scope.getSurveyForm = function (){
+                    return $scope.isSurveyOn;
+                }//end getSurveyForm ()
+
+                $scope.setSurveyMode = function () {
+                    $scope.isSurveyOn = !$scope.isSurveyOn;
+                    console.log("survery mode is: " + $scope.isSurveyOn);
+                };
+
+                $scope.label_3 = "How likely would you recommend Tab Lab to a friend? \n0 to 10. (10 is Extremely likely)";
+
+                $scope.userSurvey = {
+                    email: '',
+                    question_1: '' ,
+                    question_2: '' ,
+                    question_3: ''
+                };
+
+                $scope.isSurveyEmpty = function (){
+                    if($scope.userSurvey.email != ''
+                        && $scope.userSurvey.question_3 != ''){
+                        return false;
+                    }else{
+                        return true;
+                    }
+
+                }// is SurveyEmpty()
+
+                // process the form
+                $scope.submitData = function (survey, resultVarName)
+                {
+                    var config = {
+                        params: {
+                            survey: survey
+                        }
+                    };
+
+                    $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+
+                    $http.post("/tab-lab/server.php", null, config)
+                        .success(function (data, status, headers, config)
+                        {
+                            $scope[resultVarName] = data;
+                            $scope.setSurveyMode();
+
+                        })
+                        .error(function (data, status, headers, config)
+                        {
+                            $scope[resultVarName] = "SUBMIT ERROR";
+                        });
+                };
+
                 $scope.options = {
                     display: 'bottom',
                     mode: 'scroller',
@@ -1007,7 +1063,6 @@
 
         $scope.vm.iScrollState = iScrollService.state;
     });
-
 
     tabLabApp.service('anchorSmoothScroll', function(){
 
