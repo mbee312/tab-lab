@@ -17,6 +17,10 @@ h3 {
     color: #434343;
 }
 
+h4.product.name {
+    left:15px;
+}
+
 .main-container.container {
     margin-top: 100px;
 }
@@ -1245,16 +1249,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
     /*  Canvas section  */
     /*                  */
 
-
-    #white-bg-mobile {
-        /*position: absolute;
-        width: 40%;
-        height: 220px;
-        top: 20px;
-        right: 2%;
-        left: 58%;
-        float: right;*/
-    }
     .canvas-button-row {
         top: 84%;
     }
@@ -1381,6 +1375,10 @@ md-tabs.ng-isolate-scope.md-default-theme {
         left: 17.8%;
     }
 
+    .bgimage.ng-scope.slick-slide {
+        transform: translate(65px,10px);
+    }
+
 }
 
 @media screen and (min-width: 660px){
@@ -1388,11 +1386,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         transform: translate(0,20px);
     }
     .tabmenuitem.bgimage.ng-scope.slick-slide {
-        transform: translate(0,45px);
-    }
-    .vertical-slick{
-    }
-    .vertical-slick.right {
+        transform: translate(0,18px);
     }
     .md-raised.selector.tab {
         background-size: 90%;
@@ -2078,6 +2072,12 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
 }
 
+@media (max-width: 1000px) {
+    h4.product.name {
+        font-size: 1em;
+    }
+}
+
 @media (max-width: 991px) {
     .main-container.container {
         margin-top: 90px;
@@ -2139,6 +2139,14 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .md-button.md-default-theme.md-raised.cart-button.addtocart {
         margin-right: 9%;
     }
+
+    .slick-list.draggable {
+        height: 80px;
+    }
+
+    .arrows-button-column {
+        height: 240px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2167,6 +2175,14 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .md-button.md-default-theme.md-raised.cart-button.addtocart {
         margin: 0 auto;
         width: 150px;
+    }
+
+    .slick-list.draggable {
+        height: 60px;
+    }
+
+    .arrows-button-column {
+        height:180px;
     }
 }
 
