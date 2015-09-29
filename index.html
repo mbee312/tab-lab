@@ -18,8 +18,8 @@
         <link rel="stylesheet" href="styles/angular-material/angular-material.min.css">
         <link rel="stylesheet" href="assets/libs/slick-carousel/slick/slick.css">
         <link rel="stylesheet" href="assets/libs/slick-carousel/slick/slick-theme.css">
-        <!--<link rel="stylesheet" href="assets/libs/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">-->
+        <link rel="stylesheet" href="assets/libs/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="/tab-lab/assets/libs/ngModal/ng-modal.css">
         <link rel="stylesheet" href="assets/libs/toastr/toastr.min.css"/>
         <link rel="stylesheet" href="styles/tablab.css">
@@ -29,6 +29,10 @@
 
         </script>
     </head>
+    <body ng-controller="tabLabController as tabLab" ng-class="{
+          'iscroll-on': app.iScrollState.useIScroll,
+          'iscroll-off': !app.iScrollState.useIScroll
+          }" >
     <header>
         <md-toolbar class="md-primary tab-lab-header-toolbar" id="tablab-header">
             <div class="md-toolbar-tools">
@@ -51,11 +55,10 @@
             </a>
         </div>
     </header>
-    <body ng-controller="tabLabController as tabLab" ng-class="{
-          'iscroll-on': app.iScrollState.useIScroll,
-          'iscroll-off': !app.iScrollState.useIScroll
-          }" >
-
+    <div class="main-container col1-layout container">
+    <div class="main">
+    <div class="col-main">
+    <div class="std">
     <section ng-view class="view-frame plae-chef-window">
 
         <section class="slick-container" ng-controller="SliderCtrl">
@@ -467,7 +470,10 @@
             </modal-dialog>
         </section>
     </section>
-
+    </div>
+    </div>
+    </div>
+    </div>
         <script src="assets/libs/jquery/dist/jquery.js"></script>
         <script src="assets/libs/underscore/underscore-min.js"></script>
         <script src="assets/libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
