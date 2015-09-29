@@ -412,6 +412,11 @@
             <modal-dialog show='getSurveyForm()' dialog-title='TabLab Feedback'>
                 <div class="survey survey-container">
                     <md-content layout="column" flex="flex" md-theme="default" class="md-whiteframe-z1 survey-form" layout-align="center center">
+                        <div style="width:100%">
+                            <button class="canvas-button close-feedback md-raised add md-button md-default-theme f-right" id="close-feedback-button" ng-click="setSurveyMode()" style="background: #21aa50;color: #fff;">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
                         <h2 id="survey-h2">what do you think about tab lab?</h2>
                         <form class="surveyForm plae-font" name="surveyForm" ng-submit="submitData(userSurvey, 'ajaxSubmitResult')" novalidate>
 
