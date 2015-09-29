@@ -400,7 +400,7 @@
                         $q.all([shoePromise, tabPromise]).then(function(data){
                             $scope.initializeSelected();
                             $scope.createScene();
-                            initDrawScene();
+                            $scope.initDrawScene();
                             jQuery('#fullmask').addClass('fade');
                         });
                     });
@@ -542,7 +542,7 @@
                     requestAnimationFrame($scope.render);
                 };
 
-                function initDrawScene (){
+                $scope.initDrawScene = function (){
                     if(tabLabProperties.isShoeSelected()){
                         var s = tabLabProperties.getShoe();
 
@@ -565,7 +565,7 @@
                             }
                         }
                     }else {
-                        setTimeout(initDrawScene, 500); // check again in a .5 second
+                        setTimeout($scope.initDrawScene, 500); // check again in a .5 second
                     }//end if-else
 
                     $scope.group.name = "group";
@@ -576,7 +576,7 @@
                     console.log($scope.group);
                     console.log("in my scene: ");
                     console.log($scope.scene);
-                }
+                };
 
                 function initDrawShoeHelper(scene, group, shoe, side, x, y, z){
                     var shoeMesh = {};
@@ -685,40 +685,7 @@
                     });
                 }
 
-                $scope.updateShoeTexture = function (scene, group, og, shoe, side){
-                /*
-                    if(og.name == shoe.name){
-                        // load path
-                        var shoeObj = $scope.currentShoeObj;
-                        var texturePath =  '/assets/models/texture/shoe/' + shoe.name + '/' + side + '/' + shoe.sku;
-                        var textureMap = THREE.ImageUtils.loadTexture(texturePath + '/difuse.jpg');
-                        var normalMap = THREE.ImageUtils.loadTexture(texturePath + '/Normal.jpg');
-                        var specularMap;
-                        if(shoe.specularMap[side] != null) {
-                            specularMap = THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg');
-                            console.log("specularMap:");
-                            console.log(specularMap);
-                        }
-
-                        console.log("shoeObj:");
-                        console.log(shoeObj);
-                        var updateMe = scene.getObjectByName("group").getObjectByName(shoeObj.name + "-" + side);
-
-                        console.log("updateMe object:");
-                        console.log(updateMe);
-
-                        updateMe.material.map = THREE.ImageUtils.loadTexture(textureMap);
-                        updateMe.material.normalMap = THREE.ImageUtils.loadTexture(normalMap);
-
-                        if(specularMap != null) {
-                            updateMe.material.specularMap = THREE.ImageUtils.loadTexture(specularMap);
-                        }
-                        updateMe.material.needsUpdate = true;
-                       // updateMe.material.map.needsUpdate = true;
-
-
-                   }else{
-                */
+                $scope.updateShoeTexture = function (redraw){
                     var grp = $scope.scene.getObjectByName("group");
                     var i = grp.children.length - 1;
 
@@ -728,12 +695,11 @@
                         grp.remove(grp.getObjectByName(grp.children[i].name));
                         i--;
                     }
-                    initDrawScene();
-                //    }
                     console.log("in my group: ");
                     console.log($scope.group);
                     console.log("in my scene: ");
                     console.log($scope.scene);
+                    redraw();
                 };
 
                 $scope.updateTabTexture = function (scene, pos, whichTab){
@@ -791,7 +757,7 @@
                 };
 
                 $scope.reDrawShoe = function (){
-                    initDrawScene();
+                    $scope.initDrawScene();
                 };
 
                 function removeFromScene(scene, tab){

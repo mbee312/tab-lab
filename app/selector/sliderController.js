@@ -60,19 +60,19 @@
             $scope.moveSlider('tab', pos);
         });
 
-        $scope.sliderSetShoe = _.debounce(_sliderSetShoe, 500, true);
+        $scope.sliderSetShoe = _.debounce(_sliderSetShoe, 1000, true);
 
         function _sliderSetShoe (i){
             $scope.$broadcast('new-shoe-index', i);
         }
 
-        $scope.sliderSetLeftTab = _.debounce(_sliderSetLeftTab, 500, true);
+        $scope.sliderSetLeftTab = _.debounce(_sliderSetLeftTab, 1000, true);
 
         function _sliderSetLeftTab (i){
             $scope.$broadcast('new-tab-left-index', i);
         }
 
-        $scope.sliderSetRightTab = _.debounce(_sliderSetRightTab, 500, true);
+        $scope.sliderSetRightTab = _.debounce(_sliderSetRightTab, 1000, true);
 
         function _sliderSetRightTab (i){
             $scope.$broadcast('new-tab-right-index', i);
@@ -101,7 +101,7 @@
             console.log(selector);
         };
 
-        $scope.random = _.debounce(_random, 500, true);
+        $scope.random = _.debounce(_random, 1000, true);
 
         function _random(){
             /*
@@ -126,7 +126,7 @@
 
         } //end random ()
 
-        $scope.shuffle = _.debounce(_shuffle, 500, true);
+        $scope.shuffle = _.debounce(_shuffle, 1000, true);
 
         function _shuffle(){
             var tabs = tabLabProperties.getAllTabs();
@@ -164,7 +164,7 @@
 
         } //end shuffle ()
 
-        $scope.previous = _.debounce(_previous, 500, true);
+        $scope.previous = _.debounce(_previous, 1000, true);
 
         function _previous (side) {
             var i;
@@ -210,7 +210,7 @@
 
         }// end previous()
 
-        $scope.next = _.debounce(_next, 500, true);
+        $scope.next = _.debounce(_next, 1000, true);
 
         function _next (side){
             var i;
@@ -266,7 +266,9 @@
             $scope.setShoe($scope.shoeList[index]);
 
             var shoe = $scope.shoeList[index];
-            $scope.updateShoeTexture($scope.scene, $scope.group, oldShoe, shoe);
+            $scope.updateShoeTexture(function(){
+                $scope.initDrawScene();
+            });
             cartProperties.updateCart(shoe, 2);
             $rootScope.$broadcast('calculate-subtotal');
         });
