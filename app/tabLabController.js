@@ -401,7 +401,7 @@
                             $scope.initializeSelected();
                             $scope.createScene();
                             $scope.initDrawScene();
-                            jQuery('#fullmask').addClass('fade');
+                            if (maskControl) maskControl.hideFullMask();
                         });
                     });
                 }; // end initLoad()

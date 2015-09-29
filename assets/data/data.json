@@ -61,30 +61,6 @@
   },
   "shoeSizes": [
     {
-        "id" : "281",
-        "price" : "0",
-        "size" : "6",
-        "label" : "6 - tots"
-    },
-    {
-        "id" : "282",
-        "price" : "0",
-        "size" : "6.5",
-        "label" : "6.5 - tots"
-    },
-    {
-        "id" : "283",
-        "price" : "0",
-        "size" : "7",
-        "label" : "7 - tots"
-    },
-    {
-        "id" : "284",
-        "price" : "0",
-        "size" : "7.5",
-        "label" : "7.5 - tots"
-    },
-    {
         "id" : "216",
         "price" : "0",
         "size" : "8",

@@ -259,6 +259,7 @@
 // serially add the products
             var data = [];
             if (calls[0]) {
+                if (maskControl) maskControl.showProgressMask("adding to cart");
                 calls[0]().then(function(result){
                     if (result) data.push(result.data);
                     return calls[1] ? calls[1]() : null;
@@ -268,6 +269,7 @@
                 }).then(function(result){
                     if (result) data.push(result.data);
                 }).finally(function(error){
+                    if (maskControl) maskControl.hideProgressMask();
                     if (error) {
                         console.log(error);
                     }
@@ -288,7 +290,6 @@
                                 toastr[data[l].status.toLowerCase()](data[l].message);
                             }
 
-                            console.log(data);
                         }
                     }
                 });
