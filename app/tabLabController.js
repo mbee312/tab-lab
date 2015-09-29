@@ -21,6 +21,8 @@
         "hideMethod": "fadeOut"
     }
 
+    if(window.maskControl == undefined) window.maskControl = null;
+
     // Declare app level module which depends on views, and components
     var tabLabApp = angular.module('tabLabApp',
         ['ngAnimate',
