@@ -580,31 +580,41 @@
                     console.log($scope.scene);
                 };
 
+                var loader = new THREE.JSONLoader();
+                var shoeMaterial = new THREE.MeshPhongMaterial();
+                var shoeMesh = {};
+                var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+                shoeMesh['left'] = new THREE.Mesh(geometry);
+                shoeMesh['right'] = new THREE.Mesh(geometry);
+
+
+
+
                 function initDrawShoeHelper(scene, group, shoe, side, x, y, z){
-                    var shoeMesh = {};
 
                     // load shoe
                     var shoePath = assetRoot + '/assets/models/' + shoe.name + '/' + shoe.name;
-                    var loader = new THREE.JSONLoader();
-                    var texturePath = assetRoot + 'assets/models/texture/shoe/' + shoe.name + '/' + side + '/' + shoe.sku;
-                //    var textureMap = THREE.ImageUtils.loadTexture(texturePath + '/diffuse.jpg');
-                //    var normalMap = THREE.ImageUtils.loadTexture(texturePath + '/normal.jpg');
+                    var shoeTexturePath = assetRoot + 'assets/models/texture/shoe/' + shoe.name + '/' + side + '/' + shoe.sku;
                     var uniqueName = shoe.name + '-' + shoe.sku + '-' + side;
-                    var textureMap = $scope.renderer._microCache.getSet(uniqueName + "-textureMap", THREE.ImageUtils.loadTexture(texturePath + '/diffuse.jpg'));
-                    var normalMap = $scope.renderer._microCache.getSet(uniqueName + "-normalMap", THREE.ImageUtils.loadTexture(texturePath + '/normal.jpg'));
-                    var specularMap;
-                   try{
-                    //    specularMap = THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg');
-                        specularMap = $scope.renderer._microCache.getSet(uniqueName + "-specular" + side, THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg'));
+                    var shoeTextureMap = $scope.renderer._microCache.getSet(uniqueName + "-textureMap", THREE.ImageUtils.loadTexture(shoeTexturePath + '/diffuse.jpg'));
+                    var shoeNormalMap = $scope.renderer._microCache.getSet(uniqueName + "-normalMap", THREE.ImageUtils.loadTexture(shoeTexturePath + '/normal.jpg'));
+                    var shoeSpecularMap;
+                    try{
+                       shoeSpecularMap = $scope.renderer._microCache.getSet(uniqueName + "-specular" + side, THREE.ImageUtils.loadTexture(shoeTexturePath + '/specular.jpg'));
                     }catch(err) {
                        console.log(err);
                    }
 
-                    loader.load(shoePath + '-shoe-'+ side + '.js', function (geometry, materials) {
-                        var material = new THREE.MeshPhongMaterial({map: textureMap, normalMap: normalMap, specularMap: specularMap, shininess: 35});
-                        material.side = THREE.DoubleSide;
+                    loader.load(shoePath + '-shoe-'+ side + '.js', function (geometry) {
+                        shoeMaterial.map = shoeTextureMap;
+                        shoeMaterial.normalMap = shoeNormalMap;
+                        if(shoeSpecularMap != null){
+                            shoeMaterial.specularMap = shoeSpecularMap;
+                        }
+                        shoeMaterial.side = THREE.DoubleSide;
                         geometry.dynamic = true;
-                        shoeMesh[side] = new THREE.Mesh(geometry, material);
+                        shoeMesh[side].geometry = geometry;
+                        shoeMesh[side].material = shoeMaterial;
                         shoeMesh[side].receiveShadow = false;
                         shoeMesh[side].castShadow = false;
                         shoeMesh[side].rotation.y = Math.PI;
@@ -615,12 +625,23 @@
                         $scope.group.add( shoeMesh[side]);
 
                         // remember the current shoe object
-                        // remember current shoe object
                         $scope.currentShoeObj = shoe;
                         console.log("currentShoeObj:");
                         console.log($scope.currentShoeObj);
                     });
                 }
+
+                var tabMesh = [];
+                tabMesh[0] = new THREE.Mesh(geometry);
+                tabMesh[1] = new THREE.Mesh(geometry);
+                tabMesh[2] = new THREE.Mesh(geometry);
+                tabMesh[3] = new THREE.Mesh(geometry);
+
+                var tabMaterial = [];
+                tabMaterial[0] = new THREE.MeshPhongMaterial();
+                tabMaterial[1] = new THREE.MeshPhongMaterial();
+                tabMaterial[2] = new THREE.MeshPhongMaterial();
+                tabMaterial[3] = new THREE.MeshPhongMaterial();
 
                 function initDrawTabHelper(scene, pos, x, y, z){
                     var shoe = getShoe();
@@ -649,27 +670,28 @@
                     }
 
                     // load tab
-                    var tabMesh = {};
-                    var loader = new THREE.JSONLoader();
-                    var meshPath = assetRoot + 'assets/models/' + shoe.name + '/' + shoe.name;
-                    var texturePath = assetRoot + 'assets/models/texture/tabs/' + tab.sku;
-                //    var textureMap = THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg');
-                //    var normalMap = THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg');
-                    var uniqueName = tab.name + '-' + tab.sku + '-' + whichTab;
-                    var textureMap = $scope.renderer._microCache.getSet(uniqueName + "-textureMap", THREE.ImageUtils.loadTexture(texturePath + tabSide + '/difuse-' + whichTab + '.jpg'));
-                    var normalMap = $scope.renderer._microCache.getSet(uniqueName + "-normalMap", THREE.ImageUtils.loadTexture(texturePath + tabSide + '/normals-' + whichTab + '.jpg'));
-                    var specularMap;
+                    var tabMeshPath = assetRoot + 'assets/models/' + shoe.name + '/' + shoe.name;
+                    var tabTexturePath = assetRoot + 'assets/models/texture/tabs/' + tab.sku;
+                    var tabUniqueName = tab.name + '-' + tab.sku + '-' + whichTab;
+                    var tabTextureMap = $scope.renderer._microCache.getSet(tabUniqueName + "-textureMap", THREE.ImageUtils.loadTexture(tabTexturePath + tabSide + '/difuse-' + whichTab + '.jpg'));
+                    var tabNormalMap = $scope.renderer._microCache.getSet(tabUniqueName + "-normalMap", THREE.ImageUtils.loadTexture(tabTexturePath + tabSide + '/normals-' + whichTab + '.jpg'));
+                    var tabSpecularMap;
                     try{
-                    //    specularMap = THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg');
-                        specularMap = $scope.renderer._microCache.getSet(uniqueName + "-specular", THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg'));
+                        tabSpecularMap = $scope.renderer._microCache.getSet(tabUniqueName + "-specular", THREE.ImageUtils.loadTexture(tabTexturePath + '/specular.jpg'));
                     }catch(err) {
                         console.log(err);
                     }
 
-                    loader.load(meshPath + '-tab-' + side + '-' + whichTab + '.js', function (geometry, materials) {
-                        var material = new THREE.MeshPhongMaterial({map: textureMap, normalMap: normalMap, specularMap: specularMap, shininess: 35});
+                    loader.load(tabMeshPath + '-tab-' + side + '-' + whichTab + '.js', function (geometry) {
+                        tabMaterial[pos].map = tabTextureMap;
+                        tabMaterial[pos].normalMap = tabNormalMap;
+                        if(tabSpecularMap != null){
+                            tabMaterial[pos].specularMap = tabSpecularMap;
+                        }
                         geometry.dynamic = true;
-                        tabMesh[pos] = new THREE.Mesh(geometry, material);
+                        tabMesh[pos].geometry = geometry;
+                        tabMesh[pos].material = tabMaterial[pos];
+                        tabMesh[pos].material.needsUpdate = true;
                         tabMesh[pos].receiveShadow = false;
                         tabMesh[pos].castShadow = false;
                         tabMesh[pos].rotation.y = Math.PI;
@@ -723,7 +745,6 @@
                         if(specularMap != null){
                             updateMe.material.specularMap = specularMap;
                         }
-
                     }catch(err) {
                         console.log(err);
                     }
@@ -1035,9 +1056,6 @@
     tabLabApp.service('anchorSmoothScroll', function(){
 
         this.scrollTo = function(eID) {
-
-            // This scrolling function
-            // is from http://www.itnewb.com/tutorial/Creating-the-Smooth-Scroll-Effect-with-JavaScript
 
             var startY = currentYPosition();
             var stopY = elmYPosition(eID);
