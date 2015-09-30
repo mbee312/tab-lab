@@ -477,12 +477,13 @@
                     $scope.camera.lookAt(new THREE.Vector3 (0.0, -1.0, 0.0));
 
                     $scope.scene = new THREE.Scene();
+
                     var lightKey = new THREE.DirectionalLight(0xffffff);
                     lightKey.position.set(5, 5, 5);
                     lightKey.castShadow = false;
 
                     lightKey.target.position.x = 0;
-                    lightKey.target.position.y = 0;
+                    lightKey.target.position.y = -1.0;
                     lightKey.target.position.z = 0;
 
                     lightKey.intensity = .6;
@@ -490,24 +491,26 @@
 
                     var lightFill = new THREE.DirectionalLight(0xffffff);
                     lightFill.position.set(-5, 5, 5);
-                    lightFill.intensity = .3;
+                    lightFill.intensity = .6;
                     lightFill.castShadow = false;
+                    lightFill.target.position.x = 0;
+                    lightFill.target.position.y = -1.0;
+                    lightFill.target.position.z = 0;
                     $scope.scene.add(lightFill);
 
                     var lightRim = new THREE.DirectionalLight(0xffffff);
                     lightRim.position.set(0, 5, -3);
+                    lightRim.target.position.x = 0;
+                    lightRim.target.position.y = -1.0;
+                    lightRim.target.position.z = 0;
                     lightRim.intensity = .3;
                     lightRim.castShadow = false;
                     $scope.scene.add(lightRim);
 
-                    var lightBottom = new THREE.DirectionalLight(0xffffff);
-                    lightBottom.position.set(0, -5, 0);
-                    lightBottom.intensity = .6;
-                    lightBottom.castShadow = false;
-                    $scope.scene.add(lightBottom);
-
-                    var lightAmbient = lightKey = new THREE.AmbientLight(0x2b2b2a);
+                    var lightAmbient = new THREE.AmbientLight(0x2E2E2E);
                     $scope.scene.add(lightAmbient);
+
+
                     $scope.scene.add($scope.camera);
                     $scope.renderer.setSize($scope.WIDTH, $scope.HEIGHT);
                     $scope.renderer.setClearColor(0xffffff,0);
@@ -576,14 +579,18 @@
 
                 // 0 = right shoe
                 // 1 = left shoe
+                var shoeMesh = [];
+                var geometry = new THREE.Geometry();
+                shoeMesh[0] = new THREE.Mesh(geometry);
+                shoeMesh[1] = new THREE.Mesh(geometry);
+                /*
+                $scope.group.add(shoeMesh[0]);
+                $scope.group.add(shoeMesh[1]);
+                */
+
                 var shoeMaterial = [];
                 shoeMaterial[0] = new THREE.MeshPhongMaterial();
                 shoeMaterial[1] = new THREE.MeshPhongMaterial();
-                
-                var shoeMesh = [];
-                var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-                shoeMesh[0] = new THREE.Mesh(geometry);
-                shoeMesh[1] = new THREE.Mesh(geometry);
 
                 function initDrawShoeHelper(scene, group, shoe, side, x, y, z){
                     var pos = 0;
@@ -610,9 +617,12 @@
                         if(shoeSpecularMap != null){
                             shoeMaterial[pos].specularMap = shoeSpecularMap;
                         }
-                        shoeMaterial.side = THREE.DoubleSide;
+                        shoeMaterial[pos].side = THREE.DoubleSide;
                         shoeMesh[pos].geometry = geometry;
+                        shoeMesh[pos].geometry.dynamic = true;
+                        shoeMesh[pos].geometry.needsUpdate = true;
                         shoeMesh[pos].material = shoeMaterial[pos];
+                        shoeMesh[pos].material.needsUpdate = true;
                         shoeMesh[pos].receiveShadow = false;
                         shoeMesh[pos].castShadow = false;
                         shoeMesh[pos].rotation.y = Math.PI;
@@ -634,6 +644,11 @@
                 tabMesh[1] = new THREE.Mesh(geometry);
                 tabMesh[2] = new THREE.Mesh(geometry);
                 tabMesh[3] = new THREE.Mesh(geometry);
+/*                $scope.group.add(tabMesh[0]);
+                $scope.group.add(tabMesh[1]);
+                $scope.group.add(tabMesh[2]);
+                $scope.group.add(tabMesh[3]);
+                */
 
                 var tabMaterial = [];
                 tabMaterial[0] = new THREE.MeshPhongMaterial();
@@ -717,6 +732,7 @@
                         grp.remove(grp.getObjectByName(grp.children[i].name));
                         i--;
                     }
+
                     console.log("in my group: ");
                     console.log($scope.group);
                     console.log("in my scene: ");
