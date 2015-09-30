@@ -515,6 +515,7 @@
                     $scope.renderer.setSize($scope.WIDTH, $scope.HEIGHT);
                     $scope.renderer.setClearColor(0xffffff,0);
                     $scope.container.appendChild($scope.renderer.domElement);
+                    render();
 
                     $(document).ready(function() {
                         document.getElementById("white-bg-mobile").addEventListener( 'mousedown', onDocumentMouseDown, false );
@@ -525,7 +526,8 @@
 
                 };
 
-                $scope.render = function () {
+                function render () {
+                    requestAnimationFrame(render);
                     //horizontal rotation
                     $scope.group.rotation.y += ( targetRotationX - $scope.group.rotation.y ) * 0.1;
 
@@ -542,10 +544,9 @@
                     if ($scope.group.rotation.x  < -1 ) {
                         $scope.group.rotation.x = -1
                     }
-
+                    
                     $scope.renderer.render($scope.scene, $scope.camera);
-                    requestAnimationFrame($scope.render);
-                };
+                }
 
                 $scope.initDrawScene = function (){
                     if(tabLabProperties.isShoeSelected()){
@@ -567,7 +568,7 @@
 
                     $scope.group.name = "group";
                     $scope.scene.add($scope.group);
-                    $scope.render();
+
 
                     console.log("in my group: ");
                     console.log($scope.group);
@@ -889,7 +890,7 @@
 
                 function animate() {
                     requestAnimationFrame( animate );
-                    $scope.render();
+                   // $scope.render();
                    // $scope.stats.update();
                 }
 
