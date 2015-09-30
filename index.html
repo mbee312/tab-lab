@@ -326,8 +326,7 @@
 
                 <div class="plae basket item shoe" ng-model="shoeSelected">
                     <md-button class="md-raised attr shoe" ng-class="{'size-animate' : shoeEditMode}"
-                               aria-label="attr name button"
-                               ng-click="tabLab.setSizeSelectMode('right')">
+                               aria-label="attr name button">
                         <h4 class="product name plae-font">{{shoeSelected.name}}</h4>
                         <ul class="details">
                             <li class="attr price plae-font">{{shoeSelected.price | currency}}</li>
@@ -335,15 +334,15 @@
                             <li class="attr size plae-font"
                                 ng-model="shoe.size">
                                 size:
-                                <select class="size selector shoe"
-                                        ng-model="shoe.size"
-                                        ng-change="setShoeSize(size)"
-                                        ng-options="size.label disable when size.disabled == true for size in shoeSizeOptions | filter:showSize">
-                                    <option value="" selected>--choose an option--</option>
-                                </select>
                             </li>
                         </ul>
                     </md-button>
+                    <select class="size selector shoe"
+                            ng-model="shoe.size"
+                            ng-change="setShoeSize(size)"
+                            ng-options="size.label disable when size.disabled == true for size in shoeSizeOptions | filter:showSize">
+                        <option value="" selected>--choose an option--</option>
+                    </select>
 
                     <md-button class="md-raised md-warn delete"
                                id="delete-shoe"
@@ -355,8 +354,7 @@
                 <div class="plae basket item left" ng-model="tabSelected">
                     <md-button class="md-raised attr tableft"
                                ng-class="{'size-animate' : tabEditModeL}"
-                               aria-label="attr tableft button"
-                               ng-click="tabLab.setSizeSelectMode('right')">
+                               aria-label="attr tableft button">
                         <h4 class="product name plae-font">{{tabsSelected[0].name}}</h4>
 
                         <ul class="details">
@@ -364,15 +362,15 @@
                             <!--<li class="attr color plae-font">color: {{tabsSelected[0].color}}</li>-->
                             <li class="attr size plae-font">
                                 size:
-                                <select class="size selector tabs"
-                                        ng-model="tabs.size"
-                                        ng-change="setTabSize(size)"
-                                        ng-options="size.label for size in tabSizeOptions">
-                                    <option value="" selected>--choose an option--</option>
-                                </select>
                             </li>
                         </ul>
                     </md-button>
+                    <select class="size selector tabs"
+                            ng-model="tabs.size"
+                            ng-change="setTabSize(size)"
+                            ng-options="size.label for size in tabSizeOptions">
+                        <option value="" selected>--choose an option--</option>
+                    </select>
                     <md-button class="md-raised md-warn delete" id="delete-left" aria-label="delete-left"
                                ng-click="remove('left')" ng-show="tabLab.isTabEditMode('left')">
                         <p class="rotate">remove</p>
@@ -388,15 +386,15 @@
                             <!--<li class="attr color plae-font">color: {{tabsSelected[1].color}}</li>-->
                             <li class="attr size plae-font">
                                 size:
-                                <select class="size selector tabs"
-                                        ng-model="tabs.size"
-                                        ng-change="setTabSize(size)"
-                                        ng-options="size.label for size in tabSizeOptions">
-                                    <option value="" selected>--choose an option--</option>
-                                </select>
                             </li>
                         </ul>
                     </md-button>
+                    <select class="size selector tabs"
+                            ng-model="tabs.size"
+                            ng-change="setTabSize(size)"
+                            ng-options="size.label for size in tabSizeOptions">
+                        <option value="" selected>--choose an option--</option>
+                    </select>
                     <md-button class="md-raised md-warn delete"
                                id="delete-right"
                                aria-label="delete-right"
@@ -430,7 +428,6 @@
                         </div>
                         <h2 id="survey-h2">what do you think about tab lab?</h2>
                         <form class="surveyForm plae-font" name="surveyForm" ng-submit="submitData(userSurvey, 'ajaxSubmitResult')" novalidate>
-
                             <md-text-float class="md-default-theme question" label="Did your kid(s) play with Tab Lab? Yes or No?" ng-model="userSurvey.question_1" name="question_1">
                             </md-text-float>
 

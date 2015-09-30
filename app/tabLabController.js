@@ -133,60 +133,7 @@
                 $scope.leftTabIndex=0;
                 $scope.lTindex=0;
 
-                $scope.tabsNoMirror = ["201110-610", "201122-908", "201131-009", "201161-822"];
-            /*
-                var loadNormals = function (){
-                    var s;
-                    var texturePathLeft;
-                    var texturePathRight;
-                    var imgMap = {};
-                    var imgNormalMap = {};
-                    var specularMap = {};
-                    var i;
-                    for (i = 0 ; i < getNumOfShoesInList() ; i++ ){
-                        s = $scope.shoeList[i];
-                        $scope.shoeList[i].map = [];
-                        $scope.shoeList[i].normalMap = [];
-                        $scope.shoeList[i].specularMap = [];
-
-                        texturePathLeft = assetRoot + 'assets/models/texture/shoe/' + s.name + '/left/' + s.sku;
-                        texturePathRight = assetRoot + 'assets/models/texture/shoe/' + s.name + '/right/' + s.sku;
-                        imgMap['left'] = new Image();
-                        imgMap['left'].src = texturePathLeft + '/diffuse.jpg';
-                        $scope.shoeList[i].map['left'] =  imgMap['left'];
-
-                        imgMap['right'] = new Image();
-                        imgMap['right'].src = texturePathRight + '/diffuse.jpg';
-                        $scope.shoeList[i].map['right'] =  imgMap['right'];
-
-                        imgNormalMap['left'] = new Image();
-                        imgNormalMap['left'].src = texturePathLeft + '/normal.jpg';
-                        $scope.shoeList[i].normalMap['left'] = imgNormalMap['left'];
-
-                        imgNormalMap['right'] = new Image();
-                        imgNormalMap['right'].src = texturePathRight + '/normal.jpg';
-                        $scope.shoeList[i].normalMap['right'] = imgNormalMap['right'];
-
-                        try {
-                            specularMap['left'] = new Image();
-                            specularMap['left'].src = texturePathLeft + '/specular.jpg';
-                            $scope.shoeList[i].specularMap['left'] = specularMap['left'];
-                        }
-                        catch(err) {
-                          //  console.log(err);
-                        }
-
-                        try {
-                            specularMap['right'] = new Image();
-                            specularMap['right'].src = texturePathRight + '/specular.jpg';
-                            $scope.shoeList[i].specularMap['right'] = specularMap['right'];
-                        }
-                        catch(err) {
-                           // console.log(err);
-                        }
-                    }
-                };
-            */
+                $scope.tabsNoMirror = ["201110-610", "201122-908", "201131-009", "201161-822", "201110-610"];
 
                 $scope.loadMenu = function (list, shoesOrTabs ){
                     for(var i = 0; i < list.length ; i++){
@@ -194,7 +141,7 @@
                         list[i].menuImg.src = '/media/catalog/product' + list[i].image_url; // $scope.MENUIMGPATH + shoesOrTabs + '/' + list[i].name + '-' + list[i].color + '.jpg';
                     }// end for
                     return list;
-                }// end loadMenu()
+                };// end loadMenu()
 
                 var setNumOfShoesInList = function (number){
                     sliderProperties.setNumOfShoes(number);
@@ -316,16 +263,14 @@
                         );
                     });
                     $scope.shoeSelected = shoe;
-                    $rootScope.$broadcast('move-slider-shoe', 0);
                 };
 
                 $scope.setTab = function(tab, shoePos){
                     tabLabProperties.setTabSelected(tab, shoePos);
                     $scope.tabsSelected[shoePos] = tab;
-                    $rootScope.$broadcast('move-slider-tab', shoePos);
                 };
 
-                $scope.initializeSelected = function (){
+                function initializeSelected (moveSliders){
                     var i = $scope.setRandomIndex('shoe', 0);
                     var j = $scope.setRandomIndex('tab', 0);
                     var k = $scope.setRandomIndex('tab', 1);
@@ -346,7 +291,7 @@
                     cartProperties.updateCart(getTab(0), 0);
                     cartProperties.updateCart(getTab(1), 1);
                     $rootScope.$broadcast('calculate-subtotal');
-                };
+                }
 
                 $scope.loaded = [];
 
@@ -400,7 +345,9 @@
                             $scope.loadTabStyles(tabs);
                         });
                         $q.all([shoePromise, tabPromise]).then(function(data){
-                            $scope.initializeSelected();
+                            initializeSelected(function(){
+                                $rootScope.$broadcast('move-slider-shoe', 0);
+                            });
                             $scope.createScene();
                             $scope.initDrawScene();
                             if (maskControl) maskControl.hideFullMask();
@@ -694,10 +641,10 @@
                         tabMesh[pos].material.needsUpdate = true;
                         tabMesh[pos].receiveShadow = false;
                         tabMesh[pos].castShadow = false;
-                        tabMesh[pos].rotation.y = Math.PI;
                         tabMesh[pos].position.x = x;
                         tabMesh[pos].position.y = y;
                         tabMesh[pos].position.z = z;
+                        tabMesh[pos].rotation.y = Math.PI;
                         tabMesh[pos].name = "tab" + pos;
                         grp.add(tabMesh[pos]);
 
@@ -731,13 +678,25 @@
 
                     var tabObj = $scope.currentTabObj[pos];
                     var t = getTab(pos);
+                    var tabSide = '';
+
+                    // check for non-mirror tabs
+                    if(_.indexOf($scope.tabsNoMirror, t.sku) != -1){
+                        if(pos == 0 || pos == 2){
+                            tabSide = '/right';
+                        }else{
+                            tabSide = '/left';
+                        }// end else-if
+                        console.log("tabSide:");
+                        console.log(tabSide);
+                    }
 
                     // load path
                     var texturePath = assetRoot + 'assets/models/texture/tabs/' + t.sku;
                     var uniqueName = t.name + '-' + t.sku + '-' + whichTab;
                     var updateMe = scene.getObjectByName("group").getObjectByName(tabObj.name);
-                    updateMe.material.map = $scope.renderer._microCache.getSet(uniqueName + "-textureMap", THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg'));
-                    updateMe.material.normalMap = $scope.renderer._microCache.getSet(uniqueName + "-normalMap", THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg'));
+                    updateMe.material.map = $scope.renderer._microCache.getSet(uniqueName + "-textureMap", THREE.ImageUtils.loadTexture(texturePath + tabSide + '/difuse-' + whichTab + '.jpg'));
+                    updateMe.material.normalMap = $scope.renderer._microCache.getSet(uniqueName + "-normalMap", THREE.ImageUtils.loadTexture(texturePath + tabSide + '/normals-' + whichTab + '.jpg'));
                     var specularMap;
                     try{
                         specularMap = $scope.renderer._microCache.getSet(uniqueName + "-specular", THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg'));
