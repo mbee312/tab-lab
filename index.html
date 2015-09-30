@@ -287,7 +287,14 @@
                     <md-button ng-controller="SliderCtrl" class="canvas-button random-button md-raised plae-font" id="random-button"
                                ng-click="random()"
                                style="background: rgba(255, 255, 255, 0.90);color: #FFFFFF;">
-                        <span class="rainbow shuffle">random</span>
+                        <span class="rainbow">
+                          <span class="r">r</span>
+                          <span class="a">a</span>
+                          <span class="n">n</span>
+                          <span class="d">d</span>
+                          <span class="o">o</span>
+                          <span class="m">m</span>
+                        </span>
                     </md-button>
                     <md-button ng-controller="SliderCtrl" class="canvas-button random-button shuffle md-raised plae-font"
                                id="shuffle-button"
@@ -417,8 +424,8 @@
                 <div class="survey survey-container">
                     <md-content layout="column" flex="flex" md-theme="default" class="md-whiteframe-z1 survey-form" layout-align="center center">
                         <div style="width:100%">
-                            <button class="canvas-button close-feedback md-raised add md-button md-default-theme f-right" id="close-feedback-button" ng-click="setSurveyMode()" style="background: #21aa50;color: #fff;">
-                                <i class="fa fa-times"></i>
+                            <button class="close-feedback f-right" id="close-feedback-button" ng-click="setSurveyMode()">
+                                <i class="fa fa-times fa-lg"></i>
                             </button>
                         </div>
                         <h2 id="survey-h2">what do you think about tab lab?</h2>
