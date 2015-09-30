@@ -73,13 +73,38 @@ p {
 }
 
 .rainbow {
+    color: #21aa50;
+    -webkit-text-fill-color: transparent;
     background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #26a9e0), color-stop(0.2, #37b34a), color-stop(0.4, #d91c5c), color-stop(0.6, #00a69c), color-stop(0.8, #f6921e),color-stop(1, #ec297b) );
     background-image: gradient( linear, left top, right top, color-stop(0, #26a9e0), color-stop(0.2, #37b34a), color-stop(0.4, #d91c5c), color-stop(0.6, #00a69c), color-stop(0.8, #f6921e),color-stop(1, #ec297b) );
-    color:transparent;
+    background: -o-linear-gradient(transparent, transparent);
     -webkit-background-clip: text;
-    background-clip: text;
     font-weight: bold;
+    letter-spacing: -2px;
 }
+.r {
+    color: #26a9e0;
+}
+.a {
+    color: #37b34a;
+}
+.n {
+    color: #d91c5c;
+}
+.d {
+    color: #00a69c;
+}
+.o {
+    color: #f6921e;
+}
+.m {
+    color: #ec297b;
+    letter-spacing: 1px;
+}
+.r, .a, .n, .d, .o, .m {
+    -webkit-text-fill-color: transparent;
+}
+
 
 blockquote {
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
@@ -114,6 +139,12 @@ button.md-button.md-default-theme {
 
 button.delete {
     display: none;
+}
+
+button.close-feedback {
+    margin: 10px;
+    border: none;
+    background: transparent;
 }
 
 .md-button.md-default-theme.md-raised.cart-button {
