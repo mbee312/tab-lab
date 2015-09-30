@@ -8,7 +8,6 @@
     var app = angular.module('tabLabApp');
     app.$inject = ['$scope', 'sliderProperties'];
     app.service('sliderProperties', function (){
-        var DEBUG = true;
         var shoeIndex;
         var tabIndex = [];
         var numOfShoes;
@@ -21,18 +20,12 @@
             },
             setShoeIndex: function (index) {
                 shoeIndex = index;
-                if(DEBUG) {
-                    console.log("shoe index is set:" + shoeIndex);
-                }
             },
             getTabIndex: function (pos) {
                 return tabIndex[pos];
             },
             setTabIndex: function (pos, index) {
                 tabIndex[pos] = index;
-                if(DEBUG) {
-                    console.log("tab index: " + pos + " is set to: " + tabIndex[pos]);
-                }
             },
             getNumOfShoes: function () {
                 return numOfShoes;
@@ -98,7 +91,6 @@
             }
 
             selector = selector + "-slider" + screen;
-            console.log(selector);
         };
 
         $scope.random = _.debounce(_random, 1000, true);
@@ -113,6 +105,7 @@
             var i = $scope.setRandomIndex('shoe', 0);
             var j = $scope.setRandomIndex('tab', 0);
             var k = $scope.setRandomIndex('tab', 1);
+            $scope.setShoe($scope.shoeList[i], 0);
 
             // set  tabs
             $scope.setTab($scope.tabList[j], 0);
@@ -259,9 +252,6 @@
             if(tabLabProperties.isShoeSelected()){
                     // save old shoe for comparison
                     var oldShoe = $scope.currentShoeObj;
-                    console.log("old shoe is:");
-                    console.log(oldShoe.name);
-                    console.log(oldShoe);
             }
             $scope.setShoe($scope.shoeList[index]);
 
@@ -288,8 +278,6 @@
 
             var tabRight = tabLabProperties.getTab(0);
             cartProperties.updateCart(tabRight, 0);
-            console.log("current right tab:");
-            console.log(tabRight);
         });
 
         $scope.$on('new-tab-left-index', function(event, index) {
@@ -307,9 +295,6 @@
             
             var tabLeft = tabLabProperties.getTab(1);
             cartProperties.updateCart(tabLeft, 1);
-            console.log("current left tab:");
-            console.log(tabLeft);
-
         });
 
         $scope.$on('new-tab-right-index-random', function(event, index) {

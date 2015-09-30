@@ -20,8 +20,6 @@
             },
             updateCart: function(item, pos){
                 cart[pos] = item;
-                console.log("Cart:");
-                console.log(cart);
             },
             getSubTotal: function () {
                 return subTotal;
@@ -38,20 +36,12 @@
             },
             setShoeSize: function (size) {
                 shoeSize = size;
-                if(DEBUG) {
-                    console.log("shoe size is set:");
-                    if (shoeSize) console.log(shoeSize.size);
-                }
             },
             getTabSize: function () {
                 return tabSize;
             },
             setTabSize: function (size) {
                 tabSize = size;
-                if(DEBUG) {
-                    console.log("tab size is set:");
-                    if (tabSize) console.log(tabSize.size);
-                }
             },
             getFitWide: function () {
                 return wide;
@@ -166,20 +156,15 @@
         };//end showMoreOptions()
 
         $scope.showMoreOptions = function () {
-            console.log("inside showMoreOptions()");
             if ($scope.sizeMoreOptions) {
                 $scope.sizeMoreOptions = false;
-                console.log("$scope.sizeMoreOptions set to false");
             } else {
                 $scope.sizeMoreOptions = true;
-                console.log("$scope.sizeMoreOptions set to true");
             }//end if-else
         };//end showMoreOptions()
 
         $scope.$on('calculate-subtotal', function(event, args) {
             $scope.subTotal = cartProperties.calculateSubTotal();
-            console.log("subtotal:");
-            console.log($scope.subTotal);
         });
 
         $scope.remove = function (side) {
