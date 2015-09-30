@@ -549,6 +549,8 @@
                 }
 
                 $scope.initDrawScene = function (){
+                    $scope.group.name = "group";
+                    $scope.scene.add($scope.group);
                     if(tabLabProperties.isShoeSelected()){
                         var s = tabLabProperties.getShoe();
 
@@ -565,15 +567,6 @@
                     }else {
                         setTimeout($scope.initDrawScene, 500); // check again in a .5 second
                     }//end if-else
-
-                    $scope.group.name = "group";
-                    $scope.scene.add($scope.group);
-
-
-                    console.log("in my group: ");
-                    console.log($scope.group);
-                    console.log("in my scene: ");
-                    console.log($scope.scene);
                 };
 
                 var loader = new THREE.JSONLoader();
@@ -584,10 +577,6 @@
                 var geometry = new THREE.Geometry();
                 shoeMesh[0] = new THREE.Mesh(geometry);
                 shoeMesh[1] = new THREE.Mesh(geometry);
-                /*
-                $scope.group.add(shoeMesh[0]);
-                $scope.group.add(shoeMesh[1]);
-                */
 
                 var shoeMaterial = [];
                 shoeMaterial[0] = new THREE.MeshPhongMaterial();
@@ -599,6 +588,7 @@
                         pos = 1;
                     }
 
+                    var grp = $scope.scene.getObjectByName("group");
                     // load shoe
                     var shoePath = assetRoot + '/assets/models/' + shoe.name + '/' + shoe.name;
                     var shoeTexturePath = assetRoot + 'assets/models/texture/shoe/' + shoe.name + '/' + side + '/' + shoe.sku;
@@ -631,7 +621,7 @@
                         shoeMesh[pos].position.y = y;
                         shoeMesh[pos].position.z = z;
                         shoeMesh[pos].name = shoe.name + "-" + side;
-                        $scope.group.add(shoeMesh[pos]);
+                        grp.add(shoeMesh[pos]);
 
                         // remember the current shoe object
                         $scope.currentShoeObj = shoe;
@@ -645,11 +635,6 @@
                 tabMesh[1] = new THREE.Mesh(geometry);
                 tabMesh[2] = new THREE.Mesh(geometry);
                 tabMesh[3] = new THREE.Mesh(geometry);
-/*                $scope.group.add(tabMesh[0]);
-                $scope.group.add(tabMesh[1]);
-                $scope.group.add(tabMesh[2]);
-                $scope.group.add(tabMesh[3]);
-                */
 
                 var tabMaterial = [];
                 tabMaterial[0] = new THREE.MeshPhongMaterial();
@@ -658,6 +643,7 @@
                 tabMaterial[3] = new THREE.MeshPhongMaterial();
 
                 function initDrawTabHelper(scene, pos, x, y, z){
+                    var grp = $scope.scene.getObjectByName("group");
                     var shoe = getShoe();
                     var tab = getTab(pos);
                     var whichTab = 'top';
@@ -712,9 +698,8 @@
                         tabMesh[pos].position.x = x;
                         tabMesh[pos].position.y = y;
                         tabMesh[pos].position.z = z;
-                       // tabMesh[pos].name = tab.name + '-' + whichTab  + '-' + side;
                         tabMesh[pos].name = "tab" + pos;
-                        $scope.group.add(tabMesh[pos]);
+                        grp.add(tabMesh[pos]);
 
                         // remember current tab object
                         $scope.currentTabObj[pos] = tabMesh[pos];
@@ -731,13 +716,13 @@
                     while(i >= 0) {
                         grp.children[i].material.dispose();
                         grp.remove(grp.getObjectByName(grp.children[i].name));
+                        console.log("in my group: ");
+                        console.log(grp);
+                        console.log("in my scene: ");
+                        console.log($scope.scene);
                         i--;
                     }
 
-                    console.log("in my group: ");
-                    console.log($scope.group);
-                    console.log("in my scene: ");
-                    console.log($scope.scene);
                     redraw();
                 };
 
