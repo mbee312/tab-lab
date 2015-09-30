@@ -491,7 +491,7 @@
 
                     var lightFill = new THREE.DirectionalLight(0xffffff);
                     lightFill.position.set(-5, 5, 5);
-                    lightFill.intensity = .6;
+                    lightFill.intensity = .3;
                     lightFill.castShadow = false;
                     lightFill.target.position.x = 0;
                     lightFill.target.position.y = -1.0;
