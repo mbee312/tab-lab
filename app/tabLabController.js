@@ -263,6 +263,7 @@
                         );
                     });
                     $scope.shoeSelected = shoe;
+                    $rootScope.$broadcast('move-slider-shoe', 0);
                 };
 
                 $scope.setTab = function(tab, shoePos){
@@ -345,9 +346,7 @@
                             $scope.loadTabStyles(tabs);
                         });
                         $q.all([shoePromise, tabPromise]).then(function(data){
-                            initializeSelected(function(){
-                                $rootScope.$broadcast('move-slider-shoe', 0);
-                            });
+                            initializeSelected();
                             $scope.createScene();
                             $scope.initDrawScene();
                             if (maskControl) maskControl.hideFullMask();
@@ -719,22 +718,29 @@
                     var specularMap;
                     var texturePath;
                     var updateMe;
+                    var s = getShoe();
+                    console.log("number of tabs");
+                    console.log(s.numOfTabs);
                     
                     // load path
                     texturePath = assetRoot + 'assets/models/texture/tabs/' + tab.sku;
-                    updateMe = $scope.scene.getObjectByName("group").getObjectByName("tab"+index);
 
-                    updateMe.material.map = THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + topOrBottom + '.jpg');
-                    updateMe.material.normalMap = THREE.ImageUtils.loadTexture(texturePath + '/normals-' + topOrBottom + '.jpg');
-                    try{
-                        specularMap = THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg');
-                        if(specularMap != null){
-                            updateMe.material.specularMap = specularMap;
+                    if((s.numOfTabs == 2) && (index == 2 || index == 3)){
+                        // do nothing
+                    }else{
+                        updateMe = $scope.scene.getObjectByName("group").getObjectByName("tab" + index);
+                        updateMe.material.map = THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + topOrBottom + '.jpg');
+                        updateMe.material.normalMap = THREE.ImageUtils.loadTexture(texturePath + '/normals-' + topOrBottom + '.jpg');
+                        try {
+                            specularMap = THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg');
+                            if (specularMap != null) {
+                                updateMe.material.specularMap = specularMap;
+                            }
+                        } catch (err) {
+                            console.log(err);
                         }
-                    }catch(err) {
-                        console.log(err);
+                        updateMe.material.needsUpdate = true;
                     }
-                    updateMe.material.needsUpdate = true;
                 };
 
                 $scope.reDrawShoe = function (){

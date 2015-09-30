@@ -113,6 +113,7 @@
             var i = $scope.setRandomIndex('shoe', 0);
             var j = $scope.setRandomIndex('tab', 0);
             var k = $scope.setRandomIndex('tab', 1);
+            $scope.setShoe($scope.shoeList[i], 0);
 
             // set  tabs
             $scope.setTab($scope.tabList[j], 0);
