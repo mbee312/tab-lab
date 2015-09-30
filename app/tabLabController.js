@@ -279,8 +279,6 @@
                     // set initial shoe
                     $scope.setShoe($scope.shoeList[i]);
                     var shoe = getShoe();
-                    console.log("initializedSelected:");
-                    console.log(shoe);
 
                     // set initial tabs
                     $scope.setTab($scope.tabList[j], 0);
@@ -571,8 +569,6 @@
 
                         // remember the current shoe object
                         $scope.currentShoeObj = shoe;
-                        console.log("currentShoeObj:");
-                        console.log($scope.currentShoeObj);
                     });
                 }
 
@@ -611,8 +607,6 @@
                         }else{
                             tabSide = '/left';
                         }// end else-if
-                        console.log("tabSide:");
-                        console.log(tabSide);
                     }
 
                     // load tab
@@ -649,8 +643,6 @@
 
                         // remember current tab object
                         $scope.currentTabObj[pos] = tabMesh[pos];
-                        console.log("currentTabObj[" + pos.toString() +"]");
-                        console.log($scope.currentTabObj[pos].name);
                     });
                 }
 
@@ -662,10 +654,6 @@
                     while(i >= 0) {
                         grp.children[i].material.dispose();
                         grp.remove(grp.getObjectByName(grp.children[i].name));
-                        console.log("in my group: ");
-                        console.log(grp);
-                        console.log("in my scene: ");
-                        console.log($scope.scene);
                         i--;
                     }
 
@@ -686,8 +674,6 @@
                         }else{
                             tabSide = '/left';
                         }// end else-if
-                        console.log("tabSide:");
-                        console.log(tabSide);
                     }
 
                     // load path
@@ -706,12 +692,6 @@
                         console.log(err);
                     }
                     updateMe.material.needsUpdate = true;
-
-                    console.log("in my group: ");
-                    console.log($scope.group);
-                    console.log("in my scene: ");
-                    console.log($scope.scene);
-
                 };
 
                 $scope.updateTabTextureShuffle = function(index, tab, position, topOrBottom){
@@ -719,9 +699,7 @@
                     var texturePath;
                     var updateMe;
                     var s = getShoe();
-                    console.log("number of tabs");
-                    console.log(s.numOfTabs);
-                    
+
                     // load path
                     texturePath = assetRoot + 'assets/models/texture/tabs/' + tab.sku;
 
