@@ -88,6 +88,7 @@
 
         $scope.$watch(function () { return $scope.shoe.size; }, function (newValue, oldValue) {
             cartProperties.setShoeSize(newValue);
+            calculateShoePrice();
             setTabSize();
             $scope.$broadcast('calculate-subtotal');
         });
@@ -107,6 +108,22 @@
 
         $scope.setWideFit = function (){
             cartProperties.setFitWide();
+        };
+
+        var calculateShoePrice = function () {
+            var shoe = tabLabProperties.getShoe();
+            if (shoe && shoe.simpleProducts && shoe.initial_price) {
+                var simpleshoe = null;
+                var size = cartProperties.getShoeSize().size;
+                for (var s in shoe.simpleProducts) {
+                    var simpleProduct = shoe.simpleProducts[s];
+                    if (simpleProduct.sku == shoe.sku + '-' + size) {
+                        simpleshoe = simpleProduct;
+                        break;
+                    }
+                }
+                shoe.price = simpleshoe ? simpleshoe.price : tabLabProperties.getShoe().initial_price;
+            }
         };
 
         var setTabSize = function () {
