@@ -250,7 +250,6 @@
                                             s.show = false;
                                         }
                                     });
-//                                  $scope.$apply(function(){$scope.shoe.size = 0});
                                     $scope.shoe.size = 0;
                                     $scope.$apply(function(){$scope.shoeSizeOptions = _.toArray($scope.shoeSizeOptions)});
 
@@ -298,6 +297,7 @@
 
                     var updateProductData = function(products, productData) {
                         _.each(products, function(product, productIndex) {
+                            product.initial_price = product.price;
                             _.extend(product, productData[product.sku.substr(0,3)] || {});
                             _.extend(product, productData[product.sku] || {});
                         })
