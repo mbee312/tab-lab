@@ -262,7 +262,6 @@
                         );
                     });
                     $scope.shoeSelected = shoe;
-                    $rootScope.$broadcast('move-slider-shoe', 0);
                 };
 
                 $scope.setTab = function(tab, shoePos){
@@ -270,7 +269,7 @@
                     $scope.tabsSelected[shoePos] = tab;
                 };
 
-                function initializeSelected (moveSliders){
+                function initializeSelected (){
                     var i = $scope.setRandomIndex('shoe', 0);
                     var j = $scope.setRandomIndex('tab', 0);
                     var k = $scope.setRandomIndex('tab', 1);
@@ -284,6 +283,23 @@
                     $scope.setTab($scope.tabList[j], 2);
                     $scope.setTab($scope.tabList[k], 1);
                     $scope.setTab($scope.tabList[k], 3);
+
+                    // poll for reviews section to load before populating
+                    var waitForSlick = function(){
+                        if (jQuery(".slick-shoe").length > 0 &&
+                            jQuery(".slick-tab-left").length > 0 &&
+                            jQuery(".slick-tab-right").length > 0){
+                            // move slick to
+                            console.log("slick initiated moving!");
+                            $rootScope.$broadcast('move-slider-shoe', i);
+                            $rootScope.$broadcast('move-slider-tab', j);
+                            $rootScope.$broadcast('move-slider-tab', k);
+                        }else{
+                            console.log("waiting for slick...");
+                            setTimeout(waitForSlick, 500);
+                        } //end if-else
+                    }; //end waitForSlick()
+                    waitForSlick();
 
                     cartProperties.updateCart(getShoe(), 2);
                     cartProperties.updateCart(getTab(0), 0);
@@ -417,8 +433,8 @@
 
                 $scope.createScene = function (){
 
-                    $scope.camera.position.set(0, 6, 6);
-                    $scope.camera.lookAt(new THREE.Vector3 (0.0, -1.0, 0.0));
+                    $scope.camera.position.set(0, 4, 7);
+                    $scope.camera.lookAt(new THREE.Vector3 (0.0, 0.0, 0.0));
 
                     $scope.scene = new THREE.Scene();
 
@@ -427,7 +443,7 @@
                     lightKey.castShadow = false;
 
                     lightKey.target.position.x = 0;
-                    lightKey.target.position.y = -1.0;
+                    lightKey.target.position.y = 0.0;
                     lightKey.target.position.z = 0;
 
                     lightKey.intensity = .6;
@@ -438,14 +454,14 @@
                     lightFill.intensity = .3;
                     lightFill.castShadow = false;
                     lightFill.target.position.x = 0;
-                    lightFill.target.position.y = -1.0;
+                    lightFill.target.position.y = 0.0;
                     lightFill.target.position.z = 0;
                     $scope.scene.add(lightFill);
 
                     var lightRim = new THREE.DirectionalLight(0xffffff);
                     lightRim.position.set(0, 5, -3);
                     lightRim.target.position.x = 0;
-                    lightRim.target.position.y = -1.0;
+                    lightRim.target.position.y = 0.0;
                     lightRim.target.position.z = 0;
                     lightRim.intensity = .3;
                     lightRim.castShadow = false;
