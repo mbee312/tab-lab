@@ -53,35 +53,35 @@
             $scope.moveSlider('tab', pos);
         });
 
-        $scope.sliderSetShoe = _.debounce(_sliderSetShoe, 1000, true);
+        $scope.sliderSetShoe = _.debounce(_sliderSetShoe, 500, true);
 
         function _sliderSetShoe (i){
             $scope.$broadcast('new-shoe-index', i);
         }
 
-        $scope.sliderSetLeftTab = _.debounce(_sliderSetLeftTab, 1000, true);
+        $scope.sliderSetLeftTab = _.debounce(_sliderSetLeftTab, 500, true);
 
         function _sliderSetLeftTab (i){
             $scope.$broadcast('new-tab-left-index', i);
         }
 
-        $scope.sliderSetRightTab = _.debounce(_sliderSetRightTab, 1000, true);
+        $scope.sliderSetRightTab = _.debounce(_sliderSetRightTab, 500, true);
 
         function _sliderSetRightTab (i){
             $scope.$broadcast('new-tab-right-index', i);
         }
 
         $scope.moveSlider = function (type, pos){
-            var selector = "#" + type;
-            var screen = "";
+            var selector = ".slick-" + type;
             var index;
-            if (!$scope.isMobile) {
-                screen = "-desktop";
-            }
+            var currIndex;
+
             if(type != 'shoe') {
                 if (pos == 0 || pos == 2) {
+
                     index = $scope.getTabIndex(0);
                     selector += "-left";
+                  //  currIndex = jQuery('\'' + selector + '\'').slick('slickCurrentIndex');
                 } else {
                     index = $scope.getTabIndex(1);
                     selector += "-right";
@@ -90,10 +90,11 @@
                 index = $scope.getShoeIndex();
             }
 
-            selector = selector + "-slider" + screen;
+            console.log(selector);
+            jQuery('\"' + selector + '\"').slick('slickGoTo', index);
         };
 
-        $scope.random = _.debounce(_random, 1000, true);
+        $scope.random = _.debounce(_random, 500, true);
 
         function _random(){
             /*
@@ -119,7 +120,7 @@
 
         } //end random ()
 
-        $scope.shuffle = _.debounce(_shuffle, 1000, true);
+        $scope.shuffle = _.debounce(_shuffle, 500, true);
 
         function _shuffle(){
             var tabs = tabLabProperties.getAllTabs();
@@ -157,7 +158,7 @@
 
         } //end shuffle ()
 
-        $scope.previous = _.debounce(_previous, 1000, true);
+        $scope.previous = _.debounce(_previous, 500, true);
 
         function _previous (side) {
             var i;
@@ -203,7 +204,7 @@
 
         }// end previous()
 
-        $scope.next = _.debounce(_next, 1000, true);
+        $scope.next = _.debounce(_next, 500, true);
 
         function _next (side){
             var i;
