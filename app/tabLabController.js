@@ -440,18 +440,16 @@
 
                     var lightKey = new THREE.DirectionalLight(0xffffff);
                     lightKey.position.set(5, 5, 5);
+                    lightKey.intensity = .6;
                     lightKey.castShadow = false;
-
                     lightKey.target.position.x = 0;
                     lightKey.target.position.y = 0.0;
                     lightKey.target.position.z = 0;
-
-                    lightKey.intensity = .6;
                     $scope.scene.add(lightKey);
 
                     var lightFill = new THREE.DirectionalLight(0xffffff);
                     lightFill.position.set(-5, 5, 5);
-                    lightFill.intensity = .3;
+                    lightFill.intensity = .35;
                     lightFill.castShadow = false;
                     lightFill.target.position.x = 0;
                     lightFill.target.position.y = 0.0;
@@ -460,12 +458,18 @@
 
                     var lightRim = new THREE.DirectionalLight(0xffffff);
                     lightRim.position.set(0, 5, -3);
+                    lightRim.intensity = .3;
                     lightRim.target.position.x = 0;
                     lightRim.target.position.y = 0.0;
                     lightRim.target.position.z = 0;
-                    lightRim.intensity = .3;
                     lightRim.castShadow = false;
                     $scope.scene.add(lightRim);
+
+                    var lightBottom = new THREE.DirectionalLight(0xffffff);
+                    lightBottom.position.set(0, -5, 0);
+                    lightBottom.intensity = .5;
+                    lightBottom.castShadow = false;
+                    $scope.scene.add(lightBottom);
 
                     var lightAmbient = new THREE.AmbientLight(0x2E2E2E);
                     $scope.scene.add(lightAmbient);
@@ -606,7 +610,7 @@
                     var tab = getTab(pos);
                     var whichTab = 'top';
                     var side='left';
-                    var tabSide='';
+                    var tabTopOrBottom = 'top';
 
                     if(pos == 0 || pos == 2){
                         side = 'right';
@@ -616,21 +620,16 @@
                         whichTab = 'bottom';
                     }
 
-                    // check for non-mirror tabs
-                    if(_.indexOf($scope.tabsNoMirror, tab.sku) != -1){
-                        if(pos == 0 || pos == 2){
-                            tabSide = '/right';
-                        }else{
-                            tabSide = '/left';
-                        }// end else-if
+                    if(pos == 0 || pos == 3){
+                        tabTopOrBottom = 'bottom';
                     }
 
                     // load tab
                     var tabMeshPath = assetRoot + 'assets/models/' + shoe.name + '/' + shoe.name;
                     var tabTexturePath = assetRoot + 'assets/models/texture/tabs/' + tab.sku;
                     var tabUniqueName = tab.name + '-' + tab.sku + '-' + whichTab;
-                    var tabTextureMap = $scope.renderer._microCache.getSet(tabUniqueName + "-textureMap", THREE.ImageUtils.loadTexture(tabTexturePath + tabSide + '/difuse-' + whichTab + '.jpg'));
-                    var tabNormalMap = $scope.renderer._microCache.getSet(tabUniqueName + "-normalMap", THREE.ImageUtils.loadTexture(tabTexturePath + tabSide + '/normals-' + whichTab + '.jpg'));
+                    var tabTextureMap = $scope.renderer._microCache.getSet(tabUniqueName + "-textureMap", THREE.ImageUtils.loadTexture(tabTexturePath + '/difuse-' + tabTopOrBottom + '.jpg'));
+                    var tabNormalMap = $scope.renderer._microCache.getSet(tabUniqueName + "-normalMap", THREE.ImageUtils.loadTexture(tabTexturePath + '/normals-' + tabTopOrBottom + '.jpg'));
                     var tabSpecularMap;
                     try{
                         tabSpecularMap = $scope.renderer._microCache.getSet(tabUniqueName + "-specular", THREE.ImageUtils.loadTexture(tabTexturePath + '/specular.jpg'));
@@ -681,23 +680,19 @@
 
                     var tabObj = $scope.currentTabObj[pos];
                     var t = getTab(pos);
-                    var tabSide = '';
 
-                    // check for non-mirror tabs
-                    if(_.indexOf($scope.tabsNoMirror, t.sku) != -1){
-                        if(pos == 0 || pos == 2){
-                            tabSide = '/right';
-                        }else{
-                            tabSide = '/left';
-                        }// end else-if
-                    }
+                    if(pos == 0){
+                        whichTab = 'bottom';
+                    }else if (pos == 2){
+                        whichTab = 'top';
+                    }// end else-if
 
                     // load path
                     var texturePath = assetRoot + 'assets/models/texture/tabs/' + t.sku;
                     var uniqueName = t.name + '-' + t.sku + '-' + whichTab;
                     var updateMe = scene.getObjectByName("group").getObjectByName(tabObj.name);
-                    updateMe.material.map = $scope.renderer._microCache.getSet(uniqueName + "-textureMap", THREE.ImageUtils.loadTexture(texturePath + tabSide + '/difuse-' + whichTab + '.jpg'));
-                    updateMe.material.normalMap = $scope.renderer._microCache.getSet(uniqueName + "-normalMap", THREE.ImageUtils.loadTexture(texturePath + tabSide + '/normals-' + whichTab + '.jpg'));
+                    updateMe.material.map = $scope.renderer._microCache.getSet(uniqueName + "-textureMap", THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg'));
+                    updateMe.material.normalMap = $scope.renderer._microCache.getSet(uniqueName + "-normalMap", THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg'));
                     var specularMap;
                     try{
                         specularMap = $scope.renderer._microCache.getSet(uniqueName + "-specular", THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg'));
