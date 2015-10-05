@@ -625,7 +625,7 @@
                     // load tab
                     var tabMeshPath = assetRoot + 'assets/models/' + shoe.name + '/' + shoe.name;
                     var tabTexturePath = assetRoot + 'assets/models/texture/tabs/' + tab.sku;
-                    var tabUniqueName = tab.name + '-' + tab.sku + '-' + whichTab;
+                    var tabUniqueName = tab.name + '-' + tab.sku + '-' + tabTopOrBottom;
                     var tabTextureMap = $scope.renderer._microCache.getSet(tabUniqueName + "-textureMap", THREE.ImageUtils.loadTexture(tabTexturePath + '/difuse-' + tabTopOrBottom + '.jpg'));
                     var tabNormalMap = $scope.renderer._microCache.getSet(tabUniqueName + "-normalMap", THREE.ImageUtils.loadTexture(tabTexturePath + '/normals-' + tabTopOrBottom + '.jpg'));
                     var tabSpecularMap;
@@ -678,12 +678,6 @@
 
                     var tabObj = $scope.currentTabObj[pos];
                     var t = getTab(pos);
-
-                    if(pos == 0){
-                        whichTab = 'bottom';
-                    }else if (pos == 2){
-                        whichTab = 'top';
-                    }// end else-if
 
                     // load path
                     var texturePath = assetRoot + 'assets/models/texture/tabs/' + t.sku;

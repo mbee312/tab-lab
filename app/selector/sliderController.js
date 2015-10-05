@@ -268,11 +268,11 @@
             var shoe = tabLabProperties.getShoe();
             $scope.setTab($scope.tabList[index], 0);
             $scope.setTab($scope.tabList[index], 2);
-            $scope.updateTabTexture($scope.scene, 0, 'top');
+            $scope.updateTabTexture($scope.scene, 0, 'bottom');
             // update just in case shuffle
             $scope.updateTabTexture($scope.scene, 1, 'top');
             if(shoe.numOfTabs != 2) {
-                $scope.updateTabTexture($scope.scene, 2, 'bottom');
+                $scope.updateTabTexture($scope.scene, 2, 'top');
                 // update just in case shuffle
                 $scope.updateTabTexture($scope.scene, 3, 'bottom');
             }
@@ -287,11 +287,11 @@
             $scope.setTab($scope.tabList[index], 3);
             $scope.updateTabTexture($scope.scene, 1, 'top');
             // update just in case shuffle
-            $scope.updateTabTexture($scope.scene, 0, 'top');
+            $scope.updateTabTexture($scope.scene, 0, 'bottom');
             if(shoe.numOfTabs != 2) {
                 $scope.updateTabTexture($scope.scene, 3, 'bottom');
                 // update just in case shuffle
-                $scope.updateTabTexture($scope.scene, 2, 'bottom');
+                $scope.updateTabTexture($scope.scene, 2, 'top');
             }
             
             var tabLeft = tabLabProperties.getTab(1);
