@@ -133,8 +133,6 @@
                 $scope.leftTabIndex=0;
                 $scope.lTindex=0;
 
-                $scope.tabsNoMirror = ["201110-610", "201122-908", "201131-009", "201161-822", "201110-610"];
-
                 $scope.loadMenu = function (list, shoesOrTabs ){
                     for(var i = 0; i < list.length ; i++){
                         list[i].menuImg = new Image();
