@@ -262,7 +262,6 @@
                         );
                     });
                     $scope.shoeSelected = shoe;
-                    $rootScope.$broadcast('move-slider-shoe', 0);
                 };
 
                 $scope.setTab = function(tab, shoePos){
@@ -270,7 +269,7 @@
                     $scope.tabsSelected[shoePos] = tab;
                 };
 
-                function initializeSelected (moveSliders){
+                function initializeSelected (){
                     var i = $scope.setRandomIndex('shoe', 0);
                     var j = $scope.setRandomIndex('tab', 0);
                     var k = $scope.setRandomIndex('tab', 1);
@@ -284,6 +283,23 @@
                     $scope.setTab($scope.tabList[j], 2);
                     $scope.setTab($scope.tabList[k], 1);
                     $scope.setTab($scope.tabList[k], 3);
+
+                    // poll for reviews section to load before populating
+                    var waitForSlick = function(){
+                        if (jQuery(".slick-shoe").length > 0 &&
+                            jQuery(".slick-tab-left").length > 0 &&
+                            jQuery(".slick-tab-right").length > 0){
+                            // move slick to
+                            console.log("slick initiated moving!");
+                            $rootScope.$broadcast('move-slider-shoe', i);
+                            $rootScope.$broadcast('move-slider-tab', j);
+                            $rootScope.$broadcast('move-slider-tab', k);
+                        }else{
+                            console.log("waiting for slick...");
+                            setTimeout(waitForSlick, 500);
+                        } //end if-else
+                    }; //end waitForSlick()
+                    waitForSlick();
 
                     cartProperties.updateCart(getShoe(), 2);
                     cartProperties.updateCart(getTab(0), 0);
@@ -386,7 +402,7 @@
                 var windowHalfX = $scope.WIDTH / 2;
                 var windowHalfY = $scope.HEIGHT / 2;
                 var finalRotationY;
-                var VIEW_ANGLE = 45;
+                var VIEW_ANGLE = 23;
             //    var ASPECT = $scope.WIDTH / $scope.HEIGHT;
                 var ASPECT = 1;
                 var NEAR = 1;
@@ -417,8 +433,8 @@
 
                 $scope.createScene = function (){
 
-                    $scope.camera.position.set(0, 6, 6);
-                    $scope.camera.lookAt(new THREE.Vector3 (0.0, -1.0, 0.0));
+                    $scope.camera.position.set(0.0, 5.5, 14.0);
+                    $scope.camera.lookAt(new THREE.Vector3 (0.0, 0.0, 0.0));
 
                     $scope.scene = new THREE.Scene();
 
@@ -427,7 +443,7 @@
                     lightKey.castShadow = false;
 
                     lightKey.target.position.x = 0;
-                    lightKey.target.position.y = -1.0;
+                    lightKey.target.position.y = 0.0;
                     lightKey.target.position.z = 0;
 
                     lightKey.intensity = .6;
@@ -438,14 +454,14 @@
                     lightFill.intensity = .3;
                     lightFill.castShadow = false;
                     lightFill.target.position.x = 0;
-                    lightFill.target.position.y = -1.0;
+                    lightFill.target.position.y = 0.0;
                     lightFill.target.position.z = 0;
                     $scope.scene.add(lightFill);
 
                     var lightRim = new THREE.DirectionalLight(0xffffff);
                     lightRim.position.set(0, 5, -3);
                     lightRim.target.position.x = 0;
-                    lightRim.target.position.y = -1.0;
+                    lightRim.target.position.y = 0.0;
                     lightRim.target.position.z = 0;
                     lightRim.intensity = .3;
                     lightRim.castShadow = false;
@@ -498,15 +514,15 @@
                     if(tabLabProperties.isShoeSelected()){
                         var s = tabLabProperties.getShoe();
 
-                        initDrawShoeHelper($scope.scene, $scope.group, s, 'left', 1.1, -1, 0);
-                        initDrawShoeHelper($scope.scene, $scope.group, s, 'right', -1.1, -1, 0);
+                        initDrawShoeHelper($scope.scene, $scope.group, s, 'left', 0.75, -1, 0.75);
+                        initDrawShoeHelper($scope.scene, $scope.group, s, 'right', -0.75, -1, -0.75);
 
                         // draw tabs
-                        initDrawTabHelper($scope.scene, 0, -1.1, -1, 0);
-                        initDrawTabHelper($scope.scene, 1, 1.1, -1, 0);
+                        initDrawTabHelper($scope.scene, 0, -0.75, -1, -0.75);
+                        initDrawTabHelper($scope.scene, 1, 0.75, -1, 0.75);
                         if(s.numOfTabs != 2) {
-                            initDrawTabHelper($scope.scene, 2, -1.1, -1, 0);
-                            initDrawTabHelper($scope.scene, 3, 1.1, -1, 0);
+                            initDrawTabHelper($scope.scene, 2, -0.75, -1, -0.75);
+                            initDrawTabHelper($scope.scene, 3, 0.75, -1, 0.75);
                         }
                     }else {
                         setTimeout($scope.initDrawScene, 500); // check again in a .5 second
@@ -560,7 +576,7 @@
                         shoeMesh[pos].material.needsUpdate = true;
                         shoeMesh[pos].receiveShadow = false;
                         shoeMesh[pos].castShadow = false;
-                        shoeMesh[pos].rotation.y = Math.PI;
+                        shoeMesh[pos].rotation.y = 3*Math.PI/4;
                         shoeMesh[pos].position.x = x;
                         shoeMesh[pos].position.y = y;
                         shoeMesh[pos].position.z = z;
@@ -637,7 +653,7 @@
                         tabMesh[pos].position.x = x;
                         tabMesh[pos].position.y = y;
                         tabMesh[pos].position.z = z;
-                        tabMesh[pos].rotation.y = Math.PI;
+                        tabMesh[pos].rotation.y = 3*Math.PI/4;
                         tabMesh[pos].name = "tab" + pos;
                         grp.add(tabMesh[pos]);
 
@@ -763,8 +779,8 @@
                     mouseX = event.clientX - windowHalfX;
                     mouseY = event.clientY - windowHalfY;
 
-                    targetRotationY = targetRotationOnMouseDownY + (mouseY - mouseYOnMouseDown) * 0.02;
-                    targetRotationX = targetRotationOnMouseDownX + (mouseX - mouseXOnMouseDown) * 0.02;
+                    targetRotationY = targetRotationOnMouseDownY + (mouseY - mouseYOnMouseDown) * 0.008;
+                    targetRotationX = targetRotationOnMouseDownX + (mouseX - mouseXOnMouseDown) * 0.008;
 
                 }
 
