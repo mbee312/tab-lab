@@ -402,7 +402,7 @@
                 var windowHalfX = $scope.WIDTH / 2;
                 var windowHalfY = $scope.HEIGHT / 2;
                 var finalRotationY;
-                var VIEW_ANGLE = 45;
+                var VIEW_ANGLE = 23;
             //    var ASPECT = $scope.WIDTH / $scope.HEIGHT;
                 var ASPECT = 1;
                 var NEAR = 1;
@@ -433,7 +433,7 @@
 
                 $scope.createScene = function (){
 
-                    $scope.camera.position.set(0, 4, 7);
+                    $scope.camera.position.set(0.0, 5.5, 14.0);
                     $scope.camera.lookAt(new THREE.Vector3 (0.0, 0.0, 0.0));
 
                     $scope.scene = new THREE.Scene();
@@ -514,15 +514,15 @@
                     if(tabLabProperties.isShoeSelected()){
                         var s = tabLabProperties.getShoe();
 
-                        initDrawShoeHelper($scope.scene, $scope.group, s, 'left', 1.1, -1, 0);
-                        initDrawShoeHelper($scope.scene, $scope.group, s, 'right', -1.1, -1, 0);
+                        initDrawShoeHelper($scope.scene, $scope.group, s, 'left', 0.75, -1, 0.75);
+                        initDrawShoeHelper($scope.scene, $scope.group, s, 'right', -0.75, -1, -0.75);
 
                         // draw tabs
-                        initDrawTabHelper($scope.scene, 0, -1.1, -1, 0);
-                        initDrawTabHelper($scope.scene, 1, 1.1, -1, 0);
+                        initDrawTabHelper($scope.scene, 0, -0.75, -1, -0.75);
+                        initDrawTabHelper($scope.scene, 1, 0.75, -1, 0.75);
                         if(s.numOfTabs != 2) {
-                            initDrawTabHelper($scope.scene, 2, -1.1, -1, 0);
-                            initDrawTabHelper($scope.scene, 3, 1.1, -1, 0);
+                            initDrawTabHelper($scope.scene, 2, -0.75, -1, -0.75);
+                            initDrawTabHelper($scope.scene, 3, 0.75, -1, 0.75);
                         }
                     }else {
                         setTimeout($scope.initDrawScene, 500); // check again in a .5 second
@@ -576,7 +576,7 @@
                         shoeMesh[pos].material.needsUpdate = true;
                         shoeMesh[pos].receiveShadow = false;
                         shoeMesh[pos].castShadow = false;
-                        shoeMesh[pos].rotation.y = Math.PI;
+                        shoeMesh[pos].rotation.y = 3*Math.PI/4;
                         shoeMesh[pos].position.x = x;
                         shoeMesh[pos].position.y = y;
                         shoeMesh[pos].position.z = z;
@@ -653,7 +653,7 @@
                         tabMesh[pos].position.x = x;
                         tabMesh[pos].position.y = y;
                         tabMesh[pos].position.z = z;
-                        tabMesh[pos].rotation.y = Math.PI;
+                        tabMesh[pos].rotation.y = 3*Math.PI/4;
                         tabMesh[pos].name = "tab" + pos;
                         grp.add(tabMesh[pos]);
 
@@ -779,8 +779,8 @@
                     mouseX = event.clientX - windowHalfX;
                     mouseY = event.clientY - windowHalfY;
 
-                    targetRotationY = targetRotationOnMouseDownY + (mouseY - mouseYOnMouseDown) * 0.02;
-                    targetRotationX = targetRotationOnMouseDownX + (mouseX - mouseXOnMouseDown) * 0.02;
+                    targetRotationY = targetRotationOnMouseDownY + (mouseY - mouseYOnMouseDown) * 0.008;
+                    targetRotationX = targetRotationOnMouseDownX + (mouseX - mouseXOnMouseDown) * 0.008;
 
                 }
 
