@@ -284,7 +284,7 @@
                     $scope.setTab($scope.tabList[k], 1);
                     $scope.setTab($scope.tabList[k], 3);
 
-                    // poll for reviews section to load before populating
+                    // poll for section to load before populating
                     var waitForSlick = function(){
                         if (jQuery(".slick-shoe").length > 0 &&
                             jQuery(".slick-tab-left").length > 0 &&
