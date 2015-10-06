@@ -2034,7 +2034,18 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
 
     ul.nav>li>a {
-        padding: 10px 8px;
+        padding: 10px 5px;
+    }
+
+        .plae-chef-window ul.nav .border-left {
+        border-left: none;
+        padding-left: 0;
+        margin: inherit;
+        height: 46px;
+    }
+
+    .plae-chef-window ul.nav .border-left > a {
+        margin-top: 0;
     }
 }
 
