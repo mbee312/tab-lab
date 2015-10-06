@@ -1,45 +1,20 @@
 {
-  "name": "slick-carousel",
-  "version": "1.5.0",
-  "description": "the last carousel you'll ever need",
-  "main": "slick/slick.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kenwheeler/slick.git"
-  },
-  "keywords": [
-    "carousel",
-    "slick",
-    "responsive"
-  ],
-  "author": {
-    "name": "Ken Wheeler"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kenwheeler/slick/issues"
-  },
-  "gitHead": "a3820746581f0f9073053f9a39c89e3d5aa55548",
-  "homepage": "https://github.com/kenwheeler/slick",
-  "_id": "slick-carousel@1.5.0",
-  "scripts": {},
-  "_shasum": "b9351fe8e04552986e802188d536b4879f3c4cc2",
-  "_from": "slick-carousel@*",
-  "_npmVersion": "1.4.28",
-  "_npmUser": {
-    "name": "thekenwheeler",
-    "email": "ken@outlook.com"
-  },
-  "maintainers": [
-    {
-      "name": "thekenwheeler",
-      "email": "ken@outlook.com"
+    "name": "slick-carousel",
+    "version": "1.5.8",
+    "description": "the last carousel you'll ever need",
+    "main": "slick/slick.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kenwheeler/slick.git"
+    },
+    "keywords": [
+        "carousel",
+        "slick",
+        "responsive"
+    ],
+    "author": "Ken Wheeler",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/kenwheeler/slick/issues"
     }
-  ],
-  "dist": {
-    "shasum": "b9351fe8e04552986e802188d536b4879f3c4cc2",
-    "tarball": "http://registry.npmjs.org/slick-carousel/-/slick-carousel-1.5.0.tgz"
-  },
-  "directories": {},
-  "_resolved": "https://registry.npmjs.org/slick-carousel/-/slick-carousel-1.5.0.tgz"
 }
