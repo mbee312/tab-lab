@@ -492,14 +492,12 @@
 
                     render();
 
-                    /*
                     $(document).ready(function() {
-                        document.getElementById("white-bg-mobile").addEventListener( 'mousedown', onDocumentMouseDown, false );
-                        document.getElementById("white-bg-mobile").addEventListener( 'touchstart', onDocumentTouchStart, false );
-                        document.getElementById("white-bg-mobile").addEventListener( 'touchmove', onDocumentTouchMove, false );
+                    //    document.getElementById("white-bg-mobile").addEventListener( 'mousedown', onDocumentMouseDown, false );
+                    //    document.getElementById("white-bg-mobile").addEventListener( 'touchstart', onDocumentTouchStart, false );
+                    //    document.getElementById("white-bg-mobile").addEventListener( 'touchmove', onDocumentTouchMove, false );
                         window.addEventListener( 'resize', onWindowResize, false );
                     });
-                    */
                 };
 
                 function render () {
