@@ -294,7 +294,7 @@
                             $rootScope.$broadcast('move-slider-tab', k);
                         }else{
                             console.log("waiting for slick...");
-                            setTimeout(waitForSlick, 500);
+                            //setTimeout(waitForSlick, 500);
                         } //end if-else
                     }; //end waitForSlick()
                     waitForSlick();
@@ -900,6 +900,30 @@
                         return false;
                     }
                 };//end isSizeSelected ()
+
+                $scope.paneChanged = function(pane) {
+                    $scope.selectedPane = pane;
+                    if(pane == "tabs" || pane == "shoes") {
+                        _.defer(function() {
+                            var left = $(".slick-left");
+                            if(left.length > 0) {
+                                left.slick('resize');
+                                left.slick('setPosition');
+                            }
+                            var right = $(".slick-right");
+                            if(right.length > 0) {
+                                right.slick('resize');
+                                right.slick('setPosition');
+                            }
+
+                            var shoe = $(".slick-shoe");
+                            if(shoe.length > 0) {
+                                shoe.slick('resize');
+                                shoe.slick('setPosition');
+                            }
+                        });
+                    }
+                }
 
 
                 $scope.isSurveyOn = false;
