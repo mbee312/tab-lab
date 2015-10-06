@@ -401,12 +401,12 @@
                 var windowHalfY = $scope.HEIGHT / 2;
                 var finalRotationY;
                 var VIEW_ANGLE = 23;
-            //    var ASPECT = $scope.WIDTH / $scope.HEIGHT;
                 var ASPECT = 1;
                 var NEAR = 1;
                 var FAR = 1000;
                 $scope.isMobile = false;
                 $scope.camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
+                $scope.controls;
 
                 $scope.isMobileScreen = function (){
                     return $scope.isMobile;
@@ -438,7 +438,7 @@
 
                     var lightKey = new THREE.DirectionalLight(0xffffff);
                     lightKey.position.set(5, 5, 5);
-                    lightKey.intensity = .6;
+                    lightKey.intensity = .5;
                     lightKey.castShadow = false;
                     lightKey.target.position.x = 0;
                     lightKey.target.position.y = 0.0;
@@ -447,7 +447,7 @@
 
                     var lightFill = new THREE.DirectionalLight(0xffffff);
                     lightFill.position.set(-5, 5, 5);
-                    lightFill.intensity = .35;
+                    lightFill.intensity = .3;
                     lightFill.castShadow = false;
                     lightFill.target.position.x = 0;
                     lightFill.target.position.y = 0.0;
@@ -465,31 +465,45 @@
 
                     var lightBottom = new THREE.DirectionalLight(0xffffff);
                     lightBottom.position.set(0, -5, 0);
-                    lightBottom.intensity = .5;
+                    lightBottom.intensity = .4;
                     lightBottom.castShadow = false;
                     $scope.scene.add(lightBottom);
 
                     var lightAmbient = new THREE.AmbientLight(0x2E2E2E);
                     $scope.scene.add(lightAmbient);
 
-
                     $scope.scene.add($scope.camera);
                     $scope.renderer.setSize($scope.WIDTH, $scope.HEIGHT);
                     $scope.renderer.setClearColor(0xffffff,0);
                     $scope.container.appendChild($scope.renderer.domElement);
+
+                    $scope.controls = new THREE.OrbitControls( $scope.camera, $scope.renderer.domElement );
+                    $scope.controls.enableDamping = true;
+                    $scope.controls.dampingFactor = 0.05;
+                    $scope.controls.noZoom = true;
+                    $scope.controls.autoRotate = true;
+                    $scope.controls.autoRotateSpeed = 1;
+                    $scope.controls.addEventListener( 'change', light_update );
+
+                    function light_update()
+                    {
+                        lightKey.position.copy( $scope.camera.position );
+                    }
+
                     render();
 
                     $(document).ready(function() {
-                        document.getElementById("white-bg-mobile").addEventListener( 'mousedown', onDocumentMouseDown, false );
-                        document.getElementById("white-bg-mobile").addEventListener( 'touchstart', onDocumentTouchStart, false );
-                        document.getElementById("white-bg-mobile").addEventListener( 'touchmove', onDocumentTouchMove, false );
+                    //    document.getElementById("white-bg-mobile").addEventListener( 'mousedown', onDocumentMouseDown, false );
+                    //    document.getElementById("white-bg-mobile").addEventListener( 'touchstart', onDocumentTouchStart, false );
+                    //    document.getElementById("white-bg-mobile").addEventListener( 'touchmove', onDocumentTouchMove, false );
                         window.addEventListener( 'resize', onWindowResize, false );
                     });
-
                 };
 
                 function render () {
                     requestAnimationFrame(render);
+
+                    /*
                     //horizontal rotation
                     $scope.group.rotation.y += ( targetRotationX - $scope.group.rotation.y ) * 0.1;
 
@@ -506,7 +520,9 @@
                     if ($scope.group.rotation.x  < -1 ) {
                         $scope.group.rotation.x = -1
                     }
-                    
+                    */
+
+                    $scope.controls.update();
                     $scope.renderer.render($scope.scene, $scope.camera);
                 }
 
@@ -736,7 +752,6 @@
                 window.onload = function (){
                     $scope.findAndSetCanvasDimensions();
                     $scope.initLoad();
-                  //  animate();
                 };
 
                 function onWindowResize (){
@@ -744,9 +759,8 @@
                     $scope.camera.updateProjectionMatrix();
                     $scope.renderer.setSize($scope.WIDTH, $scope.HEIGHT);
                 }
-
+            /*
                 function onDocumentMouseDown( event ) {
-
                     event.preventDefault();
 
                     document.addEventListener( 'mousemove', onDocumentMouseMove, false );
@@ -762,33 +776,26 @@
                 }
 
                 function onDocumentMouseMove( event ) {
-
                     mouseX = event.clientX - windowHalfX;
                     mouseY = event.clientY - windowHalfY;
 
                     targetRotationY = targetRotationOnMouseDownY + (mouseY - mouseYOnMouseDown) * 0.01;
                     targetRotationX = targetRotationOnMouseDownX + (mouseX - mouseXOnMouseDown) * 0.01;
-
                 }
 
                 function onDocumentMouseUp( event ) {
-
                     document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
                     document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
                     document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
-
                 }
 
                 function onDocumentMouseOut( event ) {
-
                     document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
                     document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
                     document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
-
                 }
 
                 function onDocumentTouchStart( event ) {
-
                     if ( event.touches.length == 1 ) {
 
                         event.preventDefault();
@@ -798,15 +805,11 @@
 
                         mouseYOnMouseDown = event.touches[ 0 ].pageY - windowHalfY;
                         targetRotationOnMouseDownY = targetRotationY;
-
                     }
-
                 }
 
                 function onDocumentTouchMove( event ) {
-
                     if ( event.touches.length == 1 ) {
-
                         event.preventDefault();
 
                         mouseX = event.touches[ 0 ].pageX - windowHalfX;
@@ -814,15 +817,7 @@
 
                         mouseY = event.touches[ 0 ].pageY - windowHalfY;
                         targetRotationY = targetRotationOnMouseDownY + (mouseY - mouseYOnMouseDown) * 0.05;
-
                     }
-
-                }
-
-                function animate() {
-                    requestAnimationFrame( animate );
-                   // $scope.render();
-                   // $scope.stats.update();
                 }
 
                 function debugInfo()
@@ -830,7 +825,7 @@
                     $('#debug').html("mouseX : " + mouseX + "   mouseY : " + mouseY );
 
                 }
-
+             */
 
                 /*
                  END Canvas Drawing
