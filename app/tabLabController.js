@@ -282,23 +282,6 @@
                     $scope.setTab($scope.tabList[k], 1);
                     $scope.setTab($scope.tabList[k], 3);
 
-                    // poll for section to load before populating
-                    var waitForSlick = function(){
-                        if (jQuery(".slick-shoe").length > 0 &&
-                            jQuery(".slick-tab-left").length > 0 &&
-                            jQuery(".slick-tab-right").length > 0){
-                            // move slick to
-                            console.log("slick initiated moving!");
-                            $rootScope.$broadcast('move-slider-shoe', i);
-                            $rootScope.$broadcast('move-slider-tab', j);
-                            $rootScope.$broadcast('move-slider-tab', k);
-                        }else{
-                            console.log("waiting for slick...");
-                            //setTimeout(waitForSlick, 500);
-                        } //end if-else
-                    }; //end waitForSlick()
-                    waitForSlick();
-
                     cartProperties.updateCart(getShoe(), 2);
                     cartProperties.updateCart(getTab(0), 0);
                     cartProperties.updateCart(getTab(1), 1);
@@ -407,6 +390,7 @@
                 $scope.isMobile = false;
                 $scope.camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
                 $scope.controls;
+                $scope.autoRotate = true;
 
                 $scope.isMobileScreen = function (){
                     return $scope.isMobile;
@@ -481,7 +465,7 @@
                     $scope.controls.enableDamping = true;
                     $scope.controls.dampingFactor = 0.05;
                     $scope.controls.noZoom = true;
-                    $scope.controls.autoRotate = true;
+                    $scope.controls.autoRotate = $scope.autoRotate;
                     $scope.controls.autoRotateSpeed = 1;
                     $scope.controls.addEventListener( 'change', light_update );
 
@@ -501,8 +485,7 @@
                 };
 
                 function render () {
-                    requestAnimationFrame(render);
-
+                    
                     /*
                     //horizontal rotation
                     $scope.group.rotation.y += ( targetRotationX - $scope.group.rotation.y ) * 0.1;
@@ -524,7 +507,13 @@
 
                     $scope.controls.update();
                     $scope.renderer.render($scope.scene, $scope.camera);
+                    requestAnimationFrame(render);
                 }
+
+                $scope.setAutoRotation = function (){
+                    $scope.autoRotate != $scope.autoRotate;
+                    $scope.controls.autoRotate = $scope.autoRotate;
+                };
 
                 $scope.initDrawScene = function (){
                     $scope.group.name = "group";
@@ -641,7 +630,7 @@
                     // load tab
                     var tabMeshPath = assetRoot + 'assets/models/' + shoe.name + '/' + shoe.name;
                     var tabTexturePath = assetRoot + 'assets/models/texture/tabs/' + tab.sku;
-                    var tabUniqueName = tab.name + '-' + tab.sku + '-' + tabTopOrBottom;
+                    var tabUniqueName = tab.name + '-' + tab.sku + '-' + whichTab;
                     var tabTextureMap = $scope.renderer._microCache.getSet(tabUniqueName + "-textureMap", THREE.ImageUtils.loadTexture(tabTexturePath + '/difuse-' + tabTopOrBottom + '.jpg'));
                     var tabNormalMap = $scope.renderer._microCache.getSet(tabUniqueName + "-normalMap", THREE.ImageUtils.loadTexture(tabTexturePath + '/normals-' + tabTopOrBottom + '.jpg'));
                     var tabSpecularMap;
@@ -695,12 +684,22 @@
                     var tabObj = $scope.currentTabObj[pos];
                     var t = getTab(pos);
 
+                    var tabTopOrBottom = 'top';
+
+                    if(pos == 2 ||  pos == 3){
+                        whichTab = 'bottom';
+                    }
+
+                    if(pos == 0 || pos == 3){
+                        tabTopOrBottom = 'bottom';
+                    }
+
                     // load path
                     var texturePath = assetRoot + 'assets/models/texture/tabs/' + t.sku;
                     var uniqueName = t.name + '-' + t.sku + '-' + whichTab;
                     var updateMe = scene.getObjectByName("group").getObjectByName(tabObj.name);
-                    updateMe.material.map = $scope.renderer._microCache.getSet(uniqueName + "-textureMap", THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + whichTab + '.jpg'));
-                    updateMe.material.normalMap = $scope.renderer._microCache.getSet(uniqueName + "-normalMap", THREE.ImageUtils.loadTexture(texturePath + '/normals-' + whichTab + '.jpg'));
+                    updateMe.material.map = $scope.renderer._microCache.getSet(uniqueName + "-textureMap", THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + tabTopOrBottom + '.jpg'));
+                    updateMe.material.normalMap = $scope.renderer._microCache.getSet(uniqueName + "-normalMap", THREE.ImageUtils.loadTexture(texturePath + '/normals-' + tabTopOrBottom + '.jpg'));
                     var specularMap;
                     try{
                         specularMap = $scope.renderer._microCache.getSet(uniqueName + "-specular", THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg'));
