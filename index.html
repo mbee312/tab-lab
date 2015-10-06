@@ -66,7 +66,10 @@
                     Tab Lab<sup>beta</sup>
                 </tab-heading>
             </tab>
-            <tab heading="tabs" ng-click="paneChanged('tabs')">
+            <tab ng-click="paneChanged('tabs')">
+                <tab-heading>
+                    <div class="tabs heading"></div>
+                </tab-heading>
                 <section class="slick-container" ng-controller="SliderCtrl">
                     <md-whiteframe class="md-whiteframe-z1 horizontal-slick-container">
                         <div>
@@ -139,7 +142,10 @@
                     </md-whiteframe>
                 </section>
             </tab>
-            <tab heading="shoes" ng-click="paneChanged('shoes')">
+            <tab ng-click="paneChanged('shoes')">
+                <tab-heading>
+                    <div class="shoes heading"></div>
+                </tab-heading>
                 <section class="slick-container" ng-controller="SliderCtrl">
                     <md-whiteframe class="md-whiteframe-z1 horizontal-slick-container">
                         <div>
@@ -184,7 +190,10 @@
                     </md-whiteframe>
                 </section>
             </tab>
-            <tab heading="design" ng-click="paneChanged('design')">
+            <tab ng-click="paneChanged('design')">
+                <tab-heading>
+                    <i class="fa fa-share-square fa-lg"></i>
+                </tab-heading>
                 <section ng-controller="CartCtrl" >
                     <md-white-frame class="md-whiteframe-z1 white-bg plae basket col-sm-8 col-sm-offset-2 col-xs-12" id="plae-basket">
                         <md-button class="md-raised fa fa-pencil-square-o fa-1" id="edit" aria-label="edit-cart" ng-click="tabLab.setEditMode()" ng-show="false">
@@ -288,37 +297,33 @@
                     </md-white-frame>
                 </section>
             </tab>
-            <tab ng-click="paneChanged('cog')">
-                <tab-heading>
-                    <i class="fa fa-cog"></i>
-                </tab-heading>
-                <div layout="row" layout-sm="row" class="canvas-button-row">
-                    <md-button ng-controller="SliderCtrl" class="canvas-button random-button md-raised plae-font" id="random-button"
-                               ng-click="random()"
-                               style="background: rgba(255, 255, 255, 0.90);color: #FFFFFF;">
-                        <span class="rainbow">
-                          <span class="r">r</span>
-                          <span class="a">a</span>
-                          <span class="n">n</span>
-                          <span class="d">d</span>
-                          <span class="o">o</span>
-                          <span class="m">m</span>
-                        </span>
-                    </md-button>
-                    <md-button ng-controller="SliderCtrl" class="canvas-button random-button shuffle md-raised plae-font"
-                               id="shuffle-button"
-                               ng-click="shuffle()"
-                               aria-label="shuffle button">
-                        <i class="fa fa-random fa-2x"></i>
-                    </md-button>
-                    <md-button class="canvas-button feedback md-raised add"
-                               id="feedback-button"
-                               ng-click="setSurveyMode()"
-                               style="background: #21aa50;color: #fff;">
-                        <span class="plae-font">feedback</span>
-                    </md-button>
-                </div>
-            </tab>
+            <tab>
+              <tab-heading>
+                  <md-button ng-controller="SliderCtrl" class="canvas-button random-button plae-font" id="random-button"
+                        ng-click="random()">
+                        <i class="fa fa-magic fa-lg"></i>
+                  </md-button>
+              </tab-heading>
+          </tab>
+          <tab>
+            <tab-heading>
+              <md-button ng-controller="SliderCtrl" class="canvas-button random-button shuffle plae-font"
+                    id="shuffle-button"
+                    ng-click="shuffle()"
+                    aria-label="shuffle button">
+                    <i class="fa fa-random fa-lg"></i>
+              </md-button>
+            </tab-heading>
+          </tab>
+          <tab>
+            <tab-heading>
+              <md-button class="canvas-button random-button shuffle plae-font"
+                    id="feedback-button"
+                    ng-click="setSurveyMode()">
+                    <i class="fa fa-comment fa-lg"></i>
+                  </md-button>
+            </tab-heading>
+          </tab>
         </tabset>
         <section>
             <md-whiteframe class="md-whiteframe-z1 white-bg canvas-container col-sm-6" id="white-bg-mobile">

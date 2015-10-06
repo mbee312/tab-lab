@@ -46,10 +46,11 @@ h4.product.name {
 }
 
 .tab-content>.tab-pane {
-    position: absolute;
+    position: fixed;
     left: 0px;
     right: 0px;
     z-index: 5;
+    top: 136px;
 }
 
 .col-sm-6 {
@@ -193,14 +194,6 @@ button.close-feedback {
     background-color: #007c4c;
 }
 
-button.feedback {
-    width: 40%;
-}
-
-button.feedback:hover, button.feedback:focus {
-    background-color: #007c4c !important;
-}
-
 .md-button.md-default-theme.md-raised:not([disabled]):hover, .md-button.md-default-theme.md-raised:not([disabled]):focus {
     background-color: #fff;
 }
@@ -240,7 +233,7 @@ body.ng-scope {
     height: 70px;
     width: 130px;
     margin-left: 10px !important;
-    margin-top: -60px !important;
+    margin-top: -76px !important;
     border-radius: 0 0 20px 0 !important;
     -webkit-border-radius: 0 0 20px 0 !important;
     -moz-border-radius: 0 0 20px 0 !important;
@@ -249,7 +242,9 @@ body.ng-scope {
     background-image: url(../assets/media/logo.png) !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
-    background-color: #4EAC50 !important;
+    background-color: #21aa50 !important;
+    box-shadow: none !important;
+    position: fixed !important;
 }
 
 span.md-flex.ng-scope {
@@ -265,7 +260,7 @@ select, .tab-lab-header {
     height: 80%;
     min-width: 60% !important;
     color: white !important;
-    background-color: #4EAC50 !important;
+    background-color: #21aa50 !important;
     margin-left: 40%;
     padding: 0 !important;
     float: left;
@@ -279,7 +274,10 @@ select, .tab-lab-header {
 }
 
 .tab-lab-header-toolbar {
-    background-color: #4EAC50 !important;
+    background-color: #21aa50 !important;
+    position: fixed;
+    top: 0;
+    height: 72px;
 }
 
 .version {
@@ -434,26 +432,21 @@ canvas {
 }
 
 #white-bg-mobile {
-    /*width: 96%;*/
-    height: 380px;
     z-index: 1;
     position: relative;
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
     display: inline-block;
     margin-bottom: 10px;
-    /*left: 2%;
-    right: 2%;
-    top: 10px;*/
     background: #ffffff;
     background: rgb(255, 255, 255);
     background: rgba(255, 255, 255, 0.0);
     width: 100%;
     border: none;
     box-shadow: none !important;
-    /*position: static;*/
     height: auto;
     padding: 0;
+    top: 44px;
 }
 
 
@@ -491,7 +484,7 @@ canvas {
 }
 
 .survey {
-    z-index: 99;
+    z-index: 101;
     width: 90%;
     height: 80%;
     top: 100px;
@@ -748,8 +741,7 @@ ul.plae.basket.list {
 .random-button {
     position: relative;
     z-index: 95;
-    width: 35%;
-    height: 30px;
+    width: auto;
     padding: 2px !important;
     -webkit-transition: all 0.7s ease;
     transition: all 0.7s ease;
@@ -757,17 +749,16 @@ ul.plae.basket.list {
     margin-left: 2px;
     margin-right: 2px;
 }
-.random-button.shuffle {
-    width: 30%;
-    color: rgba(40, 170, 64, 1) !important;
-}
 .shuffle {
-    text-transform: lowercase;
     font-size: 1em;
     font-weight: 700;
     letter-spacing: 1px;
     -webkit-transition: all 0.7s ease;
     transition: all 0.7s ease;
+}
+
+.random-button.md-button.md-default-theme:not([disabled]):hover, .random-button.md-button.md-default-theme:not([disabled]):focus {
+    background-color: transparent;
 }
 
 .cart-button {
@@ -777,6 +768,10 @@ ul.plae.basket.list {
     width: 35%;
     margin-left: 2px;
     margin-right: 2px;
+}
+
+.slick-track {
+    background: rgba(255,255,255,0.95);
 }
 
 button#survey-button {
@@ -1043,6 +1038,48 @@ md-tabs.ng-isolate-scope.md-default-theme {
     left: 60px;
 }
 
+.plae-chef-window ul.nav {
+    background-image: url(/media/home/chalkboard.jpg);
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    z-index: 100;
+    border: none;
+    padding-left: 12px;
+}
+
+.plae-chef-window ul.nav.nav-tabs > li > a {
+    background: transparent;
+    color: #fff;
+    border: none;
+    transition: color 0s;
+}
+
+.plae-chef-window ul.nav.nav-tabs > li > a:hover, .plae-chef-window ul.nav.nav-tabs > li > a:focus, .plae-chef-window ul.nav.nav-tabs > li > a:active {
+    color: #ffff07;
+    border:none;
+}
+
+.plae-chef-window ul.nav .heading {
+    height: 20px;
+    width: 39px;
+    background-image: url(/media/icons/tablab.png);
+    background-position: 0 0;
+}
+
+.plae-chef-window ul.nav .heading.shoes:hover {
+    background-position-x: -39px;
+}
+
+.plae-chef-window ul.nav .heading.tabs {
+    background-position-x: 78px;
+}
+
+.plae-chef-window ul.nav .heading.tabs:hover {
+    background-position-x: 39px;
+}
+
 @media screen and (min-width: 768px) {
 
     /*  Header section   */
@@ -1200,12 +1237,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         top: 84%;
     }
 
-    .random-button {
-        width: 40%;
-    }
-    .random-button.shuffle {
-        width: 20%;
-    }
     .fa.fa-random.fa-2x{
         font-size: 1.6em;
     }
@@ -1223,7 +1254,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         left: 40%;
     }
     .survey {
-        top: 100px;
+        top: 150px;
     }
 }
 @media screen and (min-width: 500px){
@@ -1277,9 +1308,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         height: 30px;
         margin: 5px;
         padding: 0;
-    }
-    #white-bg-mobile {
-        height: 260px;
     }
     .plae.size {
         top: 290px;
@@ -1697,9 +1725,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         border: 2px;
     }
 
-    .random-button {
-        height: 36px;
-    }
     .picker {
         left: 0;
         width: 100%;
@@ -1838,10 +1863,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         width: 108%;
         height: 600px;
     }
-    #white-bg-mobile {
-        height: 600px;
-        /*top: 30px;*/
-    }
     .plae.size {
         height: 480px;
         top: 660px;
@@ -1939,6 +1960,20 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .arrows-button-column {
         height: 240px;
     }
+
+    ul.nav {
+        text-align: center;
+    }
+
+    ul.nav>li {
+        display: inline-block;
+        float:none;
+        vertical-align: middle;
+    }
+
+    ul.nav>li.main-tab {
+        display: none;
+    }
 }
 @media (max-width: 480px) {
     .plae.basket {
@@ -1971,6 +2006,10 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
     .arrows-button-column {
         height:180px;
+    }
+
+    ul.nav>li>a {
+        padding: 10px 8px;
     }
 }
 
