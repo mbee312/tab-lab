@@ -1046,7 +1046,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     left: 0;
     z-index: 100;
     border: none;
-    padding-left: 12px;
+    padding: 0 12px;
 }
 
 .plae-chef-window ul.nav.nav-tabs > li > a {
@@ -1054,6 +1054,19 @@ md-tabs.ng-isolate-scope.md-default-theme {
     color: #fff;
     border: none;
     transition: color 0s;
+    height: 46px;
+}
+
+.plae-chef-window ul.nav.nav-tabs > li > a > tab-heading{
+    vertical-align: middle !important;
+}
+
+.plae-chef-window ul.nav.nav-tabs > li > a i {
+    vertical-align: 0
+}
+
+.plae-chef-window ul.nav.nav-tabs > li > a i.fa-heart {
+    vertical-align: middle;
 }
 
 .plae-chef-window ul.nav.nav-tabs > li > a:hover, .plae-chef-window ul.nav.nav-tabs > li > a:focus, .plae-chef-window ul.nav.nav-tabs > li > a:active {
@@ -1078,6 +1091,17 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
 .plae-chef-window ul.nav .heading.tabs:hover {
     background-position-x: 39px;
+}
+
+.plae-chef-window ul.nav .border-left {
+    border-left: 1px solid #fff;
+    padding-left: 30px;
+    margin: 8px 0 8px 30px;
+    height: 30px;
+}
+
+.plae-chef-window ul.nav .border-left > a {
+    margin-top: -8px;
 }
 
 @media screen and (min-width: 768px) {
@@ -1969,6 +1993,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         display: inline-block;
         float:none;
         vertical-align: middle;
+        font-size: 16px;
     }
 
     ul.nav>li.main-tab {
