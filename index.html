@@ -102,7 +102,7 @@
                                    focus-on-select="true"
                                    current-index="leftTabIndex"
                                    data="tabList">
-                                <div ng-class="{ 'translate-slider-x': isEndOfTabListL }"ng-repeat="tab in tabList" ng-click="sliderSetLeftTab($index)" class="tabmenuitem bgimage">
+                                <div ng-repeat="tab in tabList" ng-click="sliderSetLeftTab($index)" class="tabmenuitem bgimage">
                                     <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
                                 </div>
                             </slick>
@@ -126,7 +126,7 @@
                                    focus-on-select="true"
                                    current-index="rightTabIndex"
                                    data="tabList">
-                                <div ng-class="{ 'translate-slider-x': isEndOfTabListR }" ng-repeat="tab in tabList" ng-click="sliderSetRightTab($index)" class="tabmenuitem bgimage">
+                                <div ng-repeat="tab in tabList" ng-click="sliderSetRightTab($index)" class="tabmenuitem bgimage">
                                     <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
                                 </div>
                             </slick>
@@ -176,7 +176,7 @@
                                    data="shoeList">
 
 
-                                <div ng-class="{ 'translate-slider-x': isEndOfShoeList}" ng-repeat="shoe in shoeList" ng-click="sliderSetShoe($index)" class="img bgimage">
+                                <div ng-repeat="shoe in shoeList" ng-click="sliderSetShoe($index)" class="img bgimage">
                                     <a><img class="slide img" ng-src={{shoe.menuImg.src}}></a>
                                 </div>
                             </slick>
