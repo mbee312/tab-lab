@@ -192,22 +192,41 @@
             </tab>
             <tab>
               <tab-heading>
-                  <md-button ng-controller="SliderCtrl" class="canvas-button random-button plae-font" id="random-button"
-                        ng-click="random()">
-                        <i class="fa fa-rocket fa-lg"></i>
-                  </md-button>
+                <md-button ng-controller="SliderCtrl" class="canvas-button control-button shuffle plae-font"
+                      id="shuffle-button"
+                      ng-click="shuffle()"
+                      aria-label="shuffle button">
+                      <i class="fa fa-refresh fa-lg"></i>
+                </md-button>
               </tab-heading>
-          </tab>
-          <tab>
-            <tab-heading>
-              <md-button ng-controller="SliderCtrl" class="canvas-button random-button shuffle plae-font"
-                    id="shuffle-button"
-                    ng-click="shuffle()"
-                    aria-label="shuffle button">
-                    <i class="fa fa-random fa-lg"></i>
-              </md-button>
-            </tab-heading>
-          </tab>
+            </tab>
+            <tab>
+                <tab-heading>
+                    <md-button ng-controller="SliderCtrl" class="canvas-button control-button plae-font" id="random-button"
+                          ng-click="random()">
+                          <i class="fa fa-random fa-lg"></i>
+                    </md-button>
+                </tab-heading>
+            </tab>
+            <tab>
+                <tab-heading>
+                  <md-button class="control-button canvas-button plae-font"
+                             id="reset-rotation-button"
+                             ng-click="resetRotation()">
+                      <i class="fa fa-lg fa-step-backward"></i>
+                  </md-button>
+                </tab-heading>
+            </tab>
+            <tab>
+                <tab-heading>
+                  <md-button class="control-button canvas-button plae-font"
+                             ng-model="autoRotate"
+                             id="start-stop-rotation-button"
+                             ng-click="autoRotate=!autoRotate">
+                      <i class="fa fa-lg" ng-class="{'fa-pause': autoRotate, 'fa-play': !autoRotate}"></i>
+                  </md-button>
+                </tab-heading>
+            </tab>
           <tab ng-click="paneChanged('design')" class="border-left">
               <tab-heading>
                   <i class="fa fa-heart fa-lg"></i>
@@ -317,7 +336,7 @@
           </tab>
           <tab>
             <tab-heading>
-              <md-button class="canvas-button random-button shuffle plae-font"
+              <md-button class="canvas-button control-button shuffle plae-font"
                     id="feedback-button"
                     ng-click="setSurveyMode()">
                     <i class="fa fa-comment fa-lg"></i>
@@ -328,19 +347,6 @@
         <section>
             <md-whiteframe class="md-whiteframe-z1 white-bg canvas-container col-sm-6" id="white-bg-mobile">
                 <div class="tablab-viewer">
-                </div>
-                <div class="canvas-model-buttons">
-                    <md-button class="raised canvas-button plae-font"
-                               id="reset-rotation-button"
-                               ng-click="resetRotation()">
-                        <i class="fa fa-step-backward"></i>
-                    </md-button>
-                    <md-button class="raised canvas-button plae-font"
-                               ng-model="autoRotate"
-                               id="start-stop-rotation-button"
-                               ng-click="autoRotate=!autoRotate">
-                        <i class="fa" ng-class="{'fa-pause': autoRotate, 'fa-play': !autoRotate}"></i>
-                    </md-button>
                 </div>
             </md-whiteframe>
         </section>
