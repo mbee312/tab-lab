@@ -292,7 +292,7 @@ select, .tab-lab-header {
 
 .car {
     z-index: 49;
-    height: 200px;
+    height: 140px;
 }
 .slick-container {
     margin-left: 2%;
@@ -391,7 +391,7 @@ button#bottom-next-button {
 }
 
 .slick-slide {
-    opacity: .5;
+    opacity: 1;
 }
 
 /*.slick-slide img {*/
@@ -399,17 +399,38 @@ button#bottom-next-button {
     /*min-width: 40px;*/
 /*}*/
 
-
-.slick-slider {
-    display: inline !important;
-}
-
 /*.slick-track {*/
     /*min-height: 40px;*/
 /*}*/
 
 .slick-center {
-    opacity: 1;
+    opacity: 0.25;
+}
+
+.slick-left:before, .slick-right:before, .slick-shoe:before {
+    display: block;
+    position:absolute;
+    width: 75px;
+    height: 75px;
+    top:50%;
+    left: 50%;
+    margin-left:-37.5px;
+    margin-top:-37.5px;
+    z-index: 100;
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+}
+
+.slick-left:before {
+    content: url(/media/icons/left.png);
+}
+
+.slick-right:before {
+    content: url(/media/icons/right.png);
+}
+
+.slick-shoe:before {
+    content: url(/media/icons/check.png);
 }
 
 .slick-prev, .slick-next {
@@ -770,7 +791,7 @@ ul.plae.basket.list {
     margin-right: 2px;
 }
 
-.slick-track {
+.slick-container {
     background: rgba(255,255,255,0.95);
 }
 
@@ -1062,10 +1083,10 @@ md-tabs.ng-isolate-scope.md-default-theme {
 }
 
 .plae-chef-window ul.nav.nav-tabs > li > a i {
-    vertical-align: 0
+    vertical-align: 0;
 }
 
-.plae-chef-window ul.nav.nav-tabs > li > a i.fa-heart {
+.plae-chef-window ul.nav.nav-tabs > li > a i.fa-cart-plus {
     vertical-align: middle;
 }
 
@@ -1475,8 +1496,12 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
 
     img.slide.img.tab {
-    /*    width: 100%; */
         margin-left: 0;
+        margin-top: 25px;
+    }
+
+    img.slide.img {
+        margin-top:25px;
     }
 
 
@@ -1883,6 +1908,16 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
 }
 @media screen and (min-width: 1200px) {
+
+    .slick-left:before, .slick-right:before, .slick-shoe:before {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+    }
+
+    .car {
+        z-index: 49;
+        height: 160px;
+    }
     .white-bg.select-slide-out {
         width: 108%;
         height: 600px;
@@ -2063,15 +2098,12 @@ md-tabs.ng-isolate-scope.md-default-theme {
         padding: 10px 4px;
     }
 
-    .plae-chef-window ul.nav .border-left {
-        border-left: none;
-        padding-left: 0;
-        margin: inherit;
-        height: 46px;
+    .plae-chef-window ul.nav .border-left > a {
+        margin-top: -6px;
     }
 
-    .plae-chef-window ul.nav .border-left > a {
-        margin-top: 3px;
+    h2.visible-xs-block {
+        margin-top: 40px;
     }
 }
 

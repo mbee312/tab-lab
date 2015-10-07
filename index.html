@@ -208,28 +208,9 @@
                     </md-button>
                 </tab-heading>
             </tab>
-            <tab>
-                <tab-heading>
-                  <md-button class="control-button canvas-button plae-font"
-                             id="reset-rotation-button"
-                             ng-click="resetRotation()">
-                      <i class="fa fa-lg fa-step-backward"></i>
-                  </md-button>
-                </tab-heading>
-            </tab>
-            <tab>
-                <tab-heading>
-                  <md-button class="control-button canvas-button plae-font"
-                             ng-model="autoRotate"
-                             id="start-stop-rotation-button"
-                             ng-click="setRotation()">
-                      <i class="fa fa-lg" ng-class="{'fa-pause': autoRotate, 'fa-play': !autoRotate}"></i>
-                  </md-button>
-                </tab-heading>
-            </tab>
           <tab ng-click="paneChanged('design')" class="border-left">
               <tab-heading>
-                  <i class="fa fa-heart fa-lg"></i>
+                  <i class="fa fa-cart-plus fa-lg"></i>
               </tab-heading>
               <section ng-controller="CartCtrl" >
                   <md-white-frame class="md-whiteframe-z1 white-bg plae basket col-sm-8 col-sm-offset-2 col-xs-12" id="plae-basket">
@@ -405,6 +386,7 @@
             </div>
         </modal-dialog>
     </section>
+    <h2 class="a-center visible-xs-block">TabLab<sup>beta</sup></h2>
     </div>
     </div>
     </div>
