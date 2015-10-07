@@ -630,7 +630,7 @@
                     // load tab
                     var tabMeshPath = assetRoot + 'assets/models/' + shoe.name + '/' + shoe.name;
                     var tabTexturePath = assetRoot + 'assets/models/texture/tabs/' + tab.sku;
-                    var tabUniqueName = tab.name + '-' + tab.sku + '-' + whichTab;
+                    var tabUniqueName = tab.name + '-' + tab.sku + '-' + side + '-' + whichTab;
                     var tabTextureMap = $scope.renderer._microCache.getSet(tabUniqueName + "-textureMap", THREE.ImageUtils.loadTexture(tabTexturePath + '/difuse-' + tabTopOrBottom + '.jpg'));
                     var tabNormalMap = $scope.renderer._microCache.getSet(tabUniqueName + "-normalMap", THREE.ImageUtils.loadTexture(tabTexturePath + '/normals-' + tabTopOrBottom + '.jpg'));
                     var tabSpecularMap;
@@ -683,8 +683,12 @@
 
                     var tabObj = $scope.currentTabObj[pos];
                     var t = getTab(pos);
-
                     var tabTopOrBottom = 'top';
+                    var side='left';
+
+                    if(pos == 0 || pos == 2){
+                        side = 'right';
+                    }
 
                     if(pos == 2 ||  pos == 3){
                         whichTab = 'bottom';
@@ -696,7 +700,7 @@
 
                     // load path
                     var texturePath = assetRoot + 'assets/models/texture/tabs/' + t.sku;
-                    var uniqueName = t.name + '-' + t.sku + '-' + whichTab;
+                    var uniqueName = t.name + '-' + t.sku + '-' + '-' + side + '-' + whichTab;
                     var updateMe = scene.getObjectByName("group").getObjectByName(tabObj.name);
                     updateMe.material.map = $scope.renderer._microCache.getSet(uniqueName + "-textureMap", THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + tabTopOrBottom + '.jpg'));
                     updateMe.material.normalMap = $scope.renderer._microCache.getSet(uniqueName + "-normalMap", THREE.ImageUtils.loadTexture(texturePath + '/normals-' + tabTopOrBottom + '.jpg'));
