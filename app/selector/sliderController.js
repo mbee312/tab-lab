@@ -97,12 +97,6 @@
         $scope.random = _.debounce(_random, 500, true);
 
         function _random(){
-            /*
-            if(tabLabProperties.isShoeSelected()){
-                // save old shoe for comparison
-                var oldShoe = $scope.currentShoeObj;
-            }
-            */
             var i = $scope.setRandomIndex('shoe', 0);
             var j = $scope.setRandomIndex('tab', 0);
             var k = $scope.setRandomIndex('tab', 1);
@@ -257,9 +251,21 @@
             $scope.setShoe($scope.shoeList[index]);
 
             var shoe = $scope.shoeList[index];
-            $scope.updateShoeTexture(function(){
-                $scope.initDrawScene();
-            });
+            $scope.updateShoe('left');
+            $scope.updateShoe('right');
+
+            $scope.updateTab(0);
+            $scope.updateTab(1);
+            if(shoe.numOfTabs != 2) {
+                $scope.showTab(2);
+                $scope.showTab(3);
+                $scope.updateTab(2);
+                $scope.updateTab(3);
+            }else{
+                $scope.hideTab(2);
+                $scope.hideTab(3);
+            }
+
             cartProperties.updateCart(shoe, 2);
             $rootScope.$broadcast('calculate-subtotal');
         });
