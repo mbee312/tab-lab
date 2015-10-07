@@ -505,6 +505,10 @@
                     $scope.controls.reset();
                 };
 
+                $scope.setRotation = function (){
+                    $scope.autoRotate = !$scope.autoRotate;
+                };
+
                 $scope.initDrawScene = function (){
                     $scope.group.name = "group";
                     $scope.scene.add($scope.group);
