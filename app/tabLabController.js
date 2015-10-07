@@ -473,7 +473,7 @@
                     {
                         lightKey.position.copy( $scope.camera.position );
                     }
-
+                    
                     render();
 
                     $(document).ready(function() {
@@ -485,7 +485,8 @@
                 };
 
                 function render () {
-                    
+                    requestAnimationFrame(render);
+
                     /*
                     //horizontal rotation
                     $scope.group.rotation.y += ( targetRotationX - $scope.group.rotation.y ) * 0.1;
@@ -504,15 +505,13 @@
                         $scope.group.rotation.x = -1
                     }
                     */
-
+                    $scope.controls.autoRotate = $scope.autoRotate;
                     $scope.controls.update();
                     $scope.renderer.render($scope.scene, $scope.camera);
-                    requestAnimationFrame(render);
                 }
 
-                $scope.setAutoRotation = function (){
-                    $scope.autoRotate != $scope.autoRotate;
-                    $scope.controls.autoRotate = $scope.autoRotate;
+                $scope.resetRotation = function (){
+                    $scope.controls.reset();
                 };
 
                 $scope.initDrawScene = function (){

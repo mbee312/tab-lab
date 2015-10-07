@@ -329,6 +329,19 @@
             <md-whiteframe class="md-whiteframe-z1 white-bg canvas-container col-sm-6" id="white-bg-mobile">
                 <div class="tablab-viewer">
                 </div>
+                <div class="canvas-model-buttons">
+                    <md-button class="raised canvas-button plae-font"
+                               id="reset-rotation-button"
+                               ng-click="resetRotation()">
+                        <i class="fa fa-step-backward"></i>
+                    </md-button>
+                    <md-button class="raised canvas-button plae-font"
+                               ng-model="autoRotate"
+                               id="start-stop-rotation-button"
+                               ng-click="autoRotate=!autoRotate">
+                        <i class="fa" ng-class="{'fa-pause': autoRotate, 'fa-play': !autoRotate}"></i>
+                    </md-button>
+                </div>
             </md-whiteframe>
         </section>
         <modal-dialog show='getSurveyForm()' dialog-title='TabLab Feedback'>
