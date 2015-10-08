@@ -668,8 +668,9 @@
 
                 $scope.updateShoe = function (side){
                     var shoe = getShoe();
-
                     /*
+                    var grp = $scope.scene.getObjectByName("group");
+
                      var i = grp.children.length - 1;
                     // remove all meshes from 3D object
                     while(i >= 0) {
@@ -677,7 +678,9 @@
                         grp.remove(grp.getObjectByName(grp.children[i].name));
                         i--;
                     }
-                    redraw();*/
+                    $scope.initDrawScene();
+                    */
+                    
                     var shoeIndex = 0;
 
                     if(side == 'left'){
@@ -706,6 +709,7 @@
                         shoeMesh[shoeIndex].material.needsUpdate = true;
                         // remember current shoe object
                         $scope.currentShoeObj[shoeIndex] = shoeMesh[shoeIndex];
+
                     });
 
                     console.log("group:");

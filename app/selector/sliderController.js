@@ -109,8 +109,8 @@
             $scope.setTab($scope.tabList[k], 3);
 
             $scope.$broadcast('new-shoe-index', i);
-            $scope.$broadcast('new-tab-left-index-random', j);
-            $scope.$broadcast('new-tab-right-index-random', k);
+         //   $scope.$broadcast('new-tab-left-index-random', j);
+         //   $scope.$broadcast('new-tab-right-index-random', k);
 
         } //end random ()
 
