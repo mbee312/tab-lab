@@ -376,7 +376,7 @@
                 var windowHalfY = $scope.HEIGHT / 2;
                 var finalRotationY;
                 */
-                var VIEW_ANGLE = 23;
+                var VIEW_ANGLE = 45;
                 var ASPECT = 1;
                 var NEAR = 1;
                 var FAR = 1000;
@@ -384,6 +384,7 @@
                 $scope.camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
                 $scope.controls;
                 $scope.autoRotate = true;
+                $scope.isZoom = false;
 
                 $scope.isMobileScreen = function (){
                     return $scope.isMobile;
@@ -408,7 +409,7 @@
 
                 $scope.createScene = function (){
 
-                    $scope.camera.position.set(0.0, 5.5, 14.0);
+                    $scope.camera.position.set(0.0, 5.5, 8.0);
                     $scope.camera.lookAt(new THREE.Vector3 (0.0, 0.0, 0.0));
 
                     $scope.scene = new THREE.Scene();
@@ -456,8 +457,8 @@
 
                     $scope.controls = new THREE.OrbitControls( $scope.camera, $scope.renderer.domElement );
                     $scope.controls.enableDamping = true;
-                    $scope.controls.dampingFactor = 0.05;
-                    $scope.controls.noZoom = true;
+                    $scope.controls.dampingFactor = 0.025;
+                    $scope.controls.noZoom = false;
                     $scope.controls.autoRotate = $scope.autoRotate;
                     $scope.controls.autoRotateSpeed = 1;
                     $scope.controls.addEventListener( 'change', light_update );
@@ -471,7 +472,7 @@
                         document.getElementById("white-bg-mobile").addEventListener( 'mousedown', onDocumentMouseDown, false );
                     //    document.getElementById("white-bg-mobile").addEventListener( 'touchstart', onDocumentTouchStart, false );
                     //    document.getElementById("white-bg-mobile").addEventListener( 'touchmove', onDocumentTouchMove, false );
-                    //    document.getElementById("white-bg-mobile").addEventListener('dblclick', onDocumentDoubleClick);
+                        document.getElementById("white-bg-mobile").addEventListener('dblclick', onDocumentDoubleClick);
                         window.addEventListener( 'resize', onWindowResize, false );
                     });
                 };
@@ -869,6 +870,14 @@
                     targetRotationOnMouseDownY = targetRotationY;
                     */
 
+                }
+                function onDocumentDoubleClick (event){
+                    if(!$scope.isZoom){
+                        $scope.controls.dollyIn(2);
+                    }else{
+                        $scope.controls.dollyOut(2);
+                    }
+                    $scope.isZoom = !$scope.isZoom;
                 }
              /*
                 function onDocumentMouseMove( event ) {
