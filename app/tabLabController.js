@@ -133,6 +133,16 @@
                 $scope.leftTabIndex=0;
                 $scope.lTindex=0;
 
+                $scope.tabs = {
+                    main: {active:true},
+                    tabs: {active:false},
+                    shoes: {active:false},
+                    random: {active:false},
+                    shuffle: {active:false},
+                    design: {active:false},
+                    comment: {active:false}
+                }
+
                 $scope.loadMenu = function (list, shoesOrTabs ){
                     for(var i = 0; i < list.length ; i++){
                         list[i].menuImg = new Image();
@@ -1007,6 +1017,7 @@
                 };//end isSizeSelected ()
 
                 $scope.paneChanged = function(pane) {
+                    console.log("selected " + pane + " : " + $scope.tabs[pane].active );
                     $scope.selectedPane = pane;
                     if(pane == "tabs" || pane == "shoes") {
                         _.defer(function() {
@@ -1027,9 +1038,29 @@
                                 shoe.slick('setPosition');
                             }
                         });
+                    } else if (pane == "comment") {
+                        $scope.setSurveyMode();
+                    } else if (pane == "shuffle" || pane == "random") {
+                        _.delay(function() {
+                            $scope.selectedPane = "main";
+                            $scope.tabs['main'].active = true;
+                        });
                     }
                 }
 
+                $scope.togglePane = function(pane) {
+
+                    if ($scope.selectedPane == pane) {
+                        console.log("closing " + pane);
+
+                        _.delay(function() {
+                            $scope.$apply(function() {
+                            $scope.selectedPane = "main";
+                            $scope.tabs['main'].active = true;
+                            });
+                        });
+                    }
+                }
 
                 $scope.isSurveyOn = false;
 
