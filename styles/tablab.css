@@ -292,7 +292,7 @@ select, .tab-lab-header {
 
 .car {
     z-index: 49;
-    height: 140px;
+    height: 100%;
 }
 .slick-container {
     margin-left: 2%;
@@ -1912,11 +1912,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .slick-left:before, .slick-right:before, .slick-shoe:before {
         -webkit-transform: scale(1);
         -moz-transform: scale(1);
-    }
-
-    .car {
-        z-index: 49;
-        height: 160px;
     }
     .white-bg.select-slide-out {
         width: 108%;
