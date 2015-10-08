@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <!--[if lt IE 7]>
-<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<html lang="en" ng-app="tabLabApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>
-<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<html lang="en" ng-app="tabLabApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>
-<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<html lang="en" ng-app="tabLabApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html lang="en" ng-app="tabLabApp" class="customizer" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
     <head>
@@ -60,331 +60,332 @@
     <div class="col-main">
     <div class="std">
     <section ng-view class="view-frame plae-chef-window">
-        <tabset>
-            <tab class="main-tab" ng-click="paneChanged('Main')">
-                <tab-heading>
-                    Tab Lab<sup>beta</sup>
-                </tab-heading>
-            </tab>
-            <tab ng-click="paneChanged('tabs')">
-                <tab-heading>
-                    <div class="tabs heading"></div>
-                </tab-heading>
-                <section class="slick-container" ng-controller="SliderCtrl">
-                    <md-whiteframe class="md-whiteframe-z1 horizontal-slick-container">
-                        <div>
-                            <div layout="column" layout-sm="column" class="arrows-button-column previous" >
-                                <md-button class="slick-button column previous middle fa fa-chevron-left fa-1x" aria-label="middle previous button" id="middle-prev-button"
-                                           ng-click="previous('middle')">
-                                </md-button>
-                                <md-button class="slick-button column previous bottom fa fa-chevron-left fa-1x" aria-label="bottom previous button" id="bottom-prev-button"
-                                           ng-click="previous('bottom')">
-                                </md-button>
+    <tabset>
+    <tab class="main-tab" select="paneChanged('main')" active="tabs['main'].active">
+        <tab-heading>
+            Tab Lab<sup>beta</sup>
+        </tab-heading>
+    </tab>
+    <tab select="paneChanged('tabs')" active="tabs['tabs'].active">
+        <tab-heading>
+            <div class="icon-wrapper">
+                <div class="tabs heading" ng-show="!tabs['tabs'].active"></div>
+                <div class="tabs heading" ng-show="tabs['tabs'].active" ng-click="togglePane('tabs')"></div>
+            </div>
+        </tab-heading>
+        <section class="slick-container" ng-controller="SliderCtrl">
+            <md-whiteframe class="md-whiteframe-z1 horizontal-slick-container">
+                <div>
+                    <div layout="column" layout-sm="column" class="arrows-button-column previous" >
+                        <md-button class="slick-button column previous middle fa fa-chevron-left fa-1x" aria-label="middle previous button" id="middle-prev-button"
+                                   ng-click="previous('middle')">
+                        </md-button>
+                        <md-button class="slick-button column previous bottom fa fa-chevron-left fa-1x" aria-label="bottom previous button" id="bottom-prev-button"
+                                   ng-click="previous('bottom')">
+                        </md-button>
 
-                            </div>
-                            <slick class="car slick-left" id="tab-left-slider"
-                                   init-onload="true"
-                                   infinite="true"
-                                   center-mode="true"
-                                   speed="200"
-                                   cssEase="ease"
-                                   arrows="false"
-                                   swipe="true"
-                                   swipeToSlide="true"
-                                   touch-move="true"
-                                   touchThreshold="1000"
-                                   draggable="true"
-                                   easing="linear"
-                                   mobileFirst="true"
-                                   respondTo="window"
-                                   slides-to-show="5"
-                                   slides-to-scroll="1"
-                                   focus-on-select="true"
-                                   current-index="leftTabIndex"
-                                   data="tabList">
-                                <div ng-repeat="tab in tabList" ng-click="sliderSetLeftTab($index)" class="tabmenuitem bgimage">
-                                    <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
-                                </div>
-                            </slick>
-                            <slick class="car slick-right" id="tab-right-slider"
-                                   init-onload="true"
-                                   infinite="true"
-                                   center-mode="true"
-                                   speed="200"
-                                   cssEase="ease"
-                                   arrows="false"
-                                   swipe="true"
-                                   swipeToSlide="true"
-                                   touch-move="true"
-                                   touchThreshold="1000"
-                                   draggable="true"
-                                   easing="linear"
-                                   mobileFirst="true"
-                                   respondTo="window"
-                                   slides-to-show="5"
-                                   slides-to-scroll="1"
-                                   focus-on-select="true"
-                                   current-index="rightTabIndex"
-                                   data="tabList">
-                                <div ng-repeat="tab in tabList" ng-click="sliderSetRightTab($index)" class="tabmenuitem bgimage">
-                                    <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
-                                </div>
-                            </slick>
-                            <div layout="column" layout-sm="column" class="arrows-button-column next">
-                                <md-button class="slick-button column next middle fa fa-chevron-right fa-1x" aria-label="middle next button" id="middle-next-button"
-                                           ng-click="next('left')">
-                                </md-button>
-                                <md-button class="slick-button column next bottom fa fa-chevron-right fa-1x" aria-label="bottom next button" id="bottom-next-button"
-                                           ng-click="next('right')">
-                                </md-button>
-                            </div>
+                    </div>
+                    <slick class="car slick-left" id="tab-left-slider"
+                           init-onload="true"
+                           infinite="true"
+                           center-mode="true"
+                           speed="200"
+                           cssEase="ease"
+                           arrows="false"
+                           swipe="true"
+                           swipeToSlide="true"
+                           touch-move="true"
+                           touchThreshold="1000"
+                           draggable="true"
+                           easing="linear"
+                           mobileFirst="true"
+                           respondTo="window"
+                           slides-to-show="5"
+                           slides-to-scroll="1"
+                           focus-on-select="true"
+                           current-index="leftTabIndex"
+                           data="tabList">
+                        <div ng-repeat="tab in tabList" ng-click="sliderSetLeftTab($index)" class="tabmenuitem bgimage">
+                            <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
                         </div>
-                    </md-whiteframe>
-                </section>
-            </tab>
-            <tab ng-click="paneChanged('shoes')">
-                <tab-heading>
-                    <div class="shoes heading"></div>
-                </tab-heading>
-                <section class="slick-container" ng-controller="SliderCtrl">
-                    <md-whiteframe class="md-whiteframe-z1 horizontal-slick-container">
-                        <div>
-                            <div layout="column" layout-sm="column" class="arrows-button-column previous" >
-                                <md-button class="slick-button column previous top fa fa-chevron-left fa-1x" aria-label="top previous button" id="top-prev-button"
-                                           ng-click="previous('top')">
-                                </md-button>
-                            </div>
-                            <slick class="car slick-shoe" id="shoe-slider"
-                                   init-onload="true"
-                                   infinite="true"
-                                   center-mode="true"
-                                   speed="200"
-                                   cssEase="ease"
-                                   arrows="false"
-                                   swipe="true"
-                                   swipeToSlide="true"
-                                   touch-move="true"
-                                   touchThreshold="1000"
-                                   draggable="true"
-                                   easing="linear"
-                                   mobileFirst="true"
-                                   respondTo="window"
-                                   slides-to-show="5"
-                                   slides-to-scroll="1"
-                                   focus-on-select="true"
-                                   current-index="shoeIndex"
-                                   data="shoeList">
-
-
-                                <div ng-repeat="shoe in shoeList" ng-click="sliderSetShoe($index)" class="img bgimage">
-                                    <a><img class="slide img" ng-src={{shoe.menuImg.src}}></a>
-                                </div>
-                            </slick>
-
-                            <div layout="column" layout-sm="column" class="arrows-button-column next">
-                                <md-button class="slick-button column next top fa fa-chevron-right fa-1x" aria-label="top next button" id="top-next-button"
-                                           ng-click="next('center')">
-                                </md-button>
-                            </div>
+                    </slick>
+                    <slick class="car slick-right" id="tab-right-slider"
+                           init-onload="true"
+                           infinite="true"
+                           center-mode="true"
+                           speed="200"
+                           cssEase="ease"
+                           arrows="false"
+                           swipe="true"
+                           swipeToSlide="true"
+                           touch-move="true"
+                           touchThreshold="1000"
+                           draggable="true"
+                           easing="linear"
+                           mobileFirst="true"
+                           respondTo="window"
+                           slides-to-show="5"
+                           slides-to-scroll="1"
+                           focus-on-select="true"
+                           current-index="rightTabIndex"
+                           data="tabList">
+                        <div ng-repeat="tab in tabList" ng-click="sliderSetRightTab($index)" class="tabmenuitem bgimage">
+                            <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
                         </div>
-                    </md-whiteframe>
-                </section>
-            </tab>
-            <tab>
-              <tab-heading>
-                <md-button ng-controller="SliderCtrl" class="canvas-button control-button shuffle plae-font"
-                      id="shuffle-button"
-                      ng-click="shuffle()"
-                      aria-label="shuffle button">
-                      <i class="fa fa-refresh fa-lg"></i>
-                </md-button>
-              </tab-heading>
-            </tab>
-            <tab>
-                <tab-heading>
-                    <md-button ng-controller="SliderCtrl" class="canvas-button control-button plae-font" id="random-button"
-                          ng-click="random()">
-                          <i class="fa fa-random fa-lg"></i>
-                    </md-button>
-                </tab-heading>
-            </tab>
-          <tab ng-click="paneChanged('design')" class="border-left">
-              <tab-heading>
-                  <i class="fa fa-cart-plus fa-lg"></i>
-              </tab-heading>
-              <section ng-controller="CartCtrl" >
-                  <md-white-frame class="md-whiteframe-z1 white-bg plae basket col-sm-8 col-sm-offset-2 col-xs-12" id="plae-basket">
-                      <md-button class="md-raised fa fa-pencil-square-o fa-1" id="edit" aria-label="edit-cart" ng-click="tabLab.setEditMode()" ng-show="false">
-                      </md-button>
-
-                      <h3 class="cart title">your design</h3>
-
-                      <div class="plae basket item shoe" ng-model="shoeSelected">
-                          <md-button class="md-raised attr shoe" ng-class="{'size-animate' : shoeEditMode}"
-                                     aria-label="attr name button">
-                              <h4 class="product name plae-font">{{shoeSelected.name}}</h4>
-                              <ul class="details">
-                                  <li class="attr price plae-font">{{shoeSelected.price | currency}}</li>
-                                  <li class=" attr color plae-font">color: {{shoeSelected.color_label}}</li>
-                                  <li class="attr size plae-font"
-                                      ng-model="shoe.size">
-                                      size:
-                                  </li>
-                              </ul>
-                          </md-button>
-                          <select class="size selector shoe"
-                                  ng-model="shoe.size"
-                                  ng-change="setShoeSize(size)"
-                                  ng-options="size.label disable when size.disabled == true for size in shoeSizeOptions | filter:showSize">
-                              <option value="" selected>--choose an option--</option>
-                          </select>
-
-                          <md-button class="md-raised md-warn delete"
-                                     id="delete-shoe"
-                                     aria-label="delete-shoe"
-                                     ng-click="remove('shoe')">
-                              <p class="rotate">remove</p>
-                          </md-button>
-                      </div>
-                      <div class="plae basket item left" ng-model="tabSelected">
-                          <md-button class="md-raised attr tableft"
-                                     ng-class="{'size-animate' : tabEditModeL}"
-                                     aria-label="attr tableft button">
-                              <h4 class="product name plae-font">{{tabsSelected[0].name}}</h4>
-
-                              <ul class="details">
-                                  <li class="attr price plae-font">{{tabsSelected[0].price | currency}}</li>
-                                  <!--<li class="attr color plae-font">color: {{tabsSelected[0].color}}</li>-->
-                                  <li class="attr size plae-font">
-                                      size:
-                                  </li>
-                              </ul>
-                          </md-button>
-                          <select class="size selector tabs"
-                                  ng-model="tabs.size"
-                                  ng-change="setTabSize(size)"
-                                  ng-options="size.label for size in tabSizeOptions">
-                              <option value="" selected>--choose an option--</option>
-                          </select>
-                          <md-button class="md-raised md-warn delete" id="delete-left" aria-label="delete-left"
-                                     ng-click="remove('left')" ng-show="tabLab.isTabEditMode('left')">
-                              <p class="rotate">remove</p>
-                          </md-button>
-                      </div>
-                      <div class="plae basket item right" ng-model="tabSelected">
-                          <md-button class="md-raised attr tabright" ng-class="{'size-animate' : tabEditModeR}" aria-label="attr tabright button"
-                                     ng-click="tabLab.setSizeSelectMode('right')">
-                              <h4 class="product name plae-font">{{tabsSelected[1].name}}</h4>
-
-                              <ul class="details">
-                                  <li class="attr price plae-font">{{tabsSelected[1].price | currency}}</li>
-                                  <!--<li class="attr color plae-font">color: {{tabsSelected[1].color}}</li>-->
-                                  <li class="attr size plae-font">
-                                      size:
-                                  </li>
-                              </ul>
-                          </md-button>
-                          <select class="size selector tabs"
-                                  ng-model="tabs.size"
-                                  ng-change="setTabSize(size)"
-                                  ng-options="size.label for size in tabSizeOptions">
-                              <option value="" selected>--choose an option--</option>
-                          </select>
-                          <md-button class="md-raised md-warn delete"
-                                     id="delete-right"
-                                     aria-label="delete-right"
-                                     ng-click="remove('right')"
-                                     ng-show="tabLab.isTabEditMode('right')">
-                              <p class="rotate plae-font">remove</p>
-                          </md-button>
-                      </div>
-
-
-                      <div class="plae basket subtotal" id="subtotal" ng-model="subTotal">
-                          <h3>subtotal:</h3>
-                          <span class="price subtotal">{{subTotal | currency}}</span>
-
-                      </div>
-
-                      <div layout="row" layout-sm="row" class="cart-button-row" ng-controller="ScrollCtrl">
-                          <md-button ng-controller="CartCtrl" class="cart-button addtocart md-raised add" id="addtocart-button"
-                                     ng-click="addToCart();">
-                              <span class="plae-font">add to cart</span>
-                          </md-button>
-                      </div>
-                  </md-white-frame>
-              </section>
-          </tab>
-          <tab>
-            <tab-heading>
-              <md-button class="canvas-button control-button shuffle plae-font"
-                    id="feedback-button"
-                    ng-click="setSurveyMode()">
-                    <i class="fa fa-comment fa-lg"></i>
-                  </md-button>
-            </tab-heading>
-          </tab>
-        </tabset>
-        <section>
-            <md-whiteframe class="md-whiteframe-z1 white-bg canvas-container col-sm-6" id="white-bg-mobile">
-                <div class="tablab-viewer">
+                    </slick>
+                    <div layout="column" layout-sm="column" class="arrows-button-column next">
+                        <md-button class="slick-button column next middle fa fa-chevron-right fa-1x" aria-label="middle next button" id="middle-next-button"
+                                   ng-click="next('left')">
+                        </md-button>
+                        <md-button class="slick-button column next bottom fa fa-chevron-right fa-1x" aria-label="bottom next button" id="bottom-next-button"
+                                   ng-click="next('right')">
+                        </md-button>
+                    </div>
                 </div>
             </md-whiteframe>
         </section>
-        <modal-dialog show='getSurveyForm()' dialog-title='TabLab Feedback'>
-            <div class="survey survey-container">
-                <md-content layout="column" flex="flex" md-theme="default" class="md-whiteframe-z1 survey-form" layout-align="center center">
-                    <div style="width:100%">
-                        <button class="close-feedback f-right" id="close-feedback-button" ng-click="setSurveyMode()">
-                            <i class="fa fa-times fa-lg"></i>
-                        </button>
-                    </div>
-                    <h2 id="survey-h2">what do you think about tab lab?</h2>
-                    <form class="surveyForm plae-font" name="surveyForm" ng-submit="submitData(userSurvey, 'ajaxSubmitResult')" novalidate>
-                        <md-text-float class="md-default-theme question" label="Did your kid(s) play with Tab Lab? Yes or No?" ng-model="userSurvey.question_1" name="question_1">
-                        </md-text-float>
-
-                        <md-radio-group ng-model="userSurvey.question_1" id="question_1">
-                            <md-radio-button class="survey-question" value="yes">yes</md-radio-button>
-                            <md-radio-button class="survey-question" value="no"> no </md-radio-button>
-                        </md-radio-group>
-
-                        <md-text-float class="md-default-theme question"
-                                       label={{label_3}}
-                                       ng-model="userSurvey.question_2" name="question_3">
-                        </md-text-float>
-
-                        <md-radio-group ng-model="userSurvey.question_2" >
-                            <md-radio-button class="survey-question" value="0">0</md-radio-button>
-                            <md-radio-button class="survey-question" value="1">1</md-radio-button>
-                            <md-radio-button class="survey-question" value="2">2</md-radio-button>
-                            <md-radio-button class="survey-question" value="3">3</md-radio-button>
-                            <md-radio-button class="survey-question" value="4">4</md-radio-button>
-                            <md-radio-button class="survey-question" value="5">5</md-radio-button>
-                            <md-radio-button class="survey-question" value="6">6</md-radio-button>
-                            <md-radio-button class="survey-question" value="7">7</md-radio-button>
-                            <md-radio-button class="survey-question" value="8">8</md-radio-button>
-                            <md-radio-button class="survey-question" value="9">9</md-radio-button>
-                            <md-radio-button class="survey-question" value="10">10</md-radio-button>
-                        </md-radio-group>
-
-                        <md-text-float class="md-default-theme question" label="How can we improve Tab Lab?" ng-model="userSurvey.question_3" name="question_3">
-                        </md-text-float>
-
-
-                        <md-text-float class="md-default-theme question" label="email (optional)" ng-model="userSurvey.email" type="email" name="email">
-                        </md-text-float>
-
-
-                        <md-button class="md-raised submit" id="submit-survey" type="submit"
-                                   ng-show="true" style="background: #21aa50;color: #fff;">
-                            submit
-                        </md-button>
-
-                    </form>
-                </md-content>
+    </tab>
+    <tab select="paneChanged('shoes')" active="tabs['shoes'].active">
+        <tab-heading>
+            <div class="icon-wrapper">
+                <div class="shoes heading" ng-show="!tabs['shoes'].active"></div>
+                <div class="shoes heading" ng-show="tabs['shoes'].active" ng-click="togglePane('shoes')"></div>
             </div>
-        </modal-dialog>
+        </tab-heading>
+        <section class="slick-container" ng-controller="SliderCtrl">
+            <md-whiteframe class="md-whiteframe-z1 horizontal-slick-container">
+                <div>
+                    <div layout="column" layout-sm="column" class="arrows-button-column previous" >
+                        <md-button class="slick-button column previous top fa fa-chevron-left fa-1x" aria-label="top previous button" id="top-prev-button"
+                                   ng-click="previous('top')">
+                        </md-button>
+                    </div>
+                    <slick class="car slick-shoe" id="shoe-slider"
+                           init-onload="true"
+                           infinite="true"
+                           center-mode="true"
+                           speed="200"
+                           cssEase="ease"
+                           arrows="false"
+                           swipe="true"
+                           swipeToSlide="true"
+                           touch-move="true"
+                           touchThreshold="1000"
+                           draggable="true"
+                           easing="linear"
+                           mobileFirst="true"
+                           respondTo="window"
+                           slides-to-show="5"
+                           slides-to-scroll="1"
+                           focus-on-select="true"
+                           current-index="shoeIndex"
+                           data="shoeList">
+
+
+                        <div ng-repeat="shoe in shoeList" ng-click="sliderSetShoe($index)" class="img bgimage">
+                            <a><img class="slide img" ng-src={{shoe.menuImg.src}}></a>
+                        </div>
+                    </slick>
+
+                    <div layout="column" layout-sm="column" class="arrows-button-column next">
+                        <md-button class="slick-button column next top fa fa-chevron-right fa-1x" aria-label="top next button" id="top-next-button"
+                                   ng-click="next('center')">
+                        </md-button>
+                    </div>
+                </div>
+            </md-whiteframe>
+        </section>
+    </tab>
+    <tab select="paneChanged('shuffle')" active="tabs['shuffle'].active">
+        <tab-heading>
+            <md-button ng-controller="SliderCtrl" class="canvas-button control-button shuffle plae-font"
+                       id="shuffle-button"
+                       ng-click="shuffle()"
+                       aria-label="shuffle button">
+                <i class="fa fa-refresh fa-lg"></i>
+            </md-button>
+        </tab-heading>
+    </tab>
+    <tab select="paneChanged('random')" active="tabs['random'].active">
+        <tab-heading>
+            <md-button ng-controller="SliderCtrl" class="canvas-button control-button plae-font" id="random-button"
+                       ng-click="random()">
+                <i class="fa fa-random fa-lg"></i>
+            </md-button>
+        </tab-heading>
+    </tab>
+    <tab select="paneChanged('design')" class="border-left" active="tabs['design'].active">
+        <tab-heading>
+            <div class="icon-wrapper">
+                <div ng-show="!tabs['design'].active"><i class="fa fa-cart-plus fa-lg"></i></div>
+                <div ng-show="tabs['design'].active" ng-click="togglePane('design')"><i class="fa fa-cart-plus fa-lg"></i></div>
+            </div>
+        </tab-heading>
+        <section ng-controller="CartCtrl" >
+            <md-white-frame class="md-whiteframe-z1 white-bg plae basket col-sm-8 col-sm-offset-2 col-xs-12" id="plae-basket">
+                <md-button class="md-raised fa fa-pencil-square-o fa-1" id="edit" aria-label="edit-cart" ng-click="tabLab.setEditMode()" ng-show="false">
+                </md-button>
+
+                <h3 class="cart title">your design</h3>
+
+                <div class="plae basket item shoe" ng-model="shoeSelected">
+                    <md-button class="md-raised attr shoe" ng-class="{'size-animate' : shoeEditMode}"
+                               aria-label="attr name button">
+                        <h4 class="product name plae-font">{{shoeSelected.name}}</h4>
+                        <ul class="details">
+                            <li class="attr price plae-font">{{shoeSelected.price | currency}}</li>
+                            <li class=" attr color plae-font">color: {{shoeSelected.color_label}}</li>
+                            <li class="attr size plae-font"
+                                ng-model="shoe.size">
+                                size:
+                            </li>
+                        </ul>
+                    </md-button>
+                    <select class="size selector shoe"
+                            ng-model="shoe.size"
+                            ng-change="setShoeSize(size)"
+                            ng-options="size.label disable when size.disabled == true for size in shoeSizeOptions | filter:showSize">
+                        <option value="" selected>--choose an option--</option>
+                    </select>
+
+                    <md-button class="md-raised md-warn delete"
+                               id="delete-shoe"
+                               aria-label="delete-shoe"
+                               ng-click="remove('shoe')">
+                        <p class="rotate">remove</p>
+                    </md-button>
+                </div>
+                <div class="plae basket item left" ng-model="tabSelected">
+                    <md-button class="md-raised attr tableft"
+                               ng-class="{'size-animate' : tabEditModeL}"
+                               aria-label="attr tableft button">
+                        <h4 class="product name plae-font">{{tabsSelected[0].name}}</h4>
+
+                        <ul class="details">
+                            <li class="attr price plae-font">{{tabsSelected[0].price | currency}}</li>
+                            <!--<li class="attr color plae-font">color: {{tabsSelected[0].color}}</li>-->
+                            <li class="attr size plae-font">
+                                size:
+                            </li>
+                        </ul>
+                    </md-button>
+                    <select class="size selector tabs"
+                            ng-model="tabs.size"
+                            ng-change="setTabSize(size)"
+                            ng-options="size.label for size in tabSizeOptions">
+                        <option value="" selected>--choose an option--</option>
+                    </select>
+                    <md-button class="md-raised md-warn delete" id="delete-left" aria-label="delete-left"
+                               ng-click="remove('left')" ng-show="tabLab.isTabEditMode('left')">
+                        <p class="rotate">remove</p>
+                    </md-button>
+                </div>
+                <div class="plae basket item right" ng-model="tabSelected">
+                    <md-button class="md-raised attr tabright" ng-class="{'size-animate' : tabEditModeR}" aria-label="attr tabright button"
+                               ng-click="tabLab.setSizeSelectMode('right')">
+                        <h4 class="product name plae-font">{{tabsSelected[1].name}}</h4>
+
+                        <ul class="details">
+                            <li class="attr price plae-font">{{tabsSelected[1].price | currency}}</li>
+                            <!--<li class="attr color plae-font">color: {{tabsSelected[1].color}}</li>-->
+                            <li class="attr size plae-font">
+                                size:
+                            </li>
+                        </ul>
+                    </md-button>
+                    <select class="size selector tabs"
+                            ng-model="tabs.size"
+                            ng-change="setTabSize(size)"
+                            ng-options="size.label for size in tabSizeOptions">
+                        <option value="" selected>--choose an option--</option>
+                    </select>
+                    <md-button class="md-raised md-warn delete"
+                               id="delete-right"
+                               aria-label="delete-right"
+                               ng-click="remove('right')"
+                               ng-show="tabLab.isTabEditMode('right')">
+                        <p class="rotate plae-font">remove</p>
+                    </md-button>
+                </div>
+
+
+                <div class="plae basket subtotal" id="subtotal" ng-model="subTotal">
+                    <h3>subtotal:</h3>
+                    <span class="price subtotal">{{subTotal | currency}}</span>
+
+                </div>
+
+                <div layout="row" layout-sm="row" class="cart-button-row" ng-controller="ScrollCtrl">
+                    <md-button ng-controller="CartCtrl" class="cart-button addtocart md-raised add" id="addtocart-button"
+                               ng-click="addToCart();">
+                        <span class="plae-font">add to cart</span>
+                    </md-button>
+                </div>
+            </md-white-frame>
+        </section>
+    </tab>
+    <tab select="paneChanged('comment')" active="tabs['comment'].active">
+        <tab-heading>
+            <div class="icon-wrapper">
+                <div ng-show="!tabs['comment'].active"><i class="fa fa-comment fa-lg"></i></div>
+                <div ng-show="tabs['comment'].active" ng-click="togglePane('comment')"><i class="fa fa-comment fa-lg"></i></div>
+            </div>
+        </tab-heading>
+        <div class="survey survey-container">
+            <md-white-frame class="md-whiteframe-z1 white-bg plae feedback col-sm-8 col-sm-offset-2 col-xs-12" id="feedback-form">
+                <h2 id="survey-h2">what do you think about tab lab?</h2>
+                <form class="surveyForm plae-font" name="surveyForm" ng-submit="submitData(userSurvey, 'ajaxSubmitResult')" novalidate>
+                    <md-text-float class="md-default-theme question" label="Did your kid(s) play with Tab Lab? Yes or No?" ng-model="userSurvey.question_1" name="question_1">
+                    </md-text-float>
+
+                    <md-radio-group ng-model="userSurvey.question_1" id="question_1">
+                        <md-radio-button class="survey-question" value="yes">yes</md-radio-button>
+                        <md-radio-button class="survey-question" value="no"> no </md-radio-button>
+                    </md-radio-group>
+
+                    <md-text-float class="md-default-theme question"
+                                   label={{label_3}}
+                                   ng-model="userSurvey.question_2" name="question_3">
+                    </md-text-float>
+
+                    <md-radio-group ng-model="userSurvey.question_2" >
+                        <md-radio-button class="survey-question" value="0">0</md-radio-button>
+                        <md-radio-button class="survey-question" value="1">1</md-radio-button>
+                        <md-radio-button class="survey-question" value="2">2</md-radio-button>
+                        <md-radio-button class="survey-question" value="3">3</md-radio-button>
+                        <md-radio-button class="survey-question" value="4">4</md-radio-button>
+                        <md-radio-button class="survey-question" value="5">5</md-radio-button>
+                        <md-radio-button class="survey-question" value="6">6</md-radio-button>
+                        <md-radio-button class="survey-question" value="7">7</md-radio-button>
+                        <md-radio-button class="survey-question" value="8">8</md-radio-button>
+                        <md-radio-button class="survey-question" value="9">9</md-radio-button>
+                        <md-radio-button class="survey-question" value="10">10</md-radio-button>
+                    </md-radio-group>
+
+                    <md-text-float class="md-default-theme question" label="How can we improve Tab Lab?" ng-model="userSurvey.question_3" name="question_3">
+                    </md-text-float>
+
+
+                    <md-text-float class="md-default-theme question" label="email (optional)" ng-model="userSurvey.email" type="email" name="email">
+                    </md-text-float>
+
+
+                    <md-button class="md-raised submit" id="submit-survey" type="submit"
+                               ng-show="true" style="background: #21aa50;color: #fff;">
+                        submit
+                    </md-button>
+
+                </form>
+            </md-white-frame>
+        </div>
+    </tab>
+    </tabset>
+    <section>
+        <md-whiteframe class="md-whiteframe-z1 white-bg canvas-container col-sm-6" id="white-bg-mobile">
+            <div class="tablab-viewer">
+            </div>
+        </md-whiteframe>
+    </section>
     </section>
     <h2 class="a-center visible-xs-block">TabLab<sup>beta</sup></h2>
     </div>

@@ -286,7 +286,10 @@ select, .tab-lab-header {
 
 }
 
-
+.icon-wrapper {
+    height: 20px;
+    overflow: hidden;
+}
 /*  Slider section   */
 /*                   */
 
@@ -590,11 +593,11 @@ md-checkbox#afo-fit-button {
 
 /*  Cart section    */
 /*                  */
-#plae-basket{
+#plae-basket, #feedback-form{
     border: 1px solid #D3D3D3;
     margin-top: 10px;
 }
-.plae.basket {
+.plae.basket, .plae.feedback {
     height: 450px;
     /*left: 2%;
     right: 2%;
@@ -607,7 +610,7 @@ md-checkbox#afo-fit-button {
     border-radius: 8px;
     margin-bottom: 10px;
 }
-.plae.basket p {
+.plae.basket p, .plae.feedback p {
     font-size: 85%;
     position:absolute;
     left: -5px;
