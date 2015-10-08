@@ -424,40 +424,27 @@
 
                     $scope.scene = new THREE.Scene();
 
-                    var lightKey = new THREE.DirectionalLight(0xF7F7F7);
+                    var lightKey = new THREE.DirectionalLight(0xFFFFFF);
                     lightKey.position.set(5, 5, 5);
                     lightKey.intensity = .4;
                     lightKey.castShadow = false;
-                    lightKey.target.position.x = 0;
-                    lightKey.target.position.y = -1.0;
-                    lightKey.target.position.z = 0;
-
                     $scope.scene.add(lightKey);
 
-                    var lightFill = new THREE.DirectionalLight(0xF7F7F7);
+                    var lightFill = new THREE.DirectionalLight(0xFFFFFF);
                     lightFill.position.set(-5, 5, 5);
                     lightFill.intensity = .4;
                     lightFill.castShadow = false;
-                    lightFill.target.position.x = 0;
-                    lightFill.target.position.y = -1.0;
-                    lightFill.target.position.z = 0;
                     $scope.scene.add(lightFill);
 
-                    var lightRim = new THREE.DirectionalLight(0xF7F7F7);
+                    var lightRim = new THREE.DirectionalLight(0xFFFFFF);
                     lightRim.position.set(0, 5, -3);
-                    lightRim.intensity = .3;
-                    lightRim.target.position.x = 0;
-                    lightRim.target.position.y = -1.0;
-                    lightRim.target.position.z = 0;
+                    lightRim.intensity = .2;
                     lightRim.castShadow = false;
                     $scope.scene.add(lightRim);
 
-                    var lightBottom = new THREE.DirectionalLight(0xF7F7F7);
+                    var lightBottom = new THREE.DirectionalLight(0xFFFFFF);
                     lightBottom.position.set(0, -5, 0);
                     lightBottom.intensity = .4;
-                    lightBottom.target.position.x = 0;
-                    lightBottom.target.position.y = -1.0;
-                    lightBottom.target.position.z = 0;
                     lightBottom.castShadow = false;
                     $scope.scene.add(lightBottom);
 
