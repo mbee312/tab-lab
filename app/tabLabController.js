@@ -468,9 +468,10 @@
                     }
 
                     $(document).ready(function() {
-                    //    document.getElementById("white-bg-mobile").addEventListener( 'mousedown', onDocumentMouseDown, false );
+                        document.getElementById("white-bg-mobile").addEventListener( 'mousedown', onDocumentMouseDown, false );
                     //    document.getElementById("white-bg-mobile").addEventListener( 'touchstart', onDocumentTouchStart, false );
                     //    document.getElementById("white-bg-mobile").addEventListener( 'touchmove', onDocumentTouchMove, false );
+                    //    document.getElementById("white-bg-mobile").addEventListener('dblclick', onDocumentDoubleClick);
                         window.addEventListener( 'resize', onWindowResize, false );
                     });
                 };
@@ -708,6 +709,7 @@
 
                     console.log("group:");
                     console.log($scope.scene.getObjectByName("group"));
+                    $scope.autoRotate = true;
                 };
 
                 $scope.updateTab = function(pos){
@@ -850,8 +852,10 @@
                     $scope.renderer.setSize($scope.WIDTH, $scope.HEIGHT);
                     $scope.camera.updateProjectionMatrix();
                 }
-            /*
+
                 function onDocumentMouseDown( event ) {
+                    $scope.autoRotate = false;
+                    /*
                     event.preventDefault();
 
                     document.addEventListener( 'mousemove', onDocumentMouseMove, false );
@@ -863,9 +867,10 @@
 
                     mouseYOnMouseDown = event.clientY - windowHalfY;
                     targetRotationOnMouseDownY = targetRotationY;
+                    */
 
                 }
-
+             /*
                 function onDocumentMouseMove( event ) {
                     mouseX = event.clientX - windowHalfX;
                     mouseY = event.clientY - windowHalfY;
