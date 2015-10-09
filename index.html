@@ -209,7 +209,8 @@
     <tab select="paneChanged('random')" active="tabs['random'].active">
         <tab-heading>
             <md-button ng-controller="SliderCtrl" class="canvas-button control-button plae-font" id="random-button"
-                       ng-click="random()">
+                       ng-click="random()"
+                       aria-label="random button">
                 <i class="fa fa-random fa-lg"></i>
             </md-button>
         </tab-heading>
@@ -335,18 +336,18 @@
             <md-white-frame class="md-whiteframe-z1 white-bg plae feedback col-sm-8 col-sm-offset-2 col-xs-12" id="feedback-form">
                 <h2 id="survey-h2">what do you think about tab lab?</h2>
                 <form class="surveyForm plae-font" name="surveyForm" ng-submit="submitData(userSurvey, 'ajaxSubmitResult')" novalidate>
-                    <md-text-float class="md-default-theme question" label="Did your kid(s) play with Tab Lab? Yes or No?" ng-model="userSurvey.question_1" name="question_1">
-                    </md-text-float>
+                    <md-input-container>
+                        <label class="md-default-theme question">Did your kid(s) play with Tab Lab? Yes or No?"</label>
+                    </md-input-container>
 
                     <md-radio-group ng-model="userSurvey.question_1" id="question_1">
                         <md-radio-button class="survey-question" value="yes">yes</md-radio-button>
                         <md-radio-button class="survey-question" value="no"> no </md-radio-button>
                     </md-radio-group>
 
-                    <md-text-float class="md-default-theme question"
-                                   label={{label_3}}
-                                   ng-model="userSurvey.question_2" name="question_3">
-                    </md-text-float>
+                    <md-input-container>
+                        <label class="md-default-theme question">{{label_3}}</label>
+                    </md-input-container>
 
                     <md-radio-group ng-model="userSurvey.question_2" >
                         <md-radio-button class="survey-question" value="0">0</md-radio-button>
@@ -362,12 +363,15 @@
                         <md-radio-button class="survey-question" value="10">10</md-radio-button>
                     </md-radio-group>
 
-                    <md-text-float class="md-default-theme question" label="How can we improve Tab Lab?" ng-model="userSurvey.question_3" name="question_3">
-                    </md-text-float>
+                    <md-input-container>
+                        <label class="md-default-theme question">How can we improve Tab Lab?</label>
+                        <input class="md-default-theme answer" name="question_3" ng-model="userSurvey.question_3">
+                    </md-input-container>
 
-
-                    <md-text-float class="md-default-theme question" label="email (optional)" ng-model="userSurvey.email" type="email" name="email">
-                    </md-text-float>
+                    <md-input-container>
+                        <label class="md-default-theme question">email (optional)</label>
+                        <input class="md-default-theme answer" type="email" name="email" ng-model="userSurvey.email">
+                    </md-input-container>
 
 
                     <md-button class="md-raised submit" id="submit-survey" type="submit"
