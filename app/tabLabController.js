@@ -408,14 +408,13 @@
                         $scope.isMobile = false;
                     }
 
-                    var winWidth = $(window).width();
-                    var docHeight = $(document).height();
+                    var winWidth = $(window).width();;
+                    var winHeight = $(window).height();
                     var shippingBarHeight = $(".shipping-bar").height();
                     var headerHeight = $(".header-container").height();
                     var navTabsHeight = $(".nav-tabs").height();
-                    var footerHeight = $("#goplae-footer").height();
 
-                    var canvasHeight = docHeight - shippingBarHeight - headerHeight - navTabsHeight - footerHeight;
+                    var canvasHeight = winHeight - shippingBarHeight - headerHeight - navTabsHeight;
 
                     if(winWidth < canvasHeight){
                         $scope.HEIGHT = Number(winWidth);
@@ -454,7 +453,7 @@
 
                     var lightBottom = new THREE.DirectionalLight(0xFFFFFF);
                     lightBottom.position.set(0, -5, 0);
-                    lightBottom.intensity = .4;
+                    lightBottom.intensity = .3;
                     lightBottom.castShadow = false;
                     $scope.scene.add(lightBottom);
 
