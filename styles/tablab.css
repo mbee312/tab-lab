@@ -2046,12 +2046,21 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .plae-chef-window ul.nav .heading.tabs {
         background-position-x: 60px;
     }
-    .plae-chef-window ul.nav .heading.tabs:hover {
+    .plae-chef-window ul.nav .heading.tabs:hover, .plae-chef-window ul.nav .heading.tabs:active, .plae-chef-window ul.nav .heading.tabs:focus, .plae-chef-window ul.nav li.active .heading.tabs {
         background-position-x: 30px;
     }
-    .plae-chef-window ul.nav .heading.shoes:hover {
+    .plae-chef-window ul.nav .heading.shoes:hover, .plae-chef-window ul.nav .heading.shoes:active, .plae-chef-window ul.nav .heading.shoes:focus, .plae-chef-window ul.nav li.active .heading.shoes {
         background-position-x: -30px;
     }
+
+    .plae-chef-window ul.nav.nav-tabs > li > a:hover, .plae-chef-window ul.nav.nav-tabs > li > a:active, .plae-chef-window ul.nav.nav-tabs > li > a:focus {
+        color: #fff;
+    }
+
+    .plae-chef-window ul.nav.nav-tabs > li.active > a {
+        color: #ffff07;
+    }
+
     ul.nav>li>a {
         padding: 10px 10px;
     }
