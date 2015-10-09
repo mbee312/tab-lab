@@ -406,14 +406,24 @@
 
                     if(windowWidth > 768){
                         $scope.isMobile = false;
-                        // the rest of the desktop screens
                     }
 
-                    var s = "#white-bg-mobile";
-                    var canvasWindowWidth = $(s).css('width').replace(/[^-\d\.]/g, '') - 10;
-                    var canvasWindowHeight = $(s).css('height').replace(/[^-\d\.]/g, '') - 10;
-                    $scope.WIDTH = Number(canvasWindowWidth);
-                    $scope.HEIGHT = $scope.WIDTH;
+                    var winWidth = $(window).width();
+                    var docHeight = $(document).height();
+                    var shippingBarHeight = $(".shipping-bar").height();
+                    var headerHeight = $(".header-container").height();
+                    var navTabsHeight = $(".nav-tabs").height();
+                    var footerHeight = $("#goplae-footer").height();
+
+                    var canvasHeight = docHeight - shippingBarHeight - headerHeight - navTabsHeight - footerHeight;
+
+                    if(winWidth < canvasHeight){
+                        $scope.HEIGHT = Number(winWidth);
+                        $scope.WIDTH = Number(winWidth);
+                    }else{
+                        $scope.HEIGHT = Number(canvasHeight);
+                        $scope.WIDTH = Number(canvasHeight);
+                    }
 
                 }; //end findAndSetCanvasDimensions()
 
@@ -450,7 +460,6 @@
 
                     var lightAmbient = new THREE.AmbientLight(0x2E2E2E);
                     $scope.scene.add(lightAmbient);
-
                     $scope.scene.add($scope.camera);
                     $scope.renderer.setSize($scope.WIDTH, $scope.HEIGHT);
                     $scope.renderer.setClearColor(0xffffff,0);
