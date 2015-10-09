@@ -1112,7 +1112,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     background-position: 0 0;
 }
 
-.plae-chef-window ul.nav .heading.shoes:hover {
+.plae-chef-window ul.nav .heading.shoes:hover, .plae-chef-window ul.nav .heading.shoes:active, .plae-chef-window ul.nav .heading.shoes:focus, .plae-chef-window ul.nav li.active .heading.shoes{
     background-position-x: -39px;
 }
 
@@ -1120,7 +1120,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     background-position-x: 78px;
 }
 
-.plae-chef-window ul.nav .heading.tabs:hover {
+.plae-chef-window ul.nav .heading.tabs:hover, .plae-chef-window ul.nav .heading.tabs:active, .plae-chef-window ul.nav .heading.tabs:focus, .plae-chef-window ul.nav li.active .heading.tabs {
     background-position-x: 39px;
 }
 
