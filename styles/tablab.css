@@ -900,8 +900,9 @@ md-input-group.md-default-theme input, md-input-group.md-default-theme textarea 
 }
 
 .survey-question {
-    display: inline;
+    display: inline-block;
     margin: 2px;
+    height: 45px;
 }
 
 .md-label {
@@ -935,10 +936,6 @@ md-input-group.md-default-theme input, md-input-group.md-default-theme textarea 
 
 #survey-h2 {
     margin-top: 30px;
-}
-
-.surveyForm label {
-    margin-top: 20px;
 }
 
 md-input-group.md-default-theme.question.ng-isolate-scope.ng-valid.ng-touched.md-input-has-value {
