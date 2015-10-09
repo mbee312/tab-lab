@@ -507,19 +507,6 @@ canvas {
     opacity: 1;
 }
 
-.survey {
-    z-index: 101;
-    width: 90%;
-    height: 80%;
-    top: 100px;
-    left: 5%;
-    right: 5%;
-    position: absolute;
-    -moz-border-radius: 12px;
-    border: 2px #000000;
-    opacity: 1;
-}
-
 #plae-size {
     z-index: 1;
 }
@@ -595,19 +582,19 @@ md-checkbox#afo-fit-button {
 /*                  */
 #plae-basket, #feedback-form{
     border: 1px solid #D3D3D3;
-    margin-top: 10px;
+    z-index: 101;
+    top: 150px;
+    bottom: 10px;
+    position: fixed;
+    opacity: 1;
+    overflow: auto;
 }
+
 .plae.basket, .plae.feedback {
-    height: 450px;
-    /*left: 2%;
-    right: 2%;
-    top: 785px;*/
     z-index: 0;
-    /*width: 96%;
-    position: absolute;*/
     background-color: #f5f5f5;
- /*   border: 1px solid #D3D3D3; */
     border-radius: 8px;
+    -moz-border-radius: 8px;
     margin-bottom: 10px;
 }
 .plae.basket p, .plae.feedback p {
@@ -808,7 +795,8 @@ button#survey-button {
     position: absolute;
     left: 3%;
     right: 3%;
-    bottom: 4%;
+    top: 390px;
+    margin-bottom: 30px;
 }
 button#feedback-button {
 }
@@ -887,6 +875,7 @@ md-input-group.md-default-theme input, md-input-group.md-default-theme textarea 
     width: 160px;
     border-radius: 10px !important;
     font-size: 100% !important;
+    margin-bottom: 30px;
 }
 
 .survey-question {
@@ -1300,9 +1289,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
     button#survey-button {
         top: 850px;
         left: 40%;
-    }
-    .survey {
-        top: 150px;
     }
 }
 @media screen and (min-width: 500px){
@@ -1891,7 +1877,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
     #submit-survey {
         top: 10px;
         left: 35%;
-        font-size: 130% !important;
     }
 }
 @media screen and (min-width: 1100px) {
