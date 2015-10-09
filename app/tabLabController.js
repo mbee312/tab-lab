@@ -1017,7 +1017,6 @@
                 };//end isSizeSelected ()
 
                 $scope.paneChanged = function(pane) {
-                    console.log("selected " + pane + " : " + $scope.tabs[pane].active );
                     $scope.selectedPane = pane;
                     if(pane == "tabs" || pane == "shoes") {
                         _.defer(function() {
@@ -1051,8 +1050,6 @@
                 $scope.togglePane = function(pane) {
 
                     if ($scope.selectedPane == pane) {
-                        console.log("closing " + pane);
-
                         _.delay(function() {
                             $scope.$apply(function() {
                             $scope.selectedPane = "main";
@@ -1108,6 +1105,7 @@
                         {
                             $scope[resultVarName] = data;
                             $scope.setSurveyMode();
+                            $scope.togglePane("comment");
 
                         })
                         .error(function (data, status, headers, config)

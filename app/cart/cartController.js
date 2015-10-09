@@ -295,6 +295,7 @@
                             }
 
                         }
+                        $scope.togglePane("design");
                     }
                 });
             }
