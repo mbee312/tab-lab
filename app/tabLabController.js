@@ -406,14 +406,24 @@
 
                     if(windowWidth > 768){
                         $scope.isMobile = false;
-                        // the rest of the desktop screens
                     }
 
-                    var s = "#white-bg-mobile";
-                    var canvasWindowWidth = $(s).css('width').replace(/[^-\d\.]/g, '') - 10;
-                    var canvasWindowHeight = $(s).css('height').replace(/[^-\d\.]/g, '') - 10;
-                    $scope.WIDTH = Number(canvasWindowWidth);
-                    $scope.HEIGHT = $scope.WIDTH;
+                    var winWidth = $(window).width();
+                    var docHeight = $(document).height();
+                    var shippingBarHeight = $(".shipping-bar").height();
+                    var headerHeight = $(".header-container").height();
+                    var navTabsHeight = $(".nav-tabs").height();
+                    var footerHeight = $("#goplae-footer").height();
+
+                    var canvasHeight = docHeight - shippingBarHeight - headerHeight - navTabsHeight - footerHeight;
+
+                    if(winWidth < canvasHeight){
+                        $scope.HEIGHT = Number(winWidth);
+                        $scope.WIDTH = Number(winWidth);
+                    }else{
+                        $scope.HEIGHT = Number(canvasHeight);
+                        $scope.WIDTH = Number(canvasHeight);
+                    }
 
                 }; //end findAndSetCanvasDimensions()
 
@@ -424,34 +434,25 @@
 
                     $scope.scene = new THREE.Scene();
 
-                    var lightKey = new THREE.DirectionalLight(0xffffff);
-                    lightKey.position.set(5, 4, 5);
+                    var lightKey = new THREE.DirectionalLight(0xFFFFFF);
+                    lightKey.position.set(5, 5, 5);
                     lightKey.intensity = .4;
                     lightKey.castShadow = false;
-                    lightKey.target.position.x = 0;
-                    lightKey.target.position.y = 0.0;
-                    lightKey.target.position.z = 0;
                     $scope.scene.add(lightKey);
 
-                    var lightFill = new THREE.DirectionalLight(0xffffff);
-                    lightFill.position.set(-5, 4, 5);
+                    var lightFill = new THREE.DirectionalLight(0xFFFFFF);
+                    lightFill.position.set(-5, 5, 5);
                     lightFill.intensity = .4;
                     lightFill.castShadow = false;
-                    lightFill.target.position.x = 0;
-                    lightFill.target.position.y = 0.0;
-                    lightFill.target.position.z = 0;
                     $scope.scene.add(lightFill);
 
-                    var lightRim = new THREE.DirectionalLight(0xffffff);
+                    var lightRim = new THREE.DirectionalLight(0xFFFFFF);
                     lightRim.position.set(0, 5, -3);
-                    lightRim.intensity = .3;
-                    lightRim.target.position.x = 0;
-                    lightRim.target.position.y = 0.0;
-                    lightRim.target.position.z = 0;
+                    lightRim.intensity = .2;
                     lightRim.castShadow = false;
                     $scope.scene.add(lightRim);
 
-                    var lightBottom = new THREE.DirectionalLight(0xffffff);
+                    var lightBottom = new THREE.DirectionalLight(0xFFFFFF);
                     lightBottom.position.set(0, -5, 0);
                     lightBottom.intensity = .4;
                     lightBottom.castShadow = false;
@@ -459,7 +460,6 @@
 
                     var lightAmbient = new THREE.AmbientLight(0x2E2E2E);
                     $scope.scene.add(lightAmbient);
-
                     $scope.scene.add($scope.camera);
                     $scope.renderer.setSize($scope.WIDTH, $scope.HEIGHT);
                     $scope.renderer.setClearColor(0xffffff,0);
@@ -477,6 +477,7 @@
                     {
                         lightKey.position.copy( $scope.camera.position );
                         lightFill.position.copy( $scope.camera.position );
+                        lightRim.position.copy( $scope.camera.position );
                     }
 
                     $(document).ready(function() {
