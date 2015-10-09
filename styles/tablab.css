@@ -1079,7 +1079,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     position: fixed;
     width: 100%;
     left: 0;
-    z-index: 100;
+    z-index: 10;
     border: none;
     padding: 0 12px;
 }
