@@ -181,7 +181,7 @@ button.close-feedback {
 }
 
 .md-button.md-default-theme.md-raised.cart-button.addtocart {
-    margin: 0 15% 0 auto;
+    margin: 0 5% 0 auto;
 }
 .md-button:hover {
     box-shadow: none;
@@ -289,6 +289,7 @@ select, .tab-lab-header {
 .icon-wrapper {
     height: 20px;
     overflow: hidden;
+    margin-top: 2px;
 }
 /*  Slider section   */
 /*                   */
@@ -588,6 +589,7 @@ md-checkbox#afo-fit-button {
     position: fixed;
     opacity: 1;
     overflow: auto;
+    max-height: 460px;
 }
 
 .plae.basket, .plae.feedback {
@@ -624,6 +626,11 @@ md-checkbox#afo-fit-button {
     top: 260px;
     position: absolute;
 }
+
+.plae.basket.item .md-button {
+    line-height: inherit;
+}
+
 .details {
     list-style-type: none;
     padding-left: 5px;
@@ -633,8 +640,6 @@ md-checkbox#afo-fit-button {
 button.attr {
     height: 100px;
     width: 110%;
-    left: 2%;
-    right: 2%;
     margin-top:10px;
 }
 
@@ -675,6 +680,14 @@ button.attr {
     top: 50px;
 }
 
+.shoe .attr.size {
+    top: 60px;
+}
+
+.shoe .size.selector {
+    top: 65px;
+}
+
 .product.name {
     float: left;
     margin-top: 0;
@@ -688,6 +701,8 @@ button.attr {
     width: 85%;
     float: left;
     height: 1px;
+    left: 20px;
+    top: 382px;
 }
 
 .price.subtotal {
@@ -772,6 +787,13 @@ ul.plae.basket.list {
     background-color: transparent;
 }
 
+.control-button.md-button {
+    line-height: inherit;
+    min-height: auto;
+    min-width: auto;
+    margin: 0;
+}
+
 .cart-button {
     position: relative;
     border-radius: 4px !important;
@@ -791,7 +813,6 @@ button#survey-button {
 
 .cart-button-row {
     height: 40px;
-    width: 100%;
     position: absolute;
     left: 3%;
     right: 3%;
@@ -1047,8 +1068,9 @@ md-tabs.ng-isolate-scope.md-default-theme {
 .size.selector {
     z-index: 51;
     position: absolute;
-    top: 55px;
-    left: 60px;
+    top: 65px;
+    left: 70px;
+    font-size: 0.75em;
 }
 
 .plae-chef-window ul.nav {
@@ -1072,10 +1094,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
 .plae-chef-window ul.nav.nav-tabs > li > a > tab-heading{
     vertical-align: middle !important;
-}
-
-.plae-chef-window ul.nav.nav-tabs > li > a i {
-    vertical-align: 0;
 }
 
 .plae-chef-window ul.nav.nav-tabs > li > a i.fa-cart-plus {
@@ -1283,13 +1301,12 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .plae.size {
         top: 250px;
     }
-    /*.plae.basket {
-        top: 440px;
-    }*/
     button#survey-button {
         top: 850px;
         left: 40%;
     }
+
+
 }
 @media screen and (min-width: 500px){
     .md-raised.selector.tab {
@@ -1509,11 +1526,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
     /*  Add-to-cart section */
     /*                      */
-    /*#plae-basket {
-        top: 450px;
-    }*/
-    .cart-button {
-    }
     #right {
         position: relative;
         float: left;
@@ -1795,7 +1807,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
 
     .plae.basket.item {
-        left: 18px;
+        left: 2.5%;
     }
     .plae.basket.item.shoe {
         position: absolute;
@@ -1805,11 +1817,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .plae.basket.item {
         border: none;
         height: 0px !important;
-    }
-    .plae.basket.subtotal {
-        left: 20px;
-        top: 382px;
-        height: 0;
     }
     button.md-raised.attr.subtotal {
         margin-top: -2px;
@@ -1833,8 +1840,8 @@ md-tabs.ng-isolate-scope.md-default-theme {
         color: #000000;
     }
     .size.selector {
-        width: 95%;
-        height: 36px;
+        width: 85%;
+        height: 25px;
     }
     #scroll-to-button {
         position: relative;
@@ -1909,9 +1916,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         height: 480px;
         top: 660px;
     }
-    /*#plae-basket {
-        top: 660px;
-    }*/
     button#survey-button {
         top: 1080px;
     }
@@ -1956,33 +1960,48 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
 @media (max-width: 991px) {
 
-    .plae.basket.subtotal {
-        position: static;
-    }
-
-    .plae.basket.subtotal h3 {
-        bottom: 15px;
-        position:absolute;
-    }
-
-    .price.subtotal {
-        bottom: 30px;
-        margin-left: 105px;
+    #plae-basket, #feedback-form {
+        max-height: 400px;
     }
 
     .plae.basket.item {
         height: 0px;
+        left: 4%;
     }
 
-    button.attr {
+    button.attr{
         width: 105%;
+    }
+
+    button.attr.tableft, button.attr.tabright {
+        height: 70px;
+    }
+
+    .plae.basket.item.right {
+        top: 230px;
+    }
+
+    .attr.size {
+        top: 35px;
+    }
+
+    .size.selector {
+        top: 43px;
+    }
+
+    .shoe .size.selector {
+        top: 68px;
+    }
+
+    .plae.basket.subtotal {
+        top: 315px;
+    }
+
+    .cart-button-row {
+        top: 325px;
     }
 }
 @media (max-width: 768px) {
-
-    button.attr {
-        left: 2%
-    }
 
     .canvas-button-row {
         position:static;
@@ -2037,20 +2056,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         padding: 10px 10px;
     }
 
-    #plae-basket {
-        top: 10px;
-        bottom: 10px;
-        overflow: auto;
-        height: 500px;
-    }
-    .plae.basket.subtotal h3 {
-        bottom: 45px;
-    }
-
-    .price.subtotal {
-        bottom: 60px;
-    }
-
     .cart-button-row {
         margin-bottom: 30px;
     }
@@ -2058,17 +2063,15 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
 }
 @media (max-width: 480px) {
-    #plae-basket {
-        margin-bottom: 80px;
-        height: 400px;
+
+    #plae-basket, #feedback-form {
+        max-height: 460px;
     }
 
     .plae.basket.subtotal {
         text-align: center;
-        position: absolute;
-        bottom: 0;
-        top: auto;
-        width: 95%;
+        top: 330px;
+        width: 90%;
     }
 
     .plae.basket.subtotal h3 {
@@ -2084,10 +2087,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
 
     .cart-button-row {
-        position:relative;
-        margin-top: 435px;
-        height: auto;
-        bottom: 0;
+        top: 380px;
     }
 
     .md-button.md-default-theme.md-raised.cart-button.addtocart {
