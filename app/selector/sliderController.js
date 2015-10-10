@@ -41,7 +41,7 @@
             }
         };
     });
-    app.controller('SliderCtrl', ['$scope', '$rootScope', 'tabLabProperties', 'sliderProperties', 'cartProperties', function ($scope, $rootScope, tabLabProperties, sliderProperties, cartProperties) {
+    app.controller('SliderCtrl', ['$scope', '$rootScope', '$q', 'tabLabProperties', 'sliderProperties', 'cartProperties', function ($scope, $rootScope, $q, tabLabProperties, sliderProperties, cartProperties) {
         $scope.innerWidthSize = 0;
         $scope.innerWidthSizeNew = window.innerWidth;
 
@@ -251,20 +251,28 @@
             $scope.setShoe($scope.shoeList[index]);
 
             var shoe = $scope.shoeList[index];
-            $scope.updateShoe('left');
-            $scope.updateShoe('right');
-
-            $scope.updateTab(0);
-            $scope.updateTab(1);
-            if(shoe.numOfTabs != 2) {
-                $scope.showTab(2);
-                $scope.showTab(3);
-                $scope.updateTab(2);
-                $scope.updateTab(3);
-            }else{
-                $scope.hideTab(2);
-                $scope.hideTab(3);
-            }
+            var newShoePromise = $scope.removeAllFromGroup();
+            newShoePromise
+                .then(function(v){return $scope.updateShoe('left')})
+            //    .then(function(v){return $scope.updateShoe('right')})
+                .then(function(v){return $scope.updateTab(0)})
+                .then(function(v){return $scope.updateTab(1)})
+                .then(function(v){
+                    if(shoe.numOfTabs != 2) {
+                        $scope.showTab(2);
+                        return $scope.updateTab(2);
+                    }else{
+                        $scope.hideTab(2);
+                    }
+                })
+                .then(function(v){
+                    if(shoe.numOfTabs != 2) {
+                        $scope.showTab(3);
+                        return $scope.updateTab(3);
+                    }else{
+                        $scope.hideTab(3);
+                    }
+                });
 
             cartProperties.updateCart(shoe, 2);
             $rootScope.$broadcast('calculate-subtotal');
