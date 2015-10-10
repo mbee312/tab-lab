@@ -789,8 +789,8 @@ ul.plae.basket.list {
 
 .control-button.md-button {
     line-height: inherit;
-    min-height: auto;
-    min-width: auto;
+    min-height: inherit;
+    min-width: inherit;
     margin: 0;
 }
 
