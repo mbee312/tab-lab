@@ -761,7 +761,7 @@
                     // draw tabs
 
                     if(tab) {
-                        updateDeferred.resolve(initDrawTabHelper(0, -0.75, -1, -0.75, true));
+                        setTimeout(function(){updateDeferred.resolve(initDrawTabHelper(0, -0.75, -1, -0.75, true))},1000);
                     }else{
                         updateDeferred.reject("Couldn't draw tabs");
                     }
