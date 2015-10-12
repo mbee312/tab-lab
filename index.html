@@ -36,24 +36,11 @@
     <header>
         <md-toolbar class="md-primary tab-lab-header-toolbar" id="tablab-header">
             <div class="md-toolbar-tools">
-                <div class="md-raised plae-button tab-lab-header desktop" id="title-button-desktop"
-                     ng-click="random()">
-                    <span class=" md-flex">Welcome to the TabLab<span class="version"><i>  alpha</i></span></span>
-                </div>
-                <div class="md-raised plae-button tab-lab-header mobile" id="title-button-mobile"
-                     ng-click="random()">
-                    <span class=" md-flex">TabLab <span class="version"><i>beta</i></span></span>
-                </div>
+              <a href="../../">
+                  <img src="/media/logos/logo.png" />
+              </a>
             </div>
         </md-toolbar>
-        <div>
-            <a href="../../">
-                <md-button class="home button md-raised shop-menu" id="menu-home-button"
-                           ng-click=""
-                           aria-label="home button">
-                </md-button>
-            </a>
-        </div>
     </header>
     <div class="main-container col1-layout container">
     <div class="main">
@@ -63,7 +50,7 @@
     <tabset>
     <tab class="main-tab" select="paneChanged('main')" active="tabs['main'].active">
         <tab-heading>
-            Tab Lab<sup>beta</sup>
+            TAB LAB<sup> beta</sup>
         </tab-heading>
     </tab>
     <tab select="paneChanged('tabs')" active="tabs['tabs'].active">
@@ -312,7 +299,7 @@
 
                 <div class="plae basket subtotal" id="subtotal" ng-model="subTotal">
                     <h3>subtotal:</h3>
-                    <span class="price subtotal">{{subTotal | currency}}</span>
+                    <span class="price subtotal plae-font">{{subTotal | currency}}</span>
 
                 </div>
 
@@ -334,10 +321,10 @@
         </tab-heading>
         <div class="survey survey-container">
             <md-white-frame class="md-whiteframe-z1 white-bg plae feedback col-sm-8 col-sm-offset-2 col-xs-12" id="feedback-form">
-                <h2 id="survey-h2">what do you think about tab lab?</h2>
+                <h2 id="survey-h2" class="plae-font">what do you think about TAB LAB?</h2>
                 <form class="surveyForm plae-font" name="surveyForm" ng-submit="submitData(userSurvey, 'ajaxSubmitResult')" novalidate>
                     <md-input-container>
-                        <label class="md-default-theme question">Did your kid(s) play with Tab Lab? Yes or No?"</label>
+                        <label class="md-default-theme question">Did your kid(s) play with TAB LAB? Yes or No?"</label>
                     </md-input-container>
 
                     <md-radio-group ng-model="userSurvey.question_1" id="question_1">
@@ -364,7 +351,7 @@
                     </md-radio-group>
 
                     <md-input-container>
-                        <label class="md-default-theme question">How can we improve Tab Lab?</label>
+                        <label class="md-default-theme question">How can we improve TAB LAB?</label>
                         <input class="md-default-theme answer" name="question_3" ng-model="userSurvey.question_3">
                     </md-input-container>
 
@@ -391,7 +378,7 @@
         </md-whiteframe>
     </section>
     </section>
-    <h2 class="a-center visible-xs-block">TabLab<sup>beta</sup></h2>
+    <h2 class="a-center visible-xs-block plae-font">TAB LAB<sup> beta</sup></h2>
     </div>
     </div>
     </div>
