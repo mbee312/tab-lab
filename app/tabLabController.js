@@ -553,6 +553,7 @@
                 shoeMaterial[1] = new THREE.MeshPhongMaterial();
 
                 function initDrawShoeHelper(shoe, pos, x, y, z){
+                    var mobile = '';
                     var side;
                     if (pos == 0){
                         side = 'right';
@@ -565,10 +566,13 @@
                     var shoePath = assetRoot + '/assets/models/' + shoe.name + '/' + shoe.name;
                     var shoeTexturePath = assetRoot + 'assets/models/texture/shoe/' + shoe.name + '/' + side + '/' + shoe.sku;
                     var uniqueName = shoe.name + '-' + shoe.sku + '-' + side;
+                    if ($scope.isMobile == true){
+                        mobile = '-mobile';
+                    }
 
-                    shoeMaterial[pos].map = $scope.renderer._microCache.getSet(uniqueName + "-textureMap", THREE.ImageUtils.loadTexture(shoeTexturePath + '/diffuse.jpg', undefined, function(textureMap){
-                        shoeMaterial[pos].normalMap = $scope.renderer._microCache.getSet(uniqueName + "-normalMap", THREE.ImageUtils.loadTexture(shoeTexturePath + '/normal.jpg', undefined, function(normalMap){
-                            shoeMaterial[pos].specularMap = $scope.renderer._microCache.getSet(uniqueName + "-specular", THREE.ImageUtils.loadTexture(shoeTexturePath + '/specular.jpg'));
+                    shoeMaterial[pos].map = $scope.renderer._microCache.getSet(uniqueName + '-textureMap' + mobile, THREE.ImageUtils.loadTexture(shoeTexturePath + '/diffuse' + mobile + '.jpg', undefined, function(textureMap){
+                        shoeMaterial[pos].normalMap = $scope.renderer._microCache.getSet(uniqueName + '-normalMap' + mobile, THREE.ImageUtils.loadTexture(shoeTexturePath + '/normal' + mobile + '.jpg', undefined, function(normalMap){
+                            shoeMaterial[pos].specularMap = $scope.renderer._microCache.getSet(uniqueName + '-specular' + mobile, THREE.ImageUtils.loadTexture(shoeTexturePath + '/specular' + mobile + '.jpg'));
                             loader.load(shoePath + '-shoe-'+ side + '.js', function (geometry) {
                                 shoeMaterial[pos].side = THREE.DoubleSide;
                                 shoeMesh[pos].geometry.dispose();
@@ -685,7 +689,7 @@
                     var shoe = getShoe();
 
                     if(shoe) {
-                        setTimeout(function(){updateDeferred.resolve(initDrawShoeHelper(shoe, 0, -0.75, -1, -0.75))}, 1000);
+                        setTimeout(function(){updateDeferred.resolve(initDrawShoeHelper(shoe, 0, -0.75, -1, -0.75))}, 500);
                     }else{
                         updateDeferred.reject("Couldn't draw shoes");
                     }
@@ -725,10 +729,6 @@
                             $scope.currentShoeObj[shoeIndex] = shoeMesh[shoeIndex];
                         });
                         */
-
-
-                    console.log("group:");
-                    console.log($scope.scene.getObjectByName("group"));
                     $scope.autoRotate = true;
 
                     return updateDeferred.promise;
@@ -761,7 +761,7 @@
                     // draw tabs
 
                     if(tab) {
-                        updateDeferred.resolve(initDrawTabHelper(0, -0.75, -1, -0.75, true));
+                        setTimeout(function(){updateDeferred.resolve(initDrawTabHelper(0, -0.75, -1, -0.75, true))},1000);
                     }else{
                         updateDeferred.reject("Couldn't draw tabs");
                     }
