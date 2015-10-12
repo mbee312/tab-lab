@@ -1040,8 +1040,9 @@
 
                 $scope.paneChanged = function(pane) {
                     $scope.selectedPane = pane;
+                    if (window.paneTimeout != undefined || window.paneTimeout != null) clearTimeout(window.paneTimeout);
                     if(pane == "tabs" || pane == "shoes") {
-                        _.defer(function() {
+                        var updateSlick = function() {
                             var left = $(".slick-left");
                             if(left.length > 0) {
                                 left.slick('resize');
@@ -1058,7 +1059,8 @@
                                 shoe.slick('resize');
                                 shoe.slick('setPosition');
                             }
-                        });
+                        };
+                        window.paneTimeout = setTimeout(updateSlick, 50);
                     } else if (pane == "comment") {
                         $scope.setSurveyMode();
                     } else if (pane == "shuffle" || pane == "random") {
