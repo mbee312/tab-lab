@@ -530,8 +530,7 @@
                     if(tabLabProperties.isShoeSelected()){
                         var s = tabLabProperties.getShoe();
 
-                        initDrawShoeHelper(s, 'left', 0.75, -1, 0.75);
-                        initDrawShoeHelper(s, 'right', -0.75, -1, -0.75);
+                        initDrawShoeHelper(s, 0, -0.75, -1, -0.75);
 
                         // draw tabs
                         initDrawTabHelper(0, -0.75, -1, -0.75, true);
@@ -562,10 +561,12 @@
                 shoeMaterial[0] = new THREE.MeshPhongMaterial();
                 shoeMaterial[1] = new THREE.MeshPhongMaterial();
 
-                function initDrawShoeHelper(shoe, side, x, y, z){
-                    var pos = 0;
-                    if (side == 'left'){
-                        pos = 1;
+                function initDrawShoeHelper(shoe, pos, x, y, z){
+                    var side;
+                    if (pos == 0){
+                        side = 'right';
+                    }else{
+                        side = 'left';
                     }
 
                     var grp = $scope.scene.getObjectByName("group");
@@ -589,6 +590,10 @@
                                 shoeMesh[pos].position.z = z;
                                 shoeMesh[pos].name = "shoe" + "-" + side;
                                 grp.add(shoeMesh[pos]);
+                                if(pos == 0) {
+                                    pos++;
+                                    initDrawShoeHelper(shoe, pos, -x, y, -z);
+                                }
 
                                 // remember the current shoe object
                                 $scope.currentShoeObj = shoe;
@@ -661,14 +666,12 @@
                     }));
                 }
 
-                $scope.updateShoe = function (side){
+                $scope.updateShoes = function (){
                     var updateDeferred = $q.defer();
                     var shoe = getShoe();
 
-                    if(side == 'left') {
-                        setTimeout(function(){updateDeferred.resolve(initDrawShoeHelper(shoe, side, 0.75, -1, 0.75))}, 1000);
-                    }else if( side == 'right'){
-                        setTimeout(function(){updateDeferred.resolve(initDrawShoeHelper(shoe, side, -0.75, -1, -0.75))}, 1000);
+                    if(shoe) {
+                        setTimeout(function(){updateDeferred.resolve(initDrawShoeHelper(shoe, 0, -0.75, -1, -0.75))}, 1000);
                     }else{
                         updateDeferred.reject("Couldn't draw shoes");
                     }

@@ -253,8 +253,8 @@
             var shoe = $scope.shoeList[index];
             var newShoePromise = $scope.removeAllFromGroup();
             newShoePromise
-                .then(function(v){return $scope.updateShoe('left')})
-                .then(function(v){return $scope.updateShoe('right')})
+                .then(function(v){return $scope.updateShoes()})
+            //    .then(function(v){return $scope.updateShoe('right')})
                 .then(function(v){return $scope.updateTab(0)})
                 .then(function(v){return $scope.updateTab(1)})
                 .then(function(v){
