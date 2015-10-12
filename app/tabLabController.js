@@ -531,17 +531,9 @@
                         var s = tabLabProperties.getShoe();
 
                         initDrawShoeHelper(s, 0, -0.75, -1, -0.75);
-
                         // draw tabs
                         initDrawTabHelper(0, -0.75, -1, -0.75, true);
-                        initDrawTabHelper(1, 0.75, -1, 0.75, true);
-                        if(s.numOfTabs == 2) {
-                            initDrawTabHelper(2, -0.75, -1, -0.75, false);
-                            initDrawTabHelper(3, 0.75, -1, 0.75, false);
-                        }else{
-                            initDrawTabHelper(2, -0.75, -1, -0.75, true);
-                            initDrawTabHelper(3, 0.75, -1, 0.75, true);
-                        }
+
                     }else {
                         setTimeout($scope.initDrawScene, 500); // check again in a .5 second
                     }//end if-else
@@ -580,7 +572,9 @@
                             shoeMaterial[pos].specularMap = $scope.renderer._microCache.getSet(uniqueName + "-specular", THREE.ImageUtils.loadTexture(shoeTexturePath + '/specular.jpg'));
                             loader.load(shoePath + '-shoe-'+ side + '.js', function (geometry) {
                                 shoeMaterial[pos].side = THREE.DoubleSide;
+                                shoeMesh[pos].geometry.dispose();
                                 shoeMesh[pos].geometry = $scope.renderer._microCache.getSet(shoePath + '-shoe-'+ side + '.js', geometry);
+                                shoeMesh[pos].material.dispose();
                                 shoeMesh[pos].material = shoeMaterial[pos];
                                 shoeMesh[pos].receiveShadow = false;
                                 shoeMesh[pos].castShadow = false;
@@ -592,7 +586,7 @@
                                 grp.add(shoeMesh[pos]);
                                 if(pos == 0) {
                                     pos++;
-                                    initDrawShoeHelper(shoe, pos, -x, y, -z);
+                                    setTimeout(initDrawShoeHelper(shoe, pos, -x, y, -z), 500);
                                 }
 
                                 // remember the current shoe object
@@ -660,6 +654,27 @@
 
                                     // remember current tab object
                                     $scope.currentTabObj[pos] = tabMesh[pos];
+
+                                    pos++;
+                                    if(pos < 4) {
+
+                                        if (pos == 1) {
+                                            initDrawTabHelper(1, 0.75, -1, 0.75, true);
+                                        }
+                                        if(shoe.numOfTabs == 2) {
+                                            if(pos == 2) {
+                                                initDrawTabHelper(2, -0.75, -1, -0.75, false);
+                                            }else if(pos == 3) {
+                                                initDrawTabHelper(3, 0.75, -1, 0.75, false);
+                                            }
+                                        }else{
+                                            if(pos == 2) {
+                                                initDrawTabHelper(2, -0.75, -1, -0.75, true);
+                                            }else if (pos ==3) {
+                                                initDrawTabHelper(3, 0.75, -1, 0.75, true);
+                                            }
+                                        }
+                                    }
                                 });
                             }));
                         }));
@@ -740,29 +755,16 @@
                 };
 
                 var tab;
-                $scope.updateTab = function(pos){
+                $scope.updateTabs = function(){
                     var updateDeferred = $q.defer();
                     var shoe = getShoe();
-                    tab = getTab(pos);
+                    tab = getTab(0);
                     // draw tabs
 
-                    if(pos == 0) {
-                        updateDeferred.resolve(initDrawTabHelper(pos, -0.75, -1, -0.75, true));
-                    }else if (pos == 1) {
-                        updateDeferred.resolve(initDrawTabHelper(pos, 0.75, -1, 0.75, true));
-                    }
-                    if(shoe.numOfTabs == 2) {
-                        if(pos == 2) {
-                            updateDeferred.resolve(initDrawTabHelper(2, -0.75, -1, -0.75, false));
-                        }else if(pos == 3) {
-                            updateDeferred.resolve(initDrawTabHelper(3, 0.75, -1, 0.75, false));
-                        }
+                    if(tab) {
+                        updateDeferred.resolve(initDrawTabHelper(0, -0.75, -1, -0.75, true));
                     }else{
-                        if(pos == 2) {
-                            updateDeferred.resolve(initDrawTabHelper(2, -0.75, -1, -0.75, true));
-                        }else if (pos ==3) {
-                            updateDeferred.resolve(initDrawTabHelper(3, 0.75, -1, 0.75, true));
-                        }
+                        updateDeferred.reject("Couldn't draw tabs");
                     }
                     
 

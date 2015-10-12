@@ -253,26 +253,8 @@
             var shoe = $scope.shoeList[index];
             var newShoePromise = $scope.removeAllFromGroup();
             newShoePromise
-                .then(function(v){return $scope.updateShoes()})
-            //    .then(function(v){return $scope.updateShoe('right')})
-                .then(function(v){return $scope.updateTab(0)})
-                .then(function(v){return $scope.updateTab(1)})
-                .then(function(v){
-                    if(shoe.numOfTabs != 2) {
-                        $scope.showTab(2);
-                        return $scope.updateTab(2);
-                    }else{
-                        $scope.hideTab(2);
-                    }
-                })
-                .then(function(v){
-                    if(shoe.numOfTabs != 2) {
-                        $scope.showTab(3);
-                        return $scope.updateTab(3);
-                    }else{
-                        $scope.hideTab(3);
-                    }
-                });
+                .then(function(v){return $scope.updateShoes()});
+            //    .then(function(v){return $scope.updateTabs()});
 
             cartProperties.updateCart(shoe, 2);
             $rootScope.$broadcast('calculate-subtotal');
