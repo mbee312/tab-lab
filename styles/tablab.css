@@ -58,8 +58,25 @@ h4.product.name {
     margin: 0 1%;
 }
 
-.canvas-container h2 {
-    position: absolute;
+.md-toolbar-tools {
+    height: 72px;
+    max-height: 72px;
+}
+
+.md-toolbar-tools img {
+    height: 42px;
+    margin-left: 10px;
+}
+
+h2.a-center {
+    text-align: center;
+    color: #434343;
+    font-size: 1.375em;
+}
+
+md-input-container label, md-input-container .md-placeholder {
+    color: #7c7c7c;
+    font-weight: normal;
 }
 
 /* overrides to angular css that's altering the main page css */
@@ -705,6 +722,10 @@ button.attr {
     top: 382px;
 }
 
+.price {
+    color: #21aa50;
+}
+
 .price.subtotal {
     position: absolute;
     margin-top: 18px;
@@ -936,6 +957,9 @@ md-input-group.md-default-theme input, md-input-group.md-default-theme textarea 
 
 #survey-h2 {
     margin-top: 30px;
+    font-size: 1.375em;
+    color: #434343;
+    text-transform: uppercase;
 }
 
 md-input-group.md-default-theme.question.ng-isolate-scope.ng-valid.ng-touched.md-input-has-value {
