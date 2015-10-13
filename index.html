@@ -63,25 +63,16 @@
         <section class="slick-container" ng-controller="SliderCtrl">
             <md-whiteframe class="md-whiteframe-z1 horizontal-slick-container">
                 <div>
-                    <div layout="column" layout-sm="column" class="arrows-button-column previous" >
-                        <md-button class="slick-button column previous middle fa fa-chevron-left fa-1x" aria-label="middle previous button" id="middle-prev-button"
-                                   ng-click="previous('middle')">
-                        </md-button>
-                        <md-button class="slick-button column previous bottom fa fa-chevron-left fa-1x" aria-label="bottom previous button" id="bottom-prev-button"
-                                   ng-click="previous('bottom')">
-                        </md-button>
-
-                    </div>
                     <slick class="car slick-left" id="tab-left-slider"
                            init-onload="true"
                            infinite="true"
                            center-mode="true"
                            speed="200"
                            cssEase="ease"
-                           arrows="false"
+                           arrows="true"
                            swipe="true"
                            swipeToSlide="true"
-                           touch-move="true"
+                           touchMove="true"
                            touchThreshold="1000"
                            draggable="true"
                            easing="linear"
@@ -102,10 +93,10 @@
                            center-mode="true"
                            speed="200"
                            cssEase="ease"
-                           arrows="false"
+                           arrows="true"
                            swipe="true"
                            swipeToSlide="true"
-                           touch-move="true"
+                           touchMove="true"
                            touchThreshold="1000"
                            draggable="true"
                            easing="linear"
@@ -120,14 +111,6 @@
                             <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
                         </div>
                     </slick>
-                    <div layout="column" layout-sm="column" class="arrows-button-column next">
-                        <md-button class="slick-button column next middle fa fa-chevron-right fa-1x" aria-label="middle next button" id="middle-next-button"
-                                   ng-click="next('left')">
-                        </md-button>
-                        <md-button class="slick-button column next bottom fa fa-chevron-right fa-1x" aria-label="bottom next button" id="bottom-next-button"
-                                   ng-click="next('right')">
-                        </md-button>
-                    </div>
                 </div>
             </md-whiteframe>
         </section>
@@ -142,21 +125,16 @@
         <section class="slick-container" ng-controller="SliderCtrl">
             <md-whiteframe class="md-whiteframe-z1 horizontal-slick-container">
                 <div>
-                    <div layout="column" layout-sm="column" class="arrows-button-column previous" >
-                        <md-button class="slick-button column previous top fa fa-chevron-left fa-1x" aria-label="top previous button" id="top-prev-button"
-                                   ng-click="previous('top')">
-                        </md-button>
-                    </div>
                     <slick class="car slick-shoe" id="shoe-slider"
                            init-onload="true"
                            infinite="true"
                            center-mode="true"
                            speed="200"
                            cssEase="ease"
-                           arrows="false"
+                           arrows="true"
                            swipe="true"
                            swipeToSlide="true"
-                           touch-move="true"
+                           touchMove="true"
                            touchThreshold="1000"
                            draggable="true"
                            easing="linear"
@@ -173,12 +151,6 @@
                             <a><img class="slide img" ng-src={{shoe.menuImg.src}}></a>
                         </div>
                     </slick>
-
-                    <div layout="column" layout-sm="column" class="arrows-button-column next">
-                        <md-button class="slick-button column next top fa fa-chevron-right fa-1x" aria-label="top next button" id="top-next-button"
-                                   ng-click="next('center')">
-                        </md-button>
-                    </div>
                 </div>
             </md-whiteframe>
         </section>
