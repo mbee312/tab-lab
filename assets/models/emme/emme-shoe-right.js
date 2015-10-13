@@ -3,7 +3,7 @@
     "metadata" :
     {
         "formatVersion" : 3.1,
-        "sourceFile"    : "Emme_Right_Shoe.obj",
+        "sourceFile"    : "emme-shoe-right.obj",
         "generatedBy"   : "OBJConverter",
         "vertices"      : 18065,
         "faces"         : 12439,
