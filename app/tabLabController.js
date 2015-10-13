@@ -360,9 +360,6 @@
                     });
                 }; // end initLoad()
 
-                /*
-                 START Canvas Drawing
-                 */
                 $scope.container = document.querySelector('.tablab-viewer');
                 $scope.renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
                 $scope.renderer._microCache = new MicroCache();
@@ -371,21 +368,7 @@
                 $scope.WIDTH = 400;
                 $scope.HEIGHT = 400;
                 $scope.group = new THREE.Object3D();
-                /*
-                var text;
-                var plane;
-                var targetRotationX = 0;
-                var targetRotationOnMouseDownX = 0;
-                var targetRotationY = 0;
-                var targetRotationOnMouseDownY = 0;
-                var mouseX = 0;
-                var mouseXOnMouseDown = 0;
-                var mouseY = 0;
-                var mouseYOnMouseDown = 0;
-                var windowHalfX = $scope.WIDTH / 2;
-                var windowHalfY = $scope.HEIGHT / 2;
-                var finalRotationY;
-                */
+
                 var VIEW_ANGLE = 45;
                 var ASPECT = 1;
                 var NEAR = 1;
@@ -408,7 +391,7 @@
                         $scope.isMobile = false;
                     }
 
-                    var winWidth = $(window).width();;
+                    var winWidth = $(window).width();
                     var winHeight = $(window).height();
                     var shippingBarHeight = $(".shipping-bar").height();
                     var headerHeight = $(".header-container").height();
@@ -423,7 +406,6 @@
                         $scope.HEIGHT = Number(canvasHeight);
                         $scope.WIDTH = Number(canvasHeight);
                     }
-
                 }; //end findAndSetCanvasDimensions()
 
                 $scope.createScene = function (){
@@ -492,24 +474,6 @@
                 function render () {
                     requestAnimationFrame(render);
 
-                    /*
-                    //horizontal rotation
-                    $scope.group.rotation.y += ( targetRotationX - $scope.group.rotation.y ) * 0.1;
-
-                    //vertical rotation
-                    finalRotationY = (targetRotationY - $scope.group.rotation.x);
-
-                    if ($scope.group.rotation.x  <= 1 && $scope.group.rotation.x >= -1 ) {
-                        $scope.group.rotation.x += finalRotationY * 0.1;
-                    }
-                    if ($scope.group.rotation.x  > 1 ) {
-                        $scope.group.rotation.x = 1
-                    }
-
-                    if ($scope.group.rotation.x  < -1 ) {
-                        $scope.group.rotation.x = -1
-                    }
-                    */
                     $scope.controls.autoRotate = $scope.autoRotate;
                     $scope.controls.update();
                     $scope.renderer.clear();
@@ -566,8 +530,11 @@
                     var shoePath = assetRoot + '/assets/models/' + shoe.name + '/' + shoe.name;
                     var shoeTexturePath = assetRoot + 'assets/models/texture/shoe/' + shoe.name + '/' + side + '/' + shoe.sku;
                     var uniqueName = shoe.name + '-' + shoe.sku + '-' + side;
+
+                    var delay = 0;
                     if ($scope.isMobile == true){
                         mobile = '-mobile';
+                        delay = 500;
                     }
 
                     shoeMaterial[pos].map = $scope.renderer._microCache.getSet(uniqueName + '-textureMap' + mobile, THREE.ImageUtils.loadTexture(shoeTexturePath + '/diffuse' + mobile + '.jpg', undefined, function(textureMap){
@@ -589,7 +556,7 @@
                                 grp.add(shoeMesh[pos]);
                                 if(pos == 0) {
                                     pos++;
-                                    setTimeout(initDrawShoeHelper(shoe, pos, -x, y, -z), 500);
+                                    setTimeout(initDrawShoeHelper(shoe, pos, -x, y, -z), delay);
                                 }
 
                                 // remember the current shoe object
@@ -612,6 +579,7 @@
                 tabMaterial[3] = new THREE.MeshPhongMaterial();
 
                 function initDrawTabHelper(pos, x, y, z, showOrHide){
+                    var mobile = '';
                     var grp = $scope.scene.getObjectByName("group");
                     var shoe = getShoe();
                     var tab = getTab(pos);
@@ -635,13 +603,17 @@
                         tabTopOrBottom = 'bottom';
                     }
 
+                    if ($scope.isMobile == true){
+                        mobile = '-mobile';
+                    }
+
                     // load tab
                     var tabMeshPath = assetRoot + 'assets/models/' + shoe.name + '/' + shoe.name;
                     var tabTexturePath = assetRoot + 'assets/models/texture/tabs/' + tab.sku;
                     var tabUniqueName = tab.name + '-' + tab.sku + '-' + side + '-' + whichTab;
-                    tabMaterial[pos].map = $scope.renderer._microCache.getSet(tabUniqueName + "-textureMap", THREE.ImageUtils.loadTexture(tabTexturePath + '/difuse-' + tabTopOrBottom + '.jpg', undefined, function(textureMap){
-                        tabMaterial[pos].normalMap = $scope.renderer._microCache.getSet(tabUniqueName + "-normalMap", THREE.ImageUtils.loadTexture(tabTexturePath + '/normals-' + tabTopOrBottom + '.jpg', undefined, function(normalMap){
-                            tabMaterial[pos].specularMap = $scope.renderer._microCache.getSet(tabUniqueName + "-specular", THREE.ImageUtils.loadTexture(tabTexturePath + '/specular.jpg', undefined, function(specularMap){
+                    tabMaterial[pos].map = $scope.renderer._microCache.getSet(tabUniqueName + "-textureMap" + mobile, THREE.ImageUtils.loadTexture(tabTexturePath + '/diffuse-' + tabTopOrBottom + mobile + '.jpg', undefined, function(textureMap){
+                        tabMaterial[pos].normalMap = $scope.renderer._microCache.getSet(tabUniqueName + "-normalMap" + mobile, THREE.ImageUtils.loadTexture(tabTexturePath + '/normals-' + tabTopOrBottom + mobile + '.jpg', undefined, function(normalMap){
+                            tabMaterial[pos].specularMap = $scope.renderer._microCache.getSet(tabUniqueName + "-specular" + mobile, THREE.ImageUtils.loadTexture(tabTexturePath + '/specular' + mobile + '.jpg', undefined, function(specularMap){
                                 loader.load(tabMeshPath + '-tab-' + side + '-' + whichTab + '.js', function (geometry) {
                                     tabMesh[pos].geometry = $scope.renderer._microCache.getSet(tabMeshPath + '-tab-' + side + '-' + whichTab + '.js', geometry);
                                     tabMesh[pos].material = tabMaterial[pos];
@@ -687,9 +659,13 @@
                 $scope.updateShoes = function (){
                     var updateDeferred = $q.defer();
                     var shoe = getShoe();
+                    var delay = 0;
+                    if ($scope.isMobile == true){
+                        delay = 500;
+                    }
 
                     if(shoe) {
-                        setTimeout(function(){updateDeferred.resolve(initDrawShoeHelper(shoe, 0, -0.75, -1, -0.75))}, 500);
+                        setTimeout(function(){updateDeferred.resolve(initDrawShoeHelper(shoe, 0, -0.75, -1, -0.75))}, delay);
                     }else{
                         updateDeferred.reject("Couldn't draw shoes");
                     }
@@ -758,10 +734,13 @@
                     var updateDeferred = $q.defer();
                     var shoe = getShoe();
                     tab = getTab(0);
+                    var delay = 0;
+                    if ($scope.isMobile == true){
+                        delay = 500;
+                    }
                     // draw tabs
-
                     if(tab) {
-                        setTimeout(function(){updateDeferred.resolve(initDrawTabHelper(0, -0.75, -1, -0.75, true))},1000);
+                        setTimeout(function(){updateDeferred.resolve(initDrawTabHelper(0, -0.75, -1, -0.75, true))}, delay);
                     }else{
                         updateDeferred.reject("Couldn't draw tabs");
                     }
@@ -789,7 +768,7 @@
                     var tabTexturePath = assetRoot + 'assets/models/texture/tabs/' + tab.sku;
                     var tabUniqueName = tab.name + '-' + tab.sku + '-' + side + '-' + whichTab;
 
-                    tabMaterial[pos].map = $scope.renderer._microCache.getSet(tabUniqueName + "-textureMap", THREE.ImageUtils.loadTexture(tabTexturePath + '/difuse-' + tabTopOrBottom + '.jpg', undefined, function(textureMap){
+                    tabMaterial[pos].map = $scope.renderer._microCache.getSet(tabUniqueName + "-textureMap", THREE.ImageUtils.loadTexture(tabTexturePath + '/diffuse-' + tabTopOrBottom + '.jpg', undefined, function(textureMap){
                         tabMaterial[pos].normalMap = $scope.renderer._microCache.getSet(tabUniqueName + "-normalMap", THREE.ImageUtils.loadTexture(tabTexturePath + '/normals-' + tabTopOrBottom + '.jpg', undefined, function(normalMap){
                             tabMaterial[pos].specularMap = $scope.renderer._microCache.getSet(tabUniqueName + "-specular", THREE.ImageUtils.loadTexture(tabTexturePath + '/specular.jpg', undefined, function(specularMap){
                                 loader.load(tabMeshPath + '-tab-' + side + '-' + whichTab + '.js', function (geometry) {
@@ -819,6 +798,7 @@
 
                 $scope.updateTabTexture = function (scene, pos, whichTab){
                     var s = getShoe();
+                    var mobile = '';
 
                     var tabObj = $scope.currentTabObj[pos];
                     var t = getTab(pos);
@@ -837,12 +817,16 @@
                         tabTopOrBottom = 'bottom';
                     }
 
+                    if ($scope.isMobile == true){
+                        mobile = '-mobile';
+                    }
+
                     // load path
                     var texturePath = assetRoot + 'assets/models/texture/tabs/' + t.sku;
                     var uniqueName = t.name + '-' + t.sku + '-' + '-' + side + '-' + whichTab;
-                    tabMaterial[pos].map = $scope.renderer._microCache.getSet(uniqueName + "-textureMap", THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + tabTopOrBottom + '.jpg', undefined, function(textureMap){
-                        tabMaterial[pos].normalMap = $scope.renderer._microCache.getSet(uniqueName + "-normalMap", THREE.ImageUtils.loadTexture(texturePath + '/normals-' + tabTopOrBottom + '.jpg', undefined, function(normalMap){
-                            tabMaterial[pos].specularMap = $scope.renderer._microCache.getSet(uniqueName + "-specular", THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg', undefined, function(specularMap){
+                    tabMaterial[pos].map = $scope.renderer._microCache.getSet(uniqueName + "-textureMap" + mobile, THREE.ImageUtils.loadTexture(texturePath + '/diffuse-' + tabTopOrBottom + mobile + '.jpg', undefined, function(textureMap){
+                        tabMaterial[pos].normalMap = $scope.renderer._microCache.getSet(uniqueName + "-normalMap" + mobile, THREE.ImageUtils.loadTexture(texturePath + '/normals-' + tabTopOrBottom + mobile + '.jpg', undefined, function(normalMap){
+                            tabMaterial[pos].specularMap = $scope.renderer._microCache.getSet(uniqueName + "-specular" + mobile, THREE.ImageUtils.loadTexture(texturePath + '/specular' + mobile + '.jpg', undefined, function(specularMap){
                             }));
                         }));
                     }));
@@ -850,20 +834,24 @@
                 };
 
                 $scope.updateTabTextureShuffle = function(index, tab, position, topOrBottom){
+                    var mobile = '';
                     var texturePath;
                     var updateMe;
                     var s = getShoe();
 
                     // load path
                     texturePath = assetRoot + 'assets/models/texture/tabs/' + tab.sku;
+                    if ($scope.isMobile == true){
+                        mobile = '-mobile';
+                    }
 
                     if((s.numOfTabs == 2) && (index == 2 || index == 3)){
                         // do nothing
                     }else{
                         updateMe = $scope.scene.getObjectByName("group").getObjectByName("tab" + index);
-                        updateMe.material.map = THREE.ImageUtils.loadTexture(texturePath + '/difuse-' + topOrBottom + '.jpg', undefined, function(textureMap){
-                            updateMe.material.normalMap = THREE.ImageUtils.loadTexture(texturePath + '/normals-' + topOrBottom + '.jpg', undefined, function(normalMap){
-                                updateMe.material.specularMap = THREE.ImageUtils.loadTexture(texturePath + '/specular.jpg', undefined, function(specularMap){
+                        updateMe.material.map = THREE.ImageUtils.loadTexture(texturePath + '/diffuse-' + topOrBottom + mobile +'.jpg', undefined, function(textureMap){
+                            updateMe.material.normalMap = THREE.ImageUtils.loadTexture(texturePath + '/normals-' + topOrBottom + mobile + '.jpg', undefined, function(normalMap){
+                                updateMe.material.specularMap = THREE.ImageUtils.loadTexture(texturePath + '/specular' + mobile + '.jpg', undefined, function(specularMap){
                                 });
                             });
                         });
@@ -916,62 +904,6 @@
                     }
                     $scope.isZoom = !$scope.isZoom;
                 }
-             /*
-                function onDocumentMouseMove( event ) {
-                    mouseX = event.clientX - windowHalfX;
-                    mouseY = event.clientY - windowHalfY;
-
-                    targetRotationY = targetRotationOnMouseDownY + (mouseY - mouseYOnMouseDown) * 0.01;
-                    targetRotationX = targetRotationOnMouseDownX + (mouseX - mouseXOnMouseDown) * 0.01;
-                }
-
-                function onDocumentMouseUp( event ) {
-                    document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
-                    document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
-                    document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
-                }
-
-                function onDocumentMouseOut( event ) {
-                    document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
-                    document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
-                    document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
-                }
-
-                function onDocumentTouchStart( event ) {
-                    if ( event.touches.length == 1 ) {
-
-                        event.preventDefault();
-
-                        mouseXOnMouseDown = event.touches[ 0 ].pageX - windowHalfX;
-                        targetRotationOnMouseDownX = targetRotationX;
-
-                        mouseYOnMouseDown = event.touches[ 0 ].pageY - windowHalfY;
-                        targetRotationOnMouseDownY = targetRotationY;
-                    }
-                }
-
-                function onDocumentTouchMove( event ) {
-                    if ( event.touches.length == 1 ) {
-                        event.preventDefault();
-
-                        mouseX = event.touches[ 0 ].pageX - windowHalfX;
-                        targetRotationX = targetRotationOnMouseDownX + ( mouseX - mouseXOnMouseDown ) * 0.05;
-
-                        mouseY = event.touches[ 0 ].pageY - windowHalfY;
-                        targetRotationY = targetRotationOnMouseDownY + (mouseY - mouseYOnMouseDown) * 0.05;
-                    }
-                }
-
-                function debugInfo()
-                {
-                    $('#debug').html("mouseX : " + mouseX + "   mouseY : " + mouseY );
-
-                }
-             */
-
-                /*
-                 END Canvas Drawing
-                 */
 
                 this.isShoeSelected = function () {
                     return tabLabProperties.getShoe().length > 0;
