@@ -354,7 +354,7 @@ img.slide.img {
     color: rgba(255, 255, 255, 0.87) !important;
     background-color: rgb(155, 155, 155) !important;
     font-size: 60%;
-    border-radius: 0 !important;
+    border-radius: 0 !important;6
     display:none;
 }
 .slick-button.column{
@@ -376,35 +376,7 @@ button#bottom-next-button {
 }
 
 .slick-prev:before, .slick-next:before {
-    color: #898989 !important;
-    opacity: 0.75 !important;
-    font-size: 60px !important;
-}
-
-.arrows-button-column {
-    width: 30px;
-    position: absolute;
-    height: 180px;
-    z-index: 2;
-}
-
-.arrows-button-column.previous {
-    left: 1%;
-}
-.arrows-button-column.next {
-    float: right;
-    top: 108px;
-    right: 1%;
-}
-
-.slick-prev {
-    left: -55px !important;
-    top: 40px !important;
-}
-
-.slick-next {
-    right: -50px !important;
-    top: 40px !important;
+    color: #58595b !important;
 }
 
 .slick-slider {
@@ -414,15 +386,6 @@ button#bottom-next-button {
 .slick-slide {
     opacity: 1;
 }
-
-/*.slick-slide img {*/
-    /*min-height: 40px;*/
-    /*min-width: 40px;*/
-/*}*/
-
-/*.slick-track {*/
-    /*min-height: 40px;*/
-/*}*/
 
 .slick-center {
     opacity: 0.25;
@@ -452,11 +415,6 @@ button#bottom-next-button {
 
 .slick-shoe:before {
     content: url(/media/icons/check.png);
-}
-
-.slick-prev, .slick-next {
-    width: 60px !important;
-    height: 60px !important;
 }
 
 .md-whiteframe-z1 {
@@ -1172,6 +1130,15 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
     /*  Selector section    */
     /*                      */
+
+
+    .slick-prev {
+        left: -20px;
+    }
+
+    .slick-next {
+        right: -20px;
+    }
     .arrows-button-column {
         display: none;
     }
@@ -2024,6 +1991,33 @@ md-tabs.ng-isolate-scope.md-default-theme {
 }
 @media (max-width: 768px) {
 
+
+    .slick-container {
+        margin-left: 12%;
+        margin-right: 12%;
+        background: transparent;
+    }
+
+    .slick-next {
+        right: -25px;
+    }
+
+    .slick-prev {
+        left: -40px;
+    }
+
+    .slick-next:before, .slick-prev:before {
+        font-size: 35px;
+    }
+
+    .slick-slider {
+        height: 75px;
+    }
+
+    .tab-pane {
+        background-color: rgba(255,255,255,0.95);
+    }
+
     .canvas-button-row {
         position:static;
         top: inherit;
@@ -2037,10 +2031,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
     .md-button.md-default-theme.md-raised.cart-button.addtocart {
         margin-right: 9.75%;
-    }
-
-    .arrows-button-column {
-        height: 240px;
     }
 
     ul.nav {
@@ -2123,11 +2113,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .md-button.md-default-theme.md-raised.cart-button.addtocart {
         margin: 0 auto;
         width: 150px;
-    }
-
-
-    .arrows-button-column {
-        height:180px;
     }
 
     .plae-chef-window ul.nav {
