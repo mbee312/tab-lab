@@ -253,8 +253,7 @@
             var shoe = $scope.shoeList[index];
             var newShoePromise = $scope.removeAllFromGroup();
             newShoePromise
-                .then(function(v){return $scope.updateShoes()})
-                .then(function(v){return $scope.updateTabs()});
+                .then(function(v){return $scope.updateShoes()});
 
             cartProperties.updateCart(shoe, 2);
             $rootScope.$broadcast('calculate-subtotal');
