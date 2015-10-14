@@ -353,8 +353,8 @@
                         $q.all([shoePromise, tabPromise]).then(function(data){
                             initializeSelected();
                             $scope.createScene();
-                            $scope.initDrawScene();
                             render();
+                            $scope.initDrawScene();
                             if (maskControl) maskControl.hideFullMask();
                         });
                     });
