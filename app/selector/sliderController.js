@@ -41,7 +41,7 @@
             }
         };
     });
-    app.controller('SliderCtrl', ['$scope', '$rootScope', '$q', 'tabLabProperties', 'sliderProperties', 'cartProperties', function ($scope, $rootScope, $q, tabLabProperties, sliderProperties, cartProperties) {
+    app.controller('SliderCtrl', ['$scope', '$rootScope', '$element', '$q', 'tabLabProperties', 'sliderProperties', 'cartProperties', function ($scope, $rootScope, $element, $q, tabLabProperties, sliderProperties, cartProperties) {
         $scope.innerWidthSize = 0;
         $scope.innerWidthSizeNew = window.innerWidth;
 
@@ -70,29 +70,6 @@
         function _sliderSetRightTab (i){
             $scope.$broadcast('new-tab-right-index', i);
         }
-
-        $scope.moveSlider = function (type, pos){
-            var selector = ".slick-" + type;
-            var index;
-            var currIndex;
-
-            if(type != 'shoe') {
-                if (pos == 0 || pos == 2) {
-
-                    index = $scope.getTabIndex(0);
-                    selector += "-left";
-                  //  currIndex = jQuery('\'' + selector + '\'').slick('slickCurrentIndex');
-                } else {
-                    index = $scope.getTabIndex(1);
-                    selector += "-right";
-                }
-            }else{
-                index = $scope.getShoeIndex();
-            }
-
-            console.log(selector);
-            jQuery('\"' + selector + '\"').slick('slickGoTo', index);
-        };
 
         $scope.random = _.debounce(_random, 500, true);
 
@@ -152,96 +129,20 @@
 
         } //end shuffle ()
 
-        $scope.previous = _.debounce(_previous, 500, true);
-
-        function _previous (side) {
-            var i;
-            var selector;
-            switch (side) {
-                case "left":
-                    selector = '#tab-left-slider-desktop';
-                    $(selector).slick('slickPrev');
-                    i = $(selector).slick('slickCurrentSlide');
-                    $scope.$broadcast('new-tab-left-index', i);
-                    break;
-                case "center":
-                    selector = '#shoe-slider-desktop';
-                    $(selector).slick('slickPrev');
-                    i = $(selector).slick('slickCurrentSlide');
-                    $scope.$broadcast('new-shoe-index', i);
-                    break;
-                case "right":
-                    selector = '#tab-right-slider-desktop';
-                    $(selector).slick('slickPrev');
-                    i = $(selector).slick('slickCurrentSlide');
-                    $scope.$broadcast('new-tab-right-index', i);
-                    break;
-                case "top":
-                    selector = '#shoe-slider';
-                    $(selector).slick('slickPrev');
-                    i = $(selector).slick('slickCurrentSlide');
-                    $scope.$broadcast('new-shoe-index', i);
-                    break;
-                case "middle":
-                    selector = '#tab-left-slider';
-                    $(selector).slick('slickPrev');
-                    i = $(selector).slick('slickCurrentSlide');
-                    $scope.$broadcast('new-tab-left-index', i);
-                    break;
-                case "bottom":
-                    selector = '#tab-right-slider';
-                    $(selector).slick('slickPrev');
-                    i = $(selector).slick('slickCurrentSlide');
-                    $scope.$broadcast('new-tab-right-index', i);
-                    break;
-            } //end switch
-
-        }// end previous()
-
-        $scope.next = _.debounce(_next, 500, true);
-
-        function _next (side){
-            var i;
-            var selector;
-            switch (side) {
-                case "left":
-                    selector = '#tab-left-slider-desktop';
-                    $(selector).slick('slickNext');
-                    i = $(selector).slick('slickCurrentSlide');
-                    $scope.$broadcast('new-tab-left-index', i);
-                    break;
-                case "center":
-                    selector = '#shoe-slider-desktop';
-                    $(selector).slick('slickNext');
-                    i = $(selector).slick('slickCurrentSlide');
-                    $scope.$broadcast('new-shoe-index', i);
-                    break;
-                case "right":
-                    selector = '#tab-right-slider-desktop';
-                    $(selector).slick('slickNext');
-                    i = $(selector).slick('slickCurrentSlide');
-                    $scope.$broadcast('new-tab-right-index', i);
-                    break;
-                case "top":
-                    selector = '#shoe-slider';
-                    $(selector).slick('slickNext');
-                    i = $(selector).slick('slickCurrentSlide');
-                    $scope.$broadcast('new-shoe-index', i);
-                    break;
-                case "middle":
-                    selector = '#tab-left-slider';
-                    $(selector).slick('slickNext');
-                    i = $(selector).slick('slickCurrentSlide');
-                    $scope.$broadcast('new-tab-left-index', i);
-                    break;
-                case "bottom":
-                    selector = '#tab-right-slider';
-                    $(selector).slick('slickNext');
-                    i = $(selector).slick('slickCurrentSlide');
-                    $scope.$broadcast('new-tab-right-index', i);
-                    break;
-            } //end switch
-        }// end next()
+        $scope.$on("slickOnAfterChange",function (event, data) {
+            if ($($element[0]).has(data.event.target).length) {
+                var id = data.event.target.id;
+                if (id == "shoe-slider" && sliderProperties.getShoeIndex() != data.currentSlide) {
+                    $scope.$broadcast('new-shoe-index', data.currentSlide);
+                }
+                else if (id == "tab-left-slider" && sliderProperties.getTabIndex(1) != data.currentSlide) {
+                    $scope.$broadcast('new-tab-left-index', data.currentSlide);
+                }
+                else if (id == "tab-right-slider" && sliderProperties.getTabIndex(0) != data.currentSlide) {
+                    $scope.$broadcast('new-tab-right-index', data.currentSlide);
+                }
+            }
+        });
 
         $scope.$on('new-shoe-index', function(event, index) {
             if(tabLabProperties.isShoeSelected()){

@@ -42,7 +42,7 @@
             </div>
         </md-toolbar>
     </header>
-    <div class="main-container col1-layout container">
+    <div class="main-container col1-layout container" style="margin-top: 72px;">
     <div class="main">
     <div class="col-main">
     <div class="std">
@@ -60,7 +60,7 @@
                 <div class="tabs heading" ng-show="tabs['tabs'].active" ng-click="togglePane('tabs')"></div>
             </div>
         </tab-heading>
-        <section class="slick-container" ng-controller="SliderCtrl">
+        <section id="tab-container" class="slick-container" ng-controller="SliderCtrl">
             <md-whiteframe class="md-whiteframe-z1 horizontal-slick-container">
                 <div>
                     <slick class="car slick-left" id="tab-left-slider"
@@ -82,8 +82,9 @@
                            slides-to-scroll="1"
                            focus-on-select="true"
                            current-index="leftTabIndex"
+                           variableWidth="true"
                            data="tabList">
-                        <div ng-repeat="tab in tabList" ng-click="sliderSetLeftTab($index)" class="tabmenuitem bgimage">
+                        <div ng-repeat="tab in tabList" class="tabmenuitem bgimage">
                             <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
                         </div>
                     </slick>
@@ -105,9 +106,10 @@
                            slides-to-show="5"
                            slides-to-scroll="1"
                            focus-on-select="true"
+                           variableWidth="true"
                            current-index="rightTabIndex"
                            data="tabList">
-                        <div ng-repeat="tab in tabList" ng-click="sliderSetRightTab($index)" class="tabmenuitem bgimage">
+                        <div ng-repeat="tab in tabList" class="tabmenuitem bgimage">
                             <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
                         </div>
                     </slick>
@@ -122,7 +124,7 @@
                 <div class="shoes heading" ng-show="tabs['shoes'].active" ng-click="togglePane('shoes')"></div>
             </div>
         </tab-heading>
-        <section class="slick-container" ng-controller="SliderCtrl">
+        <section id="shoe-container" class="slick-container" ng-controller="SliderCtrl">
             <md-whiteframe class="md-whiteframe-z1 horizontal-slick-container">
                 <div>
                     <slick class="car slick-shoe" id="shoe-slider"
@@ -141,13 +143,11 @@
                            mobileFirst="true"
                            respondTo="window"
                            slides-to-show="5"
-                           slides-to-scroll="1"
+                           slides-to-scroll=1"
                            focus-on-select="true"
                            current-index="shoeIndex"
                            data="shoeList">
-
-
-                        <div ng-repeat="shoe in shoeList" ng-click="sliderSetShoe($index)" class="img bgimage">
+                        <div ng-repeat="shoe in shoeList" class="img bgimage">
                             <a><img class="slide img" ng-src={{shoe.menuImg.src}}></a>
                         </div>
                     </slick>
@@ -364,9 +364,8 @@
         <script src="assets/libs/angular-1.4.6/angular-touch.min.js"></script>
         <script src="assets/libs/angular-1.4.6/angular-aria.js"></script>
         <script src="assets/libs/angular-material/angular-material.js"></script>
-        <script src="assets/libs/angular-carousel/dist/angular-carousel.js"></script>
         <script src="assets/libs/slick-carousel/slick/slick.js"></script>
-        <script src="assets/libs/angular-slick/dist/slick.js"></script>
+        <script src="assets/libs/angular-slick/dist/slickplae.js"></script>
         <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="assets/libs/microcache/microcache.js"></script>
         <script src="/tab-lab/assets/libs/js-error-logs/log.js"></script>

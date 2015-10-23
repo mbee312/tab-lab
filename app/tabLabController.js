@@ -29,7 +29,6 @@
             'ngTouch',
             'ngMaterial',
             'ui.bootstrap',
-            'angular-carousel',
             'slick',
             'ui.bootstrap.modal',
             'ngModal'
@@ -100,7 +99,6 @@
             'sliderProperties',
             'cartProperties',
             function ($scope, $rootScope, $q, $http, $mdDialog, $mdToast, $animate, $window, tabLabProperties, sliderProperties, cartProperties) {
-
                 $scope.MENUIMGPATH = assetRoot + "assets/media/thumbnails/";
                 // Tabs on canvas List Arrays
                 $scope.tabs = {};
@@ -204,8 +202,20 @@
                             $scope.leftTabIndex =  index;
                         }
                     }
+                    $scope.updateSliders();
                     return index;
                 };// end setRandomIndex()
+
+                var updateSliders = function() {
+                    jQuery('#shoe-slider').slick('slickGoTo', sliderProperties.getShoeIndex());
+                    jQuery('#tab-left-slider').slick('slickGoTo', sliderProperties.getTabIndex(1));
+                    jQuery('#tab-right-slider').slick('slickGoTo', sliderProperties.getTabIndex(0));
+
+                    $scope.leftTabIndex =  sliderProperties.getTabIndex(1);
+                    $scope.rightTabIndex = sliderProperties.getTabIndex(0);
+                }
+
+                $scope.updateSliders = _.debounce(updateSliders, 300);
 
                 $scope.getShoeIndex = function() {
                     // returns shoe index or null if not set
@@ -467,7 +477,11 @@
                     //    document.getElementById("white-bg-mobile").addEventListener( 'touchstart', onDocumentTouchStart, false );
                     //    document.getElementById("white-bg-mobile").addEventListener( 'touchmove', onDocumentTouchMove, false );
                         document.getElementById("white-bg-mobile").addEventListener('dblclick', onDocumentDoubleClick);
-                        window.addEventListener( 'resize', onWindowResize, false );
+                        window.addEventListener( 'resize', _.debounce(onWindowResize, 500), false );
+                        if ("onorientationchange" in window) {
+                            window.addEventListener( 'orientationchange', _.debounce(onWindowResize, 500), false );
+                        }
+
                     });
                 };
 
@@ -803,6 +817,8 @@
                     $scope.findAndSetCanvasDimensions();
                     $scope.renderer.setSize($scope.WIDTH, $scope.HEIGHT);
                     $scope.camera.updateProjectionMatrix();
+                    $rootScope.$broadcast('resize');
+                    $scope.updateSliders();
                 }
 
                 function onDocumentMouseDown( event ) {
