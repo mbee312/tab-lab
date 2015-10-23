@@ -1087,6 +1087,11 @@ md-tabs.ng-isolate-scope.md-default-theme {
     margin-top: -8px;
 }
 
+.fa.fa-times {
+    width: 39px;
+    text-align: center;
+}
+
 @media screen and (min-width: 768px) {
 
     /*  Header section   */

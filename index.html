@@ -56,8 +56,7 @@
     <tab select="paneChanged('tabs')" active="tabs['tabs'].active">
         <tab-heading>
             <div class="icon-wrapper">
-                <div class="tabs heading" ng-show="!tabs['tabs'].active"></div>
-                <div class="tabs heading" ng-show="tabs['tabs'].active" ng-click="togglePane('tabs')"></div>
+                <div ng-class="{'tabs heading': !tabs['tabs'].active, 'fa fa-times fa-lg': tabs['tabs'].active}" ng-click="togglePane('tabs')"></div>
             </div>
         </tab-heading>
         <section id="tab-container" class="slick-container" ng-controller="SliderCtrl">
@@ -120,8 +119,7 @@
     <tab select="paneChanged('shoes')" active="tabs['shoes'].active">
         <tab-heading>
             <div class="icon-wrapper">
-                <div class="shoes heading" ng-show="!tabs['shoes'].active"></div>
-                <div class="shoes heading" ng-show="tabs['shoes'].active" ng-click="togglePane('shoes')"></div>
+                <div ng-class="{'shoes heading': !tabs['shoes'].active, 'fa fa-times fa-lg': tabs['shoes'].active}" ng-click="togglePane('shoes')"></div>
             </div>
         </tab-heading>
         <section id="shoe-container" class="slick-container" ng-controller="SliderCtrl">
