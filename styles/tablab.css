@@ -425,7 +425,6 @@ section#tab-container:after, section#shoe-container:after {
 canvas {
     z-index: 1;
     opacity: 1;
-    padding-left: 10px;
     margin-top: 10px;
 }
 
@@ -1089,7 +1088,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     background-position: 0 0;
 }
 
-.plae-chef-window ul.nav .heading.shoes:hover, .plae-chef-window ul.nav .heading.shoes:active, .plae-chef-window ul.nav .heading.shoes:focus, .plae-chef-window ul.nav li.active .heading.shoes{
+.plae-chef-window ul.nav .heading.shoes:hover, .plae-chef-window ul.nav .heading.shoes:active, .plae-chef-window ul.nav li.active .heading.shoes{
     background-position: -39px 0px;
 }
 
@@ -1097,7 +1096,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
     background-position: 78px 0;
 }
 
-.plae-chef-window ul.nav .heading.tabs:hover, .plae-chef-window ul.nav .heading.tabs:active, .plae-chef-window ul.nav .heading.tabs:focus, .plae-chef-window ul.nav li.active .heading.tabs {
+.plae-chef-window ul.nav .heading.tabs:hover, .plae-chef-window ul.nav .heading.tabs:active, .plae-chef-window ul.nav li.active .heading.tabs {
     background-position: 39px 0;
 }
 
@@ -1962,7 +1961,7 @@ md-tabs.ng-isolate-scope.md-default-theme {
         top: 325px;
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 
 
     .slick-container {
@@ -2024,11 +2023,11 @@ md-tabs.ng-isolate-scope.md-default-theme {
     .plae-chef-window ul.nav .heading.tabs {
         background-position: 60px 0;
     }
-    .plae-chef-window ul.nav .heading.tabs:hover, .plae-chef-window ul.nav .heading.tabs:active, .plae-chef-window ul.nav .heading.tabs:focus, .plae-chef-window ul.nav li.active .heading.tabs {
-        background-position: 30px 0;
+    .plae-chef-window ul.nav .heading.tabs:hover, .plae-chef-window ul.nav .heading.tabs:active, .plae-chef-window ul.nav li.active .heading.tabs {
+        background-position: 60px 0;
     }
-    .plae-chef-window ul.nav .heading.shoes:hover, .plae-chef-window ul.nav .heading.shoes:active, .plae-chef-window ul.nav .heading.shoes:focus, .plae-chef-window ul.nav li.active .heading.shoes {
-        background-position: -30px 0;
+    .plae-chef-window ul.nav .heading.shoes:hover, .plae-chef-window ul.nav .heading.shoes:active, .plae-chef-window ul.nav li.active .heading.shoes {
+        background-position: 0px 0;
     }
 
     .plae-chef-window ul.nav.nav-tabs > li > a:hover, .plae-chef-window ul.nav.nav-tabs > li > a:active, .plae-chef-window ul.nav.nav-tabs > li > a:focus {
@@ -2108,7 +2107,17 @@ md-tabs.ng-isolate-scope.md-default-theme {
     }
 
     h2.visible-xs-block {
-        margin-top: 40px;
+        margin-left: 20px;
+        position:absolute;
+        top: 45px;
+    }
+
+    .wrapper {
+        min-height: 70%;
+    }
+
+    canvas {
+        padding-left: 0;
     }
 }
 
