@@ -50,6 +50,14 @@ h4.product.name {
     right: 0px;
     z-index: 5;
     top: 136px;
+    /*transition: all .5s;*/
+    /*max-height: 0px;*/
+    /*overflow: hidden;*/
+    /*display:block;*/
+}
+
+.tab-content>.tab-pane.active {
+    /*max-height: 1500px;*/
 }
 
 .col-sm-6 {
