@@ -2116,11 +2116,6 @@ md-tabs.ng-isolate-scope.md-default-theme {
         min-height: 70%;
     }
 
-    .main-container.container {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
     canvas {
         padding-left: 0;
     }
