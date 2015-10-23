@@ -175,8 +175,7 @@
     <tab select="paneChanged('design')" class="border-left" active="tabs['design'].active">
         <tab-heading>
             <div class="icon-wrapper">
-                <div ng-show="!tabs['design'].active"><i class="fa fa-cart-plus fa-lg"></i></div>
-                <div ng-show="tabs['design'].active" ng-click="togglePane('design')"><i class="fa fa-cart-plus fa-lg"></i></div>
+                <div ng-class="{'fa fa-cart-plus fa-lg': !tabs['design'].active, 'design fa fa-times fa-lg': tabs['design'].active}" ng-click="togglePane('design')"></div>
             </div>
         </tab-heading>
         <section ng-controller="CartCtrl" >
@@ -285,8 +284,7 @@
     <tab select="paneChanged('comment')" active="tabs['comment'].active">
         <tab-heading>
             <div class="icon-wrapper">
-                <div ng-show="!tabs['comment'].active"><i class="fa fa-comment fa-lg"></i></div>
-                <div ng-show="tabs['comment'].active" ng-click="togglePane('comment')"><i class="fa fa-comment fa-lg"></i></div>
+                <div ng-class="{'fa fa-comment fa-lg': !tabs['comment'].active, 'design fa fa-times fa-lg': tabs['comment'].active}" ng-click="togglePane('comment')"></div>
             </div>
         </tab-heading>
         <div class="survey survey-container">

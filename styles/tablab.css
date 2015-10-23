@@ -1116,6 +1116,9 @@ md-tabs.ng-isolate-scope.md-default-theme {
     width: 39px;
     text-align: center;
 }
+.design.fa-times {
+    width: 20px;
+}
 
 @media screen and (min-width: 768px) {
 
@@ -2046,6 +2049,15 @@ md-tabs.ng-isolate-scope.md-default-theme {
 
     .fa.fa-times {
         width: 30px;
+    }
+
+    .fa-cart-plus,
+    .fa-comment{
+        width: 19px;
+    }
+
+    .design.fa-times {
+        width: 19px;
     }
     
 }
