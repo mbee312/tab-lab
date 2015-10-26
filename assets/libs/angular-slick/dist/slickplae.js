@@ -54,6 +54,7 @@ angular.module('slick', []).directive('slick', [
       },
       link: function (scope, element, attrs) {
         var destroySlick, initializeSlick, isInitialized, resetSlick;
+        var winWidth = 0;
         destroySlick = function () {
           return $timeout(function () {
             var slider;
@@ -83,7 +84,7 @@ angular.module('slick', []).directive('slick', [
                 index: index
               });
             };
-              var winWidth = jQuery(window).width();
+              winWidth = jQuery(window).width();
               var overrideSetings = {};
               if (winWidth < 350) {
                   overrideSetings.slidesToShow = 1;
@@ -164,7 +165,7 @@ angular.module('slick', []).directive('slick', [
           });
         };
         scope.$on("resize",function () {
-            if(isInitialized) resetSlick();
+            if(isInitialized && winWidth != jQuery(window).width()) resetSlick();
         });
         if (scope.initOnload) {
           isInitialized = false;
