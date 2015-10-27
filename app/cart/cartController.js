@@ -243,7 +243,10 @@
                 var shoeurl = url + shoe.super_id;
 
                 callsData.push(shoe);
-                calls.push(function() {return $http.get(shoeurl, {'params': shoeParams})});
+                calls.push(function(additionalParams) {
+                    shoeParams = _.extend(shoeParams, additionalParams || {})
+                    return $http.get(shoeurl, {'params': shoeParams})
+                });
             }
             for (var tabId in tabs) {
                 var tabCount = tabs[tabId];
@@ -254,7 +257,8 @@
 
                 (function(tabUrl, tabParams){
                     callsData.push({"id": tabId});
-                    calls.push(function() {
+                    calls.push(function(additionalParams) {
+                        tabParams = _.extend(tabParams, additionalParams || {})
                         return $http.get(tabUrl, {'params': tabParams})
                     });
                 })(tabUrl, tabParams);
@@ -263,13 +267,15 @@
 // serially add the products
             var data = [];
             if (calls[0]) {
+                var additionalParams = [];
+                additionalParams[calls.length - 1] = {'render':1};
                 if (maskControl) maskControl.showProgressMask("adding to cart");
-                calls[0]().then(function(result){
+                calls[0](additionalParams[0]).then(function(result){
                     if (result) data.push(result.data);
-                    return calls[1] ? calls[1]() : null;
+                    return calls[1] ? calls[1](additionalParams[1]) : null;
                 }).then(function(result){
                     if (result) data.push(result.data);
-                    return calls[2] ? calls[2]() : null;
+                    return calls[2] ? calls[2](additionalParams[2]) : null;
                 }).then(function(result){
                     if (result) data.push(result.data);
                 }).finally(function(error){
