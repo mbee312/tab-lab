@@ -1,28 +1,6 @@
 (function ($) {
     'use strict';
 
-
-
-    /*************************************/
-    /* Get query from url                */
-    /* User can specify sku/id for any   */
-    /*   shoe and each shoe's tabs using */
-    /*   queries in url:                 */
-    /*     /tablab?s=xxx&t1=yyy&t2=zzz   */
-    /* xxx,yyy,zzz are where id/sku goes */
-    /* If they're invalid, random chosen */
-    /*************************************/
-    var querySpecs = {
-        shoe: getUrlVar("s"),
-        tab1: getUrlVar("t1"),
-        tab2: getUrlVar("t2"),
-    }
-    var shoeSkus = new Array(); // Array of available shoe skus
-    var shoeIds = new Array(); // Array of availabale shoe ids
-    var tabSkus = new Array(); // Array for available tab skus
-    var tabIds = new Array(); // Array for available tab ids
-
-
     var assetRoot = "/tab-lab/";
 
     toastr.options = {
@@ -188,10 +166,6 @@
                 };
 
                 $scope.loadShoeStyle = function (data) {
-                    for (var i=0; i<data.length; i++){
-                        shoeSkus.push(data[i]["sku"]);  // Get sku's of available shoes
-                        shoeIds.push(data[i]["product_id"]); // Get Id's of available shoes
-                    }
                     $scope.shoeList = data;
                     $scope.shoeList = $scope.loadMenu($scope.shoeList, 'shoes');
                     setNumOfShoesInList($scope.shoeList.length);
@@ -200,59 +174,29 @@
                 };// end loadShoeStyle()
 
                 $scope.loadTabStyles = function (data) {
-                    for (var i=0; i<data.length; i++){
-                        tabSkus.push(data[i]["sku"]); // Get sku's for available tabs
-                        tabIds.push(data[i]["product_id"]); // Get Id's for avialable tabs
-                    }
                     $scope.tabList = data;
                     $scope.tabList = $scope.loadMenu($scope.tabList, 'tabs');
                     setNumOfTabsInList($scope.tabList.length);
                     $scope.loaded.push('tabList');
                 };// end loadTabStyles()
 
-                //*******************************//
-                /* random if query not specified */
-                //*******************************//
                 $scope.setRandomIndex = function (type, pos){
                     var index;
                     if(type == 'shoe'){
-                        //************************************************//
-                        /* If user specified Sku or Id for shoe, that one */
-                        /* is chosen, otherwise a random shoe is chosen   */
-                        //************************************************//
-                        index = shoeSkus.indexOf(querySpecs.shoe);  // See if sku was specified
-                        if (index == -1){ // Sku was not specified
-                            index = shoeIds.indexOf(querySpecs.shoe); // See if id was specified
-                        }
-                        if (index == -1){ // Sku and Id were not specified
-                            index = Math.floor(Math.random() * getNumOfShoesInList()); // Get random shoe
-                        }
+                        index = Math.floor(Math.random() * getNumOfShoesInList());
                         sliderProperties.setShoeIndex(index);
                         $scope.shoeIndex = index;
 
                     } else{
+                        index = Math.floor(Math.random() * getNumOfTabsInList());
                         // if right shoe
                         if(pos == 0) {
-                            index = tabSkus.indexOf(querySpecs.tab1); // Check if sku for tab 1 was specified
-                            if (index == -1){
-                                index = tabIds.indexOf(querySpecs.tab1); // Check if id for tab 1 was specified
-                            }
-                            if (index == -1){
-                                index = Math.floor(Math.random() * getNumOfTabsInList()); // Get random tab
-                            }
                             sliderProperties.setTabIndex(0, index);
                             sliderProperties.setTabIndex(2, index);
-                            $scope.rightTabIndex = index;
+                            $scope.rightTabIndex =  index;
 
                             //else left shoe
                         }else{
-                            index = tabSkus.indexOf(querySpecs.tab2); // Check if sku for tab 2 was specified
-                            if (index == -1){
-                                index = tabIds.indexOf(querySpecs.tab2); // Check if id for tab 2 was specified
-                            }
-                            if (index == -1){
-                                index = Math.floor(Math.random() * getNumOfTabsInList()); // Get random tab
-                            }
                             sliderProperties.setTabIndex(1, index);
                             sliderProperties.setTabIndex(3, index);
                             $scope.leftTabIndex =  index;
