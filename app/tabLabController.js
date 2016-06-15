@@ -198,69 +198,45 @@
                     $scope.loaded.push('tabList');
                 };// end loadTabStyles()
 
+
+                //*****************************************************//
+                /* Return query index or random if invalid/unspecified */
+                //*****************************************************//
+                function queryIndex(queryNum, list){
+                    var index = 0;
+                    if (queryNum != ""){ // Dont search if no query
+                        for (var i=0; i<list.length; i++){
+                            if (queryNum == list[i]["product_id"] || queryNum == list[i]["sku"]){
+                                return index; // Query found
+                            } else {
+                                index++;
+                            }
+                        }
+                    }
+                    return Math.floor(Math.random() * list.length); // Query not found, return random index
+                }
+
                 //*******************************//
                 /* random if query not specified */
                 //*******************************//
                 $scope.setRandomIndex = function (type, pos){
                     var index = 0;
-                    var found = false;
                     if(type == 'shoe'){
-                        //************************************************//
-                        /* If user specified Sku or Id for shoe, that one */
-                        /* is chosen, otherwise a random shoe is chosen   */
-                        //************************************************//
-                        if (querySpecs.shoe != ""){  // Dont search if shoe query not specified
-                            for (var i=0; i<$scope.shoeList.length; i++){
-                                if (querySpecs.shoe == $scope.shoeList[i]["product_id"] || querySpecs.shoe == $scope.shoeList[i]["sku"]){   // Check if shoe query matches any available Id's or Sku's
-                                    found = true;
-                                    break;
-                                } else {
-                                    index++;
-                                }
-                            }
-                        }
-                        if (!found){ // Sku and Id were not specified or found
-                            index = Math.floor(Math.random() * getNumOfShoesInList()); // Get random shoe
-                        }
-                        
+                        index = queryIndex(querySpecs.shoe, $scope.shoeList);
                         sliderProperties.setShoeIndex(index);
                         $scope.shoeIndex = index;
 
                     } else{
                         // if right shoe
                         if(pos == 0) {
-                            if (querySpecs.tab1 != ""){   // Dont search if tab query not specified
-                                for (var i=0; i<$scope.tabList.length; i++){
-                                    if (querySpecs.tab1 == $scope.tabList[i]["product_id"] || querySpecs.tab1 == $scope.tabList[i]["sku"]){   // Check if tab query matches any available Id's or Sku's
-                                        found = true;
-                                        break;
-                                    } else {
-                                        index++;
-                                    }
-                                }
-                            }
-                            if (!found){ // Sku and Id were not specified or found
-                                index = Math.floor(Math.random() * getNumOfTabsInList()); // Get random tab
-                            }
+                            index = queryIndex(querySpecs.tab1, $scope.tabList);
                             sliderProperties.setTabIndex(0, index);
                             sliderProperties.setTabIndex(2, index);
                             $scope.rightTabIndex = index;
 
                             //else left shoe
                         }else{
-                            if (querySpecs.tab2 != ""){  // Dont search if tab query not specified
-                                for (var i=0; i<$scope.tabList.length; i++){
-                                    if (querySpecs.tab2 == $scope.tabList[i]["product_id"] || querySpecs.tab2 == $scope.tabList[i]["sku"]){   // Check if tab query matches any available Id's or Sku's
-                                        found = true;
-                                        break;
-                                    } else {
-                                        index++;
-                                    }
-                                }
-                            }
-                            if (!found){ // Sku and Id were not specified or found
-                                index = Math.floor(Math.random() * getNumOfTabsInList()); // Get random tab
-                            }
+                            index = queryIndex(querySpecs.tab2, $scope.tabList);
                             sliderProperties.setTabIndex(1, index);
                             sliderProperties.setTabIndex(3, index);
                             $scope.leftTabIndex =  index;
