@@ -17,10 +17,6 @@
         tab1: getUrlVar("t1"),
         tab2: getUrlVar("t2"),
     }
-    var shoeSkus = new Array(); // Array of available shoe skus
-    var shoeIds = new Array(); // Array of availabale shoe ids
-    var tabSkus = new Array(); // Array for available tab skus
-    var tabIds = new Array(); // Array for available tab ids
 
 
     var assetRoot = "/tab-lab/";
@@ -188,10 +184,6 @@
                 };
 
                 $scope.loadShoeStyle = function (data) {
-                    for (var i=0; i<data.length; i++){
-                        shoeSkus.push(data[i]["sku"]);  // Get sku's of available shoes
-                        shoeIds.push(data[i]["product_id"]); // Get Id's of available shoes
-                    }
                     $scope.shoeList = data;
                     $scope.shoeList = $scope.loadMenu($scope.shoeList, 'shoes');
                     setNumOfShoesInList($scope.shoeList.length);
@@ -200,10 +192,6 @@
                 };// end loadShoeStyle()
 
                 $scope.loadTabStyles = function (data) {
-                    for (var i=0; i<data.length; i++){
-                        tabSkus.push(data[i]["sku"]); // Get sku's for available tabs
-                        tabIds.push(data[i]["product_id"]); // Get Id's for avialable tabs
-                    }
                     $scope.tabList = data;
                     $scope.tabList = $scope.loadMenu($scope.tabList, 'tabs');
                     setNumOfTabsInList($scope.tabList.length);
@@ -214,30 +202,44 @@
                 /* random if query not specified */
                 //*******************************//
                 $scope.setRandomIndex = function (type, pos){
-                    var index;
+                    var index = 0;
+                    var found = false;
                     if(type == 'shoe'){
                         //************************************************//
                         /* If user specified Sku or Id for shoe, that one */
                         /* is chosen, otherwise a random shoe is chosen   */
                         //************************************************//
-                        index = shoeSkus.indexOf(querySpecs.shoe);  // See if sku was specified
-                        if (index == -1){ // Sku was not specified
-                            index = shoeIds.indexOf(querySpecs.shoe); // See if id was specified
+                        if (querySpecs.shoe != ""){  // Dont search if shoe query not specified
+                            for (var i=0; i<$scope.shoeList.length; i++){
+                                if (querySpecs.shoe == $scope.shoeList[i]["product_id"] || querySpecs.shoe == $scope.shoeList[i]["sku"]){   // Check if shoe query matches any available Id's or Sku's
+                                    found = true;
+                                    break;
+                                } else {
+                                    index++;
+                                }
+                            }
                         }
-                        if (index == -1){ // Sku and Id were not specified
+                        if (!found){ // Sku and Id were not specified or found
                             index = Math.floor(Math.random() * getNumOfShoesInList()); // Get random shoe
                         }
+                        
                         sliderProperties.setShoeIndex(index);
                         $scope.shoeIndex = index;
 
                     } else{
                         // if right shoe
                         if(pos == 0) {
-                            index = tabSkus.indexOf(querySpecs.tab1); // Check if sku for tab 1 was specified
-                            if (index == -1){
-                                index = tabIds.indexOf(querySpecs.tab1); // Check if id for tab 1 was specified
+                            if (querySpecs.tab1 != ""){   // Dont search if tab query not specified
+                                for (var i=0; i<$scope.tabList.length; i++){
+                                    if (querySpecs.tab1 == $scope.tabList[i]["product_id"] || querySpecs.tab1 == $scope.tabList[i]["sku"]){   // Check if tab query matches any available Id's or Sku's
+                                        found = true;
+                                        break;
+                                    } else {
+                                        index++;
+                                    }
+                                }
                             }
-                            if (index == -1){
+                            if (!found){ // Sku and Id were not specified or found
                                 index = Math.floor(Math.random() * getNumOfTabsInList()); // Get random tab
                             }
                             sliderProperties.setTabIndex(0, index);
@@ -246,11 +248,17 @@
 
                             //else left shoe
                         }else{
-                            index = tabSkus.indexOf(querySpecs.tab2); // Check if sku for tab 2 was specified
-                            if (index == -1){
-                                index = tabIds.indexOf(querySpecs.tab2); // Check if id for tab 2 was specified
+                            if (querySpecs.tab2 != ""){  // Dont search if tab query not specified
+                                for (var i=0; i<$scope.tabList.length; i++){
+                                    if (querySpecs.tab2 == $scope.tabList[i]["product_id"] || querySpecs.tab2 == $scope.tabList[i]["sku"]){   // Check if tab query matches any available Id's or Sku's
+                                        found = true;
+                                        break;
+                                    } else {
+                                        index++;
+                                    }
+                                }
                             }
-                            if (index == -1){
+                            if (!found){ // Sku and Id were not specified or found
                                 index = Math.floor(Math.random() * getNumOfTabsInList()); // Get random tab
                             }
                             sliderProperties.setTabIndex(1, index);
