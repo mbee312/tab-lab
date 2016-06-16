@@ -1,6 +1,24 @@
 (function ($) {
     'use strict';
 
+
+
+    /*************************************/
+    /* Get query from url                */
+    /* User can specify sku/id for any   */
+    /*   shoe and each shoe's tabs using */
+    /*   queries in url:                 */
+    /*     /tablab?s=xxx&t1=yyy&t2=zzz   */
+    /* xxx,yyy,zzz are where id/sku goes */
+    /* If they're invalid, random chosen */
+    /*************************************/
+    var querySpecs = {
+        shoe: getUrlVar("s"),
+        tab1: getUrlVar("t1"),
+        tab2: getUrlVar("t2"),
+    }
+
+
     var assetRoot = "/tab-lab/";
 
     toastr.options = {
@@ -180,23 +198,45 @@
                     $scope.loaded.push('tabList');
                 };// end loadTabStyles()
 
+
+                //*****************************************************//
+                /* Return query index or random if invalid/unspecified */
+                //*****************************************************//
+                function queryIndex(queryNum, list){
+                    var index = 0;
+                    if (queryNum != ""){ // Dont search if no query
+                        for (var i=0; i<list.length; i++){
+                            if (queryNum == list[i]["product_id"] || queryNum == list[i]["sku"]){
+                                return index; // Query found
+                            } else {
+                                index++;
+                            }
+                        }
+                    }
+                    return Math.floor(Math.random() * list.length); // Query not found, return random index
+                }
+
+                //*******************************//
+                /* random if query not specified */
+                //*******************************//
                 $scope.setRandomIndex = function (type, pos){
-                    var index;
+                    var index = 0;
                     if(type == 'shoe'){
-                        index = Math.floor(Math.random() * getNumOfShoesInList());
+                        index = queryIndex(querySpecs.shoe, $scope.shoeList);
                         sliderProperties.setShoeIndex(index);
                         $scope.shoeIndex = index;
 
                     } else{
-                        index = Math.floor(Math.random() * getNumOfTabsInList());
                         // if right shoe
                         if(pos == 0) {
+                            index = queryIndex(querySpecs.tab1, $scope.tabList);
                             sliderProperties.setTabIndex(0, index);
                             sliderProperties.setTabIndex(2, index);
-                            $scope.rightTabIndex =  index;
+                            $scope.rightTabIndex = index;
 
                             //else left shoe
                         }else{
+                            index = queryIndex(querySpecs.tab2, $scope.tabList);
                             sliderProperties.setTabIndex(1, index);
                             sliderProperties.setTabIndex(3, index);
                             $scope.leftTabIndex =  index;
