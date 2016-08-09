@@ -53,6 +53,43 @@
             TAB LAB<sup> beta</sup>
         </tab-heading>
     </tab>
+    <tab select="paneChanged('shoes')" active="tabs['shoes'].active">
+        <tab-heading>
+            <div class="icon-wrapper">
+                <div ng-class="{'shoes heading': !tabs['shoes'].active, 'fa fa-times fa-lg': tabs['shoes'].active}" ng-click="togglePane('shoes')"></div>
+            </div>
+        </tab-heading>
+        <section id="shoe-container" class="slick-container" ng-controller="SliderCtrl">
+            <md-whiteframe class="md-whiteframe-z1 horizontal-slick-container">
+                <div>
+                    <slick class="car slick-shoe" id="shoe-slider"
+                           init-onload="true"
+                           infinite="true"
+                           center-mode="true"
+                           speed="200"
+                           cssEase="ease"
+                           arrows="true"
+                           swipe="true"
+                           swipeToSlide="true"
+                           touchMove="true"
+                           touchThreshold="1000"
+                           draggable="true"
+                           easing="linear"
+                           mobileFirst="true"
+                           respondTo="window"
+                           slides-to-show="5"
+                           slides-to-scroll="1"
+                           focus-on-select="true"
+                           current-index="shoeIndex"
+                           data="shoeList">
+                        <div ng-repeat="shoe in shoeList" class="img bgimage">
+                            <a><img class="slide img" ng-src={{shoe.menuImg.src}}></a>
+                        </div>
+                    </slick>
+                </div>
+            </md-whiteframe>
+        </section>
+    </tab>
     <tab select="paneChanged('tabs')" active="tabs['tabs'].active">
         <tab-heading>
             <div class="icon-wrapper">
@@ -110,43 +147,6 @@
                            data="tabList">
                         <div ng-repeat="tab in tabList" class="tabmenuitem bgimage">
                             <a><img class="slide img tab" ng-src={{tab.menuImg.src}}></a>
-                        </div>
-                    </slick>
-                </div>
-            </md-whiteframe>
-        </section>
-    </tab>
-    <tab select="paneChanged('shoes')" active="tabs['shoes'].active">
-        <tab-heading>
-            <div class="icon-wrapper">
-                <div ng-class="{'shoes heading': !tabs['shoes'].active, 'fa fa-times fa-lg': tabs['shoes'].active}" ng-click="togglePane('shoes')"></div>
-            </div>
-        </tab-heading>
-        <section id="shoe-container" class="slick-container" ng-controller="SliderCtrl">
-            <md-whiteframe class="md-whiteframe-z1 horizontal-slick-container">
-                <div>
-                    <slick class="car slick-shoe" id="shoe-slider"
-                           init-onload="true"
-                           infinite="true"
-                           center-mode="true"
-                           speed="200"
-                           cssEase="ease"
-                           arrows="true"
-                           swipe="true"
-                           swipeToSlide="true"
-                           touchMove="true"
-                           touchThreshold="1000"
-                           draggable="true"
-                           easing="linear"
-                           mobileFirst="true"
-                           respondTo="window"
-                           slides-to-show="5"
-                           slides-to-scroll="1"
-                           focus-on-select="true"
-                           current-index="shoeIndex"
-                           data="shoeList">
-                        <div ng-repeat="shoe in shoeList" class="img bgimage">
-                            <a><img class="slide img" ng-src={{shoe.menuImg.src}}></a>
                         </div>
                     </slick>
                 </div>
