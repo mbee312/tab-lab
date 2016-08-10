@@ -39,7 +39,7 @@
         "hideMethod": "fadeOut"
     }
 
-    if(window.maskControl == undefined) window.maskControl = null;
+    if(window.plae && window.plae.controllers && window.plae.controllers.mask == undefined) window.plae.controllers.mask = null;
 
     // Declare app level module which depends on views, and components
     var tabLabApp = angular.module('tabLabApp',
@@ -405,7 +405,7 @@
                             $scope.createScene();
                             render();
                             $scope.initDrawScene();
-                            if (maskControl) maskControl.hideFullMask();
+                            if (window.plae && window.plae.controllers && plae.controllers.mask) plae.controllers.mask.hideFullMask();
                         });
                     });
                 }; // end initLoad()

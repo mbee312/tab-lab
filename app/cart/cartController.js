@@ -269,7 +269,7 @@
             if (calls[0]) {
                 var additionalParams = [];
                 additionalParams[calls.length - 1] = {'render':1};
-                if (maskControl) maskControl.showProgressMask("adding to cart");
+                if (window.plae && window.plae.controllers && window.plae.controllers.mask) plae.controllers.mask.showProgressMask("adding to cart");
                 calls[0](additionalParams[0]).then(function(result){
                     if (result) data.push(result.data);
                     return calls[1] ? calls[1](additionalParams[1]) : null;
@@ -279,7 +279,7 @@
                 }).then(function(result){
                     if (result) data.push(result.data);
                 }).finally(function(error){
-                    if (maskControl) maskControl.hideProgressMask();
+                    if (window.plae && window.plae.controllers && window.plae.controllers.mask) plae.controllers.mask.hideProgressMask();
                     if (error) {
                         console.log(error);
                     }
