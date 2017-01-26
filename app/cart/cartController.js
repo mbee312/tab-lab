@@ -161,6 +161,9 @@
                     case "2":
                     case "2.5":
                     case "3":
+                    case "3.5":
+                    case "4":
+                    case "3.5":
                         $scope.tabs.size = $scope.tabSizeOptions[2 + wideOffset];
                         break;
                 }// end switch

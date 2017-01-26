@@ -15,7 +15,7 @@
     var querySpecs = {
         shoe: getUrlVar("s"),
         tab1: getUrlVar("t1"),
-        tab2: getUrlVar("t2"),
+        tab2: getUrlVar("t2")
     }
 
 
@@ -398,6 +398,15 @@
                             $scope.loadShoeStyle(shoes);
                         });
                         var tabPromise = loadConfigurableProductsFromSkus(data.tabSkus, {}, function(tabs) {
+                            for (var tabCategory in data.tabSetData) {
+                                if (getUrlVar(tabCategory) != false) {
+                                    var tabSet = data.tabSetData[tabCategory];
+                                    if (tabSet["tab1"]) querySpecs["tab1"] = tabSet["tab1"];
+                                    if (tabSet["tab2"]) querySpecs["tab2"] = tabSet["tab2"];
+                                    if (tabSet["shoe"]) querySpecs["shoe"] = tabSet["shoe"];
+                                    tabs = tabs.concat(tabSet.data);
+                                }
+                            }
                             $scope.loadTabStyles(tabs);
                         });
                         $q.all([shoePromise, tabPromise]).then(function(data){

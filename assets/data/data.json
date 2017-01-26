@@ -97,6 +97,49 @@
   ],
   "tabData": {
   },
+  "tabSetData": {
+      "minions" : {
+          "tab1": "200-minions1",
+          "tab2": "200-minions2",
+          "shoe": "102021-401",
+          "data": [
+              {
+                  "color":null,
+                  "color_label": null,
+                  "image_url": "/m/i/minions_1_thumb.jpg",
+                  "initial_price": "4.9500",
+                  "is_saleable": true,
+                  "name": "minions - 1",
+                  "price": "4.9500",
+                  "product_id": "-1",
+                  "set": "9",
+                  "shoe_size": null,
+                  "sku": "200-minions1",
+                  "status": "1",
+                  "tab_size": null,
+                  "type":  "configurable",
+                  "website_ids": ["1"]
+              },
+              {
+                  "color":null,
+                  "color_label": null,
+                  "image_url": "/m/i/minions_2_thumb.jpg",
+                  "initial_price": "4.9500",
+                  "is_saleable": true,
+                  "name": "minions - 2",
+                  "price": "4.9500",
+                  "product_id": "-1",
+                  "set": "9",
+                  "shoe_size": null,
+                  "sku": "200-minions2",
+                  "status": "1",
+                  "tab_size": null,
+                  "type":  "configurable",
+                  "website_ids": ["1"]
+              }
+          ]
+      }
+  },
   "shoeSizes": [
     {
         "id" : "216",
